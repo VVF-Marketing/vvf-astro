@@ -579,10 +579,28 @@ describe('getPageCopy', () => {
   })
 
   it('renders defaults when the page has no copy collection yet', async () => {
-    getEmDashCollection.mockRejectedValue(new Error('Collection not found: copy_ways_to_give'))
+    // EmDash returns no entries for a collection whose table doesn't exist.
+    getEmDashCollection.mockResolvedValue({ entries: [] })
     const { copy, locales } = await getPageCopy(manifest, 'es')
     expect(copy).toEqual({ 'seo.title': 'Ways to Give', 'hero.heading': 'Ways to give', 'hero.body': 'Every gift counts.' })
     expect(locales).toEqual(['en'])
+  })
+})
+
+describe('query failures', () => {
+  // EmDash returns database errors as `error` with no entries, instead of throwing.
+  const failure = { entries: [], error: new Error('Failed to load collection: connection refused') }
+
+  it('fail the page instead of rendering default copy', async () => {
+    getEmDashCollection.mockResolvedValue(failure)
+    await expect(getPageCopy(defineCopy('/ways-to-give', { 'hero.heading': { label: 'Heading', default: 'Ways to give' } }), 'es')).rejects.toThrow(
+      'connection refused'
+    )
+  })
+
+  it('fail the page instead of rendering an empty list', async () => {
+    getEmDashCollection.mockResolvedValue(failure)
+    await expect(getReports('annual')).rejects.toThrow('connection refused')
   })
 })
 
