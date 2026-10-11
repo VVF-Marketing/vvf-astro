@@ -41,6 +41,6 @@ Programs photos are taken from the design PDF, resized and converted to WebP und
 
 ## Risks / Trade-offs
 
-- [Program statistics ("nearly half of child deaths…", "seven million…", "thirty percent…") are claims marketing should be able to source] → they're copy slots; flagged to marketing for sourcing, editable without a deploy.
+- [Program statistics need a source] → each one names it (World Health Organization, United Nations, UNICEF), copied from the live site; they are copy slots, editable without a deploy.
 - [Design photos from a PDF may be lower quality than originals] → resized from the embedded originals (up to 4096px); swap for source files when available.
 - [The live hero button reads "Primary" (a Webflow placeholder)] → use "Donate" and note the difference.
