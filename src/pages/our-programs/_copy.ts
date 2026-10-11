@@ -1,7 +1,7 @@
 // Copy slots for /our-programs (src/lib/copy.ts). Defaults are the Our
 // Programs design text (desktop content, used on every screen size). No live
 // Spanish source: Spanish slots stay empty until marketing translates them.
-// The program statistics are marketing's claims to source before publishing.
+// The program statistics name their source (WHO, UN, UNICEF), as on the live site.
 import { defineCopy, seoSlots } from '../../lib/copy'
 
 export default defineCopy('/our-programs', {
@@ -22,19 +22,19 @@ export default defineCopy('/our-programs', {
   'together.cta2': { label: "How we work together: second button", default: "Give", maxLength: 20 },
   'nutrition.tagline': { label: "Nutrition: tagline", default: "Nourishment", maxLength: 20 },
   'nutrition.heading': { label: "Nutrition: heading", default: "Nutrition program feeds hungry children", maxLength: 60 },
-  'nutrition.text': { label: "Nutrition: text", default: "Nearly half of child deaths under five are due to malnutrition. In Venezuela, families struggle to put food on the table. We serve weekly nutritious meals at local church centers where children gather, learn, and grow strong. Our volunteers prepare balanced meals while sharing faith and hope with every child who walks through the door.", maxLength: 510 },
+  'nutrition.text': { label: "Nutrition: text", default: "Around 45% of deaths among children under five are linked to undernutrition, according to the World Health Organization. In Venezuela, families struggle to put food on the table. We serve weekly nutritious meals at local church centers where children gather, learn, and grow strong. Our volunteers prepare balanced meals while sharing faith and hope with every child who walks through the door.", maxLength: 510 },
   'nutrition.cardTitle': { label: "Nutrition: photo card title", default: "Families strengthened", maxLength: 40 },
   'nutrition.cardText': { label: "Nutrition: photo card text", default: "Ordinary people discover they can do extraordinary things for their neighbors", maxLength: 120 },
   'nutrition.imageAlt': { label: "Nutrition: image description", default: "A boy eating a meal at one of our nutrition centers.", maxLength: 80 },
   'medical.tagline': { label: "Medical care: tagline", default: "Healing", maxLength: 20 },
   'medical.heading': { label: "Medical care: heading", default: "Medical care restores health and hope", maxLength: 60 },
-  'medical.text': { label: "Medical care: text", default: "Seven million children die yearly from treatable diseases. In Venezuela, the healthcare system has collapsed, leaving families without access to basic care. We organize quarterly medical attention days where volunteer doctors diagnose, treat, and provide medications and vaccines to children who need them most.", maxLength: 470 },
+  'medical.text': { label: "Medical care: text", default: "In 2023, 4.8 million children died before their fifth birthday, most from causes that could have been prevented, according to the United Nations. In Venezuela, the healthcare system has collapsed, leaving families without access to basic care. Twice a year we organize medical attention days where volunteer doctors diagnose, treat, and provide medications and vaccines to children who need them most.", maxLength: 470 },
   'medical.cardTitle': { label: "Medical care: photo card title", default: "Medical diagnosis", maxLength: 30 },
   'medical.cardText': { label: "Medical care: photo card text", default: "Professional assessment identifying conditions requiring immediate attention and care.", maxLength: 130 },
   'medical.imageAlt': { label: "Medical care: image description", default: "A volunteer nurse listening to a boy’s heartbeat during a medical attention day.", maxLength: 120 },
   'education.tagline': { label: "Education: tagline", default: "Learning", maxLength: 20 },
   'education.heading': { label: "Education: heading", default: "Education opens doors for Venezuelan children", maxLength: 70 },
-  'education.text': { label: "Education: text", default: "Thirty percent of Venezuelan children under ten lack consistent access to education. Poverty, displacement, and broken systems keep them from school. We distribute school supplies and uniforms annually, provide tuition assistance to families in need, and encourage every child to complete their education.", maxLength: 460 },
+  'education.text': { label: "Education: text", default: "About 3 million children and young people in Venezuela, aged 3 to 24, are not in school, according to UNICEF. Poverty, displacement, and broken systems keep them out. We distribute school supplies and uniforms every year, provide tuition assistance to families in need, and encourage every child to complete their education.", maxLength: 460 },
   'education.cardTitle': { label: "Education: photo card title", default: "School supplies", maxLength: 30 },
   'education.cardText': { label: "Education: photo card text", default: "Financial support covering enrollment fees so families can send their children to school without hardship.", maxLength: 160 },
   'education.imageAlt': { label: "Education: image description", default: "A girl writing in her notebook at a classroom table.", maxLength: 80 },
