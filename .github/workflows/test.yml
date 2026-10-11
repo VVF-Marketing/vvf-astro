@@ -76,6 +76,12 @@ jobs:
         run: docker build --target runtime -t vvf-site .
       - name: Migrate and seed Postgres (public seed)
         run: npm run db:setup
+      - name: Data export/import round trip through Postgres
+        env:
+          TEST_POSTGRES_URL: postgres://vvf:vvf@localhost:5432/vvf_import
+        run: |
+          psql postgres://vvf:vvf@localhost:5432/vvf -c 'create database vvf_import'
+          npx vitest run scripts/data.integration.test.mjs
       - name: Create the media bucket
         run: |
           for i in $(seq 1 30); do curl -sf http://localhost:8333/ > /dev/null && break; sleep 1; done
