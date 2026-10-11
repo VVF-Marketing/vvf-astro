@@ -91,7 +91,7 @@ async function newTabCue(context: CueContext): Promise<string> {
   }
 }
 
-type CueContext = { request: Request; originPathname: string }
+type CueContext = { locals: object; originPathname: string }
 
 async function withLocalizedLinks(response: Response, locale: Locale, context: CueContext): Promise<Response> {
   if (!response.headers.get('content-type')?.includes('text/html')) return response
