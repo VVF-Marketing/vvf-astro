@@ -11,6 +11,10 @@
 // for npm run data:import).
 // Needs DB_ADAPTER=postgres and DATABASE_URL; STORAGE=s3 (with S3_*) uploads
 // media to the bucket, otherwise to ./uploads.
+//
+// Migrating needs the target confirmed first (confirmTarget): a pinned
+// fingerprint (EMDASH_TARGET_FINGERPRINT or --expected-target-fingerprint=),
+// --yes or CI, or a yes in a terminal.
 import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
@@ -47,32 +51,55 @@ export function describeTarget(url) {
 
 export const shouldSeed = (collectionCount, force = false) => force || collectionCount === 0
 
-function emdashMigrate() {
-  // The CLI reports on stderr; read both streams.
-  const run = (args) => {
-    const r = spawnSync('npx', ['emdash', 'migrate', '--from-config', ...args], { cwd: ROOT, encoding: 'utf8', env: { ...process.env, DB_ADAPTER: 'postgres' } })
-    const out = `${r.stdout ?? ''}${r.stderr ?? ''}`
-    if (r.status !== 0) throw new Error(`emdash migrate failed:\n${out}`)
-    return out
-  }
-  const fingerprint = run(['--status']).match(/Target fingerprint: (\S+)/)?.[1]
-  if (!fingerprint) throw new Error('Could not read the migration target fingerprint from `emdash migrate --status`.')
-  const out = run([`--expected-target-fingerprint=${fingerprint}`])
-  return out.match(/Executed: (.*)/)?.[1]?.trim() ?? ''
+// The CLI reports on stderr; read both streams.
+function emdash(args) {
+  const r = spawnSync('npx', ['emdash', 'migrate', '--from-config', ...args], { cwd: ROOT, encoding: 'utf8', env: { ...process.env, DB_ADAPTER: 'postgres' } })
+  const out = `${r.stdout ?? ''}${r.stderr ?? ''}`
+  if (r.status !== 0) throw new Error(`emdash migrate failed:\n${out}`)
+  return out
 }
 
-export async function setupDatabase({ seedFile = path.join(ROOT, 'seed/seed.json'), force = false, seed = true, confirm = false, storage, log = console.log } = {}) {
+function targetFingerprint() {
+  const fingerprint = emdash(['--status']).match(/Target fingerprint: (\S+)/)?.[1]
+  if (!fingerprint) throw new Error('Could not read the migration target fingerprint from `emdash migrate --status`.')
+  return fingerprint
+}
+
+// EmDash applies migrations without asking only when given the target's
+// fingerprint: proof that someone confirmed which database this is. Pass it
+// on only once the target is confirmed here:
+// - a pinned fingerprint (a deploy's EMDASH_TARGET_FINGERPRINT) must match,
+//   and then no one is asked, unless the run also overwrites content;
+// - otherwise --yes or CI, or a yes in a terminal (confirmDestructive).
+export async function confirmTarget({ target, fingerprint, pinned, seed = true, force = false, ask = false, confirmOptions } = {}) {
+  if (pinned && pinned !== fingerprint) {
+    throw new Error(`The target's fingerprint (${fingerprint}) doesn't match the expected one (${pinned}): check DATABASE_URL.`)
+  }
+  if (pinned && !force && !ask) return true
+  return confirmDestructive(
+    `This migrates${seed ? ' and seeds' : ''} the Postgres database at ${target} (fingerprint ${fingerprint})${force ? ', re-applying the seed over existing content (--force)' : ''}.`,
+    confirmOptions
+  )
+}
+
+export async function setupDatabase({
+  seedFile = path.join(ROOT, 'seed/seed.json'),
+  force = false,
+  seed = true,
+  confirm = false,
+  expectedFingerprint = process.env.EMDASH_TARGET_FINGERPRINT || undefined,
+  storage,
+  log = console.log,
+} = {}) {
   const target = describeTarget(databaseUrl())
-  log(`Target: Postgres ${target}`)
   // Before anything is written: where the seed media will go.
   const mediaStorage = seed ? (storage ?? openStorage()) : undefined
-  // `npm run seed` in Postgres mode and `--force` (re-applying the seed to a
-  // database that has content) ask first; plain `db:setup` only ever seeds
-  // an empty database and runs unattended in CI and the tools image.
-  if ((confirm || force) && !(await confirmDestructive(`This migrates${seed ? ' and seeds' : ''} the Postgres database at ${target}${force ? ', re-applying the seed over existing content (--force)' : ''}.`))) {
-    process.exit(1)
-  }
-  const executed = emdashMigrate()
+  const fingerprint = targetFingerprint()
+  log(`Target: Postgres ${target}, fingerprint ${fingerprint}`)
+  // `npm run seed` in Postgres mode and --force (re-applying the seed over
+  // content) always ask; CI and the compose setup job pass --yes or CI.
+  if (!(await confirmTarget({ target, fingerprint, pinned: expectedFingerprint, seed, force, ask: confirm }))) process.exit(1)
+  const executed = emdash([`--expected-target-fingerprint=${fingerprint}`]).match(/Executed: (.*)/)?.[1]?.trim() ?? ''
   log(`Migrations: ${executed && executed !== 'none' ? executed.split(',').length + ' applied' : 'up to date'}`)
   if (!seed) return { seeded: false } // --no-seed: an empty, migrated database (e.g. for npm run data:import)
   const db = new Kysely({ dialect: createDialect() })
@@ -94,5 +121,11 @@ export async function setupDatabase({ seedFile = path.join(ROOT, 'seed/seed.json
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const seedArg = process.argv.find((a) => a.startsWith('--seed='))?.slice('--seed='.length)
-  await setupDatabase({ seedFile: seedArg ? path.resolve(seedArg) : undefined, force: process.argv.includes('--force'), seed: !process.argv.includes('--no-seed') })
+  const pinnedArg = process.argv.find((a) => a.startsWith('--expected-target-fingerprint='))?.slice('--expected-target-fingerprint='.length)
+  await setupDatabase({
+    seedFile: seedArg ? path.resolve(seedArg) : undefined,
+    force: process.argv.includes('--force'),
+    seed: !process.argv.includes('--no-seed'),
+    ...(pinnedArg && { expectedFingerprint: pinnedArg }),
+  })
 }

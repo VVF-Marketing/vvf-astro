@@ -53,7 +53,7 @@ Compose runs the site image, Postgres 16 and SeaweedFS (an S3-compatible store; 
 ## A new environment
 
 1. Create an empty Postgres database and a bucket.
-2. Migrate and seed: `npm run db:setup` (it prints the target database first, and `--force` asks before re-applying the seed; migrations, then the public media and seed, only into an empty database; `--no-seed` stops after migrations). Set `STORAGE=s3` (with the `S3_*` settings) so the media goes to the bucket the site reads; `STORAGE=local` uploads to `./uploads` instead, and leaving it unset is refused.
+2. Migrate and seed: `npm run db:setup` (migrations, then the public media and seed, only into an empty database; `--no-seed` stops after migrations). It prints the target database and its fingerprint, and asks before migrating; `--force` (re-applying the seed over content) always asks. Set `STORAGE=s3` (with the `S3_*` settings) so the media goes to the bucket the site reads; `STORAGE=local` uploads to `./uploads` instead, and leaving it unset is refused.
 
 ## Seeded media
 
@@ -63,6 +63,11 @@ Databases seeded before this existed keep their own media IDs; they're never re-
 3. Run the image with the settings above. Wait for `/readyz`, then send traffic.
 
 Migrations are a deploy step. `npm run db:setup`, or `npx emdash migrate --from-config --expected-target-fingerprint=<fp>` from the tools image, applies pending EmDash migrations before the new version takes traffic.
+
+`db:setup` migrates only a confirmed target. Without a terminal to ask in (the tools image, a deploy pipeline) it refuses unless the target is confirmed another way:
+
+- **Pinned fingerprint (deploys):** set `EMDASH_TARGET_FINGERPRINT` in the environment's deploy settings to the fingerprint `db:setup` (or `npx emdash migrate --from-config --status`) printed for its database, once. A run against any other database, for example from a wrong `DATABASE_URL`, then stops with a mismatch error. `--expected-target-fingerprint=<fp>` does the same for one run.
+- **`--yes` or `CI`:** for throwaway databases only, such as CI and the compose `setup` job.
 
 ## Moving data
 

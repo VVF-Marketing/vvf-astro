@@ -81,6 +81,12 @@ jobs:
           node scripts/s3-bucket.mjs
       - name: Migrate and seed Postgres + S3 (public seed and media)
         run: npm run db:setup
+      - name: Data export/import round trip through Postgres
+        env:
+          TEST_POSTGRES_URL: postgres://vvf:vvf@localhost:5432/vvf_import
+        run: |
+          psql postgres://vvf:vvf@localhost:5432/vvf -c 'create database vvf_import'
+          npx vitest run scripts/data.integration.test.mjs
       - name: Run the image and wait until it's ready
         run: |
           docker run -d --name site --network host -e PORT=4321 \

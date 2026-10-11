@@ -44,7 +44,7 @@ services:
     build: { context: ., target: tools }
     environment: *site-env
     command: >
-      sh -c "node scripts/s3-bucket.mjs && npm run db:setup"
+      sh -c "node scripts/s3-bucket.mjs && npm run db:setup -- --yes"
     depends_on:
       postgres: { condition: service_healthy }
       s3: { condition: service_healthy }
