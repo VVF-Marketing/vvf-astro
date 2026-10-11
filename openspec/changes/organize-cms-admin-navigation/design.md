@@ -111,15 +111,16 @@ When every declared slot is present in its new collection, it sets `page_copy` t
 
 ## Migration Plan
 
-1. Deploy code (reads the per-page collections and falls back to defaults when they're missing).
-2. `npm run cms:schema -- --dry-run`, review, then `npm run cms:schema`.
-3. `npm run migrate:copy-collections` moves `page_copy` values and drafts, then hides `page_copy`.
-4. Restart, so the sync fills any slot rows still missing.
-5. Spot-check Pages & SEO › Home in both locales and one Spanish page on the site.
+Once per environment, running the commands from a checkout of the new code pointed at the environment with `EMDASH_URL`:
 
-Between steps 1 and 3, pages show defaults instead of edited copy. Run steps 1–3 together, which is minutes on SQLite.
+1. `npm run cms:schema -- --dry-run`, review, then `npm run cms:schema`.
+2. `npm run migrate:copy-collections` moves `page_copy` values, drafts and Spanish versions, then hides `page_copy`.
+3. Deploy the code. Its sync fills any slot rows still missing when it starts.
+4. Spot-check Pages & SEO › Home in both locales and one Spanish page on the site.
 
-**Rollback:** redeploy the previous code, which reads `page_copy`, untouched apart from `hidden`. Un-hide `page_copy`. The new collections can stay; they're unused.
+Steps 1 and 2 only add collections and hide `page_copy`, which the running (old) code keeps reading, so visitors see no change until the deploy. Pause copy edits from step 2 until step 3: edits to the hidden `page_copy` would be lost, and edits in the new collections only show after the deploy. Deploying first instead would show every page's default copy until the migration ran.
+
+**Rollback:** redeploy the previous code, which reads `page_copy`, untouched apart from `hidden`. Un-hide `page_copy`. The new collections can stay; they're unused. Copy edited in the new collections after the deploy isn't in `page_copy`, so a rollback drops it unless it's re-entered.
 
 ## Open Questions
 
