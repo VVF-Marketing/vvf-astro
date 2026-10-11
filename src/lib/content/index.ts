@@ -89,7 +89,12 @@ function groupOf(e: RawEntry): string {
 async function queryLocale(collection: string, filter: QueryFilter, locale: Locale): Promise<RawEntry[]> {
   // Always pass the locale explicitly: on /es pages EmDash's request context
   // would otherwise scope the query to `es` on its own.
-  const { entries } = await getEmDashCollection(collection, { ...filter, locale } as QueryFilter)
+  const { entries, error } = await getEmDashCollection(collection, { ...filter, locale } as QueryFilter)
+  // EmDash returns query failures instead of throwing them. Throw, so a
+  // database outage is a logged 500 rather than a page silently missing its
+  // content. A collection without a table yet isn't a failure: EmDash
+  // returns no entries.
+  if (error) throw error
   return entries as unknown as RawEntry[]
 }
 
@@ -553,19 +558,10 @@ export async function getCampaignSettings(locale: Locale = DEFAULT_LOCALE): Prom
 // --- Page copy -----------------------------------------------------------
 
 // A page's slots live in its own copy collection (src/lib/cmsNavigation.mjs);
-// until that collection exists (schema not applied yet) the page renders its
-// defaults.
-const warnedCopyCollections = new Set<string>()
-
+// until that collection exists (schema not applied yet) the query returns no
+// rows and the page renders its defaults.
 async function storedSlots(route: string, locale: Locale): Promise<Map<string, StoredSlot>> {
-  const collection = copyCollectionFor(route)
-  const rows = await queryLocale(collection, { limit: 500 }, locale).catch((error: unknown) => {
-    if (!warnedCopyCollections.has(collection)) {
-      warnedCopyCollections.add(collection)
-      console.warn(`[page-copy] ${collection} unavailable, rendering defaults (run npm run cms:schema):`, error)
-    }
-    return [] as RawEntry[]
-  })
+  const rows = await queryLocale(copyCollectionFor(route), { limit: 500 }, locale)
   return new Map(
     rows.map((r) => [
       String(r.data.key),
