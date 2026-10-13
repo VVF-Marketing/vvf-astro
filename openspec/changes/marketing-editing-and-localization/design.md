@@ -95,6 +95,11 @@ Extend `scripts/migrate` to fetch the secondary locale: CMS item variants via th
 4. Enable the write guard, configure marketing role and OAuth client, onboard marketing on a staging deploy first.
 Rollback: steps 1–3 are code + seed, revertible by git and reseed. Step 4 is disabled by revoking marketing tokens/roles.
 
+## Header and menu (language switch)
+
+The header follows the live site's current menu (Make a Difference, About, Resources — "Get Involved" and the top-level "Our Team" are gone) and its sizing: a 50px-tall logo and 24px side padding below 1280px. That's what makes the header, with the EN / ES switch, fit from 992px in both languages; the earlier migrated header (68px logo, four top-level items) already overflowed between 992 and 1279px.
+Live's new `/financials-and-transparency` page isn't built here yet: the About menu links to `/resources/category/financials-transparency` (the same reports) and the live URL redirects there in both languages. Building the page is follow-up work outside this change.
+
 ## Open Questions
 
 - Who is on the safeguarding allowlist, and is it the same person for Spanish child profiles?

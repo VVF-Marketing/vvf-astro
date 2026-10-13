@@ -30,5 +30,5 @@ const campaignSettings = await getCampaignSettings(locale)
   <main lang={contentLocale && contentLocale !== locale ? LANG_TAGS[contentLocale] : undefined}>
     <slot />
   </main>
-  <Footer />
+  <Footer alternates={alternates} />
 </Layout>

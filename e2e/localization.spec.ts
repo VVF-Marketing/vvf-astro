@@ -115,9 +115,11 @@ test('the language switch leads to the same page in the other locale', async ({ 
 test('a Spanish page shows the Spanish menu, linking to /es routes', async ({ page }) => {
   await page.goto('/es/our-team')
   const nav = page.getByRole('navigation', { name: 'Primary' }).first()
-  await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Marca la diferencia', 'Participa', 'Nuestro equipo', 'Recursos'])
-  await expect(nav.getByRole('link', { name: 'Nuestro equipo' })).toHaveAttribute('href', '/es/our-team')
-  await expect(nav.getByRole('link', { name: 'Nuestro equipo' })).toHaveAttribute('aria-current', 'page')
+  await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Marca la diferencia', 'Nosotros', 'Recursos'])
+  // Nuestro equipo sits in the (closed) Nosotros dropdown.
+  const team = nav.locator('a[href="/es/our-team"]:not([hreflang])')
+  await expect(team).toHaveText('Nuestro equipo')
+  await expect(team).toHaveAttribute('aria-current', 'page')
   const menuLinks = await nav.locator(':scope > ul a').evaluateAll((links) => links.map((a) => a.getAttribute('href')))
   for (const href of menuLinks) expect(href).toMatch(/^\/es\//)
 })

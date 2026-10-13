@@ -1,13 +1,15 @@
 ---
-// Live counterpart: `.navbar` (Webflow w-nav). Navy bar, white Nunito links
+// Live counterpart: `.navbar` (Webflow w-nav). Navy bar, 50px-tall logo (40px
+// on phones), 24px side padding until 1280, white Nunito links
 // that turn cyan on hover, navy dropdown panels, Donate + Contact Us CTAs.
 // Collapses into a menu button below the `lg` (992px) breakpoint, like the
 // live site. Menu items come from the EmDash `primary` menu (per locale). The
-// language switch (EN | ES, as on the live site) links to this page in each
-// locale — its translated slug when the page passes `alternates`.
+// language switch (LanguageSwitch) sits between the menu and the buttons, and
+// is the first line of the phone menu.
 import { getPrimaryMenu } from '../lib/content'
-import { LANG_TAGS, LOCALES, localeFromPath, localizePath, stripLocale, type Locale } from '../lib/i18n'
+import { localeFromPath, stripLocale, type Locale } from '../lib/i18n'
 import Button from './Button.astro'
+import LanguageSwitch from './LanguageSwitch.astro'
 import { getGlobalCopy } from '../lib/globalCopy'
 
 const t = await getGlobalCopy(Astro)
@@ -19,13 +21,6 @@ interface Props {
 const locale = localeFromPath(Astro.originPathname)
 // English path of this page; Spanish menu urls carry /es, so compare without it.
 const currentPath = stripLocale(Astro.originPathname.replace(/\/$/, '') || '/')
-// Each language is named in itself for its accessible name.
-const LANGUAGE_NAMES: Record<Locale, string> = { en: 'English', es: 'Español' }
-const localeLinks = LOCALES.map((l) => ({
-  locale: l,
-  href: Astro.props.alternates?.[l] ?? localizePath(currentPath, l),
-  current: l === locale,
-}))
 
 const items = await getPrimaryMenu(locale)
 const isCurrent = (href: string) => {
@@ -36,10 +31,10 @@ const isCurrent = (href: string) => {
 const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal leading-body text-neutral-white no-underline hover:text-brand-accent'
 ---
 
-<header class="relative z-50 bg-brand-primary px-6 py-5 md:px-8 lg:px-16" data-site-header>
+<header class="relative z-50 bg-brand-primary px-6 py-5 md:px-8 lg:px-6 xl:px-16" data-site-header>
   <div class="mx-auto flex max-w-screen-xl items-center justify-between gap-6 xl:gap-16">
     <a href="/" class="shrink-0" aria-label={t['header.homeLink']}>
-      <img src="/images/logo.svg" alt={t['header.logoAlt']} width="206" height="68" class="h-10 w-auto sm:h-[68px]" />
+      <img src="/images/logo.svg" alt={t['header.logoAlt']} width="206" height="68" class="h-10 w-auto sm:h-[50px]" />
     </a>
 
     <nav aria-label={t['header.navLabel']} class="hidden flex-1 items-center justify-end gap-2 lg:flex">
@@ -85,22 +80,7 @@ const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal le
         }
       </ul>
       <div class="flex shrink-0 items-center gap-4 pl-6 xl:gap-6 xl:pl-16">
-        <ul class="flex items-center gap-2" aria-label={t['header.languageLabel']}>
-          {localeLinks.map((l) => (
-            <li>
-              <a
-                href={l.href}
-                hreflang={LANG_TAGS[l.locale]}
-                lang={LANG_TAGS[l.locale]}
-                aria-label={LANGUAGE_NAMES[l.locale]}
-                aria-current={l.current ? 'true' : undefined}
-                class={`${linkClass} ${l.current ? 'font-bold text-brand-accent' : ''}`}
-              >
-                {l.locale.toUpperCase()}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <LanguageSwitch alternates={Astro.props.alternates} />
         <Button href="/ways-to-give" variant="primary">{t['header.donate']}</Button>
         <Button href="/contact" variant="outline">{t['header.contact']}</Button>
       </div>
@@ -121,6 +101,7 @@ const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal le
   </div>
 
   <nav id="mobile-menu" aria-label={t['header.navLabel']} class="absolute inset-x-0 top-full hidden bg-brand-primary px-6 pb-6 lg:hidden" data-mobile-menu>
+    <LanguageSwitch alternates={Astro.props.alternates} class="py-3" />
     <ul class="flex flex-col">
       {
         items.map((item) =>
@@ -146,22 +127,6 @@ const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal le
           )
         )
       }
-    </ul>
-    <ul class="flex gap-4 py-3" aria-label={t['header.languageLabel']}>
-      {localeLinks.map((l) => (
-        <li>
-          <a
-            href={l.href}
-            hreflang={LANG_TAGS[l.locale]}
-            lang={LANG_TAGS[l.locale]}
-            aria-label={LANGUAGE_NAMES[l.locale]}
-            aria-current={l.current ? 'true' : undefined}
-            class={`${linkClass} ${l.current ? 'font-bold text-brand-accent' : ''}`}
-          >
-            {l.locale.toUpperCase()}
-          </a>
-        </li>
-      ))}
     </ul>
     <div class="mt-4 flex flex-col gap-2">
       <Button href="/ways-to-give" variant="primary">{t['header.donate']}</Button>

@@ -50,11 +50,19 @@ Each page SHALL output a canonical URL and `hreflang` alternates (`en-US`, `es-V
 - **THEN** its canonical URL is the English event URL and no `es-VE` alternate is emitted for it
 
 ### Requirement: Locale switching
-The site header SHALL offer a language switch that links to the same page in the other locale.
+Every page SHALL offer a language switch, shown as "EN / ES", that links to the same page in the other locale and marks the current one. One shared component SHALL render it in three places: the desktop header (between the menu and the buttons), the first line of the open phone menu, and the footer's bottom row next to the privacy policy link (smaller). It SHALL never switch language on its own based on the visitor's browser.
 
 #### Scenario: Switch to Spanish
 - **WHEN** a visitor on `/our-team/<slug>` uses the language switch
 - **THEN** they land on the Spanish URL of the same team member (using the Spanish slug when one exists)
+
+#### Scenario: Switch in header, phone menu and footer
+- **WHEN** any page renders
+- **THEN** the switch appears in the header, as the first line of the phone menu, and in the footer, each marking the current language
+
+#### Scenario: Spanish header fits
+- **WHEN** a Spanish page renders at any width from 992px up
+- **THEN** the header's menu, language switch and buttons don't overlap
 
 ### Requirement: Localized navigation and legacy URLs
 Navigation menus SHALL render per locale, linking to routes in the current locale. Every live Webflow `/es/...` URL SHALL resolve on the migrated site, directly or through a single permanent redirect, including Spanish equivalents of the legacy redirects defined by the front-end capability.

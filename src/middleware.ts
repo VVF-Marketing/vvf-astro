@@ -2,7 +2,7 @@ import { defineMiddleware } from 'astro:middleware'
 import { after } from 'emdash'
 import { manifestSources, syncStaticPages } from './lib/staticPageSync'
 import { localeFromPath, localizePath, stripLocale, type Locale } from './lib/i18n'
-import { projectPathFor } from './lib/legacyRoutes.mjs'
+import { projectPathFor, redirectStatus } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
 import type { CopyManifest } from './lib/copy'
 import { guardEmDashApi } from './lib/emdashGuard'
@@ -72,7 +72,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // project route (the English redirects in astro.config.mjs would otherwise
   // land Spanish visitors on English pages).
   const legacyTarget = projectPathFor(path)
-  if (legacyTarget !== (path.replace(/\/$/, '') || '/')) return context.redirect(localizePath(legacyTarget, 'es') + context.url.search, 301)
+  if (legacyTarget !== (path.replace(/\/$/, '') || '/')) return context.redirect(localizePath(legacyTarget, 'es') + context.url.search, redirectStatus(path))
   return withLocalizedLinks(await next(path + context.url.search), locale)
 })
 

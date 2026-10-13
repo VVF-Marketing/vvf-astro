@@ -25,7 +25,7 @@ Local dev uses SQLite (`data.db`) and local disk (`/uploads`) for EmDash. **Prod
 
 ## Nav menus
 
-`seed/seed.json`'s `menus.primary` defines the site's primary navigation (About us, Our work, Get involved submenu, News). [`scripts/verify-menu-links.mjs`](https://github.com/anclist/vvf-astro/blob/main/scripts/verify-menu-links.mjs) cross-checks every menu URL against real `src/pages` routes and is gated in CI (`verify-menu-links.yml`) — a broken nav link fails the build before merge.
+`seed/seed.json`'s `menus` define the site's primary navigation, one menu per locale (English, and Spanish with `/es` links): Make a Difference, About and Resources dropdowns, as on the live site. [`scripts/verify-menu-links.mjs`](https://github.com/anclist/vvf-astro/blob/main/scripts/verify-menu-links.mjs) cross-checks every menu URL against real `src/pages` routes and is gated in CI (`verify-menu-links.yml`) — a broken nav link fails the build before merge.
 
 ## Design history
 

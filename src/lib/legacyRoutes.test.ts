@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 // @ts-expect-error -- plain ESM module shared with astro.config.mjs and scripts/
-import { projectPathFor } from './legacyRoutes.mjs'
+import { projectPathFor, redirectStatus } from './legacyRoutes.mjs'
 
 describe('projectPathFor', () => {
   it('maps static and dynamic live paths to project routes', () => {
@@ -11,6 +11,7 @@ describe('projectPathFor', () => {
     expect(projectPathFor('/resources-categories/all')).toBe('/resources')
     expect(projectPathFor('/resources-categories/stories')).toBe('/resources/category/stories')
     expect(projectPathFor('/team-members/join-our-board')).toBe('/contact')
+    expect(projectPathFor('/financials-and-transparency')).toBe('/resources/category/financials-transparency')
   })
 
   it('leaves unchanged paths alone', () => {
@@ -29,3 +30,14 @@ describe('Spanish legacy paths', () => {
     expect(spanish('/es/resources-categories/stories')).toBe('/es/resources/category/stories')
   })
 })
+
+// Review finding (PRs #18/#19): the stand-in redirect for the financials page
+// was a permanent 301, which browsers keep after the page is built.
+describe('redirectStatus', () => {
+  it('is temporary for stand-ins and permanent for moved pages', () => {
+    expect(redirectStatus('/financials-and-transparency')).toBe(302)
+    expect(redirectStatus('/financials-and-transparency/')).toBe(302)
+    expect(redirectStatus('/all-events')).toBe(301)
+  })
+})
+

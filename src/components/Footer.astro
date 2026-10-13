@@ -1,8 +1,16 @@
 ---
 // Live counterpart: `.footer_component` — an inset navy card (radius 2xl)
 // with logo, legal copy and Candid seal on the left; two link columns,
-// contact details and social icons on the right; credits row below.
+// contact details and social icons on the right; credits row below, with
+// the small language switch next to Privacy policy.
 import { fill, getGlobalCopy, lines } from '../lib/globalCopy'
+import type { Locale } from '../lib/i18n'
+import LanguageSwitch from './LanguageSwitch.astro'
+
+interface Props {
+  // This page's path in each locale (see Layout.astro), for the language switch.
+  alternates?: Partial<Record<Locale, string>>
+}
 
 const t = await getGlobalCopy(Astro)
 const linkColumns = [
@@ -98,7 +106,10 @@ const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-s
           <p class={credit}>{t['footer.creditPrefix']} <a href="https://www.paulainc.ca/" class="text-brand-accent">{t['footer.creditName']}</a></p>
           <p class={credit}>{fill(t['footer.copyright'], { year: new Date().getFullYear() })}</p>
         </div>
-        <a href="/privacy-policy" class={link}>{t['footer.privacy']}</a>
+        <div class="flex items-center gap-6">
+          <LanguageSwitch alternates={Astro.props.alternates} variant="footer" />
+          <a href="/privacy-policy" class={link}>{t['footer.privacy']}</a>
+        </div>
     </div>
   </div>
 </footer>

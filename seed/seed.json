@@ -37740,37 +37740,42 @@
           "children": [
             {
               "type": "custom",
-              "label": "Ways to Give",
-              "url": "/ways-to-give"
-            },
-            {
-              "type": "custom",
               "label": "Sponsor a Child",
               "url": "/sponsor-a-child"
             },
             {
               "type": "custom",
-              "label": "Corporate Sponsorships",
-              "url": "/corporate-sponsorships"
-            }
-          ]
-        },
-        {
-          "type": "custom",
-          "label": "Get Involved",
-          "url": "#",
-          "children": [
+              "label": "Ways to Give",
+              "url": "/ways-to-give"
+            },
             {
               "type": "custom",
-              "label": "Events",
+              "label": "Corporate Sponsorships",
+              "url": "/corporate-sponsorships"
+            },
+            {
+              "type": "custom",
+              "label": "Events & Campaigns",
               "url": "/events"
             }
           ]
         },
         {
           "type": "custom",
-          "label": "Our Team",
-          "url": "/our-team"
+          "label": "About",
+          "url": "#",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Our Team",
+              "url": "/our-team"
+            },
+            {
+              "type": "custom",
+              "label": "Financials & Transparency",
+              "url": "/resources/category/financials-transparency"
+            }
+          ]
         },
         {
           "type": "custom",
@@ -37786,11 +37791,6 @@
               "type": "custom",
               "label": "Stories",
               "url": "/resources/category/stories"
-            },
-            {
-              "type": "custom",
-              "label": "Financials & Transparency",
-              "url": "/resources/category/financials-transparency"
             }
           ]
         }
@@ -37810,26 +37810,19 @@
           "children": [
             {
               "type": "custom",
-              "label": "Formas de ayudar",
-              "url": "/es/ways-to-give"
-            },
-            {
-              "type": "custom",
               "label": "Apadrina a un niño",
               "url": "/es/sponsor-a-child"
             },
             {
               "type": "custom",
+              "label": "Formas de ayudar",
+              "url": "/es/ways-to-give"
+            },
+            {
+              "type": "custom",
               "label": "Patrocinios corporativos",
               "url": "/es/corporate-sponsorships"
-            }
-          ]
-        },
-        {
-          "type": "custom",
-          "label": "Participa",
-          "url": "#",
-          "children": [
+            },
             {
               "type": "custom",
               "label": "Eventos y campañas",
@@ -37839,8 +37832,20 @@
         },
         {
           "type": "custom",
-          "label": "Nuestro equipo",
-          "url": "/es/our-team"
+          "label": "Nosotros",
+          "url": "#",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Nuestro equipo",
+              "url": "/es/our-team"
+            },
+            {
+              "type": "custom",
+              "label": "Finanzas y transparencia",
+              "url": "/es/resources/category/financials-transparency"
+            }
+          ]
         },
         {
           "type": "custom",
@@ -37856,11 +37861,6 @@
               "type": "custom",
               "label": "Historias",
               "url": "/es/resources/category/stories"
-            },
-            {
-              "type": "custom",
-              "label": "Finanzas y transparencia",
-              "url": "/es/resources/category/financials-transparency"
             }
           ]
         }

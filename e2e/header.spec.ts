@@ -32,7 +32,7 @@ test.describe('site header', () => {
   test('shows the live navigation order and CTAs', async ({ page }) => {
     await page.goto('/')
     const nav = page.getByRole('navigation', { name: 'Primary' }).first()
-    await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Make a Difference', 'Get Involved', 'Our Team', 'Resources'])
+    await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Make a Difference', 'About', 'Resources'])
     await expect(nav.getByRole('link', { name: 'Donate' })).toHaveAttribute('href', '/ways-to-give')
     await expect(nav.getByRole('link', { name: 'Contact Us' })).toHaveAttribute('href', '/contact')
     await expect(nav.getByRole('link', { name: 'Español' })).toHaveAttribute('href', '/es')

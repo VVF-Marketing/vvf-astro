@@ -38,12 +38,12 @@ test.describe('legacy Webflow URLs', () => {
     }
   })
 
-  test('every English and Spanish sitemap URL returns 200 directly or after a single 301', async ({ request }) => {
+  test('every English and Spanish sitemap URL returns 200 directly or after a single redirect', async ({ request }) => {
     const failures: string[] = []
     for (const path of paths) {
       const first = await request.get(path, { maxRedirects: 0 })
       let status = first.status()
-      if (status === 301) {
+      if (status === 301 || status === 302) {
         const target = new URL(first.headers().location, 'http://x').pathname
         status = (await request.get(target, { maxRedirects: 0 })).status()
         if (status !== 200) failures.push(`${path} → ${target} (${status})`)

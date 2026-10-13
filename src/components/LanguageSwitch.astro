@@ -1,0 +1,62 @@
+---
+// Live counterpart: `.lang-switch_component` (Webflow locales list, variants
+// "nav" and "footer"); design reference "Language switch · v1 · 2026-10-01".
+// "EN / ES" linking to this page in each locale — its translated slug when the
+// page passes `alternates` — with the current language bold and underlined in
+// the accent colour. Used in the header, the phone menu and the footer.
+// Links carry `hreflang`, so link localization leaves them alone.
+import { getGlobalCopy } from '../lib/globalCopy'
+import { LANG_TAGS, LOCALES, localeFromPath, localizePath, stripLocale, type Locale } from '../lib/i18n'
+
+export interface Props {
+  alternates?: Partial<Record<Locale, string>>
+  // `footer` is the smaller copy in the footer's bottom row.
+  variant?: 'nav' | 'footer'
+  class?: string
+}
+
+const { alternates, variant = 'nav', class: className = '' } = Astro.props as Props
+const t = await getGlobalCopy(Astro)
+const locale = localeFromPath(Astro.originPathname)
+const currentPath = stripLocale(Astro.originPathname.replace(/\/$/, '') || '/')
+// Each language is named in itself for screen readers.
+const LANGUAGE_NAMES: Record<Locale, string> = { en: 'English', es: 'Español' }
+const links = LOCALES.map((l) => ({
+  locale: l,
+  href: alternates?.[l] ?? localizePath(currentPath, l),
+  current: l === locale,
+}))
+const size = variant === 'footer' ? 'text-size-sm' : 'text-size-base'
+const link = [
+  'border-b-2 pb-px pt-[3px] font-body uppercase leading-[1.5] whitespace-nowrap text-neutral-white no-underline',
+  'transition-[opacity,border-color] duration-200',
+  'focus-visible:rounded-[4px] focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent',
+  size,
+].join(' ')
+---
+
+<nav aria-label={t['header.languageLabel']} class={className} data-language-switch={variant}>
+  <ul class="flex items-center gap-[6px]">
+    {
+      links.map((l, i) => (
+        <li class={`flex items-center gap-[6px] font-body leading-[1.5] text-neutral-white ${size}`}>
+          {i > 0 && (
+            <span aria-hidden="true" class="opacity-70">
+              /
+            </span>
+          )}
+          <a
+            href={l.href}
+            hreflang={LANG_TAGS[l.locale]}
+            lang={LANG_TAGS[l.locale]}
+            aria-label={LANGUAGE_NAMES[l.locale]}
+            aria-current={l.current ? 'page' : undefined}
+            class={`${link} ${l.current ? 'border-brand-accent font-bold opacity-100' : 'border-transparent font-normal opacity-70 hover:border-white/40 hover:opacity-100'}`}
+          >
+            {l.locale.toUpperCase()}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

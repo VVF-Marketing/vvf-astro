@@ -4,15 +4,15 @@ import react from '@astrojs/react';
 import node from '@astrojs/node';
 import emdash, { local } from 'emdash/astro';
 import { sqlite } from 'emdash/db';
-import { STATIC_REDIRECTS, DYNAMIC_REDIRECTS } from './src/lib/legacyRoutes.mjs';
+import { STATIC_REDIRECTS, DYNAMIC_REDIRECTS, redirectStatus } from './src/lib/legacyRoutes.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   // Canonical/Open Graph URLs (Layout.astro).
   site: 'https://www.victoriavenezuelafoundation.org',
-  // Old Webflow URLs → project routes (301).
+  // Old Webflow URLs → project routes (301; 302 for temporary ones).
   redirects: Object.fromEntries(
-    Object.entries({ ...STATIC_REDIRECTS, ...DYNAMIC_REDIRECTS }).map(([from, to]) => [from, { status: 301, destination: to }])
+    Object.entries({ ...STATIC_REDIRECTS, ...DYNAMIC_REDIRECTS }).map(([from, to]) => [from, { status: redirectStatus(from), destination: to }])
   ),
   // en-US unprefixed, es-VE under /es (as on the live site). Pages are written
   // once: src/middleware.ts rewrites /es/... to the shared page module, and

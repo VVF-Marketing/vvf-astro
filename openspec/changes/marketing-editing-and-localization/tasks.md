@@ -59,3 +59,10 @@
 - [x] 7.3 Make the migration store same-site links as paths (seed content, page copy, the privacy policy body) and extend the e2e link check to every page in both locales (no same-site absolute links, no cross-locale links); verify the transform test and the e2e check pass
 - [x] 7.4 Add linking guidance to the marketing guide; verify the docs site builds
 
+## 8. Language switch component
+
+- [x] 8.1 Build a `LanguageSwitch` component ("EN / ES" with `nav` and `footer` sizes, current language bold with the accent underline, hover and keyboard focus states per the live site and the 2026-10-01 Figma reference) and a Storybook story; verify the Storybook suite passes
+- [x] 8.2 Use it in the desktop header between the menu and the buttons, as the first line of the phone menu, and in the footer's bottom row next to Privacy policy, linking to the same page in each locale; verify e2e checks of all three placements in both locales
+- [x] 8.3 Make the Spanish header fit from 992px up (no overlap of menu, switch and buttons); verify an e2e check at 992, 1280 and 1440 in both locales
+- [x] 8.4 Bring over the live site's current menu (Make a Difference / About / Resources, both locales) and header sizing (50px logo, 24px side padding below 1280), with `/financials-and-transparency` redirecting to the financials resource category until that page is built; verify the menu check and the header fit e2e pass
+
