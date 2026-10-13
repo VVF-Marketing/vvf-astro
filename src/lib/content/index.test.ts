@@ -546,8 +546,8 @@ describe('getPageCopy', () => {
 
   function copyRows(rows: Record<string, { key: string; value: string }[]>) {
     getEmDashCollection.mockImplementation(async (collection: string, filter: { locale?: string; where?: unknown }) => {
-      expect(collection).toBe('page_copy')
-      expect(filter.where).toEqual({ route_path: '/ways-to-give' })
+      expect(collection).toBe('copy_ways_to_give')
+      expect(filter.where).toBeUndefined()
       return { entries: (rows[filter.locale ?? 'en'] ?? []).map((d) => ({ slug: d.key, data: d })) }
     })
   }
@@ -576,6 +576,31 @@ describe('getPageCopy', () => {
     const { copy, locales } = await getPageCopy(manifest, 'es')
     expect(copy['hero.heading']).toBe('Formas de ayudar')
     expect(locales).toEqual(['en'])
+  })
+
+  it('renders defaults when the page has no copy collection yet', async () => {
+    // EmDash returns no entries for a collection whose table doesn't exist.
+    getEmDashCollection.mockResolvedValue({ entries: [] })
+    const { copy, locales } = await getPageCopy(manifest, 'es')
+    expect(copy).toEqual({ 'seo.title': 'Ways to Give', 'hero.heading': 'Ways to give', 'hero.body': 'Every gift counts.' })
+    expect(locales).toEqual(['en'])
+  })
+})
+
+describe('query failures', () => {
+  // EmDash returns database errors as `error` with no entries, instead of throwing.
+  const failure = { entries: [], error: new Error('Failed to load collection: connection refused') }
+
+  it('fail the page instead of rendering default copy', async () => {
+    getEmDashCollection.mockResolvedValue(failure)
+    await expect(getPageCopy(defineCopy('/ways-to-give', { 'hero.heading': { label: 'Heading', default: 'Ways to give' } }), 'es')).rejects.toThrow(
+      'connection refused'
+    )
+  })
+
+  it('fail the page instead of rendering an empty list', async () => {
+    getEmDashCollection.mockResolvedValue(failure)
+    await expect(getReports('annual')).rejects.toThrow('connection refused')
   })
 })
 

@@ -203,5 +203,4 @@ Benefits
 
 ## Spanish page copy import
 
-Imported 0 Spanish slot values; 0 already had a value (kept); 0 skipped for an open draft.
-- Slots with no Spanish row yet (start the server so the sync creates them, then re-run): 1
+Imported 1 Spanish slot values; 0 already had a value (kept); 0 skipped for an open draft.

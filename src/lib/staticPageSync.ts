@@ -1,6 +1,8 @@
 import { existsSync, readdirSync } from 'node:fs'
 import path from 'node:path'
-import { EmDashClient } from 'emdash/client'
+import { EmDashApiError, EmDashClient } from 'emdash/client'
+import { copyCollectionFor } from './cmsNavigation.mjs'
+import { slotLayout } from './copyCollections.mjs'
 import { GLOBAL_ROUTE, slotFormat, type CopyManifest, type SlotSpec } from './copy'
 import { DEFAULT_LOCALE, LOCALES, type Locale } from './i18n'
 
@@ -111,6 +113,9 @@ export interface SyncStaticPagesResult {
   // Slots whose metadata changed in code but that have an unpublished editor
   // draft: left alone so the sync never publishes someone's draft.
   slotsSkippedForDraft: string[]
+  // Copy collections that don't exist yet (run `npm run cms:schema`); their
+  // pages render defaults until then. The sync never creates collections.
+  collectionsMissing: string[]
 }
 
 async function listAll(client: Client, collection: string, locale?: Locale): Promise<Item[]> {
@@ -120,17 +125,19 @@ async function listAll(client: Client, collection: string, locale?: Locale): Pro
 }
 
 /**
- * Keeps the `pages` inventory and the `page_copy` slots in step with code:
+ * Keeps the `pages` inventory and each page's copy collection in step with code:
  *
  * - one `pages` row per route per locale, for every static route on disk and
  *   every route that declares copy; rows whose route is gone are flagged
  *   stale, never deleted;
- * - one published `page_copy` row per declared slot per locale (English with
- *   the default from code, Spanish empty so it falls back); label, format and
- *   max length follow code, values are never overwritten, and slots no longer
- *   declared are flagged stale.
+ * - one published row per declared slot per locale in the manifest's copy
+ *   collection (English with the default from code, Spanish empty so it falls
+ *   back); label, title, section, number, format and max length follow code,
+ *   values are never overwritten, and slots no longer declared are flagged
+ *   stale. Copy collections themselves come from `npm run cms:schema`.
  *
- * See openspec/changes/marketing-editing-and-localization/design.md (D9).
+ * See openspec/changes/marketing-editing-and-localization/design.md (D9) and
+ * openspec/changes/organize-cms-admin-navigation/design.md (D5).
  */
 export async function syncStaticPages(options: SyncStaticPagesOptions): Promise<SyncStaticPagesResult> {
   const client = options.client ?? new EmDashClient({ baseUrl: options.baseUrl, token: options.token })
@@ -146,6 +153,7 @@ export async function syncStaticPages(options: SyncStaticPagesOptions): Promise<
     translationsRescued: 0,
     translationConflicts: [],
     slotsSkippedForDraft: [],
+    collectionsMissing: [],
   }
 
   await syncPages(client, routesToSync(options.pagesDir, manifests), result)
@@ -302,15 +310,21 @@ async function syncPages(client: Client, routes: StaticPageRoute[], result: Sync
   }
 }
 
-function slotMeta(route: string, key: string, spec: SlotSpec) {
+type SlotLayout = { section: string; position: number; title: string }
+
+function slotMeta(key: string, spec: SlotSpec, layout: SlotLayout) {
   return {
-    route_path: route,
     key,
     label: spec.label,
+    title: layout.title,
+    section: layout.section,
+    position: layout.position,
     format: slotFormat(spec),
     max_length: spec.maxLength ?? null,
   }
 }
+
+const META_FIELDS = ['label', 'title', 'section', 'position', 'format', 'max_length'] as const
 
 function slotDefault(spec: SlotSpec): Record<string, unknown> {
   switch (slotFormat(spec)) {
@@ -333,70 +347,77 @@ function slotTranslation(item: Item): Record<string, unknown> | undefined {
 }
 
 async function syncSlots(client: Client, manifests: ManifestSource[], result: SyncStaticPagesResult) {
-  const byLocale = await dedupe(
-    client,
-    'page_copy',
-    new Map(await Promise.all(LOCALES.map(async (l) => [l, await listAll(client, 'page_copy', l)] as const))),
-    (item) => slotId(item.data.route_path, item.data.key),
-    result,
-    slotTranslation
-  )
+  for (const { manifest } of manifests) {
+    const collection = copyCollectionFor(manifest.route) as string
+    let listed: Map<Locale, Item[]>
+    try {
+      listed = new Map(await Promise.all(LOCALES.map(async (l) => [l, await listAll(client, collection, l)] as const)))
+    } catch (error) {
+      if (error instanceof EmDashApiError && error.status === 404) {
+        result.collectionsMissing.push(collection)
+        continue
+      }
+      throw error
+    }
+    await syncManifestSlots(client, collection, manifest, await dedupe(client, collection, listed, (item) => slotId(manifest.route, item.data.key), result, slotTranslation), result)
+  }
+}
+
+async function syncManifestSlots(
+  client: Client,
+  collection: string,
+  manifest: CopyManifest,
+  byLocale: Map<Locale, Item[]>,
+  result: SyncStaticPagesResult
+) {
   const english = byLocale.get(DEFAULT_LOCALE)!
   const others = new Map([...byLocale].filter(([l]) => l !== DEFAULT_LOCALE))
-  const englishBySlot = new Map(english.map((item) => [slotId(item.data.route_path, item.data.key), item]))
-  const declared = new Set<string>()
+  const englishByKey = new Map(english.map((item) => [String(item.data.key), item]))
+  const layout = slotLayout(manifest) as Map<string, SlotLayout>
 
-  // Non-translatable fields (route, key, label, format, max length, stale) are
-  // copied to the other locales by EmDash, so metadata is written on the
-  // English row only; it's staged as a draft (revisions) and published here,
-  // unless an editor already has a draft open on it.
+  // Non-translatable fields (key, label, title, section, number, format, max
+  // length, stale) are copied to the other locales by EmDash, so metadata is
+  // written on the English row only; it's staged as a draft (revisions) and
+  // published here, unless an editor already has a draft open on it.
   const writeMeta = async (item: Item, data: Record<string, unknown>) => {
     if (item.draftRevisionId) {
-      result.slotsSkippedForDraft.push(slotId(item.data.route_path, item.data.key))
+      result.slotsSkippedForDraft.push(slotId(manifest.route, item.data.key))
       return false
     }
-    await client.update('page_copy', item.id, { data, _rev: item._rev })
-    await client.publish('page_copy', item.id)
+    await client.update(collection, item.id, { data, _rev: item._rev })
+    await client.publish(collection, item.id)
     return true
   }
 
-  for (const { manifest } of manifests) {
-    for (const [key, spec] of Object.entries(manifest.slots)) {
-      const id = slotId(manifest.route, key)
-      declared.add(id)
-      const meta = slotMeta(manifest.route, key, spec)
-      let en = englishBySlot.get(id)
+  for (const [key, spec] of Object.entries(manifest.slots)) {
+    const meta = slotMeta(key, spec, layout.get(key)!)
+    let en = englishByKey.get(key)
 
-      if (!en) {
-        en = await client.create('page_copy', { status: 'draft', locale: DEFAULT_LOCALE, data: { ...meta, ...slotDefault(spec), stale: false } })
-        await client.publish('page_copy', en.id)
-        result.slotsCreated += 1
-      } else {
-        const changed =
-          en.data.label !== meta.label ||
-          en.data.format !== meta.format ||
-          (en.data.max_length ?? null) !== meta.max_length ||
-          en.data.stale === true
-        if (changed && (await writeMeta(en, { ...meta, stale: false }))) result.slotsUpdated += 1
-      }
+    if (!en) {
+      en = await client.create(collection, { status: 'draft', locale: DEFAULT_LOCALE, data: { ...meta, ...slotDefault(spec), stale: false } })
+      await client.publish(collection, en.id)
+      result.slotsCreated += 1
+    } else {
+      const changed = META_FIELDS.some((f) => (en!.data[f] ?? null) !== meta[f]) || en.data.stale === true
+      if (changed && (await writeMeta(en, { ...meta, stale: false }))) result.slotsUpdated += 1
+    }
 
-      for (const [locale, items] of others) {
-        const hasTranslation = items.some((item) => item.translationGroup === en!.translationGroup || slotId(item.data.route_path, item.data.key) === id)
-        if (hasTranslation) continue
-        const created = await client.create('page_copy', {
-          status: 'draft',
-          locale,
-          translationOf: en.id,
-          data: { ...meta, stale: false },
-        })
-        await client.publish('page_copy', created.id)
-        result.slotsCreated += 1
-      }
+    for (const [locale, items] of others) {
+      const hasTranslation = items.some((item) => item.translationGroup === en!.translationGroup || item.data.key === key)
+      if (hasTranslation) continue
+      const created = await client.create(collection, {
+        status: 'draft',
+        locale,
+        translationOf: en.id,
+        data: { ...meta, stale: false },
+      })
+      await client.publish(collection, created.id)
+      result.slotsCreated += 1
     }
   }
 
   for (const item of english) {
-    if (declared.has(slotId(item.data.route_path, item.data.key)) || item.data.stale === true) continue
+    if (String(item.data.key) in manifest.slots || item.data.stale === true) continue
     if (await writeMeta(item, { stale: true })) result.slotsMarkedStale += 1
   }
 }

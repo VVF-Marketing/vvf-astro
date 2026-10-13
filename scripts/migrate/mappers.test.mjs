@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, reportKind, slugify } from './mappers.mjs'
-import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries } from './transform.mjs'
+import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries, withCopyCollections } from './transform.mjs'
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { sanitizeRichText, toPlainText, toPortableText } from './lib/richtext.mjs'
 
@@ -293,43 +293,42 @@ describe('translatedEntries', () => {
 })
 
 describe('pageCopyEntries', () => {
-  it('emits an English entry with the default and a linked Spanish entry with the translation', () => {
-    const manifests = [
-      {
-        route: '/ways-to-give',
-        slots: {
-          'hero.heading': { label: 'Hero: heading', default: 'Ways to give', maxLength: 30 },
-          'seo.image': { label: 'Share image', format: 'image', default: '/og.jpg' },
-        },
+  const manifests = [
+    {
+      route: '/ways-to-give',
+      slots: {
+        'hero.heading': { label: 'Hero: heading', default: 'Ways to give', maxLength: 30 },
+        'seo.image': { label: 'Share image', format: 'image', default: '/og.jpg' },
       },
-    ]
+    },
+  ]
+
+  it("emits each page's slots into its copy collection: English default plus linked Spanish translation", () => {
     const entries = pageCopyEntries(manifests, { '/ways-to-give': { 'hero.heading': 'Formas de ayudar' } })
-    expect(entries).toEqual([
-      {
-        id: 'copy--ways-to-give--hero.heading',
-        status: 'published',
-        data: { route_path: '/ways-to-give', key: 'hero.heading', label: 'Hero: heading', format: 'plain', max_length: 30, stale: false, value: 'Ways to give' },
-      },
-      {
-        id: 'copy--ways-to-give--hero.heading--es',
-        status: 'published',
-        locale: 'es',
-        translationOf: 'copy--ways-to-give--hero.heading',
-        data: { route_path: '/ways-to-give', key: 'hero.heading', label: 'Hero: heading', format: 'plain', max_length: 30, stale: false, value: 'Formas de ayudar' },
-      },
-      {
-        id: 'copy--ways-to-give--seo.image',
-        status: 'published',
-        data: { route_path: '/ways-to-give', key: 'seo.image', label: 'Share image', format: 'image', max_length: undefined, stale: false, image_value: { src: '/og.jpg' } },
-      },
-      {
-        id: 'copy--ways-to-give--seo.image--es',
-        status: 'published',
-        locale: 'es',
-        translationOf: 'copy--ways-to-give--seo.image',
-        data: { route_path: '/ways-to-give', key: 'seo.image', label: 'Share image', format: 'image', max_length: undefined, stale: false },
-      },
-    ])
+    const heading = { key: 'hero.heading', label: 'Hero: heading', title: '02 · Content · Hero: heading', section: 'content', position: 2, format: 'plain', max_length: 30, stale: false }
+    const image = { key: 'seo.image', label: 'Share image', title: '01 · SEO · Share image', section: 'seo', position: 1, format: 'image', max_length: undefined, stale: false }
+    expect(entries).toEqual({
+      copy_ways_to_give: [
+        { id: 'copy_ways_to_give--hero.heading', status: 'published', data: { ...heading, value: 'Ways to give' } },
+        { id: 'copy_ways_to_give--hero.heading--es', status: 'published', locale: 'es', translationOf: 'copy_ways_to_give--hero.heading', data: { ...heading, value: 'Formas de ayudar' } },
+        { id: 'copy_ways_to_give--seo.image', status: 'published', data: { ...image, image_value: { src: '/og.jpg' } } },
+        { id: 'copy_ways_to_give--seo.image--es', status: 'published', locale: 'es', translationOf: 'copy_ways_to_give--seo.image', data: image },
+      ],
+    })
+  })
+
+  it('replaces page_copy in the seed and organizes the collections', () => {
+    const seed = {
+      collections: [{ slug: 'page_copy', fields: [] }, { slug: 'events', label: 'Events', fields: [] }],
+      content: { page_copy: [{ id: 'old' }], events: [{ id: 'e1' }] },
+    }
+    const out = withCopyCollections(seed, manifests)
+    expect(out.content.page_copy).toBeUndefined()
+    expect(out.content.events).toEqual([{ id: 'e1' }])
+    expect(out.content.copy_ways_to_give).toHaveLength(4)
+    expect(out.collections.map((c) => c.slug)).toContain('copy_ways_to_give')
+    expect(out.collections.find((c) => c.slug === 'events').group).toBe('CMS collections')
+    expect(withCopyCollections(out, manifests)).toEqual(out)
   })
 })
 

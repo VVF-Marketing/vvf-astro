@@ -12,29 +12,31 @@ function token(): string | undefined {
 }
 
 const TOKEN = token()
+const COPY = 'copy_site'
 test.skip(!TOKEN, 'no EmDash API token available')
 
 const api = (request: APIRequestContext) => {
   const headers = { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }
   const base = '/_emdash/api'
   return {
-    async findSlot(route: string, key: string) {
-      const filters = encodeURIComponent(JSON.stringify({ route_path: route, key }))
-      const res = await request.get(`${base}/content/page_copy?locale=en&limit=1&fieldFilters=${filters}`, { headers })
+    // Site-wide text lives in the copy_site collection (src/lib/cmsNavigation.mjs).
+    async findSlot(key: string) {
+      const filters = encodeURIComponent(JSON.stringify({ key }))
+      const res = await request.get(`${base}/content/${COPY}?locale=en&limit=1&fieldFilters=${filters}`, { headers })
       return (await res.json()).data.items[0] as { id: string; data: { value: string } }
     },
     async rev(id: string) {
-      return (await (await request.get(`${base}/content/page_copy/${id}`, { headers })).json()).data._rev as string
+      return (await (await request.get(`${base}/content/${COPY}/${id}`, { headers })).json()).data._rev as string
     },
     async update(id: string, value: string) {
-      const res = await request.put(`${base}/content/page_copy/${id}`, { headers, data: { data: { value }, _rev: await this.rev(id) } })
+      const res = await request.put(`${base}/content/${COPY}/${id}`, { headers, data: { data: { value }, _rev: await this.rev(id) } })
       expect(res.ok(), await res.text()).toBe(true)
     },
     async publish(id: string) {
-      expect((await request.post(`${base}/content/page_copy/${id}/publish`, { headers })).ok()).toBe(true)
+      expect((await request.post(`${base}/content/${COPY}/${id}/publish`, { headers })).ok()).toBe(true)
     },
     async revisions(id: string) {
-      const res = await request.get(`${base}/content/page_copy/${id}/revisions`, { headers })
+      const res = await request.get(`${base}/content/${COPY}/${id}/revisions`, { headers })
       return (await res.json()).data.items as { id: string; data: { value?: string } }[]
     },
     async restore(revisionId: string) {
@@ -47,7 +49,7 @@ const privacyNote = (html: string) => html.match(/We respect your privacy[^<]*|D
 
 test('a draft edit stays off the public site until published, and a revision restores it', async ({ request }) => {
   const cms = api(request)
-  const slot = await cms.findSlot('_global', 'newsletter.privacy')
+  const slot = await cms.findSlot('newsletter.privacy')
   const original = 'We respect your privacy. Unsubscribe at any time.'
   const page = async () => privacyNote(await (await request.get('/resources')).text())
 

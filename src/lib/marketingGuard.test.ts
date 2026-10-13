@@ -204,6 +204,56 @@ describe('translations', () => {
   })
 })
 
+describe('page copy collections', () => {
+  it('protects every page copy collection like page_copy', async () => {
+    const lookup = async (collection: string, id: string) =>
+      collection === 'copy_home' && id === 'h1'
+        ? { status: 'published', data: { key: 'hero.heading', label: 'Hero heading', title: '04 · Content · Hero heading', section: 'content', position: 4, format: 'plain', max_length: 20 } }
+        : undefined
+    const run = (tool: string, args: Record<string, unknown>) =>
+      checkOperation({ tool, args }, { safeguarding: false, lookup, revisionCollection: async () => undefined, routeExists: () => true })
+
+    expect((await run('content_update', { collection: 'copy_home', id: 'h1', data: { value: 'New heading' } })).allow).toBe(true)
+    for (const data of [{ section: 'seo' }, { position: 1 }, { title: '01 · SEO · Hero heading' }, { value: 'ok', label: 'x' }]) {
+      expect(await run('content_update', { collection: 'copy_home', id: 'h1', data })).toMatchObject({ allow: false, message: expect.stringContaining('Only the text') })
+    }
+    expect((await run('content_update', { collection: 'copy_home', id: 'h1', data: { value: 'x'.repeat(21) } })).allow).toBe(false)
+    for (const tool of ['content_create', 'content_delete', 'content_duplicate']) {
+      expect((await run(tool, { collection: 'copy_home', id: 'h1', data: {} })).allow).toBe(false)
+    }
+  })
+})
+
+describe('schema changes', () => {
+  const run = (tool: string, args: Record<string, unknown> = {}) =>
+    checkOperation({ tool, args }, { safeguarding: true, lookup: async () => undefined, revisionCollection: async () => undefined, routeExists: () => true })
+
+  it.each(['schema_create_collection', 'schema_update_collection', 'schema_delete_collection', 'schema_create_field', 'schema_update_field', 'schema_delete_field'])(
+    'refuses the MCP tool %s',
+    async (tool) => {
+      expect((await run(tool, { collection: 'events', group: 'Elsewhere' })).allow).toBe(false)
+    }
+  )
+
+  it.each([
+    ['PUT', '/_emdash/api/schema/collections/events'],
+    ['POST', '/_emdash/api/schema/collections'],
+    ['DELETE', '/_emdash/api/schema/collections/copy_home'],
+    ['POST', '/_emdash/api/schema/collections/copy_home/fields'],
+    ['PUT', '/_emdash/api/schema/collections/copy_home/fields/title'],
+    ['POST', '/_emdash/api/schema/collections/reorder'],
+  ])('refuses REST %s %s', async (method, path) => {
+    const op = restOperation(method, path, { group: 'Elsewhere', sortOrder: 1 }, new URLSearchParams())!
+    expect(op.tool).toBe('schema_write')
+    expect((await run(op.tool, op.args)).allow).toBe(false)
+  })
+
+  it('allows reading the schema', async () => {
+    const op = restOperation('GET', '/_emdash/api/schema/collections/events', undefined, new URLSearchParams())!
+    expect((await run(op.tool, op.args)).allow).toBe(true)
+  })
+})
+
 describe('restOperation', () => {
   const q = new URLSearchParams()
   it.each([

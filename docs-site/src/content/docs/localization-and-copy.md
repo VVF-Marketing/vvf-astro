@@ -20,7 +20,7 @@ A page served from English fallback under `/es` gets `<main lang="en-US">`, its 
 
 ## Copy slots
 
-Text is declared in code as **copy slots** (`src/lib/copy.ts`) and stored in the EmDash `page_copy` collection, one row per slot per locale:
+Text is declared in code as **copy slots** (`src/lib/copy.ts`) and stored in EmDash in one **copy collection per manifest** (`copy_home`, `copy_ways_to_give`, `copy_events_detail`, `copy_site`…), one row per slot per locale:
 
 | Where | Declares | Route |
 | --- | --- | --- |
@@ -37,6 +37,26 @@ Each slot has a key, an editor-facing label, a format (`plain`, `rich`, `image`)
 
 Content that belongs to one CMS item (for example the 2026 tournament's earthquake-relief appeal) is a field on that collection, not template copy.
 
+### How the admin is organized
+
+`src/lib/cmsNavigation.mjs` is the single source for the admin sidebar: the folders (*Pages & SEO*, *CMS collections*, *Banner*), each copy collection's page name, description and position (`COPY_PAGES`), every other collection's label, description, folder and order, and hidden collections (`pages`). `src/lib/copyCollections.mjs` defines the copy collections' fields and numbers each slot: SEO slots first, then content in declaration order, shown as titles like `01 · SEO · Title`, so sorting by Title in the admin gives page order; `value` is searchable, so the list's search box finds a slot by its text. The seed (`npm run migrate:transform`) and `npm run cms:schema` both read these modules; `src/lib/cmsNavigation.test.ts` fails when a manifest or a seed collection isn't placed.
+
+### Applying the schema to an existing CMS
+
+`npm run cms:schema` (with `EMDASH_ADMIN_TOKEN`, an admin token with `schema:read` + `schema:write`, and `EMDASH_URL`) creates missing copy collections and fields and updates every collection's sidebar settings. It never touches menus, settings or content, and a second run changes nothing; `--dry-run` shows what it would do. Don't use `emdash seed --on-conflict update` on a live CMS: it rebuilds menus and overwrites site settings.
+
+Upgrading a CMS that still has the old single `page_copy` collection, once per environment, **before** deploying the new code (run both commands from a checkout of the new code, pointed at the environment with `EMDASH_URL`):
+
+1. `npm run cms:schema -- --dry-run`, review, then `npm run cms:schema`.
+2. `npm run migrate:copy-collections` moves each slot's published value, any open draft (kept as a draft) and its Spanish version into the page's collection, then hides `page_copy` from the sidebar (kept, not deleted; revision history isn't carried over). Re-running changes nothing.
+3. Deploy the code. Its sync fills any slot still missing when it starts.
+
+The running (old) site keeps reading `page_copy` until the deploy, so nothing changes for visitors in between. Pause copy edits from step 2 until the deploy: edits to the hidden `page_copy` would be lost, and edits in the new collections only show after it. Deploying first instead would show every page's default copy until the migration ran.
+
+### Adding a page
+
+Add the page's `_copy.ts`, add it to `COPY_PAGES` in `src/lib/cmsNavigation.mjs` (name and position in the sidebar), then run `npm run cms:schema` in each environment. Until then the page renders its defaults and the sync reports its collection as missing; it never creates collections itself.
+
 ### Adding or changing a slot
 
 1. Declare it in the page's `_copy.ts` (or the template's `_copy.detail.ts`, or `src/copy/_copy.ts`) with the current English text as `default`.
@@ -48,7 +68,7 @@ Content that belongs to one CMS item (for example the 2026 tournament's earthqua
 The migration (`scripts/migrate/`) reads both locales:
 
 - `npm run migrate:extract` writes the English snapshot to `snapshot/` and the Spanish one to `snapshot/es/` (same parsers; Spanish slugs match English ones).
-- `npm run migrate:transform` adds a Spanish entry, linked as a translation, for every English entry with a live Spanish version, plus `page_copy` rows for every slot.
+- `npm run migrate:transform` adds a Spanish entry, linked as a translation, for every English entry with a live Spanish version, plus copy collection rows for every slot, and the collections themselves (organized per `cmsNavigation.mjs`).
 - `npm run migrate:copy` aligns each live English page with its `/es` version and translates every slot default, writing `seed/page-copy.es.json`. A page's slots are translated from that page's own live pair first (shared interface text from all pages); pages with no live Spanish version (e.g. Our Programs, the blog) are left untranslated for marketing rather than half-translated. Slots with no live counterpart are listed in `scripts/migrate/report.md` and fall back to English.
 - `npm run migrate:import-copy` fills empty Spanish slots in a running EmDash from that file (needs `EMDASH_SYNC_PAT`; never overwrites an editor's text).
 

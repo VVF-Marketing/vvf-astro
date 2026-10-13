@@ -6,9 +6,10 @@
 //  1. Child profiles: only safeguarding-allowlisted users may change them; for
 //     everyone else only published profiles are readable, without the
 //     private full name.
-//  2. Copy slots: only the value (in the slot's format, within its maximum
-//     length, rich text limited to supported formatting) may change; slots are
-//     never created or deleted by hand.
+//  2. Copy slots (every page's copy collection, see cmsNavigation.mjs, and
+//     the retired `page_copy`): only the value (in the slot's format, within
+//     its maximum length, rich text limited to supported formatting) may
+//     change; slots are never created or deleted by hand.
 //  3. The `pages` inventory is read-only.
 //  4. Menu links must resolve to a page in the menu's locale (or be external),
 //     and menu items can't carry CSS classes.
@@ -18,13 +19,15 @@
 //     Refused rather than rewritten: Astro passes the endpoint the original
 //     request body even after middleware forwards a modified one.
 //  6. Anything the guard doesn't know is refused (deny by default): unknown
-//     MCP tools, and REST areas that are neither mapped onto a tool nor in
-//     PASS_THROUGH (see restOperation).
+//     MCP tools, every schema change (collections, fields, sidebar folders),
+//     and REST areas that are neither mapped onto a tool nor in PASS_THROUGH
+//     (see restOperation).
 //
 // Operations are normalized to MCP tool names; REST requests are mapped onto
 // the same names (restOperation) so one policy covers both.
 import { SAFE_HREF, richViolations } from './copy'
 import { LINK_KEY, sameSitePath } from './site.mjs'
+import { isCopyCollection } from './cmsNavigation.mjs'
 
 export const ROLE_ADMIN = 50
 
@@ -138,12 +141,12 @@ export async function checkOperation(op: Operation, ctx: GuardContext): Promise<
   }
 
   // 2. copy slots
-  if (collection === 'page_copy') {
+  if (collection && (collection === 'page_copy' || isCopyCollection(collection))) {
     if (tool === 'content_create' || tool === 'content_delete' || tool === 'content_duplicate') {
       return deny('Copy slots are defined by the site’s code; edit an existing slot’s text instead.')
     }
     if (tool === 'content_update') {
-      const slot = await ctx.lookup('page_copy', String(args.id), args.locale)
+      const slot = await ctx.lookup(collection, String(args.id), args.locale)
       if (!slot) return deny('Copy slot not found', 404)
       const problem = slotEditProblem(slot.data, args.data ?? {})
       if (problem) return deny(problem)
@@ -305,6 +308,12 @@ export function restOperation(method: string, pathname: string, body: Record<str
     }
     const tool = action ? actions[action] : undefined
     return { tool: tool ?? `content_${action}`, args: target }
+  }
+  // Schema reads are harmless; every schema write (collections, fields,
+  // sidebar folders and order) maps to a tool the guard refuses.
+  if (parts[0] === 'schema') {
+    if (method === 'GET') return { tool: parts[2] ? 'schema_get_collection' : 'schema_list_collections', args: { collection: parts[2] } }
+    return { tool: 'schema_write', args: { path: parts.join('/') } }
   }
   if (parts[0] === 'revisions' && parts[1]) {
     if (parts[2] === 'restore') return { tool: 'revision_restore', args: { revisionId: parts[1] } }

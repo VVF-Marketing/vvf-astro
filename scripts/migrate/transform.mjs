@@ -25,6 +25,8 @@ import { createSection } from './lib/report.mjs'
 import { translate } from './lib/align.mjs'
 import { loadManifests, PAGE_COPY_ES_PATH, translationTable } from './pagecopy.mjs'
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
+import { CONTENT_COLLECTIONS, copyCollectionFor } from '../../src/lib/cmsNavigation.mjs'
+import { organizeCollections, slotLayout } from '../../src/lib/copyCollections.mjs'
 
 const MEDIA_FILE_BASE_URL = '/_emdash/api/media/file'
 
@@ -160,28 +162,48 @@ export function translatedEntries(live, liveEs, table = new Map()) {
   return { entries: out, unpaired }
 }
 
-// `page_copy` entries for every slot declared in code: English with the
-// default from code, Spanish with the live translation (seed/page-copy.es.json)
-// where one exists. A fresh database (CI, `npm run seed`) gets the same rows
-// the static-page sync would create; the sync then finds them and creates
-// nothing. Existing databases are filled by `npm run migrate:import-copy`.
+// Copy collection entries for every slot declared in code, keyed by each
+// manifest's copy collection (src/lib/cmsNavigation.mjs): English with the
+// default from code, Spanish with the live translation
+// (seed/page-copy.es.json) where one exists. A fresh database (CI, `npm run
+// seed`) gets the same rows the static-page sync would create; the sync then
+// finds them and creates nothing. Existing databases are filled by `npm run
+// migrate:import-copy`.
 export function pageCopyEntries(manifests, spanish = {}) {
   const valueField = (format, value) =>
     format === 'rich' ? { rich_value: value } : format === 'image' ? { image_value: { src: value } } : { value }
-  return manifests.flatMap((manifest) =>
-    Object.entries(manifest.slots).flatMap(([key, spec]) => {
-      const format = spec.format ?? 'plain'
-      const meta = { route_path: manifest.route, key, label: spec.label, format, max_length: spec.maxLength, stale: false }
-      // Rows without a slug keep their seed id as their database id, so it must
-      // be URL-safe: copy--<route>--<key> (e.g. copy--events-x--hero.heading).
-      const id = `copy--${manifest.route.replace(/\*/g, 'x').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'home'}--${key.replace(/[^A-Za-z0-9._-]+/g, '-')}`
-      const es = spanish[manifest.route]?.[key]
-      return [
-        { id, status: 'published', data: { ...meta, ...valueField(format, spec.default) } },
-        { id: `${id}--es`, status: 'published', locale: 'es', translationOf: id, data: { ...meta, ...(es ? valueField(format, es) : {}) } },
-      ]
+  return Object.fromEntries(
+    manifests.map((manifest) => {
+      const collection = copyCollectionFor(manifest.route)
+      const layout = slotLayout(manifest)
+      const entries = Object.entries(manifest.slots).flatMap(([key, spec]) => {
+        const format = spec.format ?? 'plain'
+        const { title, section, position } = layout.get(key)
+        const meta = { key, label: spec.label, title, section, position, format, max_length: spec.maxLength, stale: false }
+        // Rows without a slug keep their seed id as their database id, so it
+        // must be URL-safe: <collection>--<key> (e.g. copy_home--hero.heading).
+        const id = `${collection}--${key.replace(/[^A-Za-z0-9._-]+/g, '-')}`
+        const es = spanish[manifest.route]?.[key]
+        return [
+          { id, status: 'published', data: { ...meta, ...valueField(format, spec.default) } },
+          { id: `${id}--es`, status: 'published', locale: 'es', translationOf: id, data: { ...meta, ...(es ? valueField(format, es) : {}) } },
+        ]
+      })
+      return [collection, entries]
     })
   )
+}
+
+// The seed with the admin organization applied (openspec/changes/
+// organize-cms-admin-navigation): collections replaced and labelled per
+// src/lib/cmsNavigation.mjs, and page copy split into per-page collections.
+export function withCopyCollections(seed, manifests, spanish = {}) {
+  const content = Object.fromEntries(Object.entries(seed.content ?? {}).filter(([k]) => k !== 'page_copy' && !k.startsWith('copy_')))
+  return {
+    ...seed,
+    collections: organizeCollections(seed.collections, CONTENT_COLLECTIONS),
+    content: { ...pageCopyEntries(manifests, spanish), ...content },
+  }
 }
 
 // Sponsor IDs come from the sponsor's name, and the live Spanish pages
@@ -271,8 +293,7 @@ export async function transform() {
         partners: snapEs('partners'),
       }
     : undefined
-  const currentSeed = readJson(SEED_PATH)
-  currentSeed.content = { ...currentSeed.content, page_copy: pageCopyEntries(await loadManifests(), readJson(PAGE_COPY_ES_PATH, {})) }
+  const currentSeed = withCopyCollections(readJson(SEED_PATH), await loadManifests(), readJson(PAGE_COPY_ES_PATH, {}))
   const { full, public: publicSeed, ctx, counts, unpaired } = buildSeeds({
     snapshots,
     snapshotsEs,

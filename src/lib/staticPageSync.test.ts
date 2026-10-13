@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { manifestSources, scanStaticPageRoutes, syncStaticPages } from './staticPageSync'
+import { EmDashApiError } from 'emdash/client'
 import { defineCopy, GLOBAL_ROUTE } from './copy'
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages')
@@ -55,13 +56,15 @@ interface FakeItem {
   _rev: string
 }
 
-function fakeEmDash() {
+// `missing`: collections the fake CMS doesn't have (listing them is a 404).
+function fakeEmDash({ missing = [] as string[] } = {}) {
   const items: FakeItem[] = []
   const calls: string[] = []
   let next = 1
   const find = (id: string) => items.find((i) => i.id === id)!
   const client = {
     async *listAll(collection: string, options?: { locale?: string }) {
+      if (missing.includes(collection)) throw new EmDashApiError(404, 'NOT_FOUND', `Collection not found: ${collection}`)
       for (const i of items.filter((x) => x.collection === collection && (!options?.locale || x.locale === options.locale))) {
         yield structuredClone(i) as never
       }
@@ -158,16 +161,20 @@ describe('syncStaticPages', () => {
     const db = fakeEmDash()
     const result = await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/ways-to-give')] })
 
-    const slots = db.items.filter((i) => i.collection === 'page_copy' && i.data.key === 'hero.heading')
+    const slots = db.items.filter((i) => i.collection === 'copy_ways_to_give' && i.data.key === 'hero.heading')
     const en = slots.find((s) => s.locale === 'en')!
     const es = slots.find((s) => s.locale === 'es')!
     expect(result.slotsCreated).toBe(4)
-    expect(en).toMatchObject({ status: 'published', data: { value: 'Ways to give', label: 'Hero heading', format: 'plain', max_length: 80 } })
+    expect(en).toMatchObject({
+      status: 'published',
+      data: { value: 'Ways to give', label: 'Hero heading', title: '02 · Content · Hero heading', section: 'content', position: 2, format: 'plain', max_length: 80 },
+    })
     expect(es.status).toBe('published')
     expect(es.data.value).toBeUndefined()
     expect(es.translationGroup).toBe(en.translationGroup)
     const image = db.items.find((i) => i.data.key === 'seo.image' && i.locale === 'en')!
-    expect(image.data).toMatchObject({ format: 'image', image_value: { src: '/images/og.jpg' } })
+    expect(image.data).toMatchObject({ format: 'image', image_value: { src: '/images/og.jpg' }, title: '01 · SEO · Share image', section: 'seo', position: 1 })
+    expect(image.data.route_path).toBeUndefined()
   })
 
   it('does nothing to slots when code and CMS already agree', async () => {
@@ -177,7 +184,7 @@ describe('syncStaticPages', () => {
     const result = await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/ways-to-give')] })
 
     expect(result).toMatchObject({ slotsCreated: 0, slotsUpdated: 0, slotsMarkedStale: 0 })
-    expect(db.calls.filter((c) => c.includes('page_copy'))).toEqual([])
+    expect(db.calls.filter((c) => c.includes('copy_ways_to_give'))).toEqual([])
   })
 
   it('updates a changed max length from code, keeps the value, and publishes', async () => {
@@ -189,7 +196,7 @@ describe('syncStaticPages', () => {
 
     expect(result.slotsUpdated).toBe(1)
     expect(en.data).toMatchObject({ max_length: 120, value: 'Edited by marketing' })
-    expect(db.calls.at(-1)).toBe(`publish page_copy ${en.id}`)
+    expect(db.calls.at(-1)).toBe(`publish copy_ways_to_give ${en.id}`)
   })
 
   it('never publishes over an editor draft: the slot is skipped and reported', async () => {
@@ -218,6 +225,53 @@ describe('syncStaticPages', () => {
     expect(db.items.find((i) => i.data.key === 'seo.image' && i.locale === 'en')!.data.stale).toBe(true)
   })
 
+  it('keeps each manifest in its own copy collection', async () => {
+    const db = fakeEmDash()
+    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/ways-to-give'), copyFor('/contact'), copyFor(GLOBAL_ROUTE)] })
+    const collections = new Set(db.items.filter((i) => i.collection !== 'pages').map((i) => i.collection))
+    expect([...collections].sort()).toEqual(['copy_contact', 'copy_site', 'copy_ways_to_give'])
+    expect(db.items.filter((i) => i.collection === 'copy_contact')).toHaveLength(4)
+  })
+
+  it('renumbers slots moved in code, keeping values', async () => {
+    const db = fakeEmDash()
+    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/ways-to-give')] })
+    const heading = db.items.find((i) => i.data.key === 'hero.heading' && i.locale === 'en')!
+    heading.data.value = 'Edited by marketing'
+    const reordered = defineCopy('/ways-to-give', {
+      'hero.kicker': { label: 'Kicker', default: 'New' },
+      'hero.heading': { label: 'Hero heading', default: 'Ways to give', maxLength: 80 },
+      'seo.image': { label: 'Share image', format: 'image', default: '/images/og.jpg' },
+    })
+    const result = await syncStaticPages({ ...opts, client: db.client, manifests: [{ manifest: reordered, sourceFile: 'x' }] })
+
+    expect(result.slotsUpdated).toBe(1)
+    expect(heading.data).toMatchObject({ position: 3, title: '03 · Content · Hero heading', value: 'Edited by marketing' })
+    expect(db.items.find((i) => i.data.key === 'hero.kicker' && i.locale === 'en')!.data.title).toBe('02 · Content · Kicker')
+  })
+
+  it('titles rows so that sorting by title lists SEO first, then page order', async () => {
+    const db = fakeEmDash()
+    const manifest = defineCopy('/ways-to-give', {
+      'hero.heading': { label: 'Hero heading', default: 'a' },
+      'hero.text': { label: 'Hero text', default: 'b' },
+      'seo.title': { label: 'Title', default: 'c' },
+      'seo.description': { label: 'Description', default: 'd' },
+    })
+    await syncStaticPages({ ...opts, client: db.client, manifests: [{ manifest, sourceFile: 'x' }] })
+    const titles = db.items.filter((i) => i.collection === 'copy_ways_to_give' && i.locale === 'en').map((i) => String(i.data.title))
+    expect(titles.sort()).toEqual(['01 · SEO · Title', '02 · SEO · Description', '03 · Content · Hero heading', '04 · Content · Hero text'])
+  })
+
+  it('reports a missing copy collection without creating it, and syncs the others', async () => {
+    const db = fakeEmDash({ missing: ['copy_contact'] })
+    const result = await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/contact'), copyFor('/ways-to-give')] })
+
+    expect(result.collectionsMissing).toEqual(['copy_contact'])
+    expect(db.items.some((i) => i.collection === 'copy_contact')).toBe(false)
+    expect(db.items.filter((i) => i.collection === 'copy_ways_to_give')).toHaveLength(4)
+  })
+
   it('does not inventory site-wide copy as a page', async () => {
     const db = fakeEmDash()
     await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor(GLOBAL_ROUTE)] })
@@ -234,8 +288,8 @@ describe('syncStaticPages: overlapping runs', () => {
     const original = db.items.find((i) => i.data.key === 'hero.heading' && i.locale === 'en')!
     original.data.value = 'Edited by marketing'
     // Simulate a second, overlapping run that created its own copies.
-    const dupEn = await db.client.create('page_copy', { status: 'draft', locale: 'en', data: { ...original.data, value: 'Ways to give' } })
-    await db.client.create('page_copy', { status: 'draft', locale: 'es', translationOf: (dupEn as { id: string }).id, data: { route_path: '/ways-to-give', key: 'hero.heading' } })
+    const dupEn = await db.client.create('copy_ways_to_give', { status: 'draft', locale: 'en', data: { ...original.data, value: 'Ways to give' } })
+    await db.client.create('copy_ways_to_give', { status: 'draft', locale: 'es', translationOf: (dupEn as { id: string }).id, data: { key: 'hero.heading' } })
 
     const result = await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/ways-to-give')] })
 
@@ -263,10 +317,10 @@ describe('syncStaticPages: unlinked translations', () => {
   const opts = { baseUrl: 'http://x', token: 't', pagesDir }
   const manifests = [copyFor('/ways-to-give')]
   const heading = (db: ReturnType<typeof fakeEmDash>, locale: string) =>
-    db.items.filter((i) => i.collection === 'page_copy' && i.data.key === 'hero.heading' && i.locale === locale)
+    db.items.filter((i) => i.collection === 'copy_ways_to_give' && i.data.key === 'hero.heading' && i.locale === locale)
   // As an editor or an AI assistant would: a new Spanish entry, not "translate".
   const unlinked = (db: ReturnType<typeof fakeEmDash>, value: string) =>
-    db.client.create('page_copy', { status: 'draft', locale: 'es', data: { route_path: '/ways-to-give', key: 'hero.heading', value } })
+    db.client.create('copy_ways_to_give', { status: 'draft', locale: 'es', data: { key: 'hero.heading', value } })
 
   it('moves the text onto the empty linked row before trashing the duplicate', async () => {
     const db = fakeEmDash()
@@ -284,7 +338,7 @@ describe('syncStaticPages: unlinked translations', () => {
     const db = fakeEmDash()
     await syncStaticPages({ ...opts, client: db.client, manifests })
     const english = heading(db, 'en')[0]
-    await db.client.delete('page_copy', heading(db, 'es')[0].id)
+    await db.client.delete('copy_ways_to_give', heading(db, 'es')[0].id)
     await unlinked(db, 'Formas de ayudar')
 
     const result = await syncStaticPages({ ...opts, client: db.client, manifests })
