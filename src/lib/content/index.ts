@@ -9,7 +9,7 @@
 // undefined only when the entry exists in neither locale. Pages never
 // implement fallback themselves.
 import { getEmDashCollection, getMenu, type MenuItem } from 'emdash'
-import { DEFAULT_LOCALE, LOCALES, type Locale } from '../i18n'
+import { DEFAULT_LOCALE, LOCALES, alternatePaths, type Locale } from '../i18n'
 import { copyCollectionFor } from '../cmsNavigation.mjs'
 import { resolveCopy, type CopyManifest, type ResolvedCopy, type SlotSpec, type StoredSlot } from '../copy'
 import type {
@@ -607,4 +607,28 @@ export async function getPrimaryMenu(locale: Locale = DEFAULT_LOCALE): Promise<N
   const menu = await getMenu('primary', { locale })
   if (!menu) return []
   return menu.items.map(toNavItem)
+}
+
+// --- Sitemap ------------------------------------------------------------------
+
+// Per-locale paths of every CMS detail page, using the same queries as the
+// detail pages themselves (src/lib/sitemap.ts). Child profiles are left out
+// on purpose.
+export async function getSitemapDetailPages(): Promise<Partial<Record<Locale, string>>[]> {
+  const paths = (base: string, slugs: Partial<Record<Locale, string>>) =>
+    alternatePaths(base, Object.fromEntries(Object.entries(slugs).filter(([, s]) => s))) ?? {}
+  const [events, resources, posts, team] = await Promise.all([
+    listEntries('events', { limit: LIST_LIMIT }, DEFAULT_LOCALE, { withSlugs: true }),
+    listEntries('resources', RESOURCES_FILTER, DEFAULT_LOCALE, { withSlugs: true }),
+    listEntries('posts', postsFilter(), DEFAULT_LOCALE, { withSlugs: true }),
+    listTeamMembers(undefined, DEFAULT_LOCALE, { withSlugs: true }),
+  ])
+  // A person in several tiers has one profile page.
+  const profiles = new Map(team.filter((m) => m.profileSlugs.en || m.profileSlug).map((m) => [m.profileSlugs.en ?? m.profileSlug, m.profileSlugs]))
+  return [
+    ...events.map((e) => paths('/events', e.slugs)),
+    ...resources.map((e) => paths('/resources', e.slugs)),
+    ...posts.map((e) => paths('/blog', e.slugs)),
+    ...[...profiles.values()].map((slugs) => paths('/our-team', slugs)),
+  ].filter((p) => Object.keys(p).length > 0)
 }

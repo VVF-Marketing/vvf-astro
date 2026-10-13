@@ -33,3 +33,7 @@ emdash-env.d.ts
 
 # Raw Webflow API dumps (may include unpublished/private child fields)
 /scripts/migrate/snapshot/api/
+
+# OS / editor files
+.DS_Store
+/.obsidian/

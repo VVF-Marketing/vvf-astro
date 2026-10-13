@@ -7,12 +7,14 @@ description: How to run the test suites and what runs in CI on every PR.
 
 | Command | Runs |
 | --- | --- |
-| `npm run test:unit` | Vitest against `src/**/*.test.ts` (node environment) |
+| `npm run test:unit` | Vitest against `src/**/*.test.ts` and `scripts/**/*.test.mjs` (node environment) |
 | `npm run test:storybook` | Boots Storybook on port 6006 via `start-server-and-test`, then runs `@storybook/test-runner` against it |
 | `npm run test:e2e` | Playwright against `e2e/**` (chromium only, `baseURL http://localhost:4321`) |
 | `npm run test` | All three, in order: unit → Storybook → e2e |
 
-Before `test:e2e` runs, `pretest:e2e` wipes `data.db*`, reseeds from `seed/seed.json`, and rebuilds the site — Playwright always runs against a fresh, known content state.
+Before `test:e2e` runs, `pretest:e2e` wipes `data.db*`, reseeds from `seed/seed.json`, and rebuilds the site — Playwright always runs against a fresh, known content state. Because that deletes the local database, `npm run seed` asks first in a terminal (CI proceeds on its own); run `npm run seed -- --yes && npm run build && npx playwright test` to skip the question.
+
+The unit suite also guards the repository's size: `scripts/repo-size.test.mjs` fails when a committed binary (image, PDF, font…) passes 8 MB or all of them together pass 80 MB. Media stays in git while it's small; when the check fails, compress the file or revisit moving media to Git LFS or object storage.
 
 ## What CI runs
 

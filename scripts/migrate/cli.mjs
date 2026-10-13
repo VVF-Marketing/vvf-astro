@@ -6,6 +6,7 @@ import { harvest } from './harvest.mjs'
 import { media } from './media.mjs'
 import { pageCopy } from './pagecopy.mjs'
 import { importCopy } from './importcopy.mjs'
+import { fixCopy } from './fixcopy.mjs'
 import { transform } from './transform.mjs'
 import { validate } from './validate.mjs'
 
@@ -17,6 +18,7 @@ const STEPS = {
   copy: ['Translate copy slots from the live /es pages into seed/page-copy.es.json', pageCopy],
   transform: ['Map the snapshot into seed/seed.json (+ seed/seed.local.json)', transform],
   'import-copy': ['Fill empty Spanish copy slots in a running EmDash from seed/page-copy.es.json (EMDASH_URL, EMDASH_SYNC_PAT)', () => importCopy()],
+  'fix-copy': ['Correct Spanish copy and content the migration got wrong in a running EmDash (dry run unless --apply; EMDASH_URL, EMDASH_SYNC_PAT)', () => fixCopy()],
 }
 
 const args = process.argv.slice(2)

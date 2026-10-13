@@ -28,6 +28,7 @@
     "migrate:media": "node --env-file-if-exists=.env scripts/migrate/cli.mjs media",
     "migrate:copy": "node --env-file-if-exists=.env scripts/migrate/cli.mjs copy",
     "migrate:import-copy": "node --env-file-if-exists=.env scripts/migrate/cli.mjs import-copy",
+    "migrate:fix-copy": "node --env-file-if-exists=.env scripts/migrate/cli.mjs fix-copy",
     "migrate:copy-collections": "node --env-file-if-exists=.env scripts/migrate/copy-collections.mjs",
     "test:parity": "playwright test -c playwright.parity.config.ts",
     "migrate:validate": "node --env-file-if-exists=.env scripts/migrate/cli.mjs validate"
