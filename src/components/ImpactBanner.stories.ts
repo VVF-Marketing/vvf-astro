@@ -21,3 +21,14 @@ export const Default = {
     cta: { label: 'Meet The Children', href: '/sponsor-a-child/children' },
   },
 }
+
+export const WithSecondaryAction = {
+  args: {
+    eyebrow: 'Global',
+    heading: 'Our work aligns with global development goals',
+    body: 'Our programs directly support the United Nations Sustainable Development Goals.',
+    bullets: ['Zero hunger for all children', 'Good health and well being', 'Quality education for every child'],
+    cta: { label: 'Learn more', href: '/resources' },
+    secondaryCta: { label: 'Explore', href: '/our-programs' },
+  },
+}

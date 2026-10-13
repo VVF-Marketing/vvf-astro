@@ -1,7 +1,8 @@
 ---
 // Live counterpart: Ways to Give `.section_sponsorship` — rounded photo on
 // one side, tagline/heading/copy, an optional sky note and actions on the
-// other.
+// other. With `card`, the photo sits in a pastel card with a caption (Our
+// Programs sections).
 import SectionTitle from './SectionTitle.astro'
 
 export interface Props {
@@ -16,9 +17,12 @@ export interface Props {
   images?: { url: string; alt?: string }[]
   // Show the image contained on a light panel (maps, diagrams).
   imagePanel?: boolean
+  // Show the image in a pastel card, with an optional caption title and text.
+  card?: { tone: 'sun' | 'salmon' | 'sky'; title?: string; text?: string }
 }
 
-const { tagline, heading, text, note, imageUrl, imageAlt = '', imageSide = 'left', images, imagePanel = false } = Astro.props as Props
+const { tagline, heading, text, note, imageUrl, imageAlt = '', imageSide = 'left', images, imagePanel = false, card } = Astro.props as Props
+const cardTones = { sun: 'bg-sun', salmon: 'bg-salmon', sky: 'bg-sky' }
 ---
 
 <section class="px-6 pt-16 md:px-20">
@@ -28,6 +32,16 @@ const { tagline, heading, text, note, imageUrl, imageAlt = '', imageSide = 'left
         <div class="grid w-full grid-cols-2 gap-6 lg:w-[600px]">
           {images.map((img) => <img src={img.url} alt={img.alt ?? ''} class="aspect-square w-full rounded-2xl object-cover" loading="lazy" />)}
         </div>
+      ) : card ? (
+        <figure class={`flex w-full flex-col gap-6 rounded-2xl p-6 md:p-10 lg:w-[520px] ${cardTones[card.tone]}`}>
+          {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[4/3] w-full rounded-[24px] object-cover" loading="lazy" />}
+          {(card.title || card.text) && (
+            <figcaption class="flex flex-col gap-2 text-brand-primary">
+              {card.title && <span class="font-heading text-size-lg font-extrabold leading-[1.4]">{card.title}</span>}
+              {card.text && <span class="font-body text-size-md leading-body">{card.text}</span>}
+            </figcaption>
+          )}
+        </figure>
       ) : imagePanel && imageUrl ? (
         <div class="flex w-full items-center justify-center rounded-2xl bg-neutral-light-gray p-10 lg:w-[600px]">
           <img src={imageUrl} alt={imageAlt} class="w-full max-w-[420px]" loading="lazy" />

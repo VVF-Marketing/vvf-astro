@@ -21,7 +21,9 @@ import { LIVE_BASE_URL, ROOT_DIR, SNAPSHOT_DIR } from './lib/paths.mjs'
 import { createSection } from './lib/report.mjs'
 import { sanitizeRichText, toPortableText } from './lib/richtext.mjs'
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
+import { projectPathFor } from '../../src/lib/legacyRoutes.mjs'
 
+const GLOBAL = '_global'
 export const PAGE_COPY_ES_PATH = path.join(ROOT_DIR, 'seed/page-copy.es.json')
 const TRANSLATIONS_PATH = path.join(SNAPSHOT_DIR, 'es/translations.json')
 
@@ -62,10 +64,36 @@ export async function pageCopy() {
   const publicTables = []
   const childTables = []
   let privacyEs
-  for (const livePath of sitemap.urls) {
+  const manifests = await loadManifests()
+  // Pages in the sitemap snapshot, plus any declared page route the live site
+  // has (e.g. pages added there after the snapshot); others are skipped.
+  const extra = manifests.map((m) => m.route).filter((r) => r.startsWith('/') && !r.includes('*') && !sitemap.urls.includes(r))
+  const livePaths = [...sitemap.urls]
+  for (const route of extra) {
+    try {
+      await livePair(route)
+      livePaths.push(route)
+    } catch {
+      // Not on the live site (e.g. pages new to this project).
+    }
+  }
+  // Each live page's own table, by project route: a slot is translated from
+  // its own page first, so a string that differs by context (or a misaligned
+  // node elsewhere) can't leak in from another page.
+  const pageTables = new Map()
+  for (const livePath of livePaths) {
     const { en, es } = await livePair(livePath)
-    publicTables.push(alignPages(en, es))
+    const t = alignPages(en, es)
+    publicTables.push(t)
+    pageTables.set(projectPathFor(livePath), t)
     if (livePath === '/privacy-policy') privacyEs = privacyBody(es)
+  }
+  // Template routes (/events/*) take the tables of the pages they render.
+  const tablesFor = (route) => {
+    if (!route.includes('*')) return pageTables.has(route) ? [pageTables.get(route)] : undefined
+    const prefix = route.replace('*', '')
+    const own = [...pageTables].filter(([r]) => r.startsWith(prefix) && r !== prefix.replace(/\/$/, '')).map(([, t]) => t)
+    return own.length ? own : undefined
   }
   for (const c of children.slice(0, 3)) {
     const { en, es } = await livePair(new URL(c.url).pathname)
@@ -85,8 +113,17 @@ export async function pageCopy() {
 
   const out = {}
   const unmapped = []
+  const noLivePage = []
   let mapped = 0
-  for (const manifest of await loadManifests()) {
+  for (const manifest of manifests) {
+    const own = manifest.route === GLOBAL ? [] : tablesFor(manifest.route)
+    if (!own) {
+      // No live Spanish page: leave it untranslated (falls back to English)
+      // rather than half-translate it from other pages' labels.
+      noLivePage.push(manifest.route)
+      continue
+    }
+    const pageTable = mergeTables([...own, table])
     for (const [key, spec] of Object.entries(manifest.slots)) {
       const format = spec.format ?? 'plain'
       if (format === 'image') continue
@@ -95,9 +132,9 @@ export async function pageCopy() {
       else if (!/[A-Za-z]/.test(spec.default)) continue // numbers, symbols: same in every locale
       else if (spec.default.includes('\n')) {
         // Multi-line slots (e.g. the footer legal note) are separate text nodes live.
-        const lines = spec.default.split('\n').map((l) => translate(table, l))
+        const lines = spec.default.split('\n').map((l) => translate(pageTable, l))
         value = lines.every(Boolean) ? lines.join('\n') : undefined
-      } else value = translate(table, spec.default)
+      } else value = translate(pageTable, spec.default)
       if (value) {
         ;(out[manifest.route] ??= {})[key] = value
         mapped++
@@ -106,8 +143,9 @@ export async function pageCopy() {
   }
   writeFileSync(PAGE_COPY_ES_PATH, `${JSON.stringify(relativizeSameSiteLinks(out), null, 2)}\n`)
 
-  report.line(`Aligned ${sitemap.urls.length} live pages with their /es versions (${publicTable.size} translated strings).`)
+  report.line(`Aligned ${livePaths.length} live pages with their /es versions (${publicTable.size} translated strings).`)
   report.line(`- Slots translated: ${mapped}; without a live Spanish counterpart: ${unmapped.length} (they fall back to English).`)
+  if (noLivePage.length) report.line(`- Pages with no live Spanish version (left for marketing to translate): ${noLivePage.join(', ')}`)
   if (unmapped.length) report.list(unmapped)
   report.write()
   return { translated: mapped, unmapped: unmapped.length }

@@ -16,7 +16,8 @@ You can change the site's text, its search-engine titles and descriptions, and i
 - **Page text** — every heading, paragraph, button label and image description, in the **Page copy** collection. Each entry says where it appears (e.g. *"Hero: heading"*) and on which page.
 - **Search and sharing** — each page's *SEO title* (up to 60 characters), *meta description* (up to 160) and *social share image*, also in **Page copy**.
 - **Site-wide text** — header, footer, forms and buttons: Page copy entries for the route `_global`.
-- **Content** — events (including an event's appeal section and contact details), team members, resources, FAQs, sponsors, sponsorship packages, menus.
+- **Content** — events (including an event's appeal section and contact details), team members, resources, FAQs, sponsors, sponsorship packages, menus. Mark a financial report's *report kind* (annual or quarterly) and it appears on Financials & Transparency.
+- **Testimonials** — the Our Programs page shows a testimonials section only when the **Testimonials** collection has published entries. Add only real quotes from people who agreed to be quoted.
 
 Text has a maximum length so it fits the design; if a change is too long, you'll be told the limit.
 

@@ -1,0 +1,154 @@
+---
+// Our Programs — from the "Our Programs" designs (desktop content on every
+// screen size), composed from library components: hero, how the programs
+// work together, the three program sections, the global goals panel,
+// testimonials (only real ones, from the CMS), support box and Dig deeper
+// cards.
+import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import MediaSplit from '../../components/MediaSplit.astro'
+import ImpactBanner from '../../components/ImpactBanner.astro'
+import ProgramsCta from '../../components/ProgramsCta.astro'
+import Card from '../../components/Card.astro'
+import Eyebrow from '../../components/Eyebrow.astro'
+import Button from '../../components/Button.astro'
+import { getPageCopy, getTestimonials } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
+
+const locale = localeFromPath(Astro.originPathname)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+const testimonials = await getTestimonials(locale)
+
+const programs = [
+  { id: 'nutrition', tone: 'sun', image: '/images/pages/programs-hero.webp' },
+  { id: 'medical', tone: 'salmon', image: '/images/pages/programs-medical.webp' },
+  { id: 'education', tone: 'sky', image: '/images/pages/programs-education.webp' },
+] as const
+const deeper = [
+  { n: 1, image: '/images/pages/programs-impact.webp', href: '/financials-and-transparency' },
+  { n: 2, image: '/images/pages/4fd38a77-image-13.png', href: '/earthquake-relief' },
+  { n: 3, image: '/images/pages/programs-goals.webp', href: '/sponsor-a-child' },
+] as const
+const c = (key: string) => (copy as Record<string, string>)[key]
+---
+
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
+  <Hero
+    imageUrl="/images/pages/programs-hero.webp"
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.cta1'], href: '#programs' }}
+    secondaryCta={{ label: copy['hero.cta2'], href: '/ways-to-give' }}
+    align="right"
+  />
+
+  <section class="px-6 md:px-20">
+    <div class="mx-auto grid max-w-screen-xl gap-8 lg:grid-cols-2 lg:items-center lg:gap-20">
+      <SectionTitle align="left" tagline={copy['together.tagline']} heading={copy['together.heading']} />
+      <div class="flex flex-col items-center gap-8 md:items-start">
+        <p class="font-body text-size-md leading-body text-brand-primary">{copy['together.text']}</p>
+        <div class="flex flex-wrap gap-4">
+          <Button href="#programs" variant="primary-inverse">{copy['together.cta1']}</Button>
+          <Button href="/ways-to-give" variant="outline">{copy['together.cta2']}</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="programs" class="scroll-mt-8 pt-8 md:pt-16">
+    {
+      programs.map((p) => (
+        <MediaSplit
+          tagline={c(`${p.id}.tagline`)}
+          heading={c(`${p.id}.heading`)}
+          text={c(`${p.id}.text`)}
+          imageUrl={p.image}
+          imageAlt={c(`${p.id}.imageAlt`)}
+          imageSide="right"
+          card={{ tone: p.tone, title: c(`${p.id}.cardTitle`), text: c(`${p.id}.cardText`) }}
+        >
+          <div class="flex flex-wrap gap-4">
+            <Button href="/ways-to-give" variant="primary-inverse">{copy['program.support']}</Button>
+            <Button href="/resources/category/stories" variant="link">{copy['program.gallery']}</Button>
+          </div>
+        </MediaSplit>
+      ))
+    }
+  </div>
+
+  <div class="pt-16 md:pt-[120px]">
+    <ImpactBanner
+      eyebrow={copy['goals.tagline']}
+      heading={copy['goals.heading']}
+      body={copy['goals.text']}
+      bullets={[copy['goals.bullet1'], copy['goals.bullet2'], copy['goals.bullet3']]}
+      imageUrl="/images/pages/programs-goals.webp"
+      imageAlt={copy['goals.imageAlt']}
+      cta={{ label: copy['goals.cta1'], href: '/resources/impact-report-2025' }}
+      secondaryCta={{ label: copy['goals.cta2'], href: '/resources' }}
+      ctaVariant="primary-inverse"
+    />
+  </div>
+
+  {
+    testimonials.length > 0 && (
+      <section class="mt-16 bg-sun px-6 py-16 md:mt-[120px] md:px-20 md:py-[120px]" data-testimonials>
+        <SectionTitle heading={copy['stories.heading']} text={copy['stories.text']} />
+        <ul class="mx-auto mt-12 grid max-w-screen-xl gap-6 md:grid-cols-3">
+          {testimonials.map((t) => (
+            <li>
+              <Card tone="white" radius="card" class="flex h-full flex-col gap-6 p-8">
+                <blockquote class="font-body text-size-md leading-body text-brand-primary">{t.quote}</blockquote>
+                <p class="mt-auto flex items-center gap-3">
+                  {t.imageUrl && <img src={t.imageUrl} alt="" class="h-12 w-12 rounded-full object-cover" loading="lazy" />}
+                  <span class="flex flex-col">
+                    <span class="font-heading text-size-md font-extrabold text-brand-primary">{t.name}</span>
+                    {t.role && <span class="font-body text-size-sm text-brand-primary">{t.role}</span>}
+                  </span>
+                </p>
+              </Card>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="px-4 pt-16 md:px-20 md:pt-[120px]">
+    <ProgramsCta
+      heading={copy['support.heading']}
+      text={copy['support.text']}
+      primaryCta={{ label: copy['support.cta1'], href: '/sponsor-a-child' }}
+      secondaryCta={{ label: copy['support.cta2'], href: '/ways-to-give' }}
+    />
+  </section>
+
+  <section class="px-6 pb-16 pt-16 md:px-20 md:pb-[120px] md:pt-[120px]">
+    <SectionTitle tagline={copy['deeper.tagline']} heading={copy['deeper.heading']} text={copy['deeper.text']} />
+    <ul class="mx-auto mt-12 grid max-w-screen-xl gap-6 md:grid-cols-3">
+      {
+        deeper.map((d) => (
+          <li>
+            <Card tone="white" radius="card" overflowHidden class="flex h-full flex-col">
+              <img src={d.image} alt={c(`deeper.card${d.n}.imageAlt`)} class="aspect-[4/3] w-full object-cover" loading="lazy" />
+              <div class="flex flex-1 flex-col items-start gap-3 p-6 md:p-8">
+                <Eyebrow>{c(`deeper.card${d.n}.eyebrow`)}</Eyebrow>
+                <h3 class="font-heading text-h5 font-extrabold leading-[1.4] text-brand-primary">{c(`deeper.card${d.n}.title`)}</h3>
+                <p class="font-body text-size-md leading-body text-brand-primary">{c(`deeper.card${d.n}.text`)}</p>
+                <Button href={d.href} variant="outline" class="mt-auto">{c(`deeper.card${d.n}.cta`)}</Button>
+              </div>
+            </Card>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</PageLayout>

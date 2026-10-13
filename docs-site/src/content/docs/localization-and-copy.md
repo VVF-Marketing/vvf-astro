@@ -49,7 +49,7 @@ The migration (`scripts/migrate/`) reads both locales:
 
 - `npm run migrate:extract` writes the English snapshot to `snapshot/` and the Spanish one to `snapshot/es/` (same parsers; Spanish slugs match English ones).
 - `npm run migrate:transform` adds a Spanish entry, linked as a translation, for every English entry with a live Spanish version, plus `page_copy` rows for every slot.
-- `npm run migrate:copy` aligns each live English page with its `/es` version into an English → Spanish table and translates every slot default, writing `seed/page-copy.es.json` (slots with no live counterpart are listed in `scripts/migrate/report.md` and fall back to English).
+- `npm run migrate:copy` aligns each live English page with its `/es` version and translates every slot default, writing `seed/page-copy.es.json`. A page's slots are translated from that page's own live pair first (shared interface text from all pages); pages with no live Spanish version (e.g. Our Programs, the blog) are left untranslated for marketing rather than half-translated. Slots with no live counterpart are listed in `scripts/migrate/report.md` and fall back to English.
 - `npm run migrate:import-copy` fills empty Spanish slots in a running EmDash from that file (needs `EMDASH_SYNC_PAT`; never overwrites an editor's text).
 
 Child data stays out of the repository in both locales (`snapshot/es/children.json` is gitignored).

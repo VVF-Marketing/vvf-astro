@@ -95,19 +95,21 @@ Run: 2026-10-03T02:51:01.622Z
 
 ## Spanish page copy
 
-Aligned 42 live pages with their /es versions (1304 translated strings).
-- Slots translated: 408; without a live Spanish counterpart: 112 (they fall back to English).
+Aligned 43 live pages with their /es versions (1344 translated strings).
+- Slots translated: 442; without a live Spanish counterpart: 99 (they fall back to English).
+- Pages with no live Spanish version (left for marketing to translate): /blog/*, /blog, /our-programs
 - / `hero.imageAlt`: A smiling girl at a Victoria Venezuela Foundation event.
 - / `hero.subtext`: Every child deserves nutrition, medical care, and education. Victoria Venezuela Foundation delivers all three through programs that reach the children who need them most.
 - / `sectionTitle2.heading`: What we've accomplished together
 - / `impactBanner.imageAlt`: Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors.
-- /blog/* `breadcrumbs.label.1`: Blog
-- /blog/* `p4.text`: Full article body pending final copy from the foundation.
-- /blog/* `h2.text`: Featured
-- /blog/* `seo.titleFallback`: {title} | Victoria Venezuela Foundation
-- /blog/* `breadcrumb`: Blog
-- /blog/* `lastUpdated`: Last updated {date}
-- /blog/* `byAuthor`: By {name}
+- /our-team `hero.imageAlt`: Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip.
+- /our-team `sectionTitle.tagline`: Board
+- /our-team `teamMemberCard2.name.1`: Join our board
+- /our-team `sectionTitle2.heading`: Our Leaders
+- /our-team `sectionTitle3.tagline`: Staff
+- /our-team `impactBanner.highlights.3`: sun
+- /our-team `impactBanner.highlights.6`: sky
+- /our-team `impactBanner.imageAlt`: Three Victoria Venezuela Foundation volunteers sorting donated clothes.
 - /resources/* `button.aria-label`: Copy link to this page
 - /resources/* `seo.titleFallback`: {title} | Victoria Venezuela Foundation
 - /resources/* `lastUpdated`: Last updated {date}
@@ -126,7 +128,6 @@ Aligned 42 live pages with their /es versions (1304 translated strings).
 - /sponsor-a-child/children `legend.text`: Age range
 - /sponsor-a-child/children `p.text`: No children match your filters.
 - _global `header.homeLink`: Victoria Venezuela Foundation home
-- _global `header.navLabel`: Primary
 - _global `header.menuButton`: Menu
 - _global `header.languageLabel`: Language
 - _global `banner.text`: Earthquake relief: Venezuelan families need help now.
@@ -135,7 +136,6 @@ Aligned 42 live pages with their /es versions (1304 translated strings).
 P.O. Box 327222
 Weston, FL 33332
 - _global `footer.candidAlt`: Candid Platinum Transparency seal, 2023 to 2026
-- _global `footer.contactHeading`: Contact
 - _global `footer.creditName`: Paula Inc.
 - _global `footer.copyright`: © {year} Victoria Venezuela Foundation. All rights reserved.
 - _global `contactForm.submit`: Send Message
@@ -168,12 +168,6 @@ Benefits
 - _global `a11y.nextLogos`: Next logos
 - _global `a11y.prevStory`: Previous story
 - _global `a11y.nextStory`: Next story
-- /blog `seo.title`: Blog | Victoria Venezuela Foundation
-- /blog `seo.description`: Victoria Venezuela Foundation provides nutrition, medical care and education to children in Venezuela.
-- /blog `heading`: Blog
-- /blog `filter.all`: View all
-- /blog `resultCount`: Showing {visible} of {total}
-- /blog `featured`: Featured
 - /contact `hero.imageAlt`: A young girl holding cotton candy at a Victoria Venezuela Foundation event.
 - /contact `sectionTitle.tagline`: Ways to connect
 - /contact `sectionTitle.heading`: Multiple ways to reach us
@@ -203,15 +197,9 @@ Benefits
 - /events/* `memories.heading`: {year} Memories
 - /events/* `contact.heading`: Golf. Give. Transform lives in Venezuela. Join us {date}!
 - /events `hero.imageAlt`: A golfer hugging a young boy on the course at the charity golf tournament.
-- /our-team `hero.imageAlt`: Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip.
-- /our-team `sectionTitle.tagline`: Board
-- /our-team `teamMemberCard2.name.1`: Join our board
-- /our-team `sectionTitle2.tagline`: Leadership
-- /our-team `sectionTitle2.heading`: Our Leaders
-- /our-team `sectionTitle3.tagline`: Staff
-- /our-team `impactBanner.highlights.3`: sun
-- /our-team `impactBanner.highlights.6`: sky
-- /our-team `impactBanner.imageAlt`: Three Victoria Venezuela Foundation volunteers sorting donated clothes.
+- /financials-and-transparency `seo.description`: Our annual and quarterly impact reports, Candid Platinum Seal of Transparency and IRS registration. Victoria Venezuela Foundation is a 501(c)(3), Tax ID 88-3282100.
+- /financials-and-transparency `hero.imageAlt`: Young girl focused on writing in a notebook at a blue desk in a classroom with other children.
+- /financials-and-transparency `confidence.imageAlt`: A smiling boy at a table with a meal. Overlay: 4 Years of Excellence, Candid Platinum Seal of Transparency for the fourth year in a row.
 
 ## Spanish page copy import
 

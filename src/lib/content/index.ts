@@ -26,7 +26,9 @@ import type {
   NavItem,
   ResourceItem,
   ResourceCategory,
+  ReportKind,
   Seo,
+  Testimonial,
 } from './types'
 
 // EmDash image field value. External media carries `src`; local media
@@ -436,6 +438,7 @@ function toResource(e: LocalizedEntry): ResourceItem {
       slug: e.slug,
       title: d.title,
       categories: d.categories ?? [],
+      reportKind: d.report_kind || undefined,
       publishedAt: d.published_on,
       updatedAt: d.updated_on,
       authors: d.authors ?? undefined,
@@ -466,6 +469,24 @@ export async function getResource(slug: string, locale: Locale = DEFAULT_LOCALE)
     matchesSlug(x, slug)
   )
   return e ? withAlternates(toResource(e), e) : undefined
+}
+
+// Annual or quarterly financial reports (Financials & Transparency), newest
+// first.
+export async function getReports(kind: ReportKind, locale: Locale = DEFAULT_LOCALE): Promise<ResourceItem[]> {
+  return (await getResources('financials-transparency', locale)).filter((r) => r.reportKind === kind)
+}
+
+// --- Testimonials -----------------------------------------------------------
+
+export async function getTestimonials(locale: Locale = DEFAULT_LOCALE): Promise<Testimonial[]> {
+  const entries = await listEntries('testimonials', { orderBy: { order: 'asc' }, limit: LIST_LIMIT }, locale)
+  return entries.map((e) => ({
+    quote: e.data.quote,
+    name: e.data.name,
+    role: e.data.role || undefined,
+    imageUrl: resolveImage(e.data.photo),
+  }))
 }
 
 // --- Site-wide sponsors / sponsorship tiers -----------------------------

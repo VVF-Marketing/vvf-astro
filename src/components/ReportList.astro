@@ -1,0 +1,44 @@
+---
+// Live counterpart: Financials & Transparency `.fin_report-card` lists —
+// white cards (radius 20px) with a grey date badge, title, summary and
+// Download (solid) / Read (outline) actions. `stack` is the annual reports
+// column (max 768px), `grid` the quarterly reports grid (3 / 2 / 1 columns).
+import type { ResourceItem } from '../lib/content/types'
+import { getGlobalCopy } from '../lib/globalCopy'
+import { LANG_TAGS, localeFromPath } from '../lib/i18n'
+import Button from './Button.astro'
+
+export interface Props {
+  reports: Pick<ResourceItem, 'slug' | 'title' | 'excerpt' | 'publishedAt' | 'fileUrl'>[]
+  layout?: 'stack' | 'grid'
+}
+
+const { reports, layout = 'stack' } = Astro.props as Props
+const t = await getGlobalCopy(Astro)
+const locale = localeFromPath(Astro.originPathname)
+const date = (iso?: string) =>
+  iso ? new Date(iso).toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) : undefined
+const list = layout === 'grid' ? 'grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'mx-auto flex w-full max-w-[768px] flex-col gap-6'
+---
+
+<ul class={list} role="list">
+  {
+    reports.map((r) => (
+      <li class="flex h-full flex-col items-center gap-2 rounded-[20px] bg-neutral-white p-6 text-center md:items-start md:p-8 md:text-left">
+        {date(r.publishedAt) && <p class="mb-2 bg-[#eee] px-2 py-1 font-body text-size-sm leading-body text-brand-primary">{date(r.publishedAt)}</p>}
+        <h3 class="w-full font-heading text-size-lg font-extrabold leading-[1.4] text-brand-primary">{r.title}</h3>
+        {r.excerpt && <p class="w-full font-body text-size-md leading-body text-brand-primary">{r.excerpt}</p>}
+        <div class="mt-auto flex flex-wrap justify-center gap-x-6 gap-y-3 pt-6 md:justify-start">
+          {r.fileUrl && (
+            <Button href={r.fileUrl} variant="primary-inverse">
+              {t['report.download']}
+            </Button>
+          )}
+          <Button href={`/resources/${r.slug}`} variant="outline">
+            {t['report.read']}
+          </Button>
+        </div>
+      </li>
+    ))
+  }
+</ul>

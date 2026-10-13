@@ -14,6 +14,8 @@ describe('scanStaticPageRoutes', () => {
       '/contact',
       '/corporate-sponsorships',
       '/earthquake-relief',
+      '/financials-and-transparency',
+      '/our-programs',
       '/privacy-policy',
       '/sponsor-a-child',
       '/ways-to-give',
@@ -118,8 +120,8 @@ describe('syncStaticPages', () => {
     const result = await syncStaticPages({ ...opts, client: db.client })
 
     const pages = db.items.filter((i) => i.collection === 'pages')
-    expect(result.created).toBe(14)
-    expect(pages.filter((p) => p.locale === 'en')).toHaveLength(7)
+    expect(result.created).toBe(18)
+    expect(pages.filter((p) => p.locale === 'en')).toHaveLength(9)
     const contactEn = pages.find((p) => p.locale === 'en' && p.data.route_path === '/contact')!
     const contactEs = pages.find((p) => p.locale === 'es' && p.data.route_path === '/contact')!
     expect(contactEs.translationGroup).toBe(contactEn.translationGroup)
@@ -131,8 +133,8 @@ describe('syncStaticPages', () => {
     await syncStaticPages({ ...opts, client: db.client })
     const result = await syncStaticPages({ ...opts, client: db.client })
 
-    expect(result).toMatchObject({ created: 0, updated: 14 })
-    expect(db.items.filter((i) => i.collection === 'pages')).toHaveLength(14)
+    expect(result).toMatchObject({ created: 0, updated: 18 })
+    expect(db.items.filter((i) => i.collection === 'pages')).toHaveLength(18)
   })
 
   it('inventories listing routes that declare copy', async () => {

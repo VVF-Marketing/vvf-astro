@@ -91,6 +91,10 @@ export default defineCopy(GLOBAL_ROUTE, {
   'resources.category.stories': { label: 'Resource category: Stories (tags, filters)', default: 'Stories', maxLength: 30 },
   'resources.category.financials': { label: 'Resource category: Financials (tags, filters)', default: 'Financials', maxLength: 30 },
 
+  // Financial report cards
+  'report.download': { label: 'Report card: download button', default: 'Download', maxLength: 20 },
+  'report.read': { label: 'Report card: read button', default: 'Read', maxLength: 20 },
+
   // Team
   'team.eyebrow': { label: 'Team profile: label above name', default: 'Our Team', maxLength: 30 },
   'team.since': { label: 'Team profile: "Since" label', default: 'Since', maxLength: 20 },

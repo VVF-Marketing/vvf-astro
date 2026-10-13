@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, slugify } from './mappers.mjs'
+import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, reportKind, slugify } from './mappers.mjs'
 import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries } from './transform.mjs'
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { sanitizeRichText, toPlainText, toPortableText } from './lib/richtext.mjs'
@@ -351,6 +351,17 @@ describe('relativizeSameSiteLinks', () => {
       cta_url: '/ways-to-give',
       body: [{ ...data.body[0], markDefs: [{ _key: 'l', _type: 'link', href: '/' }] }],
     })
+  })
+})
+
+describe('reportKind', () => {
+  it.each([
+    ['impact-report-2025', 'annual'],
+    ['annual-report-2022', 'annual'],
+    ['your-impact-1q2025', 'quarterly'],
+    ['how-to-sponsor-a-child-directly', undefined],
+  ])('%s -> %s', (slug, kind) => {
+    expect(reportKind(slug)).toBe(kind)
   })
 })
 

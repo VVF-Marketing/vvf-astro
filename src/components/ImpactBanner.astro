@@ -17,9 +17,11 @@ export interface Props {
   // Our Team volunteers panel: short titled points in pastel text colors.
   highlights?: { title: string; text: string; tone: 'sun' | 'sky' }[]
   ctaVariant?: 'primary' | 'primary-inverse'
+  // A second, outline action beside the main one (Our Programs goals panel).
+  secondaryCta?: CtaLink
 }
 
-const { eyebrow, heading, body, bullets, imageUrl, imageAlt = '', cta, highlights, ctaVariant = 'primary' } = Astro.props as Props
+const { eyebrow, heading, body, bullets, imageUrl, imageAlt = '', cta, highlights, ctaVariant = 'primary', secondaryCta } = Astro.props as Props
 const highlightTones = { sun: 'text-sun', sky: 'text-sky' }
 ---
 
@@ -51,10 +53,24 @@ const highlightTones = { sun: 'text-sun', sky: 'text-sky' }
         )
       }
       {
-        cta && (
+        cta && !secondaryCta && (
           <Button href={cta.href} variant={ctaVariant} class="mt-12">
             {cta.label}
           </Button>
+        )
+      }
+      {
+        secondaryCta && (
+          <div class="mt-12 flex flex-wrap justify-center gap-4 lg:justify-start">
+            {cta && (
+              <Button href={cta.href} variant={ctaVariant}>
+                {cta.label}
+              </Button>
+            )}
+            <Button href={secondaryCta.href} variant="outline">
+              {secondaryCta.label}
+            </Button>
+          </div>
         )
       }
     </div>

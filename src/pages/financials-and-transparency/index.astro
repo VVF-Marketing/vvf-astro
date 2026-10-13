@@ -1,0 +1,123 @@
+---
+// Financials & Transparency — mirrors the live page section by section:
+// hero, Give with Confidence, where donations go, annual and quarterly
+// reports (financials resources by report kind), the board, contact.
+import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import MediaSplit from '../../components/MediaSplit.astro'
+import ImpactBanner from '../../components/ImpactBanner.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import ReportList from '../../components/ReportList.astro'
+import Button from '../../components/Button.astro'
+import ProgramsCta from '../../components/ProgramsCta.astro'
+import { getPageCopy, getReports, getTeamMembers } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
+
+const CANDID_PROFILE = 'https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc-88-3282100'
+
+const locale = localeFromPath(Astro.originPathname)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+const [annual, quarterly, board] = await Promise.all([
+  getReports('annual', locale),
+  getReports('quarterly', locale),
+  getTeamMembers('board', locale),
+])
+const boardLines = [copy['board.member.1'], copy['board.member.2'], copy['board.member.3']]
+const point = 'flex flex-col gap-2 border-b border-[#e6e6e6] py-4 md:px-6 md:py-5'
+---
+
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
+  <Hero
+    imageUrl="/images/pages/financials-hero.webp"
+    mobileImageUrl="/images/pages/financials-hero-phone.webp"
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.cta'], href: '/ways-to-give' }}
+  />
+
+  <MediaSplit
+    tagline={copy['confidence.tagline']}
+    heading={copy['confidence.heading']}
+    text={copy['confidence.text']}
+    imageUrl="/images/pages/financials-candid.webp"
+    imageAlt={copy['confidence.imageAlt']}
+    imageSide="right"
+    card={{ tone: 'sky' }}
+  >
+    <ul class="flex w-full max-w-[452px] flex-col">
+      <li class={point}>
+        <h3 class="font-heading text-size-lg font-extrabold leading-[1.4] text-brand-primary">{copy['confidence.point1.title']}</h3>
+        <p class="font-body text-size-md leading-body text-brand-primary">{copy['confidence.point1.text']}</p>
+      </li>
+      <li class={point}>
+        <h3 class="font-heading text-size-lg font-extrabold leading-[1.4] text-brand-primary">{copy['confidence.point2.title']}</h3>
+        <p class="font-body text-size-md leading-body text-brand-primary">{copy['confidence.point2.text']}</p>
+      </li>
+    </ul>
+    <div class="flex flex-col items-stretch gap-4 md:items-start">
+      <Button href={CANDID_PROFILE} variant="primary-inverse">{copy['confidence.candidLink']}</Button>
+      <Button href="/files/vvf-irs-determination-letter.pdf" variant="outline">{copy['confidence.irsLink']}</Button>
+    </div>
+  </MediaSplit>
+
+  <div class="pt-16 md:pt-[120px]">
+    <ImpactBanner
+      eyebrow={copy['allocation.tagline']}
+      heading={copy['allocation.heading']}
+      body={copy['allocation.text']}
+      imageUrl="/images/pages/financials-donation.webp"
+      imageAlt={copy['allocation.imageAlt']}
+      cta={{ label: copy['allocation.cta'], href: '/resources/impact-report-2025' }}
+    />
+  </div>
+
+  {
+    annual.length > 0 && (
+      <section class="px-6 pt-16 md:pt-[120px]">
+        <div class="mx-auto flex max-w-[1280px] flex-col items-center gap-10 rounded-2xl bg-salmon px-6 py-10 md:gap-20 md:px-16 md:py-16">
+          <SectionTitle tagline={copy['annual.tagline']} heading={copy['annual.heading']} text={copy['annual.text']} />
+          <ReportList reports={annual} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    quarterly.length > 0 && (
+      <section class="px-6 py-10 md:px-16 md:py-[120px]">
+        <div class="mx-auto flex max-w-[1280px] flex-col gap-10 md:gap-20">
+          <SectionTitle tagline={copy['quarterly.tagline']} heading={copy['quarterly.heading']} text={copy['quarterly.text']} />
+          <ReportList reports={quarterly} layout="grid" />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="bg-neutral-white px-6 py-10 md:px-16 md:py-16">
+    <div class="mx-auto grid max-w-[1280px] items-center gap-10 lg:grid-cols-2 lg:gap-20">
+      <div class="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
+        <SectionTitle align="left" tagline={copy['board.tagline']} heading={copy['board.heading']} text={copy['board.text']} />
+        <ul class="flex flex-col gap-4 self-stretch pl-6 text-left lg:pl-0">
+          {boardLines.map((line) => (
+            <li class="list-disc font-body text-size-md leading-body text-brand-primary lg:list-none lg:font-heading lg:text-size-lg lg:font-extrabold lg:leading-[1.4]">{line}</li>
+          ))}
+        </ul>
+        <Button href="/our-team" variant="primary-inverse">{copy['board.cta']}</Button>
+      </div>
+      <div class="order-first grid grid-cols-3 gap-4 lg:order-none">
+        {board.slice(0, 3).map((m) => m.imageUrl && <img src={m.imageUrl} alt={m.name} class="aspect-[4/5] w-full rounded-[24px] object-cover lg:aspect-auto lg:h-[460px]" loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 pb-16 pt-16 md:px-20 md:pb-[120px] md:pt-[120px]">
+    <ProgramsCta heading={copy['contact.heading']} text={copy['contact.text']} primaryCta={{ label: copy['contact.cta'], href: '/contact' }} />
+  </section>
+</PageLayout>

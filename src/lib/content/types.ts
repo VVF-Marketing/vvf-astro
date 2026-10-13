@@ -186,10 +186,14 @@ export function resourceTag(
   return c ? labels[c] : undefined
 }
 
+export type ReportKind = 'annual' | 'quarterly'
+
 export interface ResourceItem extends Localized {
   slug: string
   title: string
   categories: ResourceCategory[]
+  // Set on financial reports listed on Financials & Transparency.
+  reportKind?: ReportKind
   publishedAt?: string
   updatedAt?: string
   authors?: { name: string; role?: string }[]
@@ -199,6 +203,13 @@ export interface ResourceItem extends Localized {
   body?: PortableTextBlock[]
   fileUrl?: string
   seo?: Seo
+}
+
+export interface Testimonial {
+  quote: string
+  name: string
+  role?: string
+  imageUrl?: string
 }
 
 export interface NavItem {

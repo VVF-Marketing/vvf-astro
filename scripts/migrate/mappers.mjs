@@ -261,11 +261,20 @@ export function mapPageFaqs(faqsByPage, ctx) {
 
 // --- Resources ---------------------------------------------------------
 
+// Financial reports listed on Financials & Transparency, by live slug:
+// annual / impact reports and the quarterly "Your Impact" updates.
+export function reportKind(slug) {
+  if (/^(annual|impact)-report-/.test(slug)) return 'annual'
+  if (/^your-impact-/.test(slug)) return 'quarterly'
+  return undefined
+}
+
 export function mapResources(resources, ctx) {
   return resources.map((r) =>
     entry(`resource-${r.slug}`, r.slug, {
       title: r.title ?? r.card?.title,
       categories: r.categories,
+      report_kind: reportKind(r.slug),
       published_on: parseLiveDate(r.card?.date),
       updated_on: parseLiveDate(r.updated),
       authors: r.authors,

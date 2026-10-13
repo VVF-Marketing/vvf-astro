@@ -102,7 +102,7 @@ test('an English page is its own canonical', async ({ page }) => {
 test('the language switch leads to the same page in the other locale', async ({ page }) => {
   const member = firstBoardMember()
   await page.goto(`/our-team/${member.slug}`)
-  const nav = page.getByRole('navigation', { name: 'Primary' }).first()
+  const nav = page.locator('header nav').first()
   await nav.getByRole('link', { name: 'Español' }).click()
   await expect(page).toHaveURL(new RegExp(`/es/our-team/${member.slug}$`))
   await expect(page.getByRole('heading', { name: member.name })).toBeVisible()
@@ -114,7 +114,7 @@ test('the language switch leads to the same page in the other locale', async ({ 
 
 test('a Spanish page shows the Spanish menu, linking to /es routes', async ({ page }) => {
   await page.goto('/es/our-team')
-  const nav = page.getByRole('navigation', { name: 'Primary' }).first()
+  const nav = page.locator('header nav').first()
   await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Marca la diferencia', 'Nosotros', 'Recursos'])
   // Nuestro equipo sits in the (closed) Nosotros dropdown.
   const team = nav.locator('a[href="/es/our-team"]:not([hreflang])')

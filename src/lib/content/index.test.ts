@@ -31,6 +31,8 @@ const {
   getResource,
   getPartners,
   getPageCopy,
+  getReports,
+  getTestimonials,
 } = await import('./index')
 const { defineCopy } = await import('../copy')
 
@@ -574,6 +576,25 @@ describe('getPageCopy', () => {
     const { copy, locales } = await getPageCopy(manifest, 'es')
     expect(copy['hero.heading']).toBe('Formas de ayudar')
     expect(locales).toEqual(['en'])
+  })
+})
+
+describe('getReports / getTestimonials', () => {
+  it('lists financial reports of one kind, newest first as queried', async () => {
+    getEmDashCollection.mockResolvedValue({
+      entries: [
+        entry('impact-report-2025', { title: 'Impact Report 2025', categories: ['financials-transparency'], report_kind: 'annual' }),
+        entry('your-impact-1q2025', { title: 'Your Impact 1Q2025', categories: ['financials-transparency'], report_kind: 'quarterly' }),
+        entry('story', { title: 'A story', categories: ['stories'] }),
+      ],
+    })
+    expect((await getReports('annual')).map((r) => r.slug)).toEqual(['impact-report-2025'])
+    expect((await getReports('quarterly')).map((r) => r.slug)).toEqual(['your-impact-1q2025'])
+  })
+
+  it('maps testimonials', async () => {
+    getEmDashCollection.mockResolvedValue({ entries: [entry('t', { quote: 'Q', name: 'N', role: 'R', photo: { src: '/p.jpg' } })] })
+    expect(await getTestimonials()).toEqual([{ quote: 'Q', name: 'N', role: 'R', imageUrl: '/p.jpg' }])
   })
 })
 
