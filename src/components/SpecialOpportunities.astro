@@ -1,0 +1,113 @@
+---
+// Live counterpart: event `.special-opps_section` — a vertical list of
+// opportunity tabs (name + price; active tab sky, sold-out tabs salmon with
+// "(SOLD)") beside a sky panel with the active opportunity's benefits and
+// call to action.
+import type { SponsorshipPackage } from '../lib/content/types'
+import Button from './Button.astro'
+
+export interface Props {
+  heading?: string
+  offers: SponsorshipPackage[]
+}
+
+const { heading = 'Special Event Opportunities', offers } = Astro.props as Props
+const id = `opps-${Math.random().toString(36).slice(2, 8)}`
+---
+
+<section class="px-6 py-16 md:px-[152px] md:py-[120px]" data-opps-tabs>
+  <h2 class="text-center text-h3-mobile leading-[1.2] text-brand-primary md:text-left md:text-h2">{heading}</h2>
+  <!-- Phones: accordion (live behaviour); tablets and up: tabs. -->
+  <div class="mt-10 flex flex-col gap-3 md:hidden">
+    {
+      offers.map((o) => (
+        <details class={`group rounded-md px-6 py-5 ${o.soldOut ? 'bg-salmon' : 'bg-neutral-white open:bg-sky'}`}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-sans text-size-md font-bold text-brand-primary [&::-webkit-details-marker]:hidden">
+            <span>{o.shortName ?? o.tierName}{o.soldOut && ' (SOLD)'}</span>
+            <span class="flex items-center gap-3">
+              {o.price}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="transition-transform group-open:rotate-180"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </summary>
+          {o.benefits && o.benefits.length > 0 && (
+            <ul class="mt-4 flex list-disc flex-col gap-2 pl-6 marker:text-brand-accent">
+              {o.benefits.map((b) => <li class="font-body text-size-sm leading-body text-brand-primary">{b}</li>)}
+            </ul>
+          )}
+          {!o.soldOut && o.ctaUrl && (
+            <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-4" target="_blank" rel="noopener noreferrer">{o.ctaLabel ?? 'Buy Tickets'}</Button>
+          )}
+        </details>
+      ))
+    }
+  </div>
+
+  <div class="mt-16 hidden gap-10 md:grid md:grid-cols-[420px_1fr] md:px-10">
+    <div role="tablist" aria-orientation="vertical" aria-label={heading} class="flex flex-col gap-3">
+      {
+        offers.map((o, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`${id}-tab-${i}`}
+            aria-controls={`${id}-panel-${i}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class={`flex items-center justify-between gap-4 rounded-md px-6 py-5 text-left font-sans text-size-md font-bold text-brand-primary ${o.soldOut ? 'bg-salmon' : 'bg-neutral-white aria-selected:bg-sky'}`}
+            data-opp-tab
+          >
+            <span>
+              {o.shortName ?? o.tierName}
+              {o.soldOut && ' (SOLD)'}
+            </span>
+            <span>{o.price}</span>
+          </button>
+        ))
+      }
+    </div>
+    {
+      offers.map((o, i) => (
+        <div role="tabpanel" id={`${id}-panel-${i}`} aria-labelledby={`${id}-tab-${i}`} hidden={i !== 0} class="h-fit rounded-2xl bg-sky p-12" data-opp-panel>
+          <h3 class="text-h5 leading-[1.3] text-brand-primary md:text-h4">{o.tierName}</h3>
+          {o.price && <p class="font-sans text-size-lg font-extrabold leading-body text-brand-primary">{o.price}</p>}
+          {o.benefits && o.benefits.length > 0 && (
+            <ul class="mt-6 flex list-disc flex-col gap-2 pl-6 marker:text-brand-accent">
+              {o.benefits.map((b) => (
+                <li class="font-body text-size-md leading-body text-brand-primary">{b}</li>
+              ))}
+            </ul>
+          )}
+          {!o.soldOut && o.ctaUrl && (
+            <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-8" target="_blank" rel="noopener noreferrer">
+              {o.ctaLabel ?? 'Buy Tickets'}
+            </Button>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-opps-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-opp-tab]'))
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-opp-panel]'))
+    const select = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index))
+        tab.tabIndex = i === index ? 0 : -1
+        panels[i].hidden = i !== index
+      })
+      if (focus) tabs[index].focus()
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i))
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') select((i + 1) % tabs.length, true)
+        else if (event.key === 'ArrowUp') select((i - 1 + tabs.length) % tabs.length, true)
+        else return
+        event.preventDefault()
+      })
+    })
+  })
+</script>

@@ -1,0 +1,126 @@
+{
+  "path": "/contact",
+  "seo": {
+    "title": "Contact Us | Victoria Venezuela Foundation",
+    "description": "Questions about sponsoring a child, donating or partnering with us? Send Victoria Venezuela Foundation a message and our team will reply.",
+    "ogTitle": "Contact Us | Victoria Venezuela Foundation",
+    "ogDescription": "Questions about sponsoring a child, donating or partnering with us? Send Victoria Venezuela Foundation a message and our team will reply.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a96dc6eeb45c5d8ea73dd4e_98.png"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a96dc6eeb45c5d8ea73dd4e_98.png"
+        },
+        {
+          "type": "h1",
+          "text": "Contact us"
+        },
+        {
+          "type": "p",
+          "text": "We'd love to hear from you. Reach out with questions, partnership opportunities, or to learn how you can make a difference in Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Donate",
+          "href": "/sponsor-a-child"
+        },
+        {
+          "type": "cta",
+          "text": "Get Involved",
+          "href": "/ways-to-give"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-15"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ways to connect"
+        },
+        {
+          "type": "h2",
+          "text": "Multiple ways to reach us"
+        },
+        {
+          "type": "p",
+          "text": "Choose the best way to connect based on your needs."
+        },
+        {
+          "type": "h4",
+          "text": "General inquiries"
+        },
+        {
+          "type": "p",
+          "text": "Questions about our mission, programs, or how we serve Venezuela."
+        },
+        {
+          "type": "h4",
+          "text": "Donation support"
+        },
+        {
+          "type": "p",
+          "text": "Questions about giving, sponsorship, or making an impact. Our team is ready to help you find the right option."
+        },
+        {
+          "type": "h4",
+          "text": "Media and press"
+        },
+        {
+          "type": "p",
+          "text": "Journalists, bloggers, and media outlets seeking interviews, stories, or resources about our work in Venezuela."
+        },
+        {
+          "type": "h4",
+          "text": "Corporate partnerships"
+        },
+        {
+          "type": "p",
+          "text": "Companies that want to sponsor a program, match employee gifts, or bring their team on a mission trip. See the packages and get in touch."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Send us a message"
+        },
+        {
+          "type": "p",
+          "text": "Tell us your name, email, and how we can help you serve Venezuela's most vulnerable families."
+        },
+        {
+          "type": "li",
+          "text": "info@victoriavenezuelafoundation.org"
+        },
+        {
+          "type": "li",
+          "text": "+1 (954) 371-0557"
+        },
+        {
+          "type": "li",
+          "text": "P.O. Box 327222, Weston, FL 33332"
+        }
+      ]
+    }
+  ]
+}

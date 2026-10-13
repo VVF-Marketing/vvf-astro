@@ -5,22 +5,33 @@ export default {
   component: TicketCard,
 }
 
-export const Individual = {
+// Live 2026 Golf Tournament ticket offers.
+export const PlayerFoursome = {
   args: {
-    tierName: 'Individual Golfer',
-    price: '$250',
-    features: ['18 holes', 'Lunch included', 'Swag bag'],
-    href: 'https://donorbox.org/embed/golf-tournament-individual',
-    tone: 'blue',
+    tierName: 'Player Foursome',
+    price: '$1,100',
+    features: ['Entry for (4) players to attend the event', 'Breakfast, lunch and drinks for (4)', 'Swag gift bag for each player', 'Color photographs at the event'],
+    href: 'https://donorbox.org/events/937157/steps/choose_tickets',
+    tone: 'sun',
   },
 }
 
-export const Foursome = {
+export const SinglePlayer = {
   args: {
-    tierName: 'Foursome',
-    price: '$900',
-    features: ['4 golfers', '18 holes each', 'Lunch included', 'Team signage'],
-    href: 'https://donorbox.org/embed/golf-tournament-foursome',
-    tone: 'yellow',
+    tierName: 'Single Player',
+    price: '$275',
+    features: ['Entry for (1) player to attend the event', 'Breakfast, lunch and drinks', 'Swag gift bag for each player', 'Color photographs at the event'],
+    href: 'https://donorbox.org/events/937157/steps/choose_tickets',
+    tone: 'sky',
+  },
+}
+
+export const SoldOut = {
+  args: {
+    tierName: 'Sports Physical Therapy & Performance Lounge',
+    price: '$1,000',
+    href: '#',
+    soldOut: true,
+    tone: 'salmon',
   },
 }

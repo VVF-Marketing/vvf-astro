@@ -1,10 +1,24 @@
 ---
+// Live counterpart: `.text-field` + `.field-label` — pill input with a navy
+// hairline border on a transparent background, label above in Open Sans.
 export interface Props {
+  label?: string
+  id?: string
   class?: string
   [key: string]: any
 }
 
-const { class: className = '', ...rest } = Astro.props as Props
+const { label, id = label ? `field-${Math.random().toString(36).slice(2, 8)}` : undefined, class: className = '', ...rest } = Astro.props as Props
+const input = `block h-[38px] w-full rounded-pill border border-brand-primary bg-transparent p-3 font-sans text-size-sm leading-5 text-brand-primary placeholder:text-brand-primary/50 ${className}`
 ---
 
-<input class={`rounded-pill px-4 py-2 border ${className}`} {...rest} />
+{
+  label ? (
+    <div class="flex flex-col">
+      <label for={id} class="mb-1 font-body text-size-sm font-medium leading-body text-brand-primary">{label}</label>
+      <input id={id} class={input} {...rest} />
+    </div>
+  ) : (
+    <input id={id} class={input} {...rest} />
+  )
+}

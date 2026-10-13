@@ -1,46 +1,49 @@
 ---
+// Live counterpart: `.event-card_component` — white card (radius 20px) with
+// the photo on the left and date tag, title, location, intro and an outline
+// "See the details" button on the right; stacks and centers on mobile.
 import type { EventItem } from '../lib/content/types'
-import { isUpcoming } from '../lib/content'
-import Card from './Card.astro'
 import Button from './Button.astro'
 import Badge from './Badge.astro'
 
 export interface Props {
   event: EventItem
+  // `compact`: live past-event card (`.events-past_item`) — narrow photo,
+  // half-width card.
+  variant?: 'default' | 'compact'
+  ctaLabel?: string
 }
 
-const { event } = Astro.props as Props
-const upcoming = isUpcoming(event)
-const dateLabel = new Date(event.startDate).toLocaleDateString(undefined, {
+const { event, variant = 'default', ctaLabel = 'See the details' } = Astro.props as Props
+const compact = variant === 'compact'
+const dateLabel = new Date(event.startDate).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+  timeZone: 'UTC',
 })
 ---
 
-<Card as="article" overflowHidden class={upcoming ? '' : 'opacity-90'}>
-  <div class="h-40 bg-gray-200">
-    {
-      event.imageUrl ? (
-        <img src={event.imageUrl} alt={event.title} class="w-full h-full object-cover" />
-      ) : (
-        <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Image here</div>
-      )
-    }
-  </div>
-  <div class="p-5">
-    <div class="flex items-center gap-2">
-      <h3 class="font-display text-lg text-brand-navy">{event.title}</h3>
+<article class={`flex flex-col overflow-hidden rounded-[20px] bg-neutral-white md:flex-row md:items-stretch ${compact ? 'md:max-w-[624px]' : ''}`}>
+  {
+    event.imageUrl && (
+      <img
+        src={event.imageUrl}
+        alt=""
+        class={`h-[183px] w-full object-cover md:h-auto ${compact ? 'md:min-h-[328px] md:w-[207px]' : 'md:min-h-[300px] md:w-[53.3%]'}`}
+        loading="lazy"
+      />
+    )
+  }
+  <div class="flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center md:items-start md:gap-8 md:px-10 md:py-8 md:text-left">
+    <div class="flex flex-col items-center gap-4 md:items-start">
       <Badge>{dateLabel}</Badge>
+      <div class="flex flex-col items-center gap-0 md:items-start">
+        <h3 class="text-size-md font-bold leading-[1.2] text-brand-primary">{event.title}</h3>
+        {event.location && <p class="font-sans text-size-sm leading-body text-brand-primary">{event.location}</p>}
+        {event.description && <p class="font-sans text-size-md leading-body text-brand-primary">{event.description}</p>}
+      </div>
     </div>
-    <p class="text-sm text-ink-500 mt-1">{event.location}</p>
-    {event.description && <p class="mt-2 text-ink-700 text-sm">{event.description}</p>}
-    {
-      upcoming && (
-        <Button href={`/events/${event.slug}`} variant="outline-sky" class="mt-4 inline-block text-sm">
-          Learn More
-        </Button>
-      )
-    }
+    <Button href={`/events/${event.slug}`} variant="outline">{ctaLabel}</Button>
   </div>
-</Card>
+</article>

@@ -1,0 +1,28 @@
+---
+// Live counterpart: Corporate Sponsorships `.section-13` — navy hero with
+// a white heading, sky intro text and a primary button on the left and a
+// rounded photo on the right.
+import type { CtaLink } from './Hero.astro'
+import Button from './Button.astro'
+
+export interface Props {
+  heading: string
+  subtext?: string
+  cta?: CtaLink
+  imageUrl?: string
+  imageAlt?: string
+}
+
+const { heading, subtext, cta, imageUrl, imageAlt = '' } = Astro.props as Props
+---
+
+<section class="bg-brand-primary px-6 py-12 md:p-20">
+  <div class="mx-auto flex max-w-screen-xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex max-w-[459px] flex-col items-start gap-6">
+      <h1 class="text-h1-mobile leading-[1.1] text-neutral-white md:text-h1">{heading}</h1>
+      {subtext && <p class="font-body text-size-md leading-body text-sky">{subtext}</p>}
+      {cta && <Button href={cta.href} variant="primary">{cta.label}</Button>}
+    </div>
+    {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[661/593] w-full rounded-md object-cover lg:w-[661px]" />}
+  </div>
+</section>

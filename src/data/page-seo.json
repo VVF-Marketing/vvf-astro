@@ -1,0 +1,67 @@
+{
+  "/events": {
+    "title": "Events | Victoria Venezuela Foundation",
+    "description": "Events and campaigns from Victoria Venezuela Foundation, including our annual charity golf tournament in Weston, FL, supporting children in Venezuela.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/contact": {
+    "title": "Contact Us | Victoria Venezuela Foundation",
+    "description": "Questions about sponsoring a child, donating or partnering with us? Send Victoria Venezuela Foundation a message and our team will reply.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/corporate-sponsorships": {
+    "title": "Corporate Sponsorships | Victoria Venezuela Foundation",
+    "description": "Partner with Victoria Venezuela Foundation. Sponsorship tiers from $250 to $2,500 a year, plus company matching, fund meals, medical care and school support for children in Venezuela.",
+    "image": "/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg"
+  },
+  "/": {
+    "title": "Victoria Venezuela Foundation | Nutrition, Medical Care and Education",
+    "description": "A 501(c)(3) nonprofit in Weston, Florida providing nutrition, medical care and education to children in Venezuela. Sponsor a child from $25 a month.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/our-team": {
+    "title": "Our Team | Victoria Venezuela Foundation",
+    "description": "Meet the board, leaders and team behind Victoria Venezuela Foundation, a 501(c)(3) in Weston, Florida supporting children in Venezuela.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/privacy-policy": {
+    "title": "Privacy Policy | Victoria Venezuela Foundation",
+    "description": "How Victoria Venezuela Foundation collects, uses, stores and protects information from donors, volunteers, partners and website visitors.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/resources": {
+    "title": "Resources | Victoria Venezuela Foundation",
+    "description": "Stories, news, events and financial reports from Victoria Venezuela Foundation, a 501(c)(3) supporting children in Venezuela.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/resources/category/financials-transparency": {
+    "title": "Financials & Transparency | Resources | Victoria Venezuela Foundation",
+    "description": "Our annual and quarterly impact reports, with condensed financials. Victoria Venezuela Foundation is a 501(c)(3), EIN 88-3282100.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/resources/category/stories": {
+    "title": "Stories | Resources | Victoria Venezuela Foundation",
+    "description": "Stories from our nutrition, medical care and education programs for children in Venezuela.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/sponsor-a-child/children": {
+    "title": "Meet the Children | Victoria Venezuela Foundation",
+    "description": "Meet children in Venezuela who are waiting for a sponsor. Sponsorship starts at $25 a month and covers meals, medical care and school.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/sponsor-a-child": {
+    "title": "Sponsor a Child in Venezuela | Victoria Venezuela Foundation",
+    "description": "Sponsor a child in Venezuela from $25 a month. Your gift funds weekly meals, medical checkups twice a year and school support for the children in our care.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/earthquake-relief": {
+    "title": "Venezuela Earthquake Relief | Victoria Venezuela Foundation",
+    "description": "Back-to-back earthquakes hit Venezuela in June 2026. 100% of net proceeds go to relief for displaced children and families. See how to help.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  },
+  "/ways-to-give": {
+    "title": "Ways to Give | Victoria Venezuela Foundation",
+    "description": "Give once, give monthly, sponsor a child, or give through your employer. Every gift reaches children in Venezuela.",
+    "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+  }
+}

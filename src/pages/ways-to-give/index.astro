@@ -1,82 +1,109 @@
 ---
+// Ways to Give — mirrors the live page (scripts/migrate/snapshot/pages/ways-to-give.json).
 import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import FeatureBand from '../../components/FeatureBand.astro'
+import GiftAmountPicker from '../../components/GiftAmountPicker.astro'
+import MediaSplit from '../../components/MediaSplit.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
 import PastelCard from '../../components/PastelCard.astro'
+import AppealPanel from '../../components/AppealPanel.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
-import EmployerMatchWidget from '../../components/EmployerMatchWidget.astro'
-import { getFaqs } from '../../lib/content'
-import { generalDonationUrl, corporateSponsorshipInquiryUrl } from '../../lib/donorbox'
+import Button from '../../components/Button.astro'
+import { getEvents, getFaqs, isUpcoming } from '../../lib/content'
+import { generalDonationUrl } from '../../lib/donorbox'
 
 const faqs = await getFaqs('donation')
+const nextEvent = (await getEvents()).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
 ---
 
-<PageLayout title="Ways to Give — Victoria Venezuela Foundation">
-  <section class="bg-gray-100">
-    <div class="container max-w-container mx-auto px-4 py-12">
-      <div class="bg-white rounded-card shadow p-8 max-w-xl ml-auto">
-        <h1 class="text-display-md">Ways to give</h1>
-        <p class="mt-3 text-ink-700">Find the giving option that's right for you. Every gift transforms a child's life.</p>
-      </div>
+<PageLayout
+  title="Ways to Give | Victoria Venezuela Foundation"
+  description="Give once, sponsor a child, match through your employer or give from a donor-advised fund. Every gift reaches children in Venezuela."
+>
+  <Hero
+    align="right"
+    imageUrl="/images/pages/1b2ca82c-98.webp"
+    imageAlt="Baby in pink dress held near red and white balloons and a large striped candy cane balloon."
+    heading="Ways to give"
+    subtext="Every gift reaches children in Venezuela. Choose the way that works for you."
+    primaryCta={{ label: 'Give now', href: '#give' }}
+    secondaryCta={{ label: 'Sponsor a child', href: '/sponsor-a-child' }}
+  />
+
+  <FeatureBand
+    id="give"
+    tone="sky"
+    tagline="Donate"
+    heading="Make a gift today"
+    text="Choose an amount and give in under a minute. Every gift funds meals, medical care and schooling for children in Venezuela."
+    imageUrl="/images/pages/6dd3733e-hero-section-picture.jpg"
+    imageAlt="Smiling young girl with pigtails playing inside a colorful inflatable bounce house."
+  >
+    <GiftAmountPicker baseUrl={generalDonationUrl()} query="utm_source=website&utm_medium=ways-to-give&utm_campaign=give-block" />
+    <p class="font-body text-size-md leading-body text-brand-primary">
+      Would you rather give every month? <a href="/sponsor-a-child" class="font-bold text-brand-primary underline">Sponsor a child for $25 a month.</a>
+    </p>
+    <p class="font-body text-size-sm leading-[1.6] text-brand-primary">
+      Payment is handled by Donorbox. Victoria Venezuela Foundation is a 501(c)(3) non-profit organization, Tax ID 88-3282100, and your gift is tax-deductible in the United States.
+    </p>
+  </FeatureBand>
+
+  <MediaSplit
+    tagline="Sponsorship"
+    heading="Sponsor a child for $25 a month"
+    text="Choose a child and support them every month. Your gift joins other sponsors' to fund the meals, medical care and schooling that reach them, and you get letters, photos and updates on how they are doing."
+    note="A child is usually supported by more than one sponsor, and we direct funds to where the need is greatest. You can stop at any time."
+    imageUrl="/images/pages/d9d1e4da-8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg"
+    imageAlt="Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+  >
+    <Button href="/sponsor-a-child/children" variant="primary">Meet the children</Button>
+  </MediaSplit>
+
+  <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-20">
+    <SectionTitle tagline="More ways" heading="Other ways to give" />
+    <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-3">
+      <PastelCard tone="sun" title="Employer matching" body="Many companies double what their employees give. Search for your employer and find out in a few seconds." cta={{ label: "Let's check", href: '/corporate-sponsorships' }} />
+      <PastelCard tone="salmon" title="Donor-advised fund" body="Direct your charitable giving from your DAF account using our EIN, 88-3282100. We will help you complete the designation." cta={{ label: 'Ask us for help', href: '/contact' }} />
+      <PastelCard tone="sky" title="Corporate partnership" body="Tiered sponsorships with visibility and employee engagement, plus event sponsorship and matching gifts." cta={{ label: 'Partner with us', href: '/corporate-sponsorships' }} />
     </div>
   </section>
 
-  <section class="container max-w-container mx-auto px-4 py-section-sm md:py-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">Ways to give</p>
-    <h2 class="mt-2 text-display-md text-center">Many ways to make a difference</h2>
-    <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <PastelCard
-        tone="yellow"
-        title="Sponsor a child"
-        body="Support one child with a monthly gift, starting at $25. Receive letters, photos and progress updates."
-        cta={{ label: 'Sponsor', href: '/sponsor-a-child' }}
-      />
-      <PastelCard
-        tone="pink"
-        title="Monthly giving"
-        body="Sustain our programs with a recurring gift. Flexible amount, easy to manage, cancel anytime."
-        cta={{ label: 'Donate', href: generalDonationUrl() }}
-      />
-      <PastelCard
-        tone="pink"
-        title="One-time donation"
-        body="Make an immediate difference with a single gift of any size. In fiscal 2025, 95% of funds went to programs."
-        cta={{ label: 'Donate', href: generalDonationUrl() }}
-      />
-      <PastelCard
-        tone="blue"
-        title="Corporate partnership"
-        body="Tiered sponsorships with visibility and employee engagement. Event sponsorships and matching gifts available."
-        cta={{ label: 'Partner', href: corporateSponsorshipInquiryUrl() }}
-      />
-    </div>
-  </section>
+  {
+    nextEvent && (
+      <FeatureBand
+        tone="sun"
+        tagline="Come and give"
+        heading={nextEvent.title}
+        text={nextEvent.description}
+        imageUrl="/images/pages/82499f8c-vvf-golf2026-flagphoto-waystogive-v1.webp"
+        imageAlt="Golfers standing by the lake at the Victoria Venezuela Foundation charity golf tournament, holding Venezuelan flags."
+      >
+        <Button href={`/events/${nextEvent.slug}`} variant="primary">More Info</Button>
+      </FeatureBand>
+    )
+  }
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-white rounded-card shadow-sm p-8">
-      <h2 class="text-display-sm text-center">See if your employer will match your donation!</h2>
-      <div class="mt-4">
-        <EmployerMatchWidget />
-      </div>
-    </div>
-  </section>
+  <div class="pt-16 md:pt-[120px]">
+    <AppealPanel
+      heading="Venezuela earthquake relief"
+      text="Funds raised from this campaign will go towards the construction of VVF's permanent support centre in La Guaira. When it opens it will provide shelter, nutrition and medical care to 500 displaced children and their families."
+      imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
+      imageAlt="Render of the planned VVF support centre in La Guaira, seen from the street."
+      caption="How the centre in La Guaira will look. The centre is not built yet. All images on this page are AI-generated renders."
+      cardsLabel="What your gift will pay for"
+      cards={[
+        { title: 'Shelter', text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.', imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: 'Families arriving at the courtyard of the planned VVF support centre.' },
+        { title: 'Medical care', text: 'Check-ups, medicine and treatment for children and their families at the center.', imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: 'A nurse examining a young girl while her mother sits beside her.' },
+        { title: 'Nutrition', text: 'Daily meals for the children staying at the support center in La Guaira.', imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: "Children eating a hot meal together in the centre's dining room." },
+      ]}
+      primaryCta={{ label: 'Give to the appeal', href: '#give' }}
+      secondaryCta={{ label: 'Learn More', href: '/earthquake-relief' }}
+    />
+  </div>
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-pastel-blue rounded-card p-8 grid md:grid-cols-2 gap-6 items-center">
-      <div>
-        <p class="text-eyebrow uppercase font-semibold text-brand-navy/70">Funds</p>
-        <h2 class="mt-2 text-display-sm text-brand-navy">Give through a donor-advised fund</h2>
-        <p class="mt-2 text-ink-700">VVF accepts grants from donor-advised funds. EIN: 88-3282100.</p>
-        <a href="/contact?topic=donation-support" class="mt-4 inline-block rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">
-          DAF Donations Help Request
-        </a>
-      </div>
-      <div class="h-48 rounded-card bg-white/60 flex items-center justify-center text-ink-500 text-sm">Image here</div>
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Frequently asked questions</h2>
-    <div class="mt-8 max-w-2xl mx-auto">
-      <FaqAccordion faqs={faqs} />
-    </div>
+  <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px]">
+    <SectionTitle heading="Frequently asked questions" />
+    <div class="mt-12"><FaqAccordion faqs={faqs} /></div>
   </section>
 </PageLayout>

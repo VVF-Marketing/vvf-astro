@@ -16,11 +16,22 @@ import type {
   AuctionItem,
   Sponsor,
   NavItem,
+  ResourceItem,
+  ResourceCategory,
+  Seo,
 } from './types'
 
+// EmDash image field value. External media carries `src`; local media
+// (uploaded through the admin or the migration importer) carries only its
+// storage key, served by EmDash's media file route.
 interface EmDashImage {
   src?: string
+  alt?: string
+  provider?: string
+  meta?: { storageKey?: string }
 }
+
+const MEDIA_FILE_BASE_URL = '/_emdash/api/media/file'
 
 // EmDash defaults getEmDashCollection() to 50 results; every collection here
 // is small (dozens of rows), but pass an explicit ceiling so a future growth
@@ -28,7 +39,15 @@ interface EmDashImage {
 const LIST_LIMIT = 100
 
 function resolveImage(image: EmDashImage | undefined | null): string | undefined {
-  return image?.src
+  if (!image) return undefined
+  if (image.src) return image.src
+  const storageKey = image.meta?.storageKey
+  return storageKey ? `${MEDIA_FILE_BASE_URL}/${storageKey}` : undefined
+}
+
+function toSeo(d: Record<string, any>): Seo | undefined {
+  const seo = { title: d.seo_title, description: d.seo_description, imageUrl: resolveImage(d.social_image) }
+  return seo.title || seo.description || seo.imageUrl ? seo : undefined
 }
 
 async function resolveRefs<T>(
@@ -48,6 +67,12 @@ function toSponsorshipPackage(d: Record<string, any>): SponsorshipPackage {
     recognitionBenefits: d.recognition_benefits ?? undefined,
     activityBenefits: d.activity_benefits ?? undefined,
     promotionalBenefits: d.promotional_benefits ?? undefined,
+    benefits: d.benefits ?? undefined,
+    kind: d.kind ?? undefined,
+    shortName: d.short_name ?? undefined,
+    ctaLabel: d.cta_label ?? undefined,
+    ctaUrl: d.cta_url ?? undefined,
+    soldOut: d.sold_out ?? false,
     order: d.order,
   }
 }
@@ -88,6 +113,24 @@ export async function getEvents(): Promise<EventItem[]> {
         sponsorPackages: await resolveRefs('sponsorship_packages', d.sponsor_packages, toSponsorshipPackage),
         auctionItems: await resolveRefs('auction_items', d.auction_items, toAuctionItem),
         sponsors: await resolveRefs('sponsors', d.sponsors, toSponsor),
+        heroHeading: d.hero_heading,
+        heroBody: d.hero_body,
+        heroImageUrl: resolveImage(d.hero_image),
+        heroImageMobileUrl: resolveImage(d.hero_image_mobile),
+        venue: d.venue,
+        address: d.address,
+        mapUrl: d.map_url,
+        program: d.program ?? undefined,
+        includes: d.includes ?? undefined,
+        gallery: Array.isArray(d.gallery)
+          ? d.gallery.flatMap((g: EmDashImage) => {
+              const url = resolveImage(g)
+              return url ? [{ url, alt: g.alt }] : []
+            })
+          : undefined,
+        recapStats: d.recap_stats ?? undefined,
+        benefitRows: d.benefit_rows ?? undefined,
+        seo: toSeo(d),
       } satisfies EventItem
     })
   )
@@ -105,7 +148,11 @@ export function isUpcoming(event: Pick<EventItem, 'startDate'>): boolean {
 // --- Children -----------------------------------------------------------
 
 export async function getChildren(): Promise<ChildItem[]> {
-  const { entries } = await getEmDashCollection('children', { where: { published: true }, limit: LIST_LIMIT })
+  const { entries } = await getEmDashCollection('children', {
+    where: { published: true },
+    orderBy: { order: 'asc' },
+    limit: LIST_LIMIT,
+  })
   return entries.map((e) => {
     const d = e.data as Record<string, any>
     return {
@@ -115,9 +162,12 @@ export async function getChildren(): Promise<ChildItem[]> {
       birthday: d.birthday,
       gender: d.gender,
       dream: d.dream,
+      about: d.about,
       imageUrl: resolveImage(d.photo),
+      imageAlt: d.photo?.alt,
       published: d.published ?? false,
       donorboxSponsorshipRef: d.donorbox_sponsorship_ref,
+      order: d.order,
     } satisfies ChildItem
   })
 }
@@ -132,6 +182,7 @@ export async function getChildBySlug(slug: string): Promise<ChildItem | undefine
 export async function getTeamMembers(tier?: TeamTier): Promise<TeamMemberItem[]> {
   const { entries } = await getEmDashCollection('team_members', {
     limit: LIST_LIMIT,
+    orderBy: { order: 'asc' },
     ...(tier ? { where: { tier } } : {}),
   })
   return entries.map((e) => {
@@ -150,14 +201,22 @@ export async function getTeamMembers(tier?: TeamTier): Promise<TeamMemberItem[]>
       basedIn: d.based_in,
       background: d.background ?? undefined,
       socialLinks: d.social_links ?? undefined,
+      profileSlug: d.profile_slug || undefined,
+      order: d.order,
     } satisfies TeamMemberItem
   })
 }
 
-// Only board/leader tiers get a detail route (see front-end spec).
+// A person can appear in several tiers (one entry each) but has a single
+// profile page. Prefer the entry carrying the long bio, then board, leader,
+// staff — matching how the live site shows one profile per person.
+const TIER_PRIORITY: TeamTier[] = ['board', 'leader', 'staff']
+
 export async function getTeamMemberBySlug(slug: string): Promise<TeamMemberItem | undefined> {
-  const boardAndLeaders = [...(await getTeamMembers('board')), ...(await getTeamMembers('leader'))]
-  return boardAndLeaders.find((m) => m.slug === slug)
+  const matches = (await getTeamMembers()).filter((m) => m.profileSlug === slug)
+  return matches.sort(
+    (a, b) => Number(Boolean(b.longBio)) - Number(Boolean(a.longBio)) || TIER_PRIORITY.indexOf(a.tier) - TIER_PRIORITY.indexOf(b.tier)
+  )[0]
 }
 
 // --- Blog -----------------------------------------------------------
@@ -195,10 +254,55 @@ export async function getFeaturedPosts(): Promise<PostItem[]> {
   return all.filter((p) => p.featured)
 }
 
+// --- Resources -----------------------------------------------------------
+
+function toResource(slug: string, d: Record<string, any>): ResourceItem {
+  return {
+    slug,
+    title: d.title,
+    categories: d.categories ?? [],
+    publishedAt: d.published_on,
+    updatedAt: d.updated_on,
+    authors: d.authors ?? undefined,
+    excerpt: d.excerpt,
+    imageUrl: resolveImage(d.image),
+    imageAlt: d.image?.alt,
+    body: d.body ?? undefined,
+    fileUrl: resolveImage(d.file),
+    seo: toSeo(d),
+  }
+}
+
+// Newest first. multiSelect fields can't be indexed, so category filtering
+// happens here rather than in the query.
+export async function getResources(category?: ResourceCategory): Promise<ResourceItem[]> {
+  const { entries } = await getEmDashCollection('resources', { limit: LIST_LIMIT, orderBy: { published_on: 'desc' } })
+  const all = entries.map((e) => toResource(e.slug ?? '', e.data as Record<string, any>))
+  return category ? all.filter((r) => r.categories.includes(category)) : all
+}
+
+export function getResourcesByCategory(category: ResourceCategory): Promise<ResourceItem[]> {
+  return getResources(category)
+}
+
+export async function getResource(slug: string): Promise<ResourceItem | undefined> {
+  return (await getResources()).find((r) => r.slug === slug)
+}
+
 // --- Site-wide sponsors / sponsorship tiers -----------------------------
 
 export async function getSponsors(): Promise<Sponsor[]> {
   const { entries } = await getEmDashCollection('sponsors', { limit: LIST_LIMIT })
+  return entries.map((e) => toSponsor(e.data as Record<string, any>))
+}
+
+// Home page "Corporate Partners", in display order.
+export async function getPartners(): Promise<Sponsor[]> {
+  const { entries } = await getEmDashCollection('sponsors', {
+    where: { partner: true },
+    orderBy: { order: 'asc' },
+    limit: LIST_LIMIT,
+  })
   return entries.map((e) => toSponsor(e.data as Record<string, any>))
 }
 

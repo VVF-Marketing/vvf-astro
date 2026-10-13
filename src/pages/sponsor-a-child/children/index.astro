@@ -1,32 +1,50 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro'
 import ChildCard from '../../../components/ChildCard.astro'
+import SectionTitle from '../../../components/SectionTitle.astro'
 import { getChildren } from '../../../lib/content'
 import { CHILD_AGE_RANGES } from '../../../lib/content/types'
 
 const children = await getChildren()
 ---
 
-<PageLayout title="Meet the Children — Victoria Venezuela Foundation">
-  <section class="container max-w-container mx-auto px-4 py-10">
-    <h1 class="text-display-md text-center">Meet the children</h1>
-    <p class="mt-2 text-center text-ink-700">Find the child who needs you most</p>
+<PageLayout
+  title="Meet the Children | Sponsor a Child in Venezuela"
+  description="Meet the children waiting for a sponsor in Venezuela. Sponsorship starts at $25 a month and covers meals, medical care and school."
+>
+  <!-- Live counterpart: /sponsor-a-child-list-page (`.children-list_section`).
+       The name/age filters are a project addition with no live counterpart. -->
+  <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-16">
+    <SectionTitle
+      tagline="Children"
+      heading="Meet the children"
+      text="Sponsorship starts at $25 a month and covers meals, medical care and school. Find the child who needs you most."
+      headingLevel="h1"
+    />
 
-    <div class="mt-6 flex flex-wrap gap-4 justify-center" data-child-filters>
-      <input type="search" placeholder="Search by name" class="rounded-pill px-4 py-2 border" data-name-filter />
-      <div class="flex flex-wrap gap-2">
+    <div class="mx-auto mt-12 flex max-w-screen-xl flex-wrap items-center justify-center gap-4" data-child-filters>
+      <label class="sr-only" for="child-name-filter">Search by name</label>
+      <input
+        id="child-name-filter"
+        type="search"
+        placeholder="Search by name"
+        class="h-[38px] rounded-pill border border-brand-primary bg-transparent px-5 font-sans text-size-sm text-brand-primary placeholder:text-brand-primary/50"
+        data-name-filter
+      />
+      <fieldset class="flex flex-wrap gap-2">
+        <legend class="sr-only">Age range</legend>
         {
           CHILD_AGE_RANGES.map((range) => (
-            <label class="flex items-center gap-1 text-sm rounded-pill border px-3 py-1 cursor-pointer">
-              <input type="checkbox" value={range} data-age-filter />
+            <label class="flex cursor-pointer items-center gap-1 rounded-pill border border-brand-primary px-3 py-1 font-sans text-size-sm text-brand-primary has-[:checked]:bg-sky">
+              <input type="checkbox" value={range} data-age-filter class="accent-brand-primary" />
               {range}
             </label>
           ))
         }
-      </div>
+      </fieldset>
     </div>
 
-    <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6" data-child-grid>
+    <div class="mx-auto mt-12 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4" data-child-grid>
       {
         children.map((child) => (
           <div data-child-card data-name={child.displayName.toLowerCase()} data-age={child.age}>
@@ -36,7 +54,7 @@ const children = await getChildren()
       }
     </div>
 
-    <p class="mt-6 text-center text-ink-500 text-sm" data-empty-state hidden>
+    <p class="mt-6 text-center font-body text-size-sm text-brand-primary" data-empty-state hidden>
       No children match your filters.
     </p>
   </section>

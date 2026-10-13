@@ -1,0 +1,83 @@
+---
+// Live counterpart: /resources-categories/<category> — "Resources" heading,
+// the newest resource as a wide featured card, category filter pills, a
+// two-column grid of article cards, and a sidebar with the newsletter box
+// and related resources.
+import type { ResourceCategory, ResourceItem } from '../lib/content/types'
+import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_LABELS, resourceTag } from '../lib/content/types'
+import ArticleCard from './ArticleCard.astro'
+import NewsletterSignup from './NewsletterSignup.astro'
+
+export interface Props {
+  resources: ResourceItem[]
+  // Every resource (for the sidebar "Related" list).
+  all: ResourceItem[]
+  category?: ResourceCategory
+}
+
+const { resources, all, category } = Astro.props as Props
+const [featured] = all
+const related = all.filter((r) => r.slug !== featured?.slug).slice(0, 3)
+const pill = 'inline-flex items-center rounded-pill border-2 border-brand-accent px-6 py-2 font-sans text-size-md font-bold no-underline'
+const filters = [{ label: 'View All', href: '/resources', active: !category }].concat(
+  RESOURCE_CATEGORIES.map((c) => ({ label: RESOURCE_CATEGORY_LABELS[c], href: `/resources/category/${c}`, active: c === category }))
+)
+const tag = resourceTag
+---
+
+<section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-16">
+  <div class="mx-auto max-w-[1312px]">
+    <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">Resources</h1>
+    {
+      featured && (
+        <div class="mt-12">
+          <ArticleCard
+            variant="featured"
+            href={`/resources/${featured.slug}`}
+            title={featured.title}
+            date={featured.publishedAt}
+            excerpt={featured.excerpt}
+            imageUrl={featured.imageUrl}
+            imageAlt={featured.imageAlt}
+          />
+        </div>
+      )
+    }
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_413px]">
+      <div>
+        <nav aria-label="Resource categories" class="flex flex-wrap justify-center gap-3">
+          {
+            filters.map((f) => (
+              <a href={f.href} class={`${pill} ${f.active ? 'bg-brand-accent text-neutral-white' : 'bg-transparent text-brand-accent'}`} aria-current={f.active ? 'page' : undefined}>
+                {f.label}
+              </a>
+            ))
+          }
+        </nav>
+        <ul class="mt-6 grid gap-6 sm:grid-cols-2">
+          {
+            resources.map((r) => (
+              <li>
+                <ArticleCard href={`/resources/${r.slug}`} title={r.title} date={r.publishedAt} excerpt={r.excerpt} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
+              </li>
+            ))
+          }
+        </ul>
+        {resources.length === 0 && <p class="mt-10 text-center font-body text-size-md text-brand-primary">No resources in this category yet.</p>}
+      </div>
+      <aside class="flex flex-col gap-10">
+        <NewsletterSignup />
+        {
+          related.length > 0 && (
+            <div class="flex flex-col gap-6">
+              <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">Related</h2>
+              {related.map((r) => (
+                <ArticleCard variant="related" href={`/resources/${r.slug}`} title={r.title} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
+              ))}
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </div>
+</section>

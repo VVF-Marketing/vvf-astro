@@ -7,10 +7,23 @@ export default {
 
 export const Default = {
   args: {
-    heading: 'Give a child in Venezuela a brighter future',
-    subtext: 'Sponsor a child today and change a life for as little as $38 a month.',
-    primaryCta: { label: 'Sponsor a child', href: '/sponsor-a-child' },
-    secondaryCta: { label: 'Learn more', href: '/our-team' },
+    imageUrl: '/images/og-default.jpg',
+    heading: 'Transform a child’s life in Venezuela',
+    subtext: 'Every child deserves nutrition, medical care, and education.',
+    primaryCta: { label: 'Sponsor a Child', href: '/sponsor-a-child' },
+    secondaryCta: { label: 'Ways to Give', href: '/ways-to-give' },
+  },
+}
+
+export const CardRight = {
+  args: {
+    imageUrl: '/images/og-default.jpg',
+    align: 'right',
+    heading: 'Contact us',
+    subtext:
+      "We'd love to hear from you. Reach out with questions, partnership opportunities, or to learn how you can make a difference in Venezuela.",
+    primaryCta: { label: 'Donate', href: '/ways-to-give' },
+    secondaryCta: { label: 'Get Involved', href: '/events' },
   },
 }
 

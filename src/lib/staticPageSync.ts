@@ -8,6 +8,7 @@ const COLLECTION_INDEX_ROUTES = new Set([
   'blog/index.astro',
   'events/index.astro',
   'our-team/index.astro',
+  'resources/index.astro',
   'sponsor-a-child/children/index.astro',
 ])
 

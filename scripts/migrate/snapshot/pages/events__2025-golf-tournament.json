@@ -1,0 +1,602 @@
+{
+  "path": "/events/2025-golf-tournament",
+  "seo": {
+    "title": "2025 Annual Golf Charity Tournament | Victoria Venezuela Foundation",
+    "description": "74 golfers joined us at The Club at Weston Hills in Weston, FL, for our 2025 charity golf tournament supporting children in Venezuela.",
+    "ogTitle": "2025 Annual Golf Charity Tournament | Victoria Venezuela Foundation",
+    "ogDescription": "74 golfers joined us at The Club at Weston Hills in Weston, FL, for our 2025 charity golf tournament supporting children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e09b6cae64aca288c4b4_6ab320217eaaca6b6902cb4f_VVF_Golf2025_ShareImage_v1_preview.jpeg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abef13da13f08b2b7526fe7_6abef12dbbf48e5ff83df455_VVF_Golf2025_Hero_Fairway.jpeg",
+          "alt": "Four golfers on the fairway, one raising his arm to celebrate."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+          "alt": "Volunteers standing in front of the foundation's tent on the course."
+        },
+        {
+          "type": "h1",
+          "text": "Thank you for playing with us"
+        },
+        {
+          "type": "p",
+          "text": "A look back at our day on the course."
+        },
+        {
+          "type": "cta",
+          "text": "See the photos",
+          "href": "#photos"
+        },
+        {
+          "type": "cta",
+          "text": "Join us next year",
+          "href": "#next-edition"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_stats"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Results"
+        },
+        {
+          "type": "h2",
+          "text": "What we did together"
+        },
+        {
+          "type": "p",
+          "text": "Here is what one day on the course made possible for children in Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "See the photos",
+          "href": "#photos"
+        },
+        {
+          "type": "p",
+          "text": "$50,384"
+        },
+        {
+          "type": "h4",
+          "text": "Raised"
+        },
+        {
+          "type": "p",
+          "text": "For nutrition, medical care and education"
+        },
+        {
+          "type": "p",
+          "text": "74"
+        },
+        {
+          "type": "h4",
+          "text": "Golfers"
+        },
+        {
+          "type": "p",
+          "text": "Took part for children in Venezuela"
+        },
+        {
+          "type": "p",
+          "text": "40+"
+        },
+        {
+          "type": "h4",
+          "text": "Sponsors"
+        },
+        {
+          "type": "p",
+          "text": "Companies that backed the day"
+        },
+        {
+          "type": "p",
+          "text": "700+"
+        },
+        {
+          "type": "h4",
+          "text": "Children helped"
+        },
+        {
+          "type": "p",
+          "text": "With meals, medicine and school supplies"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Memories"
+        },
+        {
+          "type": "h2",
+          "text": "Event photos"
+        },
+        {
+          "type": "p",
+          "text": "Moments from the course, the auction and the celebration."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c1_dji_fly_20251110_120352_0127_1762797148849_photo-scaled.webp",
+          "alt": "Golfers standing by the lake on the course, holding Venezuelan flags."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a6_0J1A2800-e1784672229294.webp",
+          "alt": "Foundation banner beside an inflatable boat displayed on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a9_helen-randy-participants.webp",
+          "alt": "Participants posing together in front of a board of sponsor logos."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90e3_panoramica-campo-golf-scaled.webp",
+          "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90be_players-campo6-scaled.webp",
+          "alt": "Four golfers on the tee, one of them holding a Venezuelan flag."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+          "alt": "Volunteers standing in front of the foundation's tent on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c8_0J1A2506-scaled.webp",
+          "alt": "A golfer completing her swing against an open sky."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90cc_0J1A2719.webp",
+          "alt": "Golf carts parked in a row under palm trees."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90fc_0J1A2623.webp",
+          "alt": "Three volunteers standing beside a sponsor's sign on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9102_0J1A2751.webp",
+          "alt": "A group of golfers at a sponsored hole sign on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90ff_0J1A2758.webp",
+          "alt": "Three participants holding Venezuelan flags in front of a sponsor's tent."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9108_0J1A2857-scaled.webp",
+          "alt": "Two guests embracing in front of the sponsor board at the reception."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9112_0J1A2840-scaled.webp",
+          "alt": "Guests seated together at a table during the lunch."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9116_0J1A2833-scaled.webp",
+          "alt": "A guest serving himself at the buffet."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp",
+          "alt": "A golfer kneeling on the fairway beside a young boy holding a club."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9127_0J1A2522-scaled.webp",
+          "alt": "A dessert display on a table with a welcome sign."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9130_0J1A2518-scaled.webp",
+          "alt": "Canapés arranged on a serving tray beside a small menu card."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da913d_0J1A2373-e1784672260329.webp",
+          "alt": "A golfer mid-swing on the tee, with palm trees behind."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9145_0J1A2363-e1784672285366.webp",
+          "alt": "A golfer following through after a shot from the fairway."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9155_0J1A2564.webp",
+          "alt": "Rows of individual desserts set out on a service table."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da915b_0J1A2597-e1784672272860.webp",
+          "alt": "A member of the catering team pouring a drink at the service table."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9165_participants.webp",
+          "alt": "Three participants standing together on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9176_players-on-camp-scaled.webp",
+          "alt": "Two golfers playing the fairway, with foundation banners along the edge."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Auction"
+        },
+        {
+          "type": "h2",
+          "text": "Thank you, donors"
+        },
+        {
+          "type": "p",
+          "text": "Thank you to the people and companies who donated these items to the auction."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_partners"
+      ],
+      "blocks": [
+        {
+          "type": "h3",
+          "text": "Thank you to our sponsors"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+          "alt": "Trump Hotels"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+          "alt": "Santa Teresa 1796"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+          "alt": "Microsoft"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png",
+          "alt": "KP Aviation"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+          "alt": "Citimarine Store"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac2c27853ce5e8d82c62_6ab1abaad466174efbed1196_Fenagh-Engineering-and-Testing-Logo.jpeg",
+          "alt": "Fenagh Engineering and Testing"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca9da_6ab1abab56ce5288cbae4fd1_Coach-Solo-Golf-Academy-Logo.jpeg",
+          "alt": "CoachSolo Golf Academy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+          "alt": "COTMAQ"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab0f_6ab1abac639a89fb28ead0fc_August-Covers-Logo.png",
+          "alt": "August Covers"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f4_6aa783b99c28a51441a82fe1_Platinum-Business-Solutions.jpeg",
+          "alt": "Platinum Business Solutions"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab1d_6ab1abaca24bb2e4a3484506_GSnow-Creative-Logo.webp",
+          "alt": "GSnow Creative"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5bbde0d2f8ed2caa48_6ab1ababc59abb2e0f16ce57_PNC-Logo.png",
+          "alt": "PNC"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+          "alt": "Back Swing Golf Events"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb8f_6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%2520(1)%25201.svg",
+          "alt": "Boeing"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+          "alt": "Charity Golf International"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c44_6a301f4c2aaecae7a66298c1_19b54039cb4da83f45621bf6dffda58c5fb19708.png",
+          "alt": "LGT"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab46_6ab1abadbe6a6db0e2302683_Vaga-Academy-Logo.png",
+          "alt": "VAGA Modeling Academy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab6_6ab1abac1a73298ddd88f1f2_IVY-Development-Corp-Logo.png",
+          "alt": "IVY Development Corp"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca95a_6ab1abaabe7cb403e8dcac7b_Squisito-Logo.png",
+          "alt": "Squisito Gourmet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+          "alt": "Venezuelan-American Chamber of Commerce"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5cbde0d2f8ed2caaa7_6ab1abab639a89fb28ead024_Virtrify-Logo.jpeg",
+          "alt": "Virtrify"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caabb_6ab1abac47b1b349c34264b6_Smoke-on-the-Water-Logo.png",
+          "alt": "Smoke on the Water"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5abde0d2f8ed2caa0d_6ab1abab26d46a10dd162f1f_Emmanuel-Cigars-Logo.jpeg",
+          "alt": "Don Emmanuel Cigars"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+          "alt": "Topgolf"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caac6_6ab1abac639a89fb28ead0d2_Cafe-La-Carreta-Logo.png",
+          "alt": "Café La Carreta"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab8e_6ab1abadbde0d2f8ed2c6d3a_IonDynamic-Energy-Logo.png",
+          "alt": "IonDynamics Energy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabf3_6ab1abadc59abb2e0f16cf62_Valley-Bank-Logo.png",
+          "alt": "Valley Bank"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+          "alt": "Jet Set Gourmet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+          "alt": "Infinito Booth"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "recap-testimonials_section"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Testimonials"
+        },
+        {
+          "type": "h2",
+          "text": "What they said"
+        },
+        {
+          "type": "p",
+          "text": "From the people who were there."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "History"
+        },
+        {
+          "type": "h2",
+          "text": "Previous editions"
+        },
+        {
+          "type": "p",
+          "text": "See how each year's tournament went."
+        },
+        {
+          "type": "cta",
+          "text": "All events",
+          "href": "/all-events"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Mark your calendar"
+        },
+        {
+          "type": "p",
+          "text": "Next year's tournament is on its way. See the date and venue, and save your spot."
+        },
+        {
+          "type": "cta",
+          "text": "See next year's tournament",
+          "href": "/events/2026-golf-tournament"
+        },
+        {
+          "type": "cta",
+          "text": "Contact us",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Support"
+        },
+        {
+          "type": "h2",
+          "text": "Can't wait until next year?"
+        },
+        {
+          "type": "p",
+          "text": "Children in Venezuela need help today. Here are three ways to make a difference right now."
+        },
+        {
+          "type": "h3",
+          "text": "Sponsor a child"
+        },
+        {
+          "type": "p",
+          "text": "Build a direct relationship and change a young life."
+        },
+        {
+          "type": "cta",
+          "text": "Sponsor",
+          "href": "/sponsor-a-child"
+        },
+        {
+          "type": "h3",
+          "text": "Make a donation"
+        },
+        {
+          "type": "p",
+          "text": "Fund nutrition, medical care and education programs today."
+        },
+        {
+          "type": "cta",
+          "text": "Donate",
+          "href": "/ways-to-give"
+        },
+        {
+          "type": "h3",
+          "text": "Corporate sponsorships"
+        },
+        {
+          "type": "p",
+          "text": "Align your business with a mission that matters all year."
+        },
+        {
+          "type": "cta",
+          "text": "Partner with us",
+          "href": "/corporate-sponsorships"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Stay connected"
+        },
+        {
+          "type": "p",
+          "text": "Keep up with our news and events"
+        },
+        {
+          "type": "p",
+          "text": "We respect your privacy. Unsubscribe at any time."
+        }
+      ]
+    }
+  ]
+}

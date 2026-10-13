@@ -1,0 +1,45 @@
+---
+// Live counterpart: Earthquake Relief "Our Response" — intro on the left;
+// numbered phase cards on the right, each with a pastel number tile and a
+// status label (completed / in progress / upcoming).
+export interface Phase {
+  title: string
+  text: string
+  status: 'completed' | 'in-progress' | 'upcoming'
+}
+
+export interface Props {
+  heading: string
+  text?: string
+  phases: Phase[]
+}
+
+const { heading, text, phases } = Astro.props as Props
+const tile = { completed: 'bg-sky', 'in-progress': 'bg-sun', upcoming: 'bg-neutral-light-gray' }
+const label = { completed: 'Completed', 'in-progress': 'In progress', upcoming: 'Upcoming' }
+---
+
+<section class="px-6 py-16 md:py-[120px] md:px-20">
+  <div class="mx-auto grid max-w-screen-xl gap-12 lg:grid-cols-[1fr_620px]">
+    <div class="flex flex-col gap-6">
+      <h2 class="text-h3-mobile leading-[1.2] text-brand-primary md:text-h3">{heading}</h2>
+      {text && <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>}
+    </div>
+    <ol class="flex flex-col gap-6">
+      {
+        phases.map((p, i) => (
+          <li class="flex gap-6 rounded-2xl bg-neutral-white p-6">
+            <div class={`flex h-[110px] w-[110px] shrink-0 flex-col items-center justify-center gap-1 rounded-xl ${tile[p.status]}`}>
+              <span class="font-sans text-h3 font-extrabold leading-none text-brand-primary">{String(i + 1).padStart(2, '0')}</span>
+              <span class="rounded-pill bg-neutral-white px-2 py-0.5 font-body text-[10px] font-semibold uppercase text-brand-primary">{label[p.status]}</span>
+            </div>
+            <div class="flex flex-col gap-2 pt-2">
+              <h3 class="text-h5 leading-[1.4] text-brand-primary">{p.title}</h3>
+              <p class="font-body text-size-base leading-body text-brand-primary">{p.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

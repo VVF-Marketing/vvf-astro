@@ -1,0 +1,1196 @@
+{
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/69eed2046552a4560434c934_hero-section-picture.jpg": {
+    "path": "public/images/pages/6dd3733e-hero-section-picture.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 293124,
+    "sha256": "67cf90450bbf5c49cd4976466edbb4608cac39b752e5bc96790fcc8789e80645",
+    "alt": "Smiling young girl with pigtails playing inside a colorful inflatable bounce house."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/69eed2553a4566f5d7a0e99d_8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg": {
+    "path": "public/images/pages/d9d1e4da-8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 311159,
+    "sha256": "6a19a8d277577d63193b45925d3818fa37c1e8f01516f8c5f16ac0f79967cbf1",
+    "alt": "Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f550970d8ce5d29b1_Expanded.svg": {
+    "path": "public/images/pages/6bbc919e-expanded.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 7696,
+    "sha256": "40caafad6a921bad6923fd5833299401b701e8051552844f10322216bff92524"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f81004f19c5a27933_Vector.svg": {
+    "path": "public/images/pages/a037d128-vector.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 3896,
+    "sha256": "ec481c6bacffdeeb08b558ff6712836bc2bed196c6a08102c5e7c0b48b281756"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f95b3e9f0007c99e1_15%20Nutrition.svg": {
+    "path": "public/images/pages/b62b0e1d-15-nutrition.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 4393,
+    "sha256": "f12ddd0b13de228d743d02bcca65c5ce68026b53b1c12bd007ebc4aeb87d7b3a"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a1732866e860fb6f2a1b90c_98.webp": {
+    "path": "public/images/pages/1b2ca82c-98.webp",
+    "contentType": "image/webp",
+    "bytes": 83706,
+    "sha256": "842c8af521dccf203235fef6918c7ca14be7bc3b7ebbd50e388981dd84bb03be",
+    "alt": "Baby in pink dress held near red and white balloons and a large striped candy cane balloon."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a1732ae2ba04773f2cd062f_98.png": {
+    "path": "public/images/pages/5b51a5f8-98.png",
+    "contentType": "image/png",
+    "bytes": 1555269,
+    "sha256": "bdcdfb88f7cbfcb0ddcea1134d17fe5173192b7752feb13d8eb64a77c8fbdf0e",
+    "alt": "Smiling girl sitting at a table eating empanadas with orange cups nearby."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2ccefb172b2f7f61dd_uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg": {
+    "path": "public/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 8905,
+    "sha256": "0d3e39c340f5d285ef0628a108c3de44951ac2d6541c486ec6878ca40cc0fa7c"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2ccfcb6c4d6db4de86_uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg": {
+    "path": "public/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 10083,
+    "sha256": "54a76c587210f0d6833fb5ecd55ef1be262acd126aaf1e5c11ecf4c8e88b8f7c"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2cf90f1192203d1048_uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg": {
+    "path": "public/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 3166,
+    "sha256": "83076092ed476cc561fda175a177c1ea7fad01237108a2f79a6bf405c024ff65"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg": {
+    "path": "public/images/pages/764f1831-arrow-right.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 316,
+    "sha256": "a69829b899355dc78b1d62abfc54d3c75b730a402398012d5b6ce1ff105f0dbb"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg": {
+    "path": "public/images/pages/76726afb-arrow-left.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 318,
+    "sha256": "d8dc0fd6d43361c2e3963be17d17ecb76ff8268557bff2e45297e8de7f8e68f4"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png": {
+    "path": "seed/media/events/36778d37-the-trusty-handyman-logo-1.png",
+    "contentType": "image/png",
+    "bytes": 9264,
+    "sha256": "ca5dc58aa3c21866530440add71abd237bef4805f7ac32afd51423d4b93243b5",
+    "alt": "The Trusty Handyman"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4cc705426dec0a3165_topgolf-1%201.png": {
+    "path": "public/images/pages/ba99b466-topgolf-1-1.png",
+    "contentType": "image/png",
+    "bytes": 4491,
+    "sha256": "4804da7d74bb4b44a5415735d98cd57793b52394aa03415e1ae74311e40361d3"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a334d2a15722bfe5e653b96_0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp": {
+    "path": "public/images/pages/58f867b6-0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp",
+    "contentType": "image/webp",
+    "bytes": 96292,
+    "sha256": "9ee1a9b454bd1924f158fc1e3431f13f679717e892be75970d1e30776483179a",
+    "alt": "A smiling girl at a Victoria Venezuela Foundation event."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a836b0aa1dfa5011ec7dd6e_Placeholder%20Image.png": {
+    "path": "public/images/pages/4e21b6fc-placeholder-image.png",
+    "contentType": "image/png",
+    "bytes": 709891,
+    "sha256": "79277b66d1de1e0300999b62df947ecb48c1e80697f1dabf039f70f29d9e7115"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a84d10d671b1944cf18b43a_15d77ffd-ad0c-4914-a5cb-538fd74e2f6e%201.png": {
+    "path": "public/images/pages/ae149422-15d77ffd-ad0c-4914-a5cb-538fd74e2f6e-1.png",
+    "contentType": "image/png",
+    "bytes": 1352760,
+    "sha256": "2a7c899d37f879f555235d175656f0dbf8c383f74ae7433f9726af618cca47a1",
+    "alt": "Three smiling girls playing on an inflatable slide at a foundation activity"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a90beef5ebf33d5bdffcf3c_Benevity_logo.svg.webp": {
+    "path": "public/images/pages/d5ce82b3-benevity-logo-svg.webp",
+    "contentType": "image/webp",
+    "bytes": 15826,
+    "sha256": "79b5488ac94735e6fbce951a19bc8aef7855c5ac3423ce24ded75a58d7cc3f5d"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a90beefc0893c20a57e054c_YourCause_SAlogog_011723.png": {
+    "path": "public/images/pages/8cd2f99c-yourcause-salogog-011723.png",
+    "contentType": "image/png",
+    "bytes": 19203,
+    "sha256": "963f6b1669a67b71041b08d6109c3bfe40c75c60475a81373f892c7baa383c34"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a90bf30898618f90cca1c5f_guidestar-pro.webp": {
+    "path": "public/images/pages/6d5b79d9-guidestar-pro.webp",
+    "contentType": "image/webp",
+    "bytes": 6178,
+    "sha256": "5d076287e7095ff93fc0760bc0ebd74328e87faa148f93e47bb310c3ef68ee63"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a91bc2cc9ab6fc659c1dda5_98.png": {
+    "path": "public/images/pages/ec68af0e-98.png",
+    "contentType": "image/png",
+    "bytes": 1850768,
+    "sha256": "ed4daed2e4b7ac41ffe6c8aa51736fbb3962e2aec8da0260209915bc2a39ad07"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg": {
+    "path": "public/images/pages/1c2b6bc8-group-1-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 713,
+    "sha256": "1b0ce446abda6de4df2821901df2c43021cd1f2a5bdef8d6e4b525e47de5108d"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee34c34350fb3c03cb5_image%205.png": {
+    "path": "public/images/pages/1adfbc05-image-5.png",
+    "contentType": "image/png",
+    "bytes": 131257,
+    "sha256": "826a2a5ca245306019a6a8d2fba92691563f1473dea55f465639f295cdf90972"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee352eeb727f66e61ca_image%204%20(1).png": {
+    "path": "public/images/pages/70af2c92-image-4-1.png",
+    "contentType": "image/png",
+    "bytes": 126154,
+    "sha256": "c1e0ab32a8ea05674d1b21061d5db0f93413bed16514a59e186330baf8bf8eae"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee4330bcb583cbd65b9_image%204.png": {
+    "path": "public/images/pages/b26ea140-image-4.png",
+    "contentType": "image/png",
+    "bytes": 176190,
+    "sha256": "db4e73d2f9577eee92036bf9c8faf1ca3adcb620ad40f0b876c82d7ab1a76628"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee4fbe78d7bed6f8e56_image%205%20(1).png": {
+    "path": "public/images/pages/bd737e14-image-5-1.png",
+    "contentType": "image/png",
+    "bytes": 159385,
+    "sha256": "599dda187b93055a150021d38274ef89e5b8c032c4a3b63c9763a41724d679cd"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%20(1)%201.svg": {
+    "path": "public/images/pages/b4108158-boeing-full-logo-variant-1-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 6062,
+    "sha256": "d0f2f1ff7660d91ad5a999193ae3a7b2798accc46f3d882d73c67cac5b2b4df6"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9fc99a4a52f187dce3_Capa_1.svg": {
+    "path": "public/images/pages/59d81c95-capa-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 31819,
+    "sha256": "2b11f08bcdfb25b143e0d179fb6ae97f070098324fdc6fb77b10bfdaff224755"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9ff6de01d060603e21_Capa_1%20(1).svg": {
+    "path": "public/images/pages/4a6bc7fa-capa-1-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 28785,
+    "sha256": "f260f9f9296905eae9ab5aa10c48f67a3c655b70d4f3452135becc86704da7bb"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949fa0b2eaa2be6b083d71_logo-trump-hotels%201.svg": {
+    "path": "public/images/pages/78e198cf-logo-trump-hotels-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 9388,
+    "sha256": "0220e971ea76586001919ffc0c598224de1aa0fa8bfe75dfbb50e3de783a1013"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a94a42d52eeb727f66f6413_9f807887-6eeb-46a6-8c18-3fd6f3f03c8e%201.png": {
+    "path": "public/images/pages/a3fef8e5-9f807887-6eeb-46a6-8c18-3fd6f3f03c8e-1.png",
+    "contentType": "image/png",
+    "bytes": 845240,
+    "sha256": "a3c5a18235c2487ea6a222d69c909739bf3e6bf6b42a7bf6ded7902aa4687dd2"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a94ab25abcea4e87773806a_phone-call.svg": {
+    "path": "public/images/pages/c44d4ad8-phone-call.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 1496,
+    "sha256": "430175fe10cecc6d1424a167736675b6d17da7769d8e7f2c04f13e30d2e6af31"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a963fcdae8913ee9a5034eb_phone-call%20(1).svg": {
+    "path": "public/images/pages/daa9ccaf-phone-call-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 1496,
+    "sha256": "044f364b969946f313edbcef5f5da85f2f864d623121b8d5785cd047e07e8670"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a96dc6eeb45c5d8ea73dd4e_98.png": {
+    "path": "public/images/pages/e15186b8-98.png",
+    "contentType": "image/png",
+    "bytes": 1676800,
+    "sha256": "e1aaac8768dd97ba5d3ab6c9e55d3963788cfffc8f1829102efb5e0e5f0cd633"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa40f5f1cef2de6c4ff4737_98.png": {
+    "path": "public/images/pages/406e389b-98.png",
+    "contentType": "image/png",
+    "bytes": 1503016,
+    "sha256": "4efda977d107923a298a70de690330e186cfcf8d8c13cd15df6994ce2e64578f",
+    "alt": "A man carrying a child away from a building destroyed by the earthquakes in Venezuela."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad274d5a9550c838e6_image%2012.png": {
+    "path": "public/images/pages/8e3aa6c2-image-12.png",
+    "contentType": "image/png",
+    "bytes": 208288,
+    "sha256": "ab2fa9a4a3a0883abab9aa8788723007241cc204c0f82c5c321315e75fedca17",
+    "alt": "A damaged apartment tower standing above the surrounding city."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad2e51961cb4601a02_image%2013.png": {
+    "path": "public/images/pages/4fd38a77-image-13.png",
+    "contentType": "image/png",
+    "bytes": 194201,
+    "sha256": "ba31f6c7d75e785cac82711de23e38182de2fe166c1f383c44e6dbb1da5ad437",
+    "alt": "A woman standing among the rubble of destroyed homes."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad98224685e8fb7888_image%2014.png": {
+    "path": "public/images/pages/005e8213-image-14.png",
+    "contentType": "image/png",
+    "bytes": 291158,
+    "sha256": "2391b4fc6316523a45612ec7b1a1c6e79f826740375831c675c7fadac04ff36f",
+    "alt": "Two people walking out of a building wrecked by the earthquake."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412adb65da603231c7fd5_image%2011.png": {
+    "path": "public/images/pages/2b2a02c7-image-11.png",
+    "contentType": "image/png",
+    "bytes": 303345,
+    "sha256": "90979aa237c4fe094a91ab32802dea3b5036d9adf5066f5d5d423c90a89ab1a8",
+    "alt": "An excavator and workers clearing rubble from a collapsed building."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa413afe9a5eef98b1d85aa_Mapa%20ve.png": {
+    "path": "public/images/pages/6fa550cb-mapa-ve.png",
+    "contentType": "image/png",
+    "bytes": 51240,
+    "sha256": "cb3c385b01f46e203f79ba40b93d321a4e6346f0689c5e003a38fa2ee832b72a",
+    "alt": "Map of Venezuela marking Caracas and La Guaira, the areas hit by the June 2026 earthquakes."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa41791be83a63edc1b8b48_image%2015.png": {
+    "path": "public/images/pages/bc6541aa-image-15.png",
+    "contentType": "image/png",
+    "bytes": 1675431,
+    "sha256": "6dc80e5d735d0343b6edf1dca41bc4ca978dc9985bf366bece0e1c283d06e211",
+    "alt": "A man carrying a water container past earthquake-damaged houses."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa6f2c0f884d4a1be08e8aa_uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg": {
+    "path": "public/images/pages/bf4b24b4-uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 7450,
+    "sha256": "bbafc3109e252cc269e6e24e861fc03655e3ae55ed98a1df9a24bae515453e12"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa6fc07f43dc1e967e1b4d7_home.svg": {
+    "path": "public/images/pages/41d18615-home.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 578,
+    "sha256": "f195306a0c987ce91a80a26b324971e72fbb4a7fa4c01ada668149193568e08d"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe0755fe0fcaa8a26b_VVF_Golf2025_Memories_4_FoundationTent_v1.jpg": {
+    "path": "public/images/pages/852e7609-vvf-golf2025-memories-4-foundationtent-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 234073,
+    "sha256": "35d019c6d4c615b74c685eea76dc96a3d8741114c247063199500990ca18e11a",
+    "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe4d584ff9f6462964_VVF_Golf2025_Memories_2_PlayersOnFairway_v1.jpg": {
+    "path": "public/images/pages/f8241668-vvf-golf2025-memories-2-playersonfairway-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 125012,
+    "sha256": "04cadb1bda43ed3c850df45082361c13d23df43da05e9fc61269af6147741e37",
+    "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe7a45072cc788cdd7_VVF_Golf2025_Memories_3_JuniorGolfer_v1.jpg": {
+    "path": "public/images/pages/5d4f4ab4-vvf-golf2025-memories-3-juniorgolfer-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 86861,
+    "sha256": "29b833109d7d99b76c48b67a0efdb948b3f8e4d384f35459882dcd4fa4ca3713",
+    "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe7e99e35d3db4b74f_VVF_Golf2025_Memories_1_TeeShot_v1.jpg": {
+    "path": "public/images/pages/7ccdcf30-vvf-golf2025-memories-1-teeshot-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 94300,
+    "sha256": "98eb14443861cbf20a706ef8acb6d385be6e9bd7460ad89a852583704eee00ed",
+    "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe987ee6550724a880_VVF_Golf2025_Memories_5_VenezuelanFlags_v1.jpg": {
+    "path": "public/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 167467,
+    "sha256": "8e22c4350972ea425beeae99b023b88c4a5c30b98b743c60cd0c85566f205e2f",
+    "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa9918da919c4a62fd93ea1_VVF_OurPeople_Hero_Mobile_v1-1.jpg": {
+    "path": "public/images/pages/33b4f627-vvf-ourpeople-hero-mobile-v1-1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 108828,
+    "sha256": "fd102b506df198f2f68f14aca092cca7f1db06dd5af4686485f253265b3be13f",
+    "alt": "A doctor listens to a boy's chest with a stethoscope at a Victoria Venezuela Foundation medical clinic."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa99c159619f07e4cbccb88_VVF_OurPeople_Hero_Desktop_v4_TeamPhoto.jpg": {
+    "path": "public/images/pages/d44872ac-vvf-ourpeople-hero-desktop-v4-teamphoto.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 360108,
+    "sha256": "a6b5e5eb3ac1f2966c76d7caf4f65dce8aa7d6bf6ed29134134779390a64ed9f",
+    "alt": "Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad352e7191b53e8a5e_VVF_LaGuaira_Centre_Exterior_Web_v1.jpg": {
+    "path": "public/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 243576,
+    "sha256": "0a819adf4a0c22c7320e55e57dbd0010a0140dd0dc3d1191b6ba67f38a208545",
+    "alt": "Render of the planned VVF support centre in La Guaira, seen from the street."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad6b006e0df99c91bf_VVF_LaGuaira_Card_MedicalCare_Web_v1.jpg": {
+    "path": "public/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 124608,
+    "sha256": "0476493edfa3bbfeb0f878b8b7e53e8f93155f6b76b0043e7a5be7db85e9cfbf",
+    "alt": "A nurse examining a young girl while her mother sits beside her."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ade21d9557ab097e79_VVF_LaGuaira_Card_Shelter_Web_v1.jpg": {
+    "path": "public/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 164987,
+    "sha256": "df9de67a5a9860d1ed61aba8302ac5ede75369f2a73a64746b414734ade65e29",
+    "alt": "Families arriving at the courtyard of the planned VVF support centre."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3bcba94a6d021995d46_VVF_LaGuaira_Card_Nutrition_Web_v1.jpg": {
+    "path": "public/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 121134,
+    "sha256": "38ffa3e1bff339da154960050788078fa88fdac98b8cb2a7bae235744a18a290",
+    "alt": "Children eating a hot meal together in the centre's dining room."
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aab6643a67489fc5fe895cf_VVF_SponsorArticle_Featured_v2.jpg": {
+    "path": "public/images/pages/91f6fb13-vvf-sponsorarticle-featured-v2.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 338180,
+    "sha256": "d223cd3ea59d46e5a663a416affadd6dca4029ea243137829a519ab48a290654"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabe7dbb48e0a0d19755da3_VVF_Corporate_Hero_Child_v1.jpg": {
+    "path": "public/images/pages/9abd7ec8-vvf-corporate-hero-child-v1.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 321650,
+    "sha256": "d1435448c16b5f482c6fdd96980d5f1348aec81ac73080fd3396651fda54c42b",
+    "alt": "A girl smiling at a Victoria Venezuela Foundation event in Venezuela"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a102e2b04a6b5c177_VVF_Icon_Reward_Report_v1.svg": {
+    "path": "public/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 822,
+    "sha256": "f468099ec4bde6cf8509bf2440466e7d4209e07155db25716352853319ab4054"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a133606cd530e0796_VVF_Icon_Reward_Prayer_v1.svg": {
+    "path": "public/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 863,
+    "sha256": "31d71d53dbe81d18459982cf18b1f310067aed7cb303aeaaf5553c5734499acc"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a76cffee18d8a24e9_VVF_Icon_Reward_Letters_v1.svg": {
+    "path": "public/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 884,
+    "sha256": "73490b45792d876e39f9c4e81b9f26d58004c0cd767522e6c8a7a57447afbc7e"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3ad24800b0c386a818_VVF_Icon_Reward_Photos_v1.svg": {
+    "path": "public/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 1090,
+    "sha256": "fc4ad96e7f8f68ce40c6eb5840470e74fae5adfa3c04076ed0a6eab5e41fd324"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg": {
+    "path": "public/images/pages/57692375-vvf-home-shareimage-v2.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 92482,
+    "sha256": "d6541f42ffd5699e4fb31e4b4a83717954c8c516bf4a9d9c1cae27a71a477e96"
+  },
+  "https://cdn.prod.website-files.com/698be8581713b564865abf49/6ab5c9d76931639fba442187_VVF_Golf2026_FlagPhoto_WaysToGive_v1.webp": {
+    "path": "public/images/pages/82499f8c-vvf-golf2026-flagphoto-waystogive-v1.webp",
+    "contentType": "image/webp",
+    "bytes": 503420,
+    "sha256": "bd668109b3464012c1ec01a799f9a38bb2664d76d9c37abf4ad1a33d77d9a041",
+    "alt": "Golfers standing by the lake at the Victoria Venezuela Foundation charity golf tournament, holding Venezuelan flags."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a6_0J1A2800-e1784672229294.webp": {
+    "path": "seed/media/events/a23fdd46-0j1a2800-e1784672229294.webp",
+    "contentType": "image/webp",
+    "bytes": 253752,
+    "sha256": "776fc6861c56f3b7611f15b3c6da3aa8f4f531fbdfcd760b6024ae3becfd21e1",
+    "alt": "Foundation banner beside an inflatable boat displayed on the course."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a9_helen-randy-participants.webp": {
+    "path": "seed/media/events/0eef0daa-helen-randy-participants.webp",
+    "contentType": "image/webp",
+    "bytes": 209294,
+    "sha256": "d16e58fa016cb8db553c0ff96af58d72afe5f0f34a6a27e1fa597bdd8ea3a415",
+    "alt": "Participants posing together in front of a board of sponsor logos."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90be_players-campo6-scaled.webp": {
+    "path": "seed/media/events/4fc03922-players-campo6-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 349810,
+    "sha256": "398ab613199ae84b628a5ef45fe446fd7486750c443c5e657bfae2d7ea1cda3c",
+    "alt": "Four golfers on the tee, one of them holding a Venezuelan flag."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c1_dji_fly_20251110_120352_0127_1762797148849_photo-scaled.webp": {
+    "path": "seed/media/events/c6b3a8d9-dji-fly-20251110-120352-0127-1762797148849-photo-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 503420,
+    "sha256": "bd668109b3464012c1ec01a799f9a38bb2664d76d9c37abf4ad1a33d77d9a041",
+    "alt": "Golfers standing by the lake on the course, holding Venezuelan flags."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c8_0J1A2506-scaled.webp": {
+    "path": "seed/media/events/4d704b41-0j1a2506-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 201942,
+    "sha256": "f6d41e9371867747d2913bbdc19ad79b8f4bf98667ccc18fc34fa542e0c74a74",
+    "alt": "A golfer completing her swing against an open sky."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90cc_0J1A2719.webp": {
+    "path": "seed/media/events/615be337-0j1a2719.webp",
+    "contentType": "image/webp",
+    "bytes": 227186,
+    "sha256": "ca5a325e0ac2d98e2b809421a43c720160de38ded543e4ec8dab22ec9f00b9f0",
+    "alt": "Golf carts parked in a row under palm trees."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp": {
+    "path": "seed/media/events/dfa762ee-tent-fvv1-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 815498,
+    "sha256": "7cc8a1f5a571391493fe08e903d2eb47ecbeb05a4f2923c6ed28902ac4a113f8",
+    "alt": "Volunteers standing in front of the foundation's tent on the course."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90e3_panoramica-campo-golf-scaled.webp": {
+    "path": "seed/media/events/98b36bc1-panoramica-campo-golf-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 880620,
+    "sha256": "eee65f6f7b1ce5da741eefb8e7cca76a15de33099a9b597fc50dccdef440d628",
+    "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90fc_0J1A2623.webp": {
+    "path": "seed/media/events/d34dea08-0j1a2623.webp",
+    "contentType": "image/webp",
+    "bytes": 703190,
+    "sha256": "29eeaeff2d6bc3a4f0ae216a3da7182fd6c8c14aa4153814f6b98c9405692bb7",
+    "alt": "Three volunteers standing beside a sponsor's sign on the course."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90ff_0J1A2758.webp": {
+    "path": "seed/media/events/2d4a83e2-0j1a2758.webp",
+    "contentType": "image/webp",
+    "bytes": 373852,
+    "sha256": "425ec9d7df7f6310308e8276098cc183308b4cde1b5db7c031f3c9c242217e40",
+    "alt": "Three participants holding Venezuelan flags in front of a sponsor's tent."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9102_0J1A2751.webp": {
+    "path": "seed/media/events/168c1f2c-0j1a2751.webp",
+    "contentType": "image/webp",
+    "bytes": 480470,
+    "sha256": "8279468f797d1c51be63ed76cdc38b0ace491af648d6bff15991401aa91aa70a",
+    "alt": "A group of golfers at a sponsored hole sign on the course."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9108_0J1A2857-scaled.webp": {
+    "path": "seed/media/events/76084604-0j1a2857-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 140726,
+    "sha256": "3e52975abb7685da1b6913e0ec224c380180e19a861d9a0d6decf9c637ca7387",
+    "alt": "Two guests embracing in front of the sponsor board at the reception."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9112_0J1A2840-scaled.webp": {
+    "path": "seed/media/events/266ca6df-0j1a2840-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 282600,
+    "sha256": "0bcf149e895510dcd19590cf58145a3286178098416fe642ea785a899a3677ec",
+    "alt": "Guests seated together at a table during the lunch."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9116_0J1A2833-scaled.webp": {
+    "path": "seed/media/events/84f5b4b1-0j1a2833-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 161718,
+    "sha256": "238fb5ab39bde7e1977ecc92ee0bb2c97ddcded6e7de4285c26e703a953db48d",
+    "alt": "A guest serving himself at the buffet."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9127_0J1A2522-scaled.webp": {
+    "path": "seed/media/events/7fb3d97a-0j1a2522-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 202658,
+    "sha256": "9ec23ab75d7f5e4357fb10dbcf03bd79a85644947b7ff31f898b60bd4deeeed9",
+    "alt": "A dessert display on a table with a welcome sign."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp": {
+    "path": "seed/media/events/3d810594-0j1a2701-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 405648,
+    "sha256": "fa2626865794adb6d62692c45b5ccaa3f6bdefe0509f8cf72d071655e9c02f94",
+    "alt": "A smiling golfer kneels on the green with a young boy holding a putter."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9130_0J1A2518-scaled.webp": {
+    "path": "seed/media/events/0196c725-0j1a2518-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 259762,
+    "sha256": "ab4b62e03712ce5f6103f822947bd6862113f15b87a60be233cc2032e0d27069",
+    "alt": "Canapés arranged on a serving tray beside a small menu card."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da913d_0J1A2373-e1784672260329.webp": {
+    "path": "seed/media/events/09ed4b46-0j1a2373-e1784672260329.webp",
+    "contentType": "image/webp",
+    "bytes": 253770,
+    "sha256": "606e984acd53941135ccd05e189f26dc6da8a06d516fcf39c3833c781458cee2",
+    "alt": "A golfer mid-swing on the tee, with palm trees behind."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9145_0J1A2363-e1784672285366.webp": {
+    "path": "seed/media/events/49795b58-0j1a2363-e1784672285366.webp",
+    "contentType": "image/webp",
+    "bytes": 220272,
+    "sha256": "920bb0f9d324947edc45fd24c9725fabde92d02119b297342928a018af7a4b76",
+    "alt": "A golfer following through after a shot from the fairway."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9155_0J1A2564.webp": {
+    "path": "seed/media/events/3313a60a-0j1a2564.webp",
+    "contentType": "image/webp",
+    "bytes": 215348,
+    "sha256": "4fcecd458868670055349d6f9b45fe0c0fe3b39e530215b55880e6ef67db3e62",
+    "alt": "Rows of individual desserts set out on a service table."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da915b_0J1A2597-e1784672272860.webp": {
+    "path": "seed/media/events/2ec27283-0j1a2597-e1784672272860.webp",
+    "contentType": "image/webp",
+    "bytes": 168232,
+    "sha256": "538b3fb91f6a2df44c38279999d855442d0ec3fac872f6e3787ceda5f5e2eec5",
+    "alt": "A member of the catering team pouring a drink at the service table."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9165_participants.webp": {
+    "path": "seed/media/events/c3c2f7a7-participants.webp",
+    "contentType": "image/webp",
+    "bytes": 291172,
+    "sha256": "a04630c298e492632fb149d21466717ad5372539ee4e27ee42d8421c99b43284",
+    "alt": "Three participants standing together on the course."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9176_players-on-camp-scaled.webp": {
+    "path": "seed/media/events/6649f5fd-players-on-camp-scaled.webp",
+    "contentType": "image/webp",
+    "bytes": 549728,
+    "sha256": "3e4eab74736fd0ba4e9fc49b9839457158b3c606c4477bef5a1cc644898d77a3",
+    "alt": "Two golfers playing the fairway, with foundation banners along the edge."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb8f_6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%2520(1)%25201.svg": {
+    "path": "seed/media/sponsors/5717a4b6-boeing-full-logo-variant-1-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 6062,
+    "sha256": "d0f2f1ff7660d91ad5a999193ae3a7b2798accc46f3d882d73c67cac5b2b4df6",
+    "alt": "Boeing"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb93_6aa78365864766c1b6d763fb_Abbvie.jpeg": {
+    "path": "seed/media/sponsors/cf40f900-abbvie.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2385,
+    "sha256": "1afcc2479538b31d810cc1f93250b2ead8af2b5cb7cab5d64284e8b2518aab85",
+    "alt": "AbbVie"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb96_6aa783653f65ff7cbda7468e_AirAnalytics.jpeg": {
+    "path": "seed/media/sponsors/623189f6-airanalytics.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2975,
+    "sha256": "17bb7f05e433ce4cf16047f201b03ab1c89b9d729d4852312c0023cae61d97a2",
+    "alt": "Air Analytics"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb99_6aa783684e94200fb5f9a588_Arepa-Magnet.jpeg": {
+    "path": "seed/media/sponsors/abec34ba-arepa-magnet.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 4418,
+    "sha256": "64dcdded266f1210bebe32daaf872cfbfeafbc5f861555a94f864363042afba5",
+    "alt": "Arepa Magnet"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9c_6aa78365864766c1b6d76411_Accenture.png": {
+    "path": "seed/media/sponsors/e60f0278-accenture.png",
+    "contentType": "image/png",
+    "bytes": 3990,
+    "sha256": "d83c83dabec396dfa3fb4f9d378a3b2398f5e4ba24311ef7ab15536959f36020",
+    "alt": "Accenture"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9f_6aa783684e94200fb5f9a51a_Anytime-Carpet-Cleaning.jpeg": {
+    "path": "seed/media/sponsors/fd1eb88a-anytime-carpet-cleaning.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2962,
+    "sha256": "11b283088cc38a8d06c4110c91d78e14700c4a9c784a7ece6258c1bbab981102",
+    "alt": "Anytime Carpet Cleaning"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba2_6aa78368e8788851834aab40_BlueBox.jpeg": {
+    "path": "seed/media/sponsors/9df40df4-bluebox.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2838,
+    "sha256": "89ab914304038203eefd7601af3e19b06b484a036590c4e32dc2fe6238d09693",
+    "alt": "BlueBox"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba8_6aa77a4f1f7e1f90273aa790_Chevron.png": {
+    "path": "seed/media/sponsors/26565e8c-chevron.png",
+    "contentType": "image/png",
+    "bytes": 8337,
+    "sha256": "83410efa0223deda541037f65b30d31593ac62b6fbb840baaabdbb221735776e",
+    "alt": "Chevron"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c44_6a301f4c2aaecae7a66298c1_19b54039cb4da83f45621bf6dffda58c5fb19708.png": {
+    "path": "seed/media/sponsors/bea61c99-19b54039cb4da83f45621bf6dffda58c5fb19708.png",
+    "contentType": "image/png",
+    "bytes": 18374,
+    "sha256": "5a54a0e94a80cf9e2eda559fe1a1f06a21bf4b792307c9f53ce9ad14c76b4da7",
+    "alt": "LGT"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png": {
+    "path": "seed/media/sponsors/516733ca-frame-385.png",
+    "contentType": "image/png",
+    "bytes": 2732,
+    "sha256": "f350ddef91e3acd5f3cb0071dde469b0dd05f7463cc12233543456cb06fef65e",
+    "alt": "Microsoft"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4d_6aa77a4f529956dfd3886e1a_Medtronic.png": {
+    "path": "seed/media/sponsors/50a94653-medtronic.png",
+    "contentType": "image/png",
+    "bytes": 5376,
+    "sha256": "69124f2dceef6eef1201253c36327f65f5d32a2fe584feba34544b0ccf933fe1",
+    "alt": "Medtronic"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c50_6aa783b90038252eb22e05e4_LambWeston.png": {
+    "path": "seed/media/sponsors/33d8654b-lambweston.png",
+    "contentType": "image/png",
+    "bytes": 3283,
+    "sha256": "61a448e380cff05912c6c74ecfc27d75af8d58bf097a487a17ad6f941f3c5c3f",
+    "alt": "Lamb Weston"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c53_6aa783b90038252eb22e05ce_Ikes-Barber-Shop.png": {
+    "path": "seed/media/sponsors/cb010bc3-ikes-barber-shop.png",
+    "contentType": "image/png",
+    "bytes": 4152,
+    "sha256": "4c83979989e4181cd057ca6c80f55963a01dafef2b8059f8b98758e4b4e4bf57",
+    "alt": "Ike's Barber Shop"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c56_6aa783b99c28a51441a8300a_Family-Cosmetic-Dentistry.png": {
+    "path": "seed/media/sponsors/b7fb5d20-family-cosmetic-dentistry.png",
+    "contentType": "image/png",
+    "bytes": 28235,
+    "sha256": "c0ec0f7fedc81e708a9501875a85c8a812da0547f97b39d5408d2e5f2ba9765d",
+    "alt": "Family Cosmetic Dentistry"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c59_6aa7840787806cf4fd253bee_Mustang-FC.jpeg": {
+    "path": "seed/media/sponsors/8b268f52-mustang-fc.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 3869,
+    "sha256": "2dffe371937a3b8a5a328147e4a1b3d8c4d6713de94a8fae22c4a61cbd1adee1",
+    "alt": "Mustang FC"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c77_6aa783b915cd9e027557cf5c_Mundo-D-Papel.jpeg": {
+    "path": "seed/media/sponsors/5507f200-mundo-d-papel.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2493,
+    "sha256": "d148643ee61fc514df3a3f06466fa59c93aced782473c14423c4d82a00cfa45b",
+    "alt": "Mundo D' Papel"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c7e_6aa7840787806cf4fd253c3b_New-York-Life.jpeg": {
+    "path": "seed/media/sponsors/6c815c6c-new-york-life.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 4811,
+    "sha256": "85c1cc4a38c3871757d35c1b7fc55e5b5c4c68a46ac19749f2f928bbcd50412d",
+    "alt": "New York Life"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f1_6aa7840803fdb721dea00c7a_Raytheon-Technologies.png": {
+    "path": "seed/media/sponsors/247f7793-raytheon-technologies.png",
+    "contentType": "image/png",
+    "bytes": 8946,
+    "sha256": "0505028cc6c787292d6fe9af3aee632132e19d3fda2adf6f252fc8bbc6085fcf",
+    "alt": "Raytheon Technologies"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f4_6aa783b99c28a51441a82fe1_Platinum-Business-Solutions.jpeg": {
+    "path": "seed/media/sponsors/778b2f43-platinum-business-solutions.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 6777,
+    "sha256": "7def9365bddeb7271299b8d1d1586909a39d144fb7d930e40166d02ff2392ffb",
+    "alt": "Platinum Business Solutions"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c3fe_6aa78408f09ee2a0ca46edde_SFLO.jpeg": {
+    "path": "seed/media/sponsors/160ea535-sflo.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2753,
+    "sha256": "2114c7c74613552fb06911f72dbffb592025e26e9edb6062d781d455b659639c",
+    "alt": "SFLO"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c415_6aa784089c28a51441a85060_Tacoly-Moly.png": {
+    "path": "seed/media/sponsors/d90a4392-tacoly-moly.png",
+    "contentType": "image/png",
+    "bytes": 12840,
+    "sha256": "82085e8572776d67848086d97e801cecc1b0a534e48b9fe589f914f95ae3cd3b",
+    "alt": "Tacoly Moly"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png": {
+    "path": "seed/media/sponsors/13115d03-topgolf-1-1.png",
+    "contentType": "image/png",
+    "bytes": 4491,
+    "sha256": "4804da7d74bb4b44a5415735d98cd57793b52394aa03415e1ae74311e40361d3",
+    "alt": "Topgolf"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c466_6aa78408f09ee2a0ca46ee4b_Triumphant-Transition-Partners.png": {
+    "path": "seed/media/sponsors/c0fb280d-triumphant-transition-partners.png",
+    "contentType": "image/png",
+    "bytes": 5915,
+    "sha256": "9552b8e3d9999717a7e6c7be32144e5e5d7472f712ba2166f87ae99ca572f9be",
+    "alt": "Triumphant Transition Partners"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c46a_6aa77a504e94200fb5f5b832_Wells-Fargo.png": {
+    "path": "seed/media/sponsors/a79b6079-wells-fargo.png",
+    "contentType": "image/png",
+    "bytes": 5215,
+    "sha256": "e2e58037087a6ca1727ebb7784855032e77d3b1fab408c4b918600252b55f5fa",
+    "alt": "Wells Fargo"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp": {
+    "path": "seed/media/team_members/15177727-randy-lander.webp",
+    "contentType": "image/webp",
+    "bytes": 67952,
+    "sha256": "825af741e5a881a162353a7c75963110d07ec14dca67a8f73adae6ea3ffc29b0",
+    "alt": "Randy Lander"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp": {
+    "path": "seed/media/team_members/1822aacd-helen-bello.webp",
+    "contentType": "image/webp",
+    "bytes": 62408,
+    "sha256": "0188cdd91f3eb777911b8bfdf46d1f9e7cf730ecfa5d109f4009486656162af6",
+    "alt": "Helen Bello"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp": {
+    "path": "seed/media/team_members/cb8709d3-pastor-jose-guerrero.webp",
+    "contentType": "image/webp",
+    "bytes": 44834,
+    "sha256": "ed764f3c8ad12798ef7e86f638ff92a338702e8d4b85c191d1b39c8270ab00c9",
+    "alt": "Pastor Jose Guerrero"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp": {
+    "path": "seed/media/team_members/380f5b7e-charmiant-corado.webp",
+    "contentType": "image/webp",
+    "bytes": 72082,
+    "sha256": "ba11ec84499b7f22e1f774a567383259d4621e2ceeac679cb68a760209553398",
+    "alt": "Charmiant Corado"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp": {
+    "path": "seed/media/team_members/b361768e-juan-tomasini.webp",
+    "contentType": "image/webp",
+    "bytes": 37432,
+    "sha256": "1ad3473e562ba5c1888f96da1e42e81b56133d85e77a7663405206de6a0138a2",
+    "alt": "Juan Tomasini"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp": {
+    "path": "seed/media/team_members/3cd33fab-enrique-flores.webp",
+    "contentType": "image/webp",
+    "bytes": 50486,
+    "sha256": "9a90d518b04c2595ff83fc40962ff0905422497947826652ea49d5ab566bcb3b",
+    "alt": "Enrique Flores"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp": {
+    "path": "seed/media/team_members/876fbf5d-arivana-rangel.webp",
+    "contentType": "image/webp",
+    "bytes": 55324,
+    "sha256": "ad0eaf98c89c424b06c92bd054e362ea89f813453f760b94100b5722bef0adde",
+    "alt": "Arivana Rangel"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp": {
+    "path": "seed/media/team_members/c0e5adbb-dorceia-watkins.webp",
+    "contentType": "image/webp",
+    "bytes": 57472,
+    "sha256": "21eb9374616af6a1363df17b967e34ec2fd23b18f0f65cc712ae78a055f10678",
+    "alt": "Dorceia Watkins"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp": {
+    "path": "seed/media/team_members/7fa7b1a3-luis-arias.webp",
+    "contentType": "image/webp",
+    "bytes": 59018,
+    "sha256": "c1cd1f4c5973db670ee1981b688b0d4c41cca7543422a4b83542f6d3eaf8731e",
+    "alt": "Luis Arias"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp": {
+    "path": "seed/media/team_members/c3970b92-ximena-sosa.webp",
+    "contentType": "image/webp",
+    "bytes": 57724,
+    "sha256": "b2f9954ef17dcea4a289e8c99544e6a8b6e0b494ce7b3c60347dff14476f3ad2",
+    "alt": "Ximena Sosa"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp": {
+    "path": "seed/media/team_members/588296d4-elimar-ugueto.webp",
+    "contentType": "image/webp",
+    "bytes": 55738,
+    "sha256": "dd6b6d32b5f4f4db9ed899ebb72e4f6c813ce9ba5b48c37a0cc035b762674ea3",
+    "alt": "Elimar Ugueto"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp": {
+    "path": "seed/media/team_members/054f1b4b-vanessa-sanchez.webp",
+    "contentType": "image/webp",
+    "bytes": 72952,
+    "sha256": "ccff6be7d4c8caa2bbba6906cb91a538b8ab02794de5e10400abccd19cb18680",
+    "alt": "Vanessa Sanchez"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp": {
+    "path": "seed/media/team_members/f0013965-isaias-mota.webp",
+    "contentType": "image/webp",
+    "bytes": 34026,
+    "sha256": "c1b33744f7be8de27748d9949b9349f419a68f0e7341a9d18f32805825111913",
+    "alt": "Isaias Mota"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp": {
+    "path": "seed/media/team_members/a531e19e-johnny-yataco.webp",
+    "contentType": "image/webp",
+    "bytes": 35618,
+    "sha256": "24ba93d7009830b313085df4cd3a1b6a04ee29e54cec6633d992f7ad92136388",
+    "alt": "Johnny Yataco"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp": {
+    "path": "seed/media/team_members/f677921a-david-cardenas.webp",
+    "contentType": "image/webp",
+    "bytes": 39590,
+    "sha256": "25096e83f20087487183ff595743db00441a726a6c5a4f5e55e2bf386b80baee",
+    "alt": "David Cardenas"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab596dc29f77e666ddde23_698d3ac7cc66700fbbaee880_press-annual-report-2025.pdf": {
+    "path": "seed/media/resources/df583cbe-press-annual-report-2025.pdf",
+    "contentType": "application/pdf",
+    "bytes": 4837662,
+    "sha256": "b0dc08c0762a7411668d6a6bfc555c28d8328678f2acfb4ca7995e6db82eece4"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb5f_6aab66438397e29392e71527_VVF_SponsorArticle_Social_v2.jpeg": {
+    "path": "seed/media/resources/dd0f2d33-vvf-sponsorarticle-social-v2.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 199129,
+    "sha256": "e3ffd5c9f6cf919bd4f2e2cc4520b42fe3df218afc379784be4846418f403963"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb62_6aab6643a67489fc5fe895cf_VVF_SponsorArticle_Featured_v2.jpeg": {
+    "path": "seed/media/resources/6179ff54-vvf-sponsorarticle-featured-v2.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 338180,
+    "sha256": "d223cd3ea59d46e5a663a416affadd6dca4029ea243137829a519ab48a290654",
+    "alt": "How to sponsor a child directly, without going through a large charity"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb67_6aab66432cc55878fb4a001e_VVF_SponsorArticle_Supplies_v1.jpeg": {
+    "path": "seed/media/resources/b70aa4bc-vvf-sponsorarticle-supplies-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 232618,
+    "sha256": "4c908113dca1bf4cb624c8e1f0c085670b64d4bb81e378377c142a2dbd39b3ea"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb6a_6aab6643fb6669748ced1003_VVF_SponsorArticle_Connection_v1.jpeg": {
+    "path": "seed/media/resources/c729c01a-vvf-sponsorarticle-connection-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 151509,
+    "sha256": "add990143903034780ee3333649de46bf1be90f47799171b21d8142b9a57888c"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb6e_6aab66432cc55878fb4a000d_VVF_SponsorArticle_Meals_v1.jpeg": {
+    "path": "seed/media/resources/a70d4839-vvf-sponsorarticle-meals-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 167864,
+    "sha256": "4bc4601ead530378bcb828b04186686362da7c4fc9e6aedf93e0094898f5cff7"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af4_6aabe162f0e62e432616f0d7_VVF_FinancialsCover_Annual_Social_v1.png": {
+    "path": "seed/media/resources/7bf88961-vvf-financialscover-annual-social-v1.png",
+    "contentType": "image/png",
+    "bytes": 37776,
+    "sha256": "d4467689d184437c391dc2222b3cbf727128c2ac610b3131ed9525c4266d4a1a"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af7_6aabe162f0e62e432616f0a1_VVF_FinancialsCover_Annual_Featured_v1.png": {
+    "path": "seed/media/resources/2d41d8bc-vvf-financialscover-annual-featured-v1.png",
+    "contentType": "image/png",
+    "bytes": 54108,
+    "sha256": "d92f78cc1fe256de24e531e1ada6501297dade3e9d6d9ea857eaaff7cd2445ce",
+    "alt": "Annual Report 2022"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69afb_698d3ac6836054e52b824cfc_press-annual-report-2022.pdf": {
+    "path": "seed/media/resources/e38951ca-press-annual-report-2022.pdf",
+    "contentType": "application/pdf",
+    "bytes": 816009,
+    "sha256": "6d639e2cc6baa9c2d6616cb30345773ed929c5219180c4905c1b0120346e000b"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2cb7b757ac392e69aff_698d3ac6cc66700fbbaee800_press-annual-report-2023.pdf": {
+    "path": "seed/media/resources/6eecfbdc-press-annual-report-2023.pdf",
+    "contentType": "application/pdf",
+    "bytes": 6435220,
+    "sha256": "d9199a5de4a94f4c8d88d15f2b5e8307bc4ec23445841d1339c5048a768cb50c"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png": {
+    "path": "seed/media/resources/f4e304ed-vvf-financialscover-quarterly-featured-v1.png",
+    "contentType": "image/png",
+    "bytes": 53683,
+    "sha256": "a3c996e2582bb2b990c794b434ceeffd755269d6e5ba9a36a0efd342e1d99e71",
+    "alt": "Your Impact 1Q2024"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0855_6aabe163dd88664d1fb8f6a2_VVF_FinancialsCover_Quarterly_Social_v1.png": {
+    "path": "seed/media/resources/e3f0f4da-vvf-financialscover-quarterly-social-v1.png",
+    "contentType": "image/png",
+    "bytes": 37458,
+    "sha256": "26eb920a8227117ea72273199502b428137029011df96e4eda507d3495d17179"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3020b2a2bd6e7cd0859_698d3acbcc66700fbbaeea51_press-your-impact-1q-2024.pdf": {
+    "path": "seed/media/resources/fb425c94-press-your-impact-1q-2024.pdf",
+    "contentType": "application/pdf",
+    "bytes": 691040,
+    "sha256": "6cb366c4ac5e365640d2b6f581b5399ebffea171c71bbaf7be846b7077c3443b"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3020b2a2bd6e7cd085e_698d3acdcc66700fbbaeebeb_press-your-impact-3q-2023.pdf": {
+    "path": "seed/media/resources/dc5876ed-press-your-impact-3q-2023.pdf",
+    "contentType": "application/pdf",
+    "bytes": 1198143,
+    "sha256": "895a5e0a06f0995949465c57df2790e55f197c1020066b904f591674efd4f2fd"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3020b2a2bd6e7cd0861_698d3acb836054e52b825165_press-your-impact-2q-2023.pdf": {
+    "path": "seed/media/resources/84bac83e-press-your-impact-2q-2023.pdf",
+    "contentType": "application/pdf",
+    "bytes": 2008371,
+    "sha256": "4c5667acdd3593771ab76d1eebc9730ac523a6bb4fa473377a9cfb9b628e1609"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3382015f0504a07e47b_698d3acdf4b988ae7eb953b9_press-your-impact-2q-2024.pdf": {
+    "path": "seed/media/resources/0f09fbe8-press-your-impact-2q-2024.pdf",
+    "contentType": "application/pdf",
+    "bytes": 586048,
+    "sha256": "11be97fda6c206a6fa3a4fc0e7017924251ffe94657f472e9f90cff99443bfbc"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3382015f0504a07e48a_698d3acb6ec90d0c2710085b_press-your-impact-1q-2025.pdf": {
+    "path": "seed/media/resources/d03c964f-press-your-impact-1q-2025.pdf",
+    "contentType": "application/pdf",
+    "bytes": 268751,
+    "sha256": "93586054aa15a86b2bc7eeefbeca57a5eb41d8c49371d48cbc85436db5d27d8f"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3382015f0504a07e48d_698d3ace18b0d67d0d753116_press-your-impact-3q-2024.pdf": {
+    "path": "seed/media/resources/4c2dcc45-press-your-impact-3q-2024.pdf",
+    "contentType": "application/pdf",
+    "bytes": 699167,
+    "sha256": "54fe55f5f9dc010c3c13c273719f71d5adc0cce4c0e98f1533b630b25605709a"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac2c27853ce5e8d82c62_6ab1abaad466174efbed1196_Fenagh-Engineering-and-Testing-Logo.jpeg": {
+    "path": "seed/media/sponsors/6009a0e0-fenagh-engineering-and-testing-logo.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 46082,
+    "sha256": "622d9c36c37e312e57bd7b6f97006220bd3e2e6c2164307e62b5c6cf27f2883f",
+    "alt": "Fenagh Engineering and Testing"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca95a_6ab1abaabe7cb403e8dcac7b_Squisito-Logo.png": {
+    "path": "seed/media/sponsors/8380d958-squisito-logo.png",
+    "contentType": "image/png",
+    "bytes": 113517,
+    "sha256": "580ee3330419ee290b1cc764d8f54701d24c7ffd224425cfffb8fd002827efc0",
+    "alt": "Squisito Gourmet"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca9da_6ab1abab56ce5288cbae4fd1_Coach-Solo-Golf-Academy-Logo.jpeg": {
+    "path": "seed/media/sponsors/009ec023-coach-solo-golf-academy-logo.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 36408,
+    "sha256": "667eb41ecff442dd8ac15f30ed6fa400137283f40670a45464d3bfd9adac8736",
+    "alt": "CoachSolo Golf Academy"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5abde0d2f8ed2caa0d_6ab1abab26d46a10dd162f1f_Emmanuel-Cigars-Logo.jpeg": {
+    "path": "seed/media/sponsors/f2d21e50-emmanuel-cigars-logo.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 27609,
+    "sha256": "5b424501b6c7b112c00e1779fc8597eeca6075e2d81bbd0072d31e663e3fb92c",
+    "alt": "Don Emmanuel Cigars"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5bbde0d2f8ed2caa48_6ab1ababc59abb2e0f16ce57_PNC-Logo.png": {
+    "path": "seed/media/sponsors/c43eaa61-pnc-logo.png",
+    "contentType": "image/png",
+    "bytes": 38042,
+    "sha256": "73c65877ea212210c2b746e8238f59f9f17bb68f58878a8a78c1ca05ad63ece9",
+    "alt": "PNC"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5cbde0d2f8ed2caaa7_6ab1abab639a89fb28ead024_Virtrify-Logo.jpeg": {
+    "path": "seed/media/sponsors/5ec939b1-virtrify-logo.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 151288,
+    "sha256": "08fcb0c878a2e98b5ecef65cb05af65e7f6ebf3fc3f08c3e0e1a0e4799068467",
+    "alt": "Virtrify"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png": {
+    "path": "seed/media/sponsors/b634372f-kp-aviation-logo.png",
+    "contentType": "image/png",
+    "bytes": 11229,
+    "sha256": "8708b3444c2c94417d5a7f1f50b99749ef5c902e5e615479bbb19c231e9386cd",
+    "alt": "KP Aviation"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab6_6ab1abac1a73298ddd88f1f2_IVY-Development-Corp-Logo.png": {
+    "path": "seed/media/sponsors/bc6f97c1-ivy-development-corp-logo.png",
+    "contentType": "image/png",
+    "bytes": 44030,
+    "sha256": "a8330611a5188885fe8158ca0b70401a0685c8c97334cbcb125cc12a420a17dc",
+    "alt": "IVY Development Corp"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caabb_6ab1abac47b1b349c34264b6_Smoke-on-the-Water-Logo.png": {
+    "path": "seed/media/sponsors/6912a225-smoke-on-the-water-logo.png",
+    "contentType": "image/png",
+    "bytes": 16846,
+    "sha256": "ece186dcff31edf95395557da5941c187198f2b7a52eea03a1624d2b2ef44de0",
+    "alt": "Smoke on the Water"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caac6_6ab1abac639a89fb28ead0d2_Cafe-La-Carreta-Logo.png": {
+    "path": "seed/media/sponsors/95a668b3-cafe-la-carreta-logo.png",
+    "contentType": "image/png",
+    "bytes": 113857,
+    "sha256": "1bcbe034755c427ce2f46e1a606b3cdababb10b623dda80b22bf934b450a4223",
+    "alt": "Café La Carreta"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab0f_6ab1abac639a89fb28ead0fc_August-Covers-Logo.png": {
+    "path": "seed/media/sponsors/f68d2ab7-august-covers-logo.png",
+    "contentType": "image/png",
+    "bytes": 15758,
+    "sha256": "5a2206c3d41f9203aaae4bc71d52b4c8dba3c35161512a734888f258fb639ded",
+    "alt": "August Covers"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab1d_6ab1abaca24bb2e4a3484506_GSnow-Creative-Logo.webp": {
+    "path": "seed/media/sponsors/8b8c527e-gsnow-creative-logo.webp",
+    "contentType": "image/webp",
+    "bytes": 30056,
+    "sha256": "c04dba4a84d5acd775977f4b0824175df624a1bdd8a8b74a1046f0f09aa38130",
+    "alt": "GSnow Creative"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab46_6ab1abadbe6a6db0e2302683_Vaga-Academy-Logo.png": {
+    "path": "seed/media/sponsors/d0c99da1-vaga-academy-logo.png",
+    "contentType": "image/png",
+    "bytes": 21500,
+    "sha256": "ec86ffeb29cb1fddd0ff50014c6deac87d68acfdbfd5d85f04164390e00dc05d",
+    "alt": "VAGA Modeling Academy"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab8e_6ab1abadbde0d2f8ed2c6d3a_IonDynamic-Energy-Logo.png": {
+    "path": "seed/media/sponsors/b74f2ae6-iondynamic-energy-logo.png",
+    "contentType": "image/png",
+    "bytes": 4533,
+    "sha256": "a36eb49b5d9e3938dc7c4fdbf58b017486e3a9beb361bce75ae47d006cce8f8d",
+    "alt": "IonDynamics Energy"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabd6_6ab1abadbde0d2f8ed2c6d8b_Luxe-Golf-Logo.png": {
+    "path": "seed/media/sponsors/dc8d9db9-luxe-golf-logo.png",
+    "contentType": "image/png",
+    "bytes": 601120,
+    "sha256": "d0f81efb5028528ee4fed27ba4712716f7d47d8ac129e5adb6abddeb80b71aed",
+    "alt": "Luxe Golf"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabf3_6ab1abadc59abb2e0f16cf62_Valley-Bank-Logo.png": {
+    "path": "seed/media/sponsors/f3770949-valley-bank-logo.png",
+    "contentType": "image/png",
+    "bytes": 37527,
+    "sha256": "bf7dd50134e43633dbd5ae7e9b6078f58e3adb2430b33824ee2a6eb62d24be9b",
+    "alt": "Valley Bank"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab31ef9b51e7a2e40caa4c1_VVF_Golf2026_ShareImage_v2_template_preview.jpg": {
+    "path": "seed/media/events/c62391b8-vvf-golf2026-shareimage-v2-template-preview.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 139431,
+    "sha256": "f2a5b50a22c68066e3f6261183d0c81a8ba9bd764317fc0b170884d3f7718a81"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png": {
+    "path": "seed/media/team_members/4fb23856-vvf-teamphoto-placeholder.png",
+    "contentType": "image/png",
+    "bytes": 5512,
+    "sha256": "b43a07caa289503579f7122afaf3801bec0c547f6929c47b70fd6bbe653009b4",
+    "alt": "Join our board"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg": {
+    "path": "seed/media/sponsors/24951de5-logo-trump-hotels-1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 9388,
+    "sha256": "0220e971ea76586001919ffc0c598224de1aa0fa8bfe75dfbb50e3de783a1013",
+    "alt": "Trump Hotels"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png": {
+    "path": "seed/media/sponsors/918be533-vvf-golf2026-sponsor-backswinggolfevents-v1.png",
+    "contentType": "image/png",
+    "bytes": 12791,
+    "sha256": "a85ee681d56c2ed6d728c974ab4e8ecd8db749c726b61275072aad2722eb9dae",
+    "alt": "Back Swing Golf Events"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png": {
+    "path": "seed/media/sponsors/dc1f0348-vvf-golf2026-sponsor-thetrustyhandyman-v1.png",
+    "contentType": "image/png",
+    "bytes": 44715,
+    "sha256": "f144985ffc2d2c61e28c9a022a2c9e551036701d8e3e41c911a6658e6ad8b2bf",
+    "alt": "The Trusty Handyman"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png": {
+    "path": "seed/media/sponsors/e0b3a862-vvf-golf2026-sponsor-citimarinestore-v1.png",
+    "contentType": "image/png",
+    "bytes": 12303,
+    "sha256": "5d080d250f0bc142b512d4019d309dcc561aa76e30e58897b2eacc3e1d25a1b0",
+    "alt": "Citimarine Store"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png": {
+    "path": "seed/media/sponsors/12c7f4af-vvf-golf2026-sponsor-venezuelanamericanchamberofcommerce-v1.png",
+    "contentType": "image/png",
+    "bytes": 60391,
+    "sha256": "8daf40040b649578c6565e48220e189f1e33820c590a1a2aaf4f71ad39f58c86",
+    "alt": "Venezuelan-American Chamber of Commerce"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png": {
+    "path": "seed/media/sponsors/03e84d10-vvf-golf2026-sponsor-santateresa1796rum-v1.png",
+    "contentType": "image/png",
+    "bytes": 77665,
+    "sha256": "d0146dd8e76fc5e2b6a8498fed47163f12df2b4df584fd01a6b43435a4065aa6",
+    "alt": "Santa Teresa 1796"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg": {
+    "path": "seed/media/sponsors/8c6acad2-vvf-golf2026-sponsor-jetsetgourmet-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 39108,
+    "sha256": "44bf0741789a847da048cb2642002a1f24a02fbe7c89cb4a38a9851fe4b6d378",
+    "alt": "Jet Set Gourmet"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg": {
+    "path": "seed/media/sponsors/8329ffc2-vvf-golf2026-sponsor-charitygolfinternational-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 23119,
+    "sha256": "26e23b1e291f8f0bbe49b8e9a899728934a510487ce8aa6a0697b4a434c74381",
+    "alt": "Charity Golf International"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg": {
+    "path": "seed/media/sponsors/204d5dfc-vvf-golf2026-sponsor-paulainc-v1.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 6637,
+    "sha256": "05850f5e323c5123ab8305b5f0486ea4596ae1ed1f4dfc42909f328daced42cc",
+    "alt": "Paula Inc."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png": {
+    "path": "seed/media/sponsors/bae859f4-vvf-golf2026-sponsor-cotmaq-dark-v1.png",
+    "contentType": "image/png",
+    "bytes": 72317,
+    "sha256": "725c437323645f9b993dc46d72665c2179ac2c7b176de787c28fddfba150d7c9",
+    "alt": "COTMAQ"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png": {
+    "path": "seed/media/sponsors/5f1c1a94-vvf-golf2026-sponsor-infinitobooth-v1.png",
+    "contentType": "image/png",
+    "bytes": 114026,
+    "sha256": "d3ec22d27283e4a22cdbb71680c8ac41ed918a6fd9881cb5f9c855914c3c891f",
+    "alt": "Infinito Booth"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71defc_6aac15210f7991d080df1c5c_VVF_Golf2026_Sponsor_CrepeMaker_v1.png": {
+    "path": "seed/media/sponsors/e80bb60a-vvf-golf2026-sponsor-crepemaker-v1.png",
+    "contentType": "image/png",
+    "bytes": 35945,
+    "sha256": "5e61b529b09c98cb58e33967da10d8f3249a76ef16bc3f4468714d671351325c",
+    "alt": "CrepeMaker"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df01_6aac15227eecb07b16b16cdc_VVF_Golf2026_Sponsor_OnParPT_v1.png": {
+    "path": "seed/media/sponsors/ef643cd5-vvf-golf2026-sponsor-onparpt-v1.png",
+    "contentType": "image/png",
+    "bytes": 64658,
+    "sha256": "3beef1cb1d63725a6f754748d9ac33890d0561ba43698aae86abbb16071a9d3d",
+    "alt": "On Par Physical Therapy"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df06_6aac1719c35d572447d83dc6_VVF_Golf2026_Sponsor_VNVEvents_Dark_v1.png": {
+    "path": "seed/media/sponsors/c5453913-vvf-golf2026-sponsor-vnvevents-dark-v1.png",
+    "contentType": "image/png",
+    "bytes": 54618,
+    "sha256": "67d6c89619d61cf218d1d98e313e404b439a4e74b07b4f393d35e856e1f60461",
+    "alt": "VNV Events"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg": {
+    "path": "seed/media/team_members/9aca16ae-gemini-generated-image-r8n6ajr8n6ajr8n6.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 2390137,
+    "sha256": "13a4b130828b00aa620b9fccf385e9208933724bb4f678072d495ed951ce1b7e",
+    "alt": "Antonio Manzanares"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e09b6cae64aca288c4b4_6ab320217eaaca6b6902cb4f_VVF_Golf2025_ShareImage_v1_preview.jpeg": {
+    "path": "seed/media/events/b7c0f2a0-vvf-golf2025-shareimage-v1-preview.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 115442,
+    "sha256": "b3a074374f7454f1726d88969dd662fc88c133ca275bf4922025a3a8304e0f8c"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png": {
+    "path": "seed/media/events/56f00201-98.png",
+    "contentType": "image/png",
+    "bytes": 1643180,
+    "sha256": "3829db85c1a131536c090900e62b53dfae5fb5d6a4da0c152f33cf0661b63aae",
+    "alt": "Three golfers and a young boy standing by the flag on the green."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abef13da13f08b2b7526fe7_6abef12dbbf48e5ff83df455_VVF_Golf2025_Hero_Fairway.jpeg": {
+    "path": "seed/media/events/09f67ce2-vvf-golf2025-hero-fairway.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 812975,
+    "sha256": "48a86346ed20c4b8072d1109f548e84001be5d824023a9e308a7e8ed46307b97",
+    "alt": "Four golfers on the fairway, one raising his arm to celebrate."
+  }
+}

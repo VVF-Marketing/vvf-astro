@@ -1,7 +1,8 @@
 ---
+// No live counterpart (the live site publishes no auction items yet);
+// styled to match the event offer cards so it fits the event page.
 import type { AuctionItem } from '../lib/content/types'
 import Button from './Button.astro'
-import Card from './Card.astro'
 
 export interface Props {
   item: AuctionItem
@@ -10,25 +11,17 @@ export interface Props {
 const { item } = Astro.props as Props
 ---
 
-<Card overflowHidden>
-  <div class="h-32 bg-gray-200">
-    {
-      item.imageUrl ? (
-        <img src={item.imageUrl} alt={item.name} class="w-full h-full object-cover" />
-      ) : (
-        <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Image here</div>
-      )
-    }
-  </div>
-  <div class="p-4">
-    <p class="font-display text-brand-navy">{item.name}</p>
-    {item.estimatedValue && <p class="text-sm text-ink-500">Value: {item.estimatedValue}</p>}
+<article class="flex flex-col overflow-hidden rounded-2xl bg-neutral-white">
+  {item.imageUrl && <img src={item.imageUrl} alt={item.name} class="aspect-[4/3] w-full object-cover" loading="lazy" />}
+  <div class="flex flex-1 flex-col gap-2 p-8">
+    <h3 class="text-h5 leading-[1.4] text-brand-primary">{item.name}</h3>
+    {item.estimatedValue && <p class="font-body text-size-base leading-body text-brand-primary">Value: {item.estimatedValue}</p>}
     {
       item.bidUrl && (
-        <Button href={item.bidUrl} variant="primary-sky" size="sm" class="mt-3 inline-block">
+        <Button href={item.bidUrl} variant="outline-navy" size="sm" class="mt-4 self-start">
           Bid Now
         </Button>
       )
     }
   </div>
-</Card>
+</article>

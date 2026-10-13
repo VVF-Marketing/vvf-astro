@@ -1,6 +1,7 @@
 ---
-import Button from './Button.astro'
-
+// Live counterpart: `.logos_component` — centered heading over a row of
+// partner logos (186×116 slots) that scrolls with arrow controls when the
+// logos overflow the row. Arrows hide when everything fits.
 export interface LogoItem {
   name: string
   logoUrl?: string
@@ -9,23 +10,45 @@ export interface LogoItem {
 
 export interface Props {
   logos: LogoItem[]
+  heading?: string
 }
 
-const { logos } = Astro.props as Props
+const { logos, heading } = Astro.props as Props
+const arrow = 'absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 data-[overflow=true]:block'
 ---
 
-<div class="flex items-center gap-3" data-logo-carousel>
-  <Button variant="icon" data-prev aria-label="Previous logos">‹</Button>
-  <div class="flex-1 flex gap-8 overflow-x-hidden scroll-smooth" data-track>
-    {
-      logos.map((logo) => (
-        <div class="shrink-0 flex items-center justify-center h-16 min-w-[140px] text-ink-500">
-          {logo.logoUrl ? <img src={logo.logoUrl} alt={logo.name} class="max-h-full" /> : <span>{logo.name}</span>}
-        </div>
-      ))
-    }
+<div class="flex flex-col items-center gap-5 py-12" data-logo-carousel>
+  {heading && <h3 class="max-w-[700px] text-center text-h2-mobile md:text-h2 md:leading-[1.1] text-brand-primary">{heading}</h3>}
+  <div class="relative w-full max-w-screen-xl px-12 py-10">
+    <button type="button" class={`${arrow} left-0`} aria-label="Previous logos" data-prev>
+      <img src="/images/pages/76726afb-arrow-left.svg" alt="" width="24" height="24" />
+    </button>
+    <ul class="flex justify-start gap-[23px] overflow-x-hidden scroll-smooth md:justify-center" data-track>
+      {
+        logos.map((logo) => {
+          const content = logo.logoUrl ? (
+            <img src={logo.logoUrl} alt={logo.name} class="max-h-full max-w-full object-contain" loading="lazy" />
+          ) : (
+            <span class="font-sans text-size-base font-bold text-brand-primary">{logo.name}</span>
+          )
+          return (
+            <li class="mx-3 flex h-[116px] w-[186px] shrink-0 items-center justify-center">
+              {logo.website ? (
+                <a href={logo.website} class="flex h-full w-full items-center justify-center" rel="noopener">
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
+            </li>
+          )
+        })
+      }
+    </ul>
+    <button type="button" class={`${arrow} right-0`} aria-label="Next logos" data-next>
+      <img src="/images/pages/764f1831-arrow-right.svg" alt="" width="24" height="24" />
+    </button>
   </div>
-  <Button variant="icon" data-next aria-label="Next logos">›</Button>
 </div>
 
 <script>
@@ -37,6 +60,17 @@ const { logos } = Astro.props as Props
     const prev = root.querySelector<HTMLElement>('[data-prev]')
     if (!track) return
     const step = 220
+
+    const syncArrows = () => {
+      const overflow = String(track.scrollWidth > track.clientWidth + 1)
+      next?.setAttribute('data-overflow', overflow)
+      prev?.setAttribute('data-overflow', overflow)
+      // Center the row only when everything fits; otherwise start-align so
+      // the first logos aren't clipped.
+      track.classList.toggle('md:justify-center', overflow === 'false')
+    }
+    syncArrows()
+    window.addEventListener('resize', syncArrows)
 
     next?.addEventListener('click', () => {
       const max = track.scrollWidth - track.clientWidth

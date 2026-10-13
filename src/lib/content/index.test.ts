@@ -25,6 +25,10 @@ const {
   getCampaignUpdates,
   getCampaignSettings,
   getPrimaryMenu,
+  getResources,
+  getResourcesByCategory,
+  getResource,
+  getPartners,
 } = await import('./index')
 
 function entry(slug: string, data: Record<string, unknown>) {
@@ -78,7 +82,7 @@ describe('getEvents', () => {
       imageUrl: '/golf.jpg',
       category: 'golf-tournament',
       donorboxEventId: 'golf-2026',
-      sponsorPackages: [{ tierName: 'Gold', price: '$5,000', order: 1 }],
+      sponsorPackages: [{ tierName: 'Gold', price: '$5,000', order: 1, soldOut: false }],
       auctionItems: undefined,
       sponsors: undefined,
     })
@@ -157,20 +161,70 @@ describe('getTeamMembers / getTeamMemberBySlug', () => {
     expect(getEmDashCollection).toHaveBeenCalledWith('team_members', expect.objectContaining({ where: { tier: 'board' } }))
   })
 
-  it('only surfaces board/leader members for detail lookups, never staff', async () => {
-    getEmDashCollection.mockImplementation(async (_collection: string, opts: any) => {
-      if (opts?.where?.tier === 'board') {
-        return { entries: [entry('jane', { name: 'Jane', role: 'Chair', tier: 'board' })] }
-      }
-      if (opts?.where?.tier === 'leader') {
-        return { entries: [entry('sam', { name: 'Sam', role: 'ED', tier: 'leader' })] }
-      }
-      return { entries: [entry('staff-1', { name: 'Staffer', role: 'Coordinator', tier: 'staff' })] }
+  it('finds one profile per person across tiers, preferring the entry with the long bio', async () => {
+    getEmDashCollection.mockResolvedValue({
+      entries: [
+        entry('jane', { name: 'Jane', role: 'Chair', tier: 'board', profile_slug: 'jane' }),
+        entry('jane-staff', { name: 'Jane', role: 'Founder', tier: 'staff', profile_slug: 'jane', long_bio: 'Long' }),
+        entry('sam', { name: 'Sam', role: 'Director', tier: 'staff', profile_slug: 'sam' }),
+        entry('no-profile', { name: 'Volunteer', role: 'Helper', tier: 'staff' }),
+      ],
     })
 
-    expect(await getTeamMemberBySlug('jane')).toMatchObject({ name: 'Jane' })
-    expect(await getTeamMemberBySlug('sam')).toMatchObject({ name: 'Sam' })
-    expect(await getTeamMemberBySlug('staff-1')).toBeUndefined()
+    expect(await getTeamMemberBySlug('jane')).toMatchObject({ slug: 'jane-staff', longBio: 'Long' })
+    expect(await getTeamMemberBySlug('sam')).toMatchObject({ name: 'Sam', tier: 'staff' })
+    expect(await getTeamMemberBySlug('no-profile')).toBeUndefined()
+    expect(await getTeamMemberBySlug('jane-staff')).toBeUndefined()
+  })
+})
+
+describe('getResources', () => {
+  const resources = [
+    entry('report', {
+      title: 'Report',
+      categories: ['financials-transparency'],
+      published_on: '2026-02-03',
+      authors: [{ name: 'Ana', role: 'CFO' }],
+      image: { provider: 'local', id: 'i1', alt: 'Cover', meta: { storageKey: 'cover.png' } },
+      file: { provider: 'local', id: 'f1', meta: { storageKey: 'report.pdf' } },
+      body: [{ _type: 'block', children: [] }],
+      seo_title: 'Report | VVF',
+    }),
+    entry('story', { title: 'Story', categories: ['stories'] }),
+  ]
+
+  it('maps resource fields, media URLs and SEO', async () => {
+    getEmDashCollection.mockResolvedValue({ entries: resources })
+    const [report] = await getResources()
+    expect(getEmDashCollection).toHaveBeenCalledWith('resources', expect.objectContaining({ orderBy: { published_on: 'desc' } }))
+    expect(report).toMatchObject({
+      slug: 'report',
+      categories: ['financials-transparency'],
+      authors: [{ name: 'Ana', role: 'CFO' }],
+      imageUrl: '/_emdash/api/media/file/cover.png',
+      imageAlt: 'Cover',
+      fileUrl: '/_emdash/api/media/file/report.pdf',
+      body: [{ _type: 'block', children: [] }],
+      seo: { title: 'Report | VVF' },
+    })
+  })
+
+  it('filters by category and finds by slug', async () => {
+    getEmDashCollection.mockResolvedValue({ entries: resources })
+    expect((await getResourcesByCategory('stories')).map((r) => r.slug)).toEqual(['story'])
+    expect(await getResource('story')).toMatchObject({ title: 'Story' })
+    expect(await getResource('missing')).toBeUndefined()
+  })
+})
+
+describe('getChildren', () => {
+  it('maps the about text and orders by display order', async () => {
+    getEmDashCollection.mockResolvedValue({
+      entries: [entry('test-c', { display_name: 'Test C.', age: 9, about: 'Lives with family.', published: true, order: 2 })],
+    })
+    const [child] = await getChildren()
+    expect(getEmDashCollection).toHaveBeenCalledWith('children', expect.objectContaining({ orderBy: { order: 'asc' } }))
+    expect(child).toMatchObject({ about: 'Lives with family.', order: 2 })
   })
 })
 
@@ -202,6 +256,22 @@ describe('getSponsors / getSponsorshipPackages', () => {
       entries: [entry('s1', { name: 'Acme', logo: { src: '/acme.png' }, website: 'https://acme.example' })],
     })
     expect(await getSponsors()).toEqual([{ name: 'Acme', logoUrl: '/acme.png', website: 'https://acme.example' }])
+  })
+
+  it('lists partners only, in display order', async () => {
+    getEmDashCollection.mockResolvedValue({ entries: [] })
+    await getPartners()
+    expect(getEmDashCollection).toHaveBeenCalledWith(
+      'sponsors',
+      expect.objectContaining({ where: { partner: true }, orderBy: { order: 'asc' } })
+    )
+  })
+
+  it('resolves local media (no src) to the EmDash media file URL', async () => {
+    getEmDashCollection.mockResolvedValue({
+      entries: [entry('s1', { name: 'Acme', logo: { provider: 'local', id: 'm1', meta: { storageKey: 'abc.png' } } })],
+    })
+    expect((await getSponsors())[0].logoUrl).toBe('/_emdash/api/media/file/abc.png')
   })
 
   it('only requests general-scope sponsorship packages, never event-scoped ones', async () => {

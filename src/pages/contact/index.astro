@@ -1,76 +1,93 @@
 ---
+// Contact — mirrors the live page (scripts/migrate/snapshot/pages/contact.json).
+// The reach-us cards link to the form with a preselected topic (project
+// addition; the live cards are not links).
 import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import Card from '../../components/Card.astro'
 import ContactForm from '../../components/ContactForm.astro'
-import FaqAccordion from '../../components/FaqAccordion.astro'
-import { getFaqs } from '../../lib/content'
-
-const faqs = await getFaqs('general')
 
 const reachUsCards = [
-  { title: 'General inquiries', body: 'Questions about our mission, programs, or how we serve Venezuela.', topic: 'general', cta: 'Send a message' },
-  { title: 'Donation support', body: 'Questions about giving, sponsorship, or making an impact.', topic: 'donation-support', cta: 'Donate' },
-  { title: 'Media and press', body: 'Journalists, bloggers, and media outlets seeking interviews or resources.', topic: 'media-press', cta: 'Inquire' },
-  { title: 'Corporate partnerships', body: 'Companies that want to sponsor a program, match employee gifts, or bring their team on a mission trip.', topic: 'corporate-partnerships', cta: 'Learn More' },
+  { title: 'General inquiries', body: 'Questions about our mission, programs, or how we serve Venezuela.', topic: 'general', tone: 'salmon' },
+  { title: 'Donation support', body: 'Questions about giving, sponsorship, or making an impact. Our team is ready to help you find the right option.', topic: 'donation-support', tone: 'sky' },
+  { title: 'Media and press', body: 'Journalists, bloggers, and media outlets seeking interviews, stories, or resources about our work in Venezuela.', topic: 'media-press', tone: 'sun' },
+  { title: 'Corporate partnerships', body: 'Companies that want to sponsor a program, match employee gifts, or bring their team on a mission trip. See the packages and get in touch.', topic: 'corporate-partnerships', tone: 'white' },
+] as const
+
+const contactLines = [
+  { icon: 'mail', label: 'info@victoriavenezuelafoundation.org', href: 'mailto:info@victoriavenezuelafoundation.org' },
+  { icon: 'phone', label: '+1 (954) 371-0557', href: 'tel:+19543710557' },
+  { icon: 'pin', label: 'P.O. Box 327222, Weston, FL 33332' },
 ]
 ---
 
-<PageLayout title="Contact Us — Victoria Venezuela Foundation">
-  <section class="bg-gray-100">
-    <div class="container max-w-container mx-auto px-4 py-12">
-      <div class="bg-white rounded-card shadow p-8 max-w-xl ml-auto">
-        <h1 class="text-display-md">Contact us</h1>
-        <p class="mt-3 text-ink-700">We'd love to hear from you. Reach out with questions, partnership opportunities, or to learn how you can make a difference in Venezuela.</p>
-      </div>
-    </div>
-  </section>
+<PageLayout
+  title="Contact Us | Victoria Venezuela Foundation"
+  description="Contact Victoria Venezuela Foundation with questions about giving, sponsorship, media or corporate partnerships."
+>
+  <Hero
+    align="right"
+    imageUrl="/images/pages/e15186b8-98.png"
+    imageAlt="A young girl holding cotton candy at a Victoria Venezuela Foundation event."
+    heading="Contact us"
+    subtext="We'd love to hear from you. Reach out with questions, partnership opportunities, or to learn how you can make a difference in Venezuela."
+    primaryCta={{ label: 'Donate', href: '/sponsor-a-child' }}
+    secondaryCta={{ label: 'Get Involved', href: '/ways-to-give' }}
+  />
 
-  <section class="container max-w-container mx-auto px-4 py-section-sm md:py-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">Ways to connect</p>
-    <h2 class="mt-2 text-display-md text-center">Multiple ways to reach us</h2>
-    <div class="mt-8 grid md:grid-cols-4 gap-4" data-reach-us-cards>
+  <section class="px-6 md:px-16">
+    <SectionTitle tagline="Ways to connect" heading="Multiple ways to reach us" text="Choose the best way to connect based on your needs." />
+    <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
-        reachUsCards.map((card, i) => (
-          <div class={`rounded-card p-6 ${['bg-pastel-pink', 'bg-pastel-blue', 'bg-pastel-yellow', 'bg-white shadow-sm'][i % 4]}`}>
-            <h3 class="font-display text-lg text-brand-navy">{card.title}</h3>
-            <p class="mt-2 text-sm text-ink-700">{card.body}</p>
-            <a
-              href={`/contact?topic=${card.topic}#contact-form`}
-              class="mt-4 inline-block rounded-pill border border-brand-navy/30 text-brand-navy px-4 py-2 text-sm font-medium"
-              data-reach-us-link={card.topic}
-            >
-              {card.cta}
-            </a>
-          </div>
+        reachUsCards.map((card) => (
+          <Card
+            href={`/contact?topic=${card.topic}#contact-form`}
+            tone={card.tone}
+            radius="card"
+            class="flex flex-col items-center gap-6 px-10 py-16 text-center no-underline"
+            data-reach-us-link={card.topic}
+          >
+            <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{card.title}</h2>
+            <p class="font-sans text-size-md leading-body text-brand-primary">{card.body}</p>
+          </Card>
         ))
       }
     </div>
   </section>
 
-  <section id="contact-form" class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-pastel-blue rounded-card p-8 grid md:grid-cols-[1fr_1.2fr] gap-8">
-      <div>
-        <p class="text-eyebrow uppercase font-semibold text-brand-navy/70">Get in touch</p>
-        <h2 class="mt-2 text-display-sm text-brand-navy">Send us a message</h2>
-        <p class="mt-2 text-ink-700">Tell us your name, email, and how we can help you serve Venezuela's most vulnerable families.</p>
-        <p class="mt-4 text-sm text-ink-700">
-          <a href="mailto:info@victoriavenezuelafoundation.org" class="hover:underline">info@victoriavenezuelafoundation.org</a>
+  <section id="contact-form" class="scroll-mt-8 px-6 py-16 md:py-[120px] md:px-20">
+    <div class="mx-auto grid max-w-screen-xl items-start gap-10 lg:grid-cols-[540px_1fr]">
+      <div class="flex flex-col gap-6 rounded-2xl bg-neutral-white p-8 md:p-16">
+        <p class="font-sans text-size-sm font-semibold text-brand-primary">Get in touch</p>
+        <h2 class="text-h2-mobile leading-[1.2] text-brand-primary md:text-h2">Send us a message</h2>
+        <p class="font-body text-size-lg leading-body text-brand-primary">
+          Tell us your name, email, and how we can help you serve Venezuela's most vulnerable families.
         </p>
-        <p class="mt-4 text-sm font-semibold text-brand-navy">Business hours</p>
-        <p class="text-sm text-ink-700">Monday through Friday, 8:30 AM to 5:30 PM Eastern Time</p>
+        <ul class="mt-4 flex flex-col gap-4">
+          {
+            contactLines.map((line) => (
+              <li class="flex items-center gap-3 font-body text-size-sm text-brand-primary">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" class="shrink-0">
+                  {line.icon === 'mail' && <path d="M3 6h18v12H3zM3 6l9 7 9-7" stroke-linejoin="round" />}
+                  {line.icon === 'phone' && <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z" stroke-linejoin="round" />}
+                  {line.icon === 'pin' && <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />}
+                </svg>
+                {line.href ? <a href={line.href} class="text-brand-primary underline">{line.label}</a> : <span>{line.label}</span>}
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <ContactForm />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Frequently asked questions</h2>
-    <div class="mt-8 max-w-2xl mx-auto">
-      <FaqAccordion faqs={faqs} />
+      <div class="rounded-2xl bg-sky p-8 md:px-20 md:py-16">
+        <ContactForm />
+      </div>
     </div>
   </section>
 </PageLayout>
 
 <script>
+  // Preselect the form topic from ?topic= (reach-us cards link here).
   const topicSelect = document.querySelector<HTMLSelectElement>('[data-topic-select]')
   const topic = new URLSearchParams(window.location.search).get('topic')
   if (topic && topicSelect) topicSelect.value = topic

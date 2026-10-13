@@ -6,7 +6,7 @@ import { expect, test } from '@playwright/test'
 test('contact form submit button is gated on the privacy checkbox', async ({ page }) => {
   await page.goto('/contact')
 
-  const submit = page.getByRole('button', { name: 'Send message' })
+  const submit = page.getByRole('button', { name: 'Send Message' })
   const checkbox = page.getByRole('checkbox')
 
   await expect(submit).toBeDisabled()

@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* VVF design tokens as CSS variables — same values as tailwind.config.cjs,
+     named after the live Webflow variables they mirror. */
+  :root {
+    --base-color-branding--brand-primary: #02335e;
+    --base-color-branding--brand-accent: #00abf9;
+    --base-color-branding--neutral-white: #ffffff;
+    --base-color-branding--neutral-100: #f8f9fa;
+    --base-color-branding--neutral-light-gray: #e7e7e7;
+    --base-color-branding--bg-gray: #f9f9f9;
+    --body-background: #f2f2f2;
+    --link-color--link-primary: #1e73be;
+    --base-color-system--focus-state: #1e73be;
+    --base-color-system--sun: #f9eac6;
+    --base-color-system--salmon: #ffd7d7;
+    --base-color-system--sky: #c1e7f5;
+    --base-color-system--success-green: #cef5ca;
+    --base-color-system--success-green-dark: #114e0b;
+    --base-color-system--warning-yellow: #fcf8d8;
+    --base-color-system--warning-yellow-dark: #5e5515;
+    --base-color-system--error-red: #f8e4e4;
+    --base-color-system--error-red-dark: #3b0b0b;
+
+    --base-fonts-branding--font-heading: Nunito, sans-serif;
+    --base-fonts-branding--font-body: Nunito, sans-serif;
+    --font-copy: 'Open Sans', sans-serif;
+
+    --line-height--tight: 1.1;
+    --line-height--snug: 1.25;
+    --line-height--normal: 1.4;
+    --line-height--relaxed: 1.6;
+
+    --radius--sm: 0.25rem;
+    --radius--md: 0.5rem;
+    --radius--lg: 0.75rem;
+    --radius--xl: 1rem;
+    --radius--2xl: 2.5rem;
+    --radius--full: 9999px;
+
+    --spacing--padding-global: 1.25rem;
+    --spacing--section-sm: 3rem;
+    --spacing--section-md: 5rem;
+    --spacing--section-lg: 6.25rem;
+    --container--medium: 75rem;
+    --container--large: 83.75rem;
+    --card-max-width: 417px;
+  }
+
+  body {
+    background-color: var(--body-background);
+    color: var(--base-color-branding--brand-primary);
+    font-family: var(--base-fonts-branding--font-body);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--base-fonts-branding--font-heading);
+    font-weight: 800;
+  }
+
+  h1 { @apply text-h1-mobile md:text-h1; }
+  h2 { @apply text-h2-mobile md:text-h2; }
+  h3 { @apply text-h3-mobile md:text-h3; }
+  h4 { @apply text-h4-mobile md:text-h4; }
+  h5 { @apply text-h5-mobile md:text-h5; }
+  h6 { @apply text-h6-mobile md:text-h6; }
+
+  p {
+    font-family: var(--font-copy);
+    font-size: 1.125rem;
+  }
+
+  a {
+    color: var(--link-color--link-primary);
+  }
+
+  blockquote {
+    border-left: 0.25rem solid var(--base-color-branding--neutral-light-gray);
+    padding: 0 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--base-color-system--focus-state);
+    outline-offset: 2px;
+  }
+}

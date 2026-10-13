@@ -1,0 +1,60 @@
+---
+// Live counterpart: `.article-card_component` on the Resources pages.
+//   featured  wide card, photo left, date/title/excerpt + "Read on" right
+//   grid      white card (radius 2xl) with a rounded photo, date, title, excerpt
+//   related   compact row: square image left, category tag + title right
+import Badge from './Badge.astro'
+import Button from './Button.astro'
+
+export interface Props {
+  href: string
+  title: string
+  date?: string
+  excerpt?: string
+  imageUrl?: string
+  imageAlt?: string
+  category?: string
+  variant?: 'featured' | 'grid' | 'related'
+}
+
+const { href, title, date, excerpt, imageUrl, imageAlt = '', category, variant = 'grid' } = Astro.props as Props
+const dateLabel = date
+  ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  : undefined
+const dateClass = 'font-body text-size-sm font-semibold leading-body tracking-[0.1em] text-brand-primary'
+---
+
+{
+  variant === 'featured' ? (
+    <a href={href} class="flex flex-col overflow-hidden rounded-[20px] bg-neutral-white no-underline md:flex-row md:items-center">
+      {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[4/3] w-full rounded-[20px] object-cover md:w-[43.7%]" />}
+      <div class="flex flex-1 flex-col items-start gap-4 px-6 py-8 md:px-10">
+        {dateLabel && <p class={dateClass}>{dateLabel}</p>}
+        <h2 class="text-h5 font-bold leading-[1.2] text-brand-primary md:text-h3">{title}</h2>
+        {excerpt && <p class="font-body text-size-md leading-body text-brand-primary">{excerpt}</p>}
+        <Button variant="outline" class="pointer-events-none" tabindex="-1" aria-hidden="true">
+          Read on
+        </Button>
+      </div>
+    </a>
+  ) : variant === 'related' ? (
+    <a href={href} class="flex overflow-hidden rounded-[20px] bg-neutral-white no-underline">
+      {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-square w-[162px] shrink-0 object-cover" loading="lazy" />}
+      <div class="flex flex-col items-start justify-center gap-3 p-8">
+        {category && <Badge>{category}</Badge>}
+        <h3 class="text-size-md font-extrabold leading-[1.4] text-brand-primary">{title}</h3>
+      </div>
+    </a>
+  ) : (
+    <a href={href} class="flex flex-col gap-6 rounded-2xl bg-neutral-white p-6 no-underline">
+      {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[345/242] w-full rounded-[24px] object-cover" loading="lazy" />}
+      <div class="flex flex-col gap-4 px-2 pb-2">
+        {dateLabel && <p class={dateClass}>{dateLabel}</p>}
+        <div class="flex flex-col gap-2">
+          <h3 class="text-h5 leading-[1.4] text-brand-primary">{title}</h3>
+          {excerpt && <p class="font-body text-size-md leading-body text-brand-primary">{excerpt}</p>}
+        </div>
+      </div>
+    </a>
+  )
+}

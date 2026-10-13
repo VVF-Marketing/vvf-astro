@@ -13,6 +13,8 @@ export default defineConfig({
         { label: 'Architecture & Content Model', link: '/architecture/' },
         { label: 'Component Library', link: '/components/' },
         { label: 'Styling & Design Tokens', link: '/styling/' },
+        { label: 'Design Token Reference', link: '/design-tokens/' },
+        { label: 'Webflow Migration', link: '/migration/' },
         { label: 'Testing & CI', link: '/testing-and-ci/' },
       ],
     }),

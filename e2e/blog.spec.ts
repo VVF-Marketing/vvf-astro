@@ -8,8 +8,7 @@ test('blog list renders posts and links to a detail page that renders', async ({
   await expect(page.getByRole('heading', { level: 1, name: 'Blog' })).toBeVisible()
   await expect(page.locator('[data-post-card]').first()).toBeVisible()
 
-  const card = page.locator('[data-post-card]', { hasText: post.title })
-  await card.getByRole('link', { name: 'Learn More' }).click()
+  await page.locator('[data-post-card]', { hasText: post.title }).getByRole('link').first().click()
   await expect(page).toHaveURL(new RegExp(`/blog/${post.slug}$`))
   await expect(page.getByRole('heading', { level: 1, name: post.title })).toBeVisible()
 })

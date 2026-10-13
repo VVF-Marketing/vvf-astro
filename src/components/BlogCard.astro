@@ -1,35 +1,13 @@
 ---
 import type { PostItem } from '../lib/content/types'
-import Card from './Card.astro'
+import ArticleCard from './ArticleCard.astro'
 
 export interface Props {
   post: PostItem
 }
 
 const { post } = Astro.props as Props
-const dateLabel = new Date(post.publishedAt).toLocaleDateString(undefined, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})
 ---
 
-<Card as="article" overflowHidden>
-  <div class="h-40 bg-gray-200">
-    {
-      post.imageUrl ? (
-        <img src={post.imageUrl} alt={post.title} class="w-full h-full object-cover" />
-      ) : (
-        <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Image here</div>
-      )
-    }
-  </div>
-  <div class="p-5">
-    <p class="text-xs text-ink-500">{dateLabel}</p>
-    <h3 class="mt-1 font-display text-lg text-brand-navy">{post.title}</h3>
-    {post.excerpt && <p class="mt-2 text-ink-700 text-sm">{post.excerpt}</p>}
-    <a href={`/blog/${post.slug}`} class="mt-3 inline-block text-brand-sky font-medium text-sm hover:underline">
-      Learn More
-    </a>
-  </div>
-</Card>
+<!-- Project blog card; styled as the live Resources article card. -->
+<ArticleCard href={`/blog/${post.slug}`} title={post.title} date={post.publishedAt} excerpt={post.excerpt} imageUrl={post.imageUrl} />

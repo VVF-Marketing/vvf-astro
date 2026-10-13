@@ -1,0 +1,38 @@
+---
+// Live counterpart: `.appeal_cards` — small label over a row of three
+// pastel cards (sun, sky, salmon; radius 2xl), each with a photo, title
+// and copy. Used on navy sections (earthquake relief, event appeal).
+export interface AppealCard {
+  title: string
+  text: string
+  imageUrl?: string
+  imageAlt?: string
+}
+
+export interface Props {
+  label?: string
+  cards: AppealCard[]
+  // Label color: `light` on navy sections (live default), `dark` on light ones.
+  tone?: 'light' | 'dark'
+}
+
+const { label, cards, tone = 'light' } = Astro.props as Props
+const tones = ['bg-sun', 'bg-sky', 'bg-salmon']
+---
+
+<div class="flex flex-col gap-6">
+  {label && <p class={`font-body text-size-sm font-semibold leading-body ${tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'}`}>{label}</p>}
+  <ul class="grid gap-6 md:grid-cols-3">
+    {
+      cards.map((card, i) => (
+        <li class={`flex flex-col gap-10 rounded-2xl p-6 ${tones[i % tones.length]}`}>
+          {card.imageUrl && <img src={card.imageUrl} alt={card.imageAlt ?? ''} class="aspect-[3/2] w-full object-cover" loading="lazy" />}
+          <div class="flex flex-col gap-4">
+            <h3 class="text-h5 leading-[1.4] text-brand-primary">{card.title}</h3>
+            <p class="font-body text-size-md leading-body text-brand-primary">{card.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

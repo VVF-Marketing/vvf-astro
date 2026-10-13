@@ -1,0 +1,315 @@
+{
+  "path": "/our-team",
+  "seo": {
+    "title": "Our Team | Victoria Venezuela Foundation",
+    "description": "Meet the board, leaders and team behind Victoria Venezuela Foundation, a 501(c)(3) in Weston, Florida supporting children in Venezuela.",
+    "ogTitle": "Our Team | Victoria Venezuela Foundation",
+    "ogDescription": "Meet the board, leaders and team behind Victoria Venezuela Foundation, a 501(c)(3) in Weston, Florida supporting children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa99c159619f07e4cbccb88_VVF_OurPeople_Hero_Desktop_v4_TeamPhoto.jpg",
+          "alt": "Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa9918da919c4a62fd93ea1_VVF_OurPeople_Hero_Mobile_v1-1.jpg",
+          "alt": "A doctor listens to a boy's chest with a stethoscope at a Victoria Venezuela Foundation medical clinic."
+        },
+        {
+          "type": "h1",
+          "text": "Our People"
+        },
+        {
+          "type": "p",
+          "text": "The people who serve Venezuela come from different places and different lives, but they share one thing—a commitment to help those who suffer. We are doctors and teachers, business people and students, all of us bound by faith and the belief that change is possible."
+        },
+        {
+          "type": "cta",
+          "text": "Donate",
+          "href": "/ways-to-give"
+        },
+        {
+          "type": "cta",
+          "text": "Volunteer",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-2",
+        "is-grey"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "BOARD"
+        },
+        {
+          "type": "h2",
+          "text": "Board of Directors"
+        },
+        {
+          "type": "p",
+          "text": "The board sets the direction of the Foundation and holds it to account for its mission, its finances and its programs."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+          "alt": "Randy Lander"
+        },
+        {
+          "type": "h3",
+          "text": "Randy Lander"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+          "alt": "Helen Bello"
+        },
+        {
+          "type": "h3",
+          "text": "Helen Bello"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+          "alt": "Pastor Jose Guerrero"
+        },
+        {
+          "type": "h3",
+          "text": "Pastor Jose Guerrero"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png",
+          "alt": "Join our board"
+        },
+        {
+          "type": "h3",
+          "text": "Join our board"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-2"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "STAFF"
+        },
+        {
+          "type": "h2",
+          "text": "Our Team"
+        },
+        {
+          "type": "p",
+          "text": "The people who run the Foundation day to day, in the United States and in Venezuela."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+          "alt": "Randy Lander"
+        },
+        {
+          "type": "h3",
+          "text": "Randy Lander"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+          "alt": "Helen Bello"
+        },
+        {
+          "type": "h3",
+          "text": "Helen Bello"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+          "alt": "Pastor Jose Guerrero"
+        },
+        {
+          "type": "h3",
+          "text": "Pastor Jose Guerrero"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp",
+          "alt": "Charmiant Corado"
+        },
+        {
+          "type": "h3",
+          "text": "Charmiant Corado"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp",
+          "alt": "Juan Tomasini"
+        },
+        {
+          "type": "h3",
+          "text": "Juan Tomasini"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp",
+          "alt": "Enrique Flores"
+        },
+        {
+          "type": "h3",
+          "text": "Enrique Flores"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp",
+          "alt": "Dorceia Watkins"
+        },
+        {
+          "type": "h3",
+          "text": "Dorceia Watkins"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp",
+          "alt": "Arivana Rangel"
+        },
+        {
+          "type": "h3",
+          "text": "Arivana Rangel"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp",
+          "alt": "Johnny Yataco"
+        },
+        {
+          "type": "h3",
+          "text": "Johnny Yataco"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp",
+          "alt": "Luis Arias"
+        },
+        {
+          "type": "h3",
+          "text": "Luis Arias"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp",
+          "alt": "Ximena Sosa"
+        },
+        {
+          "type": "h3",
+          "text": "Ximena Sosa"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp",
+          "alt": "Elimar Ugueto"
+        },
+        {
+          "type": "h3",
+          "text": "Elimar Ugueto"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp",
+          "alt": "Vanessa Sanchez"
+        },
+        {
+          "type": "h3",
+          "text": "Vanessa Sanchez"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg",
+          "alt": "Antonio Manzanares"
+        },
+        {
+          "type": "h3",
+          "text": "Antonio Manzanares"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp",
+          "alt": "David Cardenas"
+        },
+        {
+          "type": "h3",
+          "text": "David Cardenas"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp",
+          "alt": "Isaias Mota"
+        },
+        {
+          "type": "h3",
+          "text": "Isaias Mota"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "container-4"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Community"
+        },
+        {
+          "type": "h2",
+          "text": "Our volunteers make it work"
+        },
+        {
+          "type": "p",
+          "text": "Our work is powered by dedicated volunteers. They give their time, their skills, and their hearts to serve the Venezuelan people."
+        },
+        {
+          "type": "h6",
+          "text": "Why join"
+        },
+        {
+          "type": "p",
+          "text": "Be part of something that matters and change lives directly."
+        },
+        {
+          "type": "h6",
+          "text": "Get started"
+        },
+        {
+          "type": "p",
+          "text": "Find opportunities that fit your skills and schedule today."
+        },
+        {
+          "type": "cta",
+          "text": "Volunteer",
+          "href": "/contact"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a836b0aa1dfa5011ec7dd6e_Placeholder%20Image.png"
+        }
+      ]
+    }
+  ]
+}

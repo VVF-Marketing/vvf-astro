@@ -1,64 +1,102 @@
 ---
+// Live counterpart: Corporate Sponsorships "Sponsor packages" tabs — a row
+// of tier tiles (active tile sky, others white) over a sky panel listing
+// that tier's benefits in two columns split by a cyan rule.
 import type { SponsorshipPackage } from '../lib/content/types'
-import Card from './Card.astro'
-import Button from './Button.astro'
-import Eyebrow from './Eyebrow.astro'
 
 export interface Props {
   tiers: SponsorshipPackage[]
-  ctaHrefFor?: (tier: SponsorshipPackage) => string
 }
 
-const { tiers, ctaHrefFor } = Astro.props as Props
+const { tiers } = Astro.props as Props
 const sorted = [...tiers].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-const gridColsClass =
-  sorted.length >= 4 ? 'md:grid-cols-4' : sorted.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+const id = `tiers-${Math.random().toString(36).slice(2, 8)}`
+
+const groups = (t: SponsorshipPackage) => ({
+  left: [
+    { label: 'Recognition', items: t.recognitionBenefits },
+    { label: 'Promotional Items', items: t.promotionalBenefits },
+  ].filter((g) => g.items?.length),
+  right: [{ label: 'Activities', items: t.activityBenefits }].filter((g) => g.items?.length),
+})
 ---
 
-<div class={`grid grid-cols-1 ${gridColsClass} gap-4 overflow-x-auto`}>
+<div class="flex flex-col gap-6" data-tier-tabs>
+  <div role="tablist" aria-label="Sponsor packages" class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+    {
+      sorted.map((tier, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`${id}-tab-${i}`}
+          aria-controls={`${id}-panel-${i}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          class="group flex flex-col items-center justify-center rounded-[20px] bg-neutral-white p-6 text-neutral-ink aria-selected:bg-sky aria-selected:text-brand-primary md:p-10"
+          data-tier-tab
+        >
+          <span class="font-sans text-h5 font-extrabold leading-[1.4] md:text-h4">{tier.tierName}</span>
+          {tier.price && <span class="font-sans text-size-lg font-extrabold leading-body">{tier.price}</span>}
+        </button>
+      ))
+    }
+  </div>
   {
-    sorted.map((tier) => (
-      <Card class="p-6 flex flex-col">
-        <p class="font-display text-lg text-brand-navy">{tier.tierName}</p>
-        {tier.price && <p class="text-ink-500">{tier.price}</p>}
-
-        {tier.recognitionBenefits && tier.recognitionBenefits.length > 0 && (
-          <div class="mt-4">
-            <Eyebrow color="ink">Recognition</Eyebrow>
-            <ul class="mt-2 space-y-1 text-sm text-ink-700">
-              {tier.recognitionBenefits.map((b) => (
-                <li>✓ {b}</li>
-              ))}
-            </ul>
+    sorted.map((tier, i) => {
+      const { left, right } = groups(tier)
+      return (
+        <div
+          role="tabpanel"
+          id={`${id}-panel-${i}`}
+          aria-labelledby={`${id}-tab-${i}`}
+          hidden={i !== 0}
+          class="rounded-[20px] bg-sky p-8 md:p-16"
+          data-tier-panel
+        >
+          <div class="flex flex-col gap-8 md:flex-row">
+            {[left, right].map((column, c) =>
+              column.length ? (
+                <div class={`flex flex-1 flex-col gap-6 ${c === 1 ? 'md:border-l md:border-brand-accent md:pl-20' : ''}`}>
+                  {column.map((g) => (
+                    <div class="flex flex-col gap-4">
+                      <p class="font-sans text-size-md font-bold leading-body">{g.label}:</p>
+                      <ul class="flex list-disc flex-col gap-1 pl-[30px] marker:text-size-xs">
+                        {g.items!.map((b) => (
+                          <li class="font-body text-size-md leading-body">{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ) : null
+            )}
           </div>
-        )}
-
-        {tier.activityBenefits && tier.activityBenefits.length > 0 && (
-          <div class="mt-4">
-            <Eyebrow color="ink">Activities</Eyebrow>
-            <ul class="mt-2 space-y-1 text-sm text-ink-700">
-              {tier.activityBenefits.map((b) => (
-                <li>✓ {b}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {tier.promotionalBenefits && tier.promotionalBenefits.length > 0 && (
-          <div class="mt-4">
-            <Eyebrow color="ink">Promotional items</Eyebrow>
-            <ul class="mt-2 space-y-1 text-sm text-ink-700">
-              {tier.promotionalBenefits.map((b) => (
-                <li>✓ {b}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <Button href={ctaHrefFor ? ctaHrefFor(tier) : '#'} variant="primary-sky" class="mt-6 self-start text-sm">
-          Buy Now
-        </Button>
-      </Card>
-    ))
+        </div>
+      )
+    })
   }
 </div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tier-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-tier-tab]'))
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-tier-panel]'))
+    const select = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index))
+        tab.tabIndex = i === index ? 0 : -1
+        panels[i].hidden = i !== index
+      })
+      if (focus) tabs[index].focus()
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i))
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') select((i + 1) % tabs.length, true)
+        else if (event.key === 'ArrowLeft') select((i - 1 + tabs.length) % tabs.length, true)
+        else return
+        event.preventDefault()
+      })
+    })
+  })
+</script>

@@ -1,0 +1,49 @@
+---
+// Live counterpart: `.crumbs_list` — small uppercase Open Sans trail, links
+// in the accent color, "›" separators, current page in navy.
+export interface Crumb {
+  label: string
+  href?: string
+}
+
+export interface Props {
+  items: Crumb[]
+  // `light` for use on dark/photo backgrounds (live w-variant).
+  tone?: 'default' | 'light'
+  class?: string
+}
+
+const { items, tone = 'default', class: className = '' } = Astro.props as Props
+const link = tone === 'light' ? 'text-brand-accent-soft' : 'text-brand-accent'
+const current = tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'
+const sep = tone === 'light' ? 'text-neutral-white opacity-85' : 'text-brand-primary opacity-45'
+const text = 'font-body text-[13px] font-semibold uppercase leading-body no-underline'
+---
+
+<nav aria-label="Breadcrumb" class={className}>
+  <ol class="m-0 flex list-none flex-wrap items-center gap-x-2.5 gap-y-1.5 p-0">
+    {
+      items.map((item, i) => {
+        const isLast = i === items.length - 1
+        return (
+          <li class="flex min-w-0 items-center gap-2.5">
+            {i > 0 && (
+              <span class={`font-body text-[17px] leading-none ${sep}`} aria-hidden="true">
+                ›
+              </span>
+            )}
+            {isLast || !item.href ? (
+              <span class={`${text} min-w-0 ${current}`} aria-current={isLast ? 'page' : undefined}>
+                {item.label}
+              </span>
+            ) : (
+              <a href={item.href} class={`${text} ${link}`}>
+                {item.label}
+              </a>
+            )}
+          </li>
+        )
+      })
+    }
+  </ol>
+</nav>

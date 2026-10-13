@@ -5,69 +5,43 @@ export default {
   component: Button,
 }
 
-export const PrimarySky = {
-  args: {
-    href: '/ways-to-give',
-    variant: 'primary-sky',
-    slots: { default: 'Donate' },
-  },
+export const Primary = {
+  args: { href: '/ways-to-give', variant: 'primary', slots: { default: 'Donate' } },
 }
 
-export const OutlineSky = {
-  args: {
-    href: '/contact',
-    variant: 'outline-sky',
-    slots: { default: 'Contact Us' },
-  },
+export const PrimaryInverse = {
+  args: { href: '/ways-to-give', variant: 'primary-inverse', slots: { default: 'Sponsor a Child' } },
+  parameters: { backgrounds: { default: 'navy' } },
 }
 
-export const PrimaryNavy = {
-  args: {
-    href: '/events',
-    variant: 'primary-navy',
-    slots: { default: 'Buy Tickets' },
-  },
+export const Outline = {
+  args: { href: '/contact', variant: 'outline', slots: { default: 'Volunteer' } },
 }
 
 export const OutlineNavy = {
-  args: {
-    href: '/programs/nutrition',
-    variant: 'outline-navy',
-    slots: { default: 'Learn More' },
-  },
+  args: { href: '/contact', variant: 'outline-navy', slots: { default: 'Contact Us' } },
+}
+
+export const Link = {
+  args: { href: '/resources', variant: 'link', slots: { default: 'Read on' } },
 }
 
 export const Small = {
-  args: {
-    href: '#',
-    variant: 'primary-sky',
-    size: 'sm',
-    slots: { default: 'Bid Now' },
-  },
+  args: { href: '#', variant: 'primary', size: 'sm', slots: { default: 'Bid Now' } },
+}
+
+export const Large = {
+  args: { href: '#', variant: 'primary', size: 'lg', slots: { default: 'Buy Tickets' } },
 }
 
 export const Submit = {
-  args: {
-    type: 'submit',
-    variant: 'primary-sky',
-    size: 'lg',
-    slots: { default: 'Send message' },
-  },
+  args: { type: 'submit', variant: 'primary', slots: { default: 'Send message' } },
 }
 
 export const Disabled = {
-  args: {
-    type: 'submit',
-    variant: 'primary-sky',
-    disabled: true,
-    slots: { default: 'Send message' },
-  },
+  args: { type: 'submit', variant: 'primary', disabled: true, slots: { default: 'Send message' } },
 }
 
 export const Icon = {
-  args: {
-    variant: 'icon',
-    'aria-label': 'Previous',
-    slots: { default: '‹' },
-  },
+  args: { variant: 'icon', 'aria-label': 'Previous', slots: { default: '‹' } },
 }

@@ -1,13 +1,13 @@
 // Donorbox targets resolved by the PDF's Navigation Reference / CTA Re-audit
 // pages. See donation-integration/spec.md for the routing rules these
 // implement. Sponsor-a-child's exact campaign slug wasn't given in the nav
-// map (only that it's a Donorbox-embedded form) — `sponsorChildEmbedUrl`
-// uses a placeholder slug until the foundation's real Donorbox account
-// confirms it.
+// map (only that it's a Donorbox-embedded form); `sponsorChildEmbedUrl`
+// uses the campaign the live Webflow child pages embed.
 
 const GENERAL_DONATION_CAMPAIGN = 'general-donation-vvf'
 const EARTHQUAKE_RELIEF_CAMPAIGN = 'venezuela-earthquake-relief'
-const SPONSOR_CHILD_CAMPAIGN = 'sponsor-a-child-vvf' // placeholder pending real Donorbox slug
+// Campaign used by every child page on the live site (dbox-widget).
+const SPONSOR_CHILD_CAMPAIGN = 'make-a-difference-55'
 
 export function generalDonationUrl(): string {
   return `https://donorbox.org/${GENERAL_DONATION_CAMPAIGN}`

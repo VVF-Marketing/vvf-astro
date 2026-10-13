@@ -1,0 +1,1589 @@
+{
+  "path": "/events/2026-golf-tournament",
+  "seo": {
+    "title": "2026 Annual Golf Charity Tournament | Victoria Venezuela Foundation",
+    "description": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela.",
+    "ogTitle": "2026 Annual Golf Charity Tournament | Victoria Venezuela Foundation",
+    "ogDescription": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab31ef9b51e7a2e40caa4c1_VVF_Golf2026_ShareImage_v2_template_preview.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+          "alt": "Three golfers and a young boy standing by the flag on the green."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp",
+          "alt": "A smiling golfer kneels on the green with a young boy holding a putter."
+        },
+        {
+          "type": "h1",
+          "text": "Play for a Purpose"
+        },
+        {
+          "type": "p",
+          "text": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope."
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "#sponsor-packages"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "www_section"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "What, When and Where"
+        },
+        {
+          "type": "p",
+          "text": "2026 Annual Golf Charity Tournament"
+        },
+        {
+          "type": "p",
+          "text": "Monday, November 9, 2026"
+        },
+        {
+          "type": "p",
+          "text": "The Club at Weston Hills"
+        },
+        {
+          "type": "p",
+          "text": "2600 Country Club Way, Weston, FL 33332"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_partners"
+      ],
+      "blocks": [
+        {
+          "type": "h3",
+          "text": "Corporate Partners"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+          "alt": "Santa Teresa 1796"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+          "alt": "Venezuelan-American Chamber of Commerce"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+          "alt": "Trump Hotels"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+          "alt": "Microsoft"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+          "alt": "Topgolf"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+          "alt": "COTMAQ"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+          "alt": "Charity Golf International"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+          "alt": "Back Swing Golf Events"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+          "alt": "Citimarine Store"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df01_6aac15227eecb07b16b16cdc_VVF_Golf2026_Sponsor_OnParPT_v1.png",
+          "alt": "On Par Physical Therapy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df06_6aac1719c35d572447d83dc6_VVF_Golf2026_Sponsor_VNVEvents_Dark_v1.png",
+          "alt": "VNV Events"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+          "alt": "Jet Set Gourmet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71defc_6aac15210f7991d080df1c5c_VVF_Golf2026_Sponsor_CrepeMaker_v1.png",
+          "alt": "CrepeMaker"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+          "alt": "Infinito Booth"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "appeal-golf_section"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "This Year's Tournament Supports Earthquake Relief"
+        },
+        {
+          "type": "p",
+          "text": "100% of the net proceeds from the 2026 tournament go to our earthquake relief work in Venezuela. They will help build our permanent support center in La Guaira. When it opens, it will give displaced children and their families shelter, meals and medical care."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad352e7191b53e8a5e_VVF_LaGuaira_Centre_Exterior_Web_v1.jpg",
+          "alt": "Render of the planned VVF support centre in La Guaira, seen from the street."
+        },
+        {
+          "type": "p",
+          "text": "How the center in La Guaira will look. The center is not built yet. These images are AI-generated renders."
+        },
+        {
+          "type": "p",
+          "text": "Three steps to change"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ade21d9557ab097e79_VVF_LaGuaira_Card_Shelter_Web_v1.jpg",
+          "alt": "Families arriving at the courtyard of the planned VVF support centre."
+        },
+        {
+          "type": "h3",
+          "text": "Shelter"
+        },
+        {
+          "type": "p",
+          "text": "A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad6b006e0df99c91bf_VVF_LaGuaira_Card_MedicalCare_Web_v1.jpg",
+          "alt": "A nurse examining a young girl while her mother sits beside her."
+        },
+        {
+          "type": "h3",
+          "text": "Medical care"
+        },
+        {
+          "type": "p",
+          "text": "Check-ups, medicine and treatment for children and their families at the center."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3bcba94a6d021995d46_VVF_LaGuaira_Card_Nutrition_Web_v1.jpg",
+          "alt": "Children eating a hot meal together in the centre's dining room."
+        },
+        {
+          "type": "h3",
+          "text": "Nutrition"
+        },
+        {
+          "type": "p",
+          "text": "Daily meals for the children staying at the support center in La Guaira."
+        },
+        {
+          "type": "cta",
+          "text": "Learn More",
+          "href": "/venezuela-earthquake-relief"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-9"
+      ],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section-10"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "2025 Memories"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe7e99e35d3db4b74f_VVF_Golf2025_Memories_1_TeeShot_v1.jpg",
+          "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe4d584ff9f6462964_VVF_Golf2025_Memories_2_PlayersOnFairway_v1.jpg",
+          "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe7a45072cc788cdd7_VVF_Golf2025_Memories_3_JuniorGolfer_v1.jpg",
+          "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe0755fe0fcaa8a26b_VVF_Golf2025_Memories_4_FoundationTent_v1.jpg",
+          "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa8bafe987ee6550724a880_VVF_Golf2025_Memories_5_VenezuelanFlags_v1.jpg",
+          "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c1_dji_fly_20251110_120352_0127_1762797148849_photo-scaled.webp",
+          "alt": "Golfers standing by the lake on the course, holding Venezuelan flags."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a6_0J1A2800-e1784672229294.webp",
+          "alt": "Foundation banner beside an inflatable boat displayed on the course."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a9_helen-randy-participants.webp",
+          "alt": "Participants posing together in front of a board of sponsor logos."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90e3_panoramica-campo-golf-scaled.webp",
+          "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90be_players-campo6-scaled.webp",
+          "alt": "Four golfers on the tee, one of them holding a Venezuelan flag."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-11"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Program"
+        },
+        {
+          "type": "p",
+          "text": "November 9, 2026"
+        },
+        {
+          "type": "p",
+          "text": "The Club at Weston Hills"
+        },
+        {
+          "type": "p",
+          "text": "2600 Country Club Way, Weston, FL 33332"
+        },
+        {
+          "type": "li",
+          "text": "8:00 AM Registration & Breakfast"
+        },
+        {
+          "type": "li",
+          "text": "9:30 AM Shotgun start"
+        },
+        {
+          "type": "li",
+          "text": "Right after tournament Lunch, Auction and Awards Reception"
+        },
+        {
+          "type": "li",
+          "text": "All day Open bar, on-course contests, photos"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Tournament Includes"
+        },
+        {
+          "type": "li",
+          "text": "Complimentary breakfast"
+        },
+        {
+          "type": "li",
+          "text": "On-course beverages"
+        },
+        {
+          "type": "li",
+          "text": "18-hole green fee"
+        },
+        {
+          "type": "li",
+          "text": "Contests and prizes"
+        },
+        {
+          "type": "li",
+          "text": "Awards reception"
+        },
+        {
+          "type": "li",
+          "text": "Full lunch & premium bar"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-12"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Player Foursome"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (4) players to attend the event"
+        },
+        {
+          "type": "li",
+          "text": "Breakfast, lunch and drinks for (4)"
+        },
+        {
+          "type": "li",
+          "text": "Swag gift bag for each player"
+        },
+        {
+          "type": "li",
+          "text": "Color photographs at the event"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Single Player"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (1) player to attend the event"
+        },
+        {
+          "type": "li",
+          "text": "Breakfast, lunch and drinks"
+        },
+        {
+          "type": "li",
+          "text": "Swag gift bag for each player"
+        },
+        {
+          "type": "li",
+          "text": "Color photographs at the event"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Lunch & Award Ceremony"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (1) guest to attend"
+        },
+        {
+          "type": "li",
+          "text": "Plated lunch and open bar"
+        },
+        {
+          "type": "li",
+          "text": "Auction participation"
+        },
+        {
+          "type": "li",
+          "text": "Awards ceremony"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Titanium Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Diamond Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Gold Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Spirits Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "1 Foursome to Play at Event"
+        },
+        {
+          "type": "li",
+          "text": "Hole Activation Opportunity"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Program and Signage"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Golf Cart Sponsorship"
+        },
+        {
+          "type": "li",
+          "text": "1 Foursome (4 Players Total)"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Golf Carts"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "Website Recognition on Event Page"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Contest Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Longest Drive / Closest to Pin"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Hole Activation Opportunity"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Program and Signage"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Photobooth Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Photobooth"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Printed Player Photos"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Fairway Activation"
+        },
+        {
+          "type": "li",
+          "text": "Activation at Hole/Fairway"
+        },
+        {
+          "type": "li",
+          "text": "Interaction with Players"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Sports Physical Therapy & Performance Lounge"
+        },
+        {
+          "type": "p",
+          "text": "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round."
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h4",
+          "text": "Winners Circle"
+        },
+        {
+          "type": "li",
+          "text": "1 Single Player at Event"
+        },
+        {
+          "type": "li",
+          "text": "Business Info on Winners Table"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "p",
+          "text": "Registration is closed. Questions? Write to us using the contact details below."
+        },
+        {
+          "type": "p",
+          "text": "Tickets are sold out. Questions? Write to us using the contact details below."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Sponsor Packages"
+        },
+        {
+          "type": "p",
+          "text": "SPONSORSHIPBENEFITS"
+        },
+        {
+          "type": "p",
+          "text": "Titanium Sponsor ‍$10,000"
+        },
+        {
+          "type": "p",
+          "text": "Diamond Sponsor ‍$5,000"
+        },
+        {
+          "type": "p",
+          "text": "Gold Sponsor $2,500"
+        },
+        {
+          "type": "p",
+          "text": "PLAYERS/FOURSOMES"
+        },
+        {
+          "type": "p",
+          "text": "Event Player Package (Swag bag, open bar, light breakfast, lunch & dinner for each player)"
+        },
+        {
+          "type": "p",
+          "text": "3 Foursomes(12 Players Total)"
+        },
+        {
+          "type": "p",
+          "text": "2 Foursomes(8 Players Total)"
+        },
+        {
+          "type": "p",
+          "text": "1 Foursome(4 Players Total)"
+        },
+        {
+          "type": "p",
+          "text": "PRE-EVENT RECOGNITION"
+        },
+        {
+          "type": "p",
+          "text": "Presenting Sponsor Recognition"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Logo Inclusion in Printed Ad"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Logo on Print/Digital Collateral"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Social Media Promotion"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Website Recognition on Event Page"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Email Promotion Feature"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "EVENT RECOGNITION"
+        },
+        {
+          "type": "p",
+          "text": "Award Ceremony Acknowledgment"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Logo on Photobooth Step & Repeat"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Hole Activation Opportunity"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Team Photograph to Take Home"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Swag Bag Collateral Opportunity"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Special Signage at Designated Hole"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Inclusion in Sponsorship Signage"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Logo in Program Book"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "POST-EVENT RECOGNITION"
+        },
+        {
+          "type": "p",
+          "text": "Logo recognition on main website (click-through + 1 year subscription)"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Recognition in Printed Ad"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Special Recognition in Email Blast"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Social Media Promotion"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "p",
+          "text": "Email Newsletter Promotion"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a945e6e2ec0b77e48062553_Group%201%20(1).svg"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "cta",
+          "text": "Become a Sponsor",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "special-opps_section"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Special Event Opportunities"
+        },
+        {
+          "type": "h3",
+          "text": "Spirits Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Golf Cart Sponsorship"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Contest Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Photobooth Sponsor"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Hole / Fairway Activation"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Physical Therapy Lounge"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h3",
+          "text": "Winners Circle"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (4) players to attend the event"
+        },
+        {
+          "type": "li",
+          "text": "Breakfast, lunch and drinks for (4)"
+        },
+        {
+          "type": "li",
+          "text": "Swag gift bag for each player"
+        },
+        {
+          "type": "li",
+          "text": "Color photographs at the event"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (1) player to attend the event"
+        },
+        {
+          "type": "li",
+          "text": "Breakfast, lunch and drinks"
+        },
+        {
+          "type": "li",
+          "text": "Swag gift bag for each player"
+        },
+        {
+          "type": "li",
+          "text": "Color photographs at the event"
+        },
+        {
+          "type": "li",
+          "text": "Entry for (1) guest to attend"
+        },
+        {
+          "type": "li",
+          "text": "Plated lunch and open bar"
+        },
+        {
+          "type": "li",
+          "text": "Auction participation"
+        },
+        {
+          "type": "li",
+          "text": "Awards ceremony"
+        },
+        {
+          "type": "li",
+          "text": "1 Foursome to Play at Event"
+        },
+        {
+          "type": "li",
+          "text": "Hole Activation Opportunity"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Program and Signage"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "1 Foursome (4 Players Total)"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Golf Carts"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "Website Recognition on Event Page"
+        },
+        {
+          "type": "li",
+          "text": "Longest Drive / Closest to Pin"
+        },
+        {
+          "type": "li",
+          "text": "Acknowledgement as Sponsor"
+        },
+        {
+          "type": "li",
+          "text": "Hole Activation Opportunity"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Program and Signage"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Photobooth"
+        },
+        {
+          "type": "li",
+          "text": "Logo on Printed Player Photos"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "li",
+          "text": "Activation at Hole/Fairway"
+        },
+        {
+          "type": "li",
+          "text": "Interaction with Players"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        },
+        {
+          "type": "p",
+          "text": "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round."
+        },
+        {
+          "type": "li",
+          "text": "1 Single Player at Event"
+        },
+        {
+          "type": "li",
+          "text": "Business Info on Winners Table"
+        },
+        {
+          "type": "li",
+          "text": "Social + Email Promotion"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-16"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Silent Auction"
+        },
+        {
+          "type": "p",
+          "text": "There is more! Place a bid for one of the prizes below — generously provided by our wonderful sponsors"
+        },
+        {
+          "type": "h4",
+          "text": "7-Day Summer Vacation"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee4330bcb583cbd65b9_image%204.png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $5,000"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: Florida Key’s Summer Home Vacation 7 days"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9fc99a4a52f187dce3_Capa_1.svg"
+        },
+        {
+          "type": "h4",
+          "text": "Flight Sumulator"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee34c34350fb3c03cb5_image%205.png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $1,500"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: 1 hr Full Flight Simulator for (4) in a 787 at Boeing Miami Campus"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%20(1)%201.svg"
+        },
+        {
+          "type": "h4",
+          "text": "Fishing Trip"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee352eeb727f66e61ca_image%204%20(1).png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $1,000"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: Charter fishing trip Keith Ramos Fishing"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9ff6de01d060603e21_Capa_1%20(1).svg"
+        },
+        {
+          "type": "h4",
+          "text": "Golf Simulator"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee4fbe78d7bed6f8e56_image%205%20(1).png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $650"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: (2) Top Golf Simulator Bays"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4cc705426dec0a3165_topgolf-1%201.png"
+        },
+        {
+          "type": "h4",
+          "text": "Flight Sumulator"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee34c34350fb3c03cb5_image%205.png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $1,500"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: 1 hr Full Flight Simulator for (4) in a 787 at Boeing Miami Campus"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%20(1)%201.svg"
+        },
+        {
+          "type": "h4",
+          "text": "Paella Experience"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee352eeb727f66e61ca_image%204%20(1).png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $500"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: VIP Paella Experience for (4) at Home"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949f9ff6de01d060603e21_Capa_1%20(1).svg"
+        },
+        {
+          "type": "h4",
+          "text": "2 nights at a Deluxe Room"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949ee34c34350fb3c03cb5_image%205.png"
+        },
+        {
+          "type": "h4",
+          "text": "Value: $500"
+        },
+        {
+          "type": "p",
+          "text": "What’s Included: 2 nights at a Deluxe Room at Trump Hotel Chicago"
+        },
+        {
+          "type": "cta",
+          "text": "Place your Bid",
+          "href": "#"
+        },
+        {
+          "type": "p",
+          "text": "Provided by:"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a949fa0b2eaa2be6b083d71_logo-trump-hotels%201.svg"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-22"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Our Impact"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a94a42d52eeb727f66f6413_9f807887-6eeb-46a6-8c18-3fd6f3f03c8e%201.png"
+        },
+        {
+          "type": "p",
+          "text": "77,300+"
+        },
+        {
+          "type": "p",
+          "text": "Meals served to children at risk"
+        },
+        {
+          "type": "p",
+          "text": "1,012"
+        },
+        {
+          "type": "p",
+          "text": "medical visits for children"
+        },
+        {
+          "type": "p",
+          "text": "41+"
+        },
+        {
+          "type": "p",
+          "text": "corporate sponsors investing in support programs for children and Venezuela"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "FAQs & Contact info"
+        },
+        {
+          "type": "h3",
+          "text": "What is the format of the tournament?"
+        },
+        {
+          "type": "p",
+          "text": "We play a Scramble format to keep the pace fun and inclusive for all skill levels. Team up and bring your best!"
+        },
+        {
+          "type": "h3",
+          "text": "Where is the event being held?"
+        },
+        {
+          "type": "p",
+          "text": "The Club at Weston Hills, Weston, Florida, located at 2600 Country Club Way, Weston, FL 33332. Complimentary parking is available onsite, and signage will guide you to registration."
+        },
+        {
+          "type": "h3",
+          "text": "Are donations tax-deductible?"
+        },
+        {
+          "type": "p",
+          "text": "Yes. Victoria Venezuela Foundation is a 501(c)(3) non-profit organization. Tax ID: 88-3282100. Contributions are tax-deductible under Internal Revenue Code Section 501(c)(3)."
+        },
+        {
+          "type": "h3",
+          "text": "Can I donate an item or service for the raffle or auction?"
+        },
+        {
+          "type": "p",
+          "text": "Yes, and we deeply appreciate your support! Donating an item or service is a powerful way to contribute to our mission while showcasing your brand or talents to a passionate and engaged audience. We welcome a wide range of contributions, including:"
+        },
+        {
+          "type": "li",
+          "text": "Gift baskets (gourmet foods, spa items, themed collections)"
+        },
+        {
+          "type": "li",
+          "text": "Experiences (golf outings, weekend getaways, dining packages)"
+        },
+        {
+          "type": "li",
+          "text": "Professional services (photography sessions, wellness consultations, coaching)"
+        },
+        {
+          "type": "li",
+          "text": "Unique items (artwork, memorabilia, handcrafted goods)"
+        },
+        {
+          "type": "p",
+          "text": "To donate, email us at charitygolf@victoriavenezuelafoundation.org with a brief description of the item or service, its estimated fair market value, and your contact information and business name (if applicable)."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a94ab25abcea4e87773806a_phone-call.svg"
+        },
+        {
+          "type": "h4",
+          "text": "Get in Touch"
+        },
+        {
+          "type": "p",
+          "text": "Call: +1 (305) 922-5585"
+        },
+        {
+          "type": "p",
+          "text": "Email: charitygolf@victoriavenezuelafoundation.org"
+        },
+        {
+          "type": "p",
+          "text": "Address: Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100"
+        },
+        {
+          "type": "h2",
+          "text": "Golf. Give. Transform lives in Venezuela. Join us November 9!"
+        },
+        {
+          "type": "cta",
+          "text": "Buy Tickets",
+          "href": "https://donorbox.org/events/937157/steps/choose_tickets"
+        },
+        {
+          "type": "h2",
+          "text": "Stay connected"
+        },
+        {
+          "type": "p",
+          "text": "Keep up with our news and events"
+        },
+        {
+          "type": "p",
+          "text": "We respect your privacy. Unsubscribe at any time."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+// All resources — live /resources-categories/all.
+import PageLayout from '../../layouts/PageLayout.astro'
+import ResourceList from '../../components/ResourceList.astro'
+import { getResources } from '../../lib/content'
+
+const all = await getResources()
+---
+
+<PageLayout
+  title="Resources | Victoria Venezuela Foundation"
+  description="Stories, news, events and financial reports from Victoria Venezuela Foundation, a 501(c)(3) supporting children in Venezuela."
+>
+  <ResourceList resources={all} all={all} />
+</PageLayout>

@@ -1,65 +1,124 @@
 ---
+// Sponsor a Child — mirrors the live page (scripts/migrate/snapshot/pages/sponsor-a-child.json).
 import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import Button from '../../components/Button.astro'
+import ChildCarousel from '../../components/ChildCarousel.astro'
+import PastelCard from '../../components/PastelCard.astro'
+import ChecklistPanel from '../../components/ChecklistPanel.astro'
+import IconCard from '../../components/IconCard.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
-import { getFaqs } from '../../lib/content'
+import ProgramsCta from '../../components/ProgramsCta.astro'
+import { getChildren, getFaqs } from '../../lib/content'
 
+const children = (await getChildren()).slice(0, 12)
 const faqs = await getFaqs('sponsorship')
 ---
 
-<PageLayout title="Sponsor a Child — Victoria Venezuela Foundation">
-  <section class="bg-gray-100">
-    <div class="container max-w-container mx-auto px-4 py-12">
-      <div class="bg-white rounded-card shadow p-8 max-w-xl ml-auto">
-        <h1 class="text-display-md">Sponsor a child in Venezuela</h1>
-        <p class="mt-3 text-ink-700">Build a personal connection. Transform a life.</p>
-        <div class="mt-6 flex gap-3">
-          <a href="/sponsor-a-child/children" class="rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">Meet the children</a>
-          <a href="#how-it-works" class="rounded-pill border border-brand-sky text-brand-sky px-6 py-3 font-medium">How it works</a>
-        </div>
+<PageLayout
+  title="Sponsor a Child in Venezuela | Victoria Venezuela Foundation"
+  description="Sponsor a child in Venezuela from $25 a month. Your gift funds meals, medical care and education, and you receive letters and photos from your child."
+>
+  <Hero
+    align="right"
+    imageUrl="/images/pages/5b51a5f8-98.png"
+    mobileImageUrl="/images/pages/91f6fb13-vvf-sponsorarticle-featured-v2.jpg"
+    imageAlt="Smiling girl sitting at a table eating empanadas with orange cups nearby."
+    heading="Sponsor a child in Venezuela"
+    subtext="Build a personal connection. Transform a life."
+    primaryCta={{ label: 'Meet the children', href: '/sponsor-a-child/children' }}
+    secondaryCta={{ label: 'How it works', href: '#how-it-works' }}
+  />
+
+  <section class="px-6 md:px-20">
+    <SectionTitle
+      tagline="Essential"
+      heading="Every child deserves a fighting chance"
+      text="Sponsorship means stepping into a child's life with consistent support. You choose the amount each month, starting at just $25, and that commitment becomes the difference between survival and thriving for one young person in Venezuela."
+    >
+      <div class="flex flex-wrap justify-center gap-8 pt-6">
+        <Button href="/sponsor-a-child/children" variant="primary-inverse">Sponsor</Button>
+        <Button href="#how-it-works" variant="outline">Learn more</Button>
       </div>
+    </SectionTitle>
+    <img
+      src="/images/pages/ae149422-15d77ffd-ad0c-4914-a5cb-538fd74e2f6e-1.png"
+      alt="Three smiling girls playing on an inflatable slide at a foundation activity"
+      class="mx-auto mt-16 aspect-[1280/854] w-full max-w-screen-xl rounded-2xl object-cover"
+    />
+  </section>
+
+  <section class="pt-16 md:pt-[120px]">
+    <SectionTitle tagline="Children" heading="Meet the children" text="Find the child who needs you most" />
+    {children.length > 0 && <div class="mt-16"><ChildCarousel items={children} /></div>}
+    <div class="mt-16 flex justify-center">
+      <Button href="/sponsor-a-child/children" variant="primary-inverse">Meet them all</Button>
     </div>
   </section>
 
-  <section id="how-it-works" class="container max-w-container mx-auto px-4 py-section-sm md:py-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">Process</p>
-    <h2 class="mt-2 text-display-md text-center">Three steps to change</h2>
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
-      <div class="bg-pastel-yellow rounded-card p-6">
-        <p class="text-eyebrow uppercase font-semibold text-brand-navy/70">First</p>
-        <h3 class="mt-2 text-display-sm text-brand-navy">Choose a child</h3>
-        <p class="mt-2 text-ink-700">Browse the gallery and choose the child you want to support.</p>
-        <a href="/sponsor-a-child/children" class="mt-4 inline-block rounded-pill border border-brand-navy/30 text-brand-navy px-5 py-2 font-medium">Browse</a>
-      </div>
-      <div class="bg-pastel-pink rounded-card p-6">
-        <p class="text-eyebrow uppercase font-semibold text-brand-navy/70">Second</p>
-        <h3 class="mt-2 text-display-sm text-brand-navy">Set your amount</h3>
-        <p class="mt-2 text-ink-700">You decide the monthly gift, starting at just $25.</p>
-      </div>
-      <div class="bg-pastel-blue rounded-card p-6">
-        <p class="text-eyebrow uppercase font-semibold text-brand-navy/70">Third</p>
-        <h3 class="mt-2 text-display-sm text-brand-navy">Build a relationship that matters</h3>
-        <p class="mt-2 text-ink-700">Receive letters, photos, and watch your child grow stronger.</p>
-      </div>
+  <section id="how-it-works" class="px-6 pt-16 md:pt-[120px] md:px-16">
+    <SectionTitle tagline="Process" heading="Three steps to change" text="Start here and find your match" />
+    <div class="mx-auto mt-20 grid max-w-[1312px] justify-items-center gap-8 md:grid-cols-3">
+      <PastelCard tone="sun" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow="First" title="Choose a child" body="Browse the gallery and choose the child you want to support." />
+      <PastelCard tone="salmon" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow="Second" title="Set your amount" body="You decide the monthly gift, starting at just $25" />
+      <PastelCard tone="sky" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow="Third" title="Build a relationship that matters" body="Receive letters, photos, and watch your child grow stronger" />
     </div>
   </section>
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-brand-navy text-white rounded-card p-8 md:p-12">
-      <p class="text-eyebrow uppercase text-brand-sky font-semibold">Impact</p>
-      <h2 class="mt-2 text-display-sm">What sponsorship provides</h2>
-      <ul class="mt-4 grid md:grid-cols-2 gap-4 text-white/90">
-        <li>• Weekly nutritious meals: food that builds strength and hope</li>
-        <li>• Dignified access to education: supplies, uniforms, and the tools to learn</li>
-        <li>• Quarterly checkups and treatment when needed</li>
-        <li>• Connection with you: letters, photos, and a real relationship</li>
-      </ul>
+  <div class="mt-16 md:mt-[120px]">
+    <ChecklistPanel
+      tagline="Impact"
+      heading="What sponsorship provides"
+      text="Your commitment reaches far"
+      items={[
+        { title: 'Weekly nutritious meals:', text: 'Food that builds strength and hope' },
+        { title: 'Dignified access to education:', text: 'Supplies, uniforms, and the tools to learn' },
+        { title: 'Medical checkups twice a year:', text: 'A doctor sees your child twice a year, and treatment is covered when something is wrong.' },
+        { title: 'Connection with you:', text: 'The knowledge that they matter through a real connection' },
+      ]}
+    />
+  </div>
+
+  <section class="px-6 pt-16 md:pt-[160px] md:px-20">
+    <SectionTitle
+      tagline="Rewards"
+      heading="What you receive as a sponsor"
+      text="Sponsorship is a two-way street. You give support, and you receive something equally valuable—a window into a child's world and the knowledge that you changed it."
+    />
+    <div class="mx-auto mt-20 grid max-w-screen-xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <IconCard iconUrl="/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg" title="Letters from your child" text="Words and drawings that show you matter to someone far away" />
+      <IconCard iconUrl="/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg" title="Photos and progress updates" text="See the growth, the smile, the transformation your gift enables" />
+      <IconCard iconUrl="/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg" title="Prayer requests and needs" text="Know how to intercede and support beyond the monthly gift" />
+      <IconCard iconUrl="/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg" title="Annual impact reports" text="Detailed accounting of how your sponsorship changed lives this year" />
+    </div>
+    <div class="mt-20 flex justify-center">
+      <Button href="/sponsor-a-child/children" variant="primary-inverse">Sponsor a Child</Button>
     </div>
   </section>
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Frequently asked questions</h2>
-    <div class="mt-8 max-w-2xl mx-auto">
+  <section class="px-6 pt-16 md:pt-[120px]">
+    <SectionTitle tagline="Questions" heading="Frequently asked questions" text="Everything you need to know about child sponsorship" />
+    <div class="mt-16">
       <FaqAccordion faqs={faqs} />
     </div>
+    <div class="mx-auto mt-16 grid max-w-3xl gap-8 md:grid-cols-2">
+      <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">What if I need to cancel?</h2>
+      <div class="flex flex-col items-start gap-16">
+        <p class="font-body text-size-md leading-body text-brand-primary">
+          You can pause or end your sponsorship anytime with no penalty. We ask for thirty days' notice so we can help transition your child to another sponsor. Your child's care continues uninterrupted during this time.
+        </p>
+        <Button href="/contact" variant="primary-inverse">Still have questions?</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-[272px]">
+    <ProgramsCta
+      heading="We earn your trust through transparency"
+      text="In fiscal 2025, 95% of funds went directly to programs. Sponsorship builds a relationship with one child. Gifts fund the programs that serve all the children in our care."
+      primaryCta={{ label: 'Sponsor a Child', href: '/sponsor-a-child/children' }}
+      secondaryCta={{ label: 'View our financials', href: '/resources/category/financials-transparency' }}
+    />
   </section>
 </PageLayout>

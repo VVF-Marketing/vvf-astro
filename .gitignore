@@ -19,3 +19,16 @@ emdash-env.d.ts
 /test-results/
 /playwright-report/
 /blob-report/
+
+# Webflow migration: child data stays local (public repo; minors' data).
+# Regenerate with `npm run migrate`.
+/scripts/migrate/snapshot/children.json
+/seed/media/children/
+/seed/seed.local.json
+
+# Webflow migration HTTP cache (raw live HTML/JSON)
+/scripts/migrate/.cache/
+/seed/media/emdash-media.local.json
+
+# Raw Webflow API dumps (may include unpublished/private child fields)
+/scripts/migrate/snapshot/api/

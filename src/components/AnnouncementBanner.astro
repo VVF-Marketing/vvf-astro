@@ -1,4 +1,7 @@
 ---
+// Project-only (no live counterpart): site-wide campaign strip above the
+// header, driven by EmDash campaign settings. Uses the live accent/navy
+// pairing of the primary button.
 export interface Props {
   active: boolean
   text?: string
@@ -10,13 +13,13 @@ const { active, text, href = '/earthquake-relief' } = Astro.props as Props
 
 {
   active && (
-    <div class="bg-brand-sky text-white text-sm">
+    <div class="bg-brand-accent">
       <a
         href={href}
-        class="container max-w-container mx-auto px-4 py-2 flex items-center justify-center gap-2 hover:underline"
+        class="mx-auto flex max-w-screen-xl items-center justify-center gap-2 px-6 py-2 font-sans text-size-sm text-brand-primary no-underline hover:underline"
       >
         <span>{text ?? 'Earthquake relief: Venezuelan families need help now.'}</span>
-        <span class="font-semibold">See how you can give &rarr;</span>
+        <span class="font-bold">See how you can give &rarr;</span>
       </a>
     </div>
   )

@@ -1,75 +1,104 @@
 ---
-// Terms of Use and Donor Bill of Rights are intentionally omitted: those
-// pages don't exist yet (copy not supplied). See front-end/spec.md:
-// Privacy Policy page.
-const socialLinks = [
-  { label: 'Facebook', href: '#' },
-  { label: 'Instagram', href: '#' },
-  { label: 'X', href: '#' },
-  { label: 'LinkedIn', href: '#' },
-  { label: 'YouTube', href: '#' },
+// Live counterpart: `.footer_component` — an inset navy card (radius 2xl)
+// with logo, legal copy and Candid seal on the left; two link columns,
+// contact details and social icons on the right; credits row below.
+const linkColumns = [
+  [
+    { label: 'Our Team', href: '/our-team' },
+    { label: 'Sponsor a Child', href: '/sponsor-a-child' },
+    { label: 'Ways to Give', href: '/ways-to-give' },
+    { label: 'Corporate Sponsorships', href: '/corporate-sponsorships' },
+    { label: 'Events', href: '/events' },
+  ],
+  [
+    { label: 'Earthquake relief', href: '/earthquake-relief' },
+    { label: 'News', href: '/resources' },
+    { label: 'Financials', href: '/resources/category/financials-transparency' },
+    { label: 'Donate now', href: '/ways-to-give' },
+    { label: 'Contact us', href: '/contact' },
+  ],
 ]
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://www.facebook.com/victoriavenezuelafoundation', icon: '/images/footer/facebook.svg' },
+  { label: 'Instagram', href: 'https://www.instagram.com/victoriavenezuelafoundation/', icon: '/images/footer/instagram.svg' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/victoriavenezuelafoundation/posts/?feedView=all', icon: '/images/footer/linkedin.svg' },
+  { label: 'YouTube', href: 'https://www.youtube.com/channel/UC5EnslQqm_S4KHb1_T3hnew', icon: '/images/footer/youtube.svg' },
+]
+
+const text = 'font-sans text-size-sm leading-body text-neutral-white'
+const link = `${text} no-underline hover:text-brand-accent`
+const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-size-sm'
 ---
 
-<footer class="bg-brand-navy text-white">
-  <div class="container max-w-container mx-auto px-4 py-12 grid gap-10 md:grid-cols-3">
-    <div>
-      <p class="font-display text-xl">Victoria Venezuela</p>
-      <p class="mt-4 text-sm text-white/80 max-w-xs">
-        Victoria Venezuela Foundation is a 501(c)(3) non-profit organization. Contributions are tax-deductible under
-        Internal Revenue Code Section 501(c)(3).
-      </p>
-      <p class="mt-4 text-sm text-white/80">
-        Tax ID: 88-3282100<br />
-        P.O. Box 268752<br />
-        Weston, FL 33326
-      </p>
-      <div class="mt-4 inline-block border border-white/40 rounded px-3 py-2 text-xs text-white/80">
-        Platinum Transparency 2026 — Candid
+<footer class="px-0 pb-6 sm:px-6 lg:px-6">
+  <div class="mx-auto flex flex-col gap-16 rounded-xl bg-brand-primary px-6 py-10 md:rounded-[1.5rem] md:px-6 lg:rounded-2xl lg:p-12 xl:p-16">
+    <div class="flex flex-col gap-8 md:flex-row md:flex-wrap lg:flex-nowrap lg:gap-16">
+      <div class="flex flex-col items-start gap-4 md:items-start lg:flex-1 lg:gap-8">
+        <a href="/" aria-label="Victoria Venezuela Foundation home">
+          <img src="/images/logo.svg" alt="Victoria Venezuela Foundation" width="206" height="68" class="h-auto max-w-[180px] md:max-w-none" />
+        </a>
+        <p class={`${text} max-w-[560px]`}>
+          Victoria Venezuela Foundation is a 501(c)(3) non-profit organization.<br />
+          Contributions are tax-deductible under Internal Revenue Code Section 501(c)(3).
+        </p>
+        <p class={text}>
+          Tax ID: 88-3282100<br />
+          P.O. Box 327222<br />
+          Weston, FL 33332
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc" class="shrink-0">
+            <img src="/images/footer/candid-seal.png" alt="Candid Platinum Transparency seal, 2023 to 2026" width="99" height="99" class="h-auto max-w-[100px]" loading="lazy" />
+          </a>
+          <p class={`${text} max-w-[220px]`}>Candid's Platinum Transparency Recipients 2023-2026</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-8 lg:max-w-[400px] lg:flex-1 lg:justify-between">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-4 md:flex md:flex-wrap lg:flex-nowrap">
+          {
+            linkColumns.map((column) => (
+              <ul class="flex min-w-0 flex-1 flex-col">
+                {column.map((item) => (
+                  <li>
+                    <a href={item.href} class={`${link} flex min-h-11 items-center py-2 md:block md:min-h-0`}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ))
+          }
+        </div>
+        <div class="flex flex-col gap-1">
+          <p class={`${text} font-semibold uppercase tracking-[0.1em]`}>Contact</p>
+          <a href="mailto:info@victoriavenezuelafoundation.org" class="inline-flex min-h-11 items-center font-sans text-size-sm leading-body text-brand-accent md:min-h-0">
+            info@victoriavenezuelafoundation.org
+          </a>
+          <a href="tel:+19543710557" class="inline-flex min-h-11 items-center font-sans text-size-sm leading-body text-brand-accent md:min-h-0">+1 (954) 371-0557</a>
+        </div>
+        <ul class="flex gap-3">
+          {
+            socialLinks.map((s) => (
+              <li>
+                <a href={s.href} class="flex h-11 w-11 items-center py-1.5 pr-1.5">
+                  <img src={s.icon} alt={s.label} width="24" height="24" loading="lazy" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-6 text-sm">
-      <ul class="space-y-2 text-white/80">
-        <li><a class="hover:text-white" href="/our-team">About us</a></li>
-        <li><a class="hover:text-white" href="/sponsor-a-child">Our programs</a></li>
-        <li><a class="hover:text-white" href="/ways-to-give">Get involved</a></li>
-        <li><a class="hover:text-white" href="/ways-to-give">Donate now</a></li>
-        <li><a class="hover:text-white" href="/blog">News updates</a></li>
-      </ul>
-      <ul class="space-y-2 text-white/80">
-        <li><a class="hover:text-white" href="/our-team#volunteer">Volunteer</a></li>
-        <li><a class="hover:text-white" href="/sponsor-a-child/children">Sponsor child</a></li>
-        <li><a class="hover:text-white" href="/contact">Contact us</a></li>
-        <li><a class="hover:text-white" href="/events">Events</a></li>
-        <li><a class="hover:text-white" href="/corporate-sponsorships">Partnerships</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-sm font-semibold">Contact</p>
-      <a class="block mt-2 text-sm text-white/80 hover:text-white" href="mailto:info@victoriavenezuelafoundation.org">
-        info@victoriavenezuelafoundation.org
-      </a>
-      <div class="mt-4 flex gap-3">
-        {
-          socialLinks.map((s) => (
-            <a href={s.href} aria-label={s.label} class="text-white/80 hover:text-white">
-              <span class="sr-only">{s.label}</span>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2" />
-              </svg>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </div>
-
-  <div class="border-t border-white/20">
-    <div class="container max-w-container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/70">
-      <p>© {new Date().getFullYear()} Victoria Venezuela Foundation. All rights reserved.</p>
-      <a href="/privacy-policy" class="hover:text-white">Privacy policy</a>
+    <hr class="border-0 border-t border-neutral-light-gray" />
+    <div class="flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-start md:justify-between">
+        <div class="flex flex-col gap-3 md:gap-6">
+          <p class={credit}>Designed and Developed by <a href="https://www.paulainc.ca/" class="text-brand-accent">Paula Inc.</a></p>
+          <p class={credit}>© {new Date().getFullYear()} Victoria Venezuela Foundation. All rights reserved.</p>
+        </div>
+        <a href="/privacy-policy" class={link}>Privacy policy</a>
     </div>
   </div>
 </footer>

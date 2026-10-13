@@ -1,87 +1,92 @@
 ---
+// Corporate Sponsorships — mirrors the live page (scripts/migrate/snapshot/pages/corporate-sponsorships.json).
 import PageLayout from '../../layouts/PageLayout.astro'
-import StatTileRow from '../../components/StatTileRow.astro'
-import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
+import SplitHero from '../../components/SplitHero.astro'
 import LogoCarousel from '../../components/LogoCarousel.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import StatIconCard from '../../components/StatIconCard.astro'
+import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
+import Card from '../../components/Card.astro'
 import EmployerMatchWidget from '../../components/EmployerMatchWidget.astro'
-import { getTeamMembers, getSponsors, getSponsorshipPackages } from '../../lib/content'
+import { getPartners, getSponsorshipPackages } from '../../lib/content'
 
-const teamLeaders = await getTeamMembers('leader')
-const pointOfContact = teamLeaders.find((m) => m.name === 'Juan Tomasini') ?? teamLeaders[0]
-const sponsors = await getSponsors()
-const sponsorshipPackages = await getSponsorshipPackages()
+const partners = await getPartners()
+const tiers = await getSponsorshipPackages()
 ---
 
-<PageLayout title="Corporate Sponsorships — Victoria Venezuela Foundation">
-  <section class="bg-brand-navy text-white">
-    <div class="container max-w-container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-display-lg">Corporate Sponsorships</h1>
-        <p class="mt-3 text-white/85">
-          Join the many organizations actively changing the lives of underprivileged children in Venezuela!
-        </p>
-        <a href="/contact?topic=corporate-partnerships" class="mt-6 inline-block rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">
-          Partner with Us
-        </a>
-      </div>
-      <div class="h-56 rounded-card bg-white/10 flex items-center justify-center text-white/60 text-sm">Image here</div>
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 py-section-sm md:py-section">
-    <LogoCarousel logos={sponsors} />
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Our Impact in Numbers</h2>
-    <div class="mt-8">
-      <StatTileRow
-        stats={[
-          { value: '77,300+', label: 'Nutrition program', caption: 'Meals served to children at risk' },
-          { value: '1,012', label: 'Healthcare program', caption: 'Critical medical care provided' },
-          { value: '24', label: 'Educational program', caption: 'Children with educational support' },
-          { value: '41+', label: 'Corporate sponsors', caption: 'Investing in programs in Venezuela' },
-        ]}
-      />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Sponsor packages</h2>
-    <div class="mt-8">
-      <SponsorshipTierTable tiers={sponsorshipPackages} ctaHrefFor={() => '/contact?topic=corporate-partnerships'} />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-white rounded-card shadow-sm p-8 max-w-md mx-auto text-center">
-      <h2 class="text-display-sm">See if your employer will match your donation!</h2>
-      <div class="mt-4">
-        <EmployerMatchWidget />
-      </div>
-    </div>
-  </section>
+<PageLayout
+  title="Corporate Sponsorships | Victoria Venezuela Foundation"
+  description="Join the organizations changing the lives of children in Venezuela. Corporate sponsorship packages from $250 a year, plus employer matching."
+>
+  <SplitHero
+    heading="Corporate Sponsorships"
+    subtext="Join the many organizations actively changing the lives of underprivileged children in Venezuela!"
+    cta={{ label: 'Partner with Us', href: '#sponsor-packages' }}
+    imageUrl="/images/pages/9abd7ec8-vvf-corporate-hero-child-v1.jpg"
+    imageAlt="A girl smiling at a Victoria Venezuela Foundation event in Venezuela"
+  />
 
   {
-    pointOfContact && (
-      <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-card shadow-sm p-6">
-            <h3 class="font-display text-lg text-brand-navy">Point of Contact</h3>
-            <p class="mt-2 text-ink-700">
-              Is your organization interested in investing in children and the future of Venezuela? Let's make a
-              positive impact together.
-            </p>
-          </div>
-          <div class="bg-pastel-blue rounded-card p-6">
-            <p class="font-display text-lg text-brand-navy">{pointOfContact.name}</p>
-            <p class="text-sm text-ink-700">{pointOfContact.role}</p>
-            <a href="mailto:donate@victoriavenezuelafoundation.org" class="mt-2 block text-brand-sky hover:underline">
-              donate@victoriavenezuelafoundation.org
-            </a>
-          </div>
-        </div>
+    partners.length > 0 && (
+      <section class="bg-neutral-white py-4">
+        <LogoCarousel logos={partners} />
       </section>
     )
   }
+
+  <section class="px-6 py-16 md:px-16">
+    <SectionTitle heading="Our Impact in Numbers" />
+    <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <StatIconCard tone="salmon" iconUrl="/images/pages/b62b0e1d-15-nutrition.svg" label="Nutrition Program" value="77,300+" text="Meals served to children at risk" />
+      <StatIconCard tone="sky" iconUrl="/images/pages/6bbc919e-expanded.svg" label="Healthcare Program" value="1,012" text="Medical visits for children" />
+      <StatIconCard tone="sun" iconUrl="/images/pages/a037d128-vector.svg" label="Educational Program" value="99" text="Children with educational support" />
+      <StatIconCard tone="white" iconUrl="/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg" label="Corporate Sponsors" value="41+" text="Investing in programs to support children in Venezuela" />
+    </div>
+  </section>
+
+  <section id="sponsor-packages" class="scroll-mt-8 px-6 pb-16 md:pb-[120px] pt-16 md:px-16">
+    <SectionTitle heading="Sponsor packages" />
+    <div class="mx-auto mt-16 max-w-[1312px]"><SponsorshipTierTable tiers={tiers} /></div>
+  </section>
+
+  <section class="px-6 pb-16 md:pb-[120px] md:px-20">
+    <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+      <SectionTitle
+        align="left"
+        heading="Company Matching"
+        text="Company matching is a powerful incentive for employees to donate their own funds. It amplifies the impact for the nonprofit organization they choose to support, such as the Victoria Venezuela Foundation."
+        class="lg:max-w-[710px]"
+      />
+      <Card class="flex flex-col items-center gap-10 px-16 py-16 lg:w-[530px]">
+        <img src="/images/pages/d5ce82b3-benevity-logo-svg.webp" alt="Benevity" class="w-[302px]" loading="lazy" />
+        <img src="/images/pages/8cd2f99c-yourcause-salogog-011723.png" alt="YourCause from Blackbaud" class="w-[302px]" loading="lazy" />
+        <img src="/images/pages/6d5b79d9-guidestar-pro.webp" alt="GuideStar by Candid" class="w-[302px]" loading="lazy" />
+      </Card>
+    </div>
+    <div class="mt-10"><EmployerMatchWidget /></div>
+  </section>
+
+  <section class="px-6 pb-16 md:pb-[120px] md:px-28">
+    <div class="mx-auto grid max-w-[1214px] gap-6 md:grid-cols-[634fr_556fr]">
+      <Card radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
+        <div class="flex items-center gap-4">
+          <img src="/images/pages/daa9ccaf-phone-call-1.svg" alt="" width="44" height="44" />
+          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">Point of Contact</h2>
+        </div>
+        <p class="font-body text-size-md leading-body text-brand-primary">
+          Is your organization interested in investing in children and the future of Venezuela? Let’s make a positive impact together.
+        </p>
+      </Card>
+      <Card tone="sky" radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
+        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">Juan Tomasini</h2>
+        <p class="font-body text-size-md leading-body text-brand-primary">
+          Vice President, Business Development<br />+1-954-440-9172
+        </p>
+        <p class="font-body text-size-md leading-body">
+          <a href="mailto:donate@victoriavenezuelafoundation.org" class="text-brand-accent underline">donate@victoriavenezuelafoundation.org</a><br />
+          <a href="https://www.victoriavenezuelafoundation.org" class="text-brand-accent underline">www.victoriavenezuelafoundation.org</a>
+        </p>
+      </Card>
+    </div>
+  </section>
 </PageLayout>

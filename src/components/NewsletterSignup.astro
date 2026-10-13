@@ -1,20 +1,32 @@
 ---
+// Live counterpart: Resources "Stay connected" box — sky card (radius 2xl)
+// with heading, intro, pill email field, Subscribe button and privacy note.
 import Button from './Button.astro'
-import Card from './Card.astro'
-import TextField from './TextField.astro'
 
 export interface Props {
   heading?: string
+  text?: string
+  // `wide`: full-width panel with the field capped at 520px (Events page).
+  width?: 'narrow' | 'wide'
 }
 
-const { heading = 'Stay Connected' } = Astro.props as Props
+const { heading = 'Stay connected', text = 'Keep up with our news and events', width = 'narrow' } = Astro.props as Props
 ---
 
-<Card tone="blue" shadow={false} class="p-8 text-center">
-  <p class="font-display text-2xl text-brand-navy">{heading}</p>
-  <form class="mt-4 flex flex-col sm:flex-row gap-2 max-w-md mx-auto" data-newsletter-form>
-    <TextField type="email" required placeholder="Enter your email" class="flex-1 border-brand-navy/20" />
-    <Button type="submit" variant="primary-sky" size="lg">Subscribe</Button>
+<div class="flex flex-col items-center gap-6 rounded-2xl bg-sky p-10 text-center md:p-16">
+  <h2 class={`leading-[1.16] tracking-[-0.01em] text-brand-primary ${width === 'wide' ? 'text-h2-mobile md:text-h2' : 'text-[2.25rem]'}`}>{heading}</h2>
+  <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>
+  <form class={`mt-8 flex w-full flex-col items-center gap-4 ${width === 'wide' ? 'max-w-[520px]' : ''}`} data-newsletter-form>
+    <label class="sr-only" for="newsletter-email">Email</label>
+    <input
+      id="newsletter-email"
+      type="email"
+      required
+      placeholder="Enter your email"
+      autocomplete="email"
+      class="h-[51px] w-full rounded-pill border border-brand-primary bg-transparent px-6 py-3 text-center font-body text-size-md text-brand-primary placeholder:text-brand-primary/50"
+    />
+    <Button type="submit" variant="primary-inverse">Subscribe</Button>
   </form>
-  <p class="mt-2 text-xs text-ink-500">We respect your privacy. Unsubscribe at any time.</p>
-</Card>
+  <p class="mt-8 font-sans text-size-sm leading-body text-brand-primary">We respect your privacy. Unsubscribe at any time.</p>
+</div>

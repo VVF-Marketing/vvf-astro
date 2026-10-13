@@ -1,8 +1,8 @@
 import EmployerMatchWidget from './EmployerMatchWidget.astro'
 
-// Takes no props: it reads DTD_PUBLIC_KEY from the environment and always
-// falls back to the disabled placeholder when unset, which is the correct
-// default to story (no external Double the Donation script load in dev).
+// Takes no props. Renders Double the Donation's embed with the live site's
+// public key; in Storybook the plugin script doesn't run (scripts inserted
+// via innerHTML never execute), so only the static attribution shows.
 export default {
   title: 'Molecules/EmployerMatchWidget',
   component: EmployerMatchWidget,

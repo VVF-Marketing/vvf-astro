@@ -1,24 +1,28 @@
 ---
+// Live counterpart: `.faq-row_component` — question rows (Nunito 32px bold,
+// 20px on mobile) with a navy chevron, separated by a hairline; the answer
+// opens below in Open Sans. Native <details> keeps it keyboard-accessible
+// without a script.
 import type { Faq } from '../lib/content/types'
 
 export interface Props {
-  faqs: Faq[]
+  faqs: Pick<Faq, 'question' | 'answer'>[]
 }
 
 const { faqs } = Astro.props as Props
 ---
 
-<div class="divide-y divide-gray-200">
+<div class="mx-auto flex w-full max-w-3xl flex-col">
   {
     faqs.map((faq) => (
-      <details class="group py-4">
-        <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-brand-navy">
-          {faq.question}
-          <span class="text-brand-sky group-open:rotate-180 transition-transform" aria-hidden="true">
-            ⌄
-          </span>
+      <details class="group border-b border-brand-primary/[0.12] py-6">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+          <h3 class="text-h5 font-extrabold leading-[1.4] text-brand-primary md:text-h3 md:font-bold md:leading-[1.2]">{faq.question}</h3>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 text-brand-primary transition-transform group-open:rotate-180">
+            <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </summary>
-        <p class="mt-2 text-ink-700 text-sm">{faq.answer}</p>
+        <p class="pt-4 font-body text-size-md leading-body text-brand-primary">{faq.answer}</p>
       </details>
     ))
   }

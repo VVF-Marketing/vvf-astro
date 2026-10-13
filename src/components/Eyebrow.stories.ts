@@ -5,14 +5,11 @@ export default {
   component: Eyebrow,
 }
 
-export const Navy = {
-  args: { slots: { default: 'Our Mission' } },
+export const Accent = {
+  args: { slots: { default: 'About Us' } },
 }
 
-export const Sky = {
-  args: { color: 'sky', slots: { default: 'Making an Impact' } },
-}
-
-export const Ink = {
-  args: { color: 'ink', slots: { default: 'Recognition' } },
+export const Light = {
+  args: { tone: 'light', slots: { default: 'Impact' } },
+  parameters: { backgrounds: { default: 'navy' } },
 }

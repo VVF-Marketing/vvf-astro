@@ -1,0 +1,32 @@
+---
+// Live counterpart: event "Program" (`.section-11`) — heading and the
+// date/venue on the left; one white card per time slot on the right with a
+// pastel time pill (sky, salmon, sun cycling).
+export interface Props {
+  heading?: string
+  meta?: string[]
+  items: { lead?: string; text: string }[]
+}
+
+const { heading = 'Program', meta = [], items } = Astro.props as Props
+const pills = ['bg-sky', 'bg-salmon', 'bg-sun']
+---
+
+<section class="px-6 pb-16 md:px-[128px]">
+  <div class="mx-auto grid max-w-[1184px] gap-10 md:grid-cols-[1fr_625px] md:gap-16">
+    <div>
+      <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h2>
+      {meta.length > 0 && <p class="mt-8 font-sans text-size-md font-bold leading-[1.55] text-brand-primary">{meta.map((m, i) => <>{i > 0 && <br />}{m}</>)}</p>}
+    </div>
+    <ul class="flex flex-col gap-6">
+      {
+        items.map((item, i) => (
+          <li class="flex flex-col items-start gap-10 rounded-2xl bg-neutral-white px-10 py-10">
+            {item.lead && <span class={`rounded-pill px-10 py-6 font-sans text-size-md font-extrabold leading-none text-brand-primary ${pills[i % pills.length]}`}>{item.lead}</span>}
+            <p class="font-sans text-h5 font-extrabold leading-[1.3] text-brand-primary md:text-[2rem]">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

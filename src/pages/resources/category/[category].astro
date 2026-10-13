@@ -1,0 +1,20 @@
+---
+// Resources by category — live /resources-categories/<category>.
+import PageLayout from '../../../layouts/PageLayout.astro'
+import ResourceList from '../../../components/ResourceList.astro'
+import { getResources } from '../../../lib/content'
+import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_TITLES, type ResourceCategory } from '../../../lib/content/types'
+
+const category = Astro.params.category as ResourceCategory
+if (!RESOURCE_CATEGORIES.includes(category)) return new Response('Not found', { status: 404 })
+const all = await getResources()
+const resources = all.filter((r) => r.categories.includes(category))
+const descriptions: Record<ResourceCategory, string> = {
+  stories: 'Stories from our nutrition, medical care and education programs for children in Venezuela.',
+  'financials-transparency': 'Our annual and quarterly impact reports, with condensed financials. Victoria Venezuela Foundation is a 501(c)(3), EIN 88-3282100.',
+}
+---
+
+<PageLayout title={`${RESOURCE_CATEGORY_TITLES[category]} | Resources | Victoria Venezuela Foundation`} description={descriptions[category]}>
+  <ResourceList resources={resources} all={all} category={category} />
+</PageLayout>

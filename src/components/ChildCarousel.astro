@@ -1,0 +1,46 @@
+---
+// Live counterpart: Sponsor a Child "Meet the children" strip
+// (`.sponsor-children_list`) — a horizontally scrolling row of compact
+// child cards with a round next arrow.
+import type { ChildItem } from '../lib/content/types'
+import ChildCard from './ChildCard.astro'
+
+export interface Props {
+  items: Pick<ChildItem, 'slug' | 'displayName' | 'age' | 'imageUrl'>[]
+}
+
+const { items } = Astro.props as Props
+---
+
+<div class="relative" data-child-carousel>
+  <ul class="flex snap-x scroll-px-6 gap-6 overflow-x-auto scroll-smooth px-6 pb-2 md:scroll-px-16 md:px-16 [&::-webkit-scrollbar]:hidden" data-track>
+    {
+      items.map((child) => (
+        <li class="w-[231px] shrink-0 snap-start">
+          <ChildCard child={child} variant="compact" />
+        </li>
+      ))
+    }
+  </ul>
+  <button
+    type="button"
+    class="absolute right-7 top-[115px] hidden h-[70px] w-[70px] -translate-y-1/2 items-center justify-center rounded-full border-2 border-brand-accent bg-neutral-white text-brand-primary md:flex"
+    aria-label="More children"
+    data-next
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+  </button>
+</div>
+
+<script>
+  import { nextScrollLeft } from '../lib/carousel'
+
+  document.querySelectorAll<HTMLElement>('[data-child-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]')
+    const next = root.querySelector<HTMLElement>('[data-next]')
+    if (!track) return
+    next?.addEventListener('click', () => {
+      track.scrollLeft = nextScrollLeft(track.scrollLeft, track.scrollWidth - track.clientWidth, 255)
+    })
+  })
+</script>

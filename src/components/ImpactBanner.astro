@@ -1,4 +1,7 @@
 ---
+// Live counterpart: home `.section_content-image` ("Build a bond that
+// matters") — inset navy panel (radius 2xl) with tagline, white heading,
+// copy, bullet list and a primary button beside a rounded photo.
 import type { CtaLink } from './Hero.astro'
 import Button from './Button.astro'
 import Eyebrow from './Eyebrow.astro'
@@ -11,24 +14,37 @@ export interface Props {
   imageUrl?: string
   imageAlt?: string
   cta?: CtaLink
+  // Our Team volunteers panel: short titled points in pastel text colors.
+  highlights?: { title: string; text: string; tone: 'sun' | 'sky' }[]
+  ctaVariant?: 'primary' | 'primary-inverse'
 }
 
-const { eyebrow, heading, body, bullets, imageUrl, imageAlt = '', cta } = Astro.props as Props
+const { eyebrow, heading, body, bullets, imageUrl, imageAlt = '', cta, highlights, ctaVariant = 'primary' } = Astro.props as Props
+const highlightTones = { sun: 'text-sun', sky: 'text-sky' }
 ---
 
-<section class="bg-brand-navy text-white rounded-card overflow-hidden">
-  <div class="grid md:grid-cols-2 gap-8 items-center p-8 md:p-12">
-    <div>
-      {eyebrow && <Eyebrow color="sky">{eyebrow}</Eyebrow>}
-      <h2 class="mt-2 text-display-sm md:text-display-md">{heading}</h2>
-      {body && <p class="mt-4 text-white/85">{body}</p>}
+<section class="mx-0 rounded-xl bg-brand-primary px-6 py-10 text-neutral-white sm:mx-6 md:rounded-2xl md:px-10 md:py-16">
+  <div class="mx-auto flex max-w-screen-xl flex-col-reverse gap-10 lg:flex-row lg:items-center lg:gap-20">
+    <div class="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 class="my-4 text-h2-mobile leading-[1.1] text-neutral-white md:text-h2">{heading}</h2>
+      {body && <p class="font-sans text-size-md leading-body text-neutral-white">{body}</p>}
       {
         bullets && bullets.length > 0 && (
-          <ul class="mt-4 space-y-2 text-brand-sky/90">
+          <ul class="mt-12 flex list-disc flex-col gap-4 pl-5 text-left">
             {bullets.map((b) => (
-              <li class="flex gap-2">
-                <span aria-hidden="true">•</span>
-                <span class="text-white/90">{b}</span>
+              <li class="font-sans text-size-md leading-body text-neutral-white">{b}</li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        highlights && highlights.length > 0 && (
+          <ul class="mt-16 flex w-full max-w-[500px] flex-col divide-y divide-sun">
+            {highlights.map((h) => (
+              <li class={`flex flex-col gap-4 px-6 py-6 ${highlightTones[h.tone]}`}>
+                <h3 class="font-sans text-h5 font-extrabold leading-[1.4]">{h.title}</h3>
+                <p class="font-sans text-size-md leading-body">{h.text}</p>
               </li>
             ))}
           </ul>
@@ -36,22 +52,12 @@ const { eyebrow, heading, body, bullets, imageUrl, imageAlt = '', cta } = Astro.
       }
       {
         cta && (
-          <Button href={cta.href} variant="primary-sky" size="lg" class="mt-6 inline-block">
+          <Button href={cta.href} variant={ctaVariant} class="mt-12">
             {cta.label}
           </Button>
         )
       }
     </div>
-    <div class="rounded-card overflow-hidden h-64 md:h-80">
-      {
-        imageUrl ? (
-          <img src={imageUrl} alt={imageAlt} class="w-full h-full object-cover" />
-        ) : (
-          <div class="w-full h-full bg-white/10 flex items-center justify-center text-white/60 text-sm">
-            Image here
-          </div>
-        )
-      }
-    </div>
+    {imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[592/631] w-full rounded-2xl object-cover lg:w-[46%]" loading="lazy" />}
   </div>
 </section>

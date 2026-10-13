@@ -1,0 +1,38 @@
+---
+// Live counterpart: `.programs-cta_card` ("Where your money goes") — sky
+// panel (radius 2xl), centered heading, copy and one or two buttons.
+import type { CtaLink } from './Hero.astro'
+import Button from './Button.astro'
+
+export interface Props {
+  heading: string
+  text?: string
+  primaryCta?: CtaLink
+  secondaryCta?: CtaLink
+  tone?: 'sky' | 'sun' | 'salmon' | 'white'
+}
+
+const { heading, text, primaryCta, secondaryCta, tone = 'sky' } = Astro.props as Props
+const tones = { sky: 'bg-sky', sun: 'bg-sun', salmon: 'bg-salmon', white: 'bg-neutral-white' }
+---
+
+<div class={`mx-auto flex max-w-screen-xl flex-col items-center gap-4 rounded-2xl px-6 py-12 text-center md:px-16 md:py-16 ${tones[tone]}`}>
+  <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h2>
+  {text && <p class="max-w-3xl font-body text-size-md leading-body text-brand-primary">{text}</p>}
+  {
+    (primaryCta || secondaryCta) && (
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        {primaryCta && (
+          <Button href={primaryCta.href} variant="primary-inverse">
+            {primaryCta.label}
+          </Button>
+        )}
+        {secondaryCta && (
+          <Button href={secondaryCta.href} variant="outline">
+            {secondaryCta.label}
+          </Button>
+        )}
+      </div>
+    )
+  }
+</div>

@@ -1,0 +1,30 @@
+---
+// Live counterpart: `.section-title_component` — tagline, heading and an
+// optional intro paragraph, centered (default) or left-aligned.
+import Eyebrow from './Eyebrow.astro'
+
+export interface Props {
+  tagline?: string
+  heading: string
+  text?: string
+  align?: 'center' | 'left'
+  // `light` for navy/dark sections.
+  tone?: 'default' | 'light'
+  headingLevel?: 'h1' | 'h2' | 'h3'
+  class?: string
+}
+
+const { tagline, heading, text, align = 'center', tone = 'default', headingLevel = 'h2', class: className = '' } = Astro.props as Props
+const Heading = headingLevel
+const alignClass = align === 'center' ? 'items-center text-center mx-auto' : 'items-center text-center md:items-start md:text-left'
+const textColor = tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'
+---
+
+<div class={`flex max-w-3xl flex-col gap-4 ${alignClass} ${className}`}>
+  {tagline && <Eyebrow>{tagline}</Eyebrow>}
+  <div class={`flex flex-col gap-6 ${alignClass}`}>
+    <Heading class={`text-[2.25rem] leading-[1.16] tracking-[-1px] md:text-h2 md:leading-[1.1] md:tracking-normal ${textColor}`}>{heading}</Heading>
+    {text && <p class={`font-sans text-size-md leading-body ${textColor}`}>{text}</p>}
+    <slot />
+  </div>
+</div>

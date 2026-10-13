@@ -1,30 +1,25 @@
 import TeamMemberCard from './TeamMemberCard.astro'
-import type { TeamMemberItem } from '../lib/content/types'
 
 export default {
-  title: 'Atoms/TeamMemberCard',
+  title: 'Molecules/TeamMemberCard',
   component: TeamMemberCard,
 }
 
-export const BoardMember = {
+export const WithProfile = {
   args: {
-    member: {
-      slug: 'ana-rodriguez',
-      name: 'Ana Rodriguez',
-      role: 'Board Chair',
-      tier: 'board',
-      bio: 'Ana has led the foundation’s board since 2018.',
-    } satisfies TeamMemberItem,
+    member: { name: 'Randy Lander', role: 'Chairman', profileSlug: 'randy-lander', imageUrl: '/seed-media/team_members/15177727-randy-lander.webp' },
   },
 }
 
-export const StaffMember = {
+export const WithoutProfile = {
   args: {
-    member: {
-      slug: 'sam-lee',
-      name: 'Sam Lee',
-      role: 'Program Coordinator',
-      tier: 'staff',
-    } satisfies TeamMemberItem,
+    member: { name: 'Helen Bello', role: 'Vice Chair', imageUrl: '/seed-media/team_members/1822aacd-helen-bello.webp' },
+  },
+}
+
+export const OpenSeat = {
+  args: {
+    member: { name: 'Join our board', role: "We're looking for a new board member" },
+    openSeat: { kicker: 'Board seat open', heading: 'Help guide the Foundation', cta: 'Get in touch', href: '/contact' },
   },
 }

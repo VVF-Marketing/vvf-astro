@@ -1,110 +1,203 @@
 ---
+// Event detail — mirrors the live /events/<slug> template. Upcoming events
+// get the full ticketing layout; past events get the recap layout.
 import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import WhatWhenWhere from '../../components/WhatWhenWhere.astro'
+import LogoCarousel from '../../components/LogoCarousel.astro'
+import AppealPanel from '../../components/AppealPanel.astro'
+import PhotoMosaic from '../../components/PhotoMosaic.astro'
+import ProgramTimeline from '../../components/ProgramTimeline.astro'
+import IncludesPanel from '../../components/IncludesPanel.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
 import TicketCard from '../../components/TicketCard.astro'
-import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
-import AuctionItemCard from '../../components/AuctionItemCard.astro'
+import BenefitsTable from '../../components/BenefitsTable.astro'
+import SpecialOpportunities from '../../components/SpecialOpportunities.astro'
+import ImpactPanel from '../../components/ImpactPanel.astro'
+import FaqAccordion from '../../components/FaqAccordion.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import StatTileRow from '../../components/StatTileRow.astro'
-import TestimonialCarousel from '../../components/TestimonialCarousel.astro'
-import { getEventBySlug } from '../../lib/content'
-import { eventTicketUrl, eventSponsorUrl } from '../../lib/donorbox'
+import GalleryCarousel from '../../components/GalleryCarousel.astro'
+import ProgramsCta from '../../components/ProgramsCta.astro'
+import PastelCard from '../../components/PastelCard.astro'
+import Button from '../../components/Button.astro'
+import { getEventBySlug, getEvents, getFaqs, isUpcoming } from '../../lib/content'
+import { eventTicketUrl } from '../../lib/donorbox'
+import { listItemTexts, listItemsWithLead } from '../../lib/portableText'
 
 const event = await getEventBySlug(Astro.params.slug!)
 if (!event) return new Response('Not found', { status: 404 })
-const dateLabel = new Date(event.startDate).toLocaleDateString(undefined, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})
+
+const upcoming = isUpcoming(event)
+const ticketUrl = event.donorboxEventId ? `${eventTicketUrl(event.donorboxEventId)}/steps/choose_tickets` : '/contact'
+const offers = [...(event.sponsorPackages ?? [])].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+const tickets = offers.filter((o) => o.kind === 'ticket')
+const packages = offers.filter((o) => o.kind === 'package')
+const specials = offers.filter((o) => o.kind === 'special')
+const faqs = upcoming ? await getFaqs('tournament') : []
+const date = new Date(event.startDate)
+const monthDay = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' })
+const longDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+const nextEvent = upcoming
+  ? undefined
+  : (await getEvents()).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+const ticketTones = ['sun', 'sky', 'salmon'] as const
+const recapLabels = [
+  ['Results', 'What we did together', 'Here is what one day on the course made possible for children in Venezuela.'],
+] as const
 ---
 
-<PageLayout title={`${event.title} — Victoria Venezuela Foundation`}>
-  <section class="bg-brand-navy text-white">
-    <div class="container max-w-container mx-auto px-4 py-12">
-      <p class="text-white/70">{dateLabel} · {event.location}</p>
-      <h1 class="mt-2 text-display-lg">{event.title}</h1>
-      {event.description && <p class="mt-3 text-white/85 max-w-xl">{event.description}</p>}
-      {
-        event.donorboxEventId && (
-          <div class="mt-6 flex gap-3">
-            <a href={eventTicketUrl(event.donorboxEventId)} class="rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">
-              Buy Tickets
-            </a>
-            <a href={eventSponsorUrl(event.donorboxEventId)} class="rounded-pill border border-white/60 px-6 py-3 font-medium">
-              Become a Sponsor
-            </a>
-          </div>
-        )
-      }
-    </div>
-  </section>
+<PageLayout
+  title={event.seo?.title ?? `${event.title} | Victoria Venezuela Foundation`}
+  description={event.seo?.description ?? event.description}
+  image={event.seo?.imageUrl ?? event.heroImageUrl ?? event.imageUrl}
+  background="section"
+>
+  <Hero
+    imageUrl={event.heroImageUrl ?? event.imageUrl}
+    mobileImageUrl={event.heroImageMobileUrl}
+    heading={event.heroHeading ?? event.title}
+    subtext={event.heroBody}
+    primaryCta={upcoming ? { label: 'Buy Tickets', href: ticketUrl } : { label: 'See the photos', href: '#photos' }}
+    secondaryCta={upcoming ? { label: 'Become a Sponsor', href: '#sponsor-packages' } : { label: 'Join us next year', href: '#next-edition' }}
+    flush
+  />
 
   {
-    event.sponsors && event.sponsors.length > 0 && (
-      <section class="container max-w-container mx-auto px-4 py-section-sm">
-        <p class="text-center text-ink-500 mb-4">Thank you to our sponsors</p>
-        <div class="flex flex-wrap justify-center gap-8 text-ink-700">
-          {event.sponsors.map((s) => (
-            <span>{s.name}</span>
-          ))}
-        </div>
-      </section>
-    )
-  }
+    upcoming ? (
+      <>
+        <WhatWhenWhere title={event.title} dateText={date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })} venue={event.venue} address={event.address} mapUrl={event.mapUrl} />
 
-  {
-    event.donorboxEventId && (
-      <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-        <h2 class="text-display-md text-center">Tickets</h2>
-        <div class="mt-8 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <TicketCard tierName="Player Foursome" price="$3,100" href={eventTicketUrl(event.donorboxEventId)} tone="yellow" />
-          <TicketCard tierName="Single Player" price="$275" href={eventTicketUrl(event.donorboxEventId)} tone="blue" />
-        </div>
-      </section>
-    )
-  }
+        {event.sponsors && event.sponsors.length > 0 && (
+          <section class="bg-neutral-white"><LogoCarousel heading="Corporate Partners" logos={event.sponsors} /></section>
+        )}
 
-  {
-    event.sponsorPackages && event.sponsorPackages.length > 0 && event.donorboxEventId && (
-      <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-        <h2 class="text-display-md text-center">Sponsor Packages</h2>
-        <div class="mt-8">
-          <SponsorshipTierTable
-            tiers={event.sponsorPackages}
-            ctaHrefFor={(tier) => eventSponsorUrl(event.donorboxEventId!, tier.tierName)}
+        <div class="pt-16 md:pt-[80px]">
+          <AppealPanel
+            heading="This Year's Tournament Supports Earthquake Relief"
+            text="100% of the net proceeds from the 2026 tournament go to our earthquake relief work in Venezuela. They will help build our permanent support center in La Guaira. When it opens, it will give displaced children and their families shelter, meals and medical care."
+            imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
+            imageAlt="Render of the planned VVF support centre in La Guaira, seen from the street."
+            caption="How the center in La Guaira will look. The center is not built yet. These images are AI-generated renders."
+            cardsLabel="Three steps to change"
+            cards={[
+              { title: 'Shelter', text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.', imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: 'Families arriving at the courtyard of the planned VVF support centre.' },
+              { title: 'Medical care', text: 'Check-ups, medicine and treatment for children and their families at the center.', imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: 'A nurse examining a young girl while her mother sits beside her.' },
+              { title: 'Nutrition', text: 'Daily meals for the children staying at the support center in La Guaira.', imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: "Children eating a hot meal together in the centre's dining room." },
+            ]}
+            secondaryCta={{ label: 'Learn More', href: '/earthquake-relief' }}
           />
         </div>
-      </section>
-    )
-  }
 
-  {
-    event.auctionItems && event.auctionItems.length > 0 && (
-      <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-        <h2 class="text-display-md text-center">Silent Auction</h2>
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          {event.auctionItems.map((item) => <AuctionItemCard item={item} />)}
+        {event.gallery && event.gallery.length > 0 && <PhotoMosaic heading={`${date.getUTCFullYear() - 1} Memories`} photos={event.gallery} />}
+
+        {event.program && event.program.length > 0 && (
+          <ProgramTimeline meta={[longDate, event.venue, event.address].filter(Boolean) as string[]} items={listItemsWithLead(event.program)} />
+        )}
+
+        {event.includes && event.includes.length > 0 && (
+          <div class="pt-16 md:pt-[120px]"><IncludesPanel heading="Tournament Includes" items={listItemTexts(event.includes)} /></div>
+        )}
+
+        {tickets.length > 0 && (
+          <section id="tickets" class="px-6 pt-16 md:pt-[120px] md:px-[134px]">
+            <SectionTitle heading="Tickets" />
+            <div class="mx-auto mt-16 grid max-w-[1172px] justify-items-center gap-x-[68px] gap-y-6 md:grid-cols-2">
+              {tickets.map((t, i) => (
+                <TicketCard tierName={t.tierName} price={t.price} features={t.benefits} href={t.ctaUrl ?? ticketUrl} ctaLabel={t.ctaLabel} soldOut={t.soldOut} tone={ticketTones[i % 3]} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {packages.length > 0 && event.benefitRows && event.benefitRows.length > 0 && (
+          <section id="sponsor-packages" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-16">
+            <SectionTitle heading="Sponsor Packages" />
+            <div class="mx-auto mt-16 max-w-[1312px]"><BenefitsTable packages={packages} rows={event.benefitRows} /></div>
+          </section>
+        )}
+
+        {specials.length > 0 && <SpecialOpportunities offers={specials} />}
+
+        <ImpactPanel
+          imageUrl="/images/pages/a3fef8e5-9f807887-6eeb-46a6-8c18-3fd6f3f03c8e-1.png"
+          imageAlt="A Victoria Venezuela Foundation volunteer checking a child's heartbeat with a stethoscope."
+          stats={[
+            { value: '77,300+', label: 'Meals served to children at risk' },
+            { value: '1,012', label: 'medical visits for children' },
+            { value: '41+', label: 'corporate sponsors investing in support programs for children and Venezuela' },
+          ]}
+        />
+
+        {faqs.length > 0 && (
+          <section class="px-6 pt-16 md:pt-[120px]">
+            <SectionTitle heading="FAQs & Contact info" />
+            <div class="mt-12"><FaqAccordion faqs={faqs} /></div>
+          </section>
+        )}
+
+        <div class="pt-16 md:pt-[120px]">
+          <ContactCta
+            phone="+1 (305) 922-5585"
+            email="charitygolf@victoriavenezuelafoundation.org"
+            address="Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100"
+            heading={`Golf. Give. Transform lives in Venezuela. Join us ${monthDay}!`}
+            cta={{ label: 'Buy Tickets', href: ticketUrl }}
+          />
         </div>
-      </section>
+      </>
+    ) : (
+      <>
+        {event.recapStats && event.recapStats.length > 0 && (
+          <section class="px-6 pt-16 md:pt-[120px] md:px-20">
+            <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+              <div class="flex max-w-[400px] flex-col items-start gap-6">
+                <SectionTitle align="left" tagline={recapLabels[0][0]} heading={recapLabels[0][1]} text={recapLabels[0][2]} />
+                <Button href="#photos" variant="outline">See the photos</Button>
+              </div>
+              <div class="lg:w-[800px]">
+                <StatTileRow stats={event.recapStats.map((s) => ({ value: s.number, label: s.heading ?? '', caption: s.label }))} />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {event.gallery && event.gallery.length > 0 && (
+          <section id="photos" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[128px]">
+            <SectionTitle align="left" tagline="Memories" heading="Event photos" text="Moments from the course, the auction and the celebration." />
+            <div class="mt-16"><GalleryCarousel photos={event.gallery} /></div>
+          </section>
+        )}
+
+        {event.sponsors && event.sponsors.length > 0 && (
+          <section class="mt-16 md:mt-[120px] bg-neutral-white"><LogoCarousel heading="Thank you to our sponsors" logos={event.sponsors} /></section>
+        )}
+
+        {nextEvent && (
+          <section id="next-edition" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[296px]">
+            <ProgramsCta
+              heading="Mark your calendar"
+              text="Next year's tournament is on its way. See the date and venue, and save your spot."
+              primaryCta={{ label: "See next year's tournament", href: `/events/${nextEvent.slug}` }}
+              secondaryCta={{ label: 'Contact us', href: '/contact' }}
+            />
+          </section>
+        )}
+
+        <section class="px-6 pt-16 md:pt-[120px] md:px-20">
+          <SectionTitle tagline="Support" heading="Can't wait until next year?" text="Children in Venezuela need help today. Here are three ways to make a difference right now." />
+          <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-3">
+            <PastelCard centered tone="sun" title="Sponsor a child" body="Build a direct relationship and change a young life." cta={{ label: 'Sponsor', href: '/sponsor-a-child' }} />
+            <PastelCard centered tone="salmon" title="Make a donation" body="Fund nutrition, medical care and education programs today." cta={{ label: 'Donate', href: '/ways-to-give' }} />
+            <PastelCard centered tone="sky" title="Corporate sponsorships" body="Align your business with a mission that matters all year." cta={{ label: 'Partner with us', href: '/corporate-sponsorships' }} />
+          </div>
+        </section>
+      </>
     )
   }
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Our Impact</h2>
-    <div class="mt-8">
-      <StatTileRow
-        stats={[
-          { value: '77,300+', label: 'Meals served' },
-          { value: '1,012', label: 'Medical care' },
-          { value: '41+', label: 'Sponsors' },
-        ]}
-      />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-md text-center">Hear from our community</h2>
-    <div class="mt-8">
-      <TestimonialCarousel items={[{ title: 'Embajadora Oriana Perez' }, { title: 'A supporter shares their story' }]} />
-    </div>
+  <section class="px-6 pb-16 md:pb-[120px] pt-[60px] md:px-16">
+    <div class="mx-auto max-w-[1312px]"><NewsletterSignup width="wide" /></div>
   </section>
 </PageLayout>

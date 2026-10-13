@@ -1,0 +1,29 @@
+---
+// Live counterpart: event "Memories" strip (`.section-10`) — five rounded
+// photos, three across then two across.
+export interface Props {
+  heading?: string
+  photos: { url: string; alt?: string }[]
+}
+
+const { heading, photos } = Astro.props as Props
+const top = photos.slice(0, 3)
+const bottom = photos.slice(3, 5)
+const img = 'h-full w-full rounded-2xl object-cover'
+---
+
+<section class="px-6 py-16 md:px-[128px] md:py-[120px]">
+  {heading && <h2 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h2>}
+  <div class="mx-auto mt-16 flex max-w-[1184px] flex-col gap-6">
+    <div class="grid gap-6 md:grid-cols-[335fr_466fr_335fr]">
+      {top.map((p) => <img src={p.url} alt={p.alt ?? ''} class={`${img} aspect-[335/394]`} loading="lazy" />)}
+    </div>
+    {
+      bottom.length > 0 && (
+        <div class="grid gap-6 md:grid-cols-2">
+          {bottom.map((p) => <img src={p.url} alt={p.alt ?? ''} class={`${img} aspect-[580/356]`} loading="lazy" />)}
+        </div>
+      )
+    }
+  </div>
+</section>

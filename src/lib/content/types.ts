@@ -14,6 +14,20 @@ export interface EventItem {
   sponsorPackages?: SponsorshipPackage[]
   auctionItems?: AuctionItem[]
   sponsors?: Sponsor[]
+  heroHeading?: string
+  heroBody?: string
+  heroImageUrl?: string
+  heroImageMobileUrl?: string
+  venue?: string
+  address?: string
+  mapUrl?: string
+  program?: PortableTextBlock[]
+  includes?: PortableTextBlock[]
+  gallery?: { url: string; alt?: string }[]
+  recapStats?: { number: string; heading?: string; label?: string }[]
+  // Sponsorship benefits comparison: one value per `package` offer, in order.
+  benefitRows?: { section: string; name: string; values: string[] }[]
+  seo?: Seo
 }
 
 export interface ChildItem {
@@ -23,8 +37,11 @@ export interface ChildItem {
   birthday?: string
   gender?: 'Male' | 'Female'
   dream?: string
+  about?: string
   imageUrl?: string
+  imageAlt?: string
   published: boolean
+  order?: number
   donorboxSponsorshipRef?: string
 }
 
@@ -44,6 +61,9 @@ export interface TeamMemberItem {
   basedIn?: string
   background?: { label: string; value: string }[]
   socialLinks?: { platform: 'linkedin' | 'x' | 'website'; url: string }[]
+  // Slug of this person's profile page; undefined when they have none.
+  profileSlug?: string
+  order?: number
 }
 
 export interface PostItem {
@@ -71,6 +91,13 @@ export interface SponsorshipPackage {
   recognitionBenefits?: string[]
   activityBenefits?: string[]
   promotionalBenefits?: string[]
+  // Event offers: flat benefit list, kind and call to action.
+  benefits?: string[]
+  kind?: 'ticket' | 'package' | 'special'
+  shortName?: string
+  ctaLabel?: string
+  ctaUrl?: string
+  soldOut?: boolean
   order?: number
 }
 
@@ -100,6 +127,53 @@ export interface CampaignSettings {
   active: boolean
   bannerText?: string
   donorboxCampaignId?: string
+}
+
+// Portable Text block as stored by EmDash; rendered by the PortableText
+// component, never inspected by pages.
+export type PortableTextBlock = { _type: string; _key?: string; [key: string]: unknown }
+
+export interface Seo {
+  title?: string
+  description?: string
+  imageUrl?: string
+}
+
+export const RESOURCE_CATEGORIES = ['stories', 'financials-transparency'] as const
+export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number]
+
+// Short labels (tags, breadcrumbs, filter pills) and full page titles, as
+// used on the live site.
+export const RESOURCE_CATEGORY_LABELS: Record<ResourceCategory, string> = {
+  stories: 'Stories',
+  'financials-transparency': 'Financials',
+}
+
+export const RESOURCE_CATEGORY_TITLES: Record<ResourceCategory, string> = {
+  stories: 'Stories',
+  'financials-transparency': 'Financials & Transparency',
+}
+
+// Tag shown on resource cards: Financials wins when an item is in both
+// categories, as on the live site.
+export function resourceTag(r: { categories: ResourceCategory[] }): string | undefined {
+  const c = r.categories.includes('financials-transparency') ? 'financials-transparency' : r.categories[0]
+  return c ? RESOURCE_CATEGORY_LABELS[c] : undefined
+}
+
+export interface ResourceItem {
+  slug: string
+  title: string
+  categories: ResourceCategory[]
+  publishedAt?: string
+  updatedAt?: string
+  authors?: { name: string; role?: string }[]
+  excerpt?: string
+  imageUrl?: string
+  imageAlt?: string
+  body?: PortableTextBlock[]
+  fileUrl?: string
+  seo?: Seo
 }
 
 export interface NavItem {

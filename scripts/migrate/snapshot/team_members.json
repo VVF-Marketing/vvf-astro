@@ -1,0 +1,761 @@
+{
+  "sections": [
+    {
+      "tier": "board",
+      "tagline": "BOARD",
+      "heading": "Board of Directors",
+      "text": "The board sets the direction of the Foundation and holds it to account for its mission, its finances and its programs.",
+      "members": [
+        {
+          "slug": "randy-lander",
+          "name": "Randy Lander",
+          "role": "Chairman",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+            "alt": "Randy Lander"
+          },
+          "hasDetailPage": true,
+          "order": 0
+        },
+        {
+          "slug": "helen-bello",
+          "name": "Helen Bello",
+          "role": "Vice Chair",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+            "alt": "Helen Bello"
+          },
+          "hasDetailPage": true,
+          "order": 1
+        },
+        {
+          "name": "Pastor Jose Guerrero",
+          "role": "Director",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+            "alt": "Pastor Jose Guerrero"
+          },
+          "hasDetailPage": false,
+          "order": 2
+        },
+        {
+          "name": "Join our board",
+          "role": "We're looking for a new board member",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png",
+            "alt": "Join our board"
+          },
+          "hasDetailPage": false,
+          "openSeat": {
+            "kicker": "Board seat open",
+            "heading": "Help guide the Foundation",
+            "cta": "Get in touch",
+            "href": "/contact"
+          },
+          "order": 3
+        }
+      ]
+    },
+    {
+      "tier": "staff",
+      "tagline": "STAFF",
+      "heading": "Our Team",
+      "text": "The people who run the Foundation day to day, in the United States and in Venezuela.",
+      "members": [
+        {
+          "slug": "randy-lander",
+          "name": "Randy Lander",
+          "role": "Founder & Chairman",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+            "alt": "Randy Lander"
+          },
+          "hasDetailPage": true,
+          "order": 0
+        },
+        {
+          "slug": "helen-bello",
+          "name": "Helen Bello",
+          "role": "Co-Founder & Chief Financial Officer",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+            "alt": "Helen Bello"
+          },
+          "hasDetailPage": true,
+          "order": 1
+        },
+        {
+          "name": "Pastor Jose Guerrero",
+          "role": "EVP, Programs Venezuela",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+            "alt": "Pastor Jose Guerrero"
+          },
+          "hasDetailPage": false,
+          "order": 2
+        },
+        {
+          "slug": "charmiant-corado",
+          "name": "Charmiant Corado",
+          "role": "EVP, Marketing & Communications",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp",
+            "alt": "Charmiant Corado"
+          },
+          "hasDetailPage": true,
+          "order": 3
+        },
+        {
+          "slug": "juan-tomasini",
+          "name": "Juan Tomasini",
+          "role": "EVP, Business Development",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp",
+            "alt": "Juan Tomasini"
+          },
+          "hasDetailPage": true,
+          "order": 4
+        },
+        {
+          "slug": "enrique-flores",
+          "name": "Enrique Flores",
+          "role": "EVP, Digital Transformation",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp",
+            "alt": "Enrique Flores"
+          },
+          "hasDetailPage": true,
+          "order": 5
+        },
+        {
+          "slug": "dorceia-watkins",
+          "name": "Dorceia Watkins",
+          "role": "Senior Director, Grants Management",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp",
+            "alt": "Dorceia Watkins"
+          },
+          "hasDetailPage": true,
+          "order": 6
+        },
+        {
+          "slug": "arivana-rangel",
+          "name": "Arivana Rangel",
+          "role": "Senior Director, Business Development & Alliances",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp",
+            "alt": "Arivana Rangel"
+          },
+          "hasDetailPage": true,
+          "order": 7
+        },
+        {
+          "slug": "johnny-yataco",
+          "name": "Johnny Yataco",
+          "role": "VP, Communications USA",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp",
+            "alt": "Johnny Yataco"
+          },
+          "hasDetailPage": true,
+          "order": 8
+        },
+        {
+          "slug": "luis-arias",
+          "name": "Luis Arias",
+          "role": "VP, Communications Venezuela",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp",
+            "alt": "Luis Arias"
+          },
+          "hasDetailPage": true,
+          "order": 9
+        },
+        {
+          "slug": "ximena-sosa",
+          "name": "Ximena Sosa",
+          "role": "Senior Director, Digital Strategy",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp",
+            "alt": "Ximena Sosa"
+          },
+          "hasDetailPage": true,
+          "order": 10
+        },
+        {
+          "slug": "elimar-ugueto",
+          "name": "Elimar Ugueto",
+          "role": "Director, Agentic Systems | Marketing Advisor",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp",
+            "alt": "Elimar Ugueto"
+          },
+          "hasDetailPage": true,
+          "order": 11
+        },
+        {
+          "slug": "vanessa-sanchez",
+          "name": "Vanessa Sanchez",
+          "role": "Senior Director, Communications",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp",
+            "alt": "Vanessa Sanchez"
+          },
+          "hasDetailPage": true,
+          "order": 12
+        },
+        {
+          "slug": "antonio-manzanares",
+          "name": "Antonio Manzanares",
+          "role": "Senior Developer",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg",
+            "alt": "Antonio Manzanares"
+          },
+          "hasDetailPage": true,
+          "order": 13
+        },
+        {
+          "slug": "david-cardenas",
+          "name": "David Cardenas",
+          "role": "Director, Bolivar Center",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp",
+            "alt": "David Cardenas"
+          },
+          "hasDetailPage": true,
+          "order": 14
+        },
+        {
+          "name": "Isaias Mota",
+          "role": "Director, Aragua Center",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp",
+            "alt": "Isaias Mota"
+          },
+          "hasDetailPage": false,
+          "order": 15
+        }
+      ]
+    }
+  ],
+  "members": {
+    "antonio-manzanares": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/antonio-manzanares",
+      "name": "Antonio Manzanares",
+      "role": "Senior Developer",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg",
+        "alt": "Antonio Manzanares"
+      },
+      "quote": "\"Our purpose is to serve with the talents we've been given.\"",
+      "since": "2025",
+      "from": "Caracas, VE",
+      "basedIn": "Toronto, CA",
+      "bodyHtml": "<p><strong>Full-stack software engineer who brings his technical skills to VVF's website and online presence.</strong></p><p>Antonio Manzanares serves as Senior Developer for the Victoria Venezuela Foundation, supporting the organization's website and digital presence so that VVF's mission reaches the people who need to see it.</p><p>Antonio is a full-stack software engineer at DealMaker, a fintech platform for online capital raises, where his work spans everything from issuer onboarding features to production incident response. Before moving into engineering, he spent nearly a decade in B2B sales, a background that shapes how he approaches problem-solving and working with people today.</p><p>Outside of his day job, Antonio also runs anclist web dev, building sites and digital tools for clients and organizations he believes in.</p><p>Originally from Caracas, Venezuela, and now based in Toronto, Antonio is fluent in Spanish and stays closely connected to his roots. He and his wife are raising their child together, and he believes our purpose is to serve with the talents we've been given — volunteering his skills with VVF is one way he lives that out.</p>",
+      "background": [
+        {
+          "label": "Full-Stack Engineer",
+          "value": "DealMaker"
+        },
+        {
+          "label": "Freelance Web Develope",
+          "value": "anclist web dev"
+        },
+        {
+          "label": "Career Changer",
+          "value": "A decade in B2B sales before moving into software engineering"
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/anclist/"
+        }
+      ],
+      "seo": {
+        "title": "Antonio Manzanares | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Antonio Manzanares, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Antonio Manzanares | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Antonio Manzanares, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg"
+      }
+    },
+    "arivana-rangel": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/arivana-rangel",
+      "name": "Arivana Rangel",
+      "role": "Senior Director, Business Development & Alliances",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp",
+        "alt": "Arivana Rangel"
+      },
+      "from": "Caracas, VE",
+      "lead": "More than a decade leading social-impact programs and public-private partnerships; psychologist with a Master in Public Administration from IESA.",
+      "bodyHtml": "<p>Arivana brings more than a decade of experience in strategic social impact planning, multidisciplinary project management, and community engagement. She has led multisectoral programs for non-profit organizations and foundations, strengthening public-private partnerships and advancing high-impact social initiatives.</p><p>Her background includes conducting needs assessments, designing and overseeing programs, and facilitating multi-stakeholder collaboration to improve outcomes and ensure long-term sustainability. Arivana’s work reflects a commitment to building structures that expand opportunity, empower communities, and generate measurable, lasting impact.</p><p>Arivana Rangel Durán holds a Bachelor’s degree in Psychology from Universidad Católica Andrés Bello (Caracas, Venezuela), a Master in Public Administration from the Instituto de Estudios Superiores de Administración (IESA), and is certified by the Entrepreneurship Program at Babson College (Boston, Massachusetts, USA).</p>",
+      "background": [
+        {
+          "label": "BA, Psychology",
+          "value": "Universidad Católica Andrés Bello"
+        },
+        {
+          "label": "Master in Public Administration",
+          "value": "IESA"
+        },
+        {
+          "label": "Entrepreneurship Program",
+          "value": "Babson College"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Arivana Rangel | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Arivana Rangel, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Arivana Rangel | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Arivana Rangel, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp"
+      }
+    },
+    "charmiant-corado": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/charmiant-corado",
+      "name": "Charmiant Corado",
+      "role": "EVP, Marketing & Communications",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp",
+        "alt": "Charmiant Corado"
+      },
+      "lead": "Emmy Award-winning communications professional with more than ten years in media and digital content, formerly with WarnerMedia and Gray Media.",
+      "bodyHtml": "<p>Charmiant Corado is an Emmy Award-winning communications professional with more than 10 years of experience in media, digital communications, and content strategy. She currently serves as Director of Communications &amp; Digital Platforms for the Victoria Venezuela Foundation, where she leads digital communications, storytelling, social media, and outreach initiatives that help amplify the Foundation’s mission and impact.</p><p>Throughout her career, Charmiant has worked in fast-paced media and communications environments, including WarnerMedia and Gray Media, developing content and communications strategies for diverse audiences. She holds master's degrees in Communication Management from Emerson College and Mass Media Communication from Complutense University of Madrid.</p><p>Passionate about using communications to create meaningful connections and amplify positive change, Charmiant is proud to support the Foundation’s work helping children, families, and communities in Venezuela.</p>",
+      "background": [
+        {
+          "label": "Emmy Award winner",
+          "value": "Communications"
+        },
+        {
+          "label": "Master's degrees",
+          "value": "Emerson College · Complutense University of Madrid"
+        },
+        {
+          "label": "Previously",
+          "value": "WarnerMedia · Gray Media"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Charmiant Corado | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Charmiant Corado, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Charmiant Corado | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Charmiant Corado, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp"
+      }
+    },
+    "david-cardenas": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/david-cardenas",
+      "name": "David Cardenas",
+      "role": "Director, Bolivar Center",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp",
+        "alt": "David Cardenas"
+      },
+      "basedIn": "Ciudad Bolívar, VE",
+      "lead": "Pastor of Ebenezer Church of Christ in Ciudad Bolívar with more than two decades in pastoral ministry and community service.",
+      "bodyHtml": "<p>Pastor David Cárdenas is a devoted Christian leader with more than two decades of experience in pastoral ministry, biblical teaching, and community service. Born and raised in a Christian home, he developed a strong foundation of faith and family values from an early age and answered God’s call to ministry while still young.</p><p>As Pastor of Ebenezer Church of Christ, David combines youthful energy with deep ministerial experience, allowing him to connect meaningfully with both emerging generations and longtime members of the Church. His leadership is characterized by compassion, spiritual maturity, and a commitment to helping individuals and families grow in their relationship with Jesus Christ.</p><p>Together with his wife and their two daughters, Pastor David has faithfully embraced a family-centered calling to serve God and the community. They have been instrumental in developing the Church’s children’s ministry and preparing young leaders to serve the next generation with excellence and purpose.</p><p>His passion for children, families, and community transformation strongly reflects the mission of Victoria Venezuela Foundation: sharing God’s love while creating lasting hope and opportunities for those most in need.</p>",
+      "background": [
+        {
+          "label": "Pastor",
+          "value": "Ebenezer Church of Christ"
+        },
+        {
+          "label": "20+ years",
+          "value": "Pastoral ministry and biblical teaching"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "David Cardenas | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet David Cardenas, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "David Cardenas | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet David Cardenas, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp"
+      }
+    },
+    "dorceia-watkins": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/dorceia-watkins",
+      "name": "Dorceia Watkins",
+      "role": "Senior Director, Grants Management",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp",
+        "alt": "Dorceia Watkins"
+      },
+      "bodyHtml": "<p id=\"\">Dorceia J. McCullough-Watkins, PhD is a development strategist, grant professional, writer, educator, and entrepreneur committed to helping those who help others. As the Founder and Principal Consultant of Inspirational Editions (IE), she helps nonprofits, faith-based organizations, and small businesses strengthen their capacity, communicate their vision, secure funding, and achieve measurable organizational impact.</p><p id=\"\">With close to a decade of experience in grant development, proposal writing, contracts, organizational development, and strategic communications, Dorceia has supported organizations pursuing millions of dollars in public and private funding. Her experience spans nonprofit services, workforce development, transportation, social services, faith-based initiatives, community development, and small-business growth. She brings a unique combination of writing expertise, organizational leadership, grant strategy, and program-development knowledge to every engagement.</p><p id=\"\">Dr. McCullough-Watkins holds a PhD in Christian Education and an MBA in Organizational Leadership, along with a bachelor’s degree in Biblical Studies and Worship Ministry. She continuously strives to reflect her belief that effective leadership requires both strategic excellence and a commitment to purpose.</p><p id=\"\">Through Inspirational Editions, Dorceia equips leaders to transform ideas into sustainable initiatives, strengthen organizations from the inside out, and pursue opportunities that create meaningful community impact. Her guiding philosophy is simple: help those who help others.</p>",
+      "background": [
+        {
+          "label": "Founder & Principal Consultant",
+          "value": "Inspirational Editions"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Dorceia Watkins | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Dorceia Watkins, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Dorceia Watkins | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Dorceia Watkins, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp"
+      }
+    },
+    "elimar-ugueto": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/elimar-ugueto",
+      "name": "Elimar Ugueto",
+      "role": "Director, Agentic Systems | Marketing Advisor",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp",
+        "alt": "Elimar Ugueto"
+      },
+      "since": "2024",
+      "from": "Caracas, VE",
+      "basedIn": "Seattle, WA",
+      "lead": "Founder and CEO of Ugueto AI with 25 years in media and marketing; leads the design of the Foundation's agentic systems.",
+      "bodyHtml": "<p id=\"\">Elimar Ugueto is the Founder and CEO of Ugueto AI, with more than 25 years of experience spanning media, corporate communications, and marketing. Her career began in television in Venezuela and later expanded to U.S. Hispanic media, including Univision and ESPN Deportes, as well as project work for global brands such as Amazon, Google, Johnson &amp; Johnson, Oreo, FIFA and Coca-Cola, among others.</p><p id=\"\">Elimar joined Victoria Venezuela Foundation as a Marketing Advisor, initially supporting the organization’s marketing and production efforts. As her professional focus evolved from traditional digital marketing toward the practical implementation of AI and agentic systems, her role at VVF evolved as well. Today, she leads the design and development of the Foundation’s agentic systems, working directly with team members and subject-matter experts to understand their workflows. She translates operational needs into practical AI-powered solutions across marketing, research, events, fundraising, and internal operations.</p><p id=\"\">Born in Venezuela and bilingual in English and Spanish, Elimar brings a personal connection to VVF’s mission. She holds a certification in CS50: Computer Science for Business from Harvard University. Guided by her Christian faith, she believes technology is a form of stewardship — and every system she builds has one purpose: freeing the team’s time and attention so it can go where it matters most, serving the children God has entrusted to this Foundation.</p>",
+      "background": [
+        {
+          "label": "Founder & CEO",
+          "value": "Ugueto AI"
+        },
+        {
+          "label": "25+ years",
+          "value": "Media, communications and marketing"
+        },
+        {
+          "label": "CS50, Computer Science for Business",
+          "value": "Harvard University"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Elimar Ugueto | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Elimar Ugueto, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Elimar Ugueto | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Elimar Ugueto, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp"
+      }
+    },
+    "enrique-flores": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/enrique-flores",
+      "name": "Enrique Flores",
+      "role": "EVP, Digital Transformation",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp",
+        "alt": "Enrique Flores"
+      },
+      "quote": "I believe in a world that works for everyone.",
+      "since": "2025",
+      "from": "Caracas, VE",
+      "basedIn": "Toronto, ON",
+      "lead": "Founder and CEO of Paula Inc. Responsible for the Foundation’s branding and digital presence.",
+      "bodyHtml": "<p>Enrique is the Executive Vice President, Digital Transformation at Victoria Venezuela Foundation. He also supports its fundraising.</p><p>He is the founder and CEO of Paula Inc., a Toronto agency that builds brands, websites, and marketing systems for financial services companies. Before starting Paula, he spent more than ten years inside the wealth management industry in Toronto, rising to Chief Marketing Officer.</p><p>At the foundation, Enrique is responsible for branding and digital presence. His job is to make sure the depth, legitimacy, vision and achievements of the organization come through in everything people see of it online.</p><p>He was born in Caracas and lives in Toronto. Outside work he follows politics, keeps up his fitness, and snowboards when the season allows. He believes in a world that works for everyone.</p>",
+      "background": [
+        {
+          "label": "Founder & CEO",
+          "value": "Paula Inc."
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/enriquejosueflores/"
+        }
+      ],
+      "seo": {
+        "title": "Enrique Flores | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Enrique Flores, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Enrique Flores | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Enrique Flores, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp"
+      }
+    },
+    "helen-bello": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/helen-bello",
+      "name": "Helen Bello",
+      "role": "Co-Founder & Chief Financial Officer",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+        "alt": "Helen Bello"
+      },
+      "from": "Venezuela",
+      "basedIn": "Seattle, WA",
+      "lead": "Field Marketing Manager at Microsoft, formerly eight years at The Boeing Company. MBA, University of Washington.",
+      "bodyHtml": "<p>Helen Bello is Co-Founder of The Victoria Venezuela Foundation. A Venezuelan native, Helen has resided in the United States for 28 years and has never lost contact with her Venezuelan roots. She has served on multiple boards of directors throughout the years, including the Association of Latino Professionals For America (ALPFA) and Seattle Credit Union. She currently works at Microsoft as a Field Marketing Manager, where she is responsible for building customer insight-driven marketing strategies and campaigns for a set of strategic accounts. Before Microsoft, she spent eight years at The Boeing Company.</p><p>She served in a variety of customer relationship, procurement, and marketing roles. Helen has experience with large accounts, providing marketing engagement with customer account executives across North and Latin America. She led cross-functional teams focused on business development, strategy integration, sales and marketing analytics, and post-sales technology integration. Helen holds both a bachelor’s degree and a Master of Business Administration from the University of Washington.</p>",
+      "background": [
+        {
+          "label": "Field Marketing Manager",
+          "value": "Microsoft"
+        },
+        {
+          "label": "8 years",
+          "value": "The Boeing Company"
+        },
+        {
+          "label": "MBA",
+          "value": "University of Washington"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Helen Bello | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Helen Bello, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Helen Bello | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Helen Bello, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp"
+      }
+    },
+    "isaias-mota": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/isaias-mota",
+      "name": "Isaias Mota",
+      "role": "Director, Aragua Center",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp",
+        "alt": "Isaias Mota"
+      },
+      "basedIn": "Aragua, VE",
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Isaias Mota | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Isaias Mota, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Isaias Mota | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Isaias Mota, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp"
+      }
+    },
+    "johnny-yataco": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/johnny-yataco",
+      "name": "Johnny Yataco",
+      "role": "VP, Communications USA",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp",
+        "alt": "Johnny Yataco"
+      },
+      "from": "Lima, PE",
+      "basedIn": "Washington, DC",
+      "lead": "Publisher of Washington Hispanic, which he founded in 1994; named Businessman of the Year by the Peruvian American Chamber of Commerce in 2008.",
+      "bodyHtml": "<p>Johnny A. Yataco, publisher of Washington Hispanic, was born and raised in Lima, Peru. From an early age, he was exposed to the publishing world. His mother often took him to work with her at a daily newspaper in Lima. He has always had a natural entrepreneurial spirit.</p><p>At age 18, he attended Foto Interamericana del Perú, an institute of the Eastman Kodak Company, to study photography. He later went on to study artificial intelligence at Oxford University.</p><p>He worked for several newspapers in Peru and then spent two years in the Office of Communications for the President of Peru at the time.</p><p>In February 1994, he began his own publication, Washington Hispanic. Today it has 28 full-time employees and more than 30 freelance support personnel. It has been recognized by the National Association of Hispanic Publications (NAHP), and in 1999 it ranked No. 54 among the fastest-growing Hispanic companies in the United States. Johnny has received awards from community organizations including the Ibero American Chamber of Commerce, which named his organization Small Business of the Year in 1998, and the Peruvian American Chamber of Commerce, which named him Businessman of the Year in 2008.</p>",
+      "background": [
+        {
+          "label": "Publisher",
+          "value": "Washington Hispanic, founded 1994"
+        },
+        {
+          "label": "Photography",
+          "value": "Foto Interamericana del Perú"
+        },
+        {
+          "label": "Businessman of the Year",
+          "value": "Peruvian American Chamber of Commerce, 2008"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Johnny Yataco | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Johnny Yataco, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Johnny Yataco | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Johnny Yataco, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp"
+      }
+    },
+    "join-our-board": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/join-our-board",
+      "name": "Join our board",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png",
+        "alt": "Join our board"
+      },
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Join our board | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Join our board, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Join our board | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Join our board, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png"
+      }
+    },
+    "juan-tomasini": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/juan-tomasini",
+      "name": "Juan Tomasini",
+      "role": "EVP, Business Development",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp",
+        "alt": "Juan Tomasini"
+      },
+      "basedIn": "South Florida",
+      "bodyHtml": "<p id=\"\">Juan is a South Florida–based contractor, entrepreneur, and Co-Founder of The Trusty Handyman, a family-owned company providing reliable, high-quality improvement services to homeowners and businesses throughout the region.</p><p id=\"\">Drawing on a third-generation construction background, Juan has dedicated his career to the home services and construction industry. Juan is passionate about building meaningful relationships, creating opportunities, and pursuing continuous personal and professional growth. Outside of work, he enjoys playing golf, exercising, reading, and spending quality time with his family.</p>",
+      "background": [
+        {
+          "label": "Co-Founder",
+          "value": "The Trusty Handyman"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Juan Tomasini | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Juan Tomasini, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Juan Tomasini | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Juan Tomasini, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp"
+      }
+    },
+    "luis-arias": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/luis-arias",
+      "name": "Luis Arias",
+      "role": "VP, Communications Venezuela",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp",
+        "alt": "Luis Arias"
+      },
+      "from": "Venezuela",
+      "basedIn": "Venezuela",
+      "lead": "Venezuelan audiovisual producer who leads the executive production of two national television programs and serves a network of more than 35,000 churches.",
+      "bodyHtml": "<p>Luis Arias is a Venezuelan social communicator and audiovisual producer with extensive experience in operational direction, field production, and the coordination of national and international satellite broadcasts. He holds a degree in Social Communication with a concentration in Audiovisual Media from Universidad Santa María, as well as advanced master’s-level training in Executive Production for Film and Television.</p><p>Luis began his media career through hands-on experience in radio and broadcast television. Motivated by the industry’s rigorous technical and operational standards, he pursued formal academic training and later joined major international networks. His professional experience includes managing technical production and logistics for ESPN Latin America’s continental baseball broadcasts, as well as supporting operational deployment and executive production for multimedia content at FOX.</p><p>In Venezuela, Luis has continued to develop his expertise in live television and currently leads the executive production of two nationally broadcast programs: Despertar on Televisora Venezolana Social (TVes) and La Jornada on Venezolana de Televisión (VTV).</p><p>A profound personal and spiritual transformation a decade ago redirected Luis’s professional calling toward communications with a ministerial purpose. Since then, he has used his technical expertise, media relationships, and production experience to develop platforms that expand the reach of the Gospel through regional, national, and international television.</p><p>Following the pandemic, his ministry-focused communications work has grown significantly. Luis now serves as a communications liaison and representative for a network of more than 35,000 churches, coordinating opportunities for pastors and spiritual leaders to share their messages through national and regional media. He also develops strategic partnerships with leading Venezuelan media organizations and provides technical and communications support to international ministries, helping bring the Gospel into influential institutional and media spaces.</p><p>His life and work are guided by a simple conviction: “Apart from Him, we can do nothing.”</p>",
+      "background": [
+        {
+          "label": "Social Communication",
+          "value": "Universidad Santa María"
+        },
+        {
+          "label": "Previously",
+          "value": "ESPN Latin America · FOX"
+        },
+        {
+          "label": "Executive producer",
+          "value": "Despertar (TVes) · La Jornada (VTV)"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Luis Arias | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Luis Arias, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Luis Arias | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Luis Arias, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp"
+      }
+    },
+    "pastor-jose-guerrero": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/pastor-jose-guerrero",
+      "name": "Pastor Jose Guerrero",
+      "role": "EVP, Programs Venezuela",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+        "alt": "Pastor Jose Guerrero"
+      },
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Pastor Jose Guerrero | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Pastor Jose Guerrero, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Pastor Jose Guerrero | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Pastor Jose Guerrero, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp"
+      }
+    },
+    "randy-lander": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/randy-lander",
+      "name": "Randy Lander",
+      "role": "Founder & Chairman",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+        "alt": "Randy Lander"
+      },
+      "quote": "Randy is passionate about serving God and about servant leadership.",
+      "since": "2022",
+      "from": "Caracas, VE",
+      "basedIn": "Miami, FL",
+      "lead": "A Caracas native who led global campaigns at The Boeing Company for 20 years before founding the Foundation.",
+      "bodyHtml": "<p id=\"\">Randy Lander is the Founder and Chairman of Victoria Venezuela Foundation (VVF), a faith-based nonprofit committed to transforming the lives of vulnerable children and families throughout Venezuela. Guided by his faith in Jesus Christ and a deep commitment to servant leadership, Randy leads a network of more than 100 volunteers delivering education, nutrition, healthcare, and family-support programs to more than 700 children.</p><p id=\"\">A native of Caracas, Venezuela, Randy founded VVF from a personal desire to serve his home country and create lasting opportunities for its most vulnerable communities. Under his leadership, the Foundation has expanded its programs, strengthened its local partnerships, and established a sustainable model of care centered on dignity, hope, and the love of Christ.</p><p id=\"\">Randy is also the Founder and President of Luminis Global Partners, a U.S.-based global holding company with operations across Latin America, including Venezuela. Previously, he built a distinguished 20-year career at The Boeing Company, where he held senior leadership roles across the Americas, Europe, Asia, and the Middle East. During his tenure, he led multinational teams, managed global portfolios, and directed more than $30 billion in commercial aircraft and services campaigns. His international experience included assignments in Japan and South Korea and advisory work with airline boards, government stakeholders, customers, and strategic partners.</p><p id=\"\">Throughout his career, Randy has remained deeply committed to community service. He has held leadership and board positions supporting children, education, and community-development initiatives, including Special Olympics Washington, the Society of Manufacturing Engineers, and the Boeing Employees Community Fund in Japan.</p><p id=\"\">Randy holds degrees in Mechanical and Manufacturing Engineering and a Master of Business Administration. He and his wife, Helen, have two children and share a passion for faith, service, travel, and creating a lasting legacy of hope for the people of Venezuela.</p>",
+      "background": [
+        {
+          "label": "Founder & President",
+          "value": "Luminis Global Partners"
+        },
+        {
+          "label": "MBA",
+          "value": "Mechanical & Manufacturing Engineering"
+        },
+        {
+          "label": "Board service",
+          "value": "Special Olympics Washington · SME · Boeing ECF Japan"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Randy Lander | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Randy Lander, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Randy Lander | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Randy Lander, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp"
+      }
+    },
+    "vanessa-sanchez": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/vanessa-sanchez",
+      "name": "Vanessa Sanchez",
+      "role": "Senior Director, Communications",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp",
+        "alt": "Vanessa Sanchez"
+      },
+      "from": "Caracas, VE",
+      "basedIn": "Tampa, FL",
+      "lead": "Communications professional with six years at the University of South Florida and the University of Tampa; master's degree in Cybersecurity.",
+      "bodyHtml": "<p>Vanessa has over six years of combined experience working at the University of South Florida and the University of Tampa, specializing in communication and academic customer service. She holds a bachelor’s degree in Mass Communication from the University of South Florida and a master’s degree in Cybersecurity from the University of Tampa. Vanessa’s unique combination of skills enables her to manage social media communications while helping ensure the integrity and security of sensitive data in today’s evolving IT landscape.</p><p>Originally from Caracas, Venezuela, Vanessa brings a multicultural perspective to her work, enriching her approach to communication and collaboration. She is deeply passionate about supporting communities in need, and her empathetic approach to problem-solving, combined with her dedication to fostering positive change, makes her a valuable asset in nonprofit environments.</p><p>In addition to her professional work, Vanessa is an entrepreneur who runs a personal blog called Meet Me in Tampa, where she highlights the city’s food scene and natural beauty. Her blog reflects her love for her community and her enthusiasm for showcasing the positive aspects of the city.</p>",
+      "background": [
+        {
+          "label": "BA, Mass Communication",
+          "value": "University of South Florida"
+        },
+        {
+          "label": "MS, Cybersecurity",
+          "value": "University of Tampa"
+        },
+        {
+          "label": "Founder",
+          "value": "Meet Me in Tampa"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Vanessa Sanchez | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Vanessa Sanchez, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Vanessa Sanchez | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Vanessa Sanchez, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp"
+      }
+    },
+    "ximena-sosa": {
+      "url": "https://www.victoriavenezuelafoundation.org/team-members/ximena-sosa",
+      "name": "Ximena Sosa",
+      "role": "Senior Director, Digital Strategy",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp",
+        "alt": "Ximena Sosa"
+      },
+      "lead": "Bilingual digital marketing lead with more than eight years at mission-driven organizations, including Compassion International and Save the Children.",
+      "bodyHtml": "<p>Ximena Sosa is a bilingual digital marketing and communications professional with more than eight years of experience supporting nonprofit, humanitarian, and mission-driven organizations. She currently serves as Senior Director of Digital Strategy at Victoria Venezuela Foundation, where she leads digital marketing and communications initiatives designed to strengthen awareness, donor engagement, fundraising, and community connection.</p><p>In her role, Ximena oversees integrated digital strategies across web, email, social media, paid media, SEO, analytics, and digital campaigns. She also helps shape bilingual messaging and storytelling for donors, volunteers, partners, and the broader community, ensuring that communications remain consistent with the Foundation’s mission and amplify the impact of its work serving Venezuelan communities.</p><p>Prior to joining Victoria Venezuela Foundation, Ximena held digital marketing and communications roles with Compassion International, Save the Children, and Catholic Relief Services, where she contributed to fundraising, advocacy, donor acquisition, audience engagement, and Hispanic marketing initiatives.</p><p>Ximena holds a Bachelor of Arts in Marketing and International Business from Florida International University and is fluent in English and Spanish. Her work reflects a commitment to using strategic communications to connect people with meaningful opportunities to serve, give, and create lasting impact.</p>",
+      "background": [
+        {
+          "label": "BA, Marketing & International Business",
+          "value": "Florida International University"
+        },
+        {
+          "label": "Previously",
+          "value": "Compassion International · Save the Children · Catholic Relief Services"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Ximena Sosa | Our Team | Victoria Venezuela Foundation",
+        "description": "Meet Ximena Sosa, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogTitle": "Ximena Sosa | Our Team | Victoria Venezuela Foundation",
+        "ogDescription": "Meet Ximena Sosa, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp"
+      }
+    }
+  }
+}

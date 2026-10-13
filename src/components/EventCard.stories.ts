@@ -9,11 +9,12 @@ export default {
 export const Upcoming = {
   args: {
     event: {
-      slug: 'spring-golf-tournament',
-      title: 'Spring Golf Tournament',
-      startDate: '2027-04-18',
-      location: 'Weston, FL',
-      description: 'A day on the green to support meals, medical care, and education for sponsored children.',
+      slug: '2026-golf-tournament',
+      title: '2026 Annual Golf Charity Tournament',
+      startDate: '2026-11-09T00:00:00.000Z',
+      location: '2600 Country Club Way, Weston, FL 33332',
+      description: 'Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.',
+      imageUrl: '/seed-media/events/56f00201-98.png',
       category: 'golf-tournament',
     } satisfies EventItem,
   },
@@ -22,11 +23,12 @@ export const Upcoming = {
 export const Past = {
   args: {
     event: {
-      slug: 'fall-gala-2025',
-      title: 'Fall Gala 2025',
-      startDate: '2025-10-04',
-      location: 'Miami, FL',
-      category: 'community',
+      slug: '2025-golf-tournament',
+      title: '2025 Annual Golf Charity Tournament',
+      startDate: '2025-11-10T00:00:00.000Z',
+      location: 'Weston',
+      description: '74 golfers came together at The Club at Weston Hills to support over 700 children in Venezuela.',
+      category: 'golf-tournament',
     } satisfies EventItem,
   },
 }

@@ -1,0 +1,16 @@
+{
+  "candidSeal": "/images/footer/candid-seal.png",
+  "socialFacebook": "/images/footer/facebook.svg",
+  "socialInstagram": "/images/footer/instagram.svg",
+  "socialLinkedin": "/images/footer/linkedin.svg",
+  "socialYoutube": "/images/footer/youtube.svg",
+  "logo": "/images/logo.svg",
+  "footerLogo": "/images/logo-footer.svg",
+  "favicon": "/favicon.png",
+  "appleTouchIcon": "/apple-touch-icon.png",
+  "ogImage": "/images/og-default.jpg",
+  "childIcon_age": "/images/child/age.svg",
+  "childIcon_birthday": "/images/child/birthday.svg",
+  "childIcon_gender": "/images/child/gender.svg",
+  "childIcon_dream": "/images/child/dream.svg"
+}

@@ -1,0 +1,326 @@
+{
+  "path": "/ways-to-give",
+  "seo": {
+    "title": "Ways to Give | Victoria Venezuela Foundation",
+    "description": "Give once, give monthly, sponsor a child, or give through your employer. Every gift reaches children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a1732866e860fb6f2a1b90c_98.webp",
+          "alt": "Baby in pink dress held near red and white balloons and a large striped candy cane balloon."
+        },
+        {
+          "type": "h1",
+          "text": "Ways to give"
+        },
+        {
+          "type": "p",
+          "text": "Every gift reaches children in Venezuela. Choose the way that works for you."
+        },
+        {
+          "type": "cta",
+          "text": "Give now",
+          "href": "#give"
+        },
+        {
+          "type": "cta",
+          "text": "Sponsor a child",
+          "href": "/sponsor-a-child"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_give"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Donate"
+        },
+        {
+          "type": "h2",
+          "text": "Make a gift today"
+        },
+        {
+          "type": "p",
+          "text": "Choose an amount and give in under a minute. Every gift funds meals, medical care and schooling for children in Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Continue to payment",
+          "href": "https://donorbox.org/general-donation-vvf?amount=50&utm_source=website&utm_medium=ways-to-give&utm_campaign=give-block"
+        },
+        {
+          "type": "p",
+          "text": "Would you rather give every month? Sponsor a child for $25 a month."
+        },
+        {
+          "type": "p",
+          "text": "Payment is handled by Donorbox. Victoria Venezuela Foundation is a 501(c)(3) non-profit organization, Tax ID 88-3282100, and your gift is tax-deductible in the United States."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/69eed2046552a4560434c934_hero-section-picture.jpg",
+          "alt": "Smiling young girl with pigtails playing inside a colorful inflatable bounce house."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_sponsorship"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/69eed2553a4566f5d7a0e99d_8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg",
+          "alt": "Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+        },
+        {
+          "type": "p",
+          "text": "Sponsorship"
+        },
+        {
+          "type": "h2",
+          "text": "Sponsor a child for $25 a month"
+        },
+        {
+          "type": "p",
+          "text": "Choose a child and support them every month. Your gift joins other sponsors' to fund the meals, medical care and schooling that reach them, and you get letters, photos and updates on how they are doing."
+        },
+        {
+          "type": "p",
+          "text": "A child is usually supported by more than one sponsor, and we direct funds to where the need is greatest. You can stop at any time."
+        },
+        {
+          "type": "cta",
+          "text": "Meet the children",
+          "href": "/sponsor-a-child-list-page"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "More ways"
+        },
+        {
+          "type": "h2",
+          "text": "Other ways to give"
+        },
+        {
+          "type": "h3",
+          "text": "Employer matching"
+        },
+        {
+          "type": "p",
+          "text": "Many companies double what their employees give. Search for your employer and find out in a few seconds."
+        },
+        {
+          "type": "cta",
+          "text": "Let's check",
+          "href": "/corporate-sponsorships"
+        },
+        {
+          "type": "h3",
+          "text": "Donor-advised fund"
+        },
+        {
+          "type": "p",
+          "text": "Direct your charitable giving from your DAF account using our EIN, 88-3282100. We will help you complete the designation."
+        },
+        {
+          "type": "cta",
+          "text": "Ask us for help",
+          "href": "/contact"
+        },
+        {
+          "type": "h3",
+          "text": "Corporate partnership"
+        },
+        {
+          "type": "p",
+          "text": "Tiered sponsorships with visibility and employee engagement, plus event sponsorship and matching gifts."
+        },
+        {
+          "type": "cta",
+          "text": "Partner with us",
+          "href": "/corporate-sponsorships"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_sun"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Come and give"
+        },
+        {
+          "type": "h2",
+          "text": "2026 Annual Golf Charity Tournament"
+        },
+        {
+          "type": "p",
+          "text": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope."
+        },
+        {
+          "type": "cta",
+          "text": "More Info",
+          "href": "/events/2026-golf-tournament"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6ab5c9d76931639fba442187_VVF_Golf2026_FlagPhoto_WaysToGive_v1.webp",
+          "alt": "Golfers standing by the lake at the Victoria Venezuela Foundation charity golf tournament, holding Venezuelan flags."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_appeal-ways"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Venezuela earthquake relief"
+        },
+        {
+          "type": "p",
+          "text": "Funds raised from this campaign will go towards the construction of VVF's permanent support centre in La Guaira. When it opens it will provide shelter, nutrition and medical care to 500 displaced children and their families."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad352e7191b53e8a5e_VVF_LaGuaira_Centre_Exterior_Web_v1.jpg",
+          "alt": "Render of the planned VVF support centre in La Guaira, seen from the street."
+        },
+        {
+          "type": "p",
+          "text": "How the centre in La Guaira will look. The centre is not built yet. All images on this page are AI-generated renders."
+        },
+        {
+          "type": "p",
+          "text": "What your gift will pay for"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ade21d9557ab097e79_VVF_LaGuaira_Card_Shelter_Web_v1.jpg",
+          "alt": "Families arriving at the courtyard of the planned VVF support centre."
+        },
+        {
+          "type": "h3",
+          "text": "Shelter"
+        },
+        {
+          "type": "p",
+          "text": "A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad6b006e0df99c91bf_VVF_LaGuaira_Card_MedicalCare_Web_v1.jpg",
+          "alt": "A nurse examining a young girl while her mother sits beside her."
+        },
+        {
+          "type": "h3",
+          "text": "Medical care"
+        },
+        {
+          "type": "p",
+          "text": "Check-ups, medicine and treatment for children and their families at the center."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3bcba94a6d021995d46_VVF_LaGuaira_Card_Nutrition_Web_v1.jpg",
+          "alt": "Children eating a hot meal together in the centre's dining room."
+        },
+        {
+          "type": "h3",
+          "text": "Nutrition"
+        },
+        {
+          "type": "p",
+          "text": "Daily meals for the children staying at the support center in La Guaira."
+        },
+        {
+          "type": "cta",
+          "text": "Give to the appeal",
+          "href": "#give"
+        },
+        {
+          "type": "cta",
+          "text": "Learn More",
+          "href": "/venezuela-earthquake-relief"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_faq-ways",
+        "padding-section-large",
+        "is-spaced"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "h3",
+          "text": "Are donations tax-deductible?"
+        },
+        {
+          "type": "p",
+          "text": "Yes. Victoria Venezuela Foundation is a 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You'll receive a receipt for your records."
+        },
+        {
+          "type": "h3",
+          "text": "How is my money used?"
+        },
+        {
+          "type": "p",
+          "text": "Ninety-five percent of funds go directly to programs. We support nutrition, medical care, and education for children in Venezuela. See our financials page for a complete breakdown."
+        },
+        {
+          "type": "h3",
+          "text": "Can I designate my gift?"
+        },
+        {
+          "type": "p",
+          "text": "Absolutely. You can direct your gift to a specific program or child sponsorship. Let us know your preference when you give, or contact us to discuss options."
+        },
+        {
+          "type": "h3",
+          "text": "How do I get a receipt?"
+        },
+        {
+          "type": "p",
+          "text": "A receipt is sent automatically after your donation. Check your email, including spam folders. For recurring gifts, you'll receive an annual summary."
+        },
+        {
+          "type": "h3",
+          "text": "Can I cancel recurring gifts?"
+        },
+        {
+          "type": "p",
+          "text": "Yes. You can change or cancel your monthly gift anytime. No questions asked. Contact us or manage your subscription through your donor account."
+        }
+      ]
+    }
+  ]
+}

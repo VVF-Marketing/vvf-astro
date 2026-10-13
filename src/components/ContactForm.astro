@@ -9,45 +9,56 @@ export interface Props {
 
 const { defaultTopic } = Astro.props as Props
 
+// Topics and order as on the live contact form.
 const topics = [
   { value: 'general', label: 'General inquiry' },
   { value: 'donation-support', label: 'Donation support' },
+  { value: 'child-sponsorship', label: 'Child sponsorship' },
   { value: 'media-press', label: 'Media and press' },
-  { value: 'corporate-partnerships', label: 'Corporate partnerships' },
+  { value: 'corporate-partnerships', label: 'Corporate partnership' },
+  { value: 'events', label: 'Events' },
+  { value: 'volunteering', label: 'Volunteering' },
+  { value: 'other', label: 'Other' },
 ]
 ---
 
-<form class="grid gap-4" data-contact-form novalidate>
-  <div class="grid sm:grid-cols-2 gap-4">
-    <TextField required name="firstName" placeholder="First name" />
-    <TextField required name="lastName" placeholder="Last name" />
+<!-- Live counterpart: the contact page `.form` (Webflow form). -->
+<form class="flex flex-col gap-6" data-contact-form novalidate>
+  <div class="grid gap-6 sm:grid-cols-2">
+    <TextField required name="firstName" label="First Name" placeholder="First Name" autocomplete="given-name" />
+    <TextField required name="lastName" label="Last Name" placeholder="Last Name" autocomplete="family-name" />
   </div>
-  <div class="grid sm:grid-cols-2 gap-4">
-    <TextField required type="email" name="email" placeholder="Email" />
-    <TextField name="phone" placeholder="Phone number" />
+  <div class="grid gap-6 sm:grid-cols-2">
+    <TextField required type="email" name="email" label="Email" placeholder="Email" autocomplete="email" />
+    <TextField type="tel" name="phone" label="Phone Number" placeholder="Phone Number" autocomplete="tel" />
   </div>
 
-  <label class="text-sm text-ink-700">
-    What is this about?
-    <select name="topic" class="mt-1 w-full rounded-pill px-4 py-2 border" data-topic-select>
-      {topics.map((t) => (
-        <option value={t.value} selected={t.value === defaultTopic}>
-          {t.label}
-        </option>
-      ))}
+  <div class="flex flex-col">
+    <label for="contact-topic" class="mb-1 font-body text-size-sm font-medium leading-body text-brand-primary">What is this about?</label>
+    <select
+      id="contact-topic"
+      name="topic"
+      class="block h-[38px] w-full rounded-pill border border-brand-primary bg-transparent px-5 py-2 font-sans text-size-sm text-brand-primary"
+      data-topic-select
+    >
+      {
+        topics.map((t) => (
+          <option value={t.value} selected={t.value === defaultTopic}>
+            {t.label}
+          </option>
+        ))
+      }
     </select>
-  </label>
+  </div>
 
-  <TextArea name="message" required placeholder="Message" rows={5} />
+  <TextArea name="message" required label="Message" rows={7} />
 
-  <label class="flex items-center gap-2 text-sm text-ink-700">
+  <label class="flex items-center gap-2 font-body text-size-sm font-medium text-brand-primary">
     <input type="checkbox" required name="privacyConsent" data-privacy-checkbox />
-    I agree to the privacy policy
+    <span>I agree to the <a href="/privacy-policy" class="text-link underline">Privacy Policy</a></span>
   </label>
 
-  <Button type="submit" variant="primary-sky" size="lg" class="justify-self-start" data-submit disabled>
-    Send message
-  </Button>
+  <Button type="submit" variant="primary-inverse" class="w-full" data-submit disabled>Send Message</Button>
 </form>
 
 <script>

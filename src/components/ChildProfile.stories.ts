@@ -2,13 +2,15 @@ import ChildProfile from './ChildProfile.astro'
 import DonationAmountWidget from './DonationAmountWidget.astro'
 import type { ChildItem } from '../lib/content/types'
 
+// Fictional child; real children's data never appears in stories (public repo).
 const maria: ChildItem = {
   slug: 'maria',
-  displayName: 'Maria',
+  displayName: 'Maria S.',
   age: 8,
   birthday: '2018-03-14',
   gender: 'Female',
-  dream: 'Become a teacher',
+  dream: 'She wants to be a teacher when she grows up.',
+  about: 'Maria lives with her grandmother and two cousins and loves drawing.',
   published: true,
   donorboxSponsorshipRef: 'maria-sponsorship',
 }
@@ -27,7 +29,7 @@ export const Default = {
       donation: {
         component: DonationAmountWidget,
         props: {
-          actionUrl: 'https://donorbox.org/embed/sponsor-a-child-vvf',
+          actionUrl: 'https://donorbox.org/embed/make-a-difference-55',
           sponsorTargetLabel: maria.displayName,
         },
       },
@@ -41,7 +43,7 @@ export const MinimalData = {
     slots: {
       donation: {
         component: DonationAmountWidget,
-        props: { actionUrl: 'https://donorbox.org/embed/sponsor-a-child-vvf' },
+        props: { actionUrl: 'https://donorbox.org/embed/make-a-difference-55' },
       },
     },
   },

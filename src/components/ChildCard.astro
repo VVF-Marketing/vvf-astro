@@ -1,26 +1,35 @@
 ---
+// Live counterparts:
+//   list    `.children-list_item` — gray card (radius 2xl) with a rounded
+//           photo, uppercase age and name (children listing).
+//   compact `.sponsor-children_item` — rounded photo with the name below
+//           (Sponsor a Child page strip).
 import type { ChildItem } from '../lib/content/types'
-import Eyebrow from './Eyebrow.astro'
 
 export interface Props {
-  child: ChildItem
+  child: Pick<ChildItem, 'slug' | 'displayName' | 'age' | 'imageUrl'>
+  variant?: 'list' | 'compact'
 }
 
-const { child } = Astro.props as Props
+const { child, variant = 'list' } = Astro.props as Props
+const href = `/sponsor-a-child/children/${child.slug}`
 ---
 
-<a href={`/sponsor-a-child/children/${child.slug}`} class="block bg-gray-50 rounded-card overflow-hidden">
-  <div class="relative h-40 bg-gray-200">
-    {
-      child.imageUrl ? (
-        <img src={child.imageUrl} alt={child.displayName} class="w-full h-full object-cover" />
-      ) : (
-        <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Photo</div>
-      )
-    }
-  </div>
-  <div class="p-4">
-    <Eyebrow color="ink">{child.age} years old</Eyebrow>
-    <p class="mt-1 font-display text-brand-navy">{child.displayName}</p>
-  </div>
-</a>
+{
+  variant === 'compact' ? (
+    <a href={href} class="flex flex-col items-center gap-1 no-underline">
+      <img src={child.imageUrl} alt={child.displayName} class="aspect-square w-full max-w-[231px] rounded-[24px] bg-neutral-light-gray object-cover" loading="lazy" />
+      <h3 class="font-sans text-size-sm font-bold leading-body text-brand-primary">{child.displayName}</h3>
+    </a>
+  ) : (
+    <a href={href} class="block rounded-2xl bg-neutral-card no-underline">
+      <div class="p-6">
+        <img src={child.imageUrl} alt={child.displayName} class="aspect-[262/233] w-full rounded-[24px] bg-neutral-light-gray object-cover" loading="lazy" />
+      </div>
+      <div class="flex flex-col gap-2 px-8 pb-8">
+        <p class="font-body text-size-sm font-semibold uppercase leading-body text-brand-primary">{child.age} years old</p>
+        <h3 class="text-h5 leading-[1.4] text-brand-primary">{child.displayName}</h3>
+      </div>
+    </a>
+  )
+}

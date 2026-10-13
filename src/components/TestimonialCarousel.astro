@@ -20,9 +20,9 @@ const { items } = Astro.props as Props
     <div class="flex-1 flex gap-4 overflow-x-hidden scroll-smooth" data-track>
       {
         items.map((item) => (
-          <Card class="shrink-0 w-full sm:w-[320px] p-5">
-            <p class="font-display text-brand-navy">{item.title}</p>
-            {item.body && <p class="mt-2 text-sm text-ink-700">{item.body}</p>}
+          <Card class="w-full shrink-0 p-8 sm:w-[320px]">
+            <p class="text-h5 leading-[1.4] text-brand-primary">{item.title}</p>
+            {item.body && <p class="mt-2 font-body text-size-base leading-body text-brand-primary">{item.body}</p>}
           </Card>
         ))
       }
@@ -30,7 +30,7 @@ const { items } = Astro.props as Props
     <Button variant="icon" data-next aria-label="Next story">›</Button>
   </div>
   <div class="mt-4 flex justify-center gap-2" data-dots>
-    {items.map((_, i) => <span class="w-2 h-2 rounded-full bg-gray-300" data-dot={i} />)}
+    {items.map((_, i) => <span class="h-2 w-2 rounded-full bg-neutral-light-gray" data-dot={i} />)}
   </div>
 </div>
 
@@ -49,7 +49,7 @@ const { items } = Astro.props as Props
       const max = track!.scrollWidth - track!.clientWidth
       const progress = max > 0 ? track!.scrollLeft / max : 0
       const activeIndex = Math.round(progress * (dots.length - 1))
-      dots.forEach((dot, i) => dot.classList.toggle('bg-brand-sky', i === activeIndex))
+      dots.forEach((dot, i) => dot.classList.toggle('bg-brand-accent', i === activeIndex))
     }
 
     next?.addEventListener('click', () => {

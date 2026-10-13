@@ -1,0 +1,98 @@
+{
+  "path": "/resources-categories/stories",
+  "seo": {
+    "title": "Stories | Resources | Victoria Venezuela Foundation",
+    "description": "Stories from our nutrition, medical care and education programs for children in Venezuela.",
+    "ogTitle": "Stories | Resources | Victoria Venezuela Foundation",
+    "ogDescription": "Stories from our nutrition, medical care and education programs for children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_resources"
+      ],
+      "blocks": [
+        {
+          "type": "h1",
+          "text": "Resources"
+        },
+        {
+          "type": "cta",
+          "text": "View All",
+          "href": "/resources-categories/all"
+        },
+        {
+          "type": "cta",
+          "text": "Stories",
+          "href": "/resources-categories/stories"
+        },
+        {
+          "type": "cta",
+          "text": "Financial",
+          "href": "/resources-categories/financials-transparency"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aab66ba66110716228dcb62_6aab6643a67489fc5fe895cf_VVF_SponsorArticle_Featured_v2.jpeg",
+          "alt": "How to sponsor a child directly, without going through a large charity"
+        },
+        {
+          "type": "h3",
+          "text": "How to sponsor a child directly, without going through a large charity"
+        },
+        {
+          "type": "p",
+          "text": "Direct child sponsorship means your monthly gift supports an identified child through a specific organization, and you can see where the money goes."
+        },
+        {
+          "type": "h2",
+          "text": "Stay connected"
+        },
+        {
+          "type": "p",
+          "text": "Keep up with our news and events"
+        },
+        {
+          "type": "p",
+          "text": "We respect your privacy. Unsubscribe at any time."
+        },
+        {
+          "type": "h2",
+          "text": "Related"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af7_6aabe162f0e62e432616f0a1_VVF_FinancialsCover_Annual_Featured_v1.png",
+          "alt": "Impact Report 2025"
+        },
+        {
+          "type": "h3",
+          "text": "Impact Report 2025"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Your Impact 1Q2025"
+        },
+        {
+          "type": "h3",
+          "text": "Your Impact 1Q2025"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Your Impact 3Q2024"
+        },
+        {
+          "type": "h3",
+          "text": "Your Impact 3Q2024"
+        }
+      ]
+    }
+  ]
+}

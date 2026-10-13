@@ -21,10 +21,10 @@ const {
 ---
 
 <Card class="p-6" data-donation-widget>
-  <div class="flex rounded-pill bg-gray-100 p-1 w-fit">
+  <div class="flex w-fit rounded-pill bg-neutral-100 p-1">
     <button
       type="button"
-      class="rounded-pill px-4 py-1 text-sm font-medium"
+      class="rounded-pill px-4 py-1 font-sans text-size-sm font-semibold text-brand-primary"
       data-cadence="one-time"
       aria-pressed={defaultCadence === 'one-time'}
     >
@@ -32,7 +32,7 @@ const {
     </button>
     <button
       type="button"
-      class="rounded-pill px-4 py-1 text-sm font-medium"
+      class="rounded-pill px-4 py-1 font-sans text-size-sm font-semibold text-brand-primary"
       data-cadence="monthly"
       aria-pressed={defaultCadence === 'monthly'}
     >
@@ -40,12 +40,12 @@ const {
     </button>
   </div>
 
-  <p class="mt-4 text-sm text-ink-500">{currency}</p>
+  <p class="mt-4 font-body text-size-sm text-brand-primary/70">{currency}</p>
 
   <div class="mt-2 grid grid-cols-3 gap-2">
     {
       presets.map((p) => (
-        <button type="button" class="rounded-pill border px-3 py-2 text-sm font-medium" data-preset={p}>
+        <button type="button" class="rounded-pill border border-brand-primary px-3 py-2 font-sans text-size-sm font-semibold text-brand-primary" data-preset={p}>
           {p} {currency}
         </button>
       ))
@@ -62,13 +62,13 @@ const {
 
   {
     sponsorTargetLabel && (
-      <p class="mt-4 text-sm text-ink-700">
+      <p class="mt-4 font-body text-size-sm text-brand-primary">
         Sponsoring: <span class="font-semibold">{sponsorTargetLabel}</span>
       </p>
     )
   }
 
-  <Button href={actionUrl} variant="primary-sky" size="lg" class="mt-6 block text-center" data-continue>
+  <Button href={actionUrl} variant="primary" size="lg" class="mt-6 block text-center" data-continue>
     Continue
   </Button>
 </Card>
@@ -86,8 +86,8 @@ const {
     function render() {
       presetButtons.forEach((b) => {
         const active = Number(b.dataset.preset) === state.activePreset
-        b.classList.toggle('bg-brand-sky', active)
-        b.classList.toggle('text-white', active)
+        b.classList.toggle('bg-brand-accent', active)
+        b.classList.toggle('text-neutral-white', active)
         b.setAttribute('aria-pressed', String(active))
       })
       if (customInput && customInput.value !== state.customValue) customInput.value = state.customValue
@@ -98,8 +98,8 @@ const {
         cadenceButtons.forEach((b) => {
           const active = b === btn
           b.setAttribute('aria-pressed', String(active))
-          b.classList.toggle('bg-brand-sky', active)
-          b.classList.toggle('text-white', active)
+          b.classList.toggle('bg-brand-accent', active)
+          b.classList.toggle('text-neutral-white', active)
         })
       })
     })

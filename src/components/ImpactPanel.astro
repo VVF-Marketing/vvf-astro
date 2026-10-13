@@ -1,0 +1,32 @@
+---
+// Live counterpart: event "Our Impact" (`.section-22`) — navy panel with a
+// rounded photo beside stacked pastel figure cards.
+export interface Props {
+  heading?: string
+  imageUrl?: string
+  imageAlt?: string
+  stats: { value: string; label: string }[]
+}
+
+const { heading = 'Our Impact', imageUrl, imageAlt = '', stats } = Astro.props as Props
+const tones = ['bg-sky', 'bg-salmon', 'bg-sun']
+---
+
+<section class="px-0 sm:px-6 md:px-20">
+  <div class="mx-auto max-w-screen-xl rounded-xl bg-brand-primary p-8 md:rounded-2xl md:p-16">
+    <h2 class="text-h3-mobile leading-[1.2] text-neutral-white md:text-h2">{heading}</h2>
+    <div class="mt-16 grid gap-6 md:grid-cols-2">
+      {imageUrl && <img src={imageUrl} alt={imageAlt} class="h-full w-full rounded-2xl object-cover" loading="lazy" />}
+      <ul class="flex flex-col gap-6">
+        {
+          stats.map((s, i) => (
+            <li class={`rounded-2xl px-8 py-10 ${tones[i % tones.length]}`}>
+              <p class="font-sans text-[3rem] font-extrabold leading-[1.3] text-brand-primary md:text-[5rem]">{s.value}</p>
+              <p class="mt-4 font-sans text-size-md font-extrabold leading-[1.4] text-brand-primary">{s.label}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

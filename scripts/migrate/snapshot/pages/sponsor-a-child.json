@@ -1,0 +1,370 @@
+{
+  "path": "/sponsor-a-child",
+  "seo": {
+    "title": "Sponsor a Child in Venezuela | Victoria Venezuela Foundation",
+    "description": "Sponsor a child in Venezuela from $25 a month. Your gift funds weekly meals, medical checkups twice a year and school support for the children in our care.",
+    "ogTitle": "Sponsor a Child in Venezuela | Victoria Venezuela Foundation",
+    "ogDescription": "Sponsor a child in Venezuela from $25 a month. Your gift funds weekly meals, medical checkups twice a year and school support for the children in our care.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a1732ae2ba04773f2cd062f_98.png",
+          "alt": "Smiling girl sitting at a table eating empanadas with orange cups nearby."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aab6643a67489fc5fe895cf_VVF_SponsorArticle_Featured_v2.jpg"
+        },
+        {
+          "type": "h1",
+          "text": "Sponsor a child in Venezuela"
+        },
+        {
+          "type": "p",
+          "text": "Build a personal connection. Transform a life."
+        },
+        {
+          "type": "cta",
+          "text": "Meet the children",
+          "href": "/sponsor-a-child-list-page"
+        },
+        {
+          "type": "cta",
+          "text": "How it works",
+          "href": "#how-it-works"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Essential"
+        },
+        {
+          "type": "h2",
+          "text": "Every child deserves a fighting chance"
+        },
+        {
+          "type": "p",
+          "text": "Sponsorship means stepping into a child's life with consistent support. You choose the amount each month, starting at just $25, and that commitment becomes the difference between survival and thriving for one young person in Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Sponsor",
+          "href": "/sponsor-a-child-list-page"
+        },
+        {
+          "type": "cta",
+          "text": "Learn more",
+          "href": "#how-it-works"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a84d10d671b1944cf18b43a_15d77ffd-ad0c-4914-a5cb-538fd74e2f6e%201.png",
+          "alt": "Three smiling girls playing on an inflatable slide at a foundation activity"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Meet the children"
+        },
+        {
+          "type": "p",
+          "text": "Find the child who needs you most"
+        },
+        {
+          "type": "cta",
+          "text": "Meet them all",
+          "href": "/sponsor-a-child-list-page"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Process"
+        },
+        {
+          "type": "h2",
+          "text": "Three steps to change"
+        },
+        {
+          "type": "p",
+          "text": "Start here and find your match"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2ccefb172b2f7f61dd_uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg"
+        },
+        {
+          "type": "p",
+          "text": "First"
+        },
+        {
+          "type": "h4",
+          "text": "Choose a child"
+        },
+        {
+          "type": "p",
+          "text": "Browse the gallery and choose the child you want to support."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2cf90f1192203d1048_uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg"
+        },
+        {
+          "type": "p",
+          "text": "Second"
+        },
+        {
+          "type": "h4",
+          "text": "Set your amount"
+        },
+        {
+          "type": "p",
+          "text": "You decide the monthly gift, starting at just $25"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2ccefb172b2f7f61dd_uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg"
+        },
+        {
+          "type": "p",
+          "text": "Third"
+        },
+        {
+          "type": "h4",
+          "text": "Build a relationship that matters"
+        },
+        {
+          "type": "p",
+          "text": "Receive letters, photos, and watch your child grow stronger"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-4"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Impact"
+        },
+        {
+          "type": "h2",
+          "text": "What sponsorship provides"
+        },
+        {
+          "type": "p",
+          "text": "Your commitment reaches far"
+        },
+        {
+          "type": "li",
+          "text": "Weekly nutritious meals:Food that builds strength and hope"
+        },
+        {
+          "type": "li",
+          "text": "Dignified access to education:Supplies, uniforms, and the tools to learn"
+        },
+        {
+          "type": "li",
+          "text": "Medical checkups twice a year:A doctor sees your child twice a year, and treatment is covered when something is wrong."
+        },
+        {
+          "type": "li",
+          "text": "Connection with you:The knowledge that they matter through a real connection"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Rewards"
+        },
+        {
+          "type": "h2",
+          "text": "What you receive as a sponsor"
+        },
+        {
+          "type": "p",
+          "text": "Sponsorship is a two-way street. You give support, and you receive something equally valuable—a window into a child's world and the knowledge that you changed it."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a76cffee18d8a24e9_VVF_Icon_Reward_Letters_v1.svg"
+        },
+        {
+          "type": "h3",
+          "text": "Letters from your child"
+        },
+        {
+          "type": "p",
+          "text": "Words and drawings that show you matter to someone far away"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3ad24800b0c386a818_VVF_Icon_Reward_Photos_v1.svg"
+        },
+        {
+          "type": "h3",
+          "text": "Photos and progress updates"
+        },
+        {
+          "type": "p",
+          "text": "See the growth, the smile, the transformation your gift enables"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a133606cd530e0796_VVF_Icon_Reward_Prayer_v1.svg"
+        },
+        {
+          "type": "h3",
+          "text": "Prayer requests and needs"
+        },
+        {
+          "type": "p",
+          "text": "Know how to intercede and support beyond the monthly gift"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aabfb3a102e2b04a6b5c177_VVF_Icon_Reward_Report_v1.svg"
+        },
+        {
+          "type": "h3",
+          "text": "Annual impact reports"
+        },
+        {
+          "type": "p",
+          "text": "Detailed accounting of how your sponsorship changed lives this year"
+        },
+        {
+          "type": "cta",
+          "text": "Sponsor a Child",
+          "href": "/sponsor-a-child-list-page"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Frequently asked questions"
+        },
+        {
+          "type": "p",
+          "text": "Everything you need to know about child sponsorship"
+        },
+        {
+          "type": "h3",
+          "text": "How much does sponsorship cost?"
+        },
+        {
+          "type": "p",
+          "text": "Sponsorship starts at $25 per month. You choose the amount that fits your budget. Your gifts fund the meals, medical care and education programs that reach every child in our care. In fiscal 2025, 95% of funds went directly to programs."
+        },
+        {
+          "type": "h3",
+          "text": "Where does my money go?"
+        },
+        {
+          "type": "p",
+          "text": "Your sponsorship funds provide weekly meals, medical checkups twice a year, school supplies and uniforms, and faith-based teaching. We maintain complete transparency about how every dollar is spent. You can review our detailed financials anytime on our website."
+        },
+        {
+          "type": "h3",
+          "text": "Can I write to my sponsored child?"
+        },
+        {
+          "type": "p",
+          "text": "Yes. Your child will receive your letters and drawings, and they will write back to you. This connection is one of the most meaningful parts of sponsorship."
+        },
+        {
+          "type": "h3",
+          "text": "What updates will I receive?"
+        },
+        {
+          "type": "p",
+          "text": "You'll receive letters and photos from your child, along with annual impact reports showing how your sponsorship changed their life. We also send prayer requests and updates about their progress in school and health."
+        },
+        {
+          "type": "h3",
+          "text": "Can I send gifts to my child?"
+        },
+        {
+          "type": "p",
+          "text": "We recommend keeping gifts modest and practical, such as school supplies or books. Large or expensive gifts can create complications. We'll guide you on what works best for your child's situation and community."
+        },
+        {
+          "type": "h3",
+          "text": "Does my money go directly to my sponsored child?"
+        },
+        {
+          "type": "p",
+          "text": "Your sponsorship connects you with one child. Gifts are combined to fund the nutrition, medical care and education that reach every child in our programs, which keeps support steady for each child even if a sponsor steps away."
+        },
+        {
+          "type": "h2",
+          "text": "What if I need to cancel?"
+        },
+        {
+          "type": "p",
+          "text": "You can pause or end your sponsorship anytime with no penalty. We ask for thirty days' notice so we can help transition your child to another sponsor. Your child's care continues uninterrupted during this time."
+        },
+        {
+          "type": "cta",
+          "text": "Still have questions?",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_programs-cta"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "We earn your trust through transparency"
+        },
+        {
+          "type": "p",
+          "text": "In fiscal 2025, 95% of funds went directly to programs. Sponsorship builds a relationship with one child. Gifts fund the programs that serve all the children in our care."
+        },
+        {
+          "type": "cta",
+          "text": "Sponsor a Child",
+          "href": "/sponsor-a-child-list-page"
+        },
+        {
+          "type": "cta",
+          "text": "View our financials",
+          "href": "/resources-categories/financials-transparency"
+        }
+      ]
+    }
+  ]
+}

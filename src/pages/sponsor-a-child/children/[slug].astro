@@ -9,15 +9,18 @@ if (!child) return new Response('Not found', { status: 404 })
 const embedUrl = sponsorChildEmbedUrl(child.slug)
 ---
 
-<PageLayout title={`${child.displayName} — Sponsor a Child`}>
+<PageLayout
+  title={`Sponsor ${child.displayName} | Victoria Venezuela Foundation`}
+  description={`Sponsor ${child.displayName}, ${child.age}, in Venezuela. Your monthly gift funds meals, medical care and school.`}
+  image={child.imageUrl}
+>
   <ChildProfile child={child}>
-    <div slot="donation" class="bg-white rounded-card shadow-sm overflow-hidden">
-      <div class="bg-brand-sky text-white px-4 py-3 font-semibold">Elegir la cantidad</div>
+    <div slot="donation" class="overflow-hidden rounded-[20px] bg-neutral-white">
       <iframe
         title={`Sponsor ${child.displayName} via Donorbox`}
         src={embedUrl}
         class="w-full"
-        height="640"
+        height="980"
         style="border:none;max-width:100%;"
         loading="lazy"
       />

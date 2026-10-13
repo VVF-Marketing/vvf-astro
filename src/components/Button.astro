@@ -1,32 +1,41 @@
 ---
+// Live counterpart: `.button` (+ `is-primary`, `is-secondary`, `is-small`,
+// `is-large` and the Webflow component variants used on the live site).
 export interface Props {
   href?: string
-  variant?: 'primary-sky' | 'outline-sky' | 'primary-navy' | 'outline-navy' | 'icon'
+  // primary        cyan fill, navy text (`.button.is-primary`)
+  // primary-inverse cyan fill, white text — on navy/dark sections
+  // outline        transparent, 2px cyan border + text (`.button.is-secondary`)
+  // outline-navy   transparent, 2px navy border + text
+  // link           text-only cyan link that underlines on hover
+  // icon           round icon-only control (carousel arrows)
+  variant?: 'primary' | 'primary-inverse' | 'outline' | 'outline-navy' | 'link' | 'icon'
   size?: 'sm' | 'md' | 'lg'
   class?: string
   [key: string]: any
 }
 
-const { href, variant = 'primary-sky', size = 'md', class: className = '', type, ...rest } = Astro.props as Props
+const { href, variant = 'primary', size = 'md', class: className = '', type, ...rest } = Astro.props as Props
 
 const sizes = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-5 py-2',
-  lg: 'px-6 py-2',
+  sm: 'px-5 py-2',
+  md: 'px-6 py-3',
+  lg: 'px-8 py-4',
 }
 
 const variants = {
-  'primary-sky': 'bg-brand-sky text-white hover:bg-brand-sky-dark',
-  'outline-sky': 'border border-brand-sky text-brand-sky hover:bg-brand-sky/10',
-  'primary-navy': 'bg-brand-navy text-white',
-  'outline-navy': 'border border-brand-navy/30 text-brand-navy hover:bg-white/40',
+  primary: 'border border-brand-accent bg-brand-accent text-brand-primary',
+  'primary-inverse': 'border border-brand-accent bg-brand-accent text-neutral-white',
+  outline: 'border-2 border-brand-accent bg-transparent text-brand-accent',
+  'outline-navy': 'border-2 border-brand-primary bg-transparent text-brand-primary',
+  link: 'border border-transparent bg-transparent text-brand-accent hover:underline',
   icon: '',
 }
 
 const base =
   variant === 'icon'
-    ? 'shrink-0 rounded-full border p-2'
-    : `rounded-pill font-medium ${sizes[size]} ${variants[variant]} disabled:opacity-50 disabled:cursor-not-allowed`
+    ? 'inline-flex shrink-0 items-center justify-center rounded-full border border-brand-primary/20 p-2 text-brand-primary'
+    : `inline-flex items-center justify-center rounded-pill text-center font-heading text-size-md font-bold leading-body no-underline ${sizes[size]} ${variants[variant]} disabled:cursor-not-allowed disabled:opacity-50`
 
 const Tag = href ? 'a' : 'button'
 ---

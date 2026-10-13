@@ -1,0 +1,126 @@
+---
+// Resource detail — live /resources/<slug>: breadcrumbs, last-updated date,
+// title, authors, share link, featured image, body, PDF download and a
+// sponsorship CTA, with the newsletter box and related resources alongside.
+import { PortableText } from 'emdash/ui'
+import PageLayout from '../../layouts/PageLayout.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import RichText from '../../components/RichText.astro'
+import Button from '../../components/Button.astro'
+import NewsletterSignup from '../../components/NewsletterSignup.astro'
+import ArticleCard from '../../components/ArticleCard.astro'
+import { getResource, getResources, getTeamMembers } from '../../lib/content'
+import { RESOURCE_CATEGORY_LABELS, resourceTag } from '../../lib/content/types'
+
+const resource = await getResource(Astro.params.slug!)
+if (!resource) return new Response('Not found', { status: 404 })
+
+const primary = resource.categories.includes('financials-transparency') ? 'financials-transparency' : resource.categories[0]
+const related = (await getResources())
+  .filter((r) => r.slug !== resource.slug && (!primary || r.categories.includes(primary)))
+  .slice(0, 3)
+// Author headshots come from the team collection (matched by name).
+const team = await getTeamMembers()
+const photoFor = (name: string) => team.find((m) => m.name === name && m.imageUrl)?.imageUrl
+const updated = resource.updatedAt ?? resource.publishedAt
+const updatedLabel = updated
+  ? new Date(updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  : undefined
+const crumbs = [
+  { label: 'Resources', href: '/resources' },
+  ...(primary ? [{ label: RESOURCE_CATEGORY_LABELS[primary], href: `/resources/category/${primary}` }] : []),
+  { label: resource.title },
+]
+---
+
+<PageLayout
+  title={resource.seo?.title ?? `${resource.title} | Victoria Venezuela Foundation`}
+  description={resource.seo?.description ?? resource.excerpt}
+  image={resource.seo?.imageUrl ?? resource.imageUrl}
+>
+  <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-[72px]">
+    <div class="mx-auto max-w-[1296px]">
+      <Breadcrumbs items={crumbs} />
+      {updatedLabel && <p class="mt-12 font-body text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">Last updated {updatedLabel}</p>}
+      <h1 class="mt-4 text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{resource.title}</h1>
+      {
+        resource.authors && resource.authors.length > 0 && (
+          <ul class="mt-6 flex flex-col gap-3">
+            {resource.authors.map((a, i) => (
+              <li class="flex items-center gap-3 font-body text-size-md leading-body text-brand-primary">
+                {photoFor(a.name) && <img src={photoFor(a.name)} alt="" width="40" height="40" class="h-10 w-10 rounded-full object-cover" />}
+                <span>
+                {i === 0 && 'By '}
+                {a.name}
+                {a.role && `, ${a.role}`}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <button
+        type="button"
+        class="mt-8 flex h-[58px] w-[58px] items-center justify-center rounded-full bg-brand-accent text-neutral-white"
+        aria-label="Copy link to this page"
+        data-share
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1 1M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="mt-16 grid gap-16 lg:grid-cols-[768px_1fr] lg:gap-[120px]">
+        <div>
+          {resource.imageUrl && <img src={resource.imageUrl} alt={resource.imageAlt ?? ''} class="mb-12 w-full rounded-[20px] object-cover" />}
+          {resource.body && (
+            <RichText class="md:[&_h2]:text-[2rem]">
+              <PortableText value={resource.body} />
+            </RichText>
+          )}
+          {resource.fileUrl && (
+            <div class="mt-12">
+              <Button href={resource.fileUrl} variant="outline" download>
+                Download the report (PDF)
+              </Button>
+            </div>
+          )}
+          <div class="mt-16 flex flex-col items-start gap-6 rounded-2xl bg-sun p-10">
+            <p class="font-sans text-h5 font-extrabold leading-[1.3] text-brand-primary">Sponsor a child in Venezuela. Starting at $25 a month.</p>
+            <Button href="/sponsor-a-child" variant="primary-inverse">Sponsor a child</Button>
+          </div>
+        </div>
+        <aside class="flex flex-col gap-16">
+          <NewsletterSignup />
+          {related.length > 0 && (
+            <div class="flex flex-col gap-6">
+              <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">Related</h2>
+              {related.map((r) => (
+                <ArticleCard
+                  variant="related"
+                  href={`/resources/${r.slug}`}
+                  title={r.title}
+                  imageUrl={r.imageUrl}
+                  imageAlt={r.imageAlt}
+                  category={resourceTag(r)}
+                />
+              ))}
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </article>
+</PageLayout>
+
+<script>
+  document.querySelector<HTMLButtonElement>('[data-share]')?.addEventListener('click', async (event) => {
+    const button = event.currentTarget as HTMLButtonElement
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      button.setAttribute('aria-label', 'Link copied')
+    } catch {
+      button.setAttribute('aria-label', 'Copy failed — copy the address bar link instead')
+    }
+  })
+</script>

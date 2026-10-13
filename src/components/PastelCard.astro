@@ -1,7 +1,7 @@
 ---
+// Live counterpart: `.feature-card_component-*` — pastel card (radius 2xl)
+// with a centered icon, a divider, an uppercase tagline, a heading and copy.
 import Button from './Button.astro'
-import Card from './Card.astro'
-import Eyebrow from './Eyebrow.astro'
 
 export interface CtaLink {
   label: string
@@ -9,26 +9,40 @@ export interface CtaLink {
 }
 
 export interface Props {
-  tone: 'yellow' | 'pink' | 'blue'
+  tone: 'sun' | 'salmon' | 'sky'
   eyebrow?: string
   title: string
   body?: string
   cta?: CtaLink
-  icon?: 'nutrition' | 'medical' | 'education' | 'none'
+  iconUrl?: string
+  // Centered copy and button (live past-event "Can't wait" cards).
+  centered?: boolean
 }
 
-const { tone, eyebrow, title, body, cta } = Astro.props as Props
+const { tone, eyebrow, title, body, cta, iconUrl, centered = false } = Astro.props as Props
+const tones = { sun: 'bg-sun', salmon: 'bg-salmon', sky: 'bg-sky' }
 ---
 
-<Card tone={tone} shadow={false} class="p-6 flex flex-col h-full">
-  {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-  <h3 class="mt-2 text-display-sm text-brand-navy">{title}</h3>
-  {body && <p class="mt-2 text-ink-700 flex-1">{body}</p>}
+<article class={`flex h-full max-w-[405px] flex-col overflow-hidden rounded-2xl ${tones[tone]}`}>
   {
-    cta && (
-      <Button href={cta.href} variant="outline-navy" class="mt-4 self-start">
-        {cta.label}
-      </Button>
+    iconUrl && (
+      <div class="flex h-[211px] items-center justify-center p-10">
+        <img src={iconUrl} alt="" class="h-full w-auto" loading="lazy" />
+      </div>
     )
   }
-</Card>
+  <div class={`flex flex-1 flex-col gap-6 ${iconUrl ? 'px-8 pb-8 pt-6' : 'p-6 md:p-16'} ${centered ? 'items-center text-center' : iconUrl ? 'items-center text-center md:items-stretch md:text-left' : ''}`}>
+    <div class={`flex flex-col gap-4 ${iconUrl ? 'border-t border-brand-primary/40 pt-8' : ''}`}>
+      {eyebrow && <p class="font-body text-size-sm font-semibold uppercase leading-body tracking-[0.1em] text-brand-primary">{eyebrow}</p>}
+      <h4 class={`leading-[1.4] text-brand-primary ${iconUrl ? 'text-h4' : 'text-h5 md:text-h4'}`}>{title}</h4>
+    </div>
+    {body && <p class="font-sans text-size-md leading-body text-brand-primary">{body}</p>}
+    {
+      cta && (
+        <Button href={cta.href} variant="outline-navy" class={`mt-auto ${centered ? 'self-center' : iconUrl ? 'self-center md:self-start' : 'self-start'}`}>
+          {cta.label}
+        </Button>
+      )
+    }
+  </div>
+</article>

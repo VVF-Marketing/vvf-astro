@@ -1,88 +1,121 @@
 ---
-import { generalDonationUrl } from '../lib/donorbox'
+// Live counterpart: `.navbar` (Webflow w-nav). Navy bar, white Nunito links
+// that turn cyan on hover, navy dropdown panels, Donate + Contact Us CTAs.
+// Collapses into a menu button below the `lg` (992px) breakpoint, like the
+// live site. Menu items come from the EmDash `primary` menu.
 import { getPrimaryMenu } from '../lib/content'
 import Button from './Button.astro'
 
-const donateUrl = generalDonationUrl()
-const desktopItems = await getPrimaryMenu()
-const mobileItems = desktopItems.flatMap((item) => (item.children?.length ? item.children : [item]))
+const items = await getPrimaryMenu()
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
+const isCurrent = (url: string) => url !== '#' && (url === currentPath || (url !== '/' && currentPath.startsWith(`${url}/`)))
+const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal leading-body text-neutral-white no-underline hover:text-brand-accent'
 ---
 
-<header class="relative bg-white">
-  <div class="container max-w-container mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="font-display text-xl text-brand-navy">Victoria Venezuela</a>
+<header class="relative z-50 bg-brand-primary px-6 py-5 md:px-8 lg:px-16" data-site-header>
+  <div class="mx-auto flex max-w-screen-xl items-center justify-between gap-6 xl:gap-16">
+    <a href="/" class="shrink-0" aria-label="Victoria Venezuela Foundation home">
+      <img src="/images/logo.svg" alt="Victoria Venezuela Foundation" width="206" height="68" class="h-10 w-auto sm:h-[68px]" />
+    </a>
 
-    <nav class="hidden md:flex items-center gap-8">
-      <ul class="flex items-center gap-8 text-ink-700 font-medium">
+    <nav aria-label="Primary" class="hidden flex-1 items-center justify-end gap-2 lg:flex">
+      <ul class="flex items-center gap-2">
         {
-          desktopItems.map((item) =>
+          items.map((item, i) =>
             item.children?.length ? (
-              <li class="relative group">
+              <li class="group relative" data-dropdown>
                 <button
                   type="button"
-                  class="flex items-center gap-1 hover:text-brand-sky"
-                  aria-haspopup="true"
+                  class={`${linkClass} flex items-center gap-1.5 px-3 py-5 xl:px-5`}
                   aria-expanded="false"
-                  data-dropdown-trigger
+                  aria-controls={`nav-dropdown-${i}`}
+                  data-dropdown-toggle
                 >
                   {item.label}
-                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" /></svg>
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" class="transition-transform group-[.is-open]:rotate-180">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" />
+                  </svg>
                 </button>
                 <ul
+                  id={`nav-dropdown-${i}`}
+                  class="absolute left-0 top-full hidden min-w-[220px] flex-col rounded-md bg-brand-primary py-2 group-hover:flex group-[.is-open]:flex"
                   data-dropdown-menu
-                  class="hidden group-focus-within:block md:absolute left-0 top-full mt-2 min-w-[220px] bg-white rounded-card shadow-lg p-2 z-20"
                 >
                   {item.children.map((child) => (
-                    <li><a href={child.url} class="block px-4 py-2 rounded-lg hover:bg-pastel-blue/40">{child.label}</a></li>
+                    <li>
+                      <a href={child.url} class={`${linkClass} px-5 py-2.5`} aria-current={isCurrent(child.url) ? 'page' : undefined}>
+                        {child.label}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </li>
             ) : (
-              <li><a href={item.url} class="hover:text-brand-sky">{item.label}</a></li>
+              <li>
+                <a href={item.url} class={`${linkClass} px-3 py-5 xl:px-5`} aria-current={isCurrent(item.url) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
             )
           )
         }
       </ul>
+      <div class="flex shrink-0 items-center gap-4 pl-6 xl:gap-6 xl:pl-16">
+        <Button href="/ways-to-give" variant="primary">Donate</Button>
+        <Button href="/contact" variant="outline">Contact Us</Button>
+      </div>
     </nav>
-
-    <div class="hidden md:flex items-center gap-3">
-      <Button href="/contact" variant="outline-sky">Contact Us</Button>
-      <Button href={donateUrl} variant="primary-sky">Donate</Button>
-    </div>
 
     <button
       type="button"
-      class="md:hidden text-ink-700"
-      aria-label="Mobile menu"
+      class="p-3 text-neutral-white lg:hidden"
+      aria-label="Menu"
       aria-expanded="false"
-      data-mobile-menu-trigger
+      aria-controls="mobile-menu"
+      data-mobile-menu-toggle
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
     </button>
   </div>
 
-  <ul
-    data-mobile-menu
-    class="hidden md:hidden flex-col gap-1 bg-white shadow-lg absolute inset-x-0 top-full p-4 text-ink-700 font-medium z-30"
-  >
-    {mobileItems.map((item) => <li><a class="block py-2" href={item.url}>{item.label}</a></li>)}
-    <li class="pt-2 flex gap-2">
-      <Button href="/contact" variant="outline-sky" size="sm" class="flex-1 text-center">Contact Us</Button>
-      <Button href={donateUrl} variant="primary-sky" size="sm" class="flex-1 text-center">Donate</Button>
-    </li>
-  </ul>
+  <nav id="mobile-menu" aria-label="Primary" class="absolute inset-x-0 top-full hidden bg-brand-primary px-6 pb-6 lg:hidden" data-mobile-menu>
+    <ul class="flex flex-col">
+      {
+        items.map((item) =>
+          item.children?.length ? (
+            <li>
+              <p class="py-3 font-sans text-size-md font-bold text-neutral-white">{item.label}</p>
+              <ul>
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.url} class={`${linkClass} py-2.5 pl-10`} aria-current={isCurrent(child.url) ? 'page' : undefined}>
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a href={item.url} class={`${linkClass} py-3`} aria-current={isCurrent(item.url) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          )
+        )
+      }
+    </ul>
+    <div class="mt-4 flex flex-col gap-2">
+      <Button href="/ways-to-give" variant="primary">Donate</Button>
+      <Button href="/contact" variant="outline">Contact Us</Button>
+    </div>
+  </nav>
 </header>
 
 <script>
-  const trigger = document.querySelector('[data-mobile-menu-trigger]')
-  const menu = document.querySelector('[data-mobile-menu]')
+  import { initSiteHeader } from '../lib/siteHeader'
 
-  trigger?.addEventListener('click', () => {
-    const isOpen = menu?.classList.contains('flex')
-    menu?.classList.toggle('hidden', isOpen)
-    menu?.classList.toggle('flex', !isOpen)
-    trigger.setAttribute('aria-expanded', String(!isOpen))
-  })
+  document.querySelectorAll<HTMLElement>('[data-site-header]').forEach(initSiteHeader)
 </script>

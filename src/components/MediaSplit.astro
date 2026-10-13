@@ -1,0 +1,45 @@
+---
+// Live counterpart: Ways to Give `.section_sponsorship` — rounded photo on
+// one side, tagline/heading/copy, an optional sky note and actions on the
+// other.
+import SectionTitle from './SectionTitle.astro'
+
+export interface Props {
+  tagline?: string
+  heading: string
+  text?: string
+  note?: string
+  imageUrl?: string
+  imageAlt?: string
+  imageSide?: 'left' | 'right'
+  // Several photos in a 2×2 grid instead of one (Earthquake "What happened").
+  images?: { url: string; alt?: string }[]
+  // Show the image contained on a light panel (maps, diagrams).
+  imagePanel?: boolean
+}
+
+const { tagline, heading, text, note, imageUrl, imageAlt = '', imageSide = 'left', images, imagePanel = false } = Astro.props as Props
+---
+
+<section class="px-6 pt-16 md:px-20">
+  <div class={`mx-auto flex max-w-screen-xl gap-10 lg:items-center lg:gap-20 ${imageSide === 'right' ? 'flex-col-reverse lg:flex-row-reverse' : 'flex-col-reverse lg:flex-row'}`}>
+    {
+      images && images.length > 0 ? (
+        <div class="grid w-full grid-cols-2 gap-6 lg:w-[600px]">
+          {images.map((img) => <img src={img.url} alt={img.alt ?? ''} class="aspect-square w-full rounded-2xl object-cover" loading="lazy" />)}
+        </div>
+      ) : imagePanel && imageUrl ? (
+        <div class="flex w-full items-center justify-center rounded-2xl bg-neutral-light-gray p-10 lg:w-[600px]">
+          <img src={imageUrl} alt={imageAlt} class="w-full max-w-[420px]" loading="lazy" />
+        </div>
+      ) : (
+        imageUrl && <img src={imageUrl} alt={imageAlt} class="aspect-[600/640] w-full rounded-2xl object-cover lg:w-[600px]" loading="lazy" />
+      )
+    }
+    <div class="flex flex-1 flex-col items-center gap-8 md:items-start">
+      <SectionTitle tagline={tagline} heading={heading} text={text} align="left" />
+      {note && <p class="w-full rounded-[24px] bg-sky p-8 font-body text-size-sm leading-[1.6] text-brand-primary">{note}</p>}
+      <slot />
+    </div>
+  </div>
+</section>

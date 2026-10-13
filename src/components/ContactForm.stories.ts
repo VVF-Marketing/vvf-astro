@@ -15,7 +15,7 @@ export const Default = {
   // e2e/contact-form.spec.ts (real astro build+preview).
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const submit = canvas.getByRole('button', { name: 'Send message' })
+    const submit = canvas.getByRole('button', { name: 'Send Message' })
     const checkbox = canvas.getByRole('checkbox')
 
     expect(submit).toBeDisabled()

@@ -1,0 +1,58 @@
+[
+  {
+    "tierName": "Trustee",
+    "price": "$2,500/year",
+    "recognitionBenefits": [
+      "Inclusion in the Annual Report",
+      "Visibility in branding (website, email campaigns, social media, and events)",
+      "Board Donor Plaque"
+    ],
+    "activityBenefits": [
+      "Participation in the annual gala speech",
+      "Participation in the annual mission trip",
+      "Participation in the annual Board review"
+    ],
+    "promotionalBenefits": [
+      "(5) Polo shirts with the foundation’s logo",
+      "(25) Foundation stickers"
+    ],
+    "order": 1
+  },
+  {
+    "tierName": "Leader",
+    "price": "$1,000/year",
+    "recognitionBenefits": [
+      "Inclusion in the Annual Report",
+      "Visibility in branding (website, email campaigns, social media, and events)",
+      "Board Donor Plaque"
+    ],
+    "promotionalBenefits": [
+      "(5) Polo shirts with the foundation’s logo",
+      "(25) Foundation stickers"
+    ],
+    "order": 2
+  },
+  {
+    "tierName": "Advisor",
+    "price": "$500/year",
+    "recognitionBenefits": [
+      "Inclusion in the Annual Report",
+      "Visibility in branding (website, email campaigns, social media, and events)"
+    ],
+    "promotionalBenefits": [
+      "(25) Foundation stickers"
+    ],
+    "order": 3
+  },
+  {
+    "tierName": "Friend",
+    "price": "$250/year",
+    "recognitionBenefits": [
+      "Inclusion in the Annual Report"
+    ],
+    "promotionalBenefits": [
+      "(25) Foundation stickers"
+    ],
+    "order": 4
+  }
+]

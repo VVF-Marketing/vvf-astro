@@ -1,8 +1,8 @@
 name: Verify menu links
 
 on:
+  # Every pull request, including stacked ones whose base isn't main.
   pull_request:
-    branches: [main]
   push:
     branches: [main]
 

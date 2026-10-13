@@ -26,6 +26,7 @@ describe('scanStaticPageRoutes', () => {
     expect(routes).not.toContain('/events')
     expect(routes).not.toContain('/our-team')
     expect(routes).not.toContain('/sponsor-a-child/children')
+    expect(routes).not.toContain('/resources')
     expect(routes.some((r) => r.includes('['))).toBe(false)
   })
 

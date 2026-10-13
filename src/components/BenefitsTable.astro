@@ -1,0 +1,112 @@
+---
+// Live counterpart: event "Sponsor Packages" comparison grid (Poppins) —
+// one column per sponsor package (shaded with the neutral-table-* tokens), rows
+// grouped into colored sections. "Yes" renders a check; other values show
+// as text; empty cells stay blank. Becomes horizontally scrollable on small
+// screens.
+import type { SponsorshipPackage } from '../lib/content/types'
+import Button from './Button.astro'
+
+export interface Props {
+  packages: Pick<SponsorshipPackage, 'tierName' | 'price' | 'ctaUrl' | 'ctaLabel'>[]
+  rows: { section: string; name: string; values: string[] }[]
+}
+
+const { packages, rows } = Astro.props as Props
+const columnShades = ['bg-neutral-table-darker', 'bg-neutral-table-dark', 'bg-neutral-card']
+const sectionShades = ['bg-brand-accent/50', 'bg-salmon', 'bg-sun', 'bg-sky']
+const sections = rows.reduce<{ name: string; rows: typeof rows }[]>((acc, row) => {
+  const last = acc[acc.length - 1]
+  if (last && last.name === row.section) last.rows.push(row)
+  else acc.push({ name: row.section, rows: [row] })
+  return acc
+}, [])
+const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.length}, minmax(160px, 1fr))`
+---
+
+<!-- Phones: one accordion per package listing what it includes (live
+     builds the same from this table). -->
+<div class="flex flex-col rounded-2xl bg-neutral-white px-6 py-4 md:hidden">
+  {
+    packages.map((p, i) => {
+      const included = rows.filter((r) => (r.values[i] ?? '').trim() !== '')
+      return (
+        <details class="group border-b border-brand-accent py-5 last:border-b-0">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+            <span>
+              <span class="block font-sans text-size-lg font-extrabold leading-[1.3] text-brand-primary">{p.tierName} {p.price}</span>
+              <span class="font-body text-size-xs text-brand-primary">{included.length} of {rows.length} benefits</span>
+            </span>
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-brand-accent text-brand-accent transition-transform group-open:rotate-180" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </summary>
+          <ul class="mt-4 flex flex-col gap-2">
+            {included.map((r) => (
+              <li class="font-body text-size-sm leading-body text-brand-primary">
+                {r.name}
+                {r.values[i].toLowerCase() !== 'yes' && <span class="font-semibold">: {r.values[i]}</span>}
+              </li>
+            ))}
+          </ul>
+          <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm" class="mt-4">{p.ctaLabel ?? 'Become a Sponsor'}</Button>
+        </details>
+      )
+    })
+  }
+</div>
+
+<div class="hidden overflow-x-auto rounded-2xl bg-neutral-white p-16 md:block">
+  <div class="min-w-[720px] font-poppins text-brand-primary" role="table" aria-label="Sponsorship benefits by package">
+    <div class="grid" style={cols} role="row">
+      <div class="flex items-center p-6 text-size-lg font-semibold uppercase leading-[1.5]" role="columnheader">Sponsorship<br />Benefits</div>
+      {
+        packages.map((p, i) => (
+          <div class={`p-6 ${columnShades[i % columnShades.length]}`} role="columnheader">
+            <p class="font-poppins text-[1.5rem] font-medium leading-[1.5]">{p.tierName}</p>
+            {p.price && <p class="font-poppins text-[1.5rem] font-semibold leading-[1.5]">{p.price}</p>}
+          </div>
+        ))
+      }
+    </div>
+    {
+      sections.map((section, s) => (
+        <>
+          <div class={`px-6 py-6 text-[1.5rem] font-semibold uppercase leading-[1.5] ${sectionShades[s % sectionShades.length]}`} role="row">
+            <span role="rowheader">{section.name}</span>
+          </div>
+          {section.rows.map((row) => (
+            <div class="grid" style={cols} role="row">
+              <div class="p-6 text-center text-size-md leading-[1.7]" role="rowheader">{row.name}</div>
+              {packages.map((_, i) => {
+                const value = row.values[i] ?? ''
+                return (
+                  <div class={`flex items-center justify-center p-6 text-center text-size-md leading-[1.7] ${columnShades[i % columnShades.length]}`} role="cell">
+                    {value.toLowerCase() === 'yes' ? (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-label="Included">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+                        <path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    ) : (
+                      value
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          ))}
+        </>
+      ))
+    }
+    <div class="grid pt-10" style={cols}>
+      <div></div>
+      {
+        packages.map((p) => (
+          <div class="flex justify-center px-2">
+            <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm">{p.ctaLabel ?? 'Become a Sponsor'}</Button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 ---
-import Card from './Card.astro'
-import Eyebrow from './Eyebrow.astro'
-
+// Live counterpart: `.number-card_component` — white cards (radius 2xl)
+// with a large cyan figure, a bold heading and a one-line label.
 export interface Stat {
   value: string
   label: string
@@ -10,19 +9,24 @@ export interface Stat {
 
 export interface Props {
   stats: Stat[]
+  // Columns at desktop; the live home page uses 2 (2×2 grid).
+  columns?: 2 | 3 | 4
 }
 
-const { stats } = Astro.props as Props
+const { stats, columns = 2 } = Astro.props as Props
+const cols = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-2 lg:grid-cols-4' }
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class={`grid grid-cols-1 gap-6 ${cols[columns]}`}>
   {
     stats.map((s) => (
-      <Card class="p-6 text-center">
-        <p class="text-stat font-display text-brand-navy">{s.value}</p>
-        <Eyebrow color="sky" class="mt-1">{s.label}</Eyebrow>
-        {s.caption && <p class="mt-2 text-sm text-ink-500">{s.caption}</p>}
-      </Card>
+      <div class="flex max-w-card flex-col items-center gap-4 rounded-2xl bg-neutral-white p-8 text-center md:items-start md:gap-6 md:text-left">
+        <p class="font-sans text-[4rem] font-extrabold leading-[1.3] text-brand-accent md:text-[5rem]">{s.value}</p>
+        <div class="flex flex-col gap-2">
+          <h4 class="text-h5 leading-[1.4] text-brand-primary">{s.label}</h4>
+          {s.caption && <p class="font-sans text-size-base leading-body text-brand-primary">{s.caption}</p>}
+        </div>
+      </div>
     ))
   }
 </div>

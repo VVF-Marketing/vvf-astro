@@ -1,31 +1,43 @@
 ---
+// Live counterpart: event `.offer-list` card (`.div-block-71`) — pastel card
+// (radius 2xl) with "Name $price" heading, a benefit list and an outline
+// navy button. Live cycles sun → sky → salmon across a row of cards.
 import Button from './Button.astro'
 
 export interface Props {
   tierName: string
-  price: string
+  price?: string
   features?: string[]
   href: string
-  tone?: 'yellow' | 'blue'
+  ctaLabel?: string
+  soldOut?: boolean
+  tone?: 'sun' | 'sky' | 'salmon'
 }
 
-const { tierName, price, features = [], href, tone = 'blue' } = Astro.props as Props
-const toneClass = tone === 'yellow' ? 'bg-pastel-yellow' : 'bg-pastel-blue'
+const { tierName, price, features = [], href, ctaLabel = 'Buy Tickets', soldOut = false, tone = 'sun' } = Astro.props as Props
+const tones = { sun: 'bg-sun', sky: 'bg-sky', salmon: 'bg-salmon' }
 ---
 
-<div class={`${toneClass} rounded-card p-6`}>
-  <p class="font-display text-lg text-brand-navy">{tierName}</p>
-  <p class="mt-1 text-display-sm text-brand-navy">{price}</p>
+<article class={`flex w-full max-w-[552px] flex-col gap-6 rounded-2xl p-10 md:p-16 ${tones[tone]}`}>
+  <h3 class="text-h5 leading-[1.4] text-brand-primary sm:text-h4">
+    {tierName}{price && <span class="ml-1">{price}</span>}
+  </h3>
   {
     features.length > 0 && (
-      <ul class="mt-4 space-y-1 text-sm text-ink-700">
+      <ul class="flex list-disc flex-col gap-1 pl-[30px] marker:text-size-xs">
         {features.map((f) => (
-          <li>• {f}</li>
+          <li class="font-body text-size-md leading-body text-brand-primary">{f}</li>
         ))}
       </ul>
     )
   }
-  <Button href={href} variant="primary-navy" class="mt-4 inline-block text-sm">
-    Buy Now
-  </Button>
-</div>
+  {
+    soldOut ? (
+      <p class="font-sans text-size-md font-bold text-brand-primary">Sold out</p>
+    ) : (
+      <Button href={href} variant="outline-navy" class="self-start" target={/^https?:/.test(href) ? '_blank' : undefined} rel={/^https?:/.test(href) ? 'noopener noreferrer' : undefined}>
+        {ctaLabel}
+      </Button>
+    )
+  }
+</article>

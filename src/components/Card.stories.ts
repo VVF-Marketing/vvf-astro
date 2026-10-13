@@ -8,37 +8,37 @@ export default {
 export const White = {
   args: {
     class: 'p-6',
-    slots: { default: 'White card, shadowed by default' },
+    slots: { default: 'White card (flat, radius 2xl)' },
   },
 }
 
-export const Yellow = {
+export const Sun = {
   args: {
-    tone: 'yellow',
+    tone: 'sun',
     class: 'p-6',
-    slots: { default: 'Pastel yellow card' },
+    slots: { default: 'Sun pastel card' },
   },
 }
 
-export const Pink = {
+export const Salmon = {
   args: {
-    tone: 'pink',
+    tone: 'salmon',
     class: 'p-6',
-    slots: { default: 'Pastel pink card' },
+    slots: { default: 'Salmon pastel card' },
   },
 }
 
-export const Blue = {
+export const Sky = {
   args: {
-    tone: 'blue',
+    tone: 'sky',
     class: 'p-6',
-    slots: { default: 'Pastel blue card' },
+    slots: { default: 'Sky pastel card' },
   },
 }
 
 export const OverflowHiddenWithImage = {
   args: {
     overflowHidden: true,
-    slots: { default: '<div class="h-32 bg-gray-200"></div><div class="p-4">Card with clipped image area</div>' },
+    slots: { default: '<div class="h-32 bg-neutral-light-gray"></div><div class="p-4">Card with clipped image area</div>' },
   },
 }

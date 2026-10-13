@@ -1,18 +1,17 @@
 import ChildCard from './ChildCard.astro'
-import type { ChildItem } from '../lib/content/types'
 
-const jose: ChildItem = {
-  slug: 'jose',
-  displayName: 'Jose',
-  age: 6,
-  published: true,
-}
+// Fictional child; real children's data never appears in stories (public repo).
+const child = { slug: 'sample-child', displayName: 'Sample C.', age: 10 }
 
 export default {
   title: 'Molecules/ChildCard',
   component: ChildCard,
 }
 
-export const Default = {
-  args: { child: jose },
+export const List = {
+  args: { child },
+}
+
+export const Compact = {
+  args: { child, variant: 'compact' },
 }

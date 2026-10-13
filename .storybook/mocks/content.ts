@@ -11,18 +11,26 @@ import type { NavItem, EventItem } from '../../src/lib/content/types'
 
 export async function getPrimaryMenu(): Promise<NavItem[]> {
   return [
-    { label: 'Our Programs', url: '/sponsor-a-child' },
     {
-      label: 'Get Involved',
-      url: '/ways-to-give',
+      label: 'Make a Difference',
+      url: '#',
       children: [
+        { label: 'Ways to Give', url: '/ways-to-give' },
         { label: 'Sponsor a Child', url: '/sponsor-a-child' },
         { label: 'Corporate Sponsorships', url: '/corporate-sponsorships' },
       ],
     },
+    { label: 'Get Involved', url: '#', children: [{ label: 'Events', url: '/events' }] },
     { label: 'Our Team', url: '/our-team' },
-    { label: 'Events', url: '/events' },
-    { label: 'Blog', url: '/blog' },
+    {
+      label: 'Resources',
+      url: '#',
+      children: [
+        { label: 'All Resources', url: '/resources' },
+        { label: 'Stories', url: '/resources/category/stories' },
+        { label: 'Financials & Transparency', url: '/resources/category/financials-transparency' },
+      ],
+    },
   ]
 }
 

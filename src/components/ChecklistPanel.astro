@@ -1,0 +1,40 @@
+---
+// Live counterpart: Sponsor a Child "What sponsorship provides" — inset
+// navy panel (radius 2xl) with a centered light section title over a list
+// of checked items (bold title + short line).
+import SectionTitle from './SectionTitle.astro'
+
+export interface ChecklistItem {
+  title: string
+  text?: string
+}
+
+export interface Props {
+  tagline?: string
+  heading: string
+  text?: string
+  items: ChecklistItem[]
+}
+
+const { tagline, heading, text, items } = Astro.props as Props
+---
+
+<section class="mx-0 rounded-xl bg-brand-primary px-6 py-16 sm:mx-6 md:rounded-2xl md:px-16 md:pb-[160px] md:pt-[72px]">
+  <SectionTitle tagline={tagline} heading={heading} text={text} tone="light" />
+  <ul class="mx-auto mt-[112px] flex max-w-[796px] flex-col gap-6">
+    {
+      items.map((item) => (
+        <li class="flex gap-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="mt-1 shrink-0 text-brand-accent">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+            <path d="M7.5 12.5l3 3 6-6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div>
+            <h3 class="text-h5 leading-[1.2] text-neutral-white md:text-h3">{item.title}</h3>
+            {item.text && <p class="font-body text-size-md leading-body text-neutral-white">{item.text}</p>}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

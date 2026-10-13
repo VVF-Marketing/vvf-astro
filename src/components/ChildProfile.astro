@@ -1,6 +1,10 @@
 ---
+// Live counterpart: `.section_child-detail` — breadcrumb, name on a sky
+// card over the photo, four pastel fact cards (age, birthday, gender,
+// dream) with icons, the donation form on the right, and "About <name>"
+// below.
 import type { ChildItem } from '../lib/content/types'
-import Card from './Card.astro'
+import Breadcrumbs from './Breadcrumbs.astro'
 
 export interface Props {
   child: ChildItem
@@ -8,59 +12,59 @@ export interface Props {
 
 const { child } = Astro.props as Props
 const birthdayLabel = child.birthday
-  ? new Date(child.birthday).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' })
+  ? new Date(child.birthday).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
   : undefined
+
+const facts = [
+  { key: 'age', label: 'Age', value: `${child.age} years old`, tone: 'bg-salmon' },
+  { key: 'birthday', label: 'Birthday', value: birthdayLabel, tone: 'bg-sun' },
+  { key: 'gender', label: 'Gender', value: child.gender, tone: 'bg-sky' },
+  { key: 'dream', label: 'Dream', value: child.dream, tone: 'bg-salmon' },
+].filter((f) => f.value)
 ---
 
-<div class="container max-w-container mx-auto px-4 py-8">
-  <nav class="text-sm text-ink-500" aria-label="Breadcrumb">
-    <a href="/sponsor-a-child/children" class="hover:text-brand-sky">Meet the children</a>
-    <span class="mx-2">/</span>
-    <span class="text-ink-700">{child.displayName}</span>
-  </nav>
+<section class="px-6 py-12 lg:px-[95px]">
+  <Breadcrumbs items={[{ label: 'Sponsor a Child', href: '/sponsor-a-child' }, { label: child.displayName }]} />
 
-  <div class="mt-6 grid md:grid-cols-[1fr_1fr_1.2fr] gap-6">
-    <div class="md:col-span-2 grid grid-cols-2 gap-4">
-      <Card tone="blue" shadow={false} class="col-span-2 p-6">
-        <p class="font-display text-xl text-brand-navy">{child.displayName}</p>
-      </Card>
-      <div class="col-span-2 h-64 rounded-card bg-gray-200 overflow-hidden">
-        {
-          child.imageUrl ? (
-            <img src={child.imageUrl} alt={child.displayName} class="w-full h-full object-cover" />
-          ) : (
-            <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Photo</div>
-          )
-        }
+  <div class="mt-12 grid gap-6 lg:mt-[71px] lg:grid-cols-[483fr_294fr_425fr]">
+    <div class="flex flex-col gap-6">
+      <div class="rounded-[20px] bg-sky p-6">
+        <h1 class="text-h1-mobile leading-[1.1] text-brand-primary md:text-h1">{child.displayName}</h1>
       </div>
-      <Card tone="pink" shadow={false} class="p-5">
-        <p class="font-semibold text-brand-navy">Age: {child.age} years old</p>
-      </Card>
       {
-        birthdayLabel && (
-          <Card tone="yellow" shadow={false} class="p-5">
-            <p class="font-semibold text-brand-navy">Birthday: {birthdayLabel}</p>
-          </Card>
-        )
-      }
-      {
-        child.gender && (
-          <Card tone="blue" shadow={false} class="p-5">
-            <p class="font-semibold text-brand-navy">Gender: {child.gender}</p>
-          </Card>
-        )
-      }
-      {
-        child.dream && (
-          <Card tone="pink" shadow={false} class="p-5">
-            <p class="font-semibold text-brand-navy">Dream: {child.dream}</p>
-          </Card>
+        child.imageUrl && (
+          <img src={child.imageUrl} alt={child.imageAlt ?? `Photo of ${child.displayName}`} class="aspect-[483/604] w-full rounded-[20px] object-cover" />
         )
       }
     </div>
 
-    <div>
+    <ul class="grid content-start gap-6 sm:grid-cols-2 lg:grid-cols-1">
+      {
+        facts.map((f) => (
+          <li class={`flex flex-col gap-4 rounded-[20px] px-8 py-6 ${f.tone}`}>
+            <img src={`/images/child/${f.key}.svg`} alt="" width="30" height="31" />
+            <p class="font-sans text-h5 font-extrabold leading-[1.45] text-brand-primary">
+              {f.label}:<br />
+              {f.value}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="lg:row-span-2">
       <slot name="donation" />
     </div>
+
+    {
+      child.about && (
+        <div class="lg:col-span-2">
+          <h2 class="text-h3-mobile leading-[1.5] text-brand-primary md:text-[2rem]">About {child.displayName}</h2>
+          {child.about.split(/\n{2,}/).map((p) => (
+            <p class="font-body text-size-md leading-body text-brand-primary">{p}</p>
+          ))}
+        </div>
+      )
+    }
   </div>
-</div>
+</section>

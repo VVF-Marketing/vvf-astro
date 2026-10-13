@@ -1,0 +1,42 @@
+---
+// Live counterpart: home `.section_sponsor-carousel` ("See our work in
+// Venezuela") — white section with a centered title and three YouTube
+// videos with bold captions.
+import SectionTitle from './SectionTitle.astro'
+
+export interface Video {
+  youtubeId: string
+  caption: string
+}
+
+export interface Props {
+  heading: string
+  text?: string
+  videos: Video[]
+}
+
+const { heading, text, videos } = Astro.props as Props
+---
+
+<section class="bg-neutral-white px-6 pb-16 pt-16 md:pt-[120px]">
+  <SectionTitle heading={heading} text={text} />
+  <ul class="mx-auto mt-16 grid max-w-[1352px] gap-5 md:grid-cols-3">
+    {
+      videos.map((v) => (
+        <li class="flex flex-col gap-12">
+          <div class="aspect-video w-full bg-neutral-light-gray">
+            <iframe
+              class="h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
+              title={v.caption}
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          </div>
+          <h3 class="px-6 text-size-md font-extrabold leading-[1.4] text-brand-primary">{v.caption}</h3>
+        </li>
+      ))
+    }
+  </ul>
+</section>

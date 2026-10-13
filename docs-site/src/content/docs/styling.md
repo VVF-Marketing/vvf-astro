@@ -1,27 +1,31 @@
 ---
 title: Styling & Design Tokens
-description: The design tokens defined in tailwind.config.cjs and when to use them.
+description: How to style components with the design tokens in tailwind.config.cjs.
 ---
 
-All design tokens live in [`tailwind.config.cjs`](https://github.com/anclist/vvf-astro/blob/main/tailwind.config.cjs) under `theme.extend`. Use these instead of arbitrary Tailwind values or hardcoded hex codes — they're the only source of truth for the site's visual language (approximated from the Victoria Venezuela Foundation Figma export; swap for exact values if the original Figma variables become available).
+All design tokens live in [`tailwind.config.cjs`](https://github.com/anclist/vvf-astro/blob/main/tailwind.config.cjs) under `theme` / `theme.extend`, mirrored as CSS variables in `src/index.css`. Values are copied from the live Webflow site's CSS variables (see the [Design Token Reference](/design-tokens/) for every token and its source). Use tokens instead of arbitrary values or hex codes: `class="bg-brand-primary text-neutral-white"`, not `class="bg-[#02335e] text-white"`.
 
 ## Colors
 
-| Scale | Tokens | Use |
+| Group | Tokens | Use |
 | --- | --- | --- |
-| `brand` | `brand-navy` (`#0B2C52`), `brand-navy-dark` (`#081F3A`), `brand-sky` (`#29A9E1`), `brand-sky-dark` (`#1C8CC0`) | Primary brand colors — headers, CTAs, links |
-| `pastel` | `pastel-yellow` (`#F7E7B4`), `pastel-pink` (`#F8D6DC`), `pastel-blue` (`#CFE9F7`) | Soft backgrounds, e.g. `PastelCard` |
-| `ink` | `ink-900` (`#0F172A`), `ink-700` (`#334155`), `ink-500` (`#64748B`) | Body text, from darkest to lightest |
-
-Example: `class="bg-brand-navy text-white"`, not `class="bg-[#0B2C52] text-white"`.
+| Brand | `brand-primary` (navy), `brand-accent` (cyan), `brand-accent-soft` | Text, dark sections, buttons, links |
+| Pastels | `sun`, `salmon`, `sky` | Card and section backgrounds (live order: sun → sky → salmon) |
+| Neutrals | `page` (body background), `neutral-white`, `neutral-light-gray`, `neutral-card`, `neutral-section`, … | Surfaces, borders, table shading |
+| System | `link`, `focus`, `success`, `warning`, `error` | Links, focus rings, status messages |
 
 ## Typography
 
-- **Font families**: `font-display` (`"Baloo 2"`) for headings/display text, `font-sans` (`Inter`) for body text — both fall back to `system-ui`.
-- **Font sizes**: `text-eyebrow` (small caps-style labels), `text-display-sm`/`display-md`/`display-lg`/`display-xl` (heading scale, smallest to largest), `text-stat` (large numeric callouts, e.g. `StatTileRow`). Each bakes in its own line-height (and letter-spacing for `eyebrow`) — don't pair with a separate `leading-*` utility.
+- `font-heading` / `font-sans`: **Nunito**, for headings, buttons, navigation and UI labels.
+- `font-body`: **Open Sans**, for paragraph copy (bare `<p>` elements get it by default, at 18px).
+- `font-poppins`: only for the event sponsorship-benefits table.
+- Headings: `text-h1`…`text-h6` (desktop) and `text-h1-mobile`…`text-h6-mobile`. Bare `h1`–`h6` elements already step down below 768px.
+- Copy sizes: `text-body` (18px) and `text-size-xs`…`text-size-3xl`.
 
-## Radii & spacing
+## Radii, spacing and layout
 
-- `rounded-pill` (`999px`) for pill-shaped buttons/badges, `rounded-card` (`1.5rem`) for card surfaces.
-- `max-w-container` (`80rem`) for page-width containers.
-- `p-section`/`py-section` (`5rem`) and `p-section-sm`/`py-section-sm` (`3rem`) for vertical section spacing — use these instead of ad-hoc `py-*` values so section rhythm stays consistent across pages.
+- Radii: `rounded-sm` … `rounded-2xl` (40px, the large cards), `rounded-pill` (buttons), `rounded-full`.
+- Section spacing on live is 120px desktop and 64px phone; containers use `max-w-screen-xl` (1280px), `max-w-container-medium` and `max-w-container-large`.
+- Breakpoints follow Webflow: `sm` 480px, `md` 768px, `lg` 992px, `xl` 1280px.
+
+Regenerate the reference page after changing tokens: `node scripts/docs-tokens.mjs`.

@@ -1,0 +1,165 @@
+{
+  "path": "/all-events",
+  "seo": {
+    "title": "Events | Victoria Venezuela Foundation",
+    "description": "Events and campaigns from Victoria Venezuela Foundation, including our annual charity golf tournament in Weston, FL, supporting children in Venezuela.",
+    "ogTitle": "Events | Victoria Venezuela Foundation",
+    "ogDescription": "Events and campaigns from Victoria Venezuela Foundation, including our annual charity golf tournament in Weston, FL, supporting children in Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a91bc2cc9ab6fc659c1dda5_98.png"
+        },
+        {
+          "type": "h1",
+          "text": "Events & Campaigns"
+        },
+        {
+          "type": "p",
+          "text": "Join our community and make an impact. Together we gather to support those in need across Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Upcoming Events",
+          "href": "#upcoming-events"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_events"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+          "alt": "Three golfers and a young boy standing by the flag on the green."
+        },
+        {
+          "type": "h3",
+          "text": "2026 Annual Golf Charity Tournament"
+        },
+        {
+          "type": "p",
+          "text": "2600 Country Club Way, Weston, FL 33332"
+        },
+        {
+          "type": "p",
+          "text": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope."
+        },
+        {
+          "type": "cta",
+          "text": "See the details",
+          "href": "/events/2026-golf-tournament"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-5"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Upcoming"
+        },
+        {
+          "type": "h2",
+          "text": "Save the date"
+        },
+        {
+          "type": "p",
+          "text": "See our upcoming events"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-6"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archive"
+        },
+        {
+          "type": "h2",
+          "text": "Past"
+        },
+        {
+          "type": "p",
+          "text": "Gatherings that changed lives and raised hope"
+        },
+        {
+          "type": "p",
+          "text": "2025 Annual Golf Charity Tournament"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+          "alt": "Volunteers standing in front of the foundation's tent on the course."
+        },
+        {
+          "type": "h3",
+          "text": "2025 Annual Golf Charity Tournament"
+        },
+        {
+          "type": "p",
+          "text": "Weston"
+        },
+        {
+          "type": "p",
+          "text": "FL"
+        },
+        {
+          "type": "p",
+          "text": "74 golfers came together at The Club at Weston Hills to support over 700 children in Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "See the recap",
+          "href": "/events/2025-golf-tournament"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_newsletter"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Never miss an event"
+        },
+        {
+          "type": "p",
+          "text": "Get invitations and updates delivered to your inbox"
+        },
+        {
+          "type": "h2",
+          "text": "Stay connected"
+        },
+        {
+          "type": "p",
+          "text": "Keep up with our news and events"
+        },
+        {
+          "type": "p",
+          "text": "We respect your privacy. Unsubscribe at any time."
+        }
+      ]
+    }
+  ]
+}

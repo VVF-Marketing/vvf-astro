@@ -1,0 +1,70 @@
+---
+// Live counterpart: past-event "Event photos" carousel (`.recap-gallery`) —
+// pages of five rounded photos (three over two) with round prev/next
+// controls and page dots.
+export interface Props {
+  photos: { url: string; alt?: string }[]
+  perPage?: number
+}
+
+const { photos, perPage = 5 } = Astro.props as Props
+const pages = Array.from({ length: Math.ceil(photos.length / perPage) }, (_, i) => photos.slice(i * perPage, i * perPage + perPage))
+const img = 'h-full w-full rounded-2xl object-cover'
+const control = 'flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-accent bg-neutral-white text-brand-primary disabled:opacity-40'
+---
+
+<div class="flex flex-col gap-10" data-gallery>
+  {
+    pages.map((page, p) => (
+      <div class="flex flex-col gap-6 [&[hidden]]:hidden" hidden={p !== 0} data-gallery-page aria-label={`Photos ${p + 1} of ${pages.length}`}>
+        <div class="grid gap-6 md:grid-cols-[335fr_466fr_335fr]">
+          {page.slice(0, 3).map((ph) => (
+            <img src={ph.url} alt={ph.alt ?? ''} class={`${img} aspect-[335/394]`} loading="lazy" />
+          ))}
+        </div>
+        {page.length > 3 && (
+          <div class="grid gap-6 md:grid-cols-2">
+            {page.slice(3).map((ph) => (
+              <img src={ph.url} alt={ph.alt ?? ''} class={`${img} aspect-[580/356]`} loading="lazy" />
+            ))}
+          </div>
+        )}
+      </div>
+    ))
+  }
+  {
+    pages.length > 1 && (
+      <div class="flex items-center justify-center gap-6">
+        <button type="button" class={control} aria-label="Previous photos" data-gallery-prev>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <div class="flex gap-2">
+          {pages.map((_, p) => (
+            <span class={`h-2 w-2 rounded-full ${p === 0 ? 'bg-brand-accent' : 'bg-neutral-light-gray'}`} data-gallery-dot />
+          ))}
+        </div>
+        <button type="button" class={control} aria-label="Next photos" data-gallery-next>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
+    const pages = Array.from(root.querySelectorAll<HTMLElement>('[data-gallery-page]'))
+    const dots = Array.from(root.querySelectorAll<HTMLElement>('[data-gallery-dot]'))
+    let current = 0
+    const show = (i: number) => {
+      current = (i + pages.length) % pages.length
+      pages.forEach((p, n) => (p.hidden = n !== current))
+      dots.forEach((d, n) => {
+        d.classList.toggle('bg-brand-accent', n === current)
+        d.classList.toggle('bg-neutral-light-gray', n !== current)
+      })
+    }
+    root.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(current - 1))
+    root.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(current + 1))
+  })
+</script>

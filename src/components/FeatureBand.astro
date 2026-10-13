@@ -1,0 +1,30 @@
+---
+// Live counterpart: Ways to Give `.section_give` / `.section_sun` — a full
+// width pastel band holding a white card (radius 2xl) with copy on the left
+// and a rounded photo on the right. Extra content (amount picker, buttons)
+// goes in the default slot under the copy.
+import SectionTitle from './SectionTitle.astro'
+
+export interface Props {
+  tone?: 'sky' | 'sun' | 'salmon'
+  tagline?: string
+  heading: string
+  text?: string
+  imageUrl?: string
+  imageAlt?: string
+  id?: string
+}
+
+const { tone = 'sky', tagline, heading, text, imageUrl, imageAlt = '', id } = Astro.props as Props
+const tones = { sky: 'bg-sky', sun: 'bg-sun', salmon: 'bg-salmon' }
+---
+
+<section id={id} class={`px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-20 ${tones[tone]}`}>
+  <div class="mx-auto flex max-w-screen-xl flex-col gap-10 rounded-2xl bg-neutral-white p-8 md:p-16 lg:flex-row lg:items-center lg:gap-20">
+    <div class="flex flex-1 flex-col items-center gap-8 text-center md:items-start md:text-left">
+      <SectionTitle tagline={tagline} heading={heading} text={text} align="left" />
+      <slot />
+    </div>
+    {imageUrl && <img src={imageUrl} alt={imageAlt} class="w-full rounded-2xl object-cover lg:w-[536px] lg:self-stretch" loading="lazy" />}
+  </div>
+</section>

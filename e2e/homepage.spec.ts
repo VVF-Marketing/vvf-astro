@@ -2,10 +2,11 @@ import { expect, test } from '@playwright/test'
 
 test('homepage loads and the primary nav resolves to real pages', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByRole('link', { name: 'Victoria Venezuela' })).toBeVisible()
+  await expect(page.locator('header').getByRole('link', { name: 'Victoria Venezuela Foundation home' })).toBeVisible()
 
-  const desktopNav = page.locator('nav').first()
-  const navLinks = await desktopNav.getByRole('link').all()
+  // Every anchor in the primary nav, including links inside closed dropdowns.
+  const desktopNav = page.getByRole('navigation', { name: 'Primary' }).first()
+  const navLinks = await desktopNav.locator('a[href]').all()
   expect(navLinks.length).toBeGreaterThan(0)
 
   const hrefs = new Set<string>()
@@ -20,8 +21,8 @@ test('homepage loads and the primary nav resolves to real pages', async ({ page 
   }
 })
 
-test('donate link in the header points at the general donation campaign', async ({ page }) => {
+test('donate link in the header points at Ways to Give, as on the live site', async ({ page }) => {
   await page.goto('/')
   const donateLink = page.getByRole('link', { name: 'Donate' }).first()
-  await expect(donateLink).toHaveAttribute('href', 'https://donorbox.org/general-donation-vvf')
+  await expect(donateLink).toHaveAttribute('href', '/ways-to-give')
 })

@@ -1,35 +1,31 @@
 ---
+// Base surface for card-style components. Live cards are flat (no shadow)
+// with large radii: 40px (`2xl`) for feature/number/hero cards, 20px for
+// event cards, 8px (`md`) for small panels.
 export interface Props {
-  tone?: 'white' | 'yellow' | 'pink' | 'blue'
+  tone?: 'white' | 'sun' | 'salmon' | 'sky' | 'page'
+  radius?: 'md' | 'xl' | 'card' | '2xl'
   as?: 'div' | 'a' | 'article'
   href?: string
-  shadow?: boolean
   overflowHidden?: boolean
   class?: string
 }
 
-const {
-  tone = 'white',
-  as,
-  href,
-  shadow = tone === 'white',
-  overflowHidden = false,
-  class: className = '',
-  ...rest
-} = Astro.props as Props
+const { tone = 'white', radius = '2xl', as, href, overflowHidden = false, class: className = '', ...rest } = Astro.props as Props
 
 const toneClass = {
-  white: 'bg-white',
-  yellow: 'bg-pastel-yellow',
-  pink: 'bg-pastel-pink',
-  blue: 'bg-pastel-blue',
+  white: 'bg-neutral-white',
+  sun: 'bg-sun',
+  salmon: 'bg-salmon',
+  sky: 'bg-sky',
+  page: 'bg-page',
 }[tone]
+
+const radiusClass = { md: 'rounded-md', xl: 'rounded-xl', card: 'rounded-[20px]', '2xl': 'rounded-2xl' }[radius]
 
 const Tag = href ? 'a' : (as ?? 'div')
 
-const classes = [toneClass, 'rounded-card', shadow && 'shadow-sm', overflowHidden && 'overflow-hidden', className]
-  .filter(Boolean)
-  .join(' ')
+const classes = [toneClass, radiusClass, overflowHidden && 'overflow-hidden', className].filter(Boolean).join(' ')
 ---
 
 <Tag href={href} class={classes} {...rest}>

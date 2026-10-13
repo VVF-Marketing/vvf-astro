@@ -8,13 +8,15 @@ import { getCampaignSettings } from '../lib/content'
 export interface Props {
   title: string
   description?: string
+  image?: string
+  background?: 'page' | 'section'
 }
 
-const { title, description } = Astro.props as Props
+const { title, description, image, background } = Astro.props as Props
 const campaignSettings = await getCampaignSettings()
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image} background={background}>
   <AnnouncementBanner active={campaignSettings.active} text={campaignSettings.bannerText} />
   <Header />
   <main>

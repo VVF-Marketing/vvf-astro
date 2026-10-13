@@ -1,148 +1,155 @@
 ---
+// Home — mirrors the live home page section by section (see
+// scripts/migrate/snapshot/pages/home.json).
 import PageLayout from '../layouts/PageLayout.astro'
+import Hero from '../components/Hero.astro'
+import SectionTitle from '../components/SectionTitle.astro'
 import StatTileRow from '../components/StatTileRow.astro'
 import PastelCard from '../components/PastelCard.astro'
 import ImpactBanner from '../components/ImpactBanner.astro'
-import TestimonialCarousel from '../components/TestimonialCarousel.astro'
+import VideoGrid from '../components/VideoGrid.astro'
 import EventCard from '../components/EventCard.astro'
+import Eyebrow from '../components/Eyebrow.astro'
+import Button from '../components/Button.astro'
 import LogoCarousel from '../components/LogoCarousel.astro'
-import { getEvents, getSponsors, isUpcoming } from '../lib/content'
+import ProgramsCta from '../components/ProgramsCta.astro'
+import { getEvents, getPartners, isUpcoming } from '../lib/content'
 
-const events = await getEvents()
-const upcoming = events.filter(isUpcoming)
-const past = events.filter((e) => !isUpcoming(e))
-const sponsors = await getSponsors()
+const upcoming = (await getEvents()).filter(isUpcoming)
+const partners = await getPartners()
 ---
 
-<PageLayout title="Victoria Venezuela Foundation" description="Empowering children in Venezuela through nutrition, medical care, and education.">
-  <div class="pb-8">
-    <div class="relative">
-      <div class="h-[320px] md:h-[420px] bg-gray-200 overflow-hidden">
-        <div class="w-full h-full flex items-center justify-center text-ink-500 text-sm">Image here</div>
+<PageLayout
+  title="Victoria Venezuela Foundation | Child Sponsorship in Venezuela"
+  description="Victoria Venezuela Foundation provides nutrition, medical care and education to children in Venezuela. Sponsor a child or give today."
+>
+  <Hero
+    imageUrl="/images/pages/58f867b6-0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp"
+    imageAlt="A smiling girl at a Victoria Venezuela Foundation event."
+    heading="Transform a child’s life in Venezuela"
+    subtext="Every child deserves nutrition, medical care, and education. Victoria Venezuela Foundation delivers all three through programs that reach the children who need them most."
+    primaryCta={{ label: 'Sponsor a Child', href: '/sponsor-a-child' }}
+    secondaryCta={{ label: 'Ways to Give', href: '/ways-to-give' }}
+  />
+
+  <section class="px-6 md:px-20">
+    <SectionTitle
+      tagline="About Us"
+      heading="Victoria Venezuela Foundation"
+      text="is a 501(c)(3) nonprofit based in Weston, Florida. We provide nutrition, medical care and education to children in Venezuela, and connect US donors with individual children through monthly sponsorship."
+    />
+    <div class="mx-auto mt-16 flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+      <div class="flex max-w-[400px] flex-col items-start gap-6">
+        <SectionTitle
+          align="left"
+          tagline="Impact"
+          heading="What we've accomplished together"
+          text="These numbers represent real children with full bellies, steady heartbeats, and open futures. Every figure here is a life changed."
+        />
+        <Button href="/resources/impact-report-2025" variant="outline">Read The Latest Impact Report</Button>
       </div>
-      <div class="container max-w-container mx-auto px-4">
-        <div class="bg-white rounded-card shadow-xl p-8 -mt-16 md:-mt-20 md:ml-auto md:w-[420px]">
-          <h1 class="text-display-md md:text-display-lg">Transform a child's life in Venezuela</h1>
-          <p class="mt-3 text-ink-700">
-            Every child deserves nutrition, medical care, and education. Every three programs deliver just that
-            through monthly sponsorship.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="/sponsor-a-child" class="rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">Sponsor a Child</a>
-            <a href="/ways-to-give" class="rounded-pill border border-brand-sky text-brand-sky px-6 py-3 font-medium">Donate Now</a>
-          </div>
-        </div>
+      <div class="lg:w-[800px]">
+        <StatTileRow
+          stats={[
+            { value: '77,300+', label: 'Meals served', caption: 'Nutrition reaching hungry children daily' },
+            { value: '1,012+', label: 'Medical visits for children', caption: 'Health restored through our clinics' },
+            { value: '1000+', label: 'Children in programs', caption: 'Education opening doors to tomorrow' },
+            { value: '41+', label: 'Corporate sponsors', caption: 'Partners believing in this mission' },
+          ]}
+        />
       </div>
     </div>
+  </section>
+
+  <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-16">
+    <SectionTitle
+      tagline="Programs"
+      heading="How we help children in Venezuela"
+      text="Three essential programs working together to support underprivileged children in Venezuela."
+    />
+    <div class="mx-auto mt-16 grid max-w-screen-xl justify-items-center gap-8 md:grid-cols-3">
+      <PastelCard
+        tone="sun"
+        iconUrl="/images/pages/b62b0e1d-15-nutrition.svg"
+        eyebrow="Nutrition"
+        title="Child Nutrition Program"
+        body="We serve hot meals and nutritional support to children facing hunger."
+      />
+      <PastelCard
+        tone="salmon"
+        iconUrl="/images/pages/6bbc919e-expanded.svg"
+        eyebrow="Medical"
+        title="Healthcare Access for Children"
+        body="Our clinics provide checkups, treatment, and preventive care when access is scarce."
+      />
+      <PastelCard
+        tone="sky"
+        iconUrl="/images/pages/a037d128-vector.svg"
+        eyebrow="Education"
+        title="Education Support for Children"
+        body="We keep children in school with supplies, support, and safe learning spaces."
+      />
+    </div>
+  </section>
+
+  <ImpactBanner
+    eyebrow="Connection"
+    heading="Build a bond that matters"
+    body="When you sponsor a child, you're not sending money into the void. You're meeting someone. You're writing letters, receiving updates, watching a real person grow. This is personal. This is lasting."
+    bullets={[
+      'Monthly sponsorship covers nutrition, medical care, and education',
+      'Direct correspondence and photos from your sponsored child',
+      'Transparent reporting on how your support makes a difference',
+    ]}
+    imageUrl="/images/pages/d9d1e4da-8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg"
+    imageAlt="Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+    cta={{ label: 'Meet The Children', href: '/sponsor-a-child/children' }}
+  />
+
+  <div class="mt-16 md:mt-[120px]">
+    <VideoGrid
+      heading="See our work in Venezuela"
+      text="Three short videos from our programs."
+      videos={[
+        { youtubeId: 'QcC-iVlZDSI', caption: 'Delivering letters to sponsored children' },
+        { youtubeId: 'D9oa77B6sQk', caption: 'Inside our nutrition center in Terraplén' },
+        { youtubeId: 'JZkA3l_LDk4', caption: 'Our annual Christmas celebration' },
+      ]}
+    />
   </div>
 
-  <section class="container max-w-container mx-auto px-4 py-section-sm md:py-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">About us</p>
-    <h2 class="mt-2 text-display-md text-center">Victoria Venezuela Foundation</h2>
-    <p class="mt-2 text-center text-ink-700 max-w-2xl mx-auto">
-      Is a 501(c)(3) nonprofit based in Weston, Florida. We provide nutrition, medical care and education to children
-      in Venezuela, and connect US donors with individual children through monthly sponsorship.
-    </p>
-
-    <div class="mt-8">
-      <StatTileRow
-        stats={[
-          { value: '77,300+', label: 'Meals served' },
-          { value: '1,012+', label: 'Medical consultations' },
-          { value: '1000+', label: 'Children in programs' },
-          { value: '41+', label: 'Corporate sponsors' },
-        ]}
-      />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">Programs</p>
-    <h2 class="mt-2 text-display-md text-center">How we help children in Venezuela</h2>
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
-      <PastelCard tone="yellow" eyebrow="Nutrition" title="Child Nutrition Program" body="We serve hot meals and nutritional support to children facing hunger." />
-      <PastelCard tone="pink" eyebrow="Medical" title="Healthcare Access for Children" body="Our clinics provide checkups, treatment, and preventive care where access is scarce." />
-      <PastelCard tone="blue" eyebrow="Education" title="Education Support for Children" body="We keep children in school with supplies, support, and safe learning spaces." />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <ImpactBanner
-      eyebrow="Connection"
-      heading="Build a bond that matters"
-      body="When you sponsor a child, you're not sending money into the void. You're meeting someone. You're writing letters, receiving updates, watching a real person grow."
-      bullets={[
-        'Monthly sponsorship covers nutrition, medical care, and education',
-        'Direct correspondence and photos from your sponsored child',
-        'Transparent reporting on how your support makes a difference',
-      ]}
-      cta={{ label: 'Meet The Children', href: '/sponsor-a-child/children' }}
-    />
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-sm text-center">Stories of Transformation</h2>
-    <div class="mt-6">
-      <TestimonialCarousel
-        items={[
-          { title: 'Patrocina a un niño — Embajadora Oriana Perez' },
-          { title: 'Cómo se preparan las comidas?' },
-          { title: 'Jessii es el Pan de Vida' },
-        ]}
-      />
-    </div>
-  </section>
-
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <p class="text-eyebrow uppercase text-brand-sky font-semibold text-center">Events & Campaigns</p>
-    <h2 class="mt-2 text-display-md text-center">Join us for gatherings that build community and fuel our mission</h2>
-
+  <section class="px-6 pb-16 md:pb-[120px] pt-[60px]">
+    <SectionTitle tagline="Events & campaigns" heading="Join us for gatherings that build community and fuel our mission" />
     {
       upcoming.length > 0 && (
-        <div class="mt-8">
-          <p class="text-eyebrow uppercase text-brand-sky font-semibold">Upcoming</p>
-          <div class="mt-4 grid md:grid-cols-2 gap-6">
-            {upcoming.map((e) => <EventCard event={e} />)}
+        <div class="mx-auto mt-16 flex max-w-[1200px] flex-col items-center gap-10">
+          <Eyebrow>Upcoming</Eyebrow>
+          <div class="flex w-full flex-col gap-6">
+            {upcoming.map((e) => (
+              <EventCard event={e} />
+            ))}
           </div>
         </div>
       )
     }
-
-    {
-      past.length > 0 && (
-        <div class="mt-8">
-          <p class="text-eyebrow uppercase text-brand-sky font-semibold">Past</p>
-          <div class="mt-4 grid md:grid-cols-2 gap-6">
-            {past.map((e) => <EventCard event={e} />)}
-          </div>
-        </div>
-      )
-    }
-
-    <div class="mt-6 text-center">
-      <a href="/events" class="rounded-pill border border-brand-sky text-brand-sky px-6 py-3 font-medium">
-        See all events
-      </a>
+    <div class="mt-20 flex justify-center">
+      <Button href="/events" variant="primary-inverse">See all events</Button>
     </div>
   </section>
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <h2 class="text-display-sm text-center">Corporate Partners</h2>
-    <div class="mt-6">
-      <LogoCarousel logos={sponsors} />
-    </div>
-  </section>
+  {
+    partners.length > 0 && (
+      <section class="bg-neutral-white py-4">
+        <LogoCarousel heading="Corporate Partners" logos={partners} />
+      </section>
+    )
+  }
 
-  <section class="container max-w-container mx-auto px-4 pb-section-sm md:pb-section">
-    <div class="bg-pastel-blue rounded-card p-8 text-center">
-      <h2 class="text-display-sm">Where your money goes</h2>
-      <p class="mt-2 text-ink-700 max-w-xl mx-auto">
-        In fiscal 2025, 95% of funds went directly to programs. We served 24 children and funded medical visits. Our
-        full financials are published in our annual report.
-      </p>
-      <a href="/blog?category=Financials" class="mt-4 inline-block rounded-pill bg-brand-sky text-white px-6 py-3 font-medium">
-        See our financials
-      </a>
-    </div>
+  <section class="px-4 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-20">
+    <ProgramsCta
+      heading="Where your money goes"
+      text="In fiscal 2025, 95% of funds went directly to programs. To date we have served more than 77,300 meals and funded more than 1,012 medical visits for children. Our full financials are published in our annual reports."
+      primaryCta={{ label: 'See our financials', href: '/resources/category/financials-transparency' }}
+    />
   </section>
 </PageLayout>

@@ -33,7 +33,7 @@ describe('donorbox url builders', () => {
 
   it('builds a sponsor-a-child embed url with the child slug as ref', () => {
     expect(sponsorChildEmbedUrl('maria-gonzalez')).toBe(
-      'https://donorbox.org/embed/sponsor-a-child-vvf?default_interval=m&ref=maria-gonzalez'
+      'https://donorbox.org/embed/make-a-difference-55?default_interval=m&ref=maria-gonzalez'
     )
   })
 

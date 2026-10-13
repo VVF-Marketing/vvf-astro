@@ -1,27 +1,51 @@
 import SponsorshipTierTable from './SponsorshipTierTable.astro'
 import type { SponsorshipPackage } from '../lib/content/types'
 
+// Live Corporate Sponsorships tiers (scripts/migrate/snapshot/corporate_tiers.json).
 const tiers: SponsorshipPackage[] = [
   {
-    tierName: 'Bronze',
-    price: '$500',
-    recognitionBenefits: ['Logo on event signage'],
+    tierName: 'Trustee',
+    price: '$2,500/year',
+    recognitionBenefits: [
+      'Inclusion in the Annual Report',
+      'Visibility in branding (website, email campaigns, social media, and events)',
+      'Board Donor Plaque',
+    ],
+    activityBenefits: [
+      'Participation in the annual gala speech',
+      'Participation in the annual mission trip',
+      'Participation in the annual Board review',
+    ],
+    promotionalBenefits: ['(5) Polo shirts with the foundation’s logo', '(25) Foundation stickers'],
     order: 1,
   },
   {
-    tierName: 'Silver',
-    price: '$1,500',
-    recognitionBenefits: ['Logo on event signage', 'Mention in event program'],
-    activityBenefits: ['Two golf foursomes'],
+    tierName: 'Leader',
+    price: '$1,000/year',
+    recognitionBenefits: [
+      'Inclusion in the Annual Report',
+      'Visibility in branding (website, email campaigns, social media, and events)',
+      'Board Donor Plaque',
+    ],
+    promotionalBenefits: ['(5) Polo shirts with the foundation’s logo', '(25) Foundation stickers'],
     order: 2,
   },
   {
-    tierName: 'Gold',
-    price: '$5,000',
-    recognitionBenefits: ['Logo on event signage', 'Mention in event program', 'Social media shoutout'],
-    activityBenefits: ['Four golf foursomes'],
-    promotionalBenefits: ['Branded item in gift bags'],
+    tierName: 'Advisor',
+    price: '$500/year',
+    recognitionBenefits: [
+      'Inclusion in the Annual Report',
+      'Visibility in branding (website, email campaigns, social media, and events)',
+    ],
+    promotionalBenefits: ['(25) Foundation stickers'],
     order: 3,
+  },
+  {
+    tierName: 'Friend',
+    price: '$250/year',
+    recognitionBenefits: ['Inclusion in the Annual Report'],
+    promotionalBenefits: ['(25) Foundation stickers'],
+    order: 4,
   },
 ]
 
@@ -30,6 +54,6 @@ export default {
   component: SponsorshipTierTable,
 }
 
-export const Default = {
+export const CorporateTiers = {
   args: { tiers },
 }

@@ -1,0 +1,75 @@
+---
+// Live counterpart: team member page (`.bio_hero`, `.bio_card`,
+// `.bio_body-section`) — navy intro with name and role, a card pairing the
+// photo with the quote and labeled facts (Since / From / Based in), then the
+// bio with a "Background" sidebar. Empty facts are omitted.
+import type { TeamMemberItem } from '../lib/content/types'
+
+export interface Props {
+  member: Pick<TeamMemberItem, 'name' | 'role' | 'imageUrl' | 'quote' | 'since' | 'from' | 'basedIn' | 'bio' | 'longBio' | 'background' | 'socialLinks'>
+}
+
+const { member } = Astro.props as Props
+const facts = [
+  { label: 'Since', value: member.since },
+  { label: 'From', value: member.from },
+  { label: 'Based in', value: member.basedIn },
+].filter((f) => f.value)
+const linkedin = member.socialLinks?.find((s) => s.platform === 'linkedin')
+const paragraphs = (member.longBio ?? '').split(/\n{2,}/).filter(Boolean)
+---
+
+<article>
+  <div class="bg-brand-primary px-6 pb-0 pt-12 md:px-16 md:pt-[72px]">
+    <div class="mx-auto max-w-[1312px]">
+      <p class="font-body text-[13px] font-semibold uppercase leading-body text-brand-accent-soft">Our Team</p>
+      <h1 class="mt-3 text-h1-mobile leading-[1.1] text-neutral-white md:text-[3.5rem]">{member.name}</h1>
+      <p class="mt-4 font-body text-size-lg leading-body text-neutral-white/90">{member.role}</p>
+    </div>
+    <div class="relative mx-auto mt-12 flex max-w-[1312px] translate-y-0 flex-col overflow-hidden rounded-[20px] bg-neutral-card md:mt-16 md:flex-row">
+      {member.imageUrl && <img src={member.imageUrl} alt={member.name} class="aspect-[340/400] w-full object-cover md:w-[340px]" />}
+      <div class="flex flex-1 flex-col justify-center gap-6 p-8 md:px-[52px] md:py-12">
+        {member.quote && <p class="font-sans text-h5 font-extrabold leading-[1.3] text-brand-primary md:text-h3">{member.quote}</p>}
+        {
+          (facts.length > 0 || linkedin) && (
+            <dl class="flex flex-wrap items-end gap-10 border-t border-brand-primary/10 pt-6">
+              {facts.map((f) => (
+                <div>
+                  <dt class="font-body text-size-sm uppercase leading-body text-brand-primary/60">{f.label}</dt>
+                  <dd class="font-sans text-size-lg font-extrabold leading-body text-brand-primary">{f.value}</dd>
+                </div>
+              ))}
+              {linkedin && (
+                <a href={linkedin.url} class="ml-auto" aria-label={`${member.name} on LinkedIn`}>
+                  <img src="/images/footer/linkedin.svg" alt="" width="24" height="24" />
+                </a>
+              )}
+            </dl>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto grid max-w-[1312px] gap-12 px-6 py-16 md:px-16 lg:grid-cols-[1fr_360px] lg:gap-[110px] lg:px-[88px] lg:py-[90px]">
+    <div class="flex flex-col gap-6">
+      {member.bio && <p class="font-sans text-size-md font-bold leading-body text-brand-primary">{member.bio}</p>}
+      {paragraphs.map((p) => <p class="font-body text-size-md leading-body text-brand-primary">{p}</p>)}
+    </div>
+    {
+      member.background && member.background.length > 0 && (
+        <aside class="h-fit rounded-[20px] bg-sun p-7">
+          <p class="font-body text-size-sm uppercase leading-body text-brand-primary">Background</p>
+          <ul class="mt-4 flex flex-col gap-4">
+            {member.background.map((b) => (
+              <li>
+                <p class="font-sans text-size-md font-extrabold leading-body text-brand-primary">{b.label}</p>
+                {b.value && <p class="font-body text-size-sm leading-body text-brand-primary">{b.value}</p>}
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+  </div>
+</article>

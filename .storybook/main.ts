@@ -7,6 +7,14 @@ const dirname = path.dirname(fileURLToPath(import.meta.url))
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|ts)'],
   addons: ['@storybook/addon-docs'],
+  // Harvested CMS media (scripts/migrate) so stories can show real content.
+  // Child media is deliberately excluded (gitignored; minors' data).
+  staticDirs: [
+    { from: '../seed/media/team_members', to: '/seed-media/team_members' },
+    { from: '../seed/media/events', to: '/seed-media/events' },
+    { from: '../seed/media/resources', to: '/seed-media/resources' },
+    { from: '../seed/media/sponsors', to: '/seed-media/sponsors' },
+  ],
   framework: {
     name: '@storybook-astro/framework',
     options: {},

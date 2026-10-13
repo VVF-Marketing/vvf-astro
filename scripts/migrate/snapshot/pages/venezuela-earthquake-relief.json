@@ -1,0 +1,376 @@
+{
+  "path": "/venezuela-earthquake-relief",
+  "seo": {
+    "title": "Venezuela Earthquake Relief | Victoria Venezuela Foundation",
+    "description": "Back-to-back earthquakes hit Venezuela in June 2026. 100% of net proceeds go to relief for displaced children and families. See how to help.",
+    "ogTitle": "Venezuela Earthquake Relief | Victoria Venezuela Foundation",
+    "ogDescription": "Back-to-back earthquakes hit Venezuela in June 2026. 100% of net proceeds go to relief for displaced children and families. See how to help.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa40f5f1cef2de6c4ff4737_98.png",
+          "alt": "A man carrying a child away from a building destroyed by the earthquakes in Venezuela."
+        },
+        {
+          "type": "h1",
+          "text": "Venezuela Earthquake Relief"
+        },
+        {
+          "type": "p",
+          "text": "Back-to-back earthquakes have upended life across Venezuela. Your gift delivers help now."
+        },
+        {
+          "type": "cta",
+          "text": "Donate Here",
+          "href": "https://donorbox.org/venezuela-earthquake-relief"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-20"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "100% of net proceeds go to earthquake relief."
+        },
+        {
+          "type": "cta",
+          "text": "See ways to help",
+          "href": "#how-to-help"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-21"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "What happened"
+        },
+        {
+          "type": "p",
+          "text": "On June 24, two powerful earthquakes struck northern Venezuela less than a minute apart, the strongest the country has seen in over a century. La Guaira and Caracas were hit hardest. Thousands of families lost their homes, and many are now sleeping outside, cut off from clean water and medical care."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412adb65da603231c7fd5_image%2011.png",
+          "alt": "An excavator and workers clearing rubble from a collapsed building."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad274d5a9550c838e6_image%2012.png",
+          "alt": "A damaged apartment tower standing above the surrounding city."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad98224685e8fb7888_image%2014.png",
+          "alt": "Two people walking out of a building wrecked by the earthquake."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa412ad2e51961cb4601a02_image%2013.png",
+          "alt": "A woman standing among the rubble of destroyed homes."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Support Centers"
+        },
+        {
+          "type": "p",
+          "text": "In the weeks after the earthquakes we opened two temporary support centres for displaced families. Both have since closed. We are now building a permanent centre in La Guaira."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa413afe9a5eef98b1d85aa_Mapa%20ve.png",
+          "alt": "Map of Venezuela marking Caracas and La Guaira, the areas hit by the June 2026 earthquakes."
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "100% of net proceeds benefit children and families displaced by the June 2026 earthquakes in Venezuela."
+        },
+        {
+          "type": "p",
+          "text": "Funds raised from this campaign will go towards the construction of VVF's permanent support centre in La Guaira. When it opens it will provide shelter, nutrition and medical care to 500 displaced children and their families."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad352e7191b53e8a5e_VVF_LaGuaira_Centre_Exterior_Web_v1.jpg",
+          "alt": "Render of the planned VVF support centre in La Guaira, seen from the street."
+        },
+        {
+          "type": "p",
+          "text": "How the centre in La Guaira will look. The centre is not built yet."
+        },
+        {
+          "type": "p",
+          "text": "What your gift will pay for"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ade21d9557ab097e79_VVF_LaGuaira_Card_Shelter_Web_v1.jpg",
+          "alt": "Families arriving at the courtyard of the planned VVF support centre."
+        },
+        {
+          "type": "h3",
+          "text": "Shelter"
+        },
+        {
+          "type": "p",
+          "text": "A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3ad6b006e0df99c91bf_VVF_LaGuaira_Card_MedicalCare_Web_v1.jpg",
+          "alt": "A nurse examining a young girl while her mother sits beside her."
+        },
+        {
+          "type": "h3",
+          "text": "Medical care"
+        },
+        {
+          "type": "p",
+          "text": "Check-ups, medicine and treatment for children and their families at the center."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aaad3bcba94a6d021995d46_VVF_LaGuaira_Card_Nutrition_Web_v1.jpg",
+          "alt": "Children eating a hot meal together in the centre's dining room."
+        },
+        {
+          "type": "h3",
+          "text": "Nutrition"
+        },
+        {
+          "type": "p",
+          "text": "Daily meals for the children staying at the support center in La Guaira."
+        },
+        {
+          "type": "cta",
+          "text": "Give to the appeal",
+          "href": "https://donorbox.org/venezuela-earthquake-relief"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-17"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa41791be83a63edc1b8b48_image%2015.png",
+          "alt": "A man carrying a water container past earthquake-damaged houses."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-18"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "How to Help"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa6f2c0f884d4a1be08e8aa_uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg"
+        },
+        {
+          "type": "p",
+          "text": "First"
+        },
+        {
+          "type": "h3",
+          "text": "Pray"
+        },
+        {
+          "type": "p",
+          "text": "Join our team in daily prayer."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a173d2cf90f1192203d1048_uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg"
+        },
+        {
+          "type": "p",
+          "text": "Second"
+        },
+        {
+          "type": "h3",
+          "text": "Donate"
+        },
+        {
+          "type": "p",
+          "text": "Your financial gift allows VVF and local partners to respond promptly and effectively, bringing relief and hope."
+        },
+        {
+          "type": "cta",
+          "text": "Donate",
+          "href": "https://donorbox.org/venezuela-earthquake-relief"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-19"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Keep up with our work on the ground."
+        },
+        {
+          "type": "h2",
+          "text": "Stay connected"
+        },
+        {
+          "type": "p",
+          "text": "Keep up with our news and events"
+        },
+        {
+          "type": "p",
+          "text": "We respect your privacy. Unsubscribe at any time."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aa6fc07f43dc1e967e1b4d7_home.svg"
+        },
+        {
+          "type": "p",
+          "text": "Point of Contact"
+        },
+        {
+          "type": "p",
+          "text": "Is your organization interested in investing in the children and the future of Venezuela? Let’s make a positive impact together."
+        },
+        {
+          "type": "p",
+          "text": "Weston"
+        },
+        {
+          "type": "p",
+          "text": "P.O. Box 327222, Weston, FL 33332"
+        },
+        {
+          "type": "p",
+          "text": "+1 (954) 371-0557"
+        },
+        {
+          "type": "p",
+          "text": "Business hours"
+        },
+        {
+          "type": "p",
+          "text": "Monday through Friday, 8:30 AM to 5:30 PM Eastern Time"
+        },
+        {
+          "type": "p",
+          "text": "Email anytime"
+        },
+        {
+          "type": "p",
+          "text": "info@victoriavenezuelafoundation.org"
+        },
+        {
+          "type": "p",
+          "text": "Our Response"
+        },
+        {
+          "type": "p",
+          "text": "Our emergency response is now completed. Our team is now building a permanent support centre in La Guaira for the children and families displaced by the earthquakes."
+        },
+        {
+          "type": "p",
+          "text": "01"
+        },
+        {
+          "type": "p",
+          "text": "COMPLETED"
+        },
+        {
+          "type": "p",
+          "text": "Assessment"
+        },
+        {
+          "type": "p",
+          "text": "Identifying the hardest-hit communities and their most urgent needs."
+        },
+        {
+          "type": "p",
+          "text": "02"
+        },
+        {
+          "type": "p",
+          "text": "COMPLETED"
+        },
+        {
+          "type": "p",
+          "text": "Stabilization"
+        },
+        {
+          "type": "p",
+          "text": "Delivering food, water, medical supplies, and shelter."
+        },
+        {
+          "type": "p",
+          "text": "03"
+        },
+        {
+          "type": "p",
+          "text": "IN PROGRESS"
+        },
+        {
+          "type": "p",
+          "text": "Strengthening"
+        },
+        {
+          "type": "p",
+          "text": "Helping families restore stability and routine"
+        },
+        {
+          "type": "p",
+          "text": "04"
+        },
+        {
+          "type": "p",
+          "text": "UPCOMING"
+        },
+        {
+          "type": "p",
+          "text": "Sustainability"
+        },
+        {
+          "type": "p",
+          "text": "Supporting long-term recovery and resilience."
+        }
+      ]
+    }
+  ]
+}

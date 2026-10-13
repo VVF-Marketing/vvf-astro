@@ -1,0 +1,22 @@
+---
+// Live counterpart: Corporate Sponsorships "Our Impact in Numbers" cards —
+// pastel card (radius 2xl) with a centered icon, uppercase label, large
+// figure and a short line.
+export interface Props {
+  iconUrl?: string
+  label: string
+  value: string
+  text?: string
+  tone?: 'sun' | 'salmon' | 'sky' | 'white'
+}
+
+const { iconUrl, label, value, text, tone = 'white' } = Astro.props as Props
+const tones = { sun: 'bg-sun', salmon: 'bg-salmon', sky: 'bg-sky', white: 'bg-neutral-white' }
+---
+
+<article class={`flex h-full flex-col items-center gap-4 rounded-2xl px-10 py-16 text-center ${tones[tone]}`}>
+  {iconUrl && <img src={iconUrl} alt="" class="mb-6 h-[130px] w-auto" loading="lazy" />}
+  <p class="font-body text-size-sm font-semibold uppercase leading-body tracking-[0.1em] text-brand-primary">{label}</p>
+  <p class="font-sans text-h4-mobile font-extrabold leading-[1.2] text-brand-primary md:text-h3">{value}</p>
+  {text && <p class="font-sans text-size-md leading-body text-brand-primary">{text}</p>}
+</article>

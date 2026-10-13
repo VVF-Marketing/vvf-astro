@@ -1,0 +1,61 @@
+{
+  "sponsor-a-child": [
+    {
+      "question": "How much does sponsorship cost?",
+      "answer": "Sponsorship starts at $25 per month. You choose the amount that fits your budget. Your gifts fund the meals, medical care and education programs that reach every child in our care. In fiscal 2025, 95% of funds went directly to programs.",
+      "order": 0
+    },
+    {
+      "question": "Where does my money go?",
+      "answer": "Your sponsorship funds provide weekly meals, medical checkups twice a year, school supplies and uniforms, and faith-based teaching. We maintain complete transparency about how every dollar is spent. You can review our detailed financials anytime on our website.",
+      "order": 1
+    },
+    {
+      "question": "Can I write to my sponsored child?",
+      "answer": "Yes. Your child will receive your letters and drawings, and they will write back to you. This connection is one of the most meaningful parts of sponsorship.",
+      "order": 2
+    },
+    {
+      "question": "What updates will I receive?",
+      "answer": "You'll receive letters and photos from your child, along with annual impact reports showing how your sponsorship changed their life. We also send prayer requests and updates about their progress in school and health.",
+      "order": 3
+    },
+    {
+      "question": "Can I send gifts to my child?",
+      "answer": "We recommend keeping gifts modest and practical, such as school supplies or books. Large or expensive gifts can create complications. We'll guide you on what works best for your child's situation and community.",
+      "order": 4
+    },
+    {
+      "question": "Does my money go directly to my sponsored child?",
+      "answer": "Your sponsorship connects you with one child. Gifts are combined to fund the nutrition, medical care and education that reach every child in our programs, which keeps support steady for each child even if a sponsor steps away.",
+      "order": 5
+    }
+  ],
+  "ways-to-give": [
+    {
+      "question": "Are donations tax-deductible?",
+      "answer": "Yes. Victoria Venezuela Foundation is a 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You'll receive a receipt for your records.",
+      "order": 0
+    },
+    {
+      "question": "How is my money used?",
+      "answer": "Ninety-five percent of funds go directly to programs. We support nutrition, medical care, and education for children in Venezuela. See our financials page for a complete breakdown.",
+      "order": 1
+    },
+    {
+      "question": "Can I designate my gift?",
+      "answer": "Absolutely. You can direct your gift to a specific program or child sponsorship. Let us know your preference when you give, or contact us to discuss options.",
+      "order": 2
+    },
+    {
+      "question": "How do I get a receipt?",
+      "answer": "A receipt is sent automatically after your donation. Check your email, including spam folders. For recurring gifts, you'll receive an annual summary.",
+      "order": 3
+    },
+    {
+      "question": "Can I cancel recurring gifts?",
+      "answer": "Yes. You can change or cancel your monthly gift anytime. No questions asked. Contact us or manage your subscription through your donor account.",
+      "order": 4
+    }
+  ]
+}

@@ -21,14 +21,14 @@ export const Default = {
     const preset50 = canvas.getByRole('button', { name: '50 USD' })
     const customInput = canvas.getByPlaceholderText('Custom amount (USD)')
 
-    expect(preset50).not.toHaveClass('bg-brand-sky')
+    expect(preset50).not.toHaveClass('bg-brand-accent')
     expect(customInput).toHaveValue(null)
   },
 }
 
 export const SponsoringAChild = {
   args: {
-    actionUrl: 'https://donorbox.org/embed/sponsor-a-child-vvf',
+    actionUrl: 'https://donorbox.org/embed/make-a-difference-55',
     sponsorTargetLabel: 'Maria, age 8',
     defaultCadence: 'monthly',
     presets: [30, 60, 90],
