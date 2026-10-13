@@ -20,6 +20,14 @@ import { importMedia } from './migrate/media.mjs'
 import { transform } from './migrate/transform.mjs'
 import { LOCAL_SEED_PATH, ROOT_DIR, SEED_PATH } from './migrate/lib/paths.mjs'
 
+// Postgres (deployed mode): migrations + the public seed, no local files
+// (scripts/db-setup.mjs). Everything below is the local SQLite flow.
+if (process.env.DB_ADAPTER === 'postgres') {
+  const { setupDatabase } = await import('./db-setup.mjs')
+  await setupDatabase({ force: process.argv.includes('--force'), confirm: true })
+  process.exit(0)
+}
+
 const PORT = Number(process.env.SEED_PORT ?? 4398)
 
 function emdash(...args) {

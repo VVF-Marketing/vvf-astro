@@ -1076,7 +1076,7 @@
       "hidden": false
     },
     {
-      "slug": "copy_resources_category_financials_transparency",
+      "slug": "copy_resources_financials",
       "label": "Resources: Financials & Transparency",
       "labelSingular": "Text slot",
       "routable": false,
@@ -13175,9 +13175,9 @@
         }
       }
     ],
-    "copy_resources_category_financials_transparency": [
+    "copy_resources_financials": [
       {
-        "id": "copy_resources_category_financials_transparency--seo.title",
+        "id": "copy_resources_financials--seo.title",
         "status": "published",
         "data": {
           "key": "seo.title",
@@ -13192,10 +13192,10 @@
         }
       },
       {
-        "id": "copy_resources_category_financials_transparency--seo.title--es",
+        "id": "copy_resources_financials--seo.title--es",
         "status": "published",
         "locale": "es",
-        "translationOf": "copy_resources_category_financials_transparency--seo.title",
+        "translationOf": "copy_resources_financials--seo.title",
         "data": {
           "key": "seo.title",
           "label": "SEO title (browser tab and search results)",
@@ -13209,7 +13209,7 @@
         }
       },
       {
-        "id": "copy_resources_category_financials_transparency--seo.description",
+        "id": "copy_resources_financials--seo.description",
         "status": "published",
         "data": {
           "key": "seo.description",
@@ -13224,10 +13224,10 @@
         }
       },
       {
-        "id": "copy_resources_category_financials_transparency--seo.description--es",
+        "id": "copy_resources_financials--seo.description--es",
         "status": "published",
         "locale": "es",
-        "translationOf": "copy_resources_category_financials_transparency--seo.description",
+        "translationOf": "copy_resources_financials--seo.description",
         "data": {
           "key": "seo.description",
           "label": "Meta description (search results)",
@@ -13241,7 +13241,7 @@
         }
       },
       {
-        "id": "copy_resources_category_financials_transparency--seo.image",
+        "id": "copy_resources_financials--seo.image",
         "status": "published",
         "data": {
           "key": "seo.image",
@@ -13257,10 +13257,10 @@
         }
       },
       {
-        "id": "copy_resources_category_financials_transparency--seo.image--es",
+        "id": "copy_resources_financials--seo.image--es",
         "status": "published",
         "locale": "es",
-        "translationOf": "copy_resources_category_financials_transparency--seo.image",
+        "translationOf": "copy_resources_financials--seo.image",
         "data": {
           "key": "seo.image",
           "label": "Social share image",

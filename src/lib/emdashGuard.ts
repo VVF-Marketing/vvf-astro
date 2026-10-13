@@ -1,6 +1,7 @@
 // Applies the marketing guard (src/lib/marketingGuard.ts) to EmDash's MCP
 // endpoint and admin REST API. Runs from src/middleware.ts after EmDash's
 // own middleware has authenticated the request (locals.user).
+import { SAFEGUARDING_USERS } from 'astro:env/server'
 import type { APIContext, MiddlewareNext } from 'astro'
 import {
   checkOperation,
@@ -35,7 +36,7 @@ export function routeExists(path: string): boolean {
 function guardContext(context: APIContext, user: GuardUser): GuardContext {
   const emdash = (context.locals as { emdash?: any }).emdash
   return {
-    safeguarding: isSafeguardingUser(user, import.meta.env.SAFEGUARDING_USERS ?? process.env.SAFEGUARDING_USERS),
+    safeguarding: isSafeguardingUser(user, SAFEGUARDING_USERS),
     async lookup(collection, id, locale) {
       const res = await emdash?.handleContentGet(collection, id, locale)
       const item = res?.success ? res.data?.item : undefined

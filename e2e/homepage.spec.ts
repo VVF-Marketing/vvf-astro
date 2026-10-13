@@ -26,3 +26,14 @@ test('donate link in the header points at Ways to Give, as on the live site', as
   const donateLink = page.getByRole('link', { name: 'Donate' }).first()
   await expect(donateLink).toHaveAttribute('href', '/ways-to-give')
 })
+
+// Partners come from a boolean filter; it once matched nothing on Postgres
+// (integer column vs `true`), silently hiding the logos
+// (openspec/changes/make-app-portable).
+for (const path of ['/', '/corporate-sponsorships']) {
+  test(`partner logos show on ${path}`, async ({ page }) => {
+    await page.goto(path)
+    const logos = page.locator('[data-logo-carousel] li')
+    expect(await logos.count()).toBeGreaterThan(0)
+  })
+}

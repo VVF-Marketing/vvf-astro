@@ -17,7 +17,7 @@ describe('copyCollectionFor', () => {
     expect(copyCollectionFor('_global')).toBe('copy_site')
     expect(copyCollectionFor('/ways-to-give')).toBe('copy_ways_to_give')
     expect(copyCollectionFor('/events/*')).toBe('copy_events_detail')
-    expect(copyCollectionFor('/resources/category/financials-transparency')).toBe('copy_resources_category_financials_transparency')
+    expect(copyCollectionFor('/resources/category/financials-transparency')).toBe('copy_resources_financials')
   })
 
   it('gives every copy page a valid, unique EmDash slug', () => {

@@ -29,7 +29,9 @@ export const COPY_PAGES = [
   { route: '/financials-and-transparency', name: 'Financials & Transparency' },
   { route: '/resources', name: 'Resources (list page)' },
   { route: '/resources/category/stories', name: 'Resources: Stories' },
-  { route: '/resources/category/financials-transparency', name: 'Resources: Financials & Transparency' },
+  // Explicit slug: the derived one (47 characters) breaks EmDash's index names
+  // on Postgres (63-character identifier limit; see collectionNames.test.ts).
+  { route: '/resources/category/financials-transparency', name: 'Resources: Financials & Transparency', slug: 'copy_resources_financials' },
   { route: '/earthquake-relief', name: 'Earthquake Relief' },
   { route: '/sponsor-a-child/children', name: 'Children (list page)' },
   { route: '/blog', name: 'Blog (list page)' },
@@ -43,8 +45,12 @@ export const COPY_PAGES = [
 
 // EmDash collection slug for a copy manifest's route: `copy_` + the route
 // with non-alphanumerics as `_` ('/' → copy_home, '/events/*' →
-// copy_events_detail, '_global' → copy_site).
+// copy_events_detail, '_global' → copy_site), unless the page sets an
+// explicit `slug`. Slugs must fit Postgres' identifier limit (35 characters;
+// src/lib/collectionNames.test.ts).
 export function copyCollectionFor(route) {
+  const explicit = COPY_PAGES.find((p) => p.route === route)?.slug
+  if (explicit) return explicit
   if (route === '/') return 'copy_home'
   if (route === '_global') return 'copy_site'
   const base = route

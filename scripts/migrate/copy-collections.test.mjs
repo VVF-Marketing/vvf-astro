@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { migrateCopyCollections } from './copy-collections.mjs'
 
 // In-memory EmDash: content rows per collection, drafts as revisions.
-function fakeCms({ missing = [] } = {}) {
+// `exists`: collections the fake CMS has (others 404 when listed).
+function fakeCms({ missing = [], exists = ['page_copy', 'copy_contact'] } = {}) {
   const rows = []
   const revisions = new Map()
   const calls = []
@@ -10,7 +11,7 @@ function fakeCms({ missing = [] } = {}) {
   const find = (id) => rows.find((r) => r.id === id)
   const client = {
     async *listAll(collection, { locale }) {
-      if (missing.includes(collection)) throw Object.assign(new Error('not found'), { status: 404 })
+      if (missing.includes(collection) || !exists.includes(collection)) throw Object.assign(new Error('not found'), { status: 404 })
       for (const r of rows.filter((r) => r.collection === collection && r.locale === locale)) yield structuredClone(r)
     },
     async create(collection, input) {
@@ -50,7 +51,7 @@ function fakeCms({ missing = [] } = {}) {
     calls.push(`${method} ${path}`)
     const m = path.match(/^\/revisions\/(\w+)$/)
     if (m) return { item: { data: revisions.get(m[1]) } }
-    if (method === 'PUT' && path === '/schema/collections/page_copy') return { hidden: body.hidden }
+    if (method === 'PUT' && /^\/schema\/collections\/\w+$/.test(path)) return { hidden: body.hidden }
     throw new Error(`unexpected ${method} ${path}`)
   }
   const seedOld = (route, key, locale, data, extra = {}) => {
@@ -140,6 +141,41 @@ describe('migrateCopyCollections', () => {
     await cms.client.publish('copy_contact', target.id)
     const result = await migrateCopyCollections({ ...cms, manifests: [{ route: '/contact', slots: { 'seo.title': manifests[0].slots['seo.title'] } }] })
     expect(result).toMatchObject({ conflicts: [], alreadyThere: 1 })
+  })
+
+  it('moves rows out of a legacy collection, keeping translations, then hides it', async () => {
+    const legacy = [{ collection: 'copy_old_contact', route: '/contact' }]
+    const cms = fakeCms({ exists: ['copy_old_contact', 'copy_contact'] })
+    const en = await cms.client.create('copy_old_contact', { status: 'draft', locale: 'en', data: { key: 'hero.heading', value: 'Old heading' } })
+    await cms.client.publish('copy_old_contact', en.id)
+    const es = await cms.client.create('copy_old_contact', { status: 'draft', locale: 'es', translationOf: en.id, data: { key: 'hero.heading', value: 'Encabezado' } })
+    await cms.client.publish('copy_old_contact', es.id)
+
+    const result = await migrateCopyCollections({ ...cms, manifests, legacy })
+    const moved = cms.rows.filter((r) => r.collection === 'copy_contact' && r.data.key === 'hero.heading')
+    expect(moved.find((r) => r.locale === 'en').data.value).toBe('Old heading')
+    expect(moved.find((r) => r.locale === 'es').data.value).toBe('Encabezado')
+    expect(moved[0].translationGroup).toBe(moved[1].translationGroup)
+    expect(result).toMatchObject({ legacyHidden: ['copy_old_contact'], hidden: false })
+    expect(cms.calls).toContain('PUT /schema/collections/copy_old_contact')
+  })
+
+  it('treats an image EmDash re-stored with provider and empty id as the same image', async () => {
+    const legacy = [{ collection: 'copy_old_contact', route: '/contact' }]
+    const cms = fakeCms({ exists: ['copy_old_contact', 'copy_contact'] })
+    const old = await cms.client.create('copy_old_contact', { status: 'draft', locale: 'en', data: { key: 'seo.title', image_value: { src: '/og.jpg' } } })
+    await cms.client.publish('copy_old_contact', old.id)
+    const moved = await cms.client.create('copy_contact', { status: 'draft', locale: 'en', data: { key: 'seo.title', image_value: { provider: 'external', id: '', src: '/og.jpg' } } })
+    await cms.client.publish('copy_contact', moved.id)
+    const result = await migrateCopyCollections({ ...cms, manifests: [{ route: '/contact', slots: { 'seo.title': manifests[0].slots['seo.title'] } }], legacy })
+    expect(result).toMatchObject({ conflicts: [], alreadyThere: 1 })
+  })
+
+  it('works on a database with neither page_copy nor legacy collections', async () => {
+    const cms = fakeCms({ exists: ['copy_contact'] })
+    const result = await migrateCopyCollections({ ...cms, manifests })
+    expect(result).toMatchObject({ hidden: false, legacyHidden: [], conflicts: [] })
+    expect(cms.calls.filter((c) => c.startsWith('PUT'))).toEqual([])
   })
 
   it('stops short of hiding page_copy when a copy collection is missing', async () => {

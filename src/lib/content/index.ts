@@ -293,7 +293,9 @@ export function isUpcoming(event: Pick<EventItem, 'startDate'>): boolean {
 
 // --- Children -----------------------------------------------------------
 
-const CHILDREN_FILTER: QueryFilter = { where: { published: true }, orderBy: { order: 'asc' }, limit: LIST_LIMIT }
+// Boolean fields are stored as 0/1 integers; filter with 1 so the query works
+// on Postgres as well as SQLite (Postgres won't compare an integer to true).
+const CHILDREN_FILTER: QueryFilter = { where: { published: 1 }, orderBy: { order: 'asc' }, limit: LIST_LIMIT }
 
 function toChild(e: LocalizedEntry): ChildItem {
   const d = e.data
@@ -503,7 +505,7 @@ export async function getSponsors(locale: Locale = DEFAULT_LOCALE): Promise<Spon
 
 // Home page "Corporate Partners", in display order.
 export async function getPartners(locale: Locale = DEFAULT_LOCALE): Promise<Sponsor[]> {
-  const filter: QueryFilter = { where: { partner: true }, orderBy: { order: 'asc' }, limit: LIST_LIMIT }
+  const filter: QueryFilter = { where: { partner: 1 }, orderBy: { order: 'asc' }, limit: LIST_LIMIT } // 0/1 integer, see CHILDREN_FILTER
   return (await listEntries('sponsors', filter, locale)).map((e) => toSponsor(e.data))
 }
 

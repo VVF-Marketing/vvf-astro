@@ -13,11 +13,19 @@ description: Install, run, and develop the VVF Astro site locally.
 
 ### Option 1: Dev container (recommended)
 
-Open the repo in a dev container-capable editor (VS Code, GitHub Codespaces) and reopen in container. It's pinned to Node 22, preinstalls Playwright's system dependencies, and runs `npm install` for both the root project and `docs-site/` on create — no manual install steps. Ports `4321` (site + EmDash admin) and `6006` (Storybook) are forwarded to the host automatically; `docs-site`'s own dev server also uses `4321`.
+Open the repo in a dev container-capable editor (VS Code, GitHub Codespaces) and reopen in container. It's pinned to Node 22, preinstalls Playwright's system dependencies, and runs `npm ci` for both the root project and `docs-site/` on create — no manual install steps. Ports `4321` (site + EmDash admin) and `6006` (Storybook) are forwarded to the host automatically; `docs-site`'s own dev server also uses `4321`.
 
 ```bash
 npm run dev
 ```
+
+The container is named `vvf-dev-container` ("VVF dev container" in the editor) and keeps a few things apart from your host:
+
+- **Its own `node_modules`:** the named volumes `vvf-dev-node-modules` and `vvf-dev-docs-node-modules`, so installing Linux builds of native packages never touches a host checkout's `node_modules`. You can run `npm run dev` on the host and in the container (one at a time: both use port 4321 and the same `data.db`).
+- **Docker inside:** `docker` and `docker compose` work from the container, using the host's Docker engine (`docker compose up --build` for the [Postgres + S3 stack](/running-anywhere/)). Containers started from inside run on the host, so their ports are on the host's `localhost` (from inside the container, use `host.docker.internal:<port>`).
+- **Memory:** building the site needs a few GB. If a build inside the container is `Killed`, give Docker Desktop more memory (Settings → Resources) or stop other containers.
+
+After changing `.devcontainer/devcontainer.json`, use "Rebuild Container"; the `node_modules` volumes are kept between rebuilds.
 
 ### Option 2: Manual setup
 

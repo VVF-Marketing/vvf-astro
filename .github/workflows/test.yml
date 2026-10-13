@@ -39,6 +39,67 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
 
+  # The deployed image on Postgres + an S3-compatible store
+  # (openspec/changes/make-app-portable): build it once, seed the public seed,
+  # run it and point the e2e suite at it.
+  container:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: vvf
+          POSTGRES_PASSWORD: vvf
+          POSTGRES_DB: vvf
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U vvf"
+          --health-interval 3s
+          --health-retries 20
+    env:
+      DB_ADAPTER: postgres
+      DATABASE_URL: postgres://vvf:vvf@localhost:5432/vvf
+      S3_ENDPOINT: http://localhost:8333
+      S3_BUCKET: vvf-media
+      S3_ACCESS_KEY_ID: ci
+      S3_SECRET_ACCESS_KEY: ci-secret
+      S3_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Start the S3-compatible store
+        run: docker run -d --name s3 -p 8333:8333 chrislusf/seaweedfs:latest server -s3 -dir=/data
+      - name: Build the site image
+        run: docker build --target runtime -t vvf-site .
+      - name: Migrate and seed Postgres (public seed)
+        run: npm run db:setup
+      - name: Data export/import round trip through Postgres
+        env:
+          TEST_POSTGRES_URL: postgres://vvf:vvf@localhost:5432/vvf_import
+        run: |
+          psql postgres://vvf:vvf@localhost:5432/vvf -c 'create database vvf_import'
+          npx vitest run scripts/data.integration.test.mjs
+      - name: Create the media bucket
+        run: |
+          for i in $(seq 1 30); do curl -sf http://localhost:8333/ > /dev/null && break; sleep 1; done
+          node scripts/s3-bucket.mjs
+      - name: Run the image and wait until it's ready
+        run: |
+          docker run -d --name site --network host -e PORT=4321 \
+            -e DATABASE_URL -e S3_ENDPOINT -e S3_BUCKET -e S3_ACCESS_KEY_ID -e S3_SECRET_ACCESS_KEY -e S3_REGION \
+            vvf-site
+          for i in $(seq 1 60); do curl -sf http://localhost:4321/readyz && break; sleep 2; done
+          curl -sf http://localhost:4321/readyz
+      - run: npx playwright install --with-deps chromium
+      - name: e2e against the image
+        run: npx playwright test -c playwright.container.config.ts
+      - name: Site logs
+        if: failure()
+        run: docker logs site
+
   docs-build:
     runs-on: ubuntu-latest
     steps:

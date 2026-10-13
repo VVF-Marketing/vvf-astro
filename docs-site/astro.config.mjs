@@ -19,6 +19,7 @@ export default defineConfig({
         { label: 'Editing the Site (Marketing Guide)', link: '/marketing-guide/' },
         { label: 'Webflow Migration', link: '/migration/' },
         { label: 'Testing & CI', link: '/testing-and-ci/' },
+        { label: 'Running Anywhere', link: '/running-anywhere/' },
       ],
     }),
   ],

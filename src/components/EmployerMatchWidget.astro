@@ -1,9 +1,11 @@
 ---
 // Live counterpart: Corporate Sponsorships Double the Donation search
 // (`#dd-container`). Uses the same public plugin key as the live site; set
-// DTD_PUBLIC_KEY to override it.
+// DTD_PUBLIC_KEY to override it (read at runtime).
+import { DTD_PUBLIC_KEY } from 'astro:env/server'
+
 const LIVE_DTD_KEY = 'q4dPt5DdwaU9OIyi'
-const dtdPublicKey = import.meta.env?.DTD_PUBLIC_KEY ?? process.env.DTD_PUBLIC_KEY ?? LIVE_DTD_KEY
+const dtdPublicKey = DTD_PUBLIC_KEY ?? LIVE_DTD_KEY
 ---
 
 <div class="mx-auto max-w-screen-xl font-poppins text-brand-primary" data-double-the-donation-widget>

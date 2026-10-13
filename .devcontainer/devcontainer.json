@@ -1,9 +1,41 @@
 {
-  "name": "vvf-astro",
+  // Shown in the editor; the Docker container itself is named vvf-dev-container.
+  "name": "VVF dev container",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
-  "forwardPorts": [4321, 6006],
-  "remoteEnv": {
-    "PATH": "${containerEnv:PATH}:/home/node/.local/bin"
+  "runArgs": ["--name", "vvf-dev-container"],
+
+  // Docker from inside the container (docker compose, image builds), using the
+  // host's Docker engine. Containers started from here run on the host, so
+  // their published ports are on the host's localhost
+  // (reach them from inside as host.docker.internal:<port>).
+  "features": {
+    // moby: false — the Node 22 image is Debian 13, which has no Moby
+    // packages; this installs Docker's official CLI and Compose instead.
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": { "moby": false }
   },
-  "postCreateCommand": "(curl -fsSL https://basecamp.com/install-cli | bash || true); npm install && npx playwright install --with-deps && cd docs-site && npm install"
+
+  // The container gets its own node_modules (named volumes) instead of the
+  // host folder's: native packages (Rolldown, esbuild, sharp) are built per
+  // OS, and installing Linux builds into a macOS checkout's node_modules
+  // breaks `npm run dev` on the host.
+  "mounts": [
+    "source=vvf-dev-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=vvf-dev-docs-node-modules,target=${containerWorkspaceFolder}/docs-site/node_modules,type=volume"
+  ],
+
+  "forwardPorts": [4321, 6006],
+  // localhost resolves to ::1 first in this image, so `astro dev` would listen
+  // on IPv6 only, while VS Code forwards ports over IPv4 (127.0.0.1) and the
+  // site never loads. Resolving IPv4 first makes the dev server, and EmDash's
+  // typegen fetch to localhost, use 127.0.0.1.
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/node/.local/bin",
+    "NODE_OPTIONS": "--dns-result-order=ipv4first"
+  },
+
+  // New volumes are created owned by root: hand them to the node user first.
+  // npm ci installs exactly the lockfiles without rewriting them (the
+  // container's npm differs from the host's, and `npm install` would churn
+  // package-lock.json).
+  "postCreateCommand": "sudo chown node:node node_modules docs-site/node_modules && (curl -fsSL https://basecamp.com/install-cli | bash || true); npm ci && npx playwright install --with-deps && cd docs-site && npm ci"
 }

@@ -1,0 +1,60 @@
+# The deployed stack, locally: the site image on Postgres + an S3-compatible
+# store (SeaweedFS), seeded with the public seed/seed.json (no child data).
+#
+#   docker compose up --build    # then open http://localhost:4321
+#   SITE_PORT=4399 docker compose up --build   # if 4321 is taken (e.g. npm run dev)
+#   docker compose down -v       # stop and delete the local data
+#
+# Values here are local-only defaults, never real secrets.
+
+x-site-env: &site-env
+  DATABASE_URL: postgres://vvf:vvf@postgres:5432/vvf
+  S3_ENDPOINT: http://s3:8333
+  S3_BUCKET: vvf-media
+  S3_ACCESS_KEY_ID: local
+  S3_SECRET_ACCESS_KEY: local-secret
+  S3_REGION: us-east-1
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: vvf
+      POSTGRES_PASSWORD: vvf
+      POSTGRES_DB: vvf
+    volumes: [postgres:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "vvf"]
+      interval: 3s
+      retries: 20
+
+  s3:
+    image: chrislusf/seaweedfs:latest
+    command: server -s3 -dir=/data
+    volumes: [s3:/data]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8333/"]
+      interval: 3s
+      retries: 20
+
+  # One-off: migrations, public seed (only into an empty database) and the
+  # media bucket.
+  setup:
+    build: { context: ., target: tools }
+    environment: *site-env
+    command: >
+      sh -c "npm run db:setup -- --yes && node scripts/s3-bucket.mjs"
+    depends_on:
+      postgres: { condition: service_healthy }
+      s3: { condition: service_healthy }
+
+  site:
+    build: { context: ., target: runtime }
+    environment: *site-env
+    ports: ["${SITE_PORT:-4321}:4321"]
+    depends_on:
+      setup: { condition: service_completed_successfully }
+
+volumes:
+  postgres:
+  s3:

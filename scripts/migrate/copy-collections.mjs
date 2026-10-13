@@ -13,6 +13,8 @@
 // - a new row that already exists is left alone, unless it still holds the
 //   code default (e.g. the sync ran first), in which case the old value
 //   replaces it. Re-running changes nothing.
+// Legacy copy collections renamed later (LEGACY_COLLECTIONS, e.g. a slug too
+// long for Postgres) are moved the same way.
 // When every declared slot has its row, `page_copy` is hidden from the
 // sidebar (kept, not deleted). Revision history isn't carried over.
 import { pathToFileURL } from 'node:url'
@@ -23,14 +25,28 @@ import { loadManifests } from './pagecopy.mjs'
 import { restApi } from '../cms-schema.mjs'
 
 const LOCALES = ['en', 'es']
+
+// Copy collections whose slug changed: rows move to the page's current
+// collection (openspec/changes/make-app-portable, design D10).
+export const LEGACY_COLLECTIONS = [
+  // 47 characters: EmDash's index names collided under Postgres' 63-character limit.
+  { collection: 'copy_resources_category_financials_transparency', route: '/resources/category/financials-transparency' },
+]
 const VALUE_FIELDS = ['value', 'rich_value', 'image_value']
 
 const values = (data = {}) => Object.fromEntries(VALUE_FIELDS.filter((f) => data[f] != null).map((f) => [f, data[f]]))
+// What identifies an image: EmDash fills in `provider`/empty `id` when it
+// stores an external image, so compare by src (and a real media id).
+const comparable = (data) => {
+  const v = values(data)
+  if (v.image_value && typeof v.image_value === 'object') v.image_value = { src: v.image_value.src, ...(v.image_value.id ? { id: v.image_value.id } : {}) }
+  return v
+}
 // Key order doesn't matter: EmDash may store an image value's keys in a
 // different order than they were written.
 const canonical = (v) =>
   Array.isArray(v) ? v.map(canonical) : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canonical(v[k])])) : v
-const same = (a, b) => JSON.stringify(canonical(values(a))) === JSON.stringify(canonical(values(b)))
+const same = (a, b) => JSON.stringify(canonical(comparable(a))) === JSON.stringify(canonical(comparable(b)))
 
 function defaultValues(spec) {
   const format = spec.format ?? 'plain'
@@ -50,13 +66,25 @@ async function listAll(client, collection, locale) {
 
 // `client`: EmDashClient (listAll/create/update/publish); `api(method, path)`:
 // raw REST calls (revisions, schema).
-export async function migrateCopyCollections({ client, api, manifests, dryRun = false, log = () => {} }) {
-  const result = { copied: 0, draftsCopied: 0, replacedDefaults: 0, alreadyThere: 0, conflicts: [], missingCollections: [], hidden: false }
+export async function migrateCopyCollections({ client, api, manifests, legacy = LEGACY_COLLECTIONS, dryRun = false, log = () => {} }) {
+  const result = { copied: 0, draftsCopied: 0, replacedDefaults: 0, alreadyThere: 0, conflicts: [], missingCollections: [], hidden: false, legacyHidden: [] }
 
+  // Old rows by locale|route#key, from page_copy and any legacy collection.
+  // Either may not exist (e.g. a database seeded after the move).
   const old = new Map()
-  for (const locale of LOCALES) {
-    for (const row of await listAll(client, 'page_copy', locale)) old.set(`${locale}|${row.data.route_path}#${row.data.key}`, row)
+  const present = new Set()
+  const readSource = async (collection, routeOf) => {
+    try {
+      for (const locale of LOCALES) {
+        for (const row of await listAll(client, collection, locale)) old.set(`${locale}|${routeOf(row)}#${row.data.key}`, row)
+      }
+      present.add(collection)
+    } catch (error) {
+      if (error?.status !== 404) throw error
+    }
   }
+  await readSource('page_copy', (row) => row.data.route_path)
+  for (const { collection, route } of legacy) await readSource(collection, () => route)
   const draftValues = async (row) => {
     if (!row.draftRevisionId || row.draftRevisionId === row.liveRevisionId) return undefined
     const revision = (await api('GET', `/revisions/${row.draftRevisionId}`)).item
@@ -135,9 +163,16 @@ export async function migrateCopyCollections({ client, api, manifests, dryRun = 
   }
 
   if (complete && !result.missingCollections.length) {
-    log('~ page_copy: hidden from the sidebar')
-    if (!dryRun) await api('PUT', '/schema/collections/page_copy', { hidden: true })
-    result.hidden = true
+    if (present.has('page_copy')) {
+      log('~ page_copy: hidden from the sidebar')
+      if (!dryRun) await api('PUT', '/schema/collections/page_copy', { hidden: true })
+      result.hidden = true
+    }
+    for (const { collection } of legacy.filter((l) => present.has(l.collection))) {
+      log(`~ ${collection}: hidden from the sidebar (moved)`)
+      if (!dryRun) await api('PUT', `/schema/collections/${collection}`, { hidden: true })
+      result.legacyHidden.push(collection)
+    }
   }
   return result
 }

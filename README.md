@@ -12,11 +12,19 @@ Marketing site for Victoria Venezuela Foundation — a nonprofit connecting US d
 
 ### Option 1: Dev container (recommended)
 
-Open the repo in a dev container-capable editor (VS Code, GitHub Codespaces) and reopen in container. It preinstalls Node 22, Playwright's system dependencies, and runs `npm install` for both the root project and `docs-site/` on create. Ports `4321` (site + EmDash admin) and `6006` (Storybook) are forwarded to the host automatically.
+Open the repo in a dev container-capable editor (VS Code, GitHub Codespaces) and reopen in container. It preinstalls Node 22, Playwright's system dependencies, and runs `npm ci` for both the root project and `docs-site/` on create. Ports `4321` (site + EmDash admin) and `6006` (Storybook) are forwarded to the host automatically.
 
 ```bash
 npm run dev
 ```
+
+The container is named `vvf-dev-container` ("VVF dev container" in the editor) and keeps a few things apart from your host:
+
+- **Its own `node_modules`:** the named volumes `vvf-dev-node-modules` and `vvf-dev-docs-node-modules`, so installing Linux builds of native packages never touches a host checkout's `node_modules`. You can run `npm run dev` on the host and in the container (one at a time: both use port 4321 and the same `data.db`).
+- **Docker inside:** `docker` and `docker compose` work from the container, using the host's Docker engine (`docker compose up --build` for the [Postgres + S3 stack](docs-site/src/content/docs/running-anywhere.md)). Containers started from inside run on the host, so their ports are on the host's `localhost` (from inside the container, use `host.docker.internal:<port>`).
+- **Memory:** building the site needs a few GB. If a build inside the container is `Killed`, give Docker Desktop more memory (Settings → Resources) or stop other containers.
+
+After changing `.devcontainer/devcontainer.json`, use "Rebuild Container"; the `node_modules` volumes are kept between rebuilds.
 
 ### Option 2: Manual setup
 
@@ -32,6 +40,10 @@ This starts the site at `http://localhost:4321` and the EmDash admin at `http://
 The `pages` collection (hidden from the sidebar) lists every static route that isn't already covered by another collection (home, contact, privacy policy, etc.), and each page's copy collection holds its declared text slots; both keep themselves in sync automatically on the first request after the server starts — no one adds entries by hand. One-time setup per environment: generate a personal access token via the admin UI's token/API settings (name it `static-page-sync`, scopes `content:read` + `content:write`) and set it as `EMDASH_SYNC_PAT` (see `.env.example`).
 
 On first run, EmDash creates a local `data.db` and seeds it from [`seed/seed.json`](seed/seed.json) — the site's content schema (collections + fields) and starter content, both version-controlled. `data.db`, `.emdash/`, and `/uploads` are local/generated and gitignored; nothing about them needs to be committed.
+
+## Running in a container
+
+The site builds into one container image that runs on Postgres and any S3-compatible bucket, configured entirely at runtime. `docker compose up --build` runs that stack locally (site, Postgres and SeaweedFS, seeded with the public seed). `npm run data:export` / `data:import` move a whole site, database and media, between environments. See [Running Anywhere](docs-site/src/content/docs/running-anywhere.md).
 
 ## Basecamp CLI
 

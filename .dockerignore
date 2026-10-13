@@ -1,0 +1,35 @@
+# Never in an image: secrets, local data, generated output, child data.
+.env
+.env.*
+!.env.example
+data.db*
+uploads/
+.emdash/
+node_modules/
+dist/
+.astro/
+
+# Child data and migration inputs (public seed/seed.json is enough to build
+# and seed; see .gitignore for why these stay local).
+seed/seed.local.json
+seed/media/
+scripts/migrate/snapshot/
+scripts/migrate/.cache/
+
+# Not needed to build or run the site.
+.git/
+.github/
+.devcontainer/
+.obsidian/
+.claude/
+.opencode/
+.storybook/
+docs-site/
+openspec/
+e2e/
+test-results/
+playwright-report/
+blob-report/
+storybook-static/
+*.md
+!README.md

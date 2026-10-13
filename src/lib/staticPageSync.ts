@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from 'node:fs'
+import { readdirSync } from 'node:fs'
 import path from 'node:path'
 import { EmDashApiError, EmDashClient } from 'emdash/client'
 import { copyCollectionFor } from './cmsNavigation.mjs'
@@ -30,9 +30,28 @@ function toRoutePath(relFile: string): string {
   return route === '' ? '/' : route
 }
 
-export function scanStaticPageRoutes(pagesDir: string): StaticPageRoute[] {
+// Page files as repository-relative paths ('src/pages/contact/index.astro').
+// The server gets them from import.meta.glob keys, resolved at build time, so
+// the running image needs no source tree (make-app-portable, design D5);
+// listPageFiles reads them from disk for tests and scripts.
+export function pageFilesFromGlob(keys: string[]): string[] {
+  return keys.map((k) => k.replace(/^\//, '')).sort()
+}
+
+export function listPageFiles(pagesDir: string): string[] {
   const entries = readdirSync(pagesDir, { recursive: true }) as string[]
-  const relPaths = entries.map((entry) => entry.split(/[\\/]/).join('/'))
+  return entries
+    .map((entry) => `src/pages/${entry.split(/[\\/]/).join('/')}`)
+    .filter((f) => f.endsWith('.astro'))
+    .sort()
+}
+
+export function scanStaticPageRoutes(pagesDir: string): StaticPageRoute[] {
+  return staticRoutesFrom(listPageFiles(pagesDir))
+}
+
+export function staticRoutesFrom(pageFiles: string[]): StaticPageRoute[] {
+  const relPaths = pageFiles.map((f) => f.replace(/^src\/pages\//, ''))
 
   return relPaths
     .filter((rel) => rel.endsWith('.astro'))
@@ -57,12 +76,12 @@ export interface ManifestSource {
 // module paths as returned by import.meta.glob ('/src/pages/events/_copy.ts').
 export function manifestSources(
   modules: Record<string, { default: CopyManifest | CopyManifest[] }>,
-  rootDir: string
+  pageFiles: string[]
 ): ManifestSource[] {
   return Object.entries(modules).flatMap(([modulePath, mod]) => {
     const rel = modulePath.replace(/^\//, '')
     const manifests = Array.isArray(mod.default) ? mod.default : [mod.default]
-    return manifests.map((manifest) => ({ manifest, sourceFile: pageFileNextTo(rel, rootDir) }))
+    return manifests.map((manifest) => ({ manifest, sourceFile: pageFileNextTo(rel, pageFiles) }))
   })
 }
 
@@ -70,15 +89,15 @@ export function manifestSources(
 // dynamic template ([slug].astro); for `_copy.ts` its index.astro, else the
 // directory's only other page (e.g. [category].astro); else the manifest
 // itself (site-wide copy).
-function pageFileNextTo(relManifest: string, rootDir: string): string {
+function pageFileNextTo(relManifest: string, pageFiles: string[]): string {
   const dir = path.posix.dirname(relManifest)
-  const abs = path.join(rootDir, dir)
+  const inDir = pageFiles.filter((f) => path.posix.dirname(f) === dir).map((f) => path.posix.basename(f))
   if (relManifest.endsWith('_copy.detail.ts')) {
-    const template = existsSync(abs) ? readdirSync(abs).find((f) => f.startsWith('[') && f.endsWith('.astro')) : undefined
+    const template = inDir.find((f) => f.startsWith('[') && f.endsWith('.astro'))
     return template ? `${dir}/${template}` : relManifest
   }
-  if (existsSync(path.join(abs, 'index.astro'))) return `${dir}/index.astro`
-  const page = existsSync(abs) ? readdirSync(abs).find((f) => f.endsWith('.astro')) : undefined
+  if (inDir.includes('index.astro')) return `${dir}/index.astro`
+  const page = inDir.find((f) => f.endsWith('.astro'))
   return page ? `${dir}/${page}` : relManifest
 }
 
@@ -89,7 +108,8 @@ type Item = Awaited<ReturnType<Client['create']>>
 export interface SyncStaticPagesOptions {
   baseUrl: string
   token: string
-  pagesDir: string
+  // Repository-relative page files (see pageFilesFromGlob / listPageFiles).
+  pageFiles: string[]
   manifests?: ManifestSource[]
   client?: Client
 }
@@ -156,13 +176,13 @@ export async function syncStaticPages(options: SyncStaticPagesOptions): Promise<
     collectionsMissing: [],
   }
 
-  await syncPages(client, routesToSync(options.pagesDir, manifests), result)
+  await syncPages(client, routesToSync(options.pageFiles, manifests), result)
   await syncSlots(client, manifests, result)
   return result
 }
 
-function routesToSync(pagesDir: string, manifests: ManifestSource[]): StaticPageRoute[] {
-  const routes = new Map(scanStaticPageRoutes(pagesDir).map((r) => [r.routePath, r]))
+function routesToSync(pageFiles: string[], manifests: ManifestSource[]): StaticPageRoute[] {
+  const routes = new Map(staticRoutesFrom(pageFiles).map((r) => [r.routePath, r]))
   for (const { manifest, sourceFile } of manifests) {
     if (manifest.route !== GLOBAL_ROUTE && !routes.has(manifest.route)) {
       routes.set(manifest.route, { routePath: manifest.route, sourceFile })

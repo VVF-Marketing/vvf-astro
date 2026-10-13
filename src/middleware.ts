@@ -1,6 +1,7 @@
 import { defineMiddleware } from 'astro:middleware'
+import { EMDASH_SYNC_PAT } from 'astro:env/server'
 import { after } from 'emdash'
-import { manifestSources, syncStaticPages } from './lib/staticPageSync'
+import { manifestSources, pageFilesFromGlob, syncStaticPages } from './lib/staticPageSync'
 import { localeFromPath, localizePath, stripLocale, type Locale } from './lib/i18n'
 import { projectPathFor, redirectStatus } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
@@ -31,18 +32,25 @@ const COPY_MANIFESTS = import.meta.glob<{ default: CopyManifest | CopyManifest[]
   { eager: true }
 )
 
+// Every page file, resolved at build time (keys only; nothing is imported),
+// so the sync needs no src/ directory at runtime (make-app-portable, D5).
+const PAGE_FILES = pageFilesFromGlob(Object.keys(import.meta.glob('/src/pages/**/*.astro')))
+
+const HEALTH_PATHS = new Set(['/healthz', '/readyz'])
+
 export const onRequest = defineMiddleware(async (context, next) => {
   if (!hasSynced) {
     hasSynced = true
-    const token = import.meta.env.EMDASH_SYNC_PAT
+    // Read at runtime (astro:env secret), never baked into the build.
+    const token = EMDASH_SYNC_PAT
 
     if (token) {
       const run = async () => {
         const result = await syncStaticPages({
           baseUrl: context.url.origin,
           token,
-          pagesDir: `${process.cwd()}/src/pages`,
-          manifests: manifestSources(COPY_MANIFESTS, process.cwd()),
+          pageFiles: PAGE_FILES,
+          manifests: manifestSources(COPY_MANIFESTS, PAGE_FILES),
         })
         console.log('[static-page-sync]', result)
       }
@@ -70,6 +78,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const locale = localeFromPath(context.url.pathname)
   const path = stripLocale(context.url.pathname)
   if (path.startsWith('/_')) return next()
+  // Health endpoints: answered as-is, never localized or rewritten, and only
+  // at their own path (no /es copy).
+  if (HEALTH_PATHS.has(path)) return locale === 'en' ? next() : new Response('Not found', { status: 404 })
   if (locale === 'en') return withLocalizedLinks(await next(), locale, context)
   // Old Webflow /es URLs: one permanent redirect straight to the Spanish
   // project route (the English redirects in astro.config.mjs would otherwise
