@@ -141,7 +141,7 @@ export async function pageCopy() {
       } else unmapped.push(`${manifest.route} \`${key}\`: ${format === 'rich' ? '(rich text)' : spec.default}`)
     }
   }
-  writeFileSync(PAGE_COPY_ES_PATH, `${JSON.stringify(relativizeSameSiteLinks(out), null, 2)}\n`)
+  writeFileSync(PAGE_COPY_ES_PATH, `${JSON.stringify(relativizeSameSiteLinks(withManualTranslations(out)), null, 2)}\n`)
 
   report.line(`Aligned ${livePaths.length} live pages with their /es versions (${publicTable.size} translated strings).`)
   report.line(`- Slots translated: ${mapped}; without a live Spanish counterpart: ${unmapped.length} (they fall back to English).`)
@@ -149,6 +149,22 @@ export async function pageCopy() {
   if (unmapped.length) report.list(unmapped)
   report.write()
   return { translated: mapped, unmapped: unmapped.length }
+}
+
+// Spanish for slots with no counterpart on the live site, written and reviewed
+// by a person: { route: { key: text } }. Merged into seed/page-copy.es.json
+// after alignment and never overwritten by it. Marketing can still change
+// them in the CMS like any slot.
+export const MANUAL_TRANSLATIONS = {
+  _global: {
+    'a11y.newTab': '(se abre en una pestaña nueva)',
+  },
+}
+
+export function withManualTranslations(out, manual = MANUAL_TRANSLATIONS) {
+  const merged = structuredClone(out)
+  for (const [route, slots] of Object.entries(manual)) merged[route] = { ...(merged[route] ?? {}), ...slots }
+  return merged
 }
 
 // Translation table for other steps (e.g. event content kept in mappers).

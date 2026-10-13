@@ -36,7 +36,7 @@ Text has a maximum length so it fits the design; if a change is too long, you'll
 
 ## Linking to other pages of the site
 
-Write links to the site as a **path**, starting with `/` — for example `/ways-to-give` or `/events/2026-golf-tournament` — not as the full address (`https://www.victoriavenezuelafoundation.org/...`). You don't need to add `/es` in Spanish text: the site always sends readers to the page in the language they're reading. If you paste a full address of the site, you'll be asked to use the path instead. Links to other websites are written in full, as usual.
+Write links to the site as a **path**, starting with `/` — for example `/ways-to-give` or `/events/2026-golf-tournament` — not as the full address (`https://www.victoriavenezuelafoundation.org/...`). You don't need to add `/es` in Spanish text: the site always sends readers to the page in the language they're reading. If you paste a full address of the site, you'll be asked to use the path instead. Links to other websites are written in full, as usual. They open in a new tab automatically, and screen readers announce that; you don't need to set anything.
 
 ## Drafts, publishing and undo
 

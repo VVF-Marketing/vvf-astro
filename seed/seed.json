@@ -16795,6 +16795,38 @@
           "format": "plain",
           "stale": false
         }
+      },
+      {
+        "id": "copy_site--a11y.newTab",
+        "status": "published",
+        "data": {
+          "key": "a11y.newTab",
+          "label": "Added to every link to another website (screen readers)",
+          "title": "104 · Content · Added to every link to another website (screen readers)",
+          "section": "content",
+          "position": 104,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "(opens in a new tab)"
+        }
+      },
+      {
+        "id": "copy_site--a11y.newTab--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_site--a11y.newTab",
+        "data": {
+          "key": "a11y.newTab",
+          "label": "Added to every link to another website (screen readers)",
+          "title": "104 · Content · Added to every link to another website (screen readers)",
+          "section": "content",
+          "position": 104,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "(se abre en una pestaña nueva)"
+        }
       }
     ],
     "copy_blog": [

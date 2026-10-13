@@ -6,13 +6,16 @@ import { localeFromPath } from './i18n'
 
 type GlobalCopy = Awaited<ReturnType<typeof getPageCopy<typeof globalCopy.slots>>>['copy']
 
-const perRequest = new WeakMap<Request, Promise<GlobalCopy>>()
+// Keyed by `locals`, which is one object for the whole request. Not by the
+// Request: on /es pages the middleware's rewrite gives the page a new Request,
+// so the middleware and the page would each load the copy.
+const perRequest = new WeakMap<object, Promise<GlobalCopy>>()
 
-export function getGlobalCopy(astro: { request: Request; originPathname: string }): Promise<GlobalCopy> {
-  let copy = perRequest.get(astro.request)
+export function getGlobalCopy(astro: { locals: object; originPathname: string }): Promise<GlobalCopy> {
+  let copy = perRequest.get(astro.locals)
   if (!copy) {
     copy = getPageCopy(globalCopy, localeFromPath(astro.originPathname)).then((r) => r.copy)
-    perRequest.set(astro.request, copy)
+    perRequest.set(astro.locals, copy)
   }
   return copy
 }

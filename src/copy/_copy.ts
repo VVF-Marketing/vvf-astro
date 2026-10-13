@@ -137,4 +137,5 @@ export default defineCopy(GLOBAL_ROUTE, {
   'a11y.nextLogos': { label: 'Logo carousel: next button (screen readers)', default: 'Next logos' },
   'a11y.prevStory': { label: 'Stories carousel: previous button (screen readers)', default: 'Previous story' },
   'a11y.nextStory': { label: 'Stories carousel: next button (screen readers)', default: 'Next story' },
+  'a11y.newTab': { label: 'Added to every link to another website (screen readers)', default: '(opens in a new tab)', maxLength: 40 },
 })

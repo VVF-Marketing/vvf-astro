@@ -1379,7 +1379,8 @@
     "event.specialHeading": "Oportunidades para eventos especiales",
     "event.packagesLabel": "Paquetes de patrocinio",
     "gift.other": "Otro",
-    "gift.continue": "Continuar al pago"
+    "gift.continue": "Continuar al pago",
+    "a11y.newTab": "(se abre en una pestaña nueva)"
   },
   "/contact": {
     "seo.title": "Contacto | Fundación Victoria Venezuela",

@@ -4,6 +4,9 @@ import { manifestSources, syncStaticPages } from './lib/staticPageSync'
 import { localeFromPath, localizePath, stripLocale, type Locale } from './lib/i18n'
 import { projectPathFor, redirectStatus } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
+import { openExternalLinks } from './lib/externalLinks'
+import { getGlobalCopy } from './lib/globalCopy'
+import globalCopy from './copy/_copy'
 import type { CopyManifest } from './lib/copy'
 import { guardEmDashApi } from './lib/emdashGuard'
 import { activityChannel, runWithActivityActor } from './lib/activityContext'
@@ -67,18 +70,34 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const locale = localeFromPath(context.url.pathname)
   const path = stripLocale(context.url.pathname)
   if (path.startsWith('/_')) return next()
-  if (locale === 'en') return withLocalizedLinks(await next(), locale)
+  if (locale === 'en') return withLocalizedLinks(await next(), locale, context)
   // Old Webflow /es URLs: one permanent redirect straight to the Spanish
   // project route (the English redirects in astro.config.mjs would otherwise
   // land Spanish visitors on English pages).
   const legacyTarget = projectPathFor(path)
   if (legacyTarget !== (path.replace(/\/$/, '') || '/')) return context.redirect(localizePath(legacyTarget, 'es') + context.url.search, redirectStatus(path))
-  return withLocalizedLinks(await next(path + context.url.search), locale)
+  return withLocalizedLinks(await next(path + context.url.search), locale, context)
 })
 
-async function withLocalizedLinks(response: Response, locale: Locale): Promise<Response> {
+// The screen-reader cue for links that open in a new tab, in the page's
+// language; the default from code if the CMS can't be read. It comes from the
+// site copy the page itself loaded for this request (getGlobalCopy), so it
+// costs no extra CMS query.
+async function newTabCue(context: CueContext): Promise<string> {
+  try {
+    return (await getGlobalCopy(context))['a11y.newTab']
+  } catch {
+    return globalCopy.slots['a11y.newTab'].default
+  }
+}
+
+type CueContext = { locals: object; originPathname: string }
+
+async function withLocalizedLinks(response: Response, locale: Locale, context: CueContext): Promise<Response> {
   if (!response.headers.get('content-type')?.includes('text/html')) return response
-  const html = localizeLinks(await response.text(), locale)
+  // Same-site links follow the page language; links to other sites open in
+  // a new tab (src/lib/externalLinks.ts).
+  const html = openExternalLinks(localizeLinks(await response.text(), locale), await newTabCue(context))
   const headers = new Headers(response.headers)
   headers.delete('content-length')
   return new Response(html, { status: response.status, statusText: response.statusText, headers })

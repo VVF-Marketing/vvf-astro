@@ -38,7 +38,7 @@ const tones = { sun: 'bg-sun', sky: 'bg-sky', salmon: 'bg-salmon' }
     soldOut ? (
       <p class="font-sans text-size-md font-bold text-brand-primary">{t['card.soldOut']}</p>
     ) : (
-      <Button href={href} variant="outline-navy" class="self-start" target={/^https?:/.test(href) ? '_blank' : undefined} rel={/^https?:/.test(href) ? 'noopener noreferrer' : undefined}>
+      <Button href={href} variant="outline-navy" class="self-start">
         {ctaLabel}
       </Button>
     )

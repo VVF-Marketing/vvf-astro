@@ -25,7 +25,7 @@ const line = 'font-body text-size-md leading-body text-brand-primary'
       {
         (venue || address) &&
           (mapUrl ? (
-            <a href={mapUrl} class="no-underline" target="_blank" rel="noopener noreferrer">
+            <a href={mapUrl} class="no-underline">
               {venue && <span class={`block ${line} underline`}>{venue}</span>}
               {address && <span class={`block ${line}`}>{address}</span>}
             </a>
