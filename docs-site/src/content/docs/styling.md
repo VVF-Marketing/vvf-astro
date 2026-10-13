@@ -13,6 +13,7 @@ All design tokens live in [`tailwind.config.cjs`](https://github.com/anclist/vvf
 | Pastels | `sun`, `salmon`, `sky` | Card and section backgrounds (live order: sun → sky → salmon) |
 | Neutrals | `page` (body background), `neutral-white`, `neutral-light-gray`, `neutral-card`, `neutral-section`, … | Surfaces, borders, table shading |
 | System | `link`, `focus`, `success`, `warning`, `error` | Links, focus rings, status messages |
+| Tables | `table-border`, `table-note` | Rich-text table outline and row dividers; source note after a table (`ContentTable`) |
 
 ## Typography
 

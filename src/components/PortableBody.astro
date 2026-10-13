@@ -1,0 +1,15 @@
+---
+// Portable Text from the CMS (resource bodies, the privacy policy), rendered
+// with EmDash's components except tables, which use the site's live table
+// style (ContentTable.astro). Wrap it in RichText for the prose styles.
+import { PortableText } from 'emdash/ui'
+import ContentTable from './ContentTable.astro'
+
+export interface Props {
+  value: unknown
+}
+
+const components = { type: { table: ContentTable } }
+---
+
+<PortableText value={Astro.props.value as never} components={components} />

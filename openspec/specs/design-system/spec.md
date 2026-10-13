@@ -14,7 +14,7 @@ Design tokens SHALL be derived from the live Webflow site's CSS custom propertie
 - **THEN** a comment or mapping table names the live variable (e.g. `--base-color-branding--brand-primary`) it mirrors
 
 ### Requirement: Live color palette
-The system SHALL expose tokens for: brand primary navy `#02335e`, brand accent cyan `#00abf9`, page background `#f2f2f2`, gray background `#f9f9f9`, neutral light gray `#e7e7e7`, neutral-100 `#f8f9fa`, white, link/focus blue `#1e73be`, pastels sun `#f9eac6` / salmon `#ffd7d7` / sky `#c1e7f5`, and system status pairs (success `#cef5ca`/`#114e0b`, warning `#fcf8d8`/`#5e5515`, error `#f8e4e4`/`#3b0b0b`).
+The system SHALL expose tokens for: brand primary navy `#02335e`, brand accent cyan `#00abf9`, page background `#f2f2f2`, gray background `#f9f9f9`, neutral light gray `#e7e7e7`, neutral-100 `#f8f9fa`, white, link/focus blue `#1e73be`, pastels sun `#f9eac6` / salmon `#ffd7d7` / sky `#c1e7f5`, rich-text table border `#dce4ec`, rich-text table note text `#7c878f`, and system status pairs (success `#cef5ca`/`#114e0b`, warning `#fcf8d8`/`#5e5515`, error `#f8e4e4`/`#3b0b0b`).
 
 #### Scenario: Default body colors
 - **WHEN** any page renders body text with no section override
@@ -23,6 +23,10 @@ The system SHALL expose tokens for: brand primary navy `#02335e`, brand accent c
 #### Scenario: Focus state
 - **WHEN** a keyboard user focuses a link, button, or field
 - **THEN** a visible focus indicator uses the focus-blue token
+
+#### Scenario: Table colors from tokens
+- **WHEN** a rich-text table renders
+- **THEN** its border, header and note colours come from the table-border, sky and table-note tokens, not hard-coded values
 
 ### Requirement: Live typography
 The system SHALL match the live font roles: Nunito for headings, buttons, navigation, and UI labels; Open Sans for paragraph text (18px); Poppins only where the live site uses it (the event sponsorship-benefits comparison grid). It SHALL use the live heading scale (desktop: h1 4rem, h2 3rem, h3 2rem, h4 32px, h5 1.25rem, h6 20px, all weight 800; below 768px: h1 2.5rem, h2 2rem, h3 1.5rem, h4 1.25rem, h5 1rem, h6 .875rem) and the live line-height scale (tight 1.1, snug 1.25, normal 1.4, relaxed 1.6). Fonts the migrated components don't use SHALL NOT be loaded.

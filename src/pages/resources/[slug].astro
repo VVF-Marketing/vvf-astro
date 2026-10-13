@@ -2,10 +2,10 @@
 // Resource detail — live /resources/<slug>: breadcrumbs, last-updated date,
 // title, authors, share link, featured image, body, PDF download and a
 // sponsorship CTA, with the newsletter box and related resources alongside.
-import { PortableText } from 'emdash/ui'
 import PageLayout from '../../layouts/PageLayout.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 import RichText from '../../components/RichText.astro'
+import PortableBody from '../../components/PortableBody.astro'
 import Button from '../../components/Button.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import ArticleCard from '../../components/ArticleCard.astro'
@@ -90,7 +90,7 @@ const crumbs = [
           {resource.imageUrl && <img src={resource.imageUrl} alt={resource.imageAlt ?? ''} class="mb-12 w-full rounded-[20px] object-cover" />}
           {resource.body && (
             <RichText class="md:[&_h2]:text-[2rem]">
-              <PortableText value={resource.body} />
+              <PortableBody value={resource.body} />
             </RichText>
           )}
           {resource.fileUrl && (

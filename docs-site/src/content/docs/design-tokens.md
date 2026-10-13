@@ -43,6 +43,8 @@ Font roles: Nunito for headings, buttons, navigation and UI labels. Open Sans fo
 | `success` | `DEFAULT: #cef5ca, dark: #114e0b` | --base-color-system--success-green(-dark) |
 | `warning` | `DEFAULT: #fcf8d8, dark: #5e5515` | --base-color-system--warning-yellow(-dark) |
 | `error` | `DEFAULT: #f8e4e4, dark: #3b0b0b` | --base-color-system--error-red(-dark) |
+| `table-border` | `#dce4ec` | live .article_body table/th/td border (page style block, no variable) |
+| `table-note` | `#7c878f` | live .article_body table + p (source note after a table, no variable) |
 
 ## fontFamily
 

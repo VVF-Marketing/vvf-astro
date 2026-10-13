@@ -4,7 +4,7 @@
 // rich `body` copy slot (default: _body.json).
 import PageLayout from '../../layouts/PageLayout.astro'
 import RichText from '../../components/RichText.astro'
-import { PortableText } from 'emdash/ui'
+import PortableBody from '../../components/PortableBody.astro'
 import { getPageCopy } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
 import pageCopy from './_copy'
@@ -25,7 +25,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
   </section>
   <section class="px-6 pb-16 md:pb-[120px] pt-[88px]">
     <RichText class="mx-auto max-w-[760px]">
-      <PortableText value={copy['body']} />
+      <PortableBody value={copy['body']} />
     </RichText>
   </section>
 </PageLayout>

@@ -1,7 +1,7 @@
 ---
 // Long-form copy (legal pages, resource bodies) styled like the live
 // `.w-richtext` blocks: Open Sans 18px paragraphs, Nunito headings, disc
-// lists, cyan links. Pass sanitized HTML via `html`, or children via slot.
+// lists, cyan links, table source notes. Pass sanitized HTML via `html`, or children via slot.
 export interface Props {
   html?: string
   class?: string
@@ -18,7 +18,9 @@ const prose = [
   '[&_a]:text-link [&_a]:underline [&_strong]:font-bold',
   '[&_blockquote]:my-8 [&_blockquote]:rounded-2xl [&_blockquote]:border-0 [&_blockquote]:bg-sky [&_blockquote]:p-8 [&_blockquote]:text-size-lg',
   '[&_img]:my-8 [&_img]:rounded-2xl',
-  '[&_table]:my-8 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-neutral-light-gray [&_td]:p-3 [&_th]:border [&_th]:border-neutral-light-gray [&_th]:bg-neutral-card [&_th]:p-3 [&_th]:text-left',
+  // Tables render through ContentTable.astro; a paragraph right after one is
+  // its source note (live `.article_body table + p`).
+  '[&_.content-table+p]:text-size-sm [&_.content-table+p]:text-table-note',
 ].join(' ')
 ---
 

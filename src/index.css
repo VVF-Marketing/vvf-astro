@@ -24,6 +24,9 @@
     --base-color-system--warning-yellow-dark: #5e5515;
     --base-color-system--error-red: #f8e4e4;
     --base-color-system--error-red-dark: #3b0b0b;
+    /* Rich-text tables (live .article_body page style block, no variable). */
+    --table-border: #dce4ec;
+    --table-note: #7c878f;
 
     --base-fonts-branding--font-heading: Nunito, sans-serif;
     --base-fonts-branding--font-body: Nunito, sans-serif;
