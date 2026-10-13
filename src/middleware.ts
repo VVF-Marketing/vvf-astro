@@ -1,7 +1,8 @@
 import { defineMiddleware } from 'astro:middleware'
 import { after } from 'emdash'
 import { manifestSources, syncStaticPages } from './lib/staticPageSync'
-import { localeFromPath, stripLocale } from './lib/i18n'
+import { localeFromPath, localizePath, stripLocale } from './lib/i18n'
+import { projectPathFor } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
 import type { CopyManifest } from './lib/copy'
 
@@ -53,6 +54,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const locale = localeFromPath(context.url.pathname)
   const path = stripLocale(context.url.pathname)
   if (locale === 'en' || path.startsWith('/_')) return next()
+  // Old Webflow /es URLs: one permanent redirect straight to the Spanish
+  // project route (the English redirects in astro.config.mjs would otherwise
+  // land Spanish visitors on English pages).
+  const legacyTarget = projectPathFor(path)
+  if (legacyTarget !== (path.replace(/\/$/, '') || '/')) return context.redirect(localizePath(legacyTarget, 'es') + context.url.search, 301)
   const response = await next(path + context.url.search)
   if (!response.headers.get('content-type')?.includes('text/html')) return response
   const html = localizeLinks(await response.text(), locale)

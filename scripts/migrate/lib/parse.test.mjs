@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   findAssetUrls,
+  parseCorporateTiers,
   parseChild,
   parseChildList,
   parseEvent,
@@ -144,5 +145,43 @@ describe('findAssetUrls', () => {
     const urls = findAssetUrls(eventHtml)
     expect(urls).toContain('https://cdn.prod.website-files.com/site/sponsor.png')
     expect(urls.filter((u) => u.endsWith('sponsor.png'))).toHaveLength(1)
+  })
+})
+
+describe('parseChild (Spanish labels)', () => {
+  it('reads the Spanish field labels', () => {
+    const html = `<section class="section_child-detail"><h1>Ana</h1>
+      <h2>Fecha de nacimiento:</h2><p>1 de mayo de 2018</p>
+      <h2>Género:</h2><p>Femenino</p>
+      <h2>Sueño:</h2><p>Ser doctora</p></section>`
+    expect(parseChild(html)).toMatchObject({ displayName: 'Ana', birthday: '1 de mayo de 2018', gender: 'Femenino', dream: 'Ser doctora' })
+  })
+})
+
+// Review finding (PR #15): the Spanish page labels its benefit groups in
+// Spanish, so its tiers came back without benefits.
+describe('parseCorporateTiers', () => {
+  const page = (labels) => `<div class="w-tabs"><div class="heading-28">Tiers</div>
+    <div class="w-tab-menu"><a class="w-tab-link"><h4>Amigo</h4><h6>$250/año</h6></a></div>
+    <div class="w-tab-content"><div class="w-tab-pane">
+      <div><p>${labels[0]}:</p><ul><li>Inclusión en el informe anual</li></ul></div>
+      <div><p>${labels[1]}:</p><ul><li>(25) Pegatinas de la fundación</li></ul></div>
+      <div><p>${labels[2]}:</p><ul><li>Participación en la gala anual</li></ul></div>
+    </div></div></div>`
+
+  it.each([
+    ['English', ['Recognition', 'Promotional items', 'Activities']],
+    ['Spanish', ['Reconocimiento', 'Artículos promocionales', 'Actividades']],
+  ])('reads the benefit groups labelled in %s', (_, labels) => {
+    expect(parseCorporateTiers(page(labels))).toEqual([
+      {
+        tierName: 'Amigo',
+        price: '$250/año',
+        recognitionBenefits: ['Inclusión en el informe anual'],
+        promotionalBenefits: ['(25) Pegatinas de la fundación'],
+        activityBenefits: ['Participación en la gala anual'],
+        order: 1,
+      },
+    ])
   })
 })

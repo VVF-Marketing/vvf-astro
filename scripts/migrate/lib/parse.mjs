@@ -53,7 +53,17 @@ export function parseSeo(html) {
 
 // --- Team --------------------------------------------------------------
 
-const TIER_BY_TAGLINE = { BOARD: 'board', LEADERSHIP: 'leader', LEADERS: 'leader', STAFF: 'staff' }
+const TIER_BY_TAGLINE = {
+  BOARD: 'board',
+  LEADERSHIP: 'leader',
+  LEADERS: 'leader',
+  STAFF: 'staff',
+  // Spanish (/es) section taglines.
+  'JUNTA DIRECTIVA': 'board',
+  LIDERAZGO: 'leader',
+  LÍDERES: 'leader',
+  PERSONAL: 'staff',
+}
 
 // Our Team index: every tier section with its members' per-tier role.
 // A person can appear in several tiers with a different title in each.
@@ -131,6 +141,16 @@ export function parseTeamMember(html) {
 
 // --- Children ----------------------------------------------------------
 
+// Field labels on child pages, by locale (Spanish pages use their own labels).
+const CHILD_FIELD_ALIASES = {
+  edad: 'age',
+  'fecha de nacimiento': 'birthday',
+  cumpleaños: 'birthday',
+  género: 'gender',
+  genero: 'gender',
+  sueño: 'dream',
+}
+
 export function parseChild(html) {
   const $ = load(html)
   const root = $('.section_child-detail')
@@ -139,7 +159,8 @@ export function parseChild(html) {
     const label = clean($(h).text())
     if (!label?.endsWith(':')) return
     const value = clean($(h).next().text())
-    if (value) fields[label.slice(0, -1).toLowerCase()] = value
+    const key = label.slice(0, -1).toLowerCase()
+    if (value) fields[CHILD_FIELD_ALIASES[key] ?? key] = value
   })
   const name = clean(root.find('h1').first().text())
   const aboutHeading = root.find('*').filter((_, e) => clean($(e).text())?.startsWith('About ') && !$(e).children().length).first()
@@ -343,6 +364,17 @@ function dedupeBySrc(images) {
 
 // --- Corporate sponsorship tiers ---------------------------------------
 
+// Benefit group labels as the English and Spanish pages write them (without
+// the trailing colon). Unknown labels are ignored.
+const TIER_BENEFIT_GROUPS = {
+  recognition: 'recognitionBenefits',
+  reconocimiento: 'recognitionBenefits',
+  activities: 'activityBenefits',
+  actividades: 'activityBenefits',
+  'promotional items': 'promotionalBenefits',
+  'artículos promocionales': 'promotionalBenefits',
+}
+
 export function parseCorporateTiers(html) {
   const $ = load(html)
   const tabs = $('.w-tabs').filter((_, t) => $(t).find('.heading-28').length > 0).first()
@@ -355,16 +387,16 @@ export function parseCorporateTiers(html) {
         .find('p')
         .filter((_, p) => clean($(p).text())?.endsWith(':'))
         .each((_, label) => {
-          const key = clean($(label).text()).slice(0, -1).toLowerCase()
-          groups[key] = listItems($, $(label).parent())
+          const field = TIER_BENEFIT_GROUPS[clean($(label).text()).slice(0, -1).toLowerCase()]
+          if (field) groups[field] = listItems($, $(label).parent())
         })
       const $tab = names.eq(order)
       return {
         tierName: clean($tab.find('h4').text()),
         price: clean($tab.find('h6').text()),
-        recognitionBenefits: groups['recognition'],
-        activityBenefits: groups['activities'],
-        promotionalBenefits: groups['promotional items'],
+        recognitionBenefits: groups.recognitionBenefits,
+        activityBenefits: groups.activityBenefits,
+        promotionalBenefits: groups.promotionalBenefits,
         order: order + 1,
       }
     })

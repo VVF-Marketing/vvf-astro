@@ -1,0 +1,639 @@
+{
+  "path": "/",
+  "seo": {
+    "title": "Fundación Victoria Venezuela | Nutrición, atención médica y educación",
+    "description": "Somos una organización sin fines de lucro 501(c)(3) con sede en Weston, Florida, dedicada a brindar nutrición, atención médica y educación a niños en Venezuela. Apadrina a un niño desde $25 al mes.",
+    "ogTitle": "Fundación Victoria Venezuela | Nutrición, atención médica y educación",
+    "ogDescription": "Somos una organización sin fines de lucro 501(c)(3) con sede en Weston, Florida, dedicada a brindar nutrición, atención médica y educación a niños en Venezuela. Apadrina a un niño desde $25 al mes.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a334d2a15722bfe5e653b96_0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp",
+          "alt": "A smiling girl at a Victoria Venezuela Foundation event."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a334d2a15722bfe5e653b96_0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp",
+          "alt": "A smiling girl at a Victoria Venezuela Foundation event."
+        },
+        {
+          "type": "h1",
+          "text": "Transforma la vida de un niño en Venezuela"
+        },
+        {
+          "type": "p",
+          "text": "Todo niño merece nutrición, atención médica y educación. La Fundación Victoria Venezuela ofrece las tres cosas a través de programas que llegan a los niños más vulnerables en situaciones de crisis. Tu apoyo lo hace posible."
+        },
+        {
+          "type": "cta",
+          "text": "Apadrina a un niño",
+          "href": "/sponsor-a-child"
+        },
+        {
+          "type": "cta",
+          "text": "Formas de ayudar",
+          "href": "/ways-to-give"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_stats"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sobre nosotros"
+        },
+        {
+          "type": "h2",
+          "text": "Victoria Venezuela Foundation"
+        },
+        {
+          "type": "p",
+          "text": "es una organización sin fines de lucro 501(c)(3) con sede en Weston, Florida. Brindamos nutrición, atención médica y educación a niños en Venezuela, y conectamos a donantes en EE. UU. con niños a través de un programa de apadrinamiento mensual."
+        },
+        {
+          "type": "p",
+          "text": "Impacto"
+        },
+        {
+          "type": "h2",
+          "text": "Lo que hemos logrado juntos"
+        },
+        {
+          "type": "p",
+          "text": "Estas cifras representan niños reales con el estómago lleno, corazones fuertes y un futuro prometedor. Cada número aquí es una vida transformada."
+        },
+        {
+          "type": "cta",
+          "text": "Lee el último informe de impacto",
+          "href": "/resources/impact-report-2025"
+        },
+        {
+          "type": "p",
+          "text": "+77,300"
+        },
+        {
+          "type": "h4",
+          "text": "Comidas servidas"
+        },
+        {
+          "type": "p",
+          "text": "Nutrición diaria para niños con hambre"
+        },
+        {
+          "type": "p",
+          "text": "+1,012"
+        },
+        {
+          "type": "h4",
+          "text": "Consultas médicas para niños"
+        },
+        {
+          "type": "p",
+          "text": "Salud recuperada en nuestras clínicas"
+        },
+        {
+          "type": "p",
+          "text": "+1000"
+        },
+        {
+          "type": "h4",
+          "text": "Niños en nuestros programas"
+        },
+        {
+          "type": "p",
+          "text": "Educación que abre puertas al futuro"
+        },
+        {
+          "type": "p",
+          "text": "41+"
+        },
+        {
+          "type": "h4",
+          "text": "Patrocinadores corporativos"
+        },
+        {
+          "type": "p",
+          "text": "Aliados que creen en esta misión"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "padding-global"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Programas"
+        },
+        {
+          "type": "h2",
+          "text": "Cómo ayudamos a los niños en Venezuela"
+        },
+        {
+          "type": "p",
+          "text": "Tres programas esenciales que trabajan juntos para apoyar a niños desfavorecidos en Venezuela."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f95b3e9f0007c99e1_15%20Nutrition.svg"
+        },
+        {
+          "type": "p",
+          "text": "Nutrición"
+        },
+        {
+          "type": "h4",
+          "text": "Programa de nutrición infantil"
+        },
+        {
+          "type": "p",
+          "text": "Servimos comidas calientes y brindamos apoyo nutricional a niños que padecen hambre."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f550970d8ce5d29b1_Expanded.svg"
+        },
+        {
+          "type": "p",
+          "text": "Médico"
+        },
+        {
+          "type": "h4",
+          "text": "Acceso a la salud para niños"
+        },
+        {
+          "type": "p",
+          "text": "Nuestras clínicas ofrecen chequeos, tratamientos y atención preventiva donde el acceso es limitado."
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a09259f81004f19c5a27933_Vector.svg"
+        },
+        {
+          "type": "p",
+          "text": "Educación"
+        },
+        {
+          "type": "h4",
+          "text": "Apoyo educativo para niños"
+        },
+        {
+          "type": "p",
+          "text": "Mantenemos a los niños en la escuela con útiles, apoyo y espacios de aprendizaje seguros."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_content-image"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Conexión"
+        },
+        {
+          "type": "h2",
+          "text": "Crea un vínculo que trasciende"
+        },
+        {
+          "type": "p",
+          "text": "Cuando apadrinas a un niño, no estás enviando dinero al vacío. Estás conociendo a alguien. Intercambias cartas, recibes noticias y ves crecer a una persona real. Es algo personal. Es algo duradero."
+        },
+        {
+          "type": "li",
+          "text": "El apadrinamiento mensual cubre nutrición, atención médica y educación"
+        },
+        {
+          "type": "li",
+          "text": "Correspondencia directa y fotos de tu niño apadrinado"
+        },
+        {
+          "type": "li",
+          "text": "Informes transparentes sobre cómo tu apoyo marca la diferencia"
+        },
+        {
+          "type": "cta",
+          "text": "Conoce a los niños",
+          "href": "/sponsor-a-child-list-page"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/69eed2553a4566f5d7a0e99d_8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg",
+          "alt": "Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_sponsor-carousel"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Conoce nuestro trabajo en Venezuela"
+        },
+        {
+          "type": "p",
+          "text": "Tres videos breves sobre nuestros programas."
+        },
+        {
+          "type": "h6",
+          "text": "Entrega de cartas a niños apadrinados"
+        },
+        {
+          "type": "h6",
+          "text": "Dentro de nuestro centro de nutrición en Terraplén"
+        },
+        {
+          "type": "h6",
+          "text": "Nuestra celebración anual de Navidad"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_events"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eventos y campañas"
+        },
+        {
+          "type": "h2",
+          "text": "Únase a nuestros encuentros para fortalecer la comunidad e impulsar nuestra misión"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+          "alt": "Tres golfistas y un niño junto a la bandera en el green."
+        },
+        {
+          "type": "h3",
+          "text": "Torneo Benéfico Anual de Golf 2026"
+        },
+        {
+          "type": "p",
+          "text": "2600 Country Club Way, Weston, FL 33332"
+        },
+        {
+          "type": "p",
+          "text": "Cada swing cambia una vida. Ayúdanos a brindar educación, nutrición y esperanza a los niños venezolanos."
+        },
+        {
+          "type": "cta",
+          "text": "Ver los detalles",
+          "href": "/events/2026-golf-tournament"
+        },
+        {
+          "type": "cta",
+          "text": "Ver todos los eventos",
+          "href": "/all-events"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_partners"
+      ],
+      "blocks": [
+        {
+          "type": "h3",
+          "text": "Socios corporativos"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "El manitas de confianza"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "El manitas de confianza"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d3598132e63f918c4_arrow-left.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a17b71d2da16e223f7b3150_arrow-right.svg"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb8f_6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%2520(1)%25201.svg",
+          "alt": "Boeing"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png",
+          "alt": "KP Aviation"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+          "alt": "Microsoft"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+          "alt": "Santa Teresa 1796"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+          "alt": "The Trusty Handyman"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+          "alt": "Venezuelan-American Chamber of Commerce"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb93_6aa78365864766c1b6d763fb_Abbvie.jpeg",
+          "alt": "AbbVie"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9c_6aa78365864766c1b6d76411_Accenture.png",
+          "alt": "Accenture"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb96_6aa783653f65ff7cbda7468e_AirAnalytics.jpeg",
+          "alt": "Air Analytics"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9f_6aa783684e94200fb5f9a51a_Anytime-Carpet-Cleaning.jpeg",
+          "alt": "Anytime Carpet Cleaning"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb99_6aa783684e94200fb5f9a588_Arepa-Magnet.jpeg",
+          "alt": "Arepa Magnet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab0f_6ab1abac639a89fb28ead0fc_August-Covers-Logo.png",
+          "alt": "August Covers"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+          "alt": "Back Swing Golf Events"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba2_6aa78368e8788851834aab40_BlueBox.jpeg",
+          "alt": "BlueBox"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caac6_6ab1abac639a89fb28ead0d2_Cafe-La-Carreta-Logo.png",
+          "alt": "Café La Carreta"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+          "alt": "Charity Golf International"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba8_6aa77a4f1f7e1f90273aa790_Chevron.png",
+          "alt": "Chevron"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+          "alt": "Citimarine Store"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca9da_6ab1abab56ce5288cbae4fd1_Coach-Solo-Golf-Academy-Logo.jpeg",
+          "alt": "CoachSolo Golf Academy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+          "alt": "COTMAQ"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71defc_6aac15210f7991d080df1c5c_VVF_Golf2026_Sponsor_CrepeMaker_v1.png",
+          "alt": "CrepeMaker"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5abde0d2f8ed2caa0d_6ab1abab26d46a10dd162f1f_Emmanuel-Cigars-Logo.jpeg",
+          "alt": "Don Emmanuel Cigars"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c56_6aa783b99c28a51441a8300a_Family-Cosmetic-Dentistry.png",
+          "alt": "Family Cosmetic Dentistry"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac2c27853ce5e8d82c62_6ab1abaad466174efbed1196_Fenagh-Engineering-and-Testing-Logo.jpeg",
+          "alt": "Fenagh Engineering and Testing"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab1d_6ab1abaca24bb2e4a3484506_GSnow-Creative-Logo.webp",
+          "alt": "GSnow Creative"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c53_6aa783b90038252eb22e05ce_Ikes-Barber-Shop.png",
+          "alt": "Ike's Barber Shop"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+          "alt": "Infinito Booth"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab8e_6ab1abadbde0d2f8ed2c6d3a_IonDynamic-Energy-Logo.png",
+          "alt": "IonDynamics Energy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab6_6ab1abac1a73298ddd88f1f2_IVY-Development-Corp-Logo.png",
+          "alt": "IVY Development Corp"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+          "alt": "Jet Set Gourmet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c50_6aa783b90038252eb22e05e4_LambWeston.png",
+          "alt": "Lamb Weston"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c44_6a301f4c2aaecae7a66298c1_19b54039cb4da83f45621bf6dffda58c5fb19708.png",
+          "alt": "LGT"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabd6_6ab1abadbde0d2f8ed2c6d8b_Luxe-Golf-Logo.png",
+          "alt": "Luxe Golf"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4d_6aa77a4f529956dfd3886e1a_Medtronic.png",
+          "alt": "Medtronic"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c77_6aa783b915cd9e027557cf5c_Mundo-D-Papel.jpeg",
+          "alt": "Mundo D' Papel"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c59_6aa7840787806cf4fd253bee_Mustang-FC.jpeg",
+          "alt": "Mustang FC"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c7e_6aa7840787806cf4fd253c3b_New-York-Life.jpeg",
+          "alt": "New York Life"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df01_6aac15227eecb07b16b16cdc_VVF_Golf2026_Sponsor_OnParPT_v1.png",
+          "alt": "On Par Physical Therapy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f4_6aa783b99c28a51441a82fe1_Platinum-Business-Solutions.jpeg",
+          "alt": "Platinum Business Solutions"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5bbde0d2f8ed2caa48_6ab1ababc59abb2e0f16ce57_PNC-Logo.png",
+          "alt": "PNC"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f1_6aa7840803fdb721dea00c7a_Raytheon-Technologies.png",
+          "alt": "Raytheon Technologies"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c3fe_6aa78408f09ee2a0ca46edde_SFLO.jpeg",
+          "alt": "SFLO"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caabb_6ab1abac47b1b349c34264b6_Smoke-on-the-Water-Logo.png",
+          "alt": "Smoke on the Water"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca95a_6ab1abaabe7cb403e8dcac7b_Squisito-Logo.png",
+          "alt": "Squisito Gourmet"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c415_6aa784089c28a51441a85060_Tacoly-Moly.png",
+          "alt": "Tacoly Moly"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+          "alt": "Topgolf"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c466_6aa78408f09ee2a0ca46ee4b_Triumphant-Transition-Partners.png",
+          "alt": "Triumphant Transition Partners"
+        },
+        {
+          "type": "icon",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+          "alt": "Trump Hotels"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab46_6ab1abadbe6a6db0e2302683_Vaga-Academy-Logo.png",
+          "alt": "VAGA Modeling Academy"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabf3_6ab1abadc59abb2e0f16cf62_Valley-Bank-Logo.png",
+          "alt": "Valley Bank"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5cbde0d2f8ed2caaa7_6ab1abab639a89fb28ead024_Virtrify-Logo.jpeg",
+          "alt": "Virtrify"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df06_6aac1719c35d572447d83dc6_VVF_Golf2026_Sponsor_VNVEvents_Dark_v1.png",
+          "alt": "VNV Events"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c46a_6aa77a504e94200fb5f5b832_Wells-Fargo.png",
+          "alt": "Wells Fargo"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_newsletter"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "A dónde va su dinero"
+        },
+        {
+          "type": "p",
+          "text": "En el año fiscal 2025, el 95% de los fondos se destinó directamente a nuestros programas. Hasta la fecha, hemos servido más de 77,300 comidas y financiado más de 1,012 consultas médicas para niños. Nuestros estados financieros completos se publican en nuestros informes anuales."
+        },
+        {
+          "type": "cta",
+          "text": "Ver nuestros estados financieros",
+          "href": "/financials-and-transparency"
+        }
+      ]
+    }
+  ]
+}

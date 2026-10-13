@@ -1,0 +1,322 @@
+{
+  "path": "/privacy-policy",
+  "seo": {
+    "title": "Política de privacidad | Fundación Victoria Venezuela",
+    "description": "Cómo la Fundación Victoria Venezuela recopila, utiliza, almacena y protege la información de sus donantes, voluntarios, colaboradores y visitantes del sitio web.",
+    "ogTitle": "Política de privacidad | Fundación Victoria Venezuela",
+    "ogDescription": "Cómo la Fundación Victoria Venezuela recopila, utiliza, almacena y protege la información de sus donantes, voluntarios, colaboradores y visitantes del sitio web.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "claude_temp-legal_title-section"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fecha de entrada en vigor: 6 de julio de 2026"
+        },
+        {
+          "type": "h1",
+          "text": "Política de Privacidad"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "claude_temp-legal_body-section"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Victoria Venezuela Foundation («VVF», «nosotros», «nuestro» o «nos») se compromete a proteger la privacidad de nuestros donantes, voluntarios, socios, visitantes del sitio web y miembros de la comunidad."
+        },
+        {
+          "type": "p",
+          "text": "Esta Política de Privacidad explica cómo recopilamos, usamos, almacenamos y protegemos la información cuando visita nuestro sitio web, realiza una donación, se pone en contacto con nosotros, se suscribe para recibir actualizaciones, interactúa con nuestras páginas de redes sociales o participa en nuestros programas y campañas."
+        },
+        {
+          "type": "h2",
+          "text": "1. Información que recopilamos"
+        },
+        {
+          "type": "p",
+          "text": "Podemos recopilar los siguientes tipos de información:"
+        },
+        {
+          "type": "li",
+          "text": "Nombre"
+        },
+        {
+          "type": "li",
+          "text": "Dirección de correo electrónico"
+        },
+        {
+          "type": "li",
+          "text": "Número de teléfono"
+        },
+        {
+          "type": "li",
+          "text": "Dirección postal"
+        },
+        {
+          "type": "li",
+          "text": "Monto e historial de donaciones"
+        },
+        {
+          "type": "li",
+          "text": "Información relacionada con pagos procesada por plataformas de donación de terceros (como los métodos de pago elegidos, por ejemplo, Apple Pay, Venmo, PayPal o tarjetas de crédito)"
+        },
+        {
+          "type": "li",
+          "text": "Información de voluntariado o asociaciones enviada a través de nuestros formularios en línea"
+        },
+        {
+          "type": "li",
+          "text": "Mensajes, comentarios o consultas que nos envíe directamente"
+        },
+        {
+          "type": "li",
+          "text": "Datos de uso del sitio web, como páginas visitadas, fuentes de referencia, información del dispositivo/navegador y datos de análisis de seguimiento"
+        },
+        {
+          "type": "p",
+          "text": "No recopilamos intencionadamente información personal sensible a menos que se proporcione voluntariamente y sea necesaria para un fin específico."
+        },
+        {
+          "type": "h2",
+          "text": "2. Cómo utilizamos la información"
+        },
+        {
+          "type": "p",
+          "text": "Utilizamos la información recopilada para:"
+        },
+        {
+          "type": "li",
+          "text": "Procesar donaciones, gestionar donaciones recurrentes y emitir recibos deducibles de impuestos"
+        },
+        {
+          "type": "li",
+          "text": "Mantener nuestra base de datos de colaboradores y gestionar las relaciones con los donantes"
+        },
+        {
+          "type": "li",
+          "text": "Comunicarnos con donantes, voluntarios, socios y colaboradores"
+        },
+        {
+          "type": "li",
+          "text": "Compartir actualizaciones sobre nuestra misión, campañas, eventos y programas en Venezuela"
+        },
+        {
+          "type": "li",
+          "text": "Responder a consultas, solicitudes de contacto y envíos de formularios"
+        },
+        {
+          "type": "li",
+          "text": "Gestionar las actividades de voluntariado, asociaciones y recaudación de fondos"
+        },
+        {
+          "type": "li",
+          "text": "Mejorar la funcionalidad de nuestro sitio web, nuestras comunicaciones y nuestras labores de difusión"
+        },
+        {
+          "type": "li",
+          "text": "Analizar el rendimiento de las campañas y comprender cómo interactúan los colaboradores con nuestro contenido"
+        },
+        {
+          "type": "li",
+          "text": "Cumplir con las obligaciones legales, fiscales, contables y de presentación de informes para organizaciones sin fines de lucro 501(c)(3)"
+        },
+        {
+          "type": "h2",
+          "text": "3. Donaciones y procesamiento de pagos"
+        },
+        {
+          "type": "p",
+          "text": "La información sobre donaciones y pagos se gestiona de forma segura a través de nuestra plataforma externa, Donorbox, y es procesada por redes seguras como Stripe y PayPal. Esto le permite realizar donaciones mediante tarjetas de crédito/débito, Venmo, PayPal o Apple Pay."
+        },
+        {
+          "type": "p",
+          "text": "VVF no almacena, ve ni conserva números de tarjetas de crédito completos ni credenciales financieras en los servidores de su propio sitio web. Los datos financieros son gestionados estrictamente por estos procesadores de pago verificados de acuerdo con sus respectivos protocolos de privacidad y seguridad."
+        },
+        {
+          "type": "h2",
+          "text": "4. Servicios de terceros y herramientas de CRM"
+        },
+        {
+          "type": "p",
+          "text": "Utilizamos herramientas de terceros de confianza para operar nuestro sitio web de manera eficiente, organizar los datos de forma segura e interactuar con nuestra comunidad. Estas incluyen:"
+        },
+        {
+          "type": "li",
+          "text": "HubSpot (nuestro sistema central de gestión de relaciones con los clientes (CRM) utilizado para el almacenamiento seguro de datos, la gestión de formularios, el alojamiento de recursos, el seguimiento de las interacciones de los usuarios y la gestión de las comunicaciones de difusión)"
+        },
+        {
+          "type": "li",
+          "text": "Donorbox (Plataforma de gestión de donaciones)"
+        },
+        {
+          "type": "li",
+          "text": "Stripe y PayPal (Procesamiento de pagos)"
+        },
+        {
+          "type": "li",
+          "text": "Sistemas de alojamiento web y gestión de contenidos"
+        },
+        {
+          "type": "li",
+          "text": "Google Analytics (Para medir el tráfico y el comportamiento en el sitio web)"
+        },
+        {
+          "type": "li",
+          "text": "Plataformas de redes sociales (Facebook, Instagram, YouTube y LinkedIn) para la interacción con la comunidad, el análisis de rendimiento y el seguimiento del alcance"
+        },
+        {
+          "type": "p",
+          "text": "Estas plataformas externas recopilan y procesan datos de acuerdo con sus propias políticas de privacidad independientes."
+        },
+        {
+          "type": "h2",
+          "text": "5. Cookies y tecnologías de seguimiento"
+        },
+        {
+          "type": "p",
+          "text": "Nuestro sitio web utiliza cookies, píxeles de seguimiento y etiquetas (incluidos scripts de seguimiento de HubSpot y Google Analytics) para:"
+        },
+        {
+          "type": "li",
+          "text": "Mantener las funciones básicas del sitio web y optimizar la experiencia del usuario"
+        },
+        {
+          "type": "li",
+          "text": "Comprender el tráfico de visitantes, las fuentes de referencia y la interacción con el contenido"
+        },
+        {
+          "type": "li",
+          "text": "Medir el rendimiento de las campañas de recaudación de fondos y el alcance en redes sociales"
+        },
+        {
+          "type": "p",
+          "text": "Puede ajustar la configuración de su navegador para rechazar o eliminar las cookies; sin embargo, tenga en cuenta que hacerlo puede afectar su capacidad para utilizar sin problemas ciertos elementos interactivos, formularios de contacto o estructuras de donación."
+        },
+        {
+          "type": "h2",
+          "text": "6. Cómo compartimos la información"
+        },
+        {
+          "type": "p",
+          "text": "VVF no vende, alquila, intercambia ni cede su información personal."
+        },
+        {
+          "type": "p",
+          "text": "Podemos compartir datos estrictamente bajo el principio de necesidad de conocer con:"
+        },
+        {
+          "type": "li",
+          "text": "Proveedores de servicios que nos ayudan a operar nuestra base de datos, sitio web, procesar donaciones o gestionar comunicaciones (por ejemplo, HubSpot, Donorbox)"
+        },
+        {
+          "type": "li",
+          "text": "Profesionales legales, fiscales o contables para mantener el cumplimiento normativo"
+        },
+        {
+          "type": "li",
+          "text": "Autoridades gubernamentales o reguladoras si la ley lo exige estrictamente"
+        },
+        {
+          "type": "li",
+          "text": "Miembros autorizados del equipo de VVF que necesiten la información para llevar a cabo nuestra misión humanitaria principal"
+        },
+        {
+          "type": "h2",
+          "text": "7. Seguridad de los datos"
+        },
+        {
+          "type": "p",
+          "text": "Empleamos medidas de seguridad administrativas, físicas y técnicas estándar de la industria —incluidos entornos de almacenamiento de datos en la nube seguros— para proteger sus datos contra pérdidas, accesos no autorizados, alteraciones o divulgaciones. Sin embargo, recuerde que ninguna transmisión de datos a través de Internet es totalmente impenetrable y no podemos garantizar una seguridad absoluta."
+        },
+        {
+          "type": "h2",
+          "text": "8. Privacidad de los niños"
+        },
+        {
+          "type": "p",
+          "text": "VVF sirve con orgullo a comunidades vulnerables, incluidos niños y familias en Venezuela. Estamos profundamente comprometidos con la protección de la privacidad, la seguridad y la dignidad de los menores."
+        },
+        {
+          "type": "p",
+          "text": "No recopilamos deliberadamente datos personales de niños a través de este sitio web. Si descubrimos que un menor nos ha proporcionado información personal sin la autorización válida de sus padres o tutores, actuaremos rápidamente para eliminarla de nuestros sistemas."
+        },
+        {
+          "type": "h2",
+          "text": "9. Correo electrónico y comunicaciones de marketing"
+        },
+        {
+          "type": "p",
+          "text": "Si decide recibir actualizaciones o comparte su correo electrónico/número de teléfono con nosotros (a través de nuestros formularios de HubSpot o del sitio web), es posible que le enviemos contenido ocasional destacando el impacto de VVF, nuestros esfuerzos de ayuda o formas de apoyar nuestra causa."
+        },
+        {
+          "type": "p",
+          "text": "Puede optar por no recibir comunicaciones de marketing en cualquier momento haciendo clic en el enlace de \"cancelar suscripción\" incluido al pie de nuestros correos electrónicos, o contactándonos directamente."
+        },
+        {
+          "type": "h2",
+          "text": "10. Sus derechos y control sobre la información"
+        },
+        {
+          "type": "p",
+          "text": "Usted conserva el derecho de contactarnos en cualquier momento para:"
+        },
+        {
+          "type": "li",
+          "text": "Revisar la información personal que tenemos sobre usted en nuestros sistemas"
+        },
+        {
+          "type": "li",
+          "text": "Corregir, actualizar o editar su información"
+        },
+        {
+          "type": "li",
+          "text": "Solicitar la eliminación completa de sus registros (cuando las leyes legales o financieras de mantenimiento de registros lo permitan)"
+        },
+        {
+          "type": "li",
+          "text": "Actualice sus preferencias de comunicación"
+        },
+        {
+          "type": "h2",
+          "text": "11. Enlaces externos"
+        },
+        {
+          "type": "p",
+          "text": "Nuestro sitio web incluye enlaces a otras plataformas, entidades asociadas y canales de redes sociales. VVF no tiene jurisdicción ni responsabilidad sobre el cumplimiento de la privacidad, los códigos de seguimiento o los términos de uso de propiedades web externas."
+        },
+        {
+          "type": "h2",
+          "text": "12. Revisiones de la política"
+        },
+        {
+          "type": "p",
+          "text": "Podemos revisar esta política ocasionalmente para adaptarnos a cambios normativos o actualizaciones internas. Los cambios entran en vigor inmediatamente después de su publicación en esta URL con una \"Fecha de entrada en vigor\" actualizada."
+        },
+        {
+          "type": "h2",
+          "text": "13. Contáctenos"
+        },
+        {
+          "type": "p",
+          "text": "Para cualquier aclaración, solicitud de datos o consulta sobre privacidad, por favor contáctenos:"
+        },
+        {
+          "type": "p",
+          "text": "Fundación Victoria VenezuelaSitio web: https://victoriavenezuelafoundation.org/esCorreo electrónico: info@victoriavenezuelafoundation.org"
+        }
+      ]
+    }
+  ]
+}

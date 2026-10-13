@@ -6,8 +6,11 @@ project. Change spec: `openspec/changes/migrate-webflow-site/`.
 ## Source
 
 - Site: https://www.victoriavenezuelafoundation.org (Webflow site `vvfstaging`).
-- Locale: English (primary) only. `/es` URLs and secondary-locale CMS variants
-  are never fetched.
+- Locales: English (primary) into `snapshot/`, and Spanish (`/es`, same slugs)
+  into `snapshot/es/`. Spanish items become linked translations of the English
+  ones (`transform`); Spanish page copy is translated slot by slot from the live
+  `/es` pages (`copy` → `seed/page-copy.es.json`, applied to a running EmDash by
+  `import-copy`).
 - Preferred source is the Webflow Data API (`WEBFLOW_API_TOKEN`,
   `WEBFLOW_SITE_ID` in `.env`). When the token is absent or rejected, the
   extractor falls back to crawling the English URLs in the live sitemap.
@@ -17,7 +20,7 @@ project. Change spec: `openspec/changes/migrate-webflow-site/`.
 `anclist/vvf-astro` is a public repository, and sponsored children are minors.
 Nothing identifying a child is committed:
 
-- `scripts/migrate/snapshot/children.json` — gitignored
+- `scripts/migrate/snapshot/children.json` and `snapshot/es/children.json` — gitignored
 - `seed/media/children/` — gitignored
 - `seed/seed.local.json` — gitignored; the full seed including children
 

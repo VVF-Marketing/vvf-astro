@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, slugify } from './mappers.mjs'
-import { buildSeeds, createContext } from './transform.mjs'
+import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries } from './transform.mjs'
 import { sanitizeRichText, toPlainText, toPortableText } from './lib/richtext.mjs'
 
 const CDN = 'https://cdn.prod.website-files.com/site'
@@ -81,6 +81,19 @@ describe('mapChildren', () => {
 })
 
 describe('mapEvents', () => {
+  // Review finding (PR #15): Spanish events showed the English photo
+  // descriptions harvested with the media.
+  it("describes each event photo in its own page's language", () => {
+    const harvested = { [`${CDN}/golf.jpg`]: { provider: 'local', id: 'm-golf', alt: 'Three golfers on the green.' } }
+    const spanish = { src: `${CDN}/golf.jpg`, alt: 'Tres golfistas en el green.' }
+    const page = { slug: 'golf', title: 'Golf', dateText: 'November 1, 2031', heroImage: spanish, sponsors: [], offers: [], benefitRows: [], faqs: [], gallery: [spanish], recapStats: [] }
+    const [event] = mapEvents([page], createContext(harvested)).events
+    expect(event.data.hero_image).toEqual({ provider: 'local', id: 'm-golf', alt: 'Tres golfistas en el green.' })
+    expect(event.data.image.alt).toBe('Tres golfistas en el green.')
+    expect(event.data.gallery[0].alt).toBe('Tres golfistas en el green.')
+    expect(harvested[`${CDN}/golf.jpg`].alt).toBe('Three golfers on the green.')
+  })
+
   it('maps offers by kind, dedupes sponsors, links FAQs', () => {
     const ctx = createContext(mediaMap)
     const sponsor = { name: 'Sponsor Co', website: 'https://s.example', logo: { src: `${CDN}/s.png` } }
@@ -230,3 +243,102 @@ describe('buildSeeds', () => {
     expect(pub.content.team_members[0].data.photo).toBeUndefined()
   })
 })
+
+describe('translatedEntries', () => {
+  const e = (id, slug, data) => ({ id, ...(slug ? { slug } : {}), status: 'published', data })
+
+  it('pairs by id, falls back to position, remaps refs and keeps English data the Spanish page lacks', () => {
+    const live = {
+      events: [e('event-golf', 'golf', { title: 'Golf', start_date: '2026-11-09', sponsor_packages: ['$ref:sp-golf-gold'], appeal_heading: 'Supports relief' })],
+      sponsorship_packages: [e('sp-general-leader', undefined, { tier_name: 'Leader', price: '$1,000' })],
+    }
+    const liveEs = {
+      events: [e('event-golf', 'golf', { title: 'Golf ES', sponsor_packages: ['$ref:sp-golf-oro'], appeal_heading: 'Supports relief' })],
+      sponsorship_packages: [e('sp-general-lider', undefined, { tier_name: 'Líder' })],
+    }
+    const { entries, unpaired } = translatedEntries(live, liveEs, new Map([['Supports relief', 'Apoya el alivio']]))
+    expect(unpaired).toEqual([])
+    expect(entries.events[0]).toEqual({
+      id: 'event-golf--es',
+      slug: 'golf',
+      status: 'published',
+      locale: 'es',
+      translationOf: 'event-golf',
+      data: { title: 'Golf ES', start_date: '2026-11-09', sponsor_packages: ['$ref:sp-golf-oro'], appeal_heading: 'Apoya el alivio' },
+    })
+    expect(entries.sponsorship_packages[0]).toMatchObject({
+      translationOf: 'sp-general-leader',
+      data: { tier_name: 'Líder', price: '$1,000' },
+    })
+  })
+
+  it('uses the chosen Spanish term over the live one (Trustee → Benefactor)', () => {
+    const live = { sponsorship_packages: [e('sp-general-trustee', undefined, { tier_name: 'Trustee' })] }
+    const liveEs = { sponsorship_packages: [e('sp-general-patrocinador', undefined, { tier_name: 'Patrocinador' })] }
+    expect(translatedEntries(live, liveEs).entries.sponsorship_packages[0].data.tier_name).toBe('Benefactor')
+  })
+
+  it('remaps a reference to the English id of a positionally paired entry', () => {
+    const live = { a: [e('sp-x-gold', undefined, {})], b: [e('ev', 'ev', { refs: ['$ref:sp-x-gold'] })] }
+    const liveEs = { a: [e('sp-x-oro', undefined, {})], b: [e('ev', 'ev', { refs: ['$ref:sp-x-oro'] })] }
+    expect(translatedEntries(live, liveEs).entries.b[0].data.refs).toEqual(['$ref:sp-x-gold'])
+  })
+
+  it('reports English entries without a Spanish version', () => {
+    const { entries, unpaired } = translatedEntries({ faqs: [e('faq-1', undefined, {}), e('faq-2', undefined, {})] }, { faqs: [e('faq-1', undefined, {})] })
+    expect(entries.faqs).toHaveLength(1)
+    expect(unpaired).toEqual(['faqs: faq-2'])
+  })
+})
+
+describe('pageCopyEntries', () => {
+  it('emits an English entry with the default and a linked Spanish entry with the translation', () => {
+    const manifests = [
+      {
+        route: '/ways-to-give',
+        slots: {
+          'hero.heading': { label: 'Hero: heading', default: 'Ways to give', maxLength: 30 },
+          'seo.image': { label: 'Share image', format: 'image', default: '/og.jpg' },
+        },
+      },
+    ]
+    const entries = pageCopyEntries(manifests, { '/ways-to-give': { 'hero.heading': 'Formas de ayudar' } })
+    expect(entries).toEqual([
+      {
+        id: 'copy--ways-to-give--hero.heading',
+        status: 'published',
+        data: { route_path: '/ways-to-give', key: 'hero.heading', label: 'Hero: heading', format: 'plain', max_length: 30, stale: false, value: 'Ways to give' },
+      },
+      {
+        id: 'copy--ways-to-give--hero.heading--es',
+        status: 'published',
+        locale: 'es',
+        translationOf: 'copy--ways-to-give--hero.heading',
+        data: { route_path: '/ways-to-give', key: 'hero.heading', label: 'Hero: heading', format: 'plain', max_length: 30, stale: false, value: 'Formas de ayudar' },
+      },
+      {
+        id: 'copy--ways-to-give--seo.image',
+        status: 'published',
+        data: { route_path: '/ways-to-give', key: 'seo.image', label: 'Share image', format: 'image', max_length: undefined, stale: false, image_value: { src: '/og.jpg' } },
+      },
+      {
+        id: 'copy--ways-to-give--seo.image--es',
+        status: 'published',
+        locale: 'es',
+        translationOf: 'copy--ways-to-give--seo.image',
+        data: { route_path: '/ways-to-give', key: 'seo.image', label: 'Share image', format: 'image', max_length: undefined, stale: false },
+      },
+    ])
+  })
+})
+
+// Review finding (PR #15): the Spanish golf events pointed at
+// `sponsor-el-manitas-de-confianza`, a translated company name.
+describe('alignSponsorNames', () => {
+  it('keeps the English name for a Spanish sponsor with the same logo', () => {
+    const en = [{ sponsors: [{ name: 'The Trusty Handyman', logo: { src: 'https://cdn/x/handyman.png' } }] }]
+    const es = [{ sponsors: [{ name: 'El manitas de confianza', logo: { src: 'https://cdn/x/handyman.png' } }, { name: 'Nuevo', logo: { src: 'https://cdn/x/new.png' } }] }]
+    expect(alignSponsorNames(en, es)[0].sponsors.map((s) => s.name)).toEqual(['The Trusty Handyman', 'Nuevo'])
+  })
+})
+

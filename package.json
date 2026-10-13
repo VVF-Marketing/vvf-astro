@@ -21,6 +21,8 @@
     "migrate:harvest": "node scripts/migrate/cli.mjs harvest",
     "migrate:transform": "node scripts/migrate/cli.mjs transform",
     "migrate:media": "node scripts/migrate/cli.mjs media",
+    "migrate:copy": "node scripts/migrate/cli.mjs copy",
+    "migrate:import-copy": "node scripts/migrate/cli.mjs import-copy",
     "test:parity": "playwright test -c playwright.parity.config.ts",
     "migrate:validate": "node scripts/migrate/cli.mjs validate"
   },

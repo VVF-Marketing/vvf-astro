@@ -1,0 +1,75 @@
+{
+  "path": "/contact",
+  "seo": {
+    "title": "Contacto | Fundación Victoria Venezuela",
+    "description": "¿Tienes preguntas sobre cómo apadrinar a un niño, realizar una donación o colaborar con nosotros? Envía un mensaje a la Victoria Venezuela Foundation y nuestro equipo te responderá.",
+    "ogTitle": "Contacto | Fundación Victoria Venezuela",
+    "ogDescription": "¿Tienes preguntas sobre cómo apadrinar a un niño, realizar una donación o colaborar con nosotros? Envía un mensaje a la Victoria Venezuela Foundation y nuestro equipo te responderá.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a96dc6eeb45c5d8ea73dd4e_98.png"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a96dc6eeb45c5d8ea73dd4e_98.png"
+        },
+        {
+          "type": "h1",
+          "text": "Contáctanos"
+        },
+        {
+          "type": "p",
+          "text": "Nos encantaría saber de ti. Escríbenos si tienes preguntas, oportunidades de colaboración o si quieres saber cómo puedes marcar la diferencia en Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Donar",
+          "href": "/ways-to-give"
+        },
+        {
+          "type": "cta",
+          "text": "Participa",
+          "href": "/all-events"
+        }
+      ]
+    },
+    {
+      "classes": [],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "Envíanos un mensaje"
+        },
+        {
+          "type": "p",
+          "text": "¿Preguntas sobre donaciones, apadrinamiento, prensa o alianzas? Envíanos un mensaje y elige un tema."
+        },
+        {
+          "type": "li",
+          "text": "info@victoriavenezuelafoundation.org"
+        },
+        {
+          "type": "li",
+          "text": "+1 (954) 371-0557"
+        },
+        {
+          "type": "li",
+          "text": "P.O. Box 327222, Weston, FL 33332"
+        }
+      ]
+    }
+  ]
+}

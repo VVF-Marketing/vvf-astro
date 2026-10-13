@@ -1,0 +1,1533 @@
+{
+  "/": {
+    "seo.title": "Fundación Victoria Venezuela | Nutrición, atención médica y educación",
+    "seo.description": "Somos una organización sin fines de lucro 501(c)(3) con sede en Weston, Florida, dedicada a brindar nutrición, atención médica y educación a niños en Venezuela. Apadrina a un niño desde $25 al mes.",
+    "hero.heading": "Transforma la vida de un niño en Venezuela",
+    "hero.label.1": "Apadrina a un niño",
+    "hero.label.2": "Formas de ayudar",
+    "sectionTitle.tagline": "Sobre nosotros",
+    "sectionTitle.heading": "Fundación Victoria Venezuela",
+    "sectionTitle.text": "es una organización sin fines de lucro 501(c)(3) con sede en Weston, Florida. Brindamos nutrición, atención médica y educación a niños en Venezuela, y conectamos a donantes en EE. UU. con niños a través de un programa de apadrinamiento mensual.",
+    "sectionTitle2.tagline": "Impacto",
+    "sectionTitle2.text": "Estas cifras representan niños reales con el estómago lleno, corazones fuertes y un futuro prometedor. Cada número aquí es una vida transformada.",
+    "button.text": "Lee el último informe de impacto",
+    "statTileRow.label.1": "Comidas servidas",
+    "statTileRow.caption.1": "Nutrición diaria para niños con hambre",
+    "statTileRow.label.2": "Consultas médicas para niños",
+    "statTileRow.caption.2": "Salud recuperada en nuestras clínicas",
+    "statTileRow.label.3": "Niños en nuestros programas",
+    "statTileRow.caption.3": "Educación que abre puertas al futuro",
+    "statTileRow.label.4": "Patrocinadores corporativos",
+    "statTileRow.caption.4": "Aliados que creen en esta misión",
+    "sectionTitle3.tagline": "Programas",
+    "sectionTitle3.heading": "Cómo ayudamos a los niños en Venezuela",
+    "sectionTitle3.text": "Tres programas esenciales que trabajan juntos para apoyar a niños desfavorecidos en Venezuela.",
+    "pastelCard.eyebrow": "Nutrición",
+    "pastelCard.title": "Programa de nutrición infantil",
+    "pastelCard.body": "Servimos comidas calientes y brindamos apoyo nutricional a niños que padecen hambre.",
+    "pastelCard2.eyebrow": "Médico",
+    "pastelCard2.title": "Acceso a la salud para niños",
+    "pastelCard2.body": "Nuestras clínicas ofrecen chequeos, tratamientos y atención preventiva donde el acceso es limitado.",
+    "pastelCard3.eyebrow": "Educación",
+    "pastelCard3.title": "Apoyo educativo para niños",
+    "pastelCard3.body": "Mantenemos a los niños en la escuela con útiles, apoyo y espacios de aprendizaje seguros.",
+    "impactBanner.eyebrow": "Conexión",
+    "impactBanner.heading": "Crea un vínculo que trasciende",
+    "impactBanner.body": "Cuando apadrinas a un niño, no estás enviando dinero al vacío. Estás conociendo a alguien. Intercambias cartas, recibes noticias y ves crecer a una persona real. Es algo personal. Es algo duradero.",
+    "impactBanner.bullets.1": "El apadrinamiento mensual cubre nutrición, atención médica y educación",
+    "impactBanner.bullets.2": "Correspondencia directa y fotos de tu niño apadrinado",
+    "impactBanner.bullets.3": "Informes transparentes sobre cómo tu apoyo marca la diferencia",
+    "impactBanner.label.1": "Conoce a los niños",
+    "videoGrid.heading": "Conoce nuestro trabajo en Venezuela",
+    "videoGrid.text": "Tres videos breves sobre nuestros programas.",
+    "videoGrid.caption.1": "Entrega de cartas a niños apadrinados",
+    "videoGrid.caption.2": "Dentro de nuestro centro de nutrición en Terraplén",
+    "videoGrid.caption.3": "Nuestra celebración anual de Navidad",
+    "sectionTitle4.tagline": "Eventos y campañas",
+    "sectionTitle4.heading": "Únase a nuestros encuentros para fortalecer la comunidad e impulsar nuestra misión",
+    "eyebrow.text": "Próximos",
+    "button2.text": "Ver todos los eventos",
+    "logoCarousel.heading": "Socios corporativos",
+    "programsCta.heading": "A dónde va su dinero",
+    "programsCta.text": "En el año fiscal 2025, el 95% de los fondos se destinó directamente a nuestros programas. Hasta la fecha, hemos servido más de 77,300 comidas y financiado más de 1,012 consultas médicas para niños. Nuestros estados financieros completos se publican en nuestros informes anuales.",
+    "programsCta.label.1": "Ver nuestros estados financieros"
+  },
+  "/resources/*": {
+    "button.text": "Descargar el informe (PDF)",
+    "p2.text": "Apadrina a un niño en Venezuela. Desde $25 al mes.",
+    "button2.text": "Apadrina a un niño",
+    "h2.text": "Relacionado",
+    "byPrefix": "Por"
+  },
+  "/resources": {
+    "seo.title": "Recursos | Fundación Victoria Venezuela",
+    "seo.description": "Historias, noticias, eventos e informes financieros de la Victoria Venezuela Foundation, una organización 501(c)(3) que brinda apoyo a la infancia en Venezuela."
+  },
+  "/sponsor-a-child": {
+    "seo.title": "Apadrina a un niño en Venezuela | Fundación Victoria Venezuela",
+    "seo.description": "Apadrina a un niño en Venezuela desde $25 al mes. Tu donativo financia comidas semanales, dos chequeos médicos al año y apoyo escolar para los niños bajo nuestro cuidado.",
+    "hero.heading": "Apadrina a un niño en Venezuela",
+    "hero.subtext": "Crea un vínculo personal. Transforma una vida.",
+    "hero.label.1": "Conoce a los niños",
+    "hero.label.2": "Cómo funciona",
+    "sectionTitle.tagline": "Esencial",
+    "sectionTitle.heading": "Cada niño merece una oportunidad para salir adelante",
+    "sectionTitle.text": "Apadrinar significa formar parte de la vida de un niño con apoyo constante. Tú eliges el monto mensual, a partir de solo $25, y ese compromiso se convierte en la diferencia entre sobrevivir y prosperar para un joven en Venezuela.",
+    "button.text": "Apadrinar",
+    "button2.text": "Más información",
+    "sectionTitle2.tagline": "Niños",
+    "sectionTitle2.heading": "Conoce a los niños",
+    "sectionTitle2.text": "Encuentra al niño que más te necesita",
+    "button3.text": "Conócelos a todos",
+    "sectionTitle3.tagline": "Proceso",
+    "sectionTitle3.heading": "Tres pasos para cambiar vidas",
+    "sectionTitle3.text": "Empieza aquí y encuentra a tu ahijado",
+    "pastelCard.eyebrow": "Primero",
+    "pastelCard.title": "Elige a un niño",
+    "pastelCard.body": "Explora la galería y elige al niño al que deseas apoyar.",
+    "pastelCard2.eyebrow": "Segundo",
+    "pastelCard2.title": "Define tu monto",
+    "pastelCard2.body": "Tú decides el monto de tu donación mensual, a partir de solo $25",
+    "pastelCard3.eyebrow": "Tercero",
+    "pastelCard3.title": "Construya una relación que importa",
+    "pastelCard3.body": "Reciba cartas, fotos y vea cómo su niño se fortalece",
+    "checklistPanel.tagline": "Impacto",
+    "checklistPanel.heading": "Lo que brinda el apadrinamiento",
+    "checklistPanel.text": "Su compromiso llega muy lejos",
+    "checklistPanel.items.1": "Comidas nutritivas semanales:",
+    "checklistPanel.items.2": "Alimentación que fortalece y da esperanza",
+    "checklistPanel.items.3": "Acceso digno a la educación:",
+    "checklistPanel.items.4": "Útiles, uniformes y las herramientas para aprender",
+    "checklistPanel.items.5": "Chequeos médicos dos veces al año:",
+    "checklistPanel.items.6": "Un médico atiende a su niño dos veces al año y el tratamiento está cubierto si surge algún problema.",
+    "checklistPanel.items.7": "Conexión con usted:",
+    "checklistPanel.items.8": "La certeza de que son importantes a través de un vínculo real",
+    "checklistPanel.title.1": "Comidas nutritivas semanales:",
+    "checklistPanel.text.1": "Alimentación que fortalece y da esperanza",
+    "checklistPanel.title.2": "Acceso digno a la educación:",
+    "checklistPanel.text.2": "Útiles, uniformes y las herramientas para aprender",
+    "checklistPanel.title.3": "Chequeos médicos dos veces al año:",
+    "checklistPanel.text.3": "Un médico atiende a su niño dos veces al año y el tratamiento está cubierto si surge algún problema.",
+    "checklistPanel.title.4": "Conexión con usted:",
+    "checklistPanel.text.4": "La certeza de que son importantes a través de un vínculo real",
+    "sectionTitle4.tagline": "Recompensas",
+    "sectionTitle4.heading": "Lo que recibes como padrino",
+    "sectionTitle4.text": "El apadrinamiento es un camino de ida y vuelta. Tú brindas apoyo y recibes algo igual de valioso: una ventana al mundo de un niño y la certeza de que lo has cambiado.",
+    "iconCard.title": "Cartas de tu niño apadrinado",
+    "iconCard.text": "Palabras y dibujos que demuestran que le importas a alguien que está lejos",
+    "iconCard2.title": "Fotos y actualizaciones de progreso",
+    "iconCard2.text": "Observa el crecimiento, la sonrisa y la transformación que tu regalo hace posible",
+    "iconCard3.title": "Peticiones de oración y necesidades",
+    "iconCard3.text": "Aprende cómo interceder y brindar apoyo más allá de la donación mensual",
+    "iconCard4.title": "Informes de impacto anuales",
+    "iconCard4.text": "Informe detallado de cómo tu apadrinamiento cambió vidas este año",
+    "button4.text": "Apadrina a un niño",
+    "sectionTitle5.tagline": "Preguntas",
+    "sectionTitle5.heading": "Preguntas frecuentes",
+    "sectionTitle5.text": "Todo lo que necesitas saber sobre el apadrinamiento de niños",
+    "h2.text": "¿Qué pasa si necesito cancelar?",
+    "p.text": "Puede pausar o finalizar su apadrinamiento en cualquier momento sin penalización. Le pedimos un aviso de treinta días para que podamos ayudar a realizar la transición de su niño a otro padrino. El cuidado de su niño continúa sin interrupciones durante este periodo.",
+    "button5.text": "¿Todavía tiene preguntas?",
+    "programsCta.heading": "Nos ganamos su confianza a través de la transparencia",
+    "programsCta.text": "En el año fiscal 2025, el 95% de los fondos se destinó directamente a los programas. El apadrinamiento crea un vínculo con un niño en particular. Las donaciones financian los programas que atienden a todos los niños bajo nuestro cuidado.",
+    "programsCta.label.1": "Apadrina a un niño",
+    "programsCta.label.2": "Ver nuestros estados financieros",
+    "img.alt": "Tres niñas sonrientes jugando en un tobogán inflable durante una actividad de la fundación"
+  },
+  "/ways-to-give": {
+    "seo.title": "Formas de ayudar | Fundación Victoria Venezuela",
+    "seo.description": "Haz una donación única, mensual, apadrina a un niño o dona a través de tu empresa. Cada aporte llega a los niños en Venezuela.",
+    "hero.heading": "Formas de donar",
+    "hero.subtext": "Cada donación llega a los niños en Venezuela. Elige la opción que mejor se adapte a ti.",
+    "hero.label.1": "Dona ahora",
+    "hero.label.2": "Apadrina a un niño",
+    "featureBand.tagline": "Donar",
+    "featureBand.heading": "Haz una donación hoy",
+    "featureBand.text": "Elige un monto y dona en menos de un minuto. Cada donación financia comidas, atención médica y educación para niños en Venezuela.",
+    "p.text": "¿Prefieres donar cada mes?",
+    "a.text": "Apadrina a un niño por $25 al mes.",
+    "p2.text": "El pago es gestionado por Donorbox. Victoria Venezuela Foundation es una organización sin fines de lucro 501(c)(3), con identificación fiscal 88-3282100, y tu donación es deducible de impuestos en los Estados Unidos.",
+    "mediaSplit.tagline": "Apadrinamiento",
+    "mediaSplit.heading": "Apadrina a un niño por $25 al mes",
+    "mediaSplit.text": "Elige a un niño y apóyalo cada mes. Tu donación se suma a la de otros padrinos para financiar sus comidas, atención médica y educación, y recibirás cartas, fotos y noticias sobre cómo le va.",
+    "mediaSplit.note": "Por lo general, un niño cuenta con el apoyo de más de un padrino, y destinamos los fondos a donde más se necesitan. Puedes cancelar en cualquier momento.",
+    "button.text": "Conoce a los niños",
+    "sectionTitle.tagline": "Más formas",
+    "sectionTitle.heading": "Otras formas de donar",
+    "pastelCard.title": "Donaciones equiparadas por el empleador",
+    "pastelCard.body": "Muchas empresas duplican las donaciones de sus empleados. Busque a su empleador y descúbralo en pocos segundos.",
+    "pastelCard2.title": "Fondo asesorado por donantes",
+    "pastelCard2.body": "Realice sus donaciones benéficas desde su cuenta DAF utilizando nuestro EIN, 88-3282100. Le ayudaremos a completar la designación.",
+    "pastelCard2.label.1": "Pídenos ayuda",
+    "pastelCard3.title": "Alianzas corporativas",
+    "pastelCard3.body": "Patrocinios escalonados con visibilidad y participación de los empleados, además de patrocinio de eventos y donaciones equiparadas.",
+    "pastelCard3.label.1": "Asóciate con nosotros",
+    "featureBand2.tagline": "Participe y done",
+    "button2.text": "Más información",
+    "appealPanel.heading": "Ayuda para el terremoto en Venezuela",
+    "appealPanel.text": "Los fondos recaudados en esta campaña se destinarán a la construcción del centro de apoyo permanente de VVF en La Guaira. Cuando abra sus puertas, brindará refugio, alimentación y atención médica a 500 niños desplazados y sus familias.",
+    "appealPanel.imageAlt": "Render del futuro centro de apoyo de VVF en La Guaira, visto desde la calle.",
+    "appealPanel.caption": "Así será el centro en La Guaira. El centro aún no está construido. Todas las imágenes de esta página son representaciones generadas por IA.",
+    "appealPanel.title.1": "Alojamiento",
+    "appealPanel.text.1": "Un lugar seguro donde alojarse para las familias cuyos hogares fueron destruidos en los terremotos de junio de 2026.",
+    "appealPanel.imageAlt.1": "Familias llegando al patio del futuro centro de apoyo de VVF.",
+    "appealPanel.title.2": "Atención médica",
+    "appealPanel.text.2": "Revisiones, medicamentos y tratamiento para los niños y sus familias en el centro.",
+    "appealPanel.imageAlt.2": "Una enfermera examina a una niña mientras su madre está sentada a su lado.",
+    "appealPanel.title.3": "Nutrición",
+    "appealPanel.text.3": "Comidas diarias para los niños que se alojen en el centro de apoyo de La Guaira.",
+    "appealPanel.label.1": "Donar a la campaña",
+    "appealPanel.label.2": "Más información",
+    "sectionTitle2.heading": "Preguntas frecuentes",
+    "appealPanel.cardsLabel": "En qué se utilizará su donativo",
+    "pastelCard.label.1": "Vamos a comprobarlo",
+    "appealPanel.cards.nutritionAlt": "Niños comiendo juntos una comida caliente en el comedor del centro."
+  },
+  "/resources/category/stories": {
+    "seo.title": "Historias | Recursos | Fundación Victoria Venezuela",
+    "seo.description": "Historias de nuestros programas de nutrición, atención médica y educación para niños en Venezuela."
+  },
+  "/resources/category/financials-transparency": {
+    "seo.title": "Finanzas y transparencia | Recursos | Fundación Victoria Venezuela",
+    "seo.description": "Nuestros informes de impacto anuales y trimestrales, junto con estados financieros resumidos. Victoria Venezuela Foundation es una organización 501(c)(3), EIN 88-3282100."
+  },
+  "/sponsor-a-child/children": {
+    "seo.title": "Conoce a los niños | Fundación Victoria Venezuela",
+    "seo.description": "Conoce a los niños en Venezuela que esperan un padrino. El apadrinamiento comienza desde $25 al mes y cubre alimentación, atención médica y educación.",
+    "sectionTitle.tagline": "Niños",
+    "sectionTitle.heading": "Conoce a los niños",
+    "sectionTitle.text": "El apadrinamiento comienza desde $25 al mes y cubre alimentación, atención médica y educación. Encuentra al niño que más te necesita."
+  },
+  "_global": {
+    "header.logoAlt": "Fundación Victoria Venezuela",
+    "header.donate": "Donar",
+    "header.contact": "Contacto",
+    "footer.legal": "Victoria Venezuela Foundation es una organización sin fines de lucro 501(c)(3).\nLas contribuciones son deducibles de impuestos según la Sección 501(c)(3) del Código de Rentas Internas.",
+    "footer.candidText": "Receptores del sello de transparencia Platino de Candid 2023-2026",
+    "footer.link.ourTeam": "Nuestro equipo",
+    "footer.link.sponsorChild": "Apadrina a un niño",
+    "footer.link.waysToGive": "Formas de ayudar",
+    "footer.link.corporate": "Patrocinios corporativos",
+    "footer.link.events": "Eventos y campañas",
+    "footer.link.earthquake": "Ayuda para terremotos",
+    "footer.link.news": "Noticias",
+    "footer.link.financials": "Información financiera",
+    "footer.link.donate": "Donar ahora",
+    "footer.link.contact": "Contáctanos",
+    "footer.creditPrefix": "Diseñado y desarrollado por",
+    "footer.privacy": "Política de privacidad",
+    "contactForm.firstName": "Nombre",
+    "contactForm.lastName": "Apellidos",
+    "contactForm.email": "Correo electrónico",
+    "contactForm.phone": "Número de teléfono",
+    "contactForm.topic": "¿De qué se trata?",
+    "contactForm.topic.general": "Consulta general",
+    "contactForm.topic.donation": "Apoyo a donaciones",
+    "contactForm.topic.sponsorship": "Apadrinamiento de niños",
+    "contactForm.topic.media": "Medios y prensa",
+    "contactForm.topic.corporate": "Alianzas corporativas",
+    "contactForm.topic.events": "Eventos y campañas",
+    "contactForm.topic.volunteering": "Voluntariado",
+    "contactForm.topic.other": "Otro",
+    "contactForm.message": "Mensaje",
+    "contactForm.consent": "Acepto la",
+    "contactForm.consentLink": "Política de privacidad",
+    "newsletter.heading": "Mantente conectado",
+    "newsletter.text": "Mantente al día con nuestras noticias y eventos",
+    "newsletter.emailLabel": "Correo electrónico",
+    "newsletter.placeholder": "Introduce tu correo electrónico",
+    "newsletter.privacy": "Respetamos tu privacidad. Puedes darte de baja en cualquier momento.",
+    "contactCta.heading": "Contáctanos",
+    "contactCta.call": "Llámanos:",
+    "contactCta.email": "Correo electrónico:",
+    "card.readOn": "Leer más",
+    "card.eventDetails": "Ver los detalles",
+    "card.buyTickets": "Comprar entradas",
+    "card.becomeSponsor": "Ser patrocinador",
+    "resources.heading": "Recursos",
+    "resources.viewAll": "Ver todo",
+    "resources.related": "Relacionado",
+    "resources.category.stories": "Historias",
+    "resources.category.financials": "Información financiera",
+    "team.eyebrow": "Nuestro equipo",
+    "team.since": "Desde",
+    "team.from": "De",
+    "team.basedIn": "Con sede en",
+    "team.background": "Trayectoria",
+    "child.breadcrumb": "Apadrina a un niño",
+    "event.whatWhenWhere": "Qué, cuándo y dónde",
+    "event.specialHeading": "Oportunidades para eventos especiales",
+    "event.packagesLabel": "Paquetes de patrocinio",
+    "gift.other": "Otro",
+    "gift.continue": "Continuar al pago"
+  },
+  "/blog": {
+    "filter.Stories": "Historias",
+    "filter.Events": "Eventos y campañas",
+    "filter.Financials": "Información financiera",
+    "filter.News": "Noticias"
+  },
+  "/contact": {
+    "seo.title": "Contacto | Fundación Victoria Venezuela",
+    "seo.description": "¿Tienes preguntas sobre cómo apadrinar a un niño, realizar una donación o colaborar con nosotros? Envía un mensaje a la Victoria Venezuela Foundation y nuestro equipo te responderá.",
+    "hero.heading": "Contáctanos",
+    "hero.subtext": "Nos encantaría saber de ti. Escríbenos si tienes preguntas, oportunidades de colaboración o si quieres saber cómo puedes marcar la diferencia en Venezuela.",
+    "hero.label.1": "Donar",
+    "hero.label.2": "Participa",
+    "p2.text": "Contáctanos",
+    "h22.text": "Envíanos un mensaje",
+    "p3.text": "¿Preguntas sobre donaciones, apadrinamiento, prensa o alianzas? Envíanos un mensaje y elige un tema.",
+    "reachUs.donation.title": "Apoyo a donaciones",
+    "reachUs.media.title": "Medios y prensa"
+  },
+  "/corporate-sponsorships": {
+    "seo.title": "Patrocinios corporativos | Fundación Victoria Venezuela",
+    "seo.description": "Únase a la Fundación Victoria Venezuela. Nuestros niveles de patrocinio van desde los $250 hasta los $2,500 anuales. Además, mediante programas de contribución equiparada de empresas, usted ayuda a financiar comidas, atención médica y apoyo escolar para niños en Venezuela.",
+    "splitHero.heading": "Patrocinios corporativos",
+    "splitHero.subtext": "¡Únase a las muchas organizaciones que están cambiando activamente la vida de niños desfavorecidos en Venezuela!",
+    "splitHero.label.1": "Asóciese con nosotros",
+    "splitHero.imageAlt": "Una niña sonriendo en un evento de la Fundación Victoria Venezuela en Venezuela",
+    "sectionTitle.heading": "Nuestro impacto en cifras",
+    "statIconCard.label": "Programa de nutrición",
+    "statIconCard.text": "Comidas servidas a niños en riesgo",
+    "statIconCard2.label": "Programa de salud",
+    "statIconCard2.text": "Consultas médicas para niños",
+    "statIconCard3.label": "Programa educativo",
+    "statIconCard3.text": "Niños con apoyo educativo",
+    "statIconCard4.label": "Patrocinadores corporativos",
+    "statIconCard4.text": "Invertir en programas para apoyar a niños en Venezuela",
+    "sectionTitle2.heading": "Paquetes de patrocinio",
+    "sectionTitle3.heading": "Donaciones equiparadas por empresas",
+    "sectionTitle3.text": "Las donaciones equiparadas por empresas son un incentivo poderoso para que los empleados aporten sus propios fondos. Esto amplifica el impacto para la organización sin fines de lucro que deciden apoyar, como la Victoria Venezuela Foundation.",
+    "h2.text": "Punto de contacto",
+    "p.text": "¿Está su organización interesada en invertir en los niños y en el futuro de Venezuela? Generemos un impacto positivo juntos.",
+    "p2.text": "Vicepresidente de Desarrollo de Negocios",
+    "a2.text": "www.victoriavenezuelafoundation.org/es"
+  },
+  "/earthquake-relief": {
+    "seo.title": "Ayuda para los damnificados por el terremoto en Venezuela | Fundación Victoria Venezuela",
+    "seo.description": "Dos terremotos consecutivos sacudieron Venezuela en junio de 2026. El 100% de los beneficios netos se destinará a ayudar a los niños y familias desplazados. Descubre cómo puedes colaborar.",
+    "hero.heading": "Ayuda para el terremoto en Venezuela",
+    "hero.subtext": "Los terremotos consecutivos han trastornado la vida en toda Venezuela. Tu donación brinda ayuda inmediata.",
+    "hero.label.1": "Donar aquí",
+    "sectionTitle.heading": "El 100% de los beneficios netos se destinará a labores de ayuda tras el terremoto.",
+    "button.text": "Descubre cómo ayudar",
+    "mediaSplit.heading": "Qué ha sucedido",
+    "mediaSplit.text": "El 24 de junio, dos potentes terremotos sacudieron el norte de Venezuela con menos de un minuto de diferencia, los más fuertes que ha visto el país en más de un siglo. La Guaira y Caracas fueron las zonas más afectadas. Miles de familias perdieron sus hogares y muchas duermen ahora a la intemperie, sin acceso a agua potable ni atención médica.",
+    "mediaSplit.alt.1": "Una excavadora y trabajadores retirando escombros de un edificio colapsado.",
+    "mediaSplit.alt.2": "Un edificio de apartamentos dañado que sobresale por encima de la ciudad.",
+    "mediaSplit.alt.3": "Dos personas saliendo de un edificio destrozado por el terremoto.",
+    "mediaSplit.alt.4": "Una mujer de pie entre los escombros de casas destruidas.",
+    "mediaSplit2.heading": "Centros de apoyo",
+    "mediaSplit2.text": "En las semanas posteriores a los terremotos, abrimos dos centros de apoyo temporales para familias desplazadas. Ambos han cerrado desde entonces. Ahora estamos construyendo un centro permanente en La Guaira.",
+    "mediaSplit2.imageAlt": "Mapa de Venezuela que señala Caracas y La Guaira, las zonas afectadas por los terremotos de junio de 2026.",
+    "appealPanel.heading": "El 100% de los ingresos netos beneficiará a los niños y familias desplazadas por los terremotos de junio de 2026 en Venezuela.",
+    "appealPanel.text": "Los fondos recaudados en esta campaña se destinarán a la construcción del centro de apoyo permanente de VVF en La Guaira. Cuando abra sus puertas, brindará refugio, alimentación y atención médica a 500 niños desplazados y sus familias.",
+    "appealPanel.imageAlt": "Render del futuro centro de apoyo de VVF en La Guaira, visto desde la calle.",
+    "appealPanel.caption": "Así será el centro en La Guaira. El centro aún no ha sido construido.",
+    "appealPanel.cardsLabel": "En qué se utilizará su donativo",
+    "appealPanel.title.1": "Alojamiento",
+    "appealPanel.text.1": "Un lugar seguro donde alojarse para las familias cuyos hogares fueron destruidos en los terremotos de junio de 2026.",
+    "appealPanel.imageAlt.1": "Familias llegando al patio del futuro centro de apoyo de VVF.",
+    "appealPanel.title.2": "Atención médica",
+    "appealPanel.text.2": "Revisiones, medicamentos y tratamiento para los niños y sus familias en el centro.",
+    "appealPanel.imageAlt.2": "Una enfermera examina a una niña mientras su madre está sentada a su lado.",
+    "appealPanel.title.3": "Nutrición",
+    "appealPanel.text.3": "Comidas diarias para los niños que se alojen en el centro de apoyo de La Guaira.",
+    "appealPanel.label.1": "Donar a la campaña",
+    "img.alt": "Un hombre lleva un recipiente de agua frente a casas dañadas por el terremoto.",
+    "sectionTitle2.heading": "Cómo ayudar",
+    "pastelCard.eyebrow": "Primero",
+    "pastelCard.title": "Orar",
+    "pastelCard.body": "Únase a nuestro equipo en la oración diaria.",
+    "pastelCard2.eyebrow": "Segundo",
+    "pastelCard2.title": "Donar",
+    "pastelCard2.body": "Su contribución económica permite que VVF y nuestros socios locales actúen de forma rápida y eficaz, brindando ayuda y esperanza.",
+    "pastelCard2.label.1": "Donar",
+    "sectionTitle3.heading": "Siga de cerca nuestra labor sobre el terreno.",
+    "h2.text": "Punto de contacto",
+    "p.text": "¿Le interesa a su organización invertir en los niños y en el futuro de Venezuela? Generemos un impacto positivo juntos.",
+    "p5.text": "Horario de atención",
+    "p6.text": "De lunes a viernes, de 8:30 a. m. a 5:30 p. m., hora del este",
+    "p7.text": "Escríbenos cuando quieras",
+    "responseTimeline.heading": "Nuestra respuesta",
+    "responseTimeline.text": "Nuestra respuesta de emergencia ya concluyó. Nuestro equipo construye ahora un centro de apoyo permanente en La Guaira para los niños y las familias desplazadas por los terremotos.",
+    "responseTimeline.title.1": "Evaluación",
+    "responseTimeline.text.1": "Identificación de las comunidades más afectadas y sus necesidades más urgentes.",
+    "responseTimeline.title.2": "Estabilización",
+    "responseTimeline.text.2": "Distribución de alimentos, agua, suministros médicos y refugio.",
+    "responseTimeline.title.3": "Fortalecimiento",
+    "responseTimeline.text.3": "Ayudando a las familias a recuperar la estabilidad y la rutina",
+    "responseTimeline.title.4": "Sostenibilidad",
+    "responseTimeline.text.4": "Apoyo a la recuperación y resiliencia a largo plazo.",
+    "appealPanel.cards.nutritionAlt": "Niños comiendo juntos una comida caliente en el comedor del centro."
+  },
+  "/events/*": {
+    "hero.label.1": "Comprar entradas",
+    "hero.label.2": "Ver las fotos",
+    "hero.label.3": "Ser patrocinador",
+    "hero.label.4": "El próximo torneo",
+    "logoCarousel.heading": "Socios corporativos",
+    "includesPanel.heading": "El torneo incluye",
+    "sectionTitle.heading": "Entradas",
+    "sectionTitle2.heading": "Paquetes de patrocinio",
+    "impactPanel.label.1": "Comidas servidas a niños en riesgo",
+    "impactPanel.label.2": "visitas médicas para niños",
+    "impactPanel.label.3": "patrocinadores corporativos que invierten en programas de apoyo para niños y Venezuela",
+    "sectionTitle3.heading": "Preguntas frecuentes y contacto",
+    "contactCta.label.1": "Comprar entradas",
+    "button.text": "Ver las fotos",
+    "sectionTitle5.tagline": "Recuerdos",
+    "sectionTitle5.heading": "Fotos del evento",
+    "sectionTitle5.text": "Momentos en el campo, la subasta y la celebración.",
+    "logoCarousel2.heading": "Gracias a nuestros patrocinadores",
+    "programsCta.heading": "Anótalo en tu calendario",
+    "programsCta.text": "El torneo del próximo año ya viene. Mira la fecha y el lugar, y reserva tu puesto.",
+    "programsCta.label.1": "Contáctanos",
+    "sectionTitle6.tagline": "Apoya",
+    "sectionTitle6.heading": "¿No puedes esperar hasta el próximo año?",
+    "sectionTitle6.text": "Los niños de Venezuela necesitan ayuda hoy. Aquí tienes tres formas de ayudar ahora mismo.",
+    "pastelCard.title": "Apadrina a un niño",
+    "pastelCard.body": "Crea un vínculo directo con un niño y cambia su vida.",
+    "pastelCard.label.1": "Apadrinar",
+    "pastelCard2.title": "Haz una donación",
+    "pastelCard2.body": "Apoya hoy los programas de nutrición, atención médica y educación.",
+    "pastelCard2.label.1": "Donar",
+    "pastelCard3.title": "Patrocinios corporativos",
+    "pastelCard3.body": "Une a tu empresa a una misión que importa todo el año.",
+    "pastelCard3.label.1": "Asóciate con nosotros",
+    "recap.tagline": "Resultados",
+    "recap.heading": "Lo que logramos juntos",
+    "recap.text": "Esto es lo que un día en el campo hizo posible para los niños de Venezuela.",
+    "programsCta.label.2": "Ver el torneo del próximo año"
+  },
+  "/events": {
+    "seo.title": "Eventos | Fundación Victoria Venezuela",
+    "seo.description": "Eventos y campañas de la Victoria Venezuela Foundation, incluyendo nuestro torneo anual de golf benéfico en Weston, Florida, en apoyo a los niños de Venezuela.",
+    "hero.heading": "Eventos y campañas",
+    "hero.subtext": "Únase a nuestra comunidad y genere un impacto. Juntos nos reunimos para apoyar a quienes más lo necesitan en Venezuela.",
+    "hero.label.1": "Próximos eventos",
+    "eyebrow.text": "Próximos",
+    "sectionTitle.tagline": "Archivo",
+    "sectionTitle.heading": "Pasado",
+    "sectionTitle.text": "Encuentros que cambiaron vidas y despertaron esperanza",
+    "eventCard2.ctaLabel": "Ver el resumen",
+    "newsletterSignup.heading": "No te pierdas ningún evento",
+    "newsletterSignup.text": "Recibe invitaciones y actualizaciones directamente en tu bandeja de entrada"
+  },
+  "/our-team": {
+    "seo.title": "Nuestro equipo | Fundación Victoria Venezuela",
+    "seo.description": "Conozca a la junta directiva, los líderes y el equipo detrás de Victoria Venezuela Foundation, una organización 501(c)(3) con sede en Weston, Florida, dedicada a apoyar a niños en Venezuela.",
+    "hero.heading": "Nuestro equipo",
+    "hero.subtext": "Las personas que sirven a Venezuela provienen de diferentes lugares y realidades, pero comparten algo en común: el compromiso de ayudar a quienes sufren. Somos médicos, maestros, empresarios y estudiantes, todos unidos por la fe y la convicción de que el cambio es posible.",
+    "hero.label.1": "Donar",
+    "hero.label.2": "Voluntariado",
+    "sectionTitle.heading": "Junta Directiva",
+    "sectionTitle.text": "La junta directiva establece el rumbo de la Fundación y es responsable de su misión, sus finanzas y sus programas.",
+    "teamMemberCard2.heading.1": "Ayuda a guiar a la Fundación",
+    "sectionTitle3.heading": "Nuestro equipo",
+    "sectionTitle3.text": "Las personas que dirigen la Fundación en el día a día, tanto en Estados Unidos como en Venezuela.",
+    "impactBanner.eyebrow": "Comunidad",
+    "impactBanner.heading": "Nuestros voluntarios hacen que todo sea posible",
+    "impactBanner.body": "Nuestro trabajo es posible gracias a voluntarios dedicados. Ellos entregan su tiempo, sus habilidades y su corazón para servir al pueblo venezolano.",
+    "impactBanner.highlights.1": "Por qué unirte",
+    "impactBanner.highlights.2": "Sé parte de algo importante y cambia vidas directamente.",
+    "impactBanner.highlights.4": "Comienza ahora",
+    "impactBanner.highlights.5": "Encuentra hoy mismo oportunidades que se ajusten a tus habilidades y horario.",
+    "impactBanner.title.1": "Por qué unirte",
+    "impactBanner.text.1": "Sé parte de algo importante y cambia vidas directamente.",
+    "impactBanner.title.2": "Comienza ahora",
+    "impactBanner.text.2": "Encuentra hoy mismo oportunidades que se ajusten a tus habilidades y horario.",
+    "impactBanner.label.1": "Voluntariado"
+  },
+  "/privacy-policy": {
+    "seo.title": "Política de privacidad | Fundación Victoria Venezuela",
+    "seo.description": "Cómo la Fundación Victoria Venezuela recopila, utiliza, almacena y protege la información de sus donantes, voluntarios, colaboradores y visitantes del sitio web.",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "pp1",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp0",
+            "text": "Victoria Venezuela Foundation («VVF», «nosotros», «nuestro» o «nos») se compromete a proteger la privacidad de nuestros donantes, voluntarios, socios, visitantes del sitio web y miembros de la comunidad."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2",
+            "text": "Esta Política de Privacidad explica cómo recopilamos, usamos, almacenamos y protegemos la información cuando visita nuestro sitio web, realiza una donación, se pone en contacto con nosotros, se suscribe para recibir actualizaciones, interactúa con nuestras páginas de redes sociales o participa en nuestros programas y campañas."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp5",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp4",
+            "text": "1. Información que recopilamos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp7",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp6",
+            "text": "Podemos recopilar los siguientes tipos de información:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp9",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp8",
+            "text": "Nombre"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppb",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppa",
+            "text": "Dirección de correo electrónico"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppd",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppc",
+            "text": "Número de teléfono"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppf",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppe",
+            "text": "Dirección postal"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pph",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppg",
+            "text": "Monto e historial de donaciones"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppj",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppi",
+            "text": "Información relacionada con pagos procesada por plataformas de donación de terceros (como los métodos de pago elegidos, por ejemplo, Apple Pay, Venmo, PayPal o tarjetas de crédito)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppl",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppk",
+            "text": "Información de voluntariado o asociaciones enviada a través de nuestros formularios en línea"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppn",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppm",
+            "text": "Mensajes, comentarios o consultas que nos envíe directamente"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppp",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppo",
+            "text": "Datos de uso del sitio web, como páginas visitadas, fuentes de referencia, información del dispositivo/navegador y datos de análisis de seguimiento"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppr",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppq",
+            "text": "No recopilamos intencionadamente información personal sensible a menos que se proporcione voluntariamente y sea necesaria para un fin específico."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppt",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pps",
+            "text": "2. Cómo utilizamos la información"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppv",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppu",
+            "text": "Utilizamos la información recopilada para:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppx",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppw",
+            "text": "Procesar donaciones, gestionar donaciones recurrentes y emitir recibos deducibles de impuestos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ppz",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ppy",
+            "text": "Mantener nuestra base de datos de colaboradores y gestionar las relaciones con los donantes"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp11",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp10",
+            "text": "Comunicarnos con donantes, voluntarios, socios y colaboradores"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp13",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp12",
+            "text": "Compartir actualizaciones sobre nuestra misión, campañas, eventos y programas en Venezuela"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp15",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp14",
+            "text": "Responder a consultas, solicitudes de contacto y envíos de formularios"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp17",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp16",
+            "text": "Gestionar las actividades de voluntariado, asociaciones y recaudación de fondos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp19",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp18",
+            "text": "Mejorar la funcionalidad de nuestro sitio web, nuestras comunicaciones y nuestras labores de difusión"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1b",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1a",
+            "text": "Analizar el rendimiento de las campañas y comprender cómo interactúan los colaboradores con nuestro contenido"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1d",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1c",
+            "text": "Cumplir con las obligaciones legales, fiscales, contables y de presentación de informes para organizaciones sin fines de lucro 501(c)(3)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1f",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1e",
+            "text": "3. Donaciones y procesamiento de pagos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1n",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1g",
+            "text": "La información sobre donaciones y pagos se gestiona de forma segura a través de nuestra plataforma externa, "
+          },
+          {
+            "_type": "span",
+            "_key": "pp1h",
+            "text": "Donorbox",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp1i",
+            "text": ", y es procesada por redes seguras como "
+          },
+          {
+            "_type": "span",
+            "_key": "pp1j",
+            "text": "Stripe",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp1k",
+            "text": " y "
+          },
+          {
+            "_type": "span",
+            "_key": "pp1l",
+            "text": "PayPal",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp1m",
+            "text": ". Esto le permite realizar donaciones mediante tarjetas de crédito/débito, Venmo, PayPal o Apple Pay."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1p",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1o",
+            "text": "VVF no almacena, ve ni conserva números de tarjetas de crédito completos ni credenciales financieras en los servidores de su propio sitio web. Los datos financieros son gestionados estrictamente por estos procesadores de pago verificados de acuerdo con sus respectivos protocolos de privacidad y seguridad."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1r",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1q",
+            "text": "4. Servicios de terceros y herramientas de CRM"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1t",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1s",
+            "text": "Utilizamos herramientas de terceros de confianza para operar nuestro sitio web de manera eficiente, organizar los datos de forma segura e interactuar con nuestra comunidad. Estas incluyen:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1w",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1u",
+            "text": "HubSpot",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp1v",
+            "text": " (nuestro sistema central de gestión de relaciones con los clientes (CRM) utilizado para el almacenamiento seguro de datos, la gestión de formularios, el alojamiento de recursos, el seguimiento de las interacciones de los usuarios y la gestión de las comunicaciones de difusión)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp1z",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp1x",
+            "text": "Donorbox",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp1y",
+            "text": " (Plataforma de gestión de donaciones)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp22",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp20",
+            "text": "Stripe y PayPal",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp21",
+            "text": " (Procesamiento de pagos)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp24",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp23",
+            "text": "Sistemas de alojamiento web y gestión de contenidos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp27",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp25",
+            "text": "Google Analytics",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp26",
+            "text": " (Para medir el tráfico y el comportamiento en el sitio web)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2b",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp28",
+            "text": "Plataformas de redes sociales ("
+          },
+          {
+            "_type": "span",
+            "_key": "pp29",
+            "text": "Facebook, Instagram, YouTube y LinkedIn",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp2a",
+            "text": ") para la interacción con la comunidad, el análisis de rendimiento y el seguimiento del alcance"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2d",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2c",
+            "text": "Estas plataformas externas recopilan y procesan datos de acuerdo con sus propias políticas de privacidad independientes."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2f",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2e",
+            "text": "5. Cookies y tecnologías de seguimiento"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2l",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2g",
+            "text": "Nuestro sitio web utiliza cookies, píxeles de seguimiento y etiquetas (incluidos scripts de seguimiento de "
+          },
+          {
+            "_type": "span",
+            "_key": "pp2h",
+            "text": "HubSpot",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp2i",
+            "text": " y "
+          },
+          {
+            "_type": "span",
+            "_key": "pp2j",
+            "text": "Google Analytics",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp2k",
+            "text": ") para:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2n",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2m",
+            "text": "Mantener las funciones básicas del sitio web y optimizar la experiencia del usuario"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2p",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2o",
+            "text": "Comprender el tráfico de visitantes, las fuentes de referencia y la interacción con el contenido"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2r",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2q",
+            "text": "Medir el rendimiento de las campañas de recaudación de fondos y el alcance en redes sociales"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2t",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2s",
+            "text": "Puede ajustar la configuración de su navegador para rechazar o eliminar las cookies; sin embargo, tenga en cuenta que hacerlo puede afectar su capacidad para utilizar sin problemas ciertos elementos interactivos, formularios de contacto o estructuras de donación."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2v",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2u",
+            "text": "6. Cómo compartimos la información"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2x",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2w",
+            "text": "VVF no vende, alquila, intercambia ni cede su información personal.",
+            "marks": [
+              "strong"
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp2z",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp2y",
+            "text": "Podemos compartir datos estrictamente bajo el principio de necesidad de conocer con:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp31",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp30",
+            "text": "Proveedores de servicios que nos ayudan a operar nuestra base de datos, sitio web, procesar donaciones o gestionar comunicaciones (por ejemplo, HubSpot, Donorbox)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp33",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp32",
+            "text": "Profesionales legales, fiscales o contables para mantener el cumplimiento normativo"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp35",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp34",
+            "text": "Autoridades gubernamentales o reguladoras si la ley lo exige estrictamente"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp37",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp36",
+            "text": "Miembros autorizados del equipo de VVF que necesiten la información para llevar a cabo nuestra misión humanitaria principal"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp39",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp38",
+            "text": "7. Seguridad de los datos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3b",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3a",
+            "text": "Empleamos medidas de seguridad administrativas, físicas y técnicas estándar de la industria —incluidos entornos de almacenamiento de datos en la nube seguros— para proteger sus datos contra pérdidas, accesos no autorizados, alteraciones o divulgaciones. Sin embargo, recuerde que ninguna transmisión de datos a través de Internet es totalmente impenetrable y no podemos garantizar una seguridad absoluta."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3d",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3c",
+            "text": "8. Privacidad de los niños"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3f",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3e",
+            "text": "VVF sirve con orgullo a comunidades vulnerables, incluidos niños y familias en Venezuela. Estamos profundamente comprometidos con la protección de la privacidad, la seguridad y la dignidad de los menores."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3h",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3g",
+            "text": "No recopilamos deliberadamente datos personales de niños a través de este sitio web. Si descubrimos que un menor nos ha proporcionado información personal sin la autorización válida de sus padres o tutores, actuaremos rápidamente para eliminarla de nuestros sistemas."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3j",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3i",
+            "text": "9. Correo electrónico y comunicaciones de marketing"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3l",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3k",
+            "text": "Si decide recibir actualizaciones o comparte su correo electrónico/número de teléfono con nosotros (a través de nuestros formularios de HubSpot o del sitio web), es posible que le enviemos contenido ocasional destacando el impacto de VVF, nuestros esfuerzos de ayuda o formas de apoyar nuestra causa."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3n",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3m",
+            "text": "Puede optar por no recibir comunicaciones de marketing en cualquier momento haciendo clic en el enlace de \"cancelar suscripción\" incluido al pie de nuestros correos electrónicos, o contactándonos directamente."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3p",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3o",
+            "text": "10. Sus derechos y control sobre la información"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3r",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3q",
+            "text": "Usted conserva el derecho de contactarnos en cualquier momento para:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3t",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3s",
+            "text": "Revisar la información personal que tenemos sobre usted en nuestros sistemas"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3v",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3u",
+            "text": "Corregir, actualizar o editar su información"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3x",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3w",
+            "text": "Solicitar la eliminación completa de sus registros (cuando las leyes legales o financieras de mantenimiento de registros lo permitan)"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp3z",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp3y",
+            "text": "Actualice sus preferencias de comunicación"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp41",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp40",
+            "text": "11. Enlaces externos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp43",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp42",
+            "text": "Nuestro sitio web incluye enlaces a otras plataformas, entidades asociadas y canales de redes sociales. VVF no tiene jurisdicción ni responsabilidad sobre el cumplimiento de la privacidad, los códigos de seguimiento o los términos de uso de propiedades web externas."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp45",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp44",
+            "text": "12. Revisiones de la política"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp47",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp46",
+            "text": "Podemos revisar esta política ocasionalmente para adaptarnos a cambios normativos o actualizaciones internas. Los cambios entran en vigor inmediatamente después de su publicación en esta URL con una \"Fecha de entrada en vigor\" actualizada."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp49",
+        "style": "h2",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp48",
+            "text": "13. Contáctenos"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp4b",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp4a",
+            "text": "Para cualquier aclaración, solicitud de datos o consulta sobre privacidad, por favor contáctenos:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "pp4j",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "pp4c",
+            "text": "Fundación Victoria Venezuela\n",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp4d",
+            "text": "Sitio web: ",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp4f",
+            "text": "https://victoriavenezuelafoundation.org/es\n",
+            "marks": [
+              "pp4e"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp4g",
+            "text": "Correo electrónico: ",
+            "marks": [
+              "strong"
+            ]
+          },
+          {
+            "_type": "span",
+            "_key": "pp4i",
+            "text": "info@victoriavenezuelafoundation.org",
+            "marks": [
+              "pp4h"
+            ]
+          }
+        ],
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "pp4e",
+            "href": "/es"
+          },
+          {
+            "_type": "link",
+            "_key": "pp4h",
+            "href": "mailto:info@victoriavenezuelafoundation.org"
+          }
+        ]
+      }
+    ],
+    "p.text": "Fecha de entrada en vigor: 6 de julio de 2026",
+    "h1.text": "Política de privacidad"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "path": "/all-events",
+  "seo": {
+    "title": "Eventos | Fundación Victoria Venezuela",
+    "description": "Eventos y campañas de la Victoria Venezuela Foundation, incluyendo nuestro torneo anual de golf benéfico en Weston, Florida, en apoyo a los niños de Venezuela.",
+    "ogTitle": "Eventos | Fundación Victoria Venezuela",
+    "ogDescription": "Eventos y campañas de la Victoria Venezuela Foundation, incluyendo nuestro torneo anual de golf benéfico en Weston, Florida, en apoyo a los niños de Venezuela.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_hero",
+        "w-variant-f412860d-b488-3b1a-a537-870ef16bd9a8"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a91bc2cc9ab6fc659c1dda5_98.png"
+        },
+        {
+          "type": "h1",
+          "text": "Eventos y campañas"
+        },
+        {
+          "type": "p",
+          "text": "Únase a nuestra comunidad y genere un impacto. Juntos nos reunimos para apoyar a quienes más lo necesitan en Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Próximos eventos",
+          "href": "#upcoming-events"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_events"
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+          "alt": "Tres golfistas y un niño junto a la bandera en el green."
+        },
+        {
+          "type": "h3",
+          "text": "Torneo Benéfico Anual de Golf 2026"
+        },
+        {
+          "type": "p",
+          "text": "2600 Country Club Way, Weston, FL 33332"
+        },
+        {
+          "type": "p",
+          "text": "Cada swing cambia una vida. Ayúdanos a brindar educación, nutrición y esperanza a los niños venezolanos."
+        },
+        {
+          "type": "cta",
+          "text": "Ver detalles",
+          "href": "/events/2026-golf-tournament"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-5"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Próximos"
+        },
+        {
+          "type": "h2",
+          "text": "Reserva la fecha"
+        },
+        {
+          "type": "p",
+          "text": "Consulta nuestros próximos eventos"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section-6"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archivo"
+        },
+        {
+          "type": "h2",
+          "text": "Pasado"
+        },
+        {
+          "type": "p",
+          "text": "Encuentros que cambiaron vidas y despertaron esperanza"
+        },
+        {
+          "type": "p",
+          "text": "Torneo Benéfico Anual de Golf 2025"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+          "alt": "Voluntarios frente a la carpa de la fundación en el campo."
+        },
+        {
+          "type": "h3",
+          "text": "Torneo Benéfico Anual de Golf 2025"
+        },
+        {
+          "type": "p",
+          "text": "Weston"
+        },
+        {
+          "type": "p",
+          "text": "FL"
+        },
+        {
+          "type": "p",
+          "text": "74 golfistas se reunieron en The Club at Weston Hills para apoyar a más de 700 niños en Venezuela."
+        },
+        {
+          "type": "cta",
+          "text": "Ver el resumen",
+          "href": "/events/2025-golf-tournament"
+        }
+      ]
+    },
+    {
+      "classes": [
+        "section_newsletter"
+      ],
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "No te pierdas ningún evento"
+        },
+        {
+          "type": "p",
+          "text": "Recibe invitaciones y actualizaciones directamente en tu bandeja de entrada"
+        },
+        {
+          "type": "h2",
+          "text": "Mantente conectado"
+        },
+        {
+          "type": "p",
+          "text": "Mantente al día con nuestras noticias y eventos"
+        },
+        {
+          "type": "p",
+          "text": "Respetamos tu privacidad. Puedes darte de baja en cualquier momento."
+        }
+      ]
+    }
+  ]
+}

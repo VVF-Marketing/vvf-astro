@@ -1,0 +1,61 @@
+{
+  "sponsor-a-child": [
+    {
+      "question": "¿Cuánto cuesta el apadrinamiento?",
+      "answer": "El apadrinamiento comienza en $25 al mes. Tú eliges la cantidad que mejor se adapte a tu presupuesto. Tus donaciones financian las comidas, la atención médica y los programas educativos que llegan a cada niño bajo nuestro cuidado. En el año fiscal 2025, el 95% de los fondos se destinó directamente a los programas.",
+      "order": 0
+    },
+    {
+      "question": "¿A dónde va mi dinero?",
+      "answer": "Los fondos de su apadrinamiento proporcionan comidas semanales, chequeos médicos dos veces al año, útiles escolares, uniformes y enseñanza basada en la fe. Mantenemos una transparencia total sobre cómo se gasta cada dólar. Puede revisar nuestros estados financieros detallados en cualquier momento en nuestro sitio web.",
+      "order": 1
+    },
+    {
+      "question": "¿Puedo escribirle a mi niño apadrinado?",
+      "answer": "Sí. Su niño recibirá sus cartas y dibujos, y le escribirá de vuelta. Esta conexión es una de las partes más significativas del apadrinamiento.",
+      "order": 2
+    },
+    {
+      "question": "¿Qué actualizaciones recibiré?",
+      "answer": "Recibirá cartas y fotos de su niño, junto con informes anuales de impacto que muestran cómo su apadrinamiento cambió su vida. También enviamos peticiones de oración y actualizaciones sobre su progreso escolar y de salud.",
+      "order": 3
+    },
+    {
+      "question": "¿Puedo enviar regalos a mi niño?",
+      "answer": "Recomendamos que los regalos sean modestos y prácticos, como útiles escolares o libros. Los regalos grandes o costosos pueden generar complicaciones. Le guiaremos sobre lo que mejor funciona para la situación y la comunidad de su niño.",
+      "order": 4
+    },
+    {
+      "question": "¿Mi dinero va directamente al niño que apadrino?",
+      "answer": "Su apadrinamiento lo conecta con un niño. Las donaciones se combinan para financiar la nutrición, la atención médica y la educación que llegan a cada niño en nuestros programas, lo que mantiene un apoyo constante para cada uno, incluso si un padrino decide retirarse.",
+      "order": 5
+    }
+  ],
+  "ways-to-give": [
+    {
+      "question": "¿Son las donaciones deducibles de impuestos?",
+      "answer": "Sí. Victoria Venezuela Foundation es una organización sin fines de lucro 501(c)(3). Todas las donaciones son deducibles de impuestos en la medida máxima permitida por la ley. Recibirás un recibo para tus registros.",
+      "order": 0
+    },
+    {
+      "question": "¿Cómo se utiliza mi dinero?",
+      "answer": "El noventa y cinco por ciento de los fondos se destina directamente a los programas. Apoyamos la nutrición, la atención médica y la educación de niños en Venezuela. Consulta nuestra página de finanzas para ver el desglose completo.",
+      "order": 1
+    },
+    {
+      "question": "¿Puedo designar a qué se destina mi donación?",
+      "answer": "Por supuesto. Puedes destinar tu donación a un programa específico o al apadrinamiento de un niño. Indícanos tu preferencia al donar o contáctanos para analizar las opciones.",
+      "order": 2
+    },
+    {
+      "question": "¿Cómo obtengo un recibo?",
+      "answer": "Recibirás un recibo automáticamente después de realizar tu donación. Revisa tu correo electrónico, incluyendo la carpeta de spam. Para las donaciones recurrentes, recibirás un resumen anual.",
+      "order": 3
+    },
+    {
+      "question": "¿Puedo cancelar mis donaciones recurrentes?",
+      "answer": "Sí. Puedes modificar o cancelar tu donación mensual en cualquier momento, sin explicaciones. Contáctanos o gestiona tu suscripción a través de tu cuenta de donante.",
+      "order": 4
+    }
+  ]
+}

@@ -51,6 +51,23 @@ test('an untranslated page under /es is canonicalized to English with no es-VE a
   await expect(page.locator('main')).toHaveAttribute('lang', 'en-US')
 })
 
+test('a translated page is its own canonical and lists both locales', async ({ page }) => {
+  const event = firstEvent()
+  await page.goto(`/es/events/${event.slug}`)
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${SITE}/es/events/${event.slug}`)
+  await expect(page.locator('link[rel="alternate"][hreflang="es-VE"]')).toHaveAttribute('href', `${SITE}/es/events/${event.slug}`)
+  await expect(page.locator('link[rel="alternate"][hreflang="en-US"]')).toHaveAttribute('href', `${SITE}/events/${event.slug}`)
+  await expect(page.locator('main')).not.toHaveAttribute('lang', /.+/)
+  await page.goto(`/events/${event.slug}`)
+  await expect(page.locator('link[rel="alternate"][hreflang="es-VE"]')).toHaveAttribute('href', `${SITE}/es/events/${event.slug}`)
+})
+
+test('Spanish pages show the live Spanish copy', async ({ page }) => {
+  await page.goto('/es')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Transforma la vida de un niño en Venezuela')
+  await expect(page).toHaveTitle(/Fundación Victoria Venezuela/)
+})
+
 test('an English page is its own canonical', async ({ page }) => {
   await page.goto('/ways-to-give')
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${SITE}/ways-to-give`)
@@ -77,4 +94,17 @@ test('a Spanish page shows the Spanish menu, linking to /es routes', async ({ pa
   await expect(nav.getByRole('link', { name: 'Nuestro equipo' })).toHaveAttribute('aria-current', 'page')
   const menuLinks = await nav.locator(':scope > ul a').evaluateAll((links) => links.map((a) => a.getAttribute('href')))
   for (const href of menuLinks) expect(href).toMatch(/^\/es\//)
+})
+
+test('old Spanish Webflow URLs redirect once to the Spanish project route', async ({ request }) => {
+  for (const [from, to] of [
+    ['/es/all-events', '/es/events'],
+    ['/es/team-members/randy-lander', '/es/our-team/randy-lander'],
+    ['/es/resources-categories/stories', '/es/resources/category/stories'],
+    ['/es/venezuela-earthquake-relief', '/es/earthquake-relief'],
+  ]) {
+    const res = await request.get(from, { maxRedirects: 0 })
+    expect(res.status(), from).toBe(301)
+    expect(new URL(res.headers()['location'], 'http://x').pathname, from).toBe(to)
+  }
 })

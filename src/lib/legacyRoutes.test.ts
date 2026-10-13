@@ -20,3 +20,12 @@ describe('projectPathFor', () => {
     expect(projectPathFor('/contact/')).toBe('/contact')
   })
 })
+
+describe('Spanish legacy paths', () => {
+  it('map through the same table once the /es prefix is removed', () => {
+    const spanish = (p: string) => '/es' + projectPathFor(p.replace(/^\/es/, ''))
+    expect(spanish('/es/team-members/randy-lander')).toBe('/es/our-team/randy-lander')
+    expect(spanish('/es/all-events')).toBe('/es/events')
+    expect(spanish('/es/resources-categories/stories')).toBe('/es/resources/category/stories')
+  })
+})

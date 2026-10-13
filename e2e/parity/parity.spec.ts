@@ -71,8 +71,16 @@ async function diff(a: Buffer, b: Buffer) {
 
 const summary: string[] = []
 
-for (const livePath of LIVE_PAGES) {
-  const localPath = projectPathFor(livePath)
+// Each page in both locales: Spanish pages live under /es on both sites.
+const PAIRS = LIVE_PAGES.flatMap((p) => {
+  const local = projectPathFor(p)
+  return [
+    [p, local],
+    [p === '/' ? '/es' : `/es${p}`, local === '/' ? '/es' : `/es${local}`],
+  ]
+})
+
+for (const [livePath, localPath] of PAIRS) {
   const name = (localPath === '/' ? 'home' : localPath.slice(1)).replace(/\//g, '__')
 
   test(`${livePath} → ${localPath}`, async ({ page, baseURL }) => {

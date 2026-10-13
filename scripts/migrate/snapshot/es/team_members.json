@@ -1,0 +1,737 @@
+{
+  "sections": [
+    {
+      "tier": "board",
+      "tagline": "JUNTA DIRECTIVA",
+      "heading": "Junta Directiva",
+      "text": "La junta directiva establece el rumbo de la Fundación y es responsable de su misión, sus finanzas y sus programas.",
+      "members": [
+        {
+          "slug": "randy-lander",
+          "name": "Randy Lander",
+          "role": "Presidente de la junta",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+            "alt": "Randy Lander"
+          },
+          "hasDetailPage": true,
+          "order": 0
+        },
+        {
+          "slug": "helen-bello",
+          "name": "Helen Bello",
+          "role": "Vicepresidenta de la junta",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+            "alt": "Helen Bello"
+          },
+          "hasDetailPage": true,
+          "order": 1
+        },
+        {
+          "name": "Pastor Jose Guerrero",
+          "role": "Director",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+            "alt": "Pastor Jose Guerrero"
+          },
+          "hasDetailPage": false,
+          "order": 2
+        },
+        {
+          "name": "Join our board",
+          "role": "Buscamos un nuevo miembro para la junta directiva",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png",
+            "alt": "Join our board"
+          },
+          "hasDetailPage": false,
+          "openSeat": {
+            "kicker": "Vacante en la junta directiva",
+            "heading": "Ayuda a guiar a la Fundación",
+            "cta": "Contáctanos",
+            "href": "/contact"
+          },
+          "order": 3
+        }
+      ]
+    },
+    {
+      "tier": "staff",
+      "tagline": "PERSONAL",
+      "heading": "Nuestro equipo",
+      "text": "Las personas que dirigen la Fundación en el día a día, tanto en Estados Unidos como en Venezuela.",
+      "members": [
+        {
+          "slug": "randy-lander",
+          "name": "Randy Lander",
+          "role": "Fundador y presidente",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+            "alt": "Randy Lander"
+          },
+          "hasDetailPage": true,
+          "order": 0
+        },
+        {
+          "slug": "helen-bello",
+          "name": "Helen Bello",
+          "role": "Cofundadora y directora financiera",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+            "alt": "Helen Bello"
+          },
+          "hasDetailPage": true,
+          "order": 1
+        },
+        {
+          "name": "Pastor Jose Guerrero",
+          "role": "Vicepresidente ejecutivo de Programas Venezuela",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+            "alt": "Pastor Jose Guerrero"
+          },
+          "hasDetailPage": false,
+          "order": 2
+        },
+        {
+          "slug": "charmiant-corado",
+          "name": "Charmiant Corado",
+          "role": "Vicepresidenta ejecutiva de Marketing y Comunicaciones",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp",
+            "alt": "Charmiant Corado"
+          },
+          "hasDetailPage": true,
+          "order": 3
+        },
+        {
+          "slug": "juan-tomasini",
+          "name": "Juan Tomasini",
+          "role": "Vicepresidente ejecutivo de Desarrollo de Negocios",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp",
+            "alt": "Juan Tomasini"
+          },
+          "hasDetailPage": true,
+          "order": 4
+        },
+        {
+          "slug": "enrique-flores",
+          "name": "Enrique Flores",
+          "role": "Vicepresidente ejecutivo de Transformación Digital",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp",
+            "alt": "Enrique Flores"
+          },
+          "hasDetailPage": true,
+          "order": 5
+        },
+        {
+          "slug": "dorceia-watkins",
+          "name": "Dorceia Watkins",
+          "role": "Directora sénior de Gestión de Subvenciones",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp",
+            "alt": "Dorceia Watkins"
+          },
+          "hasDetailPage": true,
+          "order": 6
+        },
+        {
+          "slug": "arivana-rangel",
+          "name": "Arivana Rangel",
+          "role": "Directora sénior de Desarrollo de Negocios y Alianzas",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp",
+            "alt": "Arivana Rangel"
+          },
+          "hasDetailPage": true,
+          "order": 7
+        },
+        {
+          "slug": "johnny-yataco",
+          "name": "Johnny Yataco",
+          "role": "Vicepresidente de Comunicaciones EE. UU.",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp",
+            "alt": "Johnny Yataco"
+          },
+          "hasDetailPage": true,
+          "order": 8
+        },
+        {
+          "slug": "luis-arias",
+          "name": "Luis Arias",
+          "role": "Vicepresidente de Comunicaciones Venezuela",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp",
+            "alt": "Luis Arias"
+          },
+          "hasDetailPage": true,
+          "order": 9
+        },
+        {
+          "slug": "ximena-sosa",
+          "name": "Ximena Sosa",
+          "role": "Directora sénior de Estrategia Digital",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp",
+            "alt": "Ximena Sosa"
+          },
+          "hasDetailPage": true,
+          "order": 10
+        },
+        {
+          "slug": "elimar-ugueto",
+          "name": "Elimar Ugueto",
+          "role": "Directora de Sistemas Agénticos | Asesora de Marketing",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp",
+            "alt": "Elimar Ugueto"
+          },
+          "hasDetailPage": true,
+          "order": 11
+        },
+        {
+          "slug": "vanessa-sanchez",
+          "name": "Vanessa Sanchez",
+          "role": "Directora sénior de Comunicaciones",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp",
+            "alt": "Vanessa Sanchez"
+          },
+          "hasDetailPage": true,
+          "order": 12
+        },
+        {
+          "slug": "antonio-manzanares",
+          "name": "Antonio Manzanares",
+          "role": "Desarrollador sénior",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e0c26fab4f62cc6dbba9_6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg",
+            "alt": "Antonio Manzanares"
+          },
+          "hasDetailPage": true,
+          "order": 13
+        },
+        {
+          "slug": "david-cardenas",
+          "name": "David Cardenas",
+          "role": "Director, Centro Bolívar",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp",
+            "alt": "David Cardenas"
+          },
+          "hasDetailPage": true,
+          "order": 14
+        },
+        {
+          "name": "Isaias Mota",
+          "role": "Director, Centro Aragua",
+          "photo": {
+            "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp",
+            "alt": "Isaias Mota"
+          },
+          "hasDetailPage": false,
+          "order": 15
+        }
+      ]
+    }
+  ],
+  "members": {
+    "antonio-manzanares": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/antonio-manzanares",
+      "name": "Antonio Manzanares",
+      "role": "Desarrollador sénior",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e0c26fab4f62cc6dbba9_6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg",
+        "alt": "Antonio Manzanares"
+      },
+      "quote": "«Nuestro propósito es servir con los talentos que se nos han dado».",
+      "bodyHtml": "<p><strong>Ingeniero de software full-stack que pone sus habilidades técnicas al servicio del sitio web y la presencia en línea de VVF.</strong></p><p>Antonio Manzanares se desempeña como desarrollador sénior de Victoria Venezuela Foundation, apoyando el sitio web y la presencia digital de la organización para que la misión de VVF llegue a las personas que necesitan conocerla.</p><p>Antonio es ingeniero de software full-stack en DealMaker, una plataforma fintech para rondas de inversión en línea, donde su trabajo abarca desde funcionalidades de incorporación de emisores hasta la respuesta a incidentes en producción. Antes de dedicarse a la ingeniería, pasó casi una década en ventas B2B, una experiencia que hoy moldea su manera de resolver problemas y de trabajar con las personas.</p><p>Fuera de su trabajo principal, Antonio también dirige anclist web dev, donde crea sitios y herramientas digitales para clientes y organizaciones en las que cree.</p><p>Originario de Caracas, Venezuela, y radicado en Toronto, Antonio habla español con fluidez y se mantiene muy conectado con sus raíces. Él y su esposa crían juntos a su hijo, y él cree que nuestro propósito es servir con los talentos que se nos han dado; ofrecer sus habilidades como voluntario en VVF es una de las formas en que lo pone en práctica.</p>",
+      "background": [
+        {
+          "label": "Ingeniero full-stack",
+          "value": "DealMaker"
+        },
+        {
+          "label": "Desarrollador web independiente",
+          "value": "anclist web dev"
+        },
+        {
+          "label": "Cambio de carrera",
+          "value": "Una década en ventas B2B antes de pasar a la ingeniería de software"
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/anclist/"
+        }
+      ],
+      "seo": {
+        "title": "Antonio Manzanares | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Antonio Manzanares, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Antonio Manzanares | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Antonio Manzanares, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e0c26fab4f62cc6dbba9_6ab582665a63719ab2712c9a_Gemini_Generated_Image_r8n6ajr8n6ajr8n6.jpeg"
+      }
+    },
+    "arivana-rangel": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/arivana-rangel",
+      "name": "Arivana Rangel",
+      "role": "Directora sénior de Desarrollo de Negocios y Alianzas",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp",
+        "alt": "Arivana Rangel"
+      },
+      "lead": "Más de una década liderando programas de impacto social y alianzas público-privadas; psicóloga con maestría en Administración Pública del IESA.",
+      "bodyHtml": "<p>Arivana cuenta con más de una década de experiencia en planificación estratégica de impacto social, gestión de proyectos multidisciplinarios y participación comunitaria. Ha liderado programas multisectoriales para organizaciones sin fines de lucro y fundaciones, fortaleciendo alianzas público-privadas e impulsando iniciativas sociales de alto impacto.</p><p>Su trayectoria incluye la realización de diagnósticos de necesidades, el diseño y la supervisión de programas, y la facilitación de la colaboración entre múltiples actores para mejorar los resultados y asegurar la sostenibilidad a largo plazo. El trabajo de Arivana refleja su compromiso con la construcción de estructuras que amplíen las oportunidades, empoderen a las comunidades y generen un impacto medible y duradero.</p><p>Arivana Rangel Durán es licenciada en Psicología por la Universidad Católica Andrés Bello (Caracas, Venezuela), tiene una maestría en Administración Pública del Instituto de Estudios Superiores de Administración (IESA) y está certificada por el Programa de Emprendimiento de Babson College (Boston, Massachusetts, EE. UU.).</p>",
+      "background": [
+        {
+          "label": "Licenciatura en Psicología",
+          "value": "Universidad Católica Andrés Bello"
+        },
+        {
+          "label": "Maestría en Administración Pública",
+          "value": "IESA"
+        },
+        {
+          "label": "Programa de Emprendimiento",
+          "value": "Babson College"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Arivana Rangel | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Arivana Rangel, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Arivana Rangel | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Arivana Rangel, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88e_6aaad2b0047b63007f01b7fd_Arivana%2520Rangel.webp"
+      }
+    },
+    "charmiant-corado": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/charmiant-corado",
+      "name": "Charmiant Corado",
+      "role": "Vicepresidenta ejecutiva de Marketing y Comunicaciones",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp",
+        "alt": "Charmiant Corado"
+      },
+      "lead": "Profesional de las comunicaciones ganadora de un premio Emmy, con más de diez años en medios y contenido digital; trabajó en WarnerMedia y Gray Media.",
+      "bodyHtml": "<p>Charmiant Corado es una profesional de las comunicaciones ganadora de un premio Emmy, con más de 10 años de experiencia en medios, comunicaciones digitales y estrategia de contenido. Actualmente es directora de Comunicaciones y Plataformas Digitales de Victoria Venezuela Foundation, donde lidera las comunicaciones digitales, la narrativa, las redes sociales y las iniciativas de alcance que ayudan a amplificar la misión y el impacto de la Fundación.</p><p>A lo largo de su carrera, Charmiant ha trabajado en entornos de medios y comunicaciones de ritmo acelerado, entre ellos WarnerMedia y Gray Media, desarrollando contenido y estrategias de comunicación para audiencias diversas. Tiene una maestría en Gestión de la Comunicación por Emerson College y otra en Comunicación de Medios de Masas por la Universidad Complutense de Madrid.</p><p>Apasionada por usar las comunicaciones para crear conexiones significativas y amplificar el cambio positivo, Charmiant se enorgullece de apoyar el trabajo de la Fundación en favor de los niños, las familias y las comunidades de Venezuela.</p>",
+      "background": [
+        {
+          "label": "Ganadora de un premio Emmy",
+          "value": "Comunicaciones"
+        },
+        {
+          "label": "Maestrías",
+          "value": "Emerson College · Universidad Complutense de Madrid"
+        },
+        {
+          "label": "Experiencia previa",
+          "value": "WarnerMedia · Gray Media"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Charmiant Corado | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Charmiant Corado, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Charmiant Corado | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Charmiant Corado, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87c_6aaad2b0858f22fb794eb3dc_Charmiant%2520Corado.webp"
+      }
+    },
+    "david-cardenas": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/david-cardenas",
+      "name": "David Cardenas",
+      "role": "Director, Centro Bolívar",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp",
+        "alt": "David Cardenas"
+      },
+      "lead": "Pastor de la Iglesia de Cristo Ebenezer en Ciudad Bolívar, con más de dos décadas en el ministerio pastoral y el servicio comunitario.",
+      "bodyHtml": "<p>El pastor David Cárdenas es un líder cristiano dedicado, con más de dos décadas de experiencia en el ministerio pastoral, la enseñanza bíblica y el servicio comunitario. Nacido y criado en un hogar cristiano, desarrolló desde temprana edad una sólida base de fe y valores familiares, y respondió al llamado de Dios al ministerio siendo aún joven.</p><p>Como pastor de la Iglesia de Cristo Ebenezer, David combina la energía juvenil con una profunda experiencia ministerial, lo que le permite conectar de manera significativa tanto con las nuevas generaciones como con los miembros de larga trayectoria de la iglesia. Su liderazgo se caracteriza por la compasión, la madurez espiritual y el compromiso de ayudar a las personas y las familias a crecer en su relación con Jesucristo.</p><p>Junto a su esposa y sus dos hijas, el pastor David ha abrazado fielmente un llamado centrado en la familia para servir a Dios y a la comunidad. Han sido fundamentales en el desarrollo del ministerio infantil de la iglesia y en la preparación de jóvenes líderes para servir a la próxima generación con excelencia y propósito.</p><p>Su pasión por los niños, las familias y la transformación comunitaria refleja fielmente la misión de Victoria Venezuela Foundation: compartir el amor de Dios mientras se crean esperanza y oportunidades duraderas para quienes más lo necesitan.</p>",
+      "background": [
+        {
+          "label": "Pastor",
+          "value": "Iglesia de Cristo Ebenezer"
+        },
+        {
+          "label": "Más de 20 años",
+          "value": "Ministerio pastoral y enseñanza bíblica"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "David Cardenas | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a David Cardenas, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "David Cardenas | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a David Cardenas, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaadaa231948d1093433158_6aaada7001f77783a09b167c_David%2520Cardenas.webp"
+      }
+    },
+    "dorceia-watkins": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/dorceia-watkins",
+      "name": "Dorceia Watkins",
+      "role": "Directora sénior de Gestión de Subvenciones",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp",
+        "alt": "Dorceia Watkins"
+      },
+      "bodyHtml": "<p>Dorceia J. McCullough-Watkins, PhD, es estratega de desarrollo, profesional de subvenciones, escritora, educadora y emprendedora, comprometida con ayudar a quienes ayudan a los demás. Como fundadora y consultora principal de Inspirational Editions (IE), ayuda a organizaciones sin fines de lucro, organizaciones basadas en la fe y pequeñas empresas a fortalecer su capacidad, comunicar su visión, conseguir financiamiento y lograr un impacto organizacional medible.</p><p>Con casi una década de experiencia en desarrollo de subvenciones, redacción de propuestas, contratos, desarrollo organizacional y comunicaciones estratégicas, Dorceia ha apoyado a organizaciones que buscan millones de dólares en financiamiento público y privado. Su experiencia abarca servicios sin fines de lucro, desarrollo de la fuerza laboral, transporte, servicios sociales, iniciativas basadas en la fe, desarrollo comunitario y crecimiento de pequeñas empresas. Aporta a cada proyecto una combinación única de dominio de la escritura, liderazgo organizacional, estrategia de subvenciones y conocimiento en desarrollo de programas.</p><p>La Dra. McCullough-Watkins tiene un doctorado en Educación Cristiana y un MBA en Liderazgo Organizacional, además de una licenciatura en Estudios Bíblicos y Ministerio de Adoración. Se esfuerza constantemente por reflejar su convicción de que un liderazgo eficaz requiere tanto excelencia estratégica como compromiso con un propósito.</p><p>A través de Inspirational Editions, Dorceia prepara a los líderes para transformar ideas en iniciativas sostenibles, fortalecer las organizaciones desde adentro y aprovechar oportunidades que generen un impacto significativo en la comunidad. Su filosofía es sencilla: ayudar a quienes ayudan a los demás.</p>",
+      "background": [
+        {
+          "label": "Fundadora y consultora principal",
+          "value": "Inspirational Editions"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Dorceia Watkins | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Dorceia Watkins, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Dorceia Watkins | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Dorceia Watkins, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a891_6aaad2b0858f22fb794eb3cb_Dorceia%2520Watkins.webp"
+      }
+    },
+    "elimar-ugueto": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/elimar-ugueto",
+      "name": "Elimar Ugueto",
+      "role": "Directora de Sistemas Agénticos | Asesora de Marketing",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp",
+        "alt": "Elimar Ugueto"
+      },
+      "lead": "Fundadora y CEO de Ugueto AI, con 25 años en medios y marketing; lidera el diseño de los sistemas agénticos de la Fundación.",
+      "bodyHtml": "<p>Elimar Ugueto es fundadora y CEO de Ugueto AI, con más de 25 años de experiencia en medios, comunicaciones corporativas y marketing. Su carrera comenzó en la televisión en Venezuela y luego se extendió a los medios hispanos de Estados Unidos, entre ellos Univision y ESPN Deportes, además de proyectos para marcas globales como Amazon, Google, Johnson &amp; Johnson, Oreo, FIFA y Coca-Cola, entre otras.</p><p>Elimar se unió a Victoria Venezuela Foundation como asesora de marketing, apoyando inicialmente las labores de marketing y producción de la organización. A medida que su enfoque profesional evolucionó del marketing digital tradicional hacia la implementación práctica de la IA y los sistemas agénticos, su rol en VVF también evolucionó. Hoy lidera el diseño y desarrollo de los sistemas agénticos de la Fundación, trabajando directamente con los miembros del equipo y los expertos en cada área para entender sus flujos de trabajo. Traduce las necesidades operativas en soluciones prácticas impulsadas por IA en marketing, investigación, eventos, recaudación de fondos y operaciones internas.</p><p>Nacida en Venezuela y bilingüe en inglés y español, Elimar tiene una conexión personal con la misión de VVF. Cuenta con la certificación CS50: Computer Science for Business de la Universidad de Harvard. Guiada por su fe cristiana, cree que la tecnología es una forma de mayordomía, y cada sistema que construye tiene un solo propósito: liberar el tiempo y la atención del equipo para que puedan dirigirse a lo que más importa, servir a los niños que Dios ha confiado a esta Fundación.</p>",
+      "background": [
+        {
+          "label": "Fundadora y CEO",
+          "value": "Ugueto AI"
+        },
+        {
+          "label": "Más de 25 años",
+          "value": "Medios, comunicaciones y marketing"
+        },
+        {
+          "label": "CS50, Computer Science for Business",
+          "value": "Universidad de Harvard"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Elimar Ugueto | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Elimar Ugueto, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Elimar Ugueto | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Elimar Ugueto, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b0_6aaad2b03dbacd7fed4ea1bf_Elimar%2520Ugueto.webp"
+      }
+    },
+    "enrique-flores": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/enrique-flores",
+      "name": "Enrique Flores",
+      "role": "Vicepresidente ejecutivo de Transformación Digital",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp",
+        "alt": "Enrique Flores"
+      },
+      "quote": "Creo en un mundo que funcione para todos.",
+      "lead": "Fundador y CEO de Paula Inc. Responsable de la marca y la presencia digital de la Fundación.",
+      "bodyHtml": "<p>Enrique es el vicepresidente ejecutivo de Transformación Digital de Victoria Venezuela Foundation. También apoya la recaudación de fondos.</p><p>Es fundador y CEO de Paula Inc., una agencia de Toronto que crea marcas, sitios web y sistemas de marketing para empresas de servicios financieros. Antes de fundar Paula, pasó más de diez años en la industria de gestión patrimonial en Toronto, donde llegó a ser director de marketing (CMO).</p><p>En la Fundación, Enrique es responsable de la marca y la presencia digital. Su trabajo es asegurar que la profundidad, la legitimidad, la visión y los logros de la organización se reflejen en todo lo que la gente ve de ella en línea.</p><p>Nació en Caracas y vive en Toronto. Fuera del trabajo sigue la política, se mantiene en forma y practica snowboard cuando la temporada lo permite. Cree en un mundo que funcione para todos.</p>",
+      "background": [
+        {
+          "label": "Fundador y CEO",
+          "value": "Paula Inc."
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/enriquejosueflores/"
+        }
+      ],
+      "seo": {
+        "title": "Enrique Flores | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Enrique Flores, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Enrique Flores | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Enrique Flores, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a88b_6aaad2b0425e9e29cf1dd99e_Enrique%2520Flores.webp"
+      }
+    },
+    "helen-bello": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/helen-bello",
+      "name": "Helen Bello",
+      "role": "Cofundadora y directora financiera",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp",
+        "alt": "Helen Bello"
+      },
+      "lead": "Gerente de Marketing de Campo en Microsoft; antes pasó ocho años en The Boeing Company. MBA de la University of Washington.",
+      "bodyHtml": "<p>Helen Bello es cofundadora de Victoria Venezuela Foundation. Venezolana de nacimiento, Helen reside en Estados Unidos desde hace 28 años y nunca ha perdido el contacto con sus raíces venezolanas. A lo largo de los años ha formado parte de varias juntas directivas, entre ellas la Association of Latino Professionals For America (ALPFA) y Seattle Credit Union. Actualmente trabaja en Microsoft como gerente de Marketing de Campo, donde se encarga de desarrollar estrategias y campañas de marketing basadas en el conocimiento del cliente para un grupo de cuentas estratégicas. Antes de Microsoft, pasó ocho años en The Boeing Company.</p><p>Allí ocupó diversos cargos en relaciones con clientes, compras y marketing. Helen tiene experiencia con grandes cuentas y ha coordinado iniciativas de marketing con ejecutivos de cuenta en Norteamérica y América Latina. Dirigió equipos multifuncionales enfocados en desarrollo de negocios, integración de estrategias, analítica de ventas y marketing, e integración tecnológica posventa. Helen tiene una licenciatura y una maestría en Administración de Empresas (MBA) de la University of Washington.</p>",
+      "background": [
+        {
+          "label": "Gerente de Marketing de Campo",
+          "value": "Microsoft"
+        },
+        {
+          "label": "8 años",
+          "value": "The Boeing Company"
+        },
+        {
+          "label": "MBA",
+          "value": "University of Washington"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Helen Bello | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Helen Bello, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Helen Bello | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Helen Bello, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a875_6aaad2b0ec8fd28b63b253e9_Helen%2520Bello.webp"
+      }
+    },
+    "isaias-mota": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/isaias-mota",
+      "name": "Isaias Mota",
+      "role": "Director, Centro Aragua",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp",
+        "alt": "Isaias Mota"
+      },
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Isaias Mota | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Isaias Mota, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Isaias Mota | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Isaias Mota, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34440b27e7dec42a8bd_6aaad2b0371740c69a24ccfa_Isaias%2520Mota.webp"
+      }
+    },
+    "johnny-yataco": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/johnny-yataco",
+      "name": "Johnny Yataco",
+      "role": "Vicepresidente de Comunicaciones EE. UU.",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp",
+        "alt": "Johnny Yataco"
+      },
+      "lead": "Editor de Washington Hispanic, que fundó en 1994; nombrado Empresario del Año por la Cámara de Comercio Peruano-Americana en 2008.",
+      "bodyHtml": "<p>Johnny A. Yataco, editor de Washington Hispanic, nació y se crió en Lima, Perú. Desde temprana edad estuvo en contacto con el mundo editorial: su madre solía llevarlo con ella al trabajo en un diario de Lima. Siempre ha tenido un espíritu emprendedor natural.</p><p>A los 18 años ingresó en Foto Interamericana del Perú, un instituto de Eastman Kodak Company, para estudiar fotografía. Más tarde estudió inteligencia artificial en la Universidad de Oxford.</p><p>Trabajó en varios periódicos del Perú y luego pasó dos años en la Oficina de Comunicaciones del entonces presidente del Perú.</p><p>En febrero de 1994 lanzó su propia publicación, Washington Hispanic. Hoy cuenta con 28 empleados a tiempo completo y más de 30 colaboradores independientes. Ha sido reconocida por la National Association of Hispanic Publications (NAHP) y, en 1999, ocupó el puesto n.º 54 entre las empresas hispanas de más rápido crecimiento en Estados Unidos. Johnny ha recibido reconocimientos de organizaciones comunitarias, entre ellas la Cámara de Comercio Iberoamericana, que nombró a su organización Pequeña Empresa del Año en 1998, y la Cámara de Comercio Peruano-Americana, que lo nombró Empresario del Año en 2008.</p>",
+      "background": [
+        {
+          "label": "Editor",
+          "value": "Washington Hispanic, fundado en 1994"
+        },
+        {
+          "label": "Fotografía",
+          "value": "Foto Interamericana del Perú"
+        },
+        {
+          "label": "Empresario del Año",
+          "value": "Cámara de Comercio Peruano-Americana, 2008"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Johnny Yataco | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Johnny Yataco, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Johnny Yataco | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Johnny Yataco, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad5bedb657f77937e7e0e_6aaad5a262aaa2481fab28cb_Johnny%2520Yataco.webp"
+      }
+    },
+    "join-our-board": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/join-our-board",
+      "name": "Join our board",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png",
+        "alt": "Join our board"
+      },
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Join our board | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Join our board, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Join our board | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Join our board, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab329698301f8fa0237754c_6aa1c8b4c3c2b090befecd8f_6aa1c7845e80cfc8d4ba80d9_VVF_TeamPhoto_Placeholder.png"
+      }
+    },
+    "juan-tomasini": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/juan-tomasini",
+      "name": "Juan Tomasini",
+      "role": "Vicepresidente ejecutivo de Desarrollo de Negocios",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp",
+        "alt": "Juan Tomasini"
+      },
+      "bodyHtml": "<p>Juan es contratista, emprendedor y cofundador de The Trusty Handyman, una empresa familiar con sede en el sur de Florida que ofrece servicios de mejoras confiables y de alta calidad a hogares y negocios de toda la región.</p><p>Con una tradición familiar de tres generaciones en la construcción, Juan ha dedicado su carrera a la industria de los servicios para el hogar y la construcción. Le apasiona construir relaciones significativas, crear oportunidades y buscar un crecimiento personal y profesional continuo. Fuera del trabajo, disfruta jugar golf, hacer ejercicio, leer y compartir tiempo de calidad con su familia.</p>",
+      "background": [
+        {
+          "label": "Cofundador",
+          "value": "The Trusty Handyman"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Juan Tomasini | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Juan Tomasini, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Juan Tomasini | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Juan Tomasini, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a87f_6aaad2b1827a8d93fc02f6f1_Juan%2520Tomasini.webp"
+      }
+    },
+    "luis-arias": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/luis-arias",
+      "name": "Luis Arias",
+      "role": "Vicepresidente de Comunicaciones Venezuela",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp",
+        "alt": "Luis Arias"
+      },
+      "lead": "Productor audiovisual venezolano que lidera la producción ejecutiva de dos programas de televisión nacional y sirve a una red de más de 35.000 iglesias.",
+      "bodyHtml": "<p>Luis Arias es un comunicador social y productor audiovisual venezolano con amplia experiencia en dirección operativa, producción de campo y coordinación de transmisiones satelitales nacionales e internacionales. Es licenciado en Comunicación Social, mención Medios Audiovisuales, por la Universidad Santa María, y cuenta con formación avanzada de nivel de maestría en Producción Ejecutiva de Cine y Televisión.</p><p>Luis comenzó su carrera en los medios con experiencia práctica en radio y televisión abierta. Motivado por los rigurosos estándares técnicos y operativos de la industria, se formó académicamente y luego se incorporó a importantes cadenas internacionales. Su experiencia profesional incluye la gestión de la producción técnica y la logística de las transmisiones continentales de béisbol de ESPN Latinoamérica, así como el apoyo al despliegue operativo y la producción ejecutiva de contenido multimedia en FOX.</p><p>En Venezuela, Luis ha seguido desarrollando su experiencia en televisión en vivo y actualmente lidera la producción ejecutiva de dos programas de transmisión nacional: Despertar, en Televisora Venezolana Social (TVes), y La Jornada, en Venezolana de Televisión (VTV).</p><p>Una profunda transformación personal y espiritual hace una década reorientó el llamado profesional de Luis hacia las comunicaciones con propósito ministerial. Desde entonces, ha puesto su experiencia técnica, sus relaciones con los medios y su trayectoria en producción al servicio de plataformas que amplían el alcance del Evangelio a través de la televisión regional, nacional e internacional.</p><p>Después de la pandemia, su labor de comunicaciones con enfoque ministerial ha crecido significativamente. Hoy Luis se desempeña como enlace y representante de comunicaciones de una red de más de 35.000 iglesias, coordinando oportunidades para que pastores y líderes espirituales compartan sus mensajes en medios nacionales y regionales. También desarrolla alianzas estratégicas con importantes medios venezolanos y brinda apoyo técnico y de comunicaciones a ministerios internacionales, ayudando a llevar el Evangelio a espacios institucionales y mediáticos de influencia.</p><p>Su vida y su trabajo se guían por una convicción sencilla: «Separados de Él, nada podemos hacer».</p>",
+      "background": [
+        {
+          "label": "Comunicación Social",
+          "value": "Universidad Santa María"
+        },
+        {
+          "label": "Experiencia previa",
+          "value": "ESPN Latinoamérica · FOX"
+        },
+        {
+          "label": "Productor ejecutivo",
+          "value": "Despertar (TVes) · La Jornada (VTV)"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Luis Arias | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Luis Arias, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Luis Arias | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Luis Arias, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8aa_6aaad2b0758907755f1d2274_Luis%2520Arias.webp"
+      }
+    },
+    "pastor-jose-guerrero": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/pastor-jose-guerrero",
+      "name": "Pastor Jose Guerrero",
+      "role": "Vicepresidente ejecutivo de Programas Venezuela",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp",
+        "alt": "Pastor Jose Guerrero"
+      },
+      "background": [],
+      "socialLinks": [],
+      "seo": {
+        "title": "Pastor Jose Guerrero | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Pastor Jose Guerrero, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Pastor Jose Guerrero | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Pastor Jose Guerrero, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a878_6aaad2b0ec70f241aa598757_Pastor%2520Jose%2520Guerrero.webp"
+      }
+    },
+    "randy-lander": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/randy-lander",
+      "name": "Randy Lander",
+      "role": "Fundador y presidente",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp",
+        "alt": "Randy Lander"
+      },
+      "quote": "Randy es un apasionado del servicio a Dios y del liderazgo de servicio.",
+      "lead": "Nativo de Caracas, lideró campañas globales en The Boeing Company durante 20 años antes de fundar la Fundación.",
+      "bodyHtml": "<p>Randy Lander es el fundador y presidente de Victoria Venezuela Foundation (VVF), una organización sin fines de lucro basada en la fe, comprometida con transformar la vida de niños y familias vulnerables en toda Venezuela. Guiado por su fe en Jesucristo y un profundo compromiso con el liderazgo de servicio, Randy dirige una red de más de 100 voluntarios que ofrecen programas de educación, nutrición, salud y apoyo familiar a más de 700 niños.</p><p>Nativo de Caracas, Venezuela, Randy fundó VVF a partir de un deseo personal de servir a su país y crear oportunidades duraderas para sus comunidades más vulnerables. Bajo su liderazgo, la Fundación ha ampliado sus programas, fortalecido sus alianzas locales y establecido un modelo sostenible de atención centrado en la dignidad, la esperanza y el amor de Cristo.</p><p>Randy también es fundador y presidente de Luminis Global Partners, un holding global con sede en Estados Unidos y operaciones en América Latina, incluida Venezuela. Anteriormente, desarrolló una destacada carrera de 20 años en The Boeing Company, donde ocupó cargos de alta dirección en las Américas, Europa, Asia y el Medio Oriente. Durante ese tiempo, dirigió equipos multinacionales, gestionó carteras globales y lideró campañas de aviones comerciales y servicios por más de 30.000 millones de dólares. Su experiencia internacional incluyó asignaciones en Japón y Corea del Sur, y labores de asesoría con juntas directivas de aerolíneas, actores gubernamentales, clientes y socios estratégicos.</p><p>A lo largo de su carrera, Randy ha mantenido un profundo compromiso con el servicio comunitario. Ha ocupado cargos de liderazgo y en juntas directivas en apoyo a iniciativas para la niñez, la educación y el desarrollo comunitario, entre ellas Special Olympics Washington, la Society of Manufacturing Engineers y el Boeing Employees Community Fund en Japón.</p><p>Randy es ingeniero mecánico y de manufactura, y tiene una maestría en Administración de Empresas (MBA). Él y su esposa, Helen, tienen dos hijos y comparten la pasión por la fe, el servicio, los viajes y la construcción de un legado duradero de esperanza para el pueblo de Venezuela.</p>",
+      "background": [
+        {
+          "label": "Fundador y presidente",
+          "value": "Luminis Global Partners"
+        },
+        {
+          "label": "MBA",
+          "value": "Ingeniería mecánica y de manufactura"
+        },
+        {
+          "label": "Juntas directivas",
+          "value": "Special Olympics Washington · SME · Boeing ECF Japón"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Randy Lander | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Randy Lander, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Randy Lander | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Randy Lander, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34240b27e7dec42a871_6aaad2b1708aeb94d61dc9b0_Randy%2520Lander.webp"
+      }
+    },
+    "vanessa-sanchez": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/vanessa-sanchez",
+      "name": "Vanessa Sanchez",
+      "role": "Directora sénior de Comunicaciones",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp",
+        "alt": "Vanessa Sanchez"
+      },
+      "lead": "Profesional de las comunicaciones con seis años en la University of South Florida y la University of Tampa; maestría en Ciberseguridad.",
+      "bodyHtml": "<p>Vanessa tiene más de seis años de experiencia combinada en la University of South Florida y la University of Tampa, especializada en comunicación y atención al público académico. Es licenciada en Comunicación de Masas por la University of South Florida y tiene una maestría en Ciberseguridad por la University of Tampa. Esta combinación única de habilidades le permite gestionar las comunicaciones en redes sociales y, al mismo tiempo, ayudar a garantizar la integridad y la seguridad de los datos sensibles en el cambiante panorama tecnológico actual.</p><p>Originaria de Caracas, Venezuela, Vanessa aporta una perspectiva multicultural a su trabajo que enriquece su forma de comunicar y colaborar. Siente una profunda pasión por apoyar a las comunidades necesitadas, y su enfoque empático para resolver problemas, junto con su dedicación a impulsar un cambio positivo, la convierten en un gran aporte para las organizaciones sin fines de lucro.</p><p>Además de su labor profesional, Vanessa es emprendedora y tiene un blog personal llamado Meet Me in Tampa, donde destaca la gastronomía y la belleza natural de la ciudad. Su blog refleja su amor por su comunidad y su entusiasmo por mostrar lo mejor de la ciudad.</p>",
+      "background": [
+        {
+          "label": "Licenciatura en Comunicación de Masas",
+          "value": "University of South Florida"
+        },
+        {
+          "label": "Maestría en Ciberseguridad",
+          "value": "University of Tampa"
+        },
+        {
+          "label": "Fundadora",
+          "value": "Meet Me in Tampa"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Vanessa Sanchez | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Vanessa Sanchez, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Vanessa Sanchez | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Vanessa Sanchez, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8b5_6aaad2b1858f22fb794eb418_Vanessa%2520Sanchez.webp"
+      }
+    },
+    "ximena-sosa": {
+      "url": "https://www.victoriavenezuelafoundation.org/es/team-members/ximena-sosa",
+      "name": "Ximena Sosa",
+      "role": "Directora sénior de Estrategia Digital",
+      "photo": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp",
+        "alt": "Ximena Sosa"
+      },
+      "lead": "Líder bilingüe de marketing digital con más de ocho años en organizaciones con propósito, entre ellas Compassion International y Save the Children.",
+      "bodyHtml": "<p>Ximena Sosa es una profesional bilingüe de marketing digital y comunicaciones con más de ocho años de experiencia apoyando a organizaciones sin fines de lucro, humanitarias y con propósito. Actualmente es directora sénior de Estrategia Digital en Victoria Venezuela Foundation, donde lidera iniciativas de marketing digital y comunicaciones diseñadas para fortalecer la visibilidad, el compromiso de los donantes, la recaudación de fondos y la conexión con la comunidad.</p><p>En su rol, Ximena supervisa estrategias digitales integradas en web, correo electrónico, redes sociales, medios pagados, SEO, analítica y campañas digitales. También ayuda a dar forma a los mensajes y relatos bilingües dirigidos a donantes, voluntarios, aliados y la comunidad en general, asegurando que las comunicaciones sean coherentes con la misión de la Fundación y amplifiquen el impacto de su trabajo al servicio de las comunidades venezolanas.</p><p>Antes de unirse a Victoria Venezuela Foundation, Ximena ocupó cargos de marketing digital y comunicaciones en Compassion International, Save the Children y Catholic Relief Services, donde contribuyó a iniciativas de recaudación de fondos, incidencia, captación de donantes, participación de audiencias y marketing hispano.</p><p>Ximena es licenciada en Marketing y Negocios Internacionales por la Florida International University y habla inglés y español con fluidez. Su trabajo refleja el compromiso de usar las comunicaciones estratégicas para conectar a las personas con oportunidades significativas de servir, dar y crear un impacto duradero.</p>",
+      "background": [
+        {
+          "label": "Licenciatura en Marketing y Negocios Internacionales",
+          "value": "Florida International University"
+        },
+        {
+          "label": "Experiencia previa",
+          "value": "Compassion International · Save the Children · Catholic Relief Services"
+        }
+      ],
+      "socialLinks": [],
+      "seo": {
+        "title": "Ximena Sosa | Nuestro equipo | Fundación Victoria Venezuela",
+        "description": "Te presentamos a Ximena Sosa, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogTitle": "Ximena Sosa | Nuestro equipo | Fundación Victoria Venezuela",
+        "ogDescription": "Te presentamos a Ximena Sosa, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.",
+        "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aaad34340b27e7dec42a8ad_6aaad2b1827a8d93fc02f6ed_Ximena%2520Sosa.webp"
+      }
+    }
+  }
+}

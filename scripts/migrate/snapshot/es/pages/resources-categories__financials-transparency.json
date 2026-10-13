@@ -1,0 +1,168 @@
+{
+  "path": "/resources-categories/financials-transparency",
+  "seo": {
+    "title": "Finanzas y transparencia | Recursos | Fundación Victoria Venezuela",
+    "description": "Nuestros informes de impacto anuales y trimestrales, junto con estados financieros resumidos. Victoria Venezuela Foundation es una organización 501(c)(3), EIN 88-3282100.",
+    "ogTitle": "Finanzas y transparencia | Recursos | Fundación Victoria Venezuela",
+    "ogDescription": "Nuestros informes de impacto anuales y trimestrales, junto con estados financieros resumidos. Victoria Venezuela Foundation es una organización 501(c)(3), EIN 88-3282100.",
+    "ogImage": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6aac1700609bf95a4d5b023d_VVF_Home_ShareImage_v2.jpg"
+  },
+  "sections": [
+    {
+      "classes": [],
+      "blocks": []
+    },
+    {
+      "classes": [
+        "section_resources"
+      ],
+      "blocks": [
+        {
+          "type": "h1",
+          "text": "Recursos"
+        },
+        {
+          "type": "cta",
+          "text": "Ver todo",
+          "href": "/resources-categories/all"
+        },
+        {
+          "type": "cta",
+          "text": "Historias",
+          "href": "/resources-categories/stories"
+        },
+        {
+          "type": "cta",
+          "text": "Financiero",
+          "href": "/resources-categories/financials-transparency"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af7_6aabe162f0e62e432616f0a1_VVF_FinancialsCover_Annual_Featured_v1.png",
+          "alt": "Informe de impacto 2025"
+        },
+        {
+          "type": "h3",
+          "text": "Informe de impacto 2025"
+        },
+        {
+          "type": "p",
+          "text": "Desde 2022 hemos servido 77.300 comidas y realizado 1.012 consultas médicas a niños. Lee nuestro Informe de impacto 2025 completo, con finanzas y equipo."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 1T2025"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 1T2025"
+        },
+        {
+          "type": "p",
+          "text": "En el primer trimestre de 2025 servimos más de 6.367 comidas y brindamos atención médica a más de 110 niños. Lee la actualización trimestral completa."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 3T2024"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 3T2024"
+        },
+        {
+          "type": "p",
+          "text": "Al tercer trimestre de 2024 habíamos servido 16.797 comidas, brindado atención médica a 350 niños y lanzado un programa de educación."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 2T2024"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 2T2024"
+        },
+        {
+          "type": "p",
+          "text": "Al segundo trimestre de 2024 habíamos servido 10.547 comidas y brindado atención médica a más de 300 niños. Lee la actualización trimestral completa."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 1T2024"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 1T2024"
+        },
+        {
+          "type": "p",
+          "text": "En el primer trimestre de 2024 servimos 4.780 comidas, brindamos atención médica a 150 niños y completamos un viaje misionero a Venezuela."
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af7_6aabe162f0e62e432616f0a1_VVF_FinancialsCover_Annual_Featured_v1.png",
+          "alt": "Informe anual 2023"
+        },
+        {
+          "type": "h3",
+          "text": "Informe anual 2023"
+        },
+        {
+          "type": "p",
+          "text": "En 2023 servimos 24.800 comidas y brindamos atención médica crítica a 500 niños, con 15 patrocinadores corporativos. Lee nuestro Informe anual 2023 completo."
+        },
+        {
+          "type": "cta",
+          "text": "Siguiente",
+          "href": "?5dbf2580_page=2"
+        },
+        {
+          "type": "h2",
+          "text": "Mantente conectado"
+        },
+        {
+          "type": "p",
+          "text": "Mantente al día con nuestras noticias y eventos"
+        },
+        {
+          "type": "p",
+          "text": "Respetamos tu privacidad. Puedes darte de baja en cualquier momento."
+        },
+        {
+          "type": "h2",
+          "text": "Relacionado"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe2ca7b757ac392e69af7_6aabe162f0e62e432616f0a1_VVF_FinancialsCover_Annual_Featured_v1.png",
+          "alt": "Informe de impacto 2025"
+        },
+        {
+          "type": "h3",
+          "text": "Informe de impacto 2025"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 1T2025"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 1T2025"
+        },
+        {
+          "type": "image",
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0852_6aabe16394786ad4c9e83718_VVF_FinancialsCover_Quarterly_Featured_v1.png",
+          "alt": "Tu impacto 3T2024"
+        },
+        {
+          "type": "h3",
+          "text": "Tu impacto 3T2024"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "tierName": "Patrocinador",
+    "price": "2.500 $/año",
+    "recognitionBenefits": [
+      "Inclusión en el informe anual",
+      "Visibilidad de marca (sitio web, campañas de correo electrónico, redes sociales y eventos)",
+      "Placa de donante de la junta"
+    ],
+    "activityBenefits": [
+      "Participación en el discurso de la gala anual",
+      "Participación en el viaje misionero anual",
+      "Participación en la revisión anual de la junta"
+    ],
+    "promotionalBenefits": [
+      "(5) Polos con el logotipo de la fundación",
+      "(25) Pegatinas de la fundación"
+    ],
+    "order": 1
+  },
+  {
+    "tierName": "Líder",
+    "price": "1.000 $/año",
+    "recognitionBenefits": [
+      "Inclusión en el informe anual",
+      "Visibilidad de marca (sitio web, campañas de correo electrónico, redes sociales y eventos)",
+      "Placa de donante de la junta"
+    ],
+    "promotionalBenefits": [
+      "(5) Camisas tipo polo con el logotipo de la fundación",
+      "(25) Pegatinas de la fundación"
+    ],
+    "order": 2
+  },
+  {
+    "tierName": "Asesor",
+    "price": "$500/año",
+    "recognitionBenefits": [
+      "Inclusión en el informe anual",
+      "Visibilidad en la marca (sitio web, campañas de correo electrónico, redes sociales y eventos)"
+    ],
+    "promotionalBenefits": [
+      "(25) Pegatinas de la fundación"
+    ],
+    "order": 3
+  },
+  {
+    "tierName": "Amigo",
+    "price": "$250/año",
+    "recognitionBenefits": [
+      "Inclusión en el informe anual"
+    ],
+    "promotionalBenefits": [
+      "(25) Pegatinas de la fundación"
+    ],
+    "order": 4
+  }
+]

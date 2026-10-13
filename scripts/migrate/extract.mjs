@@ -1,7 +1,9 @@
 // Step 1: live site → scripts/migrate/snapshot/*.json
 //
-// Crawls the English URLs in the live sitemap and parses each page type
-// into the snapshot shape. When Webflow API credentials are configured and
+// Crawls the live sitemap's URLs, once per locale, and parses each page type
+// into the snapshot shape: English into snapshot/, Spanish (/es, same slugs as
+// English) into snapshot/es/. Spanish pages are parsed with their /es link
+// prefix removed, so the same parsers (which read slugs from links) apply. When Webflow API credentials are configured and
 // accepted, the raw API collections/items are also dumped to
 // snapshot/api/ for field-level review.
 import { mkdirSync, writeFileSync } from 'node:fs'
@@ -28,19 +30,31 @@ import { createSection } from './lib/report.mjs'
 import { classifyUrls, isSpanish, parseSitemap } from './lib/sitemap.mjs'
 import { apiCredentials, checkAccess, getCollection, listCollections, listLiveItems } from './lib/webflow-api.mjs'
 
+export const LOCALES = ['en', 'es']
+const PREFIX = { en: '', es: '/es' }
+
 function writeSnapshot(name, data) {
   const file = path.join(SNAPSHOT_DIR, `${name}.json`)
   mkdirSync(path.dirname(file), { recursive: true })
   writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`)
 }
 
-async function get(url) {
-  if (isSpanish(url)) throw new Error(`Refusing to fetch Spanish URL ${url}`)
-  return fetchText(url)
+// Spanish page links → their English-path form (`/es/x` → `/x`, `/es` → `/`).
+export function stripSpanishLinks(html) {
+  const origin = LIVE_BASE_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return html
+    .replace(new RegExp(`(href|action)="(${origin})?/es"`, 'g'), '$1="$2/"')
+    .replace(new RegExp(`(href|action)="(${origin})?/es/`, 'g'), '$1="$2/')
+}
+
+async function getFor(locale, url) {
+  if (locale === 'en' && isSpanish(url)) throw new Error(`Refusing to fetch Spanish URL ${url} for English`)
+  const html = await fetchText(url)
+  return locale === 'es' ? stripSpanishLinks(html) : html
 }
 
 // Follows Webflow collection-list pagination (`?<id>_page=2`).
-async function getPaginated(url, parse) {
+async function getPaginated(get, url, parse) {
   const results = []
   for (let next = url, guard = 0; next && guard < 20; guard++) {
     const html = await get(next)
@@ -77,17 +91,35 @@ export async function extract() {
   const creds = apiCredentials()
   if (creds) await dumpApi(creds, report)
   else report.line('- Webflow API: no `WEBFLOW_API_TOKEN`/`WEBFLOW_SITE_ID`; using sitemap scrape.')
-  report.line('- Source for normalized snapshot: sitemap HTML scrape (English only).')
+  report.line('- Source for normalized snapshot: sitemap HTML scrape (English, then Spanish under `snapshot/es/`).')
 
-  const sitemapUrls = parseSitemap(await get(`${LIVE_BASE_URL}/sitemap.xml`))
-  const enUrls = sitemapUrls.filter((u) => !isSpanish(u))
-  const { pages, items } = classifyUrls(enUrls)
+  const sitemapUrls = parseSitemap(await fetchText(`${LIVE_BASE_URL}/sitemap.xml`))
+  const counts = {}
+  for (const locale of LOCALES) counts[locale] = await extractLocale(locale, sitemapUrls, report)
+  report.write()
+  return counts
+}
+
+async function extractLocale(locale, sitemapUrls, report) {
+  const get = (url) => getFor(locale, url)
+  const base = `${LIVE_BASE_URL}${PREFIX[locale]}`
+  const snap = (name, data) => writeSnapshot(locale === 'en' ? name : `${locale}/${name}`, data)
+  // Classify by English path; fetch the locale's URL.
+  const localeUrls = sitemapUrls.filter((u) => (locale === 'es') === isSpanish(u))
+  const enUrls = localeUrls.map((u) => (locale === 'es' ? `${LIVE_BASE_URL}${new URL(u).pathname.replace(/^\/es/, '') || '/'}` : u))
+  const toLocale = (url) => (locale === 'es' ? `${LIVE_BASE_URL}/es${new URL(url).pathname === '/' ? '' : new URL(url).pathname}` : url)
+  const { pages: enPages, items: enItems } = classifyUrls(enUrls)
+  const pages = enPages.map((p) => ({ ...p, url: toLocale(p.url) }))
+  const items = Object.fromEntries(Object.entries(enItems).map(([k, list]) => [k, list.map((i) => ({ ...i, url: toLocale(i.url) }))]))
+  report.line()
+  report.line(`### ${locale === 'en' ? 'English' : 'Spanish (/es)'}`)
   // Committed (public repo): child detail URLs carry children's names, so
   // they're left out here and live only in the gitignored children snapshot.
-  const paths = enUrls.map((u) => new URL(u).pathname || '/')
-  writeSnapshot('sitemap', {
-    urls: paths.filter((p) => !p.startsWith('/children/')),
-    childUrlCount: paths.filter((p) => p.startsWith('/children/')).length,
+  const paths = localeUrls.map((u) => new URL(u).pathname || '/')
+  const isChildPath = (p) => /^(\/es)?\/children\//.test(p)
+  snap('sitemap', {
+    urls: paths.filter((p) => !isChildPath(p)),
+    childUrlCount: paths.filter(isChildPath).length,
   })
 
   // Static pages (structure + SEO) — also the source of page-level FAQs.
@@ -101,19 +133,19 @@ export async function extract() {
   }
 
   // Team: index gives tiers/per-tier roles; detail pages give bios.
-  const teamIndex = parseTeamIndex(await get(`${LIVE_BASE_URL}/our-team`))
+  const teamIndex = parseTeamIndex(await get(`${base}/our-team`))
   const members = {}
   for (const { slug, url } of items.team_members) members[slug] = { url, ...parseTeamMember(await get(url)) }
-  writeSnapshot('team_members', { sections: teamIndex, members })
+  snap('team_members', { sections: teamIndex, members })
 
   // Children: listing gives display order; detail pages give fields.
-  const childOrder = await getPaginated(`${LIVE_BASE_URL}/sponsor-a-child-list-page`, parseChildList)
+  const childOrder = await getPaginated(get, `${base}/sponsor-a-child-list-page`, parseChildList)
   const children = []
   for (const { slug, url } of items.children) children.push({ slug, url, ...parseChild(await get(url)) })
-  writeSnapshot('children', { order: childOrder, items: children })
+  snap('children', { order: childOrder, items: children })
 
   // Events: listing gives card copy + past/upcoming; detail the rest.
-  const eventList = parseEventList(await get(`${LIVE_BASE_URL}/all-events`))
+  const eventList = parseEventList(await get(`${base}/all-events`))
   const events = []
   for (const { slug, url } of items.events) {
     const html = await get(url)
@@ -122,15 +154,15 @@ export async function extract() {
     // that aren't CMS fields; keep their outline for page recomposition.
     pageSnapshots[`events__${slug}`] = { path: new URL(url).pathname, ...parsePage(html) }
   }
-  writeSnapshot('events', events)
+  snap('events', events)
 
   // Page snapshots are committed (public repo): strip every child name and
   // photo before writing them.
   let scrubbed = 0
-  for (const [key, snap] of Object.entries(pageSnapshots)) {
-    const result = scrubChildren(snap, children)
+  for (const [key, pageSnap] of Object.entries(pageSnapshots)) {
+    const result = scrubChildren(pageSnap, children)
     scrubbed += result.removed
-    writeSnapshot(`pages/${key}`, result.snapshot)
+    snap(`pages/${key}`, result.snapshot)
   }
 
   // Resources: category pages give category membership, date, excerpt.
@@ -139,7 +171,7 @@ export async function extract() {
   const categories = {}
   for (const page of categoryPages) {
     const category = page.path.split('/').pop()
-    for (const card of await getPaginated(page.url, parseResourceList)) {
+    for (const card of await getPaginated(get, page.url, parseResourceList)) {
       cards[card.slug] ??= card
       if (category !== 'all') (categories[card.slug] ??= new Set()).add(category)
     }
@@ -154,12 +186,12 @@ export async function extract() {
       ...parseResource(await get(url)),
     })
   }
-  writeSnapshot('resources', resources)
+  snap('resources', resources)
 
-  writeSnapshot('corporate_tiers', parseCorporateTiers(await get(`${LIVE_BASE_URL}/corporate-sponsorships`)))
+  snap('corporate_tiers', parseCorporateTiers(await get(`${base}/corporate-sponsorships`)))
   // Home "Corporate Partners" CMS list (in display order).
-  writeSnapshot('partners', parseSponsorLogos(load(await get(`${LIVE_BASE_URL}/`)), '.section_partners .w-dyn-items'))
-  writeSnapshot('faqs', faqsByPage)
+  snap('partners', parseSponsorLogos(load(await get(`${base}/`)), '.section_partners .w-dyn-items'))
+  snap('faqs', faqsByPage)
 
   const counts = {
     pages: pages.length,
@@ -168,15 +200,12 @@ export async function extract() {
     events: events.length,
     resources: resources.length,
   }
-  report.line()
   report.line('| Snapshot | Items |')
   report.line('| --- | --- |')
   for (const [k, v] of Object.entries(counts)) report.line(`| ${k} | ${v} |`)
   report.line()
-  report.line(`- Spanish URLs skipped: ${sitemapUrls.length - enUrls.length}`)
   report.line(`- Child references scrubbed from committed page snapshots: ${scrubbed} blocks.`)
   report.line('- Auction items: none published on the live site.')
-  report.write()
   return counts
 }
 

@@ -1,0 +1,434 @@
+[
+  {
+    "name": "Boeing",
+    "website": "https://www.boeing.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb8f_6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%2520(1)%25201.svg",
+      "alt": "Boeing"
+    }
+  },
+  {
+    "name": "KP Aviation",
+    "website": "https://kpaviation.net/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png",
+      "alt": "KP Aviation"
+    }
+  },
+  {
+    "name": "Microsoft",
+    "website": "https://www.microsoft.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+      "alt": "Microsoft"
+    }
+  },
+  {
+    "name": "Paula Inc.",
+    "website": "https://www.paulainc.ca/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+      "alt": "Paula Inc."
+    }
+  },
+  {
+    "name": "Santa Teresa 1796",
+    "website": "https://www.ronsantateresa.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+      "alt": "Santa Teresa 1796"
+    }
+  },
+  {
+    "name": "The Trusty Handyman",
+    "website": "https://thetrustyhandyman.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+      "alt": "The Trusty Handyman"
+    }
+  },
+  {
+    "name": "Venezuelan-American Chamber of Commerce",
+    "website": "https://www.venezuelanchamber.org/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+      "alt": "Venezuelan-American Chamber of Commerce"
+    }
+  },
+  {
+    "name": "AbbVie",
+    "website": "https://www.abbvie.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb93_6aa78365864766c1b6d763fb_Abbvie.jpeg",
+      "alt": "AbbVie"
+    }
+  },
+  {
+    "name": "Accenture",
+    "website": "https://www.accenture.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9c_6aa78365864766c1b6d76411_Accenture.png",
+      "alt": "Accenture"
+    }
+  },
+  {
+    "name": "Air Analytics",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb96_6aa783653f65ff7cbda7468e_AirAnalytics.jpeg",
+      "alt": "Air Analytics"
+    }
+  },
+  {
+    "name": "Anytime Carpet Cleaning",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb9f_6aa783684e94200fb5f9a51a_Anytime-Carpet-Cleaning.jpeg",
+      "alt": "Anytime Carpet Cleaning"
+    }
+  },
+  {
+    "name": "Arepa Magnet",
+    "website": "https://arepasmagnet.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb99_6aa783684e94200fb5f9a588_Arepa-Magnet.jpeg",
+      "alt": "Arepa Magnet"
+    }
+  },
+  {
+    "name": "August Covers",
+    "website": "https://www.augustcovers.com/index.html",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab0f_6ab1abac639a89fb28ead0fc_August-Covers-Logo.png",
+      "alt": "August Covers"
+    }
+  },
+  {
+    "name": "Back Swing Golf Events",
+    "website": "https://www.backswinggolfevents.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+      "alt": "Back Swing Golf Events"
+    }
+  },
+  {
+    "name": "BlueBox",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba2_6aa78368e8788851834aab40_BlueBox.jpeg",
+      "alt": "BlueBox"
+    }
+  },
+  {
+    "name": "Café La Carreta",
+    "website": "https://cafelacarreta.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caac6_6ab1abac639a89fb28ead0d2_Cafe-La-Carreta-Logo.png",
+      "alt": "Café La Carreta"
+    }
+  },
+  {
+    "name": "Charity Golf International",
+    "website": "https://www.charitygolfintl.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+      "alt": "Charity Golf International"
+    }
+  },
+  {
+    "name": "Chevron",
+    "website": "https://www.chevron.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bba8_6aa77a4f1f7e1f90273aa790_Chevron.png",
+      "alt": "Chevron"
+    }
+  },
+  {
+    "name": "Citimarine Store",
+    "website": "https://citimarinestore.com/en/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+      "alt": "Citimarine Store"
+    }
+  },
+  {
+    "name": "CoachSolo Golf Academy",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca9da_6ab1abab56ce5288cbae4fd1_Coach-Solo-Golf-Academy-Logo.jpeg",
+      "alt": "CoachSolo Golf Academy"
+    }
+  },
+  {
+    "name": "COTMAQ",
+    "website": "https://www.cotmaq.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+      "alt": "COTMAQ"
+    }
+  },
+  {
+    "name": "CrepeMaker",
+    "website": "https://www.crepemaker.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71defc_6aac15210f7991d080df1c5c_VVF_Golf2026_Sponsor_CrepeMaker_v1.png",
+      "alt": "CrepeMaker"
+    }
+  },
+  {
+    "name": "Don Emmanuel Cigars",
+    "website": "https://donemmanuelcigars.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5abde0d2f8ed2caa0d_6ab1abab26d46a10dd162f1f_Emmanuel-Cigars-Logo.jpeg",
+      "alt": "Don Emmanuel Cigars"
+    }
+  },
+  {
+    "name": "Family Cosmetic Dentistry",
+    "website": "https://mywestondental.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c56_6aa783b99c28a51441a8300a_Family-Cosmetic-Dentistry.png",
+      "alt": "Family Cosmetic Dentistry"
+    }
+  },
+  {
+    "name": "Fenagh Engineering and Testing",
+    "website": "https://www.fenaghengineering.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac2c27853ce5e8d82c62_6ab1abaad466174efbed1196_Fenagh-Engineering-and-Testing-Logo.jpeg",
+      "alt": "Fenagh Engineering and Testing"
+    }
+  },
+  {
+    "name": "GSnow Creative",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab1d_6ab1abaca24bb2e4a3484506_GSnow-Creative-Logo.webp",
+      "alt": "GSnow Creative"
+    }
+  },
+  {
+    "name": "Ike's Barber Shop",
+    "website": "https://ikesbs.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c53_6aa783b90038252eb22e05ce_Ikes-Barber-Shop.png",
+      "alt": "Ike's Barber Shop"
+    }
+  },
+  {
+    "name": "Infinito Booth",
+    "website": "https://infinitobooth.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+      "alt": "Infinito Booth"
+    }
+  },
+  {
+    "name": "IonDynamics Energy",
+    "website": "https://www.iondynamics.energy/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab8e_6ab1abadbde0d2f8ed2c6d3a_IonDynamic-Energy-Logo.png",
+      "alt": "IonDynamics Energy"
+    }
+  },
+  {
+    "name": "IVY Development Corp",
+    "website": "https://ivydevelopmentcorp.net/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab6_6ab1abac1a73298ddd88f1f2_IVY-Development-Corp-Logo.png",
+      "alt": "IVY Development Corp"
+    }
+  },
+  {
+    "name": "Jet Set Gourmet",
+    "website": "https://linktr.ee/jetsetgourmetusa",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+      "alt": "Jet Set Gourmet"
+    }
+  },
+  {
+    "name": "Lamb Weston",
+    "website": "https://www.lambweston.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c50_6aa783b90038252eb22e05e4_LambWeston.png",
+      "alt": "Lamb Weston"
+    }
+  },
+  {
+    "name": "LGT",
+    "website": "https://lgt.aero/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c44_6a301f4c2aaecae7a66298c1_19b54039cb4da83f45621bf6dffda58c5fb19708.png",
+      "alt": "LGT"
+    }
+  },
+  {
+    "name": "Luxe Golf",
+    "website": "https://luxegolfweston.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabd6_6ab1abadbde0d2f8ed2c6d8b_Luxe-Golf-Logo.png",
+      "alt": "Luxe Golf"
+    }
+  },
+  {
+    "name": "Medtronic",
+    "website": "https://www.medtronic.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4d_6aa77a4f529956dfd3886e1a_Medtronic.png",
+      "alt": "Medtronic"
+    }
+  },
+  {
+    "name": "Mundo D' Papel",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c77_6aa783b915cd9e027557cf5c_Mundo-D-Papel.jpeg",
+      "alt": "Mundo D' Papel"
+    }
+  },
+  {
+    "name": "Mustang FC",
+    "website": "https://www.mustangfc.net/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c59_6aa7840787806cf4fd253bee_Mustang-FC.jpeg",
+      "alt": "Mustang FC"
+    }
+  },
+  {
+    "name": "New York Life",
+    "website": "https://www.newyorklife.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c7e_6aa7840787806cf4fd253c3b_New-York-Life.jpeg",
+      "alt": "New York Life"
+    }
+  },
+  {
+    "name": "On Par Physical Therapy",
+    "website": "https://www.onparpt.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df01_6aac15227eecb07b16b16cdc_VVF_Golf2026_Sponsor_OnParPT_v1.png",
+      "alt": "On Par Physical Therapy"
+    }
+  },
+  {
+    "name": "Platinum Business Solutions",
+    "website": "https://platinumbiz.us/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f4_6aa783b99c28a51441a82fe1_Platinum-Business-Solutions.jpeg",
+      "alt": "Platinum Business Solutions"
+    }
+  },
+  {
+    "name": "PNC",
+    "website": "https://www.pnc.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5bbde0d2f8ed2caa48_6ab1ababc59abb2e0f16ce57_PNC-Logo.png",
+      "alt": "PNC"
+    }
+  },
+  {
+    "name": "Raytheon Technologies",
+    "website": "https://www.rtx.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f1_6aa7840803fdb721dea00c7a_Raytheon-Technologies.png",
+      "alt": "Raytheon Technologies"
+    }
+  },
+  {
+    "name": "SFLO",
+    "website": "#",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c3fe_6aa78408f09ee2a0ca46edde_SFLO.jpeg",
+      "alt": "SFLO"
+    }
+  },
+  {
+    "name": "Smoke on the Water",
+    "website": "https://www.smokeweston.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caabb_6ab1abac47b1b349c34264b6_Smoke-on-the-Water-Logo.png",
+      "alt": "Smoke on the Water"
+    }
+  },
+  {
+    "name": "Squisito Gourmet",
+    "website": "https://squisitogourmet.vip/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca95a_6ab1abaabe7cb403e8dcac7b_Squisito-Logo.png",
+      "alt": "Squisito Gourmet"
+    }
+  },
+  {
+    "name": "Tacoly Moly",
+    "website": "https://www.instagram.com/tacolymolytacos/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c415_6aa784089c28a51441a85060_Tacoly-Moly.png",
+      "alt": "Tacoly Moly"
+    }
+  },
+  {
+    "name": "Topgolf",
+    "website": "https://topgolf.com/us/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+      "alt": "Topgolf"
+    }
+  },
+  {
+    "name": "Triumphant Transition Partners",
+    "website": "https://triumphanttransitionpartners.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c466_6aa78408f09ee2a0ca46ee4b_Triumphant-Transition-Partners.png",
+      "alt": "Triumphant Transition Partners"
+    }
+  },
+  {
+    "name": "Trump Hotels",
+    "website": "https://www.trumphotels.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+      "alt": "Trump Hotels"
+    }
+  },
+  {
+    "name": "VAGA Modeling Academy",
+    "website": "https://www.vagaacademy.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab46_6ab1abadbe6a6db0e2302683_Vaga-Academy-Logo.png",
+      "alt": "VAGA Modeling Academy"
+    }
+  },
+  {
+    "name": "Valley Bank",
+    "website": "https://www.valley.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabf3_6ab1abadc59abb2e0f16cf62_Valley-Bank-Logo.png",
+      "alt": "Valley Bank"
+    }
+  },
+  {
+    "name": "Virtrify",
+    "website": "https://www.virtrify.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5cbde0d2f8ed2caaa7_6ab1abab639a89fb28ead024_Virtrify-Logo.jpeg",
+      "alt": "Virtrify"
+    }
+  },
+  {
+    "name": "VNV Events",
+    "website": "https://vnvevents.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df06_6aac1719c35d572447d83dc6_VVF_Golf2026_Sponsor_VNVEvents_Dark_v1.png",
+      "alt": "VNV Events"
+    }
+  },
+  {
+    "name": "Wells Fargo",
+    "website": "https://www.wellsfargo.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c46a_6aa77a504e94200fb5f5b832_Wells-Fargo.png",
+      "alt": "Wells Fargo"
+    }
+  }
+]

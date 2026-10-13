@@ -120,6 +120,9 @@ export function mapChildren(snapshot, ctx) {
 
 // --- Events, packages, sponsors, FAQs -----------------------------------
 
+// [src, alt] of a parsed image: events keep each page's own descriptions.
+const imageOf = (img) => [img?.src, img?.alt]
+
 export function mapEvents(events, ctx) {
   const out = { events: [], sponsorship_packages: [], sponsors: new Map(), faqs: [] }
   for (const e of events) {
@@ -161,21 +164,21 @@ export function mapEvents(events, ctx) {
         start_date: parseLiveDate(e.dateText) ?? parseLiveDate(e.card?.date),
         location: e.card?.location ?? e.address,
         description: e.card?.text ?? e.heroBody,
-        image: ctx.media(e.card?.image?.src ?? e.heroImage?.src),
+        image: ctx.media(...imageOf(e.card?.image?.src ? e.card.image : e.heroImage)),
         category: /golf/i.test(title ?? '') ? 'golf-tournament' : 'community',
         donorbox_event_id: e.donorboxEventId,
         sponsor_packages: packageIds,
         sponsors: sponsorIds,
         hero_heading: e.heroHeading,
         hero_body: e.heroBody,
-        hero_image: ctx.media(e.heroImage?.src),
-        hero_image_mobile: ctx.media(e.heroImageMobile?.src),
+        hero_image: ctx.media(...imageOf(e.heroImage)),
+        hero_image_mobile: ctx.media(...imageOf(e.heroImageMobile)),
         venue: e.venue,
         address: e.address,
         map_url: e.mapUrl,
         program: toPortableText(richText(e.programHtml, ctx, `Event ${e.slug} program`), 'p'),
         includes: toPortableText(richText(e.includesHtml, ctx, `Event ${e.slug} includes`), 'i'),
-        gallery: e.gallery.map((g) => ctx.media(g.src)).filter(Boolean),
+        gallery: e.gallery.map((g) => ctx.media(...imageOf(g))).filter(Boolean),
         recap_stats: e.recapStats,
         benefit_rows: e.benefitRows,
         seo_title: e.seo?.title,

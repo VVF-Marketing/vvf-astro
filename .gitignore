@@ -23,6 +23,7 @@ emdash-env.d.ts
 # Webflow migration: child data stays local (public repo; minors' data).
 # Regenerate with `npm run migrate`.
 /scripts/migrate/snapshot/children.json
+/scripts/migrate/snapshot/es/children.json
 /seed/media/children/
 /seed/seed.local.json
 

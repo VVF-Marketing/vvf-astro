@@ -1,0 +1,1005 @@
+[
+  {
+    "slug": "2025-golf-tournament",
+    "url": "https://www.victoriavenezuelafoundation.org/es/events/2025-golf-tournament",
+    "card": {
+      "slug": "2025-golf-tournament",
+      "title": "Torneo Benéfico Anual de Golf 2025",
+      "date": "November 10, 2025",
+      "location": "Weston",
+      "text": "74 golfistas se reunieron en The Club at Weston Hills para apoyar a más de 700 niños en Venezuela.",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+        "alt": "Voluntarios frente a la carpa de la fundación en el campo."
+      },
+      "past": true
+    },
+    "heroHeading": "Gracias por jugar con nosotros",
+    "heroBody": "Así fue nuestro día en el campo.",
+    "heroImage": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abef13da13f08b2b7526fe7_6abef12dbbf48e5ff83df455_VVF_Golf2025_Hero_Fairway.jpeg",
+      "alt": "Cuatro golfistas en el fairway, uno levanta el brazo para celebrar."
+    },
+    "heroImageMobile": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+      "alt": "Voluntarios frente a la carpa de la fundación en el campo."
+    },
+    "sponsors": [
+      {
+        "name": "El manitas de confianza",
+        "website": "https://thetrustyhandyman.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "El manitas de confianza"
+        }
+      },
+      {
+        "name": "Trump Hotels",
+        "website": "https://www.trumphotels.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+          "alt": "Trump Hotels"
+        }
+      },
+      {
+        "name": "Santa Teresa 1796",
+        "website": "https://www.ronsantateresa.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+          "alt": "Santa Teresa 1796"
+        }
+      },
+      {
+        "name": "Microsoft",
+        "website": "https://www.microsoft.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+          "alt": "Microsoft"
+        }
+      },
+      {
+        "name": "KP Aviation",
+        "website": "https://kpaviation.net/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png",
+          "alt": "KP Aviation"
+        }
+      },
+      {
+        "name": "Citimarine Store",
+        "website": "https://citimarinestore.com/en/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+          "alt": "Citimarine Store"
+        }
+      },
+      {
+        "name": "Fenagh Engineering and Testing",
+        "website": "https://www.fenaghengineering.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac2c27853ce5e8d82c62_6ab1abaad466174efbed1196_Fenagh-Engineering-and-Testing-Logo.jpeg",
+          "alt": "Fenagh Engineering and Testing"
+        }
+      },
+      {
+        "name": "CoachSolo Golf Academy",
+        "website": "#",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca9da_6ab1abab56ce5288cbae4fd1_Coach-Solo-Golf-Academy-Logo.jpeg",
+          "alt": "CoachSolo Golf Academy"
+        }
+      },
+      {
+        "name": "COTMAQ",
+        "website": "https://www.cotmaq.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+          "alt": "COTMAQ"
+        }
+      },
+      {
+        "name": "August Covers",
+        "website": "https://www.augustcovers.com/index.html",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab0f_6ab1abac639a89fb28ead0fc_August-Covers-Logo.png",
+          "alt": "August Covers"
+        }
+      },
+      {
+        "name": "Platinum Business Solutions",
+        "website": "https://platinumbiz.us/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d8b3dcf82351d6c3f4_6aa783b99c28a51441a82fe1_Platinum-Business-Solutions.jpeg",
+          "alt": "Platinum Business Solutions"
+        }
+      },
+      {
+        "name": "GSnow Creative",
+        "website": "#",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5fbde0d2f8ed2cab1d_6ab1abaca24bb2e4a3484506_GSnow-Creative-Logo.webp",
+          "alt": "GSnow Creative"
+        }
+      },
+      {
+        "name": "PNC",
+        "website": "https://www.pnc.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5bbde0d2f8ed2caa48_6ab1ababc59abb2e0f16ce57_PNC-Logo.png",
+          "alt": "PNC"
+        }
+      },
+      {
+        "name": "Back Swing Golf Events",
+        "website": "https://www.backswinggolfevents.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+          "alt": "Back Swing Golf Events"
+        }
+      },
+      {
+        "name": "Boeing",
+        "website": "https://www.boeing.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784ae70926a4fc213bb8f_6a949f9f4c0231fefd4ea964_Boeing_full_logo_(variant)%2520(1)%25201.svg",
+          "alt": "Boeing"
+        }
+      },
+      {
+        "name": "Charity Golf International",
+        "website": "https://www.charitygolfintl.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+          "alt": "Charity Golf International"
+        }
+      },
+      {
+        "name": "LGT",
+        "website": "https://lgt.aero/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c44_6a301f4c2aaecae7a66298c1_19b54039cb4da83f45621bf6dffda58c5fb19708.png",
+          "alt": "LGT"
+        }
+      },
+      {
+        "name": "The Trusty Handyman",
+        "website": "https://thetrustyhandyman.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+          "alt": "The Trusty Handyman"
+        }
+      },
+      {
+        "name": "VAGA Modeling Academy",
+        "website": "https://www.vagaacademy.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab46_6ab1abadbe6a6db0e2302683_Vaga-Academy-Logo.png",
+          "alt": "VAGA Modeling Academy"
+        }
+      },
+      {
+        "name": "IVY Development Corp",
+        "website": "https://ivydevelopmentcorp.net/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab6_6ab1abac1a73298ddd88f1f2_IVY-Development-Corp-Logo.png",
+          "alt": "IVY Development Corp"
+        }
+      },
+      {
+        "name": "Squisito Gourmet",
+        "website": "https://squisitogourmet.vip/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac59bde0d2f8ed2ca95a_6ab1abaabe7cb403e8dcac7b_Squisito-Logo.png",
+          "alt": "Squisito Gourmet"
+        }
+      },
+      {
+        "name": "Venezuelan-American Chamber of Commerce",
+        "website": "https://www.venezuelanchamber.org/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+          "alt": "Venezuelan-American Chamber of Commerce"
+        }
+      },
+      {
+        "name": "Virtrify",
+        "website": "https://www.virtrify.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5cbde0d2f8ed2caaa7_6ab1abab639a89fb28ead024_Virtrify-Logo.jpeg",
+          "alt": "Virtrify"
+        }
+      },
+      {
+        "name": "Smoke on the Water",
+        "website": "https://www.smokeweston.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caabb_6ab1abac47b1b349c34264b6_Smoke-on-the-Water-Logo.png",
+          "alt": "Smoke on the Water"
+        }
+      },
+      {
+        "name": "Don Emmanuel Cigars",
+        "website": "https://donemmanuelcigars.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5abde0d2f8ed2caa0d_6ab1abab26d46a10dd162f1f_Emmanuel-Cigars-Logo.jpeg",
+          "alt": "Don Emmanuel Cigars"
+        }
+      },
+      {
+        "name": "Paula Inc.",
+        "website": "https://www.paulainc.ca/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        }
+      },
+      {
+        "name": "Topgolf",
+        "website": "https://topgolf.com/us/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+          "alt": "Topgolf"
+        }
+      },
+      {
+        "name": "Café La Carreta",
+        "website": "https://cafelacarreta.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5ebde0d2f8ed2caac6_6ab1abac639a89fb28ead0d2_Cafe-La-Carreta-Logo.png",
+          "alt": "Café La Carreta"
+        }
+      },
+      {
+        "name": "IonDynamics Energy",
+        "website": "https://www.iondynamics.energy/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac60bde0d2f8ed2cab8e_6ab1abadbde0d2f8ed2c6d3a_IonDynamic-Energy-Logo.png",
+          "alt": "IonDynamics Energy"
+        }
+      },
+      {
+        "name": "Valley Bank",
+        "website": "https://www.valley.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac61bde0d2f8ed2cabf3_6ab1abadc59abb2e0f16cf62_Valley-Bank-Logo.png",
+          "alt": "Valley Bank"
+        }
+      },
+      {
+        "name": "Jet Set Gourmet",
+        "website": "https://linktr.ee/jetsetgourmetusa",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+          "alt": "Jet Set Gourmet"
+        }
+      },
+      {
+        "name": "Infinito Booth",
+        "website": "https://infinitobooth.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+          "alt": "Infinito Booth"
+        }
+      }
+    ],
+    "offers": [],
+    "benefitRows": [],
+    "gallery": [
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c1_dji_fly_20251110_120352_0127_1762797148849_photo-scaled.webp",
+        "alt": "Golfistas junto al lago del campo, con banderas de Venezuela."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a6_0J1A2800-e1784672229294.webp",
+        "alt": "Pendón de la fundación junto a un bote inflable exhibido en el campo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a9_helen-randy-participants.webp",
+        "alt": "Participantes posando juntos frente a un panel con logos de patrocinadores."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90e3_panoramica-campo-golf-scaled.webp",
+        "alt": "Vista desde lo alto de la casa club, con filas de carritos de golf afuera."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90be_players-campo6-scaled.webp",
+        "alt": "Cuatro golfistas en el tee, uno de ellos con una bandera de Venezuela."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90dd_tent-FVV1-scaled.webp",
+        "alt": "Voluntarios frente a la carpa de la fundación en el campo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c8_0J1A2506-scaled.webp",
+        "alt": "Una golfista termina su swing bajo un cielo despejado."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90cc_0J1A2719.webp",
+        "alt": "Carritos de golf estacionados en fila bajo las palmeras."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90fc_0J1A2623.webp",
+        "alt": "Tres voluntarios junto al letrero de un patrocinador en el campo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9102_0J1A2751.webp",
+        "alt": "Un grupo de golfistas junto al letrero de un hoyo patrocinado."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da90ff_0J1A2758.webp",
+        "alt": "Tres participantes con banderas de Venezuela frente a la carpa de un patrocinador."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9108_0J1A2857-scaled.webp",
+        "alt": "Dos invitados se abrazan frente al panel de patrocinadores en la recepción."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9112_0J1A2840-scaled.webp",
+        "alt": "Invitados sentados juntos en una mesa durante el almuerzo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44218c7e12e4c16da9116_0J1A2833-scaled.webp",
+        "alt": "Un invitado se sirve en el bufé."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp",
+        "alt": "Un golfista arrodillado en el fairway junto a un niño que sostiene un palo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9127_0J1A2522-scaled.webp",
+        "alt": "Una mesa de postres con un letrero de bienvenida."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9130_0J1A2518-scaled.webp",
+        "alt": "Pasapalos en una bandeja junto a una pequeña tarjeta de menú."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da913d_0J1A2373-e1784672260329.webp",
+        "alt": "Un golfista en pleno swing en el tee, con palmeras al fondo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da9145_0J1A2363-e1784672285366.webp",
+        "alt": "Un golfista termina su golpe desde el fairway."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9155_0J1A2564.webp",
+        "alt": "Filas de postres individuales en una mesa de servicio."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da915b_0J1A2597-e1784672272860.webp",
+        "alt": "Un miembro del equipo de catering sirve una bebida en la mesa de servicio."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9165_participants.webp",
+        "alt": "Tres participantes juntos en el campo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa4421ac7e12e4c16da9176_players-on-camp-scaled.webp",
+        "alt": "Dos golfistas juegan en el fairway, con pendones de la fundación a un lado."
+      }
+    ],
+    "recapStats": [
+      {
+        "number": "$50.384",
+        "heading": "Recaudado",
+        "label": "Para nutrición, atención médica y educación"
+      },
+      {
+        "number": "74",
+        "heading": "Golfistas",
+        "label": "Participaron por los niños de Venezuela"
+      },
+      {
+        "number": "40+",
+        "heading": "Patrocinadores",
+        "label": "Empresas que apoyaron el día"
+      },
+      {
+        "number": "700+",
+        "heading": "Niños ayudados",
+        "label": "Con comidas, medicinas y útiles escolares"
+      }
+    ],
+    "faqs": [],
+    "seo": {
+      "title": "Torneo Benéfico Anual de Golf 2025 | Fundación Victoria Venezuela",
+      "description": "74 golfistas nos acompañaron en The Club at Weston Hills, en Weston, FL, en nuestro torneo benéfico de golf 2025 a favor de los niños de Venezuela.",
+      "ogTitle": "Torneo Benéfico Anual de Golf 2025 | Fundación Victoria Venezuela",
+      "ogDescription": "74 golfistas nos acompañaron en The Club at Weston Hills, en Weston, FL, en nuestro torneo benéfico de golf 2025 a favor de los niños de Venezuela.",
+      "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e09b6cae64aca288c4b4_6ab320217eaaca6b6902cb4f_VVF_Golf2025_ShareImage_v1_preview.jpeg"
+    }
+  },
+  {
+    "slug": "2026-golf-tournament",
+    "url": "https://www.victoriavenezuelafoundation.org/es/events/2026-golf-tournament",
+    "card": {
+      "slug": "2026-golf-tournament",
+      "title": "Torneo Benéfico Anual de Golf 2026",
+      "date": "November 9, 2026",
+      "location": "2600 Country Club Way, Weston, FL 33332",
+      "text": "Cada swing cambia una vida. Ayúdanos a brindar educación, nutrición y esperanza a los niños venezolanos.",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+        "alt": "Tres golfistas y un niño junto a la bandera en el green."
+      },
+      "past": false
+    },
+    "heroHeading": "Juega con un propósito",
+    "heroBody": "Cada golpe cambia una vida. Ayúdanos a apoyar a los niños venezolanos con educación, nutrición y esperanza.",
+    "heroImage": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+      "alt": "Tres golfistas y un niño junto a la bandera en el green."
+    },
+    "heroImageMobile": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp",
+      "alt": "Un golfista sonriente arrodillado en el green con un niño que sostiene un putter."
+    },
+    "title": "Torneo Benéfico Anual de Golf 2026",
+    "dateText": "Monday, November 9, 2026",
+    "venue": "The Club at Weston Hills",
+    "address": "2600 Country Club Way, Weston, FL 33332",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=The+Club+at+Weston+Hills+2600+Country+Club+Way+Weston+FL+33332",
+    "donorboxEventId": "937157",
+    "sponsors": [
+      {
+        "name": "El manitas de confianza",
+        "website": "https://thetrustyhandyman.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "El manitas de confianza"
+        }
+      },
+      {
+        "name": "Santa Teresa 1796",
+        "website": "https://www.ronsantateresa.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d4_6aac1522a369e005e17fb425_VVF_Golf2026_Sponsor_SantaTeresa1796Rum_v1.png",
+          "alt": "Santa Teresa 1796"
+        }
+      },
+      {
+        "name": "Venezuelan-American Chamber of Commerce",
+        "website": "https://www.venezuelanchamber.org/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d1_6aac1522b0a82fa126ebff3a_VVF_Golf2026_Sponsor_VenezuelanAmericanChamberOfCommerce_v1.png",
+          "alt": "Venezuelan-American Chamber of Commerce"
+        }
+      },
+      {
+        "name": "Trump Hotels",
+        "website": "https://www.trumphotels.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c5_6a949fa0b2eaa2be6b083d71_logo-trump-hotels%25201.svg",
+          "alt": "Trump Hotels"
+        }
+      },
+      {
+        "name": "Microsoft",
+        "website": "https://www.microsoft.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784c50bfd0f4476873c4a_6a301f4cc705426dec0a3162_Frame%2520385.png",
+          "alt": "Microsoft"
+        }
+      },
+      {
+        "name": "Topgolf",
+        "website": "https://topgolf.com/us/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784d9b3dcf82351d6c41b_6a301f4cc705426dec0a3165_topgolf-1%25201.png",
+          "alt": "Topgolf"
+        }
+      },
+      {
+        "name": "Paula Inc.",
+        "website": "https://www.paulainc.ca/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        }
+      },
+      {
+        "name": "The Trusty Handyman",
+        "website": "https://thetrustyhandyman.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701cb_6aac15222d85b1d016285802_VVF_Golf2026_Sponsor_TheTrustyHandyman_v1.png",
+          "alt": "The Trusty Handyman"
+        }
+      },
+      {
+        "name": "COTMAQ",
+        "website": "https://www.cotmaq.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701eb_6aac1719609bf95a4d5b0a18_VVF_Golf2026_Sponsor_Cotmaq_Dark_v1.png",
+          "alt": "COTMAQ"
+        }
+      },
+      {
+        "name": "Charity Golf International",
+        "website": "https://www.charitygolfintl.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701da_6aac152159b7c1203bd860ef_VVF_Golf2026_Sponsor_CharityGolfInternational_v1.jpeg",
+          "alt": "Charity Golf International"
+        }
+      },
+      {
+        "name": "Back Swing Golf Events",
+        "website": "https://www.backswinggolfevents.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701c8_6aac152113a7d75b2c26a889_VVF_Golf2026_Sponsor_BackSwingGolfEvents_v1.png",
+          "alt": "Back Swing Golf Events"
+        }
+      },
+      {
+        "name": "Citimarine Store",
+        "website": "https://citimarinestore.com/en/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701ce_6aac152187c2ec079a16b711_VVF_Golf2026_Sponsor_CitimarineStore_v1.png",
+          "alt": "Citimarine Store"
+        }
+      },
+      {
+        "name": "On Par Physical Therapy",
+        "website": "https://www.onparpt.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df01_6aac15227eecb07b16b16cdc_VVF_Golf2026_Sponsor_OnParPT_v1.png",
+          "alt": "On Par Physical Therapy"
+        }
+      },
+      {
+        "name": "VNV Events",
+        "website": "https://vnvevents.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71df06_6aac1719c35d572447d83dc6_VVF_Golf2026_Sponsor_VNVEvents_Dark_v1.png",
+          "alt": "VNV Events"
+        }
+      },
+      {
+        "name": "Jet Set Gourmet",
+        "website": "https://linktr.ee/jetsetgourmetusa",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c204c4c23f8f0701d7_6aac1522b73e6d648dd220cd_VVF_Golf2026_Sponsor_JetSetGourmet_v1.jpeg",
+          "alt": "Jet Set Gourmet"
+        }
+      },
+      {
+        "name": "CrepeMaker",
+        "website": "https://www.crepemaker.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c43668f3171f71defc_6aac15210f7991d080df1c5c_VVF_Golf2026_Sponsor_CrepeMaker_v1.png",
+          "alt": "CrepeMaker"
+        }
+      },
+      {
+        "name": "Infinito Booth",
+        "website": "https://infinitobooth.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
+          "alt": "Infinito Booth"
+        }
+      }
+    ],
+    "offers": [
+      {
+        "id": "golf-foursome",
+        "kind": "ticket",
+        "tierName": "Cuarteto de jugadores",
+        "price": "$1,100",
+        "benefits": [
+          "Entrada para (4) jugadores al evento",
+          "Desayuno, almuerzo y bebidas para (4)",
+          "Bolsa de regalos para cada jugador",
+          "Fotografías a color en el evento"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 0
+      },
+      {
+        "id": "golf-single-player",
+        "kind": "ticket",
+        "tierName": "Jugador individual",
+        "price": "$275",
+        "benefits": [
+          "Entrada para (1) jugador al evento",
+          "Desayuno, almuerzo y bebidas",
+          "Bolsa de regalos para cada jugador",
+          "Fotografías a color en el evento"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 1
+      },
+      {
+        "id": "golf-lunch-and-award-ceremony",
+        "kind": "ticket",
+        "tierName": "Almuerzo y ceremonia de premiación",
+        "price": "$150",
+        "benefits": [
+          "Entrada para (1) invitado",
+          "Almuerzo servido y barra libre",
+          "Participación en la subasta",
+          "Ceremonia de premiación"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 2
+      },
+      {
+        "id": "golf-titanium-sponsor",
+        "kind": "package",
+        "tierName": "Patrocinador Titanio",
+        "price": "$10,000",
+        "ctaLabel": "Ser patrocinador",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 3
+      },
+      {
+        "id": "golf-diamond-sponsor",
+        "kind": "package",
+        "tierName": "Patrocinador Diamante",
+        "price": "$5,000",
+        "ctaLabel": "Ser patrocinador",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 4
+      },
+      {
+        "id": "golf-gold-sponsor",
+        "kind": "package",
+        "tierName": "Patrocinador Oro",
+        "price": "$2,500",
+        "ctaLabel": "Ser patrocinador",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 5
+      },
+      {
+        "id": "golf-spirits-sponsor",
+        "kind": "special",
+        "tierName": "Patrocinador de bebidas",
+        "price": "$2,500",
+        "benefits": [
+          "1 foursome para jugar en el evento",
+          "Activación en un hoyo",
+          "Reconocimiento como patrocinador",
+          "Logo en el programa y la señalización",
+          "Promoción en redes sociales y correo"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 6
+      },
+      {
+        "id": "golf-cart-sponsorship",
+        "kind": "special",
+        "tierName": "Patrocinio de carritos de golf",
+        "price": "$2,500",
+        "benefits": [
+          "1 foursome (4 jugadores en total)",
+          "Logo en los carritos de golf",
+          "Reconocimiento como patrocinador",
+          "Promoción en redes sociales y correo",
+          "Reconocimiento en la página del evento"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 7
+      },
+      {
+        "id": "golf-contest-sponsor",
+        "kind": "special",
+        "tierName": "Patrocinador de concursos",
+        "price": "$1,500",
+        "benefits": [
+          "Drive más largo / Más cerca del hoyo",
+          "Reconocimiento como patrocinador",
+          "Activación en un hoyo",
+          "Promoción en redes sociales y correo",
+          "Logo en el programa y la señalización"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 8
+      },
+      {
+        "id": "golf-photobooth-sponsor",
+        "kind": "special",
+        "tierName": "Patrocinador del photobooth",
+        "price": "$1,500",
+        "benefits": [
+          "Logo en el photobooth",
+          "Logo en las fotos impresas de los jugadores",
+          "Promoción en redes sociales y correo"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 9
+      },
+      {
+        "id": "golf-fairway-activation",
+        "kind": "special",
+        "tierName": "Activación en el fairway",
+        "price": "$1,000",
+        "benefits": [
+          "Activación en un hoyo o en el fairway",
+          "Interacción con los jugadores",
+          "Promoción en redes sociales y correo"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 10
+      },
+      {
+        "id": "golf-physical-therapy-lounge",
+        "kind": "special",
+        "tierName": "Lounge de fisioterapia deportiva y rendimiento",
+        "shortName": "Lounge de fisioterapia",
+        "price": "$1,000",
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": true,
+        "order": 11
+      },
+      {
+        "id": "golf-winners-circle",
+        "kind": "special",
+        "tierName": "Círculo de ganadores",
+        "price": "$500",
+        "benefits": [
+          "1 jugador individual en el evento",
+          "Información de tu empresa en la mesa de ganadores",
+          "Promoción en redes sociales y correo"
+        ],
+        "ctaLabel": "Comprar entradas",
+        "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
+        "soldOut": false,
+        "order": 12
+      }
+    ],
+    "benefitRows": [
+      {
+        "section": "Players",
+        "name": "Paquete de jugador (bolsa de regalos, barra libre, desayuno ligero, almuerzo y cena para cada jugador)",
+        "values": [
+          "3 cuartetos (12 jugadores)",
+          "2 cuartetos (8 jugadores)",
+          "1 cuarteto (4 jugadores)"
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Reconocimiento como patrocinador presentador",
+        "values": [
+          "Yes",
+          "",
+          ""
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Logo en el anuncio impreso",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Logo en materiales impresos y digitales",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Promoción en redes sociales",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Reconocimiento en la página del evento",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Pre-event recognition",
+        "name": "Mención destacada en correos promocionales",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Reconocimiento en la ceremonia de premiación",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Logo en el fondo del photobooth",
+        "values": [
+          "Yes",
+          "",
+          ""
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Activación en un hoyo",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Fotografía del equipo para llevar",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Material promocional en la bolsa de regalos",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Señalización especial en un hoyo designado",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Inclusión en la señalización de patrocinadores",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Event recognition",
+        "name": "Logo en el programa del evento",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Post-event recognition",
+        "name": "Logo en el sitio web principal (con enlace, durante un año)",
+        "values": [
+          "Yes",
+          "",
+          ""
+        ]
+      },
+      {
+        "section": "Post-event recognition",
+        "name": "Reconocimiento en el anuncio impreso",
+        "values": [
+          "Yes",
+          "Yes",
+          ""
+        ]
+      },
+      {
+        "section": "Post-event recognition",
+        "name": "Reconocimiento especial en el envío de correo",
+        "values": [
+          "Yes",
+          "",
+          ""
+        ]
+      },
+      {
+        "section": "Post-event recognition",
+        "name": "Promoción en redes sociales",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "section": "Post-event recognition",
+        "name": "Promoción en el boletín por correo",
+        "values": [
+          "Yes",
+          "Yes",
+          "Yes"
+        ]
+      }
+    ],
+    "programHtml": "<ul><li><strong>8:00 a. m.</strong> Registro y desayuno</li><li><strong>9:30 a. m.</strong> Salida simultánea (shotgun)</li><li><strong>Justo después del torneo</strong> Almuerzo, subasta y recepción de entrega de premios</li><li><strong>Todo el día</strong> Barra libre, concursos en el campo, fotos</li></ul>",
+    "includesHtml": "<ul><li>Desayuno de cortesía</li><li>Bebidas en el campo</li><li>Green fee de 18 hoyos</li><li>Concursos y premios</li><li>Recepción de premiación</li><li>Almuerzo completo y barra premium</li></ul>",
+    "gallery": [
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90c1_dji_fly_20251110_120352_0127_1762797148849_photo-scaled.webp",
+        "alt": "Golfistas junto al lago del campo, con banderas de Venezuela."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a6_0J1A2800-e1784672229294.webp",
+        "alt": "Pendón de la fundación junto a un bote inflable exhibido en el campo."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90a9_helen-randy-participants.webp",
+        "alt": "Participantes posando juntos frente a un panel con logos de patrocinadores."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44217c7e12e4c16da90e3_panoramica-campo-golf-scaled.webp",
+        "alt": "Vista desde lo alto de la casa club, con filas de carritos de golf afuera."
+      },
+      {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44216c7e12e4c16da90be_players-campo6-scaled.webp",
+        "alt": "Cuatro golfistas en el tee, uno de ellos con una bandera de Venezuela."
+      }
+    ],
+    "recapStats": [],
+    "faqs": [
+      {
+        "question": "¿Cuál es el formato del torneo?",
+        "answer": "Jugamos en formato Scramble para que el ritmo sea divertido e inclusivo para todos los niveles. Arma tu equipo y da lo mejor de ti.",
+        "order": 0
+      },
+      {
+        "question": "¿Dónde se celebra el evento?",
+        "answer": "En The Club at Weston Hills, Weston, Florida, ubicado en 2600 Country Club Way, Weston, FL 33332. Hay estacionamiento gratuito en el lugar y la señalización te guiará hasta el registro.",
+        "order": 1
+      },
+      {
+        "question": "¿Las donaciones son deducibles de impuestos?",
+        "answer": "Sí. Victoria Venezuela Foundation es una organización sin fines de lucro 501(c)(3). Tax ID: 88-3282100. Las contribuciones son deducibles de impuestos según la sección 501(c)(3) del Código de Rentas Internas de Estados Unidos.",
+        "order": 2
+      },
+      {
+        "question": "¿Puedo donar un artículo o servicio para la rifa o la subasta?",
+        "answer": "Sí, y te lo agradecemos de corazón. Donar un artículo o servicio es una forma poderosa de apoyar nuestra misión y, al mismo tiempo, dar a conocer tu marca o tu talento ante un público comprometido. Recibimos contribuciones de muchos tipos, por ejemplo:Cestas de regalo (productos gourmet, artículos de spa, colecciones temáticas)Experiencias (salidas de golf, escapadas de fin de semana, paquetes gastronómicos)Servicios profesionales (sesiones de fotografía, consultas de bienestar, coaching)Artículos únicos (obras de arte, objetos de colección, piezas hechas a mano)Para donar, escríbenos a charitygolf@victoriavenezuelafoundation.org con una breve descripción del artículo o servicio, su valor estimado de mercado, y tus datos de contacto y el nombre de tu empresa (si aplica).",
+        "order": 3
+      }
+    ],
+    "seo": {
+      "title": "Torneo Benéfico Anual de Golf 2026 | Fundación Victoria Venezuela",
+      "description": "Juega con propósito el 9 de noviembre de 2026 en The Club at Weston Hills, en Weston, FL. Nuestro torneo benéfico anual de golf apoya a los niños de Venezuela.",
+      "ogTitle": "Torneo Benéfico Anual de Golf 2026 | Fundación Victoria Venezuela",
+      "ogDescription": "Juega con propósito el 9 de noviembre de 2026 en The Club at Weston Hills, en Weston, FL. Nuestro torneo benéfico anual de golf apoya a los niños de Venezuela.",
+      "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab5e0f4bb49d22ddf9bd061_6ab31ef9b51e7a2e40caa4c1_VVF_Golf2026_ShareImage_v2_template_preview.jpeg"
+    }
+  }
+]

@@ -4,6 +4,8 @@
 import { extract } from './extract.mjs'
 import { harvest } from './harvest.mjs'
 import { media } from './media.mjs'
+import { pageCopy } from './pagecopy.mjs'
+import { importCopy } from './importcopy.mjs'
 import { transform } from './transform.mjs'
 import { validate } from './validate.mjs'
 
@@ -12,7 +14,9 @@ const STEPS = {
   harvest: ['Download referenced images/PDFs into seed/media/ and public/images/', harvest],
   media: ['Upload seed/media/ into a running local EmDash (EMDASH_URL, default :4321)', media],
   validate: ['Cross-check the snapshot against the Webflow API dump (needs WEBFLOW_API_TOKEN)', validate],
+  copy: ['Translate copy slots from the live /es pages into seed/page-copy.es.json', pageCopy],
   transform: ['Map the snapshot into seed/seed.json (+ seed/seed.local.json)', transform],
+  'import-copy': ['Fill empty Spanish copy slots in a running EmDash from seed/page-copy.es.json (EMDASH_URL, EMDASH_SYNC_PAT)', () => importCopy()],
 }
 
 const args = process.argv.slice(2)
@@ -27,7 +31,8 @@ if (!step || args.includes('--help') || (step !== 'all' && !STEPS[step])) {
   process.exit(step && step !== 'all' && !STEPS[step] ? 1 : 0)
 }
 
-for (const name of step === 'all' ? Object.keys(STEPS).filter((s) => s !== 'validate') : [step]) {
+// `import-copy` needs a running server with synced slots; npm run seed runs it.
+for (const name of step === 'all' ? Object.keys(STEPS).filter((s) => s !== 'validate' && s !== 'import-copy') : [step]) {
   console.log(`\n▶ ${name}`)
   const result = await STEPS[name][1]()
   if (result) console.log(result)
