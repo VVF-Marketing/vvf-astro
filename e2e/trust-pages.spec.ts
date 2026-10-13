@@ -68,3 +68,33 @@ test('About lists Our Team, Our Programs and Financials & Transparency in both l
     for (const [href, label] of links) await expect(nav.locator(`a[href="${href}"]:not([hreflang])`)).toHaveText(label)
   }
 })
+
+// Report dates use the site's default badge, like event dates
+// (openspec/changes/use-badge-for-report-dates).
+const badgeStyle = (el: Element) => {
+  const s = getComputedStyle(el)
+  return { bg: s.backgroundColor, radius: s.borderTopLeftRadius, font: s.fontFamily, size: s.fontSize, padding: s.padding }
+}
+
+for (const path of ['/financials-and-transparency', '/es/financials-and-transparency']) {
+  test(`report dates on ${path} use the default badge`, async ({ page }) => {
+    await page.goto(path)
+    const lists = page.locator('ul[role="list"]').filter({ has: page.locator('time[datetime]') })
+    await expect(lists).toHaveCount(2)
+    for (const list of [lists.nth(0), lists.nth(1)]) {
+      const time = list.locator('li').first().locator('time[datetime]')
+      await expect(time).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/)
+      const style = await time.locator('xpath=..').evaluate(badgeStyle)
+      expect(style).toMatchObject({ bg: 'rgb(231, 231, 231)', radius: '4px', size: '14px', padding: '4px 8px' })
+      expect(style.font).toMatch(/^Nunito/)
+    }
+  })
+}
+
+test('report date badges look exactly like event date badges', async ({ page }) => {
+  await page.goto('/financials-and-transparency')
+  const report = await page.locator('time[datetime]').first().locator('xpath=..').evaluate(badgeStyle)
+  await page.goto('/events')
+  const event = await page.locator('span.inline-flex.rounded-sm.bg-neutral-light-gray').first().evaluate(badgeStyle)
+  expect(report).toEqual(event)
+})

@@ -15,6 +15,10 @@ All 28 components live flat in [`src/components/`](https://github.com/anclist/vv
 
 `TeamMemberCard` is filed under Atoms in Storybook despite being a "Card" component like the Molecules-tier cards — double-check with the team before assuming it's intentional rather than a miscategorization.
 
+## Badges
+
+Small grey labels use the default `Badge` atom (live `.tag_component`): event dates, resource categories and report dates on Financials & Transparency. Report dates wrap a `<time datetime>`. Don't hand-roll badge styles or hard-code their colours.
+
 ## Rich text from the CMS
 
 Portable Text bodies (resource pages, the privacy policy) render through `PortableBody`, inside `RichText` for the prose styles. `PortableBody` uses EmDash's components except for tables, which use `ContentTable`.

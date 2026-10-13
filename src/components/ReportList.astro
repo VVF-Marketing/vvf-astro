@@ -1,11 +1,13 @@
 ---
 // Live counterpart: Financials & Transparency `.fin_report-card` lists —
-// white cards (radius 20px) with a grey date badge, title, summary and
+// white cards (radius 20px) with a date badge (the site's default Badge,
+// like event dates — not live's square `.fin_report-date`), title, summary and
 // Download (solid) / Read (outline) actions. `stack` is the annual reports
 // column (max 768px), `grid` the quarterly reports grid (3 / 2 / 1 columns).
 import type { ResourceItem } from '../lib/content/types'
 import { getGlobalCopy } from '../lib/globalCopy'
 import { LANG_TAGS, localeFromPath } from '../lib/i18n'
+import Badge from './Badge.astro'
 import Button from './Button.astro'
 
 export interface Props {
@@ -25,7 +27,11 @@ const list = layout === 'grid' ? 'grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'm
   {
     reports.map((r) => (
       <li class="flex h-full flex-col items-center gap-2 rounded-[20px] bg-neutral-white p-6 text-center md:items-start md:p-8 md:text-left">
-        {date(r.publishedAt) && <p class="mb-2 bg-[#eee] px-2 py-1 font-body text-size-sm leading-body text-brand-primary">{date(r.publishedAt)}</p>}
+        {r.publishedAt && (
+          <Badge class="mb-2">
+            <time datetime={r.publishedAt.slice(0, 10)}>{date(r.publishedAt)}</time>
+          </Badge>
+        )}
         <h3 class="w-full font-heading text-size-lg font-extrabold leading-[1.4] text-brand-primary">{r.title}</h3>
         {r.excerpt && <p class="w-full font-body text-size-md leading-body text-brand-primary">{r.excerpt}</p>}
         <div class="mt-auto flex flex-wrap justify-center gap-x-6 gap-y-3 pt-6 md:justify-start">
