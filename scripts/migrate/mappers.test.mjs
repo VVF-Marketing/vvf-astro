@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, slugify } from './mappers.mjs'
 import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries } from './transform.mjs'
+import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { sanitizeRichText, toPlainText, toPortableText } from './lib/richtext.mjs'
 
 const CDN = 'https://cdn.prod.website-files.com/site'
@@ -329,6 +330,27 @@ describe('pageCopyEntries', () => {
         data: { route_path: '/ways-to-give', key: 'seo.image', label: 'Share image', format: 'image', max_length: undefined, stale: false },
       },
     ])
+  })
+})
+
+describe('relativizeSameSiteLinks', () => {
+  it('rewrites links to the site as paths and leaves text and other sites alone', () => {
+    const data = {
+      cta_url: 'https://www.victoriavenezuelafoundation.org/ways-to-give',
+      website: 'https://donorbox.org/x',
+      body: [
+        {
+          _type: 'block',
+          markDefs: [{ _key: 'l', _type: 'link', href: 'https://victoriavenezuelafoundation.org' }],
+          children: [{ _type: 'span', text: 'https://victoriavenezuelafoundation.org', marks: ['l'] }],
+        },
+      ],
+    }
+    expect(relativizeSameSiteLinks(data)).toEqual({
+      ...data,
+      cta_url: '/ways-to-give',
+      body: [{ ...data.body[0], markDefs: [{ _key: 'l', _type: 'link', href: '/' }] }],
+    })
   })
 })
 

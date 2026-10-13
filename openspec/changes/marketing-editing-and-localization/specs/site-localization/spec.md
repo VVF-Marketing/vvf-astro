@@ -66,3 +66,19 @@ Navigation menus SHALL render per locale, linking to routes in the current local
 #### Scenario: Spanish menu
 - **WHEN** a Spanish page renders the primary navigation
 - **THEN** menu labels are in Spanish and every link points to an `/es` route
+
+### Requirement: Same-site links follow the page language
+Every link from a page to another page of the site SHALL point to that page in the language of the page it appears on, whether the link was written as a path, as a full address of the site, or with the other language's prefix. The language switch is the only exception.
+
+#### Scenario: Full address on a Spanish page
+- **WHEN** content on `/es/resources/<slug>` links to `https://victoriavenezuelafoundation.org/ways-to-give`
+- **THEN** the rendered link points to `/es/ways-to-give`
+
+#### Scenario: Spanish path on an English page
+- **WHEN** content on an English page links to `/es/ways-to-give`
+- **THEN** the rendered link points to `/ways-to-give`
+
+#### Scenario: Language switch kept
+- **WHEN** a Spanish page renders the language switch
+- **THEN** its English link still points to the English page
+

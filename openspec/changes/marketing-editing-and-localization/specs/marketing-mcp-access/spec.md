@@ -57,7 +57,11 @@ Marketing edits to copy slots SHALL be limited to the slot's value. Static page 
 - **THEN** the request is rejected and the slot is unchanged
 
 ### Requirement: Menu links validated
-Menu edits SHALL be accepted only when every menu item links to a route that exists on the site in the menu's locale, or to an external URL.
+Menu edits SHALL be accepted only when every menu item links to a route that exists on the site in the menu's locale, or to an external URL. Links to the site itself SHALL be written as paths: a full address of the site in a menu item, a rich-text link or a link field SHALL be refused with a message asking for the path.
+
+#### Scenario: Full site address refused
+- **WHEN** a marketing user sets a call-to-action link to `https://www.victoriavenezuelafoundation.org/ways-to-give`
+- **THEN** the edit is rejected with a message suggesting `/ways-to-give`
 
 #### Scenario: Broken menu link
 - **WHEN** a marketing user sets a menu item to `/es/pagina-que-no-existe`

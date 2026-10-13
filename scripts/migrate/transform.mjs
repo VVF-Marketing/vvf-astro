@@ -24,6 +24,7 @@ import { MANIFEST_PATH } from './lib/paths.mjs'
 import { createSection } from './lib/report.mjs'
 import { translate } from './lib/align.mjs'
 import { loadManifests, PAGE_COPY_ES_PATH, translationTable } from './pagecopy.mjs'
+import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 
 const MEDIA_FILE_BASE_URL = '/_emdash/api/media/file'
 
@@ -216,9 +217,12 @@ export function buildSeeds({ snapshots, snapshotsEs, mediaMap, currentSeed, tabl
     pub = withTranslations(liveNoMedia, esNoMedia.entries)
     unpaired = es.unpaired
   }
+  // Links back into the site are stored as paths (the live site writes some
+  // as full addresses), so pages show them in the reader's language.
+  const content = (c) => relativizeSameSiteLinks(c)
   return {
-    full: { ...currentSeed, content: { ...currentSeed.content, ...full } },
-    public: { ...currentSeed, content: { ...currentSeed.content, ...pub, children: [] } },
+    full: { ...currentSeed, content: content({ ...currentSeed.content, ...full }) },
+    public: { ...currentSeed, content: content({ ...currentSeed.content, ...pub, children: [] }) },
     ctx,
     unpaired,
     counts: Object.fromEntries(Object.entries(full).map(([k, v]) => [k, v.length])),

@@ -9,7 +9,7 @@ The site serves **en-US** at unprefixed paths and **es-VE** under `/es`, as the 
 
 - `astro.config.mjs` declares the locales (`en` default, `es` under `/es`); EmDash reads them and stores one row per locale, with translations sharing a `translation_group`.
 - Pages are written once. `src/middleware.ts` rewrites `/es/...` to the same page module; pages read their locale with `localeFromPath(Astro.originPathname)` (`src/lib/i18n.ts`).
-- On Spanish pages the middleware also rewrites internal links (`href="/x"` → `/es/x`, see `src/lib/localizeLinks.ts`), so code keeps writing English paths. Links carrying `hreflang` (the language switch) are left alone.
+- On every page the middleware makes links back into the site follow the page's language (`src/lib/localizeLinks.ts`): full addresses of the site (`src/lib/site.mjs`) become paths, and paths get `/es` on Spanish pages and lose it on English ones. Code keeps writing English paths, and CMS content works however editors wrote the link. Links carrying `hreflang` (the language switch) are left alone. The migration also stores same-site links as paths.
 - Old Webflow `/es/...` URLs redirect once (301) to the Spanish project route, using the same table as the English redirects (`src/lib/legacyRoutes.mjs`).
 
 ## Fallback: Spanish → English → 404

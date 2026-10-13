@@ -51,3 +51,11 @@
 - [ ] 6.2 Write a marketing onboarding guide (connecting an MCP client to `/_emdash/api/mcp`, drafting, publishing, comparing, restoring revisions, translating); verify a non-developer follows it on a local or staging instance
 - [ ] 6.3 End-to-end check on a staging deploy: marketing user edits an English copy slot, a Spanish SEO description and an event, publishes, restores a revision, drafts a Spanish translation, and is refused on a child profile and a schema change; record the result in the change
 - [ ] 6.4 Run the full suite (`npm test`, `npm run test:parity`, `npm run verify-menu`) and confirm it passes before archiving
+
+## 7. Same-site links follow the page language
+
+- [x] 7.1 Normalize links at render: same-site absolute URLs (http/https, with or without www) become paths, and every internal link on a page is set to that page's locale (`/es/...` on Spanish pages, unprefixed on English pages), leaving `hreflang` links alone; verify unit tests for both locales in `localizeLinks.test.ts`
+- [x] 7.2 Refuse same-site absolute URLs in marketing edits (menu items, rich-text links, link fields such as CTA URLs) with a message asking for the path, and validate them as internal routes; verify unit tests in `marketingGuard.test.ts`
+- [x] 7.3 Make the migration store same-site links as paths (seed content, page copy, the privacy policy body) and extend the e2e link check to every page in both locales (no same-site absolute links, no cross-locale links); verify the transform test and the e2e check pass
+- [x] 7.4 Add linking guidance to the marketing guide; verify the docs site builds
+

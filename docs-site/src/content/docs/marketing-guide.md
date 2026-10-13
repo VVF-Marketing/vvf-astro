@@ -20,6 +20,10 @@ You can change the site's text, its search-engine titles and descriptions, and i
 
 Text has a maximum length so it fits the design; if a change is too long, you'll be told the limit.
 
+## Linking to other pages of the site
+
+Write links to the site as a **path**, starting with `/` — for example `/ways-to-give` or `/events/2026-golf-tournament` — not as the full address (`https://www.victoriavenezuelafoundation.org/...`). You don't need to add `/es` in Spanish text: the site always sends readers to the page in the language they're reading. If you paste a full address of the site, you'll be asked to use the path instead. Links to other websites are written in full, as usual.
+
 ## Drafts, publishing and undo
 
 - Saving creates a **draft**. Nothing changes on the public site until you **publish**.

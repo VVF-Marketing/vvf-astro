@@ -20,6 +20,7 @@ import { alignPages, corrected, mergeTables, translate } from './lib/align.mjs'
 import { LIVE_BASE_URL, ROOT_DIR, SNAPSHOT_DIR } from './lib/paths.mjs'
 import { createSection } from './lib/report.mjs'
 import { sanitizeRichText, toPortableText } from './lib/richtext.mjs'
+import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 
 export const PAGE_COPY_ES_PATH = path.join(ROOT_DIR, 'seed/page-copy.es.json')
 const TRANSLATIONS_PATH = path.join(SNAPSHOT_DIR, 'es/translations.json')
@@ -103,7 +104,7 @@ export async function pageCopy() {
       } else unmapped.push(`${manifest.route} \`${key}\`: ${format === 'rich' ? '(rich text)' : spec.default}`)
     }
   }
-  writeFileSync(PAGE_COPY_ES_PATH, `${JSON.stringify(out, null, 2)}\n`)
+  writeFileSync(PAGE_COPY_ES_PATH, `${JSON.stringify(relativizeSameSiteLinks(out), null, 2)}\n`)
 
   report.line(`Aligned ${sitemap.urls.length} live pages with their /es versions (${publicTable.size} translated strings).`)
   report.line(`- Slots translated: ${mapped}; without a live Spanish counterpart: ${unmapped.length} (they fall back to English).`)

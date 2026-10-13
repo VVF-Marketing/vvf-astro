@@ -1,4 +1,6 @@
+import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
+import { projectPathFor } from '../src/lib/legacyRoutes.mjs'
 import { firstBoardMember, firstEvent, firstPost } from './fixtures'
 
 const SITE = 'https://www.victoriavenezuelafoundation.org'
@@ -12,6 +14,30 @@ test('every static page is served under /es', async ({ request }) => {
 
 test('/en is not a duplicate of the unprefixed English site', async ({ request }) => {
   expect((await request.get('/en/ways-to-give')).status()).toBe(404)
+})
+
+test('on every page, links back into the site follow the page language', async ({ request }) => {
+  const read = (rel: string) => JSON.parse(readFileSync(new URL(rel, import.meta.url), 'utf-8')).urls as string[]
+  const projectPaths = [...new Set(read('../scripts/migrate/snapshot/sitemap.json').map((p) => projectPathFor(p)))]
+  const failures: string[] = []
+  for (const path of projectPaths) {
+    for (const locale of ['en', 'es'] as const) {
+      const url = locale === 'es' ? (path === '/' ? '/es' : `/es${path}`) : path
+      const res = await request.get(url)
+      if (res.status() !== 200) continue
+      for (const [tag] of (await res.text()).matchAll(/<a\b[^>]*>/g)) {
+        const href = tag.match(/\shref="([^"]*)"/)?.[1]
+        if (!href || /\shreflang=/.test(tag)) continue
+        if (/^(https?:)?\/\/(www\.)?victoriavenezuelafoundation\.org/i.test(href)) failures.push(`${url}: full site address ${href}`)
+        else if (href.startsWith('/') && !/^\/(_emdash|_astro|images|uploads)\//.test(href) && !/\.[a-z0-9]{2,5}$/i.test(href)) {
+          const spanish = /^\/es(\/|$|[?#])/.test(href)
+          if (locale === 'en' && spanish) failures.push(`${url}: Spanish link ${href}`)
+          if (locale === 'es' && !spanish) failures.push(`${url}: English link ${href}`)
+        }
+      }
+    }
+  }
+  expect(failures).toEqual([])
 })
 
 test('a Spanish page links to Spanish routes', async ({ page }) => {

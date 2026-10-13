@@ -7,6 +7,7 @@ import {
   menuItemsProblem,
   normalizeApiPath,
   restOperation,
+  sameSiteLinkProblem,
   slotEditProblem,
   type GuardContext,
 } from './marketingGuard'
@@ -170,6 +171,25 @@ describe('menus', () => {
 
   it('applies to the menu_set_items tool', async () => {
     expect((await check('menu_set_items', { name: 'primary', locale: 'es', items: [{ label: 'x', customUrl: '/es/nope' }] })).allow).toBe(false)
+  })
+})
+
+describe('links back into the site', () => {
+  it('refuses the full site address in link fields and rich-text links, suggesting the path', async () => {
+    const cta = await check('content_update', { collection: 'events', id: 'e1', data: { appeal_cta_url: 'https://www.victoriavenezuelafoundation.org/earthquake-relief' } })
+    expect(cta).toMatchObject({ allow: false, message: expect.stringContaining('"/earthquake-relief"') })
+    const rich = [{ _type: 'block', _key: 'a', style: 'normal', markDefs: [{ _key: 'l', _type: 'link', href: 'https://victoriavenezuelafoundation.org/es/events' }], children: [] }]
+    expect((await check('content_update', { collection: 'resources', id: 'r1', data: { body: rich } })).allow).toBe(false)
+    expect(sameSiteLinkProblem({ rich_value: rich })).toContain('"/es/events"')
+  })
+
+  it('allows paths, other sites, and the address mentioned in plain text', async () => {
+    expect(await check('content_update', { collection: 'events', id: 'e1', data: { appeal_cta_url: '/earthquake-relief', description: 'Visit victoriavenezuelafoundation.org' } })).toEqual({ allow: true })
+    expect(sameSiteLinkProblem({ cta_url: 'https://donorbox.org/x', ctaUrl: 'mailto:info@victoriavenezuelafoundation.org' })).toBeUndefined()
+  })
+
+  it('refuses the full site address in menus', () => {
+    expect(menuItemsProblem([{ label: 'Give', customUrl: 'https://www.victoriavenezuelafoundation.org/ways-to-give' }], 'en', ctx().routeExists)).toContain('"/ways-to-give"')
   })
 })
 

@@ -33,6 +33,7 @@ For every user below the Admin role, on both the MCP endpoint and the admin REST
 | Copy slots | Only the slot's value can change, in the slot's format and within its maximum length (SEO titles 60, descriptions 160 characters). Rich text is limited to supported formatting. Slots can't be created or deleted by hand. Values migrated from the live site that exceed a limit are kept until someone edits them. |
 | Page list | `pages` is maintained by the sync and is read-only. |
 | Menus | Every link must point to a page of the site in the menu's locale (`/es/...` for the Spanish menu) or be external; menu items can't set CSS classes. |
+| Links back into the site | Menu items, rich-text links and link fields (e.g. CTA URLs) must use a path such as `/ways-to-give`, not the site's full address; the edit is refused with the path to use. (Rendering normalizes such links anyway — see [Localization & Page Copy](/localization-and-copy/#locales-and-routing).) |
 | Translations | A translation can only be created as a draft; a person reviews and publishes it. |
 | Everything else | MCP tools the guard doesn't know are refused (deny by default): schema, settings, users, permanent deletes. |
 

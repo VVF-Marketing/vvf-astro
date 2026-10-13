@@ -12,6 +12,8 @@
 //  3. The `pages` inventory is read-only.
 //  4. Menu links must resolve to a page in the menu's locale (or be external),
 //     and menu items can't carry CSS classes.
+//  4b. Links back into the site are written as paths, never as the site's
+//     full address (the page then picks the language, see localizeLinks).
 //  5. Translations can only be created as drafts (a person publishes them).
 //     Refused rather than rewritten: Astro passes the endpoint the original
 //     request body even after middleware forwards a modified one.
@@ -22,6 +24,7 @@
 // Operations are normalized to MCP tool names; REST requests are mapped onto
 // the same names (restOperation) so one policy covers both.
 import { SAFE_HREF, richViolations } from './copy'
+import { LINK_KEY, sameSitePath } from './site.mjs'
 
 export const ROLE_ADMIN = 50
 
@@ -147,6 +150,12 @@ export async function checkOperation(op: Operation, ctx: GuardContext): Promise<
     }
   }
 
+  // 4b. links back into the site are paths
+  if (tool === 'content_create' || tool === 'content_update') {
+    const problem = sameSiteLinkProblem(args.data)
+    if (problem) return deny(problem)
+  }
+
   // 4. menus
   if (tool === 'menu_set_items') {
     const problem = menuItemsProblem(args.items ?? [], args.locale ?? 'en', ctx.routeExists)
@@ -189,11 +198,40 @@ export function slotEditProblem(slot: Record<string, any>, data: Record<string, 
 
 const EXTERNAL = /^(https?:\/\/|mailto:|tel:|#)/i
 
+const fullAddressMessage = (where: string, url: string, path: string) =>
+  `${where} links to ${url}, this site's full address. Write it as "${path}" instead — the site then shows the page in the reader's language.`
+
+// A full address of this site in a link position (rich-text link `href`,
+// link fields such as `cta_url`), anywhere in an edit's data.
+export function sameSiteLinkProblem(data: unknown): string | undefined {
+  const walk = (value: unknown, key?: string): string | undefined => {
+    if (typeof value === 'string') {
+      const path = key && LINK_KEY.test(key) ? sameSitePath(value) : undefined
+      return path ? fullAddressMessage(key === 'href' ? 'A link' : `"${key}"`, value, path) : undefined
+    }
+    if (Array.isArray(value)) {
+      for (const v of value) {
+        const p = walk(v)
+        if (p) return p
+      }
+    } else if (value && typeof value === 'object') {
+      for (const [k, v] of Object.entries(value)) {
+        const p = walk(v, k)
+        if (p) return p
+      }
+    }
+    return undefined
+  }
+  return walk(data)
+}
+
 // Why a menu's items aren't allowed, or undefined.
 export function menuItemsProblem(items: Record<string, any>[], locale: string, routeExists: (path: string) => boolean): string | undefined {
   for (const item of flatten(items)) {
     if (item.cssClasses) return `Menu item "${item.label}" can't set CSS classes (styling is part of the site's design).`
     const url: string | undefined = item.customUrl ?? item.url
+    const ownPath = url ? sameSitePath(url) : undefined
+    if (url && ownPath) return fullAddressMessage(`Menu item "${item.label}"`, url, ownPath)
     if (!url || EXTERNAL.test(url)) continue
     const isSpanish = /^\/es(\/|$)/.test(url)
     if (locale === 'es' ? !isSpanish : isSpanish) {

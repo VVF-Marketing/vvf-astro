@@ -9,7 +9,7 @@ export const DEFAULT_LOCALE: Locale = 'en'
 // BCP 47 tags for <html lang> and hreflang.
 export const LANG_TAGS: Record<Locale, string> = { en: 'en-US', es: 'es-VE' }
 
-const ES_PREFIX = /^\/es(?=\/|$)/
+const ES_PREFIX = /^\/es(?=[/?#]|$)/
 
 // Normalizes Astro.currentLocale (or any locale code) to a site locale.
 export function toLocale(value: string | undefined | null): Locale {
