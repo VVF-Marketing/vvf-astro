@@ -7,7 +7,7 @@ The live site at victoriavenezuelafoundation.org (Webflow) is the source of trut
 
 1. **Extract** (`npm run migrate:extract`) crawls the English and Spanish (`/es`) pages in the live sitemap into `scripts/migrate/snapshot/` and `scripts/migrate/snapshot/es/` (when `WEBFLOW_API_TOKEN` and `WEBFLOW_SITE_ID` are set, the Webflow Data API is also dumped for cross-checking).
 2. **Harvest** (`npm run migrate:harvest`) downloads every referenced image and PDF: CMS media to `seed/media/`, page imagery and site chrome to `public/`.
-3. **Seed** (`npm run seed`) rebuilds the local database, uploads the CMS media into EmDash's media library, and applies the generated seed.
+3. **Seed** (`npm run seed`) rebuilds the local database: it applies the generated seed and uploads the CMS media into EmDash's media library. Media IDs are derived from each file's path, so the seed files carry complete media values and `npm run db:setup` seeds the same media into Postgres + S3.
 
 Spanish CMS items become linked translations of the English ones, and Spanish page copy is translated slot by slot from the live `/es` pages — see [Localization & Page Copy](/localization-and-copy/#spanish-content-from-the-live-site).
 

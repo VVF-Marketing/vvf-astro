@@ -58,7 +58,7 @@ In the dev container (no OS keyring available), the CLI stores credentials in pl
 | `npm run dev` | Dev server at `localhost:4321` |
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Serve the production build locally |
-| `npm run seed` | Rebuild the local database from the seed (asks first: it deletes `data.db` and `uploads/`; `-- --yes` skips the question) |
+| `npm run seed` | Rebuild the local database from the seed files, with media (asks first: it deletes `data.db` and `uploads/`; `-- --yes` skips the question) |
 | `npm run verify-menu` | Check nav menu URLs in `seed/seed.json` against real routes |
 | `npm run storybook` | Storybook dev server at `localhost:6006` |
 | `npm run build-storybook` | Static Storybook build |

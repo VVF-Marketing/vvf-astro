@@ -1,5 +1,6 @@
 # The deployed stack, locally: the site image on Postgres + an S3-compatible
-# store (SeaweedFS), seeded with the public seed/seed.json (no child data).
+# store (SeaweedFS), seeded with the public seed/seed.json and its media (no
+# child data).
 #
 #   docker compose up --build    # then open http://localhost:4321
 #   SITE_PORT=4399 docker compose up --build   # if 4321 is taken (e.g. npm run dev)
@@ -37,13 +38,13 @@ services:
       interval: 3s
       retries: 20
 
-  # One-off: migrations, public seed (only into an empty database) and the
-  # media bucket.
+  # One-off: the media bucket, then migrations and the public seed with its
+  # media (only into an empty database).
   setup:
     build: { context: ., target: tools }
     environment: *site-env
     command: >
-      sh -c "npm run db:setup -- --yes && node scripts/s3-bucket.mjs"
+      sh -c "node scripts/s3-bucket.mjs && npm run db:setup -- --yes"
     depends_on:
       postgres: { condition: service_healthy }
       s3: { condition: service_healthy }

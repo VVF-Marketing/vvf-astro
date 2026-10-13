@@ -48,12 +48,18 @@ SITE_PORT=4399 docker compose up --build   # if 4321 is taken by npm run dev
 docker compose down -v                # stop and delete the local data
 ```
 
-Compose runs the site image, Postgres 16 and SeaweedFS (an S3-compatible store; MinIO's images are no longer published). A `setup` job migrates the database, seeds the public `seed/seed.json` (no child data) and creates the bucket.
+Compose runs the site image, Postgres 16 and SeaweedFS (an S3-compatible store; MinIO's images are no longer published). A `setup` job creates the bucket, migrates the database and seeds the public `seed/seed.json` with its media (no child data).
 
 ## A new environment
 
 1. Create an empty Postgres database and a bucket.
-2. Migrate and seed: `npm run db:setup` (migrations, then the public seed, only into an empty database; `--no-seed` stops after migrations). It prints the target database and its fingerprint, and asks before migrating; `--force` (re-applying the seed over content) always asks.
+2. Migrate and seed: `npm run db:setup` (migrations, then the public media and seed, only into an empty database; `--no-seed` stops after migrations). It prints the target database and its fingerprint, and asks before migrating; `--force` (re-applying the seed over content) always asks. Set `STORAGE=s3` (with the `S3_*` settings) so the media goes to the bucket the site reads; `STORAGE=local` uploads to `./uploads` instead, and leaving it unset is refused.
+
+## Seeded media
+
+The public seed carries complete image and file values. Each file in `seed/media/` (events, resources, team members, sponsors; never children) gets a media ID and storage key derived from its path (`scripts/lib/seed-media.mjs`), so the values are the same in every database. Seeding uploads the files to the configured storage under those keys and creates their media rows; files already seeded are skipped, so it's safe to re-run.
+
+Databases seeded before this existed keep their own media IDs; they're never re-seeded (`db:setup` only seeds an empty database). Sponsor SVG logos are static files under `public/images/media/`, because EmDash's media library rejects SVGs.
 3. Run the image with the settings above. Wait for `/readyz`, then send traffic.
 
 Migrations are a deploy step. `npm run db:setup`, or `npx emdash migrate --from-config --expected-target-fingerprint=<fp>` from the tools image, applies pending EmDash migrations before the new version takes traffic.

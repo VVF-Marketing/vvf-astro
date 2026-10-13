@@ -2,10 +2,15 @@
 // `npm run db:setup` (and `npm run seed` in Postgres mode): prepare a Postgres
 // database for the site (openspec/changes/make-app-portable, design D6).
 // 1. Apply EmDash's migrations (`emdash migrate`, reads DATABASE_URL).
-// 2. Seed the public seed/seed.json (no child data) — only into an empty
-//    database; existing content is never re-seeded unless --force. With
-//    --no-seed, stop after migrations (a target for npm run data:import).
-// Needs DB_ADAPTER=postgres and DATABASE_URL.
+// 2. Upload the public seed media (seed/media/manifest.json, never child
+//    media) to the configured storage and create its media rows
+//    (scripts/lib/seed-media.mjs; openspec/changes/seed-postgres-with-media).
+// 3. Seed the public seed/seed.json (no child data).
+// Steps 2-3 run only into an empty database; existing content is never
+// re-seeded unless --force. With --no-seed, stop after migrations (a target
+// for npm run data:import).
+// Needs DB_ADAPTER=postgres and DATABASE_URL; STORAGE=s3 (with S3_*) uploads
+// media to the bucket, otherwise to ./uploads.
 //
 // Migrating needs the target confirmed first (confirmTarget): a pinned
 // fingerprint (EMDASH_TARGET_FINGERPRINT or --expected-target-fingerprint=),
@@ -16,10 +21,23 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { Kysely, sql } from 'kysely'
 import { applySeed } from 'emdash/seed'
+import { createStorage as createLocalStorage } from 'emdash/storage/local'
+import { createStorage as createS3Storage } from 'emdash/storage/s3'
+import { readManifests, seedMedia } from './lib/seed-media.mjs'
 import { createDialect, databaseUrl } from '../src/lib/db/postgresRuntime.mjs'
 import { confirmDestructive } from './lib/confirm.mjs'
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
+
+// The same choice as the site's (astro.config.mjs), except that it must be
+// explicit: a Postgres environment set up without STORAGE=s3 would put the
+// media on the machine running setup, where the deployed site can't see it
+// (review finding on PR #26). STORAGE=local is the deliberate disk option.
+export function openStorage(env = process.env) {
+  if (env.STORAGE === 's3') return createS3Storage({})
+  if (env.STORAGE === 'local') return createLocalStorage({ directory: path.join(ROOT, 'uploads'), baseUrl: '/_emdash/api/media/file' })
+  throw new Error('Set STORAGE=s3 (with the S3_* settings) so the seed media goes to the bucket the site reads, or STORAGE=local to upload to ./uploads.')
+}
 
 // Where setup is about to write, without credentials: "host:port/database".
 export function describeTarget(url) {
@@ -70,9 +88,12 @@ export async function setupDatabase({
   seed = true,
   confirm = false,
   expectedFingerprint = process.env.EMDASH_TARGET_FINGERPRINT || undefined,
+  storage,
   log = console.log,
 } = {}) {
   const target = describeTarget(databaseUrl())
+  // Before anything is written: where the seed media will go.
+  const mediaStorage = seed ? (storage ?? openStorage()) : undefined
   const fingerprint = targetFingerprint()
   log(`Target: Postgres ${target}, fingerprint ${fingerprint}`)
   // `npm run seed` in Postgres mode and --force (re-applying the seed over
@@ -88,9 +109,11 @@ export async function setupDatabase({
       log(`Seed skipped: the database already has ${rows[0].n} collections (use --force to re-apply).`)
       return { seeded: false }
     }
+    const media = await seedMedia({ db, storage: mediaStorage, manifest: readManifests({ children: false }).public, force })
+    log(`Media: ${media.uploaded} uploaded, ${media.skipped} already present.`)
     const result = await applySeed(db, JSON.parse(readFileSync(seedFile, 'utf8')), { includeContent: true })
     log(`Seeded ${path.relative(ROOT, seedFile)}: ${result.collections.created} collections, ${result.content.created} entries, ${result.menus.created} menus.`)
-    return { seeded: true, result }
+    return { seeded: true, result, media }
   } finally {
     await db.destroy()
   }

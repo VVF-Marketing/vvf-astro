@@ -9,10 +9,13 @@ node_modules/
 dist/
 .astro/
 
-# Child data and migration inputs (public seed/seed.json is enough to build
-# and seed; see .gitignore for why these stay local).
+# Child data and migration inputs (see .gitignore for why these stay local).
+# The public seed/seed.json and the public seed/media/ folders are kept: the
+# tools image's `npm run db:setup` seeds them (the runtime image copies only
+# dist/). scripts/lib/public-seed.test.mjs checks the child lines stay here.
 seed/seed.local.json
-seed/media/
+seed/media/children/
+seed/media/emdash-media.local.json
 scripts/migrate/snapshot/
 scripts/migrate/.cache/
 

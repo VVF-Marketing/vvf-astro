@@ -1,8 +1,12 @@
-// Step 4: snapshot (+ EmDash media map) → seed files.
+// Step 4: snapshot + media manifests → seed files.
 //
-// seed/seed.local.json  full seed: children + EmDash media values (gitignored;
-//                       media ids are specific to the local database)
-// seed/seed.json        committed: no children (public repo), no media values
+// seed/seed.local.json  full seed: children and all media values (gitignored)
+// seed/seed.json        committed: no children (public repo); public media
+//                       values only (built from the public manifest, never
+//                       the child one)
+//
+// Media values are stable across databases (scripts/lib/seed-media.mjs), so
+// no database is needed here; seedMedia() uploads the files they point to.
 //
 // Collections that exist on the live site are replaced wholesale; project-
 // only collections (posts, campaign_*) keep their current entries.
@@ -17,7 +21,7 @@ import {
   mapTeam,
   mergePartners,
 } from './mappers.mjs'
-import { MEDIA_MAP_PATH } from './media.mjs'
+import { mediaMapFor, readManifests } from '../lib/seed-media.mjs'
 import { LOCAL_SEED_PATH, ROOT_DIR, SEED_PATH, SNAPSHOT_DIR } from './lib/paths.mjs'
 import { projectPathFor } from '../../src/lib/legacyRoutes.mjs'
 import { MANIFEST_PATH } from './lib/paths.mjs'
@@ -224,19 +228,20 @@ function withTranslations(live, es) {
   return Object.fromEntries(Object.entries(live).map(([k, v]) => [k, [...v, ...(es[k] ?? [])]]))
 }
 
-// Pure core: snapshots (+ Spanish snapshots) + media map + current seed →
-// { full, public, ctx }.
-export function buildSeeds({ snapshots, snapshotsEs, mediaMap, currentSeed, table }) {
+// Pure core: snapshots (+ Spanish snapshots) + media maps + current seed →
+// { full, public, ctx }. `mediaMap` (public + child media) fills the local
+// seed; `publicMediaMap` (public manifest only) fills the public one.
+export function buildSeeds({ snapshots, snapshotsEs, mediaMap, publicMediaMap = {}, currentSeed, table }) {
   const { live, ctx } = buildContent(snapshots, mediaMap)
-  const { live: liveNoMedia } = buildContent(snapshots, {})
+  const { live: livePublic } = buildContent(snapshots, publicMediaMap)
   let full = live
-  let pub = liveNoMedia
+  let pub = livePublic
   let unpaired = []
   if (snapshotsEs) {
     const es = translatedEntries(live, buildContent(snapshotsEs, mediaMap).live, table)
-    const esNoMedia = translatedEntries(liveNoMedia, buildContent(snapshotsEs, {}).live, table)
+    const esPublic = translatedEntries(livePublic, buildContent(snapshotsEs, publicMediaMap).live, table)
     full = withTranslations(live, es.entries)
-    pub = withTranslations(liveNoMedia, esNoMedia.entries)
+    pub = withTranslations(livePublic, esPublic.entries)
     unpaired = es.unpaired
   }
   // Links back into the site are stored as paths (the live site writes some
@@ -271,7 +276,9 @@ function compact(o) {
 
 export async function transform() {
   const report = createSection('Transform')
-  const mediaMap = readJson(MEDIA_MAP_PATH, {})
+  const manifests = readManifests()
+  const mediaMap = await mediaMapFor(manifests.all)
+  const publicMediaMap = await mediaMapFor(manifests.public)
   const snapshots = {
     team_members: snap('team_members'),
     children: snap('children') ?? { order: [], items: [] },
@@ -298,6 +305,7 @@ export async function transform() {
     snapshots,
     snapshotsEs,
     mediaMap,
+    publicMediaMap,
     currentSeed,
     table: translationTable(),
   })
@@ -320,11 +328,11 @@ export async function transform() {
     report.line(`- English entries with no Spanish version on the live site (${unpaired.length}); they fall back to English:`)
     report.list(unpaired)
   }
-  report.line(`- \`seed/seed.json\` (committed) omits the ${counts.children} children and all media values; \`seed/seed.local.json\` (gitignored) has both.`)
+  report.line(`- \`seed/seed.json\` (committed) omits the ${counts.children} children and child media; \`seed/seed.local.json\` (gitignored) has both.`)
   report.line(
     ctx.missing.size
-      ? `- Media not yet in EmDash (${ctx.missing.size}); image fields left empty. Run \`npm run seed\` to import media first.`
-      : '- Media: every referenced file resolved to an EmDash media item.'
+      ? `- Media missing from the manifests (${ctx.missing.size}); image fields left empty. Run \`npm run migrate:harvest\` to download them.`
+      : '- Media: every referenced file resolved to a seed media value.'
   )
   if (ctx.notes.length) {
     report.line('- Decisions and dropped content:')

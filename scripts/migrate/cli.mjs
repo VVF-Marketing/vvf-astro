@@ -12,7 +12,7 @@ import { validate } from './validate.mjs'
 const STEPS = {
   extract: ['Crawl the live site into scripts/migrate/snapshot/', extract],
   harvest: ['Download referenced images/PDFs into seed/media/ and public/images/', harvest],
-  media: ['Upload seed/media/ into a running local EmDash (EMDASH_URL, default :4321)', media],
+  media: ['Copy harvested SVGs into public/images/media/ (other media is seeded by npm run seed)', media],
   validate: ['Cross-check the snapshot against the Webflow API dump (needs WEBFLOW_API_TOKEN)', validate],
   copy: ['Translate copy slots from the live /es pages into seed/page-copy.es.json', pageCopy],
   transform: ['Map the snapshot into seed/seed.json (+ seed/seed.local.json)', transform],

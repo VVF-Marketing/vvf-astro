@@ -230,7 +230,7 @@ describe('buildSeeds', () => {
     expect(pub.content.auction_items).toEqual([])
   })
 
-  it('writes media values only to the local seed', () => {
+  it('writes public media to both seeds and child-only media to the local seed', () => {
     const snapshots = {
       team_members: { sections: [{ tier: 'staff', members: [{ slug: 'ana-example', name: 'Ana', role: 'R', photo: { src: `${CDN}/ana.webp` } }] }], members: {} },
       children: { order: [], items: [] },
@@ -242,6 +242,8 @@ describe('buildSeeds', () => {
     const { full, public: pub } = buildSeeds({ snapshots, mediaMap, currentSeed: { version: '1', content: {} } })
     expect(full.content.team_members[0].data.photo).toMatchObject({ id: 'm-ana' })
     expect(pub.content.team_members[0].data.photo).toBeUndefined()
+    const both = buildSeeds({ snapshots, mediaMap, publicMediaMap: mediaMap, currentSeed: { version: '1', content: {} } })
+    expect(both.public.content.team_members[0].data.photo).toMatchObject({ id: 'm-ana' })
   })
 })
 

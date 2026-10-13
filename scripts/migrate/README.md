@@ -24,7 +24,9 @@ Nothing identifying a child is committed:
 - `seed/media/children/` — gitignored
 - `seed/seed.local.json` — gitignored; the full seed including children
 
-The committed `seed/seed.json` holds everything else. `npm run seed` applies
+The committed `seed/seed.json` holds everything else, including the public
+media values (built from `seed/media/manifest.json` only, never the child
+manifest; `scripts/lib/public-seed.test.mjs` checks this). `npm run seed` applies
 `seed/seed.local.json` when it exists, otherwise `seed/seed.json`. Run
 `npm run migrate` locally to regenerate the child data.
 
@@ -56,8 +58,8 @@ npm run migrate:extract      # live site → scripts/migrate/snapshot/ (+ snapsh
 npm run migrate:validate     # with a token: scrape vs Webflow API — expect "0 differences"
 npm run migrate:harvest      # images/PDFs → seed/media/, public/images/
 
-# 3. Rebuild the local database (starts a dev server, uploads media into
-#    EmDash, regenerates seed/seed.json + seed/seed.local.json, applies them).
+# 3. Rebuild the local database (regenerates seed/seed.json +
+#    seed/seed.local.json, uploads the media into uploads/, applies the seed).
 npm run seed
 
 #    Reseeding replaces the database, so any EmDash API token (e.g.
@@ -78,9 +80,12 @@ Commit the snapshot, `seed/seed.json`, `seed/media/` (minus children),
 `public/images/` and `src/data/page-seo.json`; review the snapshot diff to
 see what changed on the live site.
 
-`npm run migrate` runs extract, harvest, media and transform in one go, but
-the media step needs a dev server already running (`EMDASH_URL`, default
-`http://localhost:4321`). `npm run seed` handles that for you.
+`npm run migrate` runs extract, harvest, media and transform in one go. The
+media step only copies SVGs to `public/images/media/` (EmDash rejects SVG
+uploads); other media gets a stable ID derived from its path
+(`scripts/lib/seed-media.mjs`), so the seed files carry complete media values
+and `npm run seed` / `npm run db:setup` upload the files into any database and
+storage.
 
 ### Where things live
 

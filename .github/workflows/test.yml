@@ -58,6 +58,7 @@ jobs:
           --health-retries 20
     env:
       DB_ADAPTER: postgres
+      STORAGE: s3
       DATABASE_URL: postgres://vvf:vvf@localhost:5432/vvf
       S3_ENDPOINT: http://localhost:8333
       S3_BUCKET: vvf-media
@@ -74,7 +75,11 @@ jobs:
         run: docker run -d --name s3 -p 8333:8333 chrislusf/seaweedfs:latest server -s3 -dir=/data
       - name: Build the site image
         run: docker build --target runtime -t vvf-site .
-      - name: Migrate and seed Postgres (public seed)
+      - name: Create the media bucket
+        run: |
+          for i in $(seq 1 30); do curl -sf http://localhost:8333/ > /dev/null && break; sleep 1; done
+          node scripts/s3-bucket.mjs
+      - name: Migrate and seed Postgres + S3 (public seed and media)
         run: npm run db:setup
       - name: Data export/import round trip through Postgres
         env:
@@ -82,10 +87,6 @@ jobs:
         run: |
           psql postgres://vvf:vvf@localhost:5432/vvf -c 'create database vvf_import'
           npx vitest run scripts/data.integration.test.mjs
-      - name: Create the media bucket
-        run: |
-          for i in $(seq 1 30); do curl -sf http://localhost:8333/ > /dev/null && break; sleep 1; done
-          node scripts/s3-bucket.mjs
       - name: Run the image and wait until it's ready
         run: |
           docker run -d --name site --network host -e PORT=4321 \
