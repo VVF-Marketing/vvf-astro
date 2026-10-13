@@ -10,17 +10,20 @@ import Button from '../../components/Button.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import ArticleCard from '../../components/ArticleCard.astro'
 import { getResource, getResources, getTeamMembers } from '../../lib/content'
+import { alternatePaths, localeFromPath } from '../../lib/i18n'
 import { RESOURCE_CATEGORY_LABELS, resourceTag } from '../../lib/content/types'
 
-const resource = await getResource(Astro.params.slug!)
+const locale = localeFromPath(Astro.originPathname)
+
+const resource = await getResource(Astro.params.slug!, locale)
 if (!resource) return new Response('Not found', { status: 404 })
 
 const primary = resource.categories.includes('financials-transparency') ? 'financials-transparency' : resource.categories[0]
-const related = (await getResources())
+const related = (await getResources(undefined, locale))
   .filter((r) => r.slug !== resource.slug && (!primary || r.categories.includes(primary)))
   .slice(0, 3)
 // Author headshots come from the team collection (matched by name).
-const team = await getTeamMembers()
+const team = await getTeamMembers(undefined, locale)
 const photoFor = (name: string) => team.find((m) => m.name === name && m.imageUrl)?.imageUrl
 const updated = resource.updatedAt ?? resource.publishedAt
 const updatedLabel = updated
@@ -37,6 +40,8 @@ const crumbs = [
   title={resource.seo?.title ?? `${resource.title} | Victoria Venezuela Foundation`}
   description={resource.seo?.description ?? resource.excerpt}
   image={resource.seo?.imageUrl ?? resource.imageUrl}
+  alternates={alternatePaths('/resources', resource.alternates)}
+  contentLocale={resource.fallbackLocale}
 >
   <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-[72px]">
     <div class="mx-auto max-w-[1296px]">

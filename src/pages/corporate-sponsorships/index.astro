@@ -9,9 +9,12 @@ import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
 import Card from '../../components/Card.astro'
 import EmployerMatchWidget from '../../components/EmployerMatchWidget.astro'
 import { getPartners, getSponsorshipPackages } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const partners = await getPartners()
-const tiers = await getSponsorshipPackages()
+const locale = localeFromPath(Astro.originPathname)
+
+const partners = await getPartners(locale)
+const tiers = await getSponsorshipPackages(locale)
 ---
 
 <PageLayout

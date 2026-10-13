@@ -11,9 +11,12 @@ import IconCard from '../../components/IconCard.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
 import { getChildren, getFaqs } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const children = (await getChildren()).slice(0, 12)
-const faqs = await getFaqs('sponsorship')
+const locale = localeFromPath(Astro.originPathname)
+
+const children = (await getChildren(locale)).slice(0, 12)
+const faqs = await getFaqs('sponsorship', locale)
 ---
 
 <PageLayout

@@ -10487,8 +10487,10 @@
   },
   "menus": [
     {
+      "id": "menu:primary:en",
       "name": "primary",
       "label": "Primary Navigation",
+      "locale": "en",
       "items": [
         {
           "type": "custom",
@@ -10548,6 +10550,76 @@
               "type": "custom",
               "label": "Financials & Transparency",
               "url": "/resources/category/financials-transparency"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "menu:primary:es",
+      "name": "primary",
+      "label": "Navegación principal",
+      "locale": "es",
+      "translationOf": "menu:primary:en",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Marca la diferencia",
+          "url": "#",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Formas de ayudar",
+              "url": "/es/ways-to-give"
+            },
+            {
+              "type": "custom",
+              "label": "Apadrina a un niño",
+              "url": "/es/sponsor-a-child"
+            },
+            {
+              "type": "custom",
+              "label": "Patrocinios corporativos",
+              "url": "/es/corporate-sponsorships"
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "label": "Participa",
+          "url": "#",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Eventos y campañas",
+              "url": "/es/events"
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "label": "Nuestro equipo",
+          "url": "/es/our-team"
+        },
+        {
+          "type": "custom",
+          "label": "Recursos",
+          "url": "#",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Todos los recursos",
+              "url": "/es/resources"
+            },
+            {
+              "type": "custom",
+              "label": "Historias",
+              "url": "/es/resources/category/stories"
+            },
+            {
+              "type": "custom",
+              "label": "Finanzas y transparencia",
+              "url": "/es/resources/category/financials-transparency"
             }
           ]
         }

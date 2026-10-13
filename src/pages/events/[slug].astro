@@ -23,10 +23,13 @@ import ProgramsCta from '../../components/ProgramsCta.astro'
 import PastelCard from '../../components/PastelCard.astro'
 import Button from '../../components/Button.astro'
 import { getEventBySlug, getEvents, getFaqs, isUpcoming } from '../../lib/content'
+import { alternatePaths, localeFromPath } from '../../lib/i18n'
 import { eventTicketUrl } from '../../lib/donorbox'
 import { listItemTexts, listItemsWithLead } from '../../lib/portableText'
 
-const event = await getEventBySlug(Astro.params.slug!)
+const locale = localeFromPath(Astro.originPathname)
+
+const event = await getEventBySlug(Astro.params.slug!, locale)
 if (!event) return new Response('Not found', { status: 404 })
 
 const upcoming = isUpcoming(event)
@@ -35,13 +38,13 @@ const offers = [...(event.sponsorPackages ?? [])].sort((a, b) => (a.order ?? 0) 
 const tickets = offers.filter((o) => o.kind === 'ticket')
 const packages = offers.filter((o) => o.kind === 'package')
 const specials = offers.filter((o) => o.kind === 'special')
-const faqs = upcoming ? await getFaqs('tournament') : []
+const faqs = upcoming ? await getFaqs('tournament', locale) : []
 const date = new Date(event.startDate)
 const monthDay = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' })
 const longDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
 const nextEvent = upcoming
   ? undefined
-  : (await getEvents()).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+  : (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
 const ticketTones = ['sun', 'sky', 'salmon'] as const
 const recapLabels = [
   ['Results', 'What we did together', 'Here is what one day on the course made possible for children in Venezuela.'],
@@ -53,6 +56,8 @@ const recapLabels = [
   description={event.seo?.description ?? event.description}
   image={event.seo?.imageUrl ?? event.heroImageUrl ?? event.imageUrl}
   background="section"
+  alternates={alternatePaths('/events', event.alternates)}
+  contentLocale={event.fallbackLocale}
 >
   <Hero
     imageUrl={event.heroImageUrl ?? event.imageUrl}

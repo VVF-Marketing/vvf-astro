@@ -11,10 +11,13 @@ import AppealPanel from '../../components/AppealPanel.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
 import Button from '../../components/Button.astro'
 import { getEvents, getFaqs, isUpcoming } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 import { generalDonationUrl } from '../../lib/donorbox'
 
-const faqs = await getFaqs('donation')
-const nextEvent = (await getEvents()).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+const locale = localeFromPath(Astro.originPathname)
+
+const faqs = await getFaqs('donation', locale)
+const nextEvent = (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
 ---
 
 <PageLayout

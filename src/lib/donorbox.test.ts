@@ -32,7 +32,14 @@ describe('donorbox url builders', () => {
   })
 
   it('builds a sponsor-a-child embed url with the child slug as ref', () => {
-    expect(sponsorChildEmbedUrl('maria-gonzalez')).toBe(
+    expect(sponsorChildEmbedUrl({ slug: 'maria-gonzalez' })).toBe(
+      'https://donorbox.org/embed/make-a-difference-55?default_interval=m&ref=maria-gonzalez'
+    )
+  })
+
+  it('tags a child donation with the English slug on the Spanish page', () => {
+    const spanishPage = { slug: 'maria-gonzalez-es', alternates: { en: 'maria-gonzalez', es: 'maria-gonzalez-es' } }
+    expect(sponsorChildEmbedUrl(spanishPage)).toBe(
       'https://donorbox.org/embed/make-a-difference-55?default_interval=m&ref=maria-gonzalez'
     )
   })

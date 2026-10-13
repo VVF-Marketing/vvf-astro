@@ -1,8 +1,17 @@
 // Normalized content shapes every page/component consumes, sourced from
 // EmDash (see src/lib/content/index.ts). Images are always resolved to a
 // plain URL (or omitted) — components never touch the raw CMS shape.
+import type { Locale } from '../i18n'
 
-export interface EventItem {
+// Set on an item requested in another locale but served from English
+// because it has no translation yet. Detail getters also report the item's
+// slug in each locale it exists in (for hreflang and the language switch).
+interface Localized {
+  fallbackLocale?: Locale
+  alternates?: Partial<Record<Locale, string>>
+}
+
+export interface EventItem extends Localized {
   slug: string
   title: string
   startDate: string // ISO
@@ -30,7 +39,7 @@ export interface EventItem {
   seo?: Seo
 }
 
-export interface ChildItem {
+export interface ChildItem extends Localized {
   slug: string
   displayName: string
   age: number
@@ -47,7 +56,7 @@ export interface ChildItem {
 
 export type TeamTier = 'board' | 'leader' | 'staff'
 
-export interface TeamMemberItem {
+export interface TeamMemberItem extends Localized {
   slug: string
   name: string
   role: string
@@ -66,7 +75,7 @@ export interface TeamMemberItem {
   order?: number
 }
 
-export interface PostItem {
+export interface PostItem extends Localized {
   slug: string
   title: string
   author?: string
@@ -156,12 +165,16 @@ export const RESOURCE_CATEGORY_TITLES: Record<ResourceCategory, string> = {
 
 // Tag shown on resource cards: Financials wins when an item is in both
 // categories, as on the live site.
-export function resourceTag(r: { categories: ResourceCategory[] }): string | undefined {
+// `labels` lets pages pass the localized labels from their copy slots.
+export function resourceTag(
+  r: { categories: ResourceCategory[] },
+  labels: Record<ResourceCategory, string> = RESOURCE_CATEGORY_LABELS
+): string | undefined {
   const c = r.categories.includes('financials-transparency') ? 'financials-transparency' : r.categories[0]
-  return c ? RESOURCE_CATEGORY_LABELS[c] : undefined
+  return c ? labels[c] : undefined
 }
 
-export interface ResourceItem {
+export interface ResourceItem extends Localized {
   slug: string
   title: string
   categories: ResourceCategory[]

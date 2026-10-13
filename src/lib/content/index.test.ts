@@ -15,6 +15,7 @@ const {
   getEventBySlug,
   isUpcoming,
   getChildren,
+  getChildBySlug,
   getTeamMembers,
   getTeamMemberBySlug,
   getPosts,
@@ -44,6 +45,9 @@ beforeEach(() => {
 describe('getEvents', () => {
   it('maps snake_case fields to camelCase and resolves image/refs', async () => {
     getEmDashCollection.mockImplementation(async (collection: string) => {
+      if (collection === 'sponsorship_packages') {
+        return { entries: [{ id: 'sp-1', slug: 'gold', data: { tier_name: 'Gold', price: '$5,000', order: 1 } }] }
+      }
       if (collection === 'events') {
         return {
           entries: [
@@ -63,12 +67,6 @@ describe('getEvents', () => {
         }
       }
       return { entries: [] }
-    })
-    getEmDashEntry.mockImplementation(async (collection: string, id: string) => {
-      if (collection === 'sponsorship_packages' && id === 'sp-1') {
-        return { entry: { data: { tier_name: 'Gold', price: '$5,000', order: 1 } } }
-      }
-      return { entry: undefined }
     })
 
     const [event] = await getEvents()
@@ -347,3 +345,167 @@ describe('getPrimaryMenu', () => {
     expect(await getPrimaryMenu()).toEqual([])
   })
 })
+
+describe('locale resolution', () => {
+  // Rows as EmDash returns them: system columns live in `data`.
+  function row(slug: string, locale: string, group: string, data: Record<string, unknown>) {
+    return { slug, data: { ...data, locale, translationGroup: group } }
+  }
+
+  function byLocale(rows: Record<string, ReturnType<typeof row>[]>) {
+    getEmDashCollection.mockImplementation(async (_collection: string, filter: { locale?: string }) => ({
+      entries: rows[filter.locale ?? 'en'] ?? [],
+    }))
+  }
+
+  it('always passes the locale explicitly to EmDash', async () => {
+    byLocale({ en: [] })
+    await getEvents()
+    expect(getEmDashCollection).toHaveBeenCalledWith('events', expect.objectContaining({ locale: 'en' }))
+  })
+
+  it('serves the Spanish version when one exists, English otherwise, in English order', async () => {
+    byLocale({
+      en: [
+        row('golf-2026', 'en', 'g1', { title: 'Golf', start_date: '2026-06-01', location: 'Weston' }),
+        row('gala-2026', 'en', 'g2', { title: 'Gala', start_date: '2026-09-01', location: 'Miami' }),
+      ],
+      es: [row('golf-2026-es', 'es', 'g1', { title: 'Golf ES', start_date: '2026-06-01', location: 'Weston' })],
+    })
+    getEmDashEntry.mockResolvedValue({ entry: undefined })
+
+    const events = await getEvents('es')
+
+    expect(events.map((e) => [e.slug, e.title, e.fallbackLocale])).toEqual([
+      ['golf-2026-es', 'Golf ES', undefined],
+      ['gala-2026', 'Gala', 'en'],
+    ])
+  })
+
+  it('hides a translation whose English entry is not live', async () => {
+    // EmDash only returns published rows, so an unpublished English entry is
+    // simply absent from the English query.
+    byLocale({
+      en: [],
+      es: [row('solo-es', 'es', 'g9', { question: '¿Qué?', answer: 'Esto', category: 'general' })],
+    })
+
+    expect(await getFaqs(undefined, 'es')).toEqual([])
+  })
+
+  it('takes a child profile down in Spanish when it is hidden in English', async () => {
+    // The `published: 1` filter excludes the hidden English profile; its
+    // Spanish row still says published.
+    byLocale({
+      en: [],
+      es: [row('ana', 'es', 'c1', { display_name: 'Ana', published: 1 })],
+    })
+
+    expect(await getChildren('es')).toEqual([])
+    expect(await getChildBySlug('ana', 'es')).toBeUndefined()
+  })
+
+  it('finds a detail entry by its Spanish slug or its English counterpart slug', async () => {
+    byLocale({
+      en: [row('impact-report', 'en', 'r1', { title: 'Impact Report' })],
+      es: [row('informe-de-impacto', 'es', 'r1', { title: 'Informe de impacto' })],
+    })
+
+    expect((await getResource('informe-de-impacto', 'es'))?.title).toBe('Informe de impacto')
+    expect((await getResource('impact-report', 'es'))?.title).toBe('Informe de impacto')
+  })
+
+  it('falls back to the English entry, then to not-found', async () => {
+    byLocale({ en: [row('impact-report', 'en', 'r1', { title: 'Impact Report' })], es: [] })
+
+    const fallback = await getResource('impact-report', 'es')
+    expect(fallback?.title).toBe('Impact Report')
+    expect(fallback?.fallbackLocale).toBe('en')
+    expect(await getResource('missing', 'es')).toBeUndefined()
+  })
+
+  it('resolves references to their Spanish translation', async () => {
+    getEmDashCollection.mockImplementation(async (collection: string, filter: { locale?: string }) => {
+      if (collection === 'events') {
+        return {
+          entries:
+            filter.locale === 'en'
+              ? [row('golf', 'en', 'g1', { title: 'Golf', start_date: '2026-06-01', location: 'W', sponsors: ['s1'] })]
+              : [],
+        }
+      }
+      if (collection === 'sponsors') {
+        return {
+          entries:
+            filter.locale === 'es'
+              ? [row('acme-es', 'es', 'sg1', { name: 'Acme (ES)' })]
+              : [{ id: 's1', ...row('acme', 'en', 'sg1', { name: 'Acme' }) }],
+        }
+      }
+      return { entries: [] }
+    })
+
+    const [event] = await getEvents('es')
+
+    expect(event.sponsors).toEqual([{ name: 'Acme (ES)', logoUrl: undefined, website: undefined }])
+  })
+
+  it('finds a translated team profile by its English profile slug', async () => {
+    byLocale({
+      en: [row('jane-board', 'en', 't1', { name: 'Jane', role: 'Chair', tier: 'board', profile_slug: 'jane-doe' })],
+      es: [row('jane-board-es', 'es', 't1', { name: 'Jane', role: 'Presidenta', tier: 'board', profile_slug: 'jane-doe-es' })],
+    })
+
+    expect((await getTeamMemberBySlug('jane-doe', 'es'))?.role).toBe('Presidenta')
+    expect((await getTeamMemberBySlug('jane-doe-es', 'es'))?.role).toBe('Presidenta')
+    expect(await getTeamMemberBySlug('nobody', 'es')).toBeUndefined()
+  })
+
+  it('reports a detail entry\'s slug in every locale it exists in, from either locale', async () => {
+    byLocale({
+      en: [row('impact-report', 'en', 'r1', { title: 'Impact Report' }), row('only-en', 'en', 'r2', { title: 'Only EN' })],
+      es: [row('informe-de-impacto', 'es', 'r1', { title: 'Informe de impacto' })],
+    })
+
+    expect((await getResource('impact-report'))?.alternates).toEqual({ en: 'impact-report', es: 'informe-de-impacto' })
+    expect((await getResource('informe-de-impacto', 'es'))?.alternates).toEqual({
+      en: 'impact-report',
+      es: 'informe-de-impacto',
+    })
+    expect((await getResource('only-en', 'es'))?.alternates).toEqual({ en: 'only-en' })
+  })
+
+  it('reports a team member\'s profile slug per locale', async () => {
+    byLocale({
+      en: [row('jane-board', 'en', 't1', { name: 'Jane', role: 'Chair', tier: 'board', profile_slug: 'jane-doe' })],
+      es: [row('jane-board-es', 'es', 't1', { name: 'Jane', role: 'Presidenta', tier: 'board', profile_slug: 'jane-doe-es' })],
+    })
+
+    expect((await getTeamMemberBySlug('jane-doe'))?.alternates).toEqual({ en: 'jane-doe', es: 'jane-doe-es' })
+  })
+
+  it('asks EmDash for the menu in the requested locale', async () => {
+    getMenu.mockResolvedValue(null)
+    await getPrimaryMenu('es')
+    expect(getMenu).toHaveBeenCalledWith('primary', { locale: 'es' })
+  })
+})
+
+// Review finding (PR #13): each reference was fetched with its own query.
+describe('reference resolution', () => {
+  it('reads each referenced collection once, however many references', async () => {
+    getEmDashCollection.mockImplementation(async (collection: string) => {
+      if (collection === 'events') {
+        return { entries: [entry('a', { title: 'A', start_date: '2026-01-01', sponsors: ['s1', 's2'] }), entry('b', { title: 'B', start_date: '2026-02-01', sponsors: ['s2'] })] }
+      }
+      if (collection === 'sponsors') {
+        return { entries: [{ id: 's1', slug: 'one', data: { name: 'One' } }, { id: 's2', slug: 'two', data: { name: 'Two' } }] }
+      }
+      return { entries: [] }
+    })
+    const events = await getEvents()
+    expect(events.map((e) => e.sponsors?.map((s) => s.name))).toEqual([['One', 'Two'], ['Two']])
+    expect(getEmDashEntry).not.toHaveBeenCalled()
+  })
+})
+

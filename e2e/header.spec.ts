@@ -35,7 +35,7 @@ test.describe('site header', () => {
     await expect(nav.locator(':scope > ul > li > :first-child')).toHaveText(['Make a Difference', 'Get Involved', 'Our Team', 'Resources'])
     await expect(nav.getByRole('link', { name: 'Donate' })).toHaveAttribute('href', '/ways-to-give')
     await expect(nav.getByRole('link', { name: 'Contact Us' })).toHaveAttribute('href', '/contact')
-    await expect(page.getByRole('link', { name: 'ES', exact: true })).toHaveCount(0)
+    await expect(nav.getByRole('link', { name: 'Español' })).toHaveAttribute('href', '/es')
   })
 
   test.describe('mobile', () => {

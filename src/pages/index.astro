@@ -14,9 +14,12 @@ import Button from '../components/Button.astro'
 import LogoCarousel from '../components/LogoCarousel.astro'
 import ProgramsCta from '../components/ProgramsCta.astro'
 import { getEvents, getPartners, isUpcoming } from '../lib/content'
+import { localeFromPath } from '../lib/i18n'
 
-const upcoming = (await getEvents()).filter(isUpcoming)
-const partners = await getPartners()
+const locale = localeFromPath(Astro.originPathname)
+
+const upcoming = (await getEvents(locale)).filter(isUpcoming)
+const partners = await getPartners(locale)
 ---
 
 <PageLayout

@@ -29,8 +29,12 @@ export function eventSponsorUrl(donorboxEventId: string, tierName?: string): str
   return tierName ? `${url}?tier=${encodeURIComponent(tierName)}` : url
 }
 
-export function sponsorChildEmbedUrl(childSlug: string): string {
-  return `https://donorbox.org/embed/${SPONSOR_CHILD_CAMPAIGN}?default_interval=m&ref=${encodeURIComponent(childSlug)}`
+// `ref` tells the foundation which child a donation is for, so it's the
+// child's English slug on every locale's page: a Spanish slug that differs
+// would file the same child's donations under a second reference.
+export function sponsorChildEmbedUrl(child: { slug: string; alternates?: { en?: string } }): string {
+  const ref = child.alternates?.en || child.slug
+  return `https://donorbox.org/embed/${SPONSOR_CHILD_CAMPAIGN}?default_interval=m&ref=${encodeURIComponent(ref)}`
 }
 
 // Corporate Sponsorships' "Partner with Us" CTA deliberately does NOT go to

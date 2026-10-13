@@ -2,13 +2,35 @@
 // Live counterpart: `.navbar` (Webflow w-nav). Navy bar, white Nunito links
 // that turn cyan on hover, navy dropdown panels, Donate + Contact Us CTAs.
 // Collapses into a menu button below the `lg` (992px) breakpoint, like the
-// live site. Menu items come from the EmDash `primary` menu.
+// live site. Menu items come from the EmDash `primary` menu (per locale). The
+// language switch (EN | ES, as on the live site) links to this page in each
+// locale — its translated slug when the page passes `alternates`.
 import { getPrimaryMenu } from '../lib/content'
+import { LANG_TAGS, LOCALES, localeFromPath, localizePath, stripLocale, type Locale } from '../lib/i18n'
 import Button from './Button.astro'
 
-const items = await getPrimaryMenu()
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
-const isCurrent = (url: string) => url !== '#' && (url === currentPath || (url !== '/' && currentPath.startsWith(`${url}/`)))
+
+interface Props {
+  alternates?: Partial<Record<Locale, string>>
+}
+
+const locale = localeFromPath(Astro.originPathname)
+// English path of this page; Spanish menu urls carry /es, so compare without it.
+const currentPath = stripLocale(Astro.originPathname.replace(/\/$/, '') || '/')
+// Each language is named in itself for its accessible name.
+const LANGUAGE_NAMES: Record<Locale, string> = { en: 'English', es: 'Español' }
+const localeLinks = LOCALES.map((l) => ({
+  locale: l,
+  href: Astro.props.alternates?.[l] ?? localizePath(currentPath, l),
+  current: l === locale,
+}))
+
+const items = await getPrimaryMenu(locale)
+const isCurrent = (href: string) => {
+  if (href === '#') return false
+  const url = stripLocale(href)
+  return url === currentPath || (url !== '/' && currentPath.startsWith(`${url}/`))
+}
 const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal leading-body text-neutral-white no-underline hover:text-brand-accent'
 ---
 
@@ -61,6 +83,22 @@ const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal le
         }
       </ul>
       <div class="flex shrink-0 items-center gap-4 pl-6 xl:gap-6 xl:pl-16">
+        <ul class="flex items-center gap-2" aria-label="Language">
+          {localeLinks.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                hreflang={LANG_TAGS[l.locale]}
+                lang={LANG_TAGS[l.locale]}
+                aria-label={LANGUAGE_NAMES[l.locale]}
+                aria-current={l.current ? 'true' : undefined}
+                class={`${linkClass} ${l.current ? 'font-bold text-brand-accent' : ''}`}
+              >
+                {l.locale.toUpperCase()}
+              </a>
+            </li>
+          ))}
+        </ul>
         <Button href="/ways-to-give" variant="primary">Donate</Button>
         <Button href="/contact" variant="outline">Contact Us</Button>
       </div>
@@ -106,6 +144,22 @@ const linkClass = 'block whitespace-nowrap font-sans text-size-md font-normal le
           )
         )
       }
+    </ul>
+    <ul class="flex gap-4 py-3" aria-label="Language">
+      {localeLinks.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            hreflang={LANG_TAGS[l.locale]}
+            lang={LANG_TAGS[l.locale]}
+            aria-label={LANGUAGE_NAMES[l.locale]}
+            aria-current={l.current ? 'true' : undefined}
+            class={`${linkClass} ${l.current ? 'font-bold text-brand-accent' : ''}`}
+          >
+            {l.locale.toUpperCase()}
+          </a>
+        </li>
+      ))}
     </ul>
     <div class="mt-4 flex flex-col gap-2">
       <Button href="/ways-to-give" variant="primary">Donate</Button>

@@ -3,10 +3,13 @@
 import PageLayout from '../../layouts/PageLayout.astro'
 import BioCard from '../../components/BioCard.astro'
 import { getTeamMemberBySlug } from '../../lib/content'
+import { alternatePaths, localeFromPath } from '../../lib/i18n'
+
+const locale = localeFromPath(Astro.originPathname)
 
 // One profile per person; when they appear in several tiers,
 // getTeamMemberBySlug picks the entry carrying the full bio.
-const member = await getTeamMemberBySlug(Astro.params.slug!)
+const member = await getTeamMemberBySlug(Astro.params.slug!, locale)
 if (!member) return new Response('Not found', { status: 404 })
 ---
 
@@ -14,6 +17,8 @@ if (!member) return new Response('Not found', { status: 404 })
   title={`${member.name} | Our Team | Victoria Venezuela Foundation`}
   description={`Meet ${member.name}, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.`}
   image={member.imageUrl}
+  alternates={alternatePaths('/our-team', member.alternates)}
+  contentLocale={member.fallbackLocale}
 >
   <BioCard member={member} />
 </PageLayout>

@@ -3,9 +3,12 @@ import PageLayout from '../../../layouts/PageLayout.astro'
 import ChildCard from '../../../components/ChildCard.astro'
 import SectionTitle from '../../../components/SectionTitle.astro'
 import { getChildren } from '../../../lib/content'
+import { localeFromPath } from '../../../lib/i18n'
 import { CHILD_AGE_RANGES } from '../../../lib/content/types'
 
-const children = await getChildren()
+const locale = localeFromPath(Astro.originPathname)
+
+const children = await getChildren(locale)
 ---
 
 <PageLayout

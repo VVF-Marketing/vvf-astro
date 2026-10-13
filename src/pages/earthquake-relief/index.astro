@@ -13,10 +13,13 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import Card from '../../components/Card.astro'
 import ResponseTimeline from '../../components/ResponseTimeline.astro'
 import { getCampaignUpdates } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 import { earthquakeReliefUrl } from '../../lib/donorbox'
 
+const locale = localeFromPath(Astro.originPathname)
+
 const donateUrl = earthquakeReliefUrl()
-const updates = await getCampaignUpdates()
+const updates = await getCampaignUpdates(locale)
 const detail = 'font-body text-size-sm leading-body text-brand-primary'
 ---
 

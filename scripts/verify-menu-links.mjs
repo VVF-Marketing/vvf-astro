@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Validates that every url in seed/seed.json's menus resolves to a real
-// Astro route. Never edits seed.json — report only, non-zero exit on any
+// Astro route. Spanish (`locale: "es"`) menus must link to /es routes; /es
+// paths are served by the same page files as their English paths. Never edits seed.json — report only, non-zero exit on any
 // broken link. Run via `npm run verify-menu`; also wired into
 // .github/workflows/verify-menu-links.yml.
 import { readFileSync, readdirSync } from 'node:fs'
@@ -61,19 +62,24 @@ function isExternalOrIgnorable(url) {
 
 function collectMenuUrls(seed) {
   const found = []
-  const walk = (items, menuName) => {
+  const walk = (items, menuName, locale) => {
     for (const item of items ?? []) {
-      if (item.url) found.push({ menuName, label: item.label ?? '(unlabeled)', url: item.url })
-      if (item.children) walk(item.children, menuName)
+      if (item.url) found.push({ menuName: `${menuName}:${locale}`, locale, label: item.label ?? '(unlabeled)', url: item.url })
+      if (item.children) walk(item.children, menuName, locale)
     }
   }
-  for (const menu of seed.menus ?? []) walk(menu.items, menu.name)
+  for (const menu of seed.menus ?? []) walk(menu.items, menu.name, menu.locale ?? 'en')
   return found
 }
 
-function isValidRoute(url, staticRoutes, dynamicPatterns) {
-  if (staticRoutes.has(url)) return true
-  return dynamicPatterns.some((pattern) => pattern.test(url))
+const ES_PREFIX = /^\/es(?=\/|$)/
+
+function isValidRoute(url, locale, staticRoutes, dynamicPatterns) {
+  // Each menu links within its own locale.
+  if (locale === 'es' ? !ES_PREFIX.test(url) : ES_PREFIX.test(url)) return false
+  const route = url.replace(ES_PREFIX, '') || '/'
+  if (staticRoutes.has(route)) return true
+  return dynamicPatterns.some((pattern) => pattern.test(route))
 }
 
 const { staticRoutes, dynamicPatterns } = buildRouteMatchers()
@@ -81,7 +87,7 @@ const seed = JSON.parse(readFileSync(seedPath, 'utf8'))
 const menuUrls = collectMenuUrls(seed)
 const checkable = menuUrls.filter(({ url }) => !isExternalOrIgnorable(url))
 
-const broken = checkable.filter(({ url }) => !isValidRoute(normalizeUrl(url), staticRoutes, dynamicPatterns))
+const broken = checkable.filter(({ url, locale }) => !isValidRoute(normalizeUrl(url), locale, staticRoutes, dynamicPatterns))
 
 if (broken.length > 0) {
   console.error(`\n✗ ${broken.length} menu link(s) don't match any known route:\n`)

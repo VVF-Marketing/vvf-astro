@@ -13,6 +13,15 @@ export default defineConfig({
   redirects: Object.fromEntries(
     Object.entries({ ...STATIC_REDIRECTS, ...DYNAMIC_REDIRECTS }).map(([from, to]) => [from, { status: 301, destination: to }])
   ),
+  // en-US unprefixed, es-VE under /es (as on the live site). Pages are written
+  // once: src/middleware.ts rewrites /es/... to the shared page module, and
+  // content falls back es -> en in the content adapter. Astro's own `fallback`
+  // isn't used: in production builds its rewritten responses come back as 302.
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', { path: 'es', codes: ['es', 'es-VE'] }],
+    routing: { prefixDefaultLocale: false },
+  },
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   integrations: [

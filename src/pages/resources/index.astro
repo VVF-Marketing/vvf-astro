@@ -3,8 +3,11 @@
 import PageLayout from '../../layouts/PageLayout.astro'
 import ResourceList from '../../components/ResourceList.astro'
 import { getResources } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const all = await getResources()
+const locale = localeFromPath(Astro.originPathname)
+
+const all = await getResources(undefined, locale)
 ---
 
 <PageLayout

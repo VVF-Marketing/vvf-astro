@@ -2,17 +2,22 @@
 import PageLayout from '../../../layouts/PageLayout.astro'
 import ChildProfile from '../../../components/ChildProfile.astro'
 import { getChildBySlug } from '../../../lib/content'
+import { alternatePaths, localeFromPath } from '../../../lib/i18n'
 import { sponsorChildEmbedUrl } from '../../../lib/donorbox'
 
-const child = await getChildBySlug(Astro.params.slug!)
+const locale = localeFromPath(Astro.originPathname)
+
+const child = await getChildBySlug(Astro.params.slug!, locale)
 if (!child) return new Response('Not found', { status: 404 })
-const embedUrl = sponsorChildEmbedUrl(child.slug)
+const embedUrl = sponsorChildEmbedUrl(child)
 ---
 
 <PageLayout
   title={`Sponsor ${child.displayName} | Victoria Venezuela Foundation`}
   description={`Sponsor ${child.displayName}, ${child.age}, in Venezuela. Your monthly gift funds meals, medical care and school.`}
   image={child.imageUrl}
+  alternates={alternatePaths('/sponsor-a-child/children', child.alternates)}
+  contentLocale={child.fallbackLocale}
 >
   <ChildProfile child={child}>
     <div slot="donation" class="overflow-hidden rounded-[20px] bg-neutral-white">

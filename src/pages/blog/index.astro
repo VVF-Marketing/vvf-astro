@@ -4,9 +4,12 @@ import BlogCard from '../../components/BlogCard.astro'
 import ArticleCard from '../../components/ArticleCard.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import { getPosts, getFeaturedPosts } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const posts = await getPosts()
-const featuredSidebar = await getFeaturedPosts()
+const locale = localeFromPath(Astro.originPathname)
+
+const posts = await getPosts(undefined, locale)
+const featuredSidebar = await getFeaturedPosts(locale)
 const featured = posts[0]
 const categories = ['View all', 'Stories', 'Events', 'Financials', 'News'] as const
 ---

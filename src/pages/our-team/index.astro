@@ -6,10 +6,13 @@ import SectionTitle from '../../components/SectionTitle.astro'
 import TeamMemberCard from '../../components/TeamMemberCard.astro'
 import ImpactBanner from '../../components/ImpactBanner.astro'
 import { getTeamMembers } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const board = await getTeamMembers('board')
-const leaders = await getTeamMembers('leader')
-const staff = await getTeamMembers('staff')
+const locale = localeFromPath(Astro.originPathname)
+
+const board = await getTeamMembers('board', locale)
+const leaders = await getTeamMembers('leader', locale)
+const staff = await getTeamMembers('staff', locale)
 const grid = 'mx-auto mt-16 grid max-w-screen-xl grid-cols-2 gap-x-6 gap-y-10 md:gap-y-16 lg:grid-cols-4'
 ---
 

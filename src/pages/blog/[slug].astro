@@ -5,14 +5,17 @@ import ArticleCard from '../../components/ArticleCard.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 import RichText from '../../components/RichText.astro'
 import { getPostBySlug, getFeaturedPosts } from '../../lib/content'
+import { alternatePaths, localeFromPath } from '../../lib/i18n'
 
-const post = await getPostBySlug(Astro.params.slug!)
+const locale = localeFromPath(Astro.originPathname)
+
+const post = await getPostBySlug(Astro.params.slug!, locale)
 if (!post) return new Response('Not found', { status: 404 })
-const featuredSidebar = await getFeaturedPosts()
+const featuredSidebar = await getFeaturedPosts(locale)
 ---
 
 <!-- Project-only page (no live counterpart); styled like a live resource article. -->
-<PageLayout title={`${post.title} | Victoria Venezuela Foundation`} description={post.excerpt} image={post.imageUrl}>
+<PageLayout title={`${post.title} | Victoria Venezuela Foundation`} description={post.excerpt} image={post.imageUrl} alternates={alternatePaths('/blog', post.alternates)} contentLocale={post.fallbackLocale}>
   <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-[72px]">
     <div class="mx-auto max-w-[1296px]">
       <Breadcrumbs items={[{ label: 'Blog', href: '/blog' }, { label: post.title }]} />

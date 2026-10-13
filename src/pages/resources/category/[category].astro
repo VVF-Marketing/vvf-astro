@@ -3,11 +3,14 @@
 import PageLayout from '../../../layouts/PageLayout.astro'
 import ResourceList from '../../../components/ResourceList.astro'
 import { getResources } from '../../../lib/content'
+import { localeFromPath } from '../../../lib/i18n'
 import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_TITLES, type ResourceCategory } from '../../../lib/content/types'
+
+const locale = localeFromPath(Astro.originPathname)
 
 const category = Astro.params.category as ResourceCategory
 if (!RESOURCE_CATEGORIES.includes(category)) return new Response('Not found', { status: 404 })
-const all = await getResources()
+const all = await getResources(undefined, locale)
 const resources = all.filter((r) => r.categories.includes(category))
 const descriptions: Record<ResourceCategory, string> = {
   stories: 'Stories from our nutrition, medical care and education programs for children in Venezuela.',

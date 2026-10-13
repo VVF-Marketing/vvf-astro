@@ -7,8 +7,11 @@ import SectionTitle from '../../components/SectionTitle.astro'
 import EventCard from '../../components/EventCard.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import { getEvents, isUpcoming } from '../../lib/content'
+import { localeFromPath } from '../../lib/i18n'
 
-const events = await getEvents()
+const locale = localeFromPath(Astro.originPathname)
+
+const events = await getEvents(locale)
 const upcoming = events.filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))
 const past = events.filter((e) => !isUpcoming(e)).sort((a, b) => b.startDate.localeCompare(a.startDate))
 ---
