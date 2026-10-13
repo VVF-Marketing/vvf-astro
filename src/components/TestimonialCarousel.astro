@@ -1,6 +1,9 @@
 ---
 import Button from './Button.astro'
 import Card from './Card.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface TestimonialItem {
   title: string
@@ -16,7 +19,7 @@ const { items } = Astro.props as Props
 
 <div data-testimonial-carousel>
   <div class="flex items-center gap-3">
-    <Button variant="icon" data-prev aria-label="Previous story">‹</Button>
+    <Button variant="icon" data-prev aria-label={t['a11y.prevStory']}>‹</Button>
     <div class="flex-1 flex gap-4 overflow-x-hidden scroll-smooth" data-track>
       {
         items.map((item) => (
@@ -27,7 +30,7 @@ const { items } = Astro.props as Props
         ))
       }
     </div>
-    <Button variant="icon" data-next aria-label="Next story">›</Button>
+    <Button variant="icon" data-next aria-label={t['a11y.nextStory']}>›</Button>
   </div>
   <div class="mt-4 flex justify-center gap-2" data-dots>
     {items.map((_, i) => <span class="h-2 w-2 rounded-full bg-neutral-light-gray" data-dot={i} />)}

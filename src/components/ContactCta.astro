@@ -2,6 +2,9 @@
 // Live counterpart: event "Get in Touch" row — white contact card (phone,
 // email, address) beside a sky call-to-action card.
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   phone?: string
@@ -20,11 +23,11 @@ const line = 'font-body text-size-md leading-body text-brand-primary'
     <div class="flex flex-col gap-6 rounded-2xl bg-neutral-white p-10 md:p-16">
       <div class="flex items-center gap-4">
         <img src="/images/pages/daa9ccaf-phone-call-1.svg" alt="" width="40" height="40" />
-        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-[2rem]">Get in Touch</h2>
+        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-[2rem]">{t['contactCta.heading']}</h2>
       </div>
-      {phone && <p class={line}>Call: <a href={`tel:${phone.replace(/[^+\d]/g, '')}`} class="text-brand-primary">{phone}</a></p>}
-      {email && <p class={line}>Email:<br /><a href={`mailto:${email}`} class="text-brand-primary">{email}</a></p>}
-      {address && <p class={line}>Address: {address}</p>}
+      {phone && <p class={line}>{t['contactCta.call']} <a href={`tel:${phone.replace(/[^+\d]/g, '')}`} class="text-brand-primary">{phone}</a></p>}
+      {email && <p class={line}>{t['contactCta.email']}<br /><a href={`mailto:${email}`} class="text-brand-primary">{email}</a></p>}
+      {address && <p class={line}>{t['contactCta.address']} {address}</p>}
     </div>
     <div class="flex flex-col items-start justify-center gap-10 rounded-2xl bg-sky p-10 md:p-16">
       <h2 class="text-h3-mobile leading-[1.2] text-brand-primary md:text-h2">{heading}</h2>

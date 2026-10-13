@@ -2,6 +2,9 @@
 // Project-only (no live counterpart): site-wide campaign strip above the
 // header, driven by EmDash campaign settings. Uses the live accent/navy
 // pairing of the primary button.
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 export interface Props {
   active: boolean
   text?: string
@@ -18,8 +21,8 @@ const { active, text, href = '/earthquake-relief' } = Astro.props as Props
         href={href}
         class="mx-auto flex max-w-screen-xl items-center justify-center gap-2 px-6 py-2 font-sans text-size-sm text-brand-primary no-underline hover:underline"
       >
-        <span>{text ?? 'Earthquake relief: Venezuelan families need help now.'}</span>
-        <span class="font-bold">See how you can give &rarr;</span>
+        <span>{text ?? t['banner.text']}</span>
+        <span class="font-bold">{t['banner.cta']}</span>
       </a>
     </div>
   )

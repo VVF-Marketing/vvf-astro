@@ -8,25 +8,29 @@ import StatIconCard from '../../components/StatIconCard.astro'
 import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
 import Card from '../../components/Card.astro'
 import EmployerMatchWidget from '../../components/EmployerMatchWidget.astro'
-import { getPartners, getSponsorshipPackages } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getPartners, getSponsorshipPackages, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const partners = await getPartners(locale)
 const tiers = await getSponsorshipPackages(locale)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Corporate Sponsorships | Victoria Venezuela Foundation"
-  description="Join the organizations changing the lives of children in Venezuela. Corporate sponsorship packages from $250 a year, plus employer matching."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <SplitHero
-    heading="Corporate Sponsorships"
-    subtext="Join the many organizations actively changing the lives of underprivileged children in Venezuela!"
-    cta={{ label: 'Partner with Us', href: '#sponsor-packages' }}
+    heading={copy['splitHero.heading']}
+    subtext={copy['splitHero.subtext']}
+    cta={{ label: copy['splitHero.label.1'], href: '#sponsor-packages' }}
     imageUrl="/images/pages/9abd7ec8-vvf-corporate-hero-child-v1.jpg"
-    imageAlt="A girl smiling at a Victoria Venezuela Foundation event in Venezuela"
+    imageAlt={copy['splitHero.imageAlt']}
   />
 
   {
@@ -38,17 +42,17 @@ const tiers = await getSponsorshipPackages(locale)
   }
 
   <section class="px-6 py-16 md:px-16">
-    <SectionTitle heading="Our Impact in Numbers" />
+    <SectionTitle heading={copy['sectionTitle.heading']} />
     <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <StatIconCard tone="salmon" iconUrl="/images/pages/b62b0e1d-15-nutrition.svg" label="Nutrition Program" value="77,300+" text="Meals served to children at risk" />
-      <StatIconCard tone="sky" iconUrl="/images/pages/6bbc919e-expanded.svg" label="Healthcare Program" value="1,012" text="Medical visits for children" />
-      <StatIconCard tone="sun" iconUrl="/images/pages/a037d128-vector.svg" label="Educational Program" value="99" text="Children with educational support" />
-      <StatIconCard tone="white" iconUrl="/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg" label="Corporate Sponsors" value="41+" text="Investing in programs to support children in Venezuela" />
+      <StatIconCard tone="salmon" iconUrl="/images/pages/b62b0e1d-15-nutrition.svg" label={copy['statIconCard.label']} value="77,300+" text={copy['statIconCard.text']} />
+      <StatIconCard tone="sky" iconUrl="/images/pages/6bbc919e-expanded.svg" label={copy['statIconCard2.label']} value="1,012" text={copy['statIconCard2.text']} />
+      <StatIconCard tone="sun" iconUrl="/images/pages/a037d128-vector.svg" label={copy['statIconCard3.label']} value="99" text={copy['statIconCard3.text']} />
+      <StatIconCard tone="white" iconUrl="/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg" label={copy['statIconCard4.label']} value="41+" text={copy['statIconCard4.text']} />
     </div>
   </section>
 
   <section id="sponsor-packages" class="scroll-mt-8 px-6 pb-16 md:pb-[120px] pt-16 md:px-16">
-    <SectionTitle heading="Sponsor packages" />
+    <SectionTitle heading={copy['sectionTitle2.heading']} />
     <div class="mx-auto mt-16 max-w-[1312px]"><SponsorshipTierTable tiers={tiers} /></div>
   </section>
 
@@ -56,14 +60,14 @@ const tiers = await getSponsorshipPackages(locale)
     <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
       <SectionTitle
         align="left"
-        heading="Company Matching"
-        text="Company matching is a powerful incentive for employees to donate their own funds. It amplifies the impact for the nonprofit organization they choose to support, such as the Victoria Venezuela Foundation."
+        heading={copy['sectionTitle3.heading']}
+        text={copy['sectionTitle3.text']}
         class="lg:max-w-[710px]"
       />
       <Card class="flex flex-col items-center gap-10 px-16 py-16 lg:w-[530px]">
-        <img src="/images/pages/d5ce82b3-benevity-logo-svg.webp" alt="Benevity" class="w-[302px]" loading="lazy" />
-        <img src="/images/pages/8cd2f99c-yourcause-salogog-011723.png" alt="YourCause from Blackbaud" class="w-[302px]" loading="lazy" />
-        <img src="/images/pages/6d5b79d9-guidestar-pro.webp" alt="GuideStar by Candid" class="w-[302px]" loading="lazy" />
+        <img src="/images/pages/d5ce82b3-benevity-logo-svg.webp" alt={copy['img.alt']} class="w-[302px]" loading="lazy" />
+        <img src="/images/pages/8cd2f99c-yourcause-salogog-011723.png" alt={copy['img2.alt']} class="w-[302px]" loading="lazy" />
+        <img src="/images/pages/6d5b79d9-guidestar-pro.webp" alt={copy['img3.alt']} class="w-[302px]" loading="lazy" />
       </Card>
     </div>
     <div class="mt-10"><EmployerMatchWidget /></div>
@@ -74,20 +78,20 @@ const tiers = await getSponsorshipPackages(locale)
       <Card radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
         <div class="flex items-center gap-4">
           <img src="/images/pages/daa9ccaf-phone-call-1.svg" alt="" width="44" height="44" />
-          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">Point of Contact</h2>
+          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{copy['h2.text']}</h2>
         </div>
         <p class="font-body text-size-md leading-body text-brand-primary">
-          Is your organization interested in investing in children and the future of Venezuela? Let’s make a positive impact together.
+          {copy['p.text']}
         </p>
       </Card>
       <Card tone="sky" radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
-        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">Juan Tomasini</h2>
+        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{copy['h22.text']}</h2>
         <p class="font-body text-size-md leading-body text-brand-primary">
-          Vice President, Business Development<br />+1-954-440-9172
+          {copy['p2.text']}<br />+1-954-440-9172
         </p>
         <p class="font-body text-size-md leading-body">
-          <a href="mailto:donate@victoriavenezuelafoundation.org" class="text-brand-accent underline">donate@victoriavenezuelafoundation.org</a><br />
-          <a href="https://www.victoriavenezuelafoundation.org" class="text-brand-accent underline">www.victoriavenezuelafoundation.org</a>
+          <a href="mailto:donate@victoriavenezuelafoundation.org" class="text-brand-accent underline">{copy['a.text']}</a><br />
+          <a href="https://www.victoriavenezuelafoundation.org" class="text-brand-accent underline">{copy['a2.text']}</a>
         </p>
       </Card>
     </div>

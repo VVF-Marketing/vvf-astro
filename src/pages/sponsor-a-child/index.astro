@@ -10,118 +10,122 @@ import ChecklistPanel from '../../components/ChecklistPanel.astro'
 import IconCard from '../../components/IconCard.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
-import { getChildren, getFaqs } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getChildren, getFaqs, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const children = (await getChildren(locale)).slice(0, 12)
 const faqs = await getFaqs('sponsorship', locale)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Sponsor a Child in Venezuela | Victoria Venezuela Foundation"
-  description="Sponsor a child in Venezuela from $25 a month. Your gift funds meals, medical care and education, and you receive letters and photos from your child."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     imageUrl="/images/pages/5b51a5f8-98.png"
     mobileImageUrl="/images/pages/91f6fb13-vvf-sponsorarticle-featured-v2.jpg"
-    imageAlt="Smiling girl sitting at a table eating empanadas with orange cups nearby."
-    heading="Sponsor a child in Venezuela"
-    subtext="Build a personal connection. Transform a life."
-    primaryCta={{ label: 'Meet the children', href: '/sponsor-a-child/children' }}
-    secondaryCta={{ label: 'How it works', href: '#how-it-works' }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '/sponsor-a-child/children' }}
+    secondaryCta={{ label: copy['hero.label.2'], href: '#how-it-works' }}
   />
 
   <section class="px-6 md:px-20">
     <SectionTitle
-      tagline="Essential"
-      heading="Every child deserves a fighting chance"
-      text="Sponsorship means stepping into a child's life with consistent support. You choose the amount each month, starting at just $25, and that commitment becomes the difference between survival and thriving for one young person in Venezuela."
+      tagline={copy['sectionTitle.tagline']}
+      heading={copy['sectionTitle.heading']}
+      text={copy['sectionTitle.text']}
     >
       <div class="flex flex-wrap justify-center gap-8 pt-6">
-        <Button href="/sponsor-a-child/children" variant="primary-inverse">Sponsor</Button>
-        <Button href="#how-it-works" variant="outline">Learn more</Button>
+        <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button.text']}</Button>
+        <Button href="#how-it-works" variant="outline">{copy['button2.text']}</Button>
       </div>
     </SectionTitle>
     <img
       src="/images/pages/ae149422-15d77ffd-ad0c-4914-a5cb-538fd74e2f6e-1.png"
-      alt="Three smiling girls playing on an inflatable slide at a foundation activity"
+      alt={copy['img.alt']}
       class="mx-auto mt-16 aspect-[1280/854] w-full max-w-screen-xl rounded-2xl object-cover"
     />
   </section>
 
   <section class="pt-16 md:pt-[120px]">
-    <SectionTitle tagline="Children" heading="Meet the children" text="Find the child who needs you most" />
+    <SectionTitle tagline={copy['sectionTitle2.tagline']} heading={copy['sectionTitle2.heading']} text={copy['sectionTitle2.text']} />
     {children.length > 0 && <div class="mt-16"><ChildCarousel items={children} /></div>}
     <div class="mt-16 flex justify-center">
-      <Button href="/sponsor-a-child/children" variant="primary-inverse">Meet them all</Button>
+      <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button3.text']}</Button>
     </div>
   </section>
 
   <section id="how-it-works" class="px-6 pt-16 md:pt-[120px] md:px-16">
-    <SectionTitle tagline="Process" heading="Three steps to change" text="Start here and find your match" />
+    <SectionTitle tagline={copy['sectionTitle3.tagline']} heading={copy['sectionTitle3.heading']} text={copy['sectionTitle3.text']} />
     <div class="mx-auto mt-20 grid max-w-[1312px] justify-items-center gap-8 md:grid-cols-3">
-      <PastelCard tone="sun" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow="First" title="Choose a child" body="Browse the gallery and choose the child you want to support." />
-      <PastelCard tone="salmon" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow="Second" title="Set your amount" body="You decide the monthly gift, starting at just $25" />
-      <PastelCard tone="sky" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow="Third" title="Build a relationship that matters" body="Receive letters, photos, and watch your child grow stronger" />
+      <PastelCard tone="sun" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard.eyebrow']} title={copy['pastelCard.title']} body={copy['pastelCard.body']} />
+      <PastelCard tone="salmon" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow={copy['pastelCard2.eyebrow']} title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} />
+      <PastelCard tone="sky" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard3.eyebrow']} title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} />
     </div>
   </section>
 
   <div class="mt-16 md:mt-[120px]">
     <ChecklistPanel
-      tagline="Impact"
-      heading="What sponsorship provides"
-      text="Your commitment reaches far"
+      tagline={copy['checklistPanel.tagline']}
+      heading={copy['checklistPanel.heading']}
+      text={copy['checklistPanel.text']}
       items={[
-        { title: 'Weekly nutritious meals:', text: 'Food that builds strength and hope' },
-        { title: 'Dignified access to education:', text: 'Supplies, uniforms, and the tools to learn' },
-        { title: 'Medical checkups twice a year:', text: 'A doctor sees your child twice a year, and treatment is covered when something is wrong.' },
-        { title: 'Connection with you:', text: 'The knowledge that they matter through a real connection' },
+        { title: copy['checklistPanel.items.1'], text: copy['checklistPanel.items.2'] },
+        { title: copy['checklistPanel.items.3'], text: copy['checklistPanel.items.4'] },
+        { title: copy['checklistPanel.items.5'], text: copy['checklistPanel.items.6'] },
+        { title: copy['checklistPanel.items.7'], text: copy['checklistPanel.items.8'] },
       ]}
     />
   </div>
 
   <section class="px-6 pt-16 md:pt-[160px] md:px-20">
     <SectionTitle
-      tagline="Rewards"
-      heading="What you receive as a sponsor"
-      text="Sponsorship is a two-way street. You give support, and you receive something equally valuable—a window into a child's world and the knowledge that you changed it."
+      tagline={copy['sectionTitle4.tagline']}
+      heading={copy['sectionTitle4.heading']}
+      text={copy['sectionTitle4.text']}
     />
     <div class="mx-auto mt-20 grid max-w-screen-xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <IconCard iconUrl="/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg" title="Letters from your child" text="Words and drawings that show you matter to someone far away" />
-      <IconCard iconUrl="/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg" title="Photos and progress updates" text="See the growth, the smile, the transformation your gift enables" />
-      <IconCard iconUrl="/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg" title="Prayer requests and needs" text="Know how to intercede and support beyond the monthly gift" />
-      <IconCard iconUrl="/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg" title="Annual impact reports" text="Detailed accounting of how your sponsorship changed lives this year" />
+      <IconCard iconUrl="/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg" title={copy['iconCard.title']} text={copy['iconCard.text']} />
+      <IconCard iconUrl="/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg" title={copy['iconCard2.title']} text={copy['iconCard2.text']} />
+      <IconCard iconUrl="/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg" title={copy['iconCard3.title']} text={copy['iconCard3.text']} />
+      <IconCard iconUrl="/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg" title={copy['iconCard4.title']} text={copy['iconCard4.text']} />
     </div>
     <div class="mt-20 flex justify-center">
-      <Button href="/sponsor-a-child/children" variant="primary-inverse">Sponsor a Child</Button>
+      <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button4.text']}</Button>
     </div>
   </section>
 
   <section class="px-6 pt-16 md:pt-[120px]">
-    <SectionTitle tagline="Questions" heading="Frequently asked questions" text="Everything you need to know about child sponsorship" />
+    <SectionTitle tagline={copy['sectionTitle5.tagline']} heading={copy['sectionTitle5.heading']} text={copy['sectionTitle5.text']} />
     <div class="mt-16">
       <FaqAccordion faqs={faqs} />
     </div>
     <div class="mx-auto mt-16 grid max-w-3xl gap-8 md:grid-cols-2">
-      <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">What if I need to cancel?</h2>
+      <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{copy['h2.text']}</h2>
       <div class="flex flex-col items-start gap-16">
         <p class="font-body text-size-md leading-body text-brand-primary">
-          You can pause or end your sponsorship anytime with no penalty. We ask for thirty days' notice so we can help transition your child to another sponsor. Your child's care continues uninterrupted during this time.
+          {copy['p.text']}
         </p>
-        <Button href="/contact" variant="primary-inverse">Still have questions?</Button>
+        <Button href="/contact" variant="primary-inverse">{copy['button5.text']}</Button>
       </div>
     </div>
   </section>
 
   <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-[272px]">
     <ProgramsCta
-      heading="We earn your trust through transparency"
-      text="In fiscal 2025, 95% of funds went directly to programs. Sponsorship builds a relationship with one child. Gifts fund the programs that serve all the children in our care."
-      primaryCta={{ label: 'Sponsor a Child', href: '/sponsor-a-child/children' }}
-      secondaryCta={{ label: 'View our financials', href: '/resources/category/financials-transparency' }}
+      heading={copy['programsCta.heading']}
+      text={copy['programsCta.text']}
+      primaryCta={{ label: copy['programsCta.label.1'], href: '/sponsor-a-child/children' }}
+      secondaryCta={{ label: copy['programsCta.label.2'], href: '/resources/category/financials-transparency' }}
     />
   </section>
 </PageLayout>

@@ -5,8 +5,9 @@ import Hero from '../../components/Hero.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
 import TeamMemberCard from '../../components/TeamMemberCard.astro'
 import ImpactBanner from '../../components/ImpactBanner.astro'
-import { getTeamMembers } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getTeamMembers, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
@@ -14,36 +15,39 @@ const board = await getTeamMembers('board', locale)
 const leaders = await getTeamMembers('leader', locale)
 const staff = await getTeamMembers('staff', locale)
 const grid = 'mx-auto mt-16 grid max-w-screen-xl grid-cols-2 gap-x-6 gap-y-10 md:gap-y-16 lg:grid-cols-4'
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Our Team | Victoria Venezuela Foundation"
-  description="Meet the board and staff of Victoria Venezuela Foundation, serving children in Venezuela from the United States and on the ground."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     flush
     imageUrl="/images/pages/d44872ac-vvf-ourpeople-hero-desktop-v4-teamphoto.jpg"
     mobileImageUrl="/images/pages/33b4f627-vvf-ourpeople-hero-mobile-v1-1.jpg"
-    imageAlt="Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip."
-    heading="Our People"
-    subtext="The people who serve Venezuela come from different places and different lives, but they share one thing—a commitment to help those who suffer. We are doctors and teachers, business people and students, all of us bound by faith and the belief that change is possible."
-    primaryCta={{ label: 'Donate', href: '/ways-to-give' }}
-    secondaryCta={{ label: 'Volunteer', href: '/contact' }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '/ways-to-give' }}
+    secondaryCta={{ label: copy['hero.label.2'], href: '/contact' }}
   />
 
   <section class="bg-neutral-section px-6 pb-[60px] pt-[60px] md:px-16">
     <SectionTitle
-      tagline="Board"
-      heading="Board of Directors"
-      text="The board sets the direction of the Foundation and holds it to account for its mission, its finances and its programs."
+      tagline={copy['sectionTitle.tagline']}
+      heading={copy['sectionTitle.heading']}
+      text={copy['sectionTitle.text']}
     />
     <ul class={grid}>
       {board.map((m) => <li><TeamMemberCard member={m} /></li>)}
       <li>
         <TeamMemberCard
-          member={{ name: 'Join our board', role: "We're looking for a new board member" }}
-          openSeat={{ kicker: 'Board seat open', heading: 'Help guide the Foundation', cta: 'Get in touch', href: '/contact' }}
+          member={{ name: copy['teamMemberCard2.name.1'], role: "We're looking for a new board member" }}
+          openSeat={{ kicker: 'Board seat open', heading: copy['teamMemberCard2.heading.1'], cta: 'Get in touch', href: '/contact' }}
         />
       </li>
     </ul>
@@ -52,29 +56,29 @@ const grid = 'mx-auto mt-16 grid max-w-screen-xl grid-cols-2 gap-x-6 gap-y-10 md
   {
     leaders.length > 0 && (
       <section class="bg-neutral-white px-6 pb-[60px] pt-[60px] md:px-16">
-        <SectionTitle tagline="Leadership" heading="Our Leaders" />
+        <SectionTitle tagline={copy['sectionTitle2.tagline']} heading={copy['sectionTitle2.heading']} />
         <ul class={grid}>{leaders.map((m) => <li><TeamMemberCard member={m} /></li>)}</ul>
       </section>
     )
   }
 
   <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-[60px] md:px-16">
-    <SectionTitle tagline="Staff" heading="Our Team" text="The people who run the Foundation day to day, in the United States and in Venezuela." />
+    <SectionTitle tagline={copy['sectionTitle3.tagline']} heading={copy['sectionTitle3.heading']} text={copy['sectionTitle3.text']} />
     <ul class={grid}>{staff.map((m) => <li><TeamMemberCard member={m} /></li>)}</ul>
   </section>
 
   <div id="volunteer" class="bg-neutral-white pb-16 md:pb-[120px]">
     <ImpactBanner
-      eyebrow="Community"
-      heading="Our volunteers make it work"
-      body="Our work is powered by dedicated volunteers. They give their time, their skills, and their hearts to serve the Venezuelan people."
+      eyebrow={copy['impactBanner.eyebrow']}
+      heading={copy['impactBanner.heading']}
+      body={copy['impactBanner.body']}
       highlights={[
-        { title: 'Why join', text: 'Be part of something that matters and change lives directly.', tone: 'sun' },
-        { title: 'Get started', text: 'Find opportunities that fit your skills and schedule today.', tone: 'sky' },
+        { title: copy['impactBanner.highlights.1'], text: copy['impactBanner.highlights.2'], tone: copy['impactBanner.highlights.3'] },
+        { title: copy['impactBanner.highlights.4'], text: copy['impactBanner.highlights.5'], tone: copy['impactBanner.highlights.6'] },
       ]}
       imageUrl="/images/pages/4e21b6fc-placeholder-image.png"
-      imageAlt="Three Victoria Venezuela Foundation volunteers sorting donated clothes."
-      cta={{ label: 'Volunteer', href: '/contact' }}
+      imageAlt={copy['impactBanner.imageAlt']}
+      cta={{ label: copy['impactBanner.label.1'], href: '/contact' }}
       ctaVariant="primary-inverse"
     />
   </div>

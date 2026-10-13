@@ -5,6 +5,11 @@
 import type { EventItem } from '../lib/content/types'
 import Button from './Button.astro'
 import Badge from './Badge.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+import { LANG_TAGS, localeFromPath } from '../lib/i18n'
+
+const t = await getGlobalCopy(Astro)
+const locale = localeFromPath(Astro.originPathname)
 
 export interface Props {
   event: EventItem
@@ -14,9 +19,9 @@ export interface Props {
   ctaLabel?: string
 }
 
-const { event, variant = 'default', ctaLabel = 'See the details' } = Astro.props as Props
+const { event, variant = 'default', ctaLabel = t['card.eventDetails'] } = Astro.props as Props
 const compact = variant === 'compact'
-const dateLabel = new Date(event.startDate).toLocaleDateString('en-US', {
+const dateLabel = new Date(event.startDate).toLocaleDateString(LANG_TAGS[locale], {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

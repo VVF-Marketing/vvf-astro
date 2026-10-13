@@ -2,20 +2,23 @@
 // Live counterpart: `.footer_component` — an inset navy card (radius 2xl)
 // with logo, legal copy and Candid seal on the left; two link columns,
 // contact details and social icons on the right; credits row below.
+import { fill, getGlobalCopy, lines } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 const linkColumns = [
   [
-    { label: 'Our Team', href: '/our-team' },
-    { label: 'Sponsor a Child', href: '/sponsor-a-child' },
-    { label: 'Ways to Give', href: '/ways-to-give' },
-    { label: 'Corporate Sponsorships', href: '/corporate-sponsorships' },
-    { label: 'Events', href: '/events' },
+    { label: t['footer.link.ourTeam'], href: '/our-team' },
+    { label: t['footer.link.sponsorChild'], href: '/sponsor-a-child' },
+    { label: t['footer.link.waysToGive'], href: '/ways-to-give' },
+    { label: t['footer.link.corporate'], href: '/corporate-sponsorships' },
+    { label: t['footer.link.events'], href: '/events' },
   ],
   [
-    { label: 'Earthquake relief', href: '/earthquake-relief' },
-    { label: 'News', href: '/resources' },
-    { label: 'Financials', href: '/resources/category/financials-transparency' },
-    { label: 'Donate now', href: '/ways-to-give' },
-    { label: 'Contact us', href: '/contact' },
+    { label: t['footer.link.earthquake'], href: '/earthquake-relief' },
+    { label: t['footer.link.news'], href: '/resources' },
+    { label: t['footer.link.financials'], href: '/resources/category/financials-transparency' },
+    { label: t['footer.link.donate'], href: '/ways-to-give' },
+    { label: t['footer.link.contact'], href: '/contact' },
   ],
 ]
 
@@ -35,23 +38,20 @@ const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-s
   <div class="mx-auto flex flex-col gap-16 rounded-xl bg-brand-primary px-6 py-10 md:rounded-[1.5rem] md:px-6 lg:rounded-2xl lg:p-12 xl:p-16">
     <div class="flex flex-col gap-8 md:flex-row md:flex-wrap lg:flex-nowrap lg:gap-16">
       <div class="flex flex-col items-start gap-4 md:items-start lg:flex-1 lg:gap-8">
-        <a href="/" aria-label="Victoria Venezuela Foundation home">
-          <img src="/images/logo.svg" alt="Victoria Venezuela Foundation" width="206" height="68" class="h-auto max-w-[180px] md:max-w-none" />
+        <a href="/" aria-label={t['header.homeLink']}>
+          <img src="/images/logo.svg" alt={t['header.logoAlt']} width="206" height="68" class="h-auto max-w-[180px] md:max-w-none" />
         </a>
         <p class={`${text} max-w-[560px]`}>
-          Victoria Venezuela Foundation is a 501(c)(3) non-profit organization.<br />
-          Contributions are tax-deductible under Internal Revenue Code Section 501(c)(3).
+          {lines(t['footer.legal']).map((line, i) => (<>{i > 0 && <br />}{line}</>))}
         </p>
         <p class={text}>
-          Tax ID: 88-3282100<br />
-          P.O. Box 327222<br />
-          Weston, FL 33332
+          {lines(t['footer.address']).map((line, i) => (<>{i > 0 && <br />}{line}</>))}
         </p>
         <div class="flex items-center gap-6">
           <a href="https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc" class="shrink-0">
-            <img src="/images/footer/candid-seal.png" alt="Candid Platinum Transparency seal, 2023 to 2026" width="99" height="99" class="h-auto max-w-[100px]" loading="lazy" />
+            <img src="/images/footer/candid-seal.png" alt={t['footer.candidAlt']} width="99" height="99" class="h-auto max-w-[100px]" loading="lazy" />
           </a>
-          <p class={`${text} max-w-[220px]`}>Candid's Platinum Transparency Recipients 2023-2026</p>
+          <p class={`${text} max-w-[220px]`}>{t['footer.candidText']}</p>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-s
           }
         </div>
         <div class="flex flex-col gap-1">
-          <p class={`${text} font-semibold uppercase tracking-[0.1em]`}>Contact</p>
+          <p class={`${text} font-semibold uppercase tracking-[0.1em]`}>{t['footer.contactHeading']}</p>
           <a href="mailto:info@victoriavenezuelafoundation.org" class="inline-flex min-h-11 items-center font-sans text-size-sm leading-body text-brand-accent md:min-h-0">
             info@victoriavenezuelafoundation.org
           </a>
@@ -95,10 +95,10 @@ const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-s
     <hr class="border-0 border-t border-neutral-light-gray" />
     <div class="flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-start md:justify-between">
         <div class="flex flex-col gap-3 md:gap-6">
-          <p class={credit}>Designed and Developed by <a href="https://www.paulainc.ca/" class="text-brand-accent">Paula Inc.</a></p>
-          <p class={credit}>© {new Date().getFullYear()} Victoria Venezuela Foundation. All rights reserved.</p>
+          <p class={credit}>{t['footer.creditPrefix']} <a href="https://www.paulainc.ca/" class="text-brand-accent">{t['footer.creditName']}</a></p>
+          <p class={credit}>{fill(t['footer.copyright'], { year: new Date().getFullYear() })}</p>
         </div>
-        <a href="/privacy-policy" class={link}>Privacy policy</a>
+        <a href="/privacy-policy" class={link}>{t['footer.privacy']}</a>
     </div>
   </div>
 </footer>

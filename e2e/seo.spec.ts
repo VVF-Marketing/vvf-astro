@@ -13,6 +13,15 @@ test('static page uses the live title, description, canonical and share image', 
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `${SITE}${live.image}`)
 })
 
+test('every static page keeps the live title, description and share image', async ({ page }) => {
+  for (const [path, live] of Object.entries(pageSeo) as [string, { title: string; description: string; image?: string }][]) {
+    await page.goto(path)
+    await expect(page, path).toHaveTitle(live.title)
+    await expect(page.locator('meta[name="description"]'), path).toHaveAttribute('content', live.description)
+    if (live.image) await expect(page.locator('meta[property="og:image"]'), path).toHaveAttribute('content', `${SITE}${live.image}`)
+  }
+})
+
 test('resource page uses its CMS SEO fields', async ({ page }) => {
   await page.goto('/resources/impact-report-2025')
   await expect(page).toHaveTitle('Impact Report 2025 | Victoria Venezuela Foundation')

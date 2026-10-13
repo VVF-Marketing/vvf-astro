@@ -10,65 +10,69 @@ import PastelCard from '../../components/PastelCard.astro'
 import AppealPanel from '../../components/AppealPanel.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
 import Button from '../../components/Button.astro'
-import { getEvents, getFaqs, isUpcoming } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getEvents, getFaqs, isUpcoming, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
 import { generalDonationUrl } from '../../lib/donorbox'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const faqs = await getFaqs('donation', locale)
 const nextEvent = (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Ways to Give | Victoria Venezuela Foundation"
-  description="Give once, sponsor a child, match through your employer or give from a donor-advised fund. Every gift reaches children in Venezuela."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     imageUrl="/images/pages/1b2ca82c-98.webp"
-    imageAlt="Baby in pink dress held near red and white balloons and a large striped candy cane balloon."
-    heading="Ways to give"
-    subtext="Every gift reaches children in Venezuela. Choose the way that works for you."
-    primaryCta={{ label: 'Give now', href: '#give' }}
-    secondaryCta={{ label: 'Sponsor a child', href: '/sponsor-a-child' }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '#give' }}
+    secondaryCta={{ label: copy['hero.label.2'], href: '/sponsor-a-child' }}
   />
 
   <FeatureBand
     id="give"
     tone="sky"
-    tagline="Donate"
-    heading="Make a gift today"
-    text="Choose an amount and give in under a minute. Every gift funds meals, medical care and schooling for children in Venezuela."
+    tagline={copy['featureBand.tagline']}
+    heading={copy['featureBand.heading']}
+    text={copy['featureBand.text']}
     imageUrl="/images/pages/6dd3733e-hero-section-picture.jpg"
-    imageAlt="Smiling young girl with pigtails playing inside a colorful inflatable bounce house."
+    imageAlt={copy['featureBand.imageAlt']}
   >
     <GiftAmountPicker baseUrl={generalDonationUrl()} query="utm_source=website&utm_medium=ways-to-give&utm_campaign=give-block" />
     <p class="font-body text-size-md leading-body text-brand-primary">
-      Would you rather give every month? <a href="/sponsor-a-child" class="font-bold text-brand-primary underline">Sponsor a child for $25 a month.</a>
+      {copy['p.text']} <a href="/sponsor-a-child" class="font-bold text-brand-primary underline">{copy['a.text']}</a>
     </p>
     <p class="font-body text-size-sm leading-[1.6] text-brand-primary">
-      Payment is handled by Donorbox. Victoria Venezuela Foundation is a 501(c)(3) non-profit organization, Tax ID 88-3282100, and your gift is tax-deductible in the United States.
+      {copy['p2.text']}
     </p>
   </FeatureBand>
 
   <MediaSplit
-    tagline="Sponsorship"
-    heading="Sponsor a child for $25 a month"
-    text="Choose a child and support them every month. Your gift joins other sponsors' to fund the meals, medical care and schooling that reach them, and you get letters, photos and updates on how they are doing."
-    note="A child is usually supported by more than one sponsor, and we direct funds to where the need is greatest. You can stop at any time."
+    tagline={copy['mediaSplit.tagline']}
+    heading={copy['mediaSplit.heading']}
+    text={copy['mediaSplit.text']}
+    note={copy['mediaSplit.note']}
     imageUrl="/images/pages/d9d1e4da-8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg"
-    imageAlt="Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors."
+    imageAlt={copy['mediaSplit.imageAlt']}
   >
-    <Button href="/sponsor-a-child/children" variant="primary">Meet the children</Button>
+    <Button href="/sponsor-a-child/children" variant="primary">{copy['button.text']}</Button>
   </MediaSplit>
 
   <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-20">
-    <SectionTitle tagline="More ways" heading="Other ways to give" />
+    <SectionTitle tagline={copy['sectionTitle.tagline']} heading={copy['sectionTitle.heading']} />
     <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-3">
-      <PastelCard tone="sun" title="Employer matching" body="Many companies double what their employees give. Search for your employer and find out in a few seconds." cta={{ label: "Let's check", href: '/corporate-sponsorships' }} />
-      <PastelCard tone="salmon" title="Donor-advised fund" body="Direct your charitable giving from your DAF account using our EIN, 88-3282100. We will help you complete the designation." cta={{ label: 'Ask us for help', href: '/contact' }} />
-      <PastelCard tone="sky" title="Corporate partnership" body="Tiered sponsorships with visibility and employee engagement, plus event sponsorship and matching gifts." cta={{ label: 'Partner with us', href: '/corporate-sponsorships' }} />
+      <PastelCard tone="sun" title={copy['pastelCard.title']} body={copy['pastelCard.body']} cta={{ label: copy['pastelCard.label.1'], href: '/corporate-sponsorships' }} />
+      <PastelCard tone="salmon" title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: '/contact' }} />
+      <PastelCard tone="sky" title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} cta={{ label: copy['pastelCard3.label.1'], href: '/corporate-sponsorships' }} />
     </div>
   </section>
 
@@ -76,37 +80,37 @@ const nextEvent = (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.
     nextEvent && (
       <FeatureBand
         tone="sun"
-        tagline="Come and give"
+        tagline={copy['featureBand2.tagline']}
         heading={nextEvent.title}
         text={nextEvent.description}
         imageUrl="/images/pages/82499f8c-vvf-golf2026-flagphoto-waystogive-v1.webp"
-        imageAlt="Golfers standing by the lake at the Victoria Venezuela Foundation charity golf tournament, holding Venezuelan flags."
+        imageAlt={copy['featureBand2.imageAlt']}
       >
-        <Button href={`/events/${nextEvent.slug}`} variant="primary">More Info</Button>
+        <Button href={`/events/${nextEvent.slug}`} variant="primary">{copy['button2.text']}</Button>
       </FeatureBand>
     )
   }
 
   <div class="pt-16 md:pt-[120px]">
     <AppealPanel
-      heading="Venezuela earthquake relief"
-      text="Funds raised from this campaign will go towards the construction of VVF's permanent support centre in La Guaira. When it opens it will provide shelter, nutrition and medical care to 500 displaced children and their families."
+      heading={copy['appealPanel.heading']}
+      text={copy['appealPanel.text']}
       imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
-      imageAlt="Render of the planned VVF support centre in La Guaira, seen from the street."
-      caption="How the centre in La Guaira will look. The centre is not built yet. All images on this page are AI-generated renders."
-      cardsLabel="What your gift will pay for"
+      imageAlt={copy['appealPanel.imageAlt']}
+      caption={copy['appealPanel.caption']}
+      cardsLabel={copy['appealPanel.cardsLabel']}
       cards={[
-        { title: 'Shelter', text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.', imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: 'Families arriving at the courtyard of the planned VVF support centre.' },
-        { title: 'Medical care', text: 'Check-ups, medicine and treatment for children and their families at the center.', imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: 'A nurse examining a young girl while her mother sits beside her.' },
-        { title: 'Nutrition', text: 'Daily meals for the children staying at the support center in La Guaira.', imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: "Children eating a hot meal together in the centre's dining room." },
+        { title: copy['appealPanel.title.1'], text: copy['appealPanel.text.1'], imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: copy['appealPanel.imageAlt.1'] },
+        { title: copy['appealPanel.title.2'], text: copy['appealPanel.text.2'], imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: copy['appealPanel.imageAlt.2'] },
+        { title: copy['appealPanel.title.3'], text: copy['appealPanel.text.3'], imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: copy['appealPanel.cards.nutritionAlt'] },
       ]}
-      primaryCta={{ label: 'Give to the appeal', href: '#give' }}
-      secondaryCta={{ label: 'Learn More', href: '/earthquake-relief' }}
+      primaryCta={{ label: copy['appealPanel.label.1'], href: '#give' }}
+      secondaryCta={{ label: copy['appealPanel.label.2'], href: '/earthquake-relief' }}
     />
   </div>
 
   <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px]">
-    <SectionTitle heading="Frequently asked questions" />
+    <SectionTitle heading={copy['sectionTitle2.heading']} />
     <div class="mt-12"><FaqAccordion faqs={faqs} /></div>
   </section>
 </PageLayout>

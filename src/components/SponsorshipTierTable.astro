@@ -3,6 +3,9 @@
 // of tier tiles (active tile sky, others white) over a sky panel listing
 // that tier's benefits in two columns split by a cyan rule.
 import type { SponsorshipPackage } from '../lib/content/types'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   tiers: SponsorshipPackage[]
@@ -12,17 +15,17 @@ const { tiers } = Astro.props as Props
 const sorted = [...tiers].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 const id = `tiers-${Math.random().toString(36).slice(2, 8)}`
 
-const groups = (t: SponsorshipPackage) => ({
+const groups = (tier: SponsorshipPackage) => ({
   left: [
-    { label: 'Recognition', items: t.recognitionBenefits },
-    { label: 'Promotional Items', items: t.promotionalBenefits },
+    { label: t['event.recognition'], items: tier.recognitionBenefits },
+    { label: t['event.promotional'], items: tier.promotionalBenefits },
   ].filter((g) => g.items?.length),
-  right: [{ label: 'Activities', items: t.activityBenefits }].filter((g) => g.items?.length),
+  right: [{ label: t['event.activities'], items: tier.activityBenefits }].filter((g) => g.items?.length),
 })
 ---
 
 <div class="flex flex-col gap-6" data-tier-tabs>
-  <div role="tablist" aria-label="Sponsor packages" class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+  <div role="tablist" aria-label={t['event.packagesLabel']} class="grid grid-cols-2 gap-6 lg:grid-cols-4">
     {
       sorted.map((tier, i) => (
         <button

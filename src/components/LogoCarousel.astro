@@ -2,6 +2,9 @@
 // Live counterpart: `.logos_component` — centered heading over a row of
 // partner logos (186×116 slots) that scrolls with arrow controls when the
 // logos overflow the row. Arrows hide when everything fits.
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 export interface LogoItem {
   name: string
   logoUrl?: string
@@ -20,7 +23,7 @@ const arrow = 'absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 da
 <div class="flex flex-col items-center gap-5 py-12" data-logo-carousel>
   {heading && <h3 class="max-w-[700px] text-center text-h2-mobile md:text-h2 md:leading-[1.1] text-brand-primary">{heading}</h3>}
   <div class="relative w-full max-w-screen-xl px-12 py-10">
-    <button type="button" class={`${arrow} left-0`} aria-label="Previous logos" data-prev>
+    <button type="button" class={`${arrow} left-0`} aria-label={t['a11y.prevLogos']} data-prev>
       <img src="/images/pages/76726afb-arrow-left.svg" alt="" width="24" height="24" />
     </button>
     <ul class="flex justify-start gap-[23px] overflow-x-hidden scroll-smooth md:justify-center" data-track>
@@ -45,7 +48,7 @@ const arrow = 'absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 da
         })
       }
     </ul>
-    <button type="button" class={`${arrow} right-0`} aria-label="Next logos" data-next>
+    <button type="button" class={`${arrow} right-0`} aria-label={t['a11y.nextLogos']} data-next>
       <img src="/images/pages/764f1831-arrow-right.svg" alt="" width="24" height="24" />
     </button>
   </div>

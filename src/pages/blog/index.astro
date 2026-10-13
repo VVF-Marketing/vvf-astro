@@ -3,22 +3,32 @@ import PageLayout from '../../layouts/PageLayout.astro'
 import BlogCard from '../../components/BlogCard.astro'
 import ArticleCard from '../../components/ArticleCard.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
-import { getPosts, getFeaturedPosts } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getPosts, getFeaturedPosts, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 
 const posts = await getPosts(undefined, locale)
 const featuredSidebar = await getFeaturedPosts(locale)
 const featured = posts[0]
-const categories = ['View all', 'Stories', 'Events', 'Financials', 'News'] as const
+// `all` and the post category codes stay in code (the filter matches on them);
+// their labels are copy slots.
+const categories = ['all', 'Stories', 'Events', 'Financials', 'News'] as const
 ---
 
 <!-- Project-only page (no live counterpart); styled like the live Resources pages. -->
-<PageLayout title="Blog | Victoria Venezuela Foundation">
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
   <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-16">
     <div class="mx-auto max-w-[1312px]">
-      <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">Blog</h1>
+      <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{copy['heading']}</h1>
 
       {
         featured && (
@@ -37,18 +47,18 @@ const categories = ['View all', 'Stories', 'Events', 'Financials', 'News'] as co
                   type="button"
                   class:list={[
                     'inline-flex items-center rounded-pill border-2 border-brand-accent px-6 py-2 font-sans text-size-md font-bold',
-                    c === 'View all' ? 'bg-brand-accent text-neutral-white' : 'bg-transparent text-brand-accent',
+                    c === 'all' ? 'bg-brand-accent text-neutral-white' : 'bg-transparent text-brand-accent',
                   ]}
                   data-category={c}
                 >
-                  {c}
+                  {copy[`filter.${c}`]}
                 </button>
               ))
             }
           </div>
 
-          <p class="mt-4 text-center font-body text-size-sm text-brand-primary" data-result-count>
-            Showing {posts.length} of {posts.length}
+          <p class="mt-4 text-center font-body text-size-sm text-brand-primary" data-result-count data-template={copy['resultCount']}>
+            {fill(copy['resultCount'], { visible: posts.length, total: posts.length })}
           </p>
 
           <div class="mt-6 grid gap-6 sm:grid-cols-2" data-post-grid>
@@ -67,7 +77,7 @@ const categories = ['View all', 'Stories', 'Events', 'Financials', 'News'] as co
           {
             featuredSidebar.length > 0 && (
               <div class="flex flex-col gap-6">
-                <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">Featured</h2>
+                <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">{copy['featured']}</h2>
                 {featuredSidebar.map((post) => (
                   <ArticleCard variant="related" href={`/blog/${post.slug}`} title={post.title} imageUrl={post.imageUrl} category={post.category} />
                 ))}
@@ -97,11 +107,15 @@ const categories = ['View all', 'Stories', 'Events', 'Financials', 'News'] as co
     })
     let visible = 0
     cards.forEach((card) => {
-      const match = category === 'View all' || card.dataset.category === category
+      const match = category === 'all' || card.dataset.category === category
       card.hidden = !match
       if (match) visible += 1
     })
-    if (resultCount) resultCount.textContent = `Showing ${visible} of ${total}`
+    if (resultCount) {
+      resultCount.textContent = (resultCount.dataset.template ?? '{visible} / {total}')
+        .replace('{visible}', String(visible))
+        .replace('{total}', String(total))
+    }
   }
 
   pillsContainer?.addEventListener('click', (e) => {

@@ -2,40 +2,44 @@
 import PageLayout from '../../../layouts/PageLayout.astro'
 import ChildCard from '../../../components/ChildCard.astro'
 import SectionTitle from '../../../components/SectionTitle.astro'
-import { getChildren } from '../../../lib/content'
-import { localeFromPath } from '../../../lib/i18n'
+import { getChildren, getPageCopy } from '../../../lib/content'
+import { localeFromPath, pageAlternates } from '../../../lib/i18n'
 import { CHILD_AGE_RANGES } from '../../../lib/content/types'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const children = await getChildren(locale)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Meet the Children | Sponsor a Child in Venezuela"
-  description="Meet the children waiting for a sponsor in Venezuela. Sponsorship starts at $25 a month and covers meals, medical care and school."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <!-- Live counterpart: /sponsor-a-child-list-page (`.children-list_section`).
        The name/age filters are a project addition with no live counterpart. -->
   <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-16">
     <SectionTitle
-      tagline="Children"
-      heading="Meet the children"
-      text="Sponsorship starts at $25 a month and covers meals, medical care and school. Find the child who needs you most."
+      tagline={copy['sectionTitle.tagline']}
+      heading={copy['sectionTitle.heading']}
+      text={copy['sectionTitle.text']}
       headingLevel="h1"
     />
 
     <div class="mx-auto mt-12 flex max-w-screen-xl flex-wrap items-center justify-center gap-4" data-child-filters>
-      <label class="sr-only" for="child-name-filter">Search by name</label>
+      <label class="sr-only" for="child-name-filter">{copy['label.text']}</label>
       <input
         id="child-name-filter"
         type="search"
-        placeholder="Search by name"
+        placeholder={copy['input.placeholder']}
         class="h-[38px] rounded-pill border border-brand-primary bg-transparent px-5 font-sans text-size-sm text-brand-primary placeholder:text-brand-primary/50"
         data-name-filter
       />
       <fieldset class="flex flex-wrap gap-2">
-        <legend class="sr-only">Age range</legend>
+        <legend class="sr-only">{copy['legend.text']}</legend>
         {
           CHILD_AGE_RANGES.map((range) => (
             <label class="flex cursor-pointer items-center gap-1 rounded-pill border border-brand-primary px-3 py-1 font-sans text-size-sm text-brand-primary has-[:checked]:bg-sky">
@@ -58,7 +62,7 @@ const children = await getChildren(locale)
     </div>
 
     <p class="mt-6 text-center font-body text-size-sm text-brand-primary" data-empty-state hidden>
-      No children match your filters.
+      {copy['p.text']}
     </p>
   </section>
 </PageLayout>

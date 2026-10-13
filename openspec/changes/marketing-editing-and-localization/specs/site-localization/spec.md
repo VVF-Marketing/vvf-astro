@@ -39,7 +39,7 @@ When content for the requested locale is missing, the site SHALL fall back to En
 - **THEN** that slot shows its English value and the rest of the page shows Spanish
 
 ### Requirement: Language signals for search engines
-Each page SHALL output a canonical URL and `hreflang` alternates (`en-US`, `es-VE`, `x-default` pointing at English) only for locales in which the page has its own content. A page served entirely from English fallback under `/es` SHALL set its canonical URL to the English URL.
+Each page SHALL output a canonical URL and `hreflang` alternates (`en-US`, `es-VE`, `x-default` pointing at English) only for locales in which the page has its own content. A static page has its own Spanish content once its Spanish SEO title is filled in; other copy slots may still fall back to English. A page served entirely from English fallback under `/es` SHALL set its canonical URL to the English URL.
 
 #### Scenario: Fully translated page
 - **WHEN** a page has both English and Spanish content

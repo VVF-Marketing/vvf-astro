@@ -2,6 +2,9 @@
 // Live counterpart: Ways to Give `.give_amounts` — pill amount choices
 // ($50 preselected) driving the "Continue to payment" Donorbox link.
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   baseUrl: string
@@ -12,7 +15,7 @@ export interface Props {
   ctaLabel?: string
 }
 
-const { baseUrl, amounts = [25, 50, 100, 250], defaultAmount = 50, query = '', ctaLabel = 'Continue to payment' } = Astro.props as Props
+const { baseUrl, amounts = [25, 50, 100, 250], defaultAmount = 50, query = '', ctaLabel = t['gift.continue'] } = Astro.props as Props
 const urlFor = (amount?: number) => {
   const params = [amount ? `amount=${amount}` : '', query].filter(Boolean).join('&')
   return params ? `${baseUrl}?${params}` : baseUrl
@@ -22,7 +25,7 @@ const pill =
 ---
 
 <div class="flex flex-col items-start gap-8" data-gift-picker>
-  <div class="grid w-full grid-cols-2 gap-3 md:flex md:w-auto md:flex-wrap" role="group" aria-label="Gift amount">
+  <div class="grid w-full grid-cols-2 gap-3 md:flex md:w-auto md:flex-wrap" role="group" aria-label={t['gift.amountLabel']}>
     {
       amounts.map((a) => (
         <a href={urlFor(a)} class={pill} aria-current={a === defaultAmount ? 'true' : undefined} data-amount>
@@ -30,7 +33,7 @@ const pill =
         </a>
       ))
     }
-    <a href={urlFor()} class={`${pill} col-span-2`} data-amount>Other</a>
+    <a href={urlFor()} class={`${pill} col-span-2`} data-amount>{t['gift.other']}</a>
   </div>
   <Button href={urlFor(defaultAmount)} variant="primary" data-gift-continue>{ctaLabel}</Button>
 </div>

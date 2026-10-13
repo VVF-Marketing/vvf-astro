@@ -1,6 +1,9 @@
 ---
 // Live counterpart: `.crumbs_list` — small uppercase Open Sans trail, links
 // in the accent color, "›" separators, current page in navy.
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 export interface Crumb {
   label: string
   href?: string
@@ -20,7 +23,7 @@ const sep = tone === 'light' ? 'text-neutral-white opacity-85' : 'text-brand-pri
 const text = 'font-body text-[13px] font-semibold uppercase leading-body no-underline'
 ---
 
-<nav aria-label="Breadcrumb" class={className}>
+<nav aria-label={t['a11y.breadcrumb']} class={className}>
   <ol class="m-0 flex list-none flex-wrap items-center gap-x-2.5 gap-y-1.5 p-0">
     {
       items.map((item, i) => {

@@ -22,12 +22,15 @@ import GalleryCarousel from '../../components/GalleryCarousel.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
 import PastelCard from '../../components/PastelCard.astro'
 import Button from '../../components/Button.astro'
-import { getEventBySlug, getEvents, getFaqs, isUpcoming } from '../../lib/content'
-import { alternatePaths, localeFromPath } from '../../lib/i18n'
+import { getEventBySlug, getEvents, getFaqs, isUpcoming, getPageCopy } from '../../lib/content'
+import { alternatePaths, LANG_TAGS, localeFromPath } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
 import { eventTicketUrl } from '../../lib/donorbox'
 import { listItemTexts, listItemsWithLead } from '../../lib/portableText'
+import templateCopy from './_copy.detail'
 
 const locale = localeFromPath(Astro.originPathname)
+const { copy } = await getPageCopy(templateCopy, locale)
 
 const event = await getEventBySlug(Astro.params.slug!, locale)
 if (!event) return new Response('Not found', { status: 404 })
@@ -40,19 +43,16 @@ const packages = offers.filter((o) => o.kind === 'package')
 const specials = offers.filter((o) => o.kind === 'special')
 const faqs = upcoming ? await getFaqs('tournament', locale) : []
 const date = new Date(event.startDate)
-const monthDay = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' })
-const longDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+const monthDay = date.toLocaleDateString(LANG_TAGS[locale], { month: 'long', day: 'numeric', timeZone: 'UTC' })
+const longDate = date.toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
 const nextEvent = upcoming
   ? undefined
   : (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
 const ticketTones = ['sun', 'sky', 'salmon'] as const
-const recapLabels = [
-  ['Results', 'What we did together', 'Here is what one day on the course made possible for children in Venezuela.'],
-] as const
 ---
 
 <PageLayout
-  title={event.seo?.title ?? `${event.title} | Victoria Venezuela Foundation`}
+  title={event.seo?.title ?? fill(copy['seo.titleFallback'], { title: event.title })}
   description={event.seo?.description ?? event.description}
   image={event.seo?.imageUrl ?? event.heroImageUrl ?? event.imageUrl}
   background="section"
@@ -64,50 +64,48 @@ const recapLabels = [
     mobileImageUrl={event.heroImageMobileUrl}
     heading={event.heroHeading ?? event.title}
     subtext={event.heroBody}
-    primaryCta={upcoming ? { label: 'Buy Tickets', href: ticketUrl } : { label: 'See the photos', href: '#photos' }}
-    secondaryCta={upcoming ? { label: 'Become a Sponsor', href: '#sponsor-packages' } : { label: 'Join us next year', href: '#next-edition' }}
+    primaryCta={upcoming ? { label: copy['hero.label.1'], href: ticketUrl } : { label: copy['hero.label.2'], href: '#photos' }}
+    secondaryCta={upcoming ? { label: copy['hero.label.3'], href: '#sponsor-packages' } : { label: copy['hero.label.4'], href: '#next-edition' }}
     flush
   />
 
   {
     upcoming ? (
       <>
-        <WhatWhenWhere title={event.title} dateText={date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })} venue={event.venue} address={event.address} mapUrl={event.mapUrl} />
+        <WhatWhenWhere title={event.title} dateText={date.toLocaleDateString(LANG_TAGS[locale], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })} venue={event.venue} address={event.address} mapUrl={event.mapUrl} />
 
         {event.sponsors && event.sponsors.length > 0 && (
-          <section class="bg-neutral-white"><LogoCarousel heading="Corporate Partners" logos={event.sponsors} /></section>
+          <section class="bg-neutral-white"><LogoCarousel heading={copy['logoCarousel.heading']} logos={event.sponsors} /></section>
         )}
 
-        <div class="pt-16 md:pt-[80px]">
-          <AppealPanel
-            heading="This Year's Tournament Supports Earthquake Relief"
-            text="100% of the net proceeds from the 2026 tournament go to our earthquake relief work in Venezuela. They will help build our permanent support center in La Guaira. When it opens, it will give displaced children and their families shelter, meals and medical care."
-            imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
-            imageAlt="Render of the planned VVF support centre in La Guaira, seen from the street."
-            caption="How the center in La Guaira will look. The center is not built yet. These images are AI-generated renders."
-            cardsLabel="Three steps to change"
-            cards={[
-              { title: 'Shelter', text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.', imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: 'Families arriving at the courtyard of the planned VVF support centre.' },
-              { title: 'Medical care', text: 'Check-ups, medicine and treatment for children and their families at the center.', imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: 'A nurse examining a young girl while her mother sits beside her.' },
-              { title: 'Nutrition', text: 'Daily meals for the children staying at the support center in La Guaira.', imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: "Children eating a hot meal together in the centre's dining room." },
-            ]}
-            secondaryCta={{ label: 'Learn More', href: '/earthquake-relief' }}
-          />
-        </div>
+        {event.appeal && (
+          <div class="pt-16 md:pt-[80px]">
+            <AppealPanel
+              heading={event.appeal.heading}
+              text={event.appeal.text}
+              imageUrl={event.appeal.imageUrl}
+              imageAlt={event.appeal.imageAlt}
+              caption={event.appeal.caption}
+              cardsLabel={event.appeal.cardsLabel}
+              cards={event.appeal.cards}
+              secondaryCta={event.appeal.cta}
+            />
+          </div>
+        )}
 
-        {event.gallery && event.gallery.length > 0 && <PhotoMosaic heading={`${date.getUTCFullYear() - 1} Memories`} photos={event.gallery} />}
+        {event.gallery && event.gallery.length > 0 && <PhotoMosaic heading={fill(copy['memories.heading'], { year: date.getUTCFullYear() - 1 })} photos={event.gallery} />}
 
         {event.program && event.program.length > 0 && (
           <ProgramTimeline meta={[longDate, event.venue, event.address].filter(Boolean) as string[]} items={listItemsWithLead(event.program)} />
         )}
 
         {event.includes && event.includes.length > 0 && (
-          <div class="pt-16 md:pt-[120px]"><IncludesPanel heading="Tournament Includes" items={listItemTexts(event.includes)} /></div>
+          <div class="pt-16 md:pt-[120px]"><IncludesPanel heading={copy['includesPanel.heading']} items={listItemTexts(event.includes)} /></div>
         )}
 
         {tickets.length > 0 && (
           <section id="tickets" class="px-6 pt-16 md:pt-[120px] md:px-[134px]">
-            <SectionTitle heading="Tickets" />
+            <SectionTitle heading={copy['sectionTitle.heading']} />
             <div class="mx-auto mt-16 grid max-w-[1172px] justify-items-center gap-x-[68px] gap-y-6 md:grid-cols-2">
               {tickets.map((t, i) => (
                 <TicketCard tierName={t.tierName} price={t.price} features={t.benefits} href={t.ctaUrl ?? ticketUrl} ctaLabel={t.ctaLabel} soldOut={t.soldOut} tone={ticketTones[i % 3]} />
@@ -118,7 +116,7 @@ const recapLabels = [
 
         {packages.length > 0 && event.benefitRows && event.benefitRows.length > 0 && (
           <section id="sponsor-packages" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-16">
-            <SectionTitle heading="Sponsor Packages" />
+            <SectionTitle heading={copy['sectionTitle2.heading']} />
             <div class="mx-auto mt-16 max-w-[1312px]"><BenefitsTable packages={packages} rows={event.benefitRows} /></div>
           </section>
         )}
@@ -127,28 +125,28 @@ const recapLabels = [
 
         <ImpactPanel
           imageUrl="/images/pages/a3fef8e5-9f807887-6eeb-46a6-8c18-3fd6f3f03c8e-1.png"
-          imageAlt="A Victoria Venezuela Foundation volunteer checking a child's heartbeat with a stethoscope."
+          imageAlt={copy['impactPanel.imageAlt']}
           stats={[
-            { value: '77,300+', label: 'Meals served to children at risk' },
-            { value: '1,012', label: 'medical visits for children' },
-            { value: '41+', label: 'corporate sponsors investing in support programs for children and Venezuela' },
+            { value: copy['impactPanel.value.1'], label: copy['impactPanel.label.1'] },
+            { value: copy['impactPanel.value.2'], label: copy['impactPanel.label.2'] },
+            { value: copy['impactPanel.value.3'], label: copy['impactPanel.label.3'] },
           ]}
         />
 
         {faqs.length > 0 && (
           <section class="px-6 pt-16 md:pt-[120px]">
-            <SectionTitle heading="FAQs & Contact info" />
+            <SectionTitle heading={copy['sectionTitle3.heading']} />
             <div class="mt-12"><FaqAccordion faqs={faqs} /></div>
           </section>
         )}
 
         <div class="pt-16 md:pt-[120px]">
           <ContactCta
-            phone="+1 (305) 922-5585"
-            email="charitygolf@victoriavenezuelafoundation.org"
-            address="Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100"
-            heading={`Golf. Give. Transform lives in Venezuela. Join us ${monthDay}!`}
-            cta={{ label: 'Buy Tickets', href: ticketUrl }}
+            phone={event.contact?.phone}
+            email={event.contact?.email}
+            address={event.contact?.address}
+            heading={fill(copy['contact.heading'], { date: monthDay })}
+            cta={{ label: copy['contactCta.label.1'], href: ticketUrl }}
           />
         </div>
       </>
@@ -158,8 +156,8 @@ const recapLabels = [
           <section class="px-6 pt-16 md:pt-[120px] md:px-20">
             <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
               <div class="flex max-w-[400px] flex-col items-start gap-6">
-                <SectionTitle align="left" tagline={recapLabels[0][0]} heading={recapLabels[0][1]} text={recapLabels[0][2]} />
-                <Button href="#photos" variant="outline">See the photos</Button>
+                <SectionTitle align="left" tagline={copy['recap.tagline']} heading={copy['recap.heading']} text={copy['recap.text']} />
+                <Button href="#photos" variant="outline">{copy['button.text']}</Button>
               </div>
               <div class="lg:w-[800px]">
                 <StatTileRow stats={event.recapStats.map((s) => ({ value: s.number, label: s.heading ?? '', caption: s.label }))} />
@@ -170,32 +168,32 @@ const recapLabels = [
 
         {event.gallery && event.gallery.length > 0 && (
           <section id="photos" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[128px]">
-            <SectionTitle align="left" tagline="Memories" heading="Event photos" text="Moments from the course, the auction and the celebration." />
+            <SectionTitle align="left" tagline={copy['sectionTitle5.tagline']} heading={copy['sectionTitle5.heading']} text={copy['sectionTitle5.text']} />
             <div class="mt-16"><GalleryCarousel photos={event.gallery} /></div>
           </section>
         )}
 
         {event.sponsors && event.sponsors.length > 0 && (
-          <section class="mt-16 md:mt-[120px] bg-neutral-white"><LogoCarousel heading="Thank you to our sponsors" logos={event.sponsors} /></section>
+          <section class="mt-16 md:mt-[120px] bg-neutral-white"><LogoCarousel heading={copy['logoCarousel2.heading']} logos={event.sponsors} /></section>
         )}
 
         {nextEvent && (
           <section id="next-edition" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[296px]">
             <ProgramsCta
-              heading="Mark your calendar"
-              text="Next year's tournament is on its way. See the date and venue, and save your spot."
-              primaryCta={{ label: "See next year's tournament", href: `/events/${nextEvent.slug}` }}
-              secondaryCta={{ label: 'Contact us', href: '/contact' }}
+              heading={copy['programsCta.heading']}
+              text={copy['programsCta.text']}
+              primaryCta={{ label: copy['programsCta.label.2'], href: `/events/${nextEvent.slug}` }}
+              secondaryCta={{ label: copy['programsCta.label.1'], href: '/contact' }}
             />
           </section>
         )}
 
         <section class="px-6 pt-16 md:pt-[120px] md:px-20">
-          <SectionTitle tagline="Support" heading="Can't wait until next year?" text="Children in Venezuela need help today. Here are three ways to make a difference right now." />
+          <SectionTitle tagline={copy['sectionTitle6.tagline']} heading={copy['sectionTitle6.heading']} text={copy['sectionTitle6.text']} />
           <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-3">
-            <PastelCard centered tone="sun" title="Sponsor a child" body="Build a direct relationship and change a young life." cta={{ label: 'Sponsor', href: '/sponsor-a-child' }} />
-            <PastelCard centered tone="salmon" title="Make a donation" body="Fund nutrition, medical care and education programs today." cta={{ label: 'Donate', href: '/ways-to-give' }} />
-            <PastelCard centered tone="sky" title="Corporate sponsorships" body="Align your business with a mission that matters all year." cta={{ label: 'Partner with us', href: '/corporate-sponsorships' }} />
+            <PastelCard centered tone="sun" title={copy['pastelCard.title']} body={copy['pastelCard.body']} cta={{ label: copy['pastelCard.label.1'], href: '/sponsor-a-child' }} />
+            <PastelCard centered tone="salmon" title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: '/ways-to-give' }} />
+            <PastelCard centered tone="sky" title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} cta={{ label: copy['pastelCard3.label.1'], href: '/corporate-sponsorships' }} />
           </div>
         </section>
       </>

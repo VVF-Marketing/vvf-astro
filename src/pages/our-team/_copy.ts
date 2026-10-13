@@ -1,0 +1,41 @@
+// Copy slots for /our-team (src/lib/copy.ts). SEO defaults are the live site's
+// values (src/data/page-seo.json, from the Webflow migration).
+import { defineCopy, seoSlots } from '../../lib/copy'
+
+export default defineCopy('/our-team', {
+  ...seoSlots({
+    title: 'Our Team | Victoria Venezuela Foundation',
+    description: 'Meet the board, leaders and team behind Victoria Venezuela Foundation, a 501(c)(3) in Weston, Florida supporting children in Venezuela.',
+    image: '/images/pages/57692375-vvf-home-shareimage-v2.jpg',
+  }),
+  'hero.imageAlt': { label: 'Hero: image description', default: 'Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip.', maxLength: 170 },
+  'hero.heading': { label: 'Hero: heading', default: 'Our People', maxLength: 20 },
+  'hero.subtext': { label: 'Hero: text', default: 'The people who serve Venezuela come from different places and different lives, but they share one thing—a commitment to help those who suffer. We are doctors and teachers, business people and students, all of us bound by faith and the belief that change is possible.', maxLength: 400 },
+  'hero.label.1': { label: 'Hero: button 1', default: 'Donate', maxLength: 20 },
+  'hero.label.2': { label: 'Hero: button 2', default: 'Volunteer', maxLength: 20 },
+  'sectionTitle.tagline': { label: 'Section title: tagline', default: 'Board', maxLength: 20 },
+  'sectionTitle.heading': { label: 'Section title: heading', default: 'Board of Directors', maxLength: 30 },
+  'sectionTitle.text': { label: 'Section title: text', default: 'The board sets the direction of the Foundation and holds it to account for its mission, its finances and its programs.', maxLength: 180 },
+  'teamMemberCard2.name.1': { label: 'Team member card 2: name 1', default: 'Join our board', maxLength: 30 },
+  'teamMemberCard2.heading.1': { label: 'Team member card 2: heading 1', default: 'Help guide the Foundation', maxLength: 40 },
+  'sectionTitle2.tagline': { label: 'Section title 2: tagline', default: 'Leadership', maxLength: 20 },
+  'sectionTitle2.heading': { label: 'Section title 2: heading', default: 'Our Leaders', maxLength: 20 },
+  'sectionTitle3.tagline': { label: 'Section title 3: tagline', default: 'Staff', maxLength: 20 },
+  'sectionTitle3.heading': { label: 'Section title 3: heading', default: 'Our Team', maxLength: 20 },
+  'sectionTitle3.text': { label: 'Section title 3: text', default: 'The people who run the Foundation day to day, in the United States and in Venezuela.', maxLength: 130 },
+  'impactBanner.eyebrow': { label: 'Impact banner: eyebrow', default: 'Community', maxLength: 20 },
+  'impactBanner.heading': { label: 'Impact banner: heading', default: 'Our volunteers make it work', maxLength: 50 },
+  'impactBanner.body': { label: 'Impact banner: body', default: 'Our work is powered by dedicated volunteers. They give their time, their skills, and their hearts to serve the Venezuelan people.', maxLength: 200 },
+  'impactBanner.highlights.1': { label: 'Impact banner: highlights 1', default: 'Why join', maxLength: 20 },
+  'impactBanner.highlights.2': { label: 'Impact banner: highlights 2', default: 'Be part of something that matters and change lives directly.', maxLength: 90 },
+  'impactBanner.highlights.3': { label: 'Impact banner: highlights 3', default: 'sun', maxLength: 20 },
+  'impactBanner.highlights.4': { label: 'Impact banner: highlights 4', default: 'Get started', maxLength: 20 },
+  'impactBanner.highlights.5': { label: 'Impact banner: highlights 5', default: 'Find opportunities that fit your skills and schedule today.', maxLength: 90 },
+  'impactBanner.highlights.6': { label: 'Impact banner: highlights 6', default: 'sky', maxLength: 20 },
+  'impactBanner.title.1': { label: 'Impact banner: title 1', default: 'Why join', maxLength: 20 },
+  'impactBanner.text.1': { label: 'Impact banner: text 1', default: 'Be part of something that matters and change lives directly.', maxLength: 90 },
+  'impactBanner.title.2': { label: 'Impact banner: title 2', default: 'Get started', maxLength: 20 },
+  'impactBanner.text.2': { label: 'Impact banner: text 2', default: 'Find opportunities that fit your skills and schedule today.', maxLength: 90 },
+  'impactBanner.imageAlt': { label: 'Impact banner: image description', default: 'Three Victoria Venezuela Foundation volunteers sorting donated clothes.', maxLength: 110 },
+  'impactBanner.label.1': { label: 'Impact banner: button 1', default: 'Volunteer', maxLength: 20 },
+})

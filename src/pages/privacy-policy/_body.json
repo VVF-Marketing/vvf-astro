@@ -1,0 +1,1084 @@
+[
+  {
+    "_type": "block",
+    "_key": "pp1",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp0",
+        "text": "Victoria Venezuela Foundation (“VVF,” “we,” “our,” or “us”) is committed to protecting the privacy of our donors, volunteers, partners, website visitors, and community members."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2",
+        "text": "This Privacy Policy explains how we collect, use, store, and protect information when you visit our website, make a donation, contact us, sign up for updates, interact with our social media pages, or participate in our programs and campaigns."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp5",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp4",
+        "text": "1. Information We Collect"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp7",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp6",
+        "text": "We may collect the following types of information:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp9",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp8",
+        "text": "Name"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppb",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppa",
+        "text": "Email address"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppd",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppc",
+        "text": "Phone number"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppf",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppe",
+        "text": "Mailing address"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pph",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppg",
+        "text": "Donation amount and donation history"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppj",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppi",
+        "text": "Payment-related information processed by third-party donation platforms (such as payment methods chosen like Apple Pay, Venmo, PayPal, or credit cards)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppl",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppk",
+        "text": "Volunteer or partnership information submitted through our online forms"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppn",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppm",
+        "text": "Messages, feedback, or inquiries sent to us directly"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppp",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppo",
+        "text": "Website usage data, such as pages visited, referral sources, device/browser information, and tracking analytics data"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppr",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppq",
+        "text": "We do not intentionally collect sensitive personal information unless it is voluntarily provided and necessary for a specific purpose."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppt",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pps",
+        "text": "2. How We Use Information"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppv",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppu",
+        "text": "We use collected information to:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppx",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppw",
+        "text": "Process donations, manage recurring giving, and issue tax-deductible receipts"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "ppz",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "ppy",
+        "text": "Maintain our supporter database and manage donor relationships"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp11",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp10",
+        "text": "Communicate with donors, volunteers, partners, and supporters"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp13",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp12",
+        "text": "Share updates about our mission, campaigns, events, and programs in Venezuela"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp15",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp14",
+        "text": "Respond to inquiries, contact requests, and form submissions"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp17",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp16",
+        "text": "Manage volunteer, partnership, and fundraising activities"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp19",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp18",
+        "text": "Improve our website functionality, communications, and outreach efforts"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1b",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1a",
+        "text": "Analyze campaign performance and understand how supporters engage with our content"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1d",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1c",
+        "text": "Comply with legal, tax, accounting, and nonprofit 501(c)(3) reporting obligations"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1f",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1e",
+        "text": "3. Donations and Payment Processing"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1n",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1g",
+        "text": "Donation and payment information is securely handled through our third-party platform, "
+      },
+      {
+        "_type": "span",
+        "_key": "pp1h",
+        "text": "Donorbox",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp1i",
+        "text": ", and processed by secure networks like "
+      },
+      {
+        "_type": "span",
+        "_key": "pp1j",
+        "text": "Stripe",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp1k",
+        "text": " and "
+      },
+      {
+        "_type": "span",
+        "_key": "pp1l",
+        "text": "PayPal",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp1m",
+        "text": ". This allows you to give via Credit/Debit Cards, Venmo, PayPal, or Apple Pay."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1p",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1o",
+        "text": "VVF does not store, see, or retain full credit card numbers or financial credentials on its own website servers. Financial data is handled strictly by these verified payment processors according to their respective privacy and security protocols."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1r",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1q",
+        "text": "4. Third-Party Services and CRM Tools"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1t",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1s",
+        "text": "We use trusted third-party tools to operate our website efficiently, organize data safely, and interface with our community. These include:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1w",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1u",
+        "text": "HubSpot",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp1v",
+        "text": " (Our central Customer Relationship Management (CRM) system used for secure data storage, managing forms, hosting assets, tracking user interactions, and handling outreach communications)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp1z",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp1x",
+        "text": "Donorbox",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp1y",
+        "text": " (Donation management platform)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp22",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp20",
+        "text": "Stripe & PayPal",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp21",
+        "text": " (Payment processing)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp24",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp23",
+        "text": "Website hosting and content management systems"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp27",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp25",
+        "text": "Google Analytics",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp26",
+        "text": " (To measure website traffic and behavior)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2b",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp28",
+        "text": "Social Media platforms ("
+      },
+      {
+        "_type": "span",
+        "_key": "pp29",
+        "text": "Facebook, Instagram, YouTube, and LinkedIn",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp2a",
+        "text": ") for community engagement, performance analysis, and outreach tracking"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2d",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2c",
+        "text": "These external platforms collect and process data in accordance with their own independent privacy policies."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2f",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2e",
+        "text": "5. Cookies and Tracking Technologies"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2l",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2g",
+        "text": "Our website uses cookies, tracking pixels, and tags (including tracking scripts from "
+      },
+      {
+        "_type": "span",
+        "_key": "pp2h",
+        "text": "HubSpot",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp2i",
+        "text": " and "
+      },
+      {
+        "_type": "span",
+        "_key": "pp2j",
+        "text": "Google Analytics",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp2k",
+        "text": ") to:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2n",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2m",
+        "text": "Maintain basic website features and optimize user experience"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2p",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2o",
+        "text": "Understand visitor traffic, referral sources, and content engagement"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2r",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2q",
+        "text": "Measure fundraising campaign and social media outreach performance"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2t",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2s",
+        "text": "You can choose to adjust your browser settings to decline or delete cookies; however, please note that doing so may impact your ability to use certain interactive elements, contact forms, or donation structures smoothly."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2v",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2u",
+        "text": "6. How We Share Information"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2x",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2w",
+        "text": "VVF does not sell, rent, trade, or lease your personal information.",
+        "marks": [
+          "strong"
+        ]
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp2z",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp2y",
+        "text": "We may share data strictly on a need-to-know basis with:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp31",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp30",
+        "text": "Service providers who assist us in operating our database, website, processing donations, or managing communications (e.g., HubSpot, Donorbox)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp33",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp32",
+        "text": "Legal, tax, or accounting professionals to maintain compliance"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp35",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp34",
+        "text": "Government or regulatory authorities if strictly required by law"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp37",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp36",
+        "text": "Authorized VVF team members who require the information to execute our core humanitarian mission"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp39",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp38",
+        "text": "7. Data Security"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3b",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3a",
+        "text": "We employ industry-standard administrative, physical, and technical safety measures—including secure cloud-based data storage environments—to safeguard your data against loss, unauthorized access, alteration, or disclosure. However, please remember that no data transmission across the internet is entirely impenetrable, and we cannot promise absolute security."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3d",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3c",
+        "text": "8. Children’s Privacy"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3f",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3e",
+        "text": "VVF proudly serves vulnerable communities, including children and families in Venezuela. We are deeply committed to protecting the privacy, safety, and dignity of minors."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3h",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3g",
+        "text": "We do not knowingly collect personal data from children via this website. If we discover that a minor has provided us with personal information without valid parental or guardian authorization, we will act swiftly to remove it from our systems."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3j",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3i",
+        "text": "9. Email and Marketing Communications"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3l",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3k",
+        "text": "If you opt-in to receive updates or share your email/phone number with us (via our HubSpot or website forms), we may send you occasional content highlighting VVF’s impact, relief efforts, or ways to support our cause."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3n",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3m",
+        "text": "You can opt-out of marketing communications at any point by clicking the “unsubscribe” link included at the bottom of our emails, or by contacting us directly."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3p",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3o",
+        "text": "10. Your Rights and Control Over Information"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3r",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3q",
+        "text": "You retain the right to contact us at any time to:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3t",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3s",
+        "text": "Review the personal information we hold about you in our systems"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3v",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3u",
+        "text": "Correct, update, or edit your information"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3x",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3w",
+        "text": "Request the complete deletion of your records (where legal or financial record-keeping laws allow)"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp3z",
+    "style": "normal",
+    "listItem": "bullet",
+    "level": 1,
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp3y",
+        "text": "Update your communication preferences"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp41",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp40",
+        "text": "11. External Links"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp43",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp42",
+        "text": "Our website features links to other platforms, partner entities, and social media channels. VVF holds no jurisdiction or responsibility over the privacy compliance, tracking code, or terms of use of external web properties."
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp45",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp44",
+        "text": "12. Policy Revisions"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp47",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp46",
+        "text": "We may occasionally revise this policy to adapt to shifting regulations or internal updates. Changes are active immediately upon posting to this URL with a freshly updated “Effective Date.”"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp49",
+    "style": "h2",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp48",
+        "text": "13. Contact Us"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp4b",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp4a",
+        "text": "For any clarifications, data requests, or privacy inquiries, please reach out to us:"
+      }
+    ]
+  },
+  {
+    "_type": "block",
+    "_key": "pp4j",
+    "style": "normal",
+    "children": [
+      {
+        "_type": "span",
+        "_key": "pp4c",
+        "text": "Victoria Venezuela Foundation\n",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp4d",
+        "text": "Website: ",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp4f",
+        "text": "https://victoriavenezuelafoundation.org/\n",
+        "marks": [
+          "pp4e"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp4g",
+        "text": "Email: ",
+        "marks": [
+          "strong"
+        ]
+      },
+      {
+        "_type": "span",
+        "_key": "pp4i",
+        "text": "info@victoriavenezuelafoundation.org",
+        "marks": [
+          "pp4h"
+        ]
+      }
+    ],
+    "markDefs": [
+      {
+        "_type": "link",
+        "_key": "pp4e",
+        "href": "/"
+      },
+      {
+        "_type": "link",
+        "_key": "pp4h",
+        "href": "mailto:info@victoriavenezuelafoundation.org"
+      }
+    ]
+  }
+]

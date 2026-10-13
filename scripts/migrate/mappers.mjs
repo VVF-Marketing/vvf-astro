@@ -181,10 +181,52 @@ export function mapEvents(events, ctx) {
         seo_title: e.seo?.title,
         seo_description: e.seo?.description,
         social_image: ctx.media(e.seo?.ogImage),
+        ...EVENT_EXTRAS[e.slug],
       })
     )
   }
   return { ...out, sponsors: [...out.sponsors.values()] }
+}
+
+// Event content the live site writes into its event page rather than its CMS
+// (so the Webflow API and the snapshot can't supply it): the 2026
+// tournament's earthquake-relief appeal and its event contact details.
+const EVENT_EXTRAS = {
+  '2026-golf-tournament': {
+    appeal_heading: "This Year's Tournament Supports Earthquake Relief",
+    appeal_text:
+      '100% of the net proceeds from the 2026 tournament go to our earthquake relief work in Venezuela. They will help build our permanent support center in La Guaira. When it opens, it will give displaced children and their families shelter, meals and medical care.',
+    // External image values don't keep `alt`, so the description is its own field.
+    appeal_image: { src: '/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg' },
+    appeal_image_alt: 'Render of the planned VVF support centre in La Guaira, seen from the street.',
+    appeal_caption: 'How the center in La Guaira will look. The center is not built yet. These images are AI-generated renders.',
+    appeal_cards_label: 'Three steps to change',
+    appeal_cards: [
+      {
+        title: 'Shelter',
+        text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.',
+        image_url: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg',
+        image_alt: 'Families arriving at the courtyard of the planned VVF support centre.',
+      },
+      {
+        title: 'Medical care',
+        text: 'Check-ups, medicine and treatment for children and their families at the center.',
+        image_url: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg',
+        image_alt: 'A nurse examining a young girl while her mother sits beside her.',
+      },
+      {
+        title: 'Nutrition',
+        text: 'Daily meals for the children staying at the support center in La Guaira.',
+        image_url: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg',
+        image_alt: "Children eating a hot meal together in the centre's dining room.",
+      },
+    ],
+    appeal_cta_label: 'Learn More',
+    appeal_cta_url: '/earthquake-relief',
+    contact_phone: '+1 (305) 922-5585',
+    contact_email: 'charitygolf@victoriavenezuelafoundation.org',
+    contact_address: 'Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100',
+  },
 }
 
 export function mapCorporateTiers(tiers) {

@@ -7,37 +7,48 @@ import Hero from '../../components/Hero.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
 import Card from '../../components/Card.astro'
 import ContactForm from '../../components/ContactForm.astro'
+import { getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
+
+const locale = localeFromPath(Astro.originPathname)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+
+// Contact address doubles as a link target, so it stays in code.
+const EMAIL = 'info@victoriavenezuelafoundation.org'
 
 const reachUsCards = [
-  { title: 'General inquiries', body: 'Questions about our mission, programs, or how we serve Venezuela.', topic: 'general', tone: 'salmon' },
-  { title: 'Donation support', body: 'Questions about giving, sponsorship, or making an impact. Our team is ready to help you find the right option.', topic: 'donation-support', tone: 'sky' },
-  { title: 'Media and press', body: 'Journalists, bloggers, and media outlets seeking interviews, stories, or resources about our work in Venezuela.', topic: 'media-press', tone: 'sun' },
-  { title: 'Corporate partnerships', body: 'Companies that want to sponsor a program, match employee gifts, or bring their team on a mission trip. See the packages and get in touch.', topic: 'corporate-partnerships', tone: 'white' },
+  { title: copy['reachUs.general.title'], body: copy['reachUs.general.body'], topic: 'general', tone: 'salmon' },
+  { title: copy['reachUs.donation.title'], body: copy['reachUs.donation.body'], topic: 'donation-support', tone: 'sky' },
+  { title: copy['reachUs.media.title'], body: copy['reachUs.media.body'], topic: 'media-press', tone: 'sun' },
+  { title: copy['reachUs.corporate.title'], body: copy['reachUs.corporate.body'], topic: 'corporate-partnerships', tone: 'white' },
 ] as const
 
 const contactLines = [
-  { icon: 'mail', label: 'info@victoriavenezuelafoundation.org', href: 'mailto:info@victoriavenezuelafoundation.org' },
+  { icon: 'mail', label: EMAIL, href: `mailto:${EMAIL}` },
   { icon: 'phone', label: '+1 (954) 371-0557', href: 'tel:+19543710557' },
-  { icon: 'pin', label: 'P.O. Box 327222, Weston, FL 33332' },
+  { icon: 'pin', label: copy['contact.address'] },
 ]
 ---
 
 <PageLayout
-  title="Contact Us | Victoria Venezuela Foundation"
-  description="Contact Victoria Venezuela Foundation with questions about giving, sponsorship, media or corporate partnerships."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     imageUrl="/images/pages/e15186b8-98.png"
-    imageAlt="A young girl holding cotton candy at a Victoria Venezuela Foundation event."
-    heading="Contact us"
-    subtext="We'd love to hear from you. Reach out with questions, partnership opportunities, or to learn how you can make a difference in Venezuela."
-    primaryCta={{ label: 'Donate', href: '/sponsor-a-child' }}
-    secondaryCta={{ label: 'Get Involved', href: '/ways-to-give' }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '/sponsor-a-child' }}
+    secondaryCta={{ label: copy['hero.label.2'], href: '/ways-to-give' }}
   />
 
   <section class="px-6 md:px-16">
-    <SectionTitle tagline="Ways to connect" heading="Multiple ways to reach us" text="Choose the best way to connect based on your needs." />
+    <SectionTitle tagline={copy['sectionTitle.tagline']} heading={copy['sectionTitle.heading']} text={copy['sectionTitle.text']} />
     <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         reachUsCards.map((card) => (
@@ -59,10 +70,10 @@ const contactLines = [
   <section id="contact-form" class="scroll-mt-8 px-6 py-16 md:py-[120px] md:px-20">
     <div class="mx-auto grid max-w-screen-xl items-start gap-10 lg:grid-cols-[540px_1fr]">
       <div class="flex flex-col gap-6 rounded-2xl bg-neutral-white p-8 md:p-16">
-        <p class="font-sans text-size-sm font-semibold text-brand-primary">Get in touch</p>
-        <h2 class="text-h2-mobile leading-[1.2] text-brand-primary md:text-h2">Send us a message</h2>
+        <p class="font-sans text-size-sm font-semibold text-brand-primary">{copy['p2.text']}</p>
+        <h2 class="text-h2-mobile leading-[1.2] text-brand-primary md:text-h2">{copy['h22.text']}</h2>
         <p class="font-body text-size-lg leading-body text-brand-primary">
-          Tell us your name, email, and how we can help you serve Venezuela's most vulnerable families.
+          {copy['p3.text']}
         </p>
         <ul class="mt-4 flex flex-col gap-4">
           {

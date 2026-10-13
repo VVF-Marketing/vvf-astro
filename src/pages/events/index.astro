@@ -6,34 +6,38 @@ import Eyebrow from '../../components/Eyebrow.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
 import EventCard from '../../components/EventCard.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
-import { getEvents, isUpcoming } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getEvents, isUpcoming, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const events = await getEvents(locale)
 const upcoming = events.filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))
 const past = events.filter((e) => !isUpcoming(e)).sort((a, b) => b.startDate.localeCompare(a.startDate))
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Events & Campaigns | Victoria Venezuela Foundation"
-  description="Join Victoria Venezuela Foundation events and campaigns, including our annual charity golf tournament, supporting children in Venezuela."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     imageUrl="/images/pages/ec68af0e-98.png"
-    imageAlt="A golfer hugging a young boy on the course at the charity golf tournament."
-    heading="Events & Campaigns"
-    subtext="Join our community and make an impact. Together we gather to support those in need across Venezuela."
-    primaryCta={{ label: 'Upcoming Events', href: '#upcoming-events' }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '#upcoming-events' }}
   />
 
   {
     upcoming.length > 0 && (
       <section id="upcoming-events" class="scroll-mt-8 px-6 md:px-20">
         <div class="mx-auto flex max-w-screen-xl flex-col items-center gap-10">
-          <Eyebrow>Upcoming</Eyebrow>
+          <Eyebrow>{copy['eyebrow.text']}</Eyebrow>
           <div class="flex w-full flex-col gap-6">
             {upcoming.map((e) => (
               <EventCard event={e} />
@@ -47,10 +51,10 @@ const past = events.filter((e) => !isUpcoming(e)).sort((a, b) => b.startDate.loc
   {
     past.length > 0 && (
       <section class="px-6 pt-16 md:pt-[72px] md:px-20">
-        <SectionTitle tagline="Archive" heading="Past" text="Gatherings that changed lives and raised hope" />
+        <SectionTitle tagline={copy['sectionTitle.tagline']} heading={copy['sectionTitle.heading']} text={copy['sectionTitle.text']} />
         <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 lg:grid-cols-2">
           {past.map((e) => (
-            <EventCard event={e} variant="compact" ctaLabel="See the recap" />
+            <EventCard event={e} variant="compact" ctaLabel={copy['eventCard2.ctaLabel']} />
           ))}
         </div>
       </section>
@@ -59,7 +63,7 @@ const past = events.filter((e) => !isUpcoming(e)).sort((a, b) => b.startDate.loc
 
   <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[240px] md:px-20">
     <div class="mx-auto max-w-screen-xl">
-      <NewsletterSignup heading="Never miss an event" text="Get invitations and updates delivered to your inbox" width="wide" />
+      <NewsletterSignup heading={copy['newsletterSignup.heading']} text={copy['newsletterSignup.text']} width="wide" />
     </div>
   </section>
 </PageLayout>

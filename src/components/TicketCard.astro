@@ -3,6 +3,9 @@
 // (radius 2xl) with "Name $price" heading, a benefit list and an outline
 // navy button. Live cycles sun → sky → salmon across a row of cards.
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   tierName: string
@@ -14,7 +17,7 @@ export interface Props {
   tone?: 'sun' | 'sky' | 'salmon'
 }
 
-const { tierName, price, features = [], href, ctaLabel = 'Buy Tickets', soldOut = false, tone = 'sun' } = Astro.props as Props
+const { tierName, price, features = [], href, ctaLabel = t['card.buyTickets'], soldOut = false, tone = 'sun' } = Astro.props as Props
 const tones = { sun: 'bg-sun', sky: 'bg-sky', salmon: 'bg-salmon' }
 ---
 
@@ -33,7 +36,7 @@ const tones = { sun: 'bg-sun', sky: 'bg-sky', salmon: 'bg-salmon' }
   }
   {
     soldOut ? (
-      <p class="font-sans text-size-md font-bold text-brand-primary">Sold out</p>
+      <p class="font-sans text-size-md font-bold text-brand-primary">{t['card.soldOut']}</p>
     ) : (
       <Button href={href} variant="outline-navy" class="self-start" target={/^https?:/.test(href) ? '_blank' : undefined} rel={/^https?:/.test(href) ? 'noopener noreferrer' : undefined}>
         {ctaLabel}

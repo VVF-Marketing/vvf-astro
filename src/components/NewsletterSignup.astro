@@ -2,6 +2,9 @@
 // Live counterpart: Resources "Stay connected" box — sky card (radius 2xl)
 // with heading, intro, pill email field, Subscribe button and privacy note.
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   heading?: string
@@ -10,23 +13,23 @@ export interface Props {
   width?: 'narrow' | 'wide'
 }
 
-const { heading = 'Stay connected', text = 'Keep up with our news and events', width = 'narrow' } = Astro.props as Props
+const { heading = t['newsletter.heading'], text = t['newsletter.text'], width = 'narrow' } = Astro.props as Props
 ---
 
 <div class="flex flex-col items-center gap-6 rounded-2xl bg-sky p-10 text-center md:p-16">
   <h2 class={`leading-[1.16] tracking-[-0.01em] text-brand-primary ${width === 'wide' ? 'text-h2-mobile md:text-h2' : 'text-[2.25rem]'}`}>{heading}</h2>
   <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>
   <form class={`mt-8 flex w-full flex-col items-center gap-4 ${width === 'wide' ? 'max-w-[520px]' : ''}`} data-newsletter-form>
-    <label class="sr-only" for="newsletter-email">Email</label>
+    <label class="sr-only" for="newsletter-email">{t['newsletter.emailLabel']}</label>
     <input
       id="newsletter-email"
       type="email"
       required
-      placeholder="Enter your email"
+      placeholder={t['newsletter.placeholder']}
       autocomplete="email"
       class="h-[51px] w-full rounded-pill border border-brand-primary bg-transparent px-6 py-3 text-center font-body text-size-md text-brand-primary placeholder:text-brand-primary/50"
     />
-    <Button type="submit" variant="primary-inverse">Subscribe</Button>
+    <Button type="submit" variant="primary-inverse">{t['newsletter.submit']}</Button>
   </form>
-  <p class="mt-8 font-sans text-size-sm leading-body text-brand-primary">We respect your privacy. Unsubscribe at any time.</p>
+  <p class="mt-8 font-sans text-size-sm leading-body text-brand-primary">{t['newsletter.privacy']}</p>
 </div>

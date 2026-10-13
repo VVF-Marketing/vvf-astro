@@ -4,10 +4,13 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import ArticleCard from '../../components/ArticleCard.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
 import RichText from '../../components/RichText.astro'
-import { getPostBySlug, getFeaturedPosts } from '../../lib/content'
-import { alternatePaths, localeFromPath } from '../../lib/i18n'
+import { getPostBySlug, getFeaturedPosts, getPageCopy } from '../../lib/content'
+import { alternatePaths, LANG_TAGS, localeFromPath } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import templateCopy from './_copy.detail'
 
 const locale = localeFromPath(Astro.originPathname)
+const { copy } = await getPageCopy(templateCopy, locale)
 
 const post = await getPostBySlug(Astro.params.slug!, locale)
 if (!post) return new Response('Not found', { status: 404 })
@@ -15,21 +18,21 @@ const featuredSidebar = await getFeaturedPosts(locale)
 ---
 
 <!-- Project-only page (no live counterpart); styled like a live resource article. -->
-<PageLayout title={`${post.title} | Victoria Venezuela Foundation`} description={post.excerpt} image={post.imageUrl} alternates={alternatePaths('/blog', post.alternates)} contentLocale={post.fallbackLocale}>
+<PageLayout title={fill(copy['seo.titleFallback'], { title: post.title })} description={post.excerpt} image={post.imageUrl} alternates={alternatePaths('/blog', post.alternates)} contentLocale={post.fallbackLocale}>
   <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-[72px]">
     <div class="mx-auto max-w-[1296px]">
-      <Breadcrumbs items={[{ label: 'Blog', href: '/blog' }, { label: post.title }]} />
+      <Breadcrumbs items={[{ label: copy['breadcrumb'], href: '/blog' }, { label: post.title }]} />
       <p class="mt-12 font-body text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">
-        Last updated {new Date(post.updatedAt ?? post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
+        {fill(copy['lastUpdated'], { date: new Date(post.updatedAt ?? post.publishedAt).toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) })}
       </p>
       <h1 class="mt-4 text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{post.title}</h1>
-      {post.author && <p class="mt-6 font-body text-size-md text-brand-primary">By {post.author}</p>}
+      {post.author && <p class="mt-6 font-body text-size-md text-brand-primary">{fill(copy['byAuthor'], { name: post.author })}</p>}
 
       <div class="mt-16 grid gap-16 lg:grid-cols-[768px_1fr] lg:gap-[120px]">
         <div>
           {post.imageUrl && <img src={post.imageUrl} alt="" class="mb-12 w-full rounded-[20px] object-cover" />}
           <RichText>
-            {post.body ? post.body.split(/\n{2,}/).map((p) => <p>{p}</p>) : <p>Full article body pending final copy from the foundation.</p>}
+            {post.body ? post.body.split(/\n{2,}/).map((p) => <p>{p}</p>) : <p>{copy['p4.text']}</p>}
           </RichText>
         </div>
         <aside class="flex flex-col gap-16">
@@ -37,7 +40,7 @@ const featuredSidebar = await getFeaturedPosts(locale)
           {
             featuredSidebar.filter((p) => p.slug !== post.slug).length > 0 && (
               <div class="flex flex-col gap-6">
-                <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">Featured</h2>
+                <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">{copy['h2.text']}</h2>
                 {featuredSidebar
                   .filter((p) => p.slug !== post.slug)
                   .map((p) => (

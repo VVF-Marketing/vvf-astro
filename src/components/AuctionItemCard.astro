@@ -3,6 +3,9 @@
 // styled to match the event offer cards so it fits the event page.
 import type { AuctionItem } from '../lib/content/types'
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   item: AuctionItem
@@ -19,7 +22,7 @@ const { item } = Astro.props as Props
     {
       item.bidUrl && (
         <Button href={item.bidUrl} variant="outline-navy" size="sm" class="mt-4 self-start">
-          Bid Now
+          {t['card.bidNow']}
         </Button>
       )
     }

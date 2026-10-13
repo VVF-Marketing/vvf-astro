@@ -4,9 +4,12 @@
 // two-column grid of article cards, and a sidebar with the newsletter box
 // and related resources.
 import type { ResourceCategory, ResourceItem } from '../lib/content/types'
-import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_LABELS, resourceTag } from '../lib/content/types'
+import { RESOURCE_CATEGORIES, resourceTag } from '../lib/content/types'
 import ArticleCard from './ArticleCard.astro'
 import NewsletterSignup from './NewsletterSignup.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   resources: ResourceItem[]
@@ -19,15 +22,19 @@ const { resources, all, category } = Astro.props as Props
 const [featured] = all
 const related = all.filter((r) => r.slug !== featured?.slug).slice(0, 3)
 const pill = 'inline-flex items-center rounded-pill border-2 border-brand-accent px-6 py-2 font-sans text-size-md font-bold no-underline'
-const filters = [{ label: 'View All', href: '/resources', active: !category }].concat(
-  RESOURCE_CATEGORIES.map((c) => ({ label: RESOURCE_CATEGORY_LABELS[c], href: `/resources/category/${c}`, active: c === category }))
+const categoryLabels: Record<ResourceCategory, string> = {
+  stories: t['resources.category.stories'],
+  'financials-transparency': t['resources.category.financials'],
+}
+const filters = [{ label: t['resources.viewAll'], href: '/resources', active: !category }].concat(
+  RESOURCE_CATEGORIES.map((c) => ({ label: categoryLabels[c], href: `/resources/category/${c}`, active: c === category }))
 )
-const tag = resourceTag
+const tag = (r: ResourceItem) => resourceTag(r, categoryLabels)
 ---
 
 <section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-16">
   <div class="mx-auto max-w-[1312px]">
-    <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">Resources</h1>
+    <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{t['resources.heading']}</h1>
     {
       featured && (
         <div class="mt-12">
@@ -45,7 +52,7 @@ const tag = resourceTag
     }
     <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_413px]">
       <div>
-        <nav aria-label="Resource categories" class="flex flex-wrap justify-center gap-3">
+        <nav aria-label={t['resources.filtersLabel']} class="flex flex-wrap justify-center gap-3">
           {
             filters.map((f) => (
               <a href={f.href} class={`${pill} ${f.active ? 'bg-brand-accent text-neutral-white' : 'bg-transparent text-brand-accent'}`} aria-current={f.active ? 'page' : undefined}>
@@ -63,14 +70,14 @@ const tag = resourceTag
             ))
           }
         </ul>
-        {resources.length === 0 && <p class="mt-10 text-center font-body text-size-md text-brand-primary">No resources in this category yet.</p>}
+        {resources.length === 0 && <p class="mt-10 text-center font-body text-size-md text-brand-primary">{t['resources.empty']}</p>}
       </div>
       <aside class="flex flex-col gap-10">
         <NewsletterSignup />
         {
           related.length > 0 && (
             <div class="flex flex-col gap-6">
-              <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">Related</h2>
+              <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">{t['resources.related']}</h2>
               {related.map((r) => (
                 <ArticleCard variant="related" href={`/resources/${r.slug}`} title={r.title} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
               ))}

@@ -1,6 +1,9 @@
 ---
 // Live counterpart: event `.www_section` — "What, When and Where" heading
 // beside a white card with the event name, date, and a map-linked venue.
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 export interface Props {
   title: string
   dateText?: string
@@ -15,7 +18,7 @@ const line = 'font-body text-size-md leading-body text-brand-primary'
 
 <section class="bg-neutral-white px-6 py-16 md:px-20">
   <div class="mx-auto flex max-w-screen-xl flex-col gap-8 md:flex-row md:items-center md:gap-20">
-    <h2 class="text-h3-mobile leading-[1.2] text-brand-primary md:text-h3">What, When and Where</h2>
+    <h2 class="text-h3-mobile leading-[1.2] text-brand-primary md:text-h3">{t['event.whatWhenWhere']}</h2>
     <div class="flex flex-col gap-1 rounded-[20px] bg-neutral-card p-8 md:min-w-[380px]">
       <p class="font-sans text-size-lg font-extrabold leading-[1.4] text-brand-primary">{title}</p>
       {dateText && <p class={line}>{dateText}</p>}

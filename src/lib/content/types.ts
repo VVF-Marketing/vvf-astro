@@ -36,6 +36,18 @@ export interface EventItem extends Localized {
   recapStats?: { number: string; heading?: string; label?: string }[]
   // Sponsorship benefits comparison: one value per `package` offer, in order.
   benefitRows?: { section: string; name: string; values: string[] }[]
+  // Optional appeal section (e.g. the 2026 tournament's earthquake relief).
+  appeal?: {
+    heading: string
+    text?: string
+    imageUrl?: string
+    imageAlt?: string
+    caption?: string
+    cardsLabel?: string
+    cards: { title: string; text: string; imageUrl?: string; imageAlt?: string }[]
+    cta?: { label: string; href: string }
+  }
+  contact?: { phone?: string; email?: string; address?: string }
   seo?: Seo
 }
 

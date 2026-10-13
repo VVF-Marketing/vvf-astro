@@ -6,6 +6,9 @@
 // screens.
 import type { SponsorshipPackage } from '../lib/content/types'
 import Button from './Button.astro'
+import { getGlobalCopy, lines } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   packages: Pick<SponsorshipPackage, 'tierName' | 'price' | 'ctaUrl' | 'ctaLabel'>[]
@@ -49,7 +52,7 @@ const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.leng
               </li>
             ))}
           </ul>
-          <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm" class="mt-4">{p.ctaLabel ?? 'Become a Sponsor'}</Button>
+          <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm" class="mt-4">{p.ctaLabel ?? t['card.becomeSponsor']}</Button>
         </details>
       )
     })
@@ -57,9 +60,9 @@ const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.leng
 </div>
 
 <div class="hidden overflow-x-auto rounded-2xl bg-neutral-white p-16 md:block">
-  <div class="min-w-[720px] font-poppins text-brand-primary" role="table" aria-label="Sponsorship benefits by package">
+  <div class="min-w-[720px] font-poppins text-brand-primary" role="table" aria-label={t['event.benefitsTable']}>
     <div class="grid" style={cols} role="row">
-      <div class="flex items-center p-6 text-size-lg font-semibold uppercase leading-[1.5]" role="columnheader">Sponsorship<br />Benefits</div>
+      <div class="flex items-center p-6 text-size-lg font-semibold uppercase leading-[1.5]" role="columnheader">{lines(t['event.benefitsHeader']).map((line, i) => (<>{i > 0 && <br />}{line}</>))}</div>
       {
         packages.map((p, i) => (
           <div class={`p-6 ${columnShades[i % columnShades.length]}`} role="columnheader">
@@ -83,7 +86,7 @@ const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.leng
                 return (
                   <div class={`flex items-center justify-center p-6 text-center text-size-md leading-[1.7] ${columnShades[i % columnShades.length]}`} role="cell">
                     {value.toLowerCase() === 'yes' ? (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-label="Included">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-label={t['event.included']}>
                         <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
                         <path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
@@ -103,7 +106,7 @@ const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.leng
       {
         packages.map((p) => (
           <div class="flex justify-center px-2">
-            <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm">{p.ctaLabel ?? 'Become a Sponsor'}</Button>
+            <Button href={p.ctaUrl ?? '#'} variant="primary-inverse" size="sm">{p.ctaLabel ?? t['card.becomeSponsor']}</Button>
           </div>
         ))
       }

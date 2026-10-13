@@ -148,6 +148,90 @@
           "slug": "benefit_rows",
           "label": "Sponsorship benefits table rows ({section, name, values[]})",
           "type": "json"
+        },
+        {
+          "slug": "appeal_heading",
+          "label": "Appeal section: heading (leave empty to hide the section)",
+          "type": "string"
+        },
+        {
+          "slug": "appeal_text",
+          "label": "Appeal section: text",
+          "type": "text"
+        },
+        {
+          "slug": "appeal_image",
+          "label": "Appeal section: image",
+          "type": "image"
+        },
+        {
+          "slug": "appeal_image_alt",
+          "label": "Appeal section: image description",
+          "type": "string"
+        },
+        {
+          "slug": "appeal_caption",
+          "label": "Appeal section: image caption",
+          "type": "text"
+        },
+        {
+          "slug": "appeal_cards_label",
+          "label": "Appeal section: cards heading",
+          "type": "string"
+        },
+        {
+          "slug": "appeal_cards",
+          "label": "Appeal section: cards",
+          "type": "repeater",
+          "validation": {
+            "subFields": [
+              {
+                "slug": "title",
+                "label": "Title",
+                "type": "string"
+              },
+              {
+                "slug": "text",
+                "label": "Text",
+                "type": "text"
+              },
+              {
+                "slug": "image_url",
+                "label": "Image (path or URL)",
+                "type": "string"
+              },
+              {
+                "slug": "image_alt",
+                "label": "Image description",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "appeal_cta_label",
+          "label": "Appeal section: button text",
+          "type": "string"
+        },
+        {
+          "slug": "appeal_cta_url",
+          "label": "Appeal section: button link",
+          "type": "string"
+        },
+        {
+          "slug": "contact_phone",
+          "label": "Event contact: phone",
+          "type": "string"
+        },
+        {
+          "slug": "contact_email",
+          "label": "Event contact: email",
+          "type": "string"
+        },
+        {
+          "slug": "contact_address",
+          "label": "Event contact: address line",
+          "type": "string"
         }
       ]
     },
@@ -801,25 +885,108 @@
           "label": "Route path",
           "type": "string",
           "required": true,
-          "indexed": true
+          "indexed": true,
+          "translatable": false
         },
         {
           "slug": "source_file",
           "label": "Source file",
           "type": "string",
-          "required": true
+          "required": true,
+          "translatable": false
         },
         {
           "slug": "last_synced_at",
           "label": "Last synced",
-          "type": "datetime"
+          "type": "datetime",
+          "translatable": false
         },
         {
           "slug": "stale",
           "label": "Stale (source file no longer found on disk)",
           "type": "boolean",
           "defaultValue": false,
-          "indexed": true
+          "indexed": true,
+          "translatable": false
+        }
+      ]
+    },
+    {
+      "slug": "page_copy",
+      "label": "Page copy",
+      "labelSingular": "Copy slot",
+      "routable": false,
+      "titleField": "label",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "fields": [
+        {
+          "slug": "route_path",
+          "label": "Page route (or _global for site-wide text)",
+          "type": "string",
+          "required": true,
+          "indexed": true,
+          "translatable": false
+        },
+        {
+          "slug": "key",
+          "label": "Slot key",
+          "type": "string",
+          "required": true,
+          "indexed": true,
+          "translatable": false
+        },
+        {
+          "slug": "label",
+          "label": "Where this text appears",
+          "type": "string",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "format",
+          "label": "Format",
+          "type": "select",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "options": [
+              "plain",
+              "rich",
+              "image"
+            ]
+          }
+        },
+        {
+          "slug": "max_length",
+          "label": "Maximum length (characters)",
+          "type": "integer",
+          "translatable": false
+        },
+        {
+          "slug": "value",
+          "label": "Text",
+          "type": "text"
+        },
+        {
+          "slug": "rich_value",
+          "label": "Rich text",
+          "type": "portableText"
+        },
+        {
+          "slug": "image_value",
+          "label": "Image",
+          "type": "image"
+        },
+        {
+          "slug": "stale",
+          "label": "Stale (slot no longer used by the page)",
+          "type": "boolean",
+          "defaultValue": false,
+          "indexed": true,
+          "translatable": false
         }
       ]
     }
@@ -2163,7 +2330,40 @@
             }
           ],
           "seo_title": "2026 Annual Golf Charity Tournament | Victoria Venezuela Foundation",
-          "seo_description": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela."
+          "seo_description": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela.",
+          "appeal_heading": "This Year's Tournament Supports Earthquake Relief",
+          "appeal_text": "100% of the net proceeds from the 2026 tournament go to our earthquake relief work in Venezuela. They will help build our permanent support center in La Guaira. When it opens, it will give displaced children and their families shelter, meals and medical care.",
+          "appeal_image": {
+            "src": "/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
+          },
+          "appeal_image_alt": "Render of the planned VVF support centre in La Guaira, seen from the street.",
+          "appeal_caption": "How the center in La Guaira will look. The center is not built yet. These images are AI-generated renders.",
+          "appeal_cards_label": "Three steps to change",
+          "appeal_cards": [
+            {
+              "title": "Shelter",
+              "text": "A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.",
+              "image_url": "/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg",
+              "image_alt": "Families arriving at the courtyard of the planned VVF support centre."
+            },
+            {
+              "title": "Medical care",
+              "text": "Check-ups, medicine and treatment for children and their families at the center.",
+              "image_url": "/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg",
+              "image_alt": "A nurse examining a young girl while her mother sits beside her."
+            },
+            {
+              "title": "Nutrition",
+              "text": "Daily meals for the children staying at the support center in La Guaira.",
+              "image_url": "/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg",
+              "image_alt": "Children eating a hot meal together in the centre's dining room."
+            }
+          ],
+          "appeal_cta_label": "Learn More",
+          "appeal_cta_url": "/earthquake-relief",
+          "contact_phone": "+1 (305) 922-5585",
+          "contact_email": "charitygolf@victoriavenezuelafoundation.org",
+          "contact_address": "Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100"
         }
       }
     ],

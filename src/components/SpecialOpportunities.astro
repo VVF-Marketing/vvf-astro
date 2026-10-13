@@ -5,13 +5,16 @@
 // call to action.
 import type { SponsorshipPackage } from '../lib/content/types'
 import Button from './Button.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   heading?: string
   offers: SponsorshipPackage[]
 }
 
-const { heading = 'Special Event Opportunities', offers } = Astro.props as Props
+const { heading = t['event.specialHeading'], offers } = Astro.props as Props
 const id = `opps-${Math.random().toString(36).slice(2, 8)}`
 ---
 
@@ -35,7 +38,7 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
             </ul>
           )}
           {!o.soldOut && o.ctaUrl && (
-            <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-4" target="_blank" rel="noopener noreferrer">{o.ctaLabel ?? 'Buy Tickets'}</Button>
+            <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-4" target="_blank" rel="noopener noreferrer">{o.ctaLabel ?? t['card.buyTickets']}</Button>
           )}
         </details>
       ))
@@ -79,7 +82,7 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
           )}
           {!o.soldOut && o.ctaUrl && (
             <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-8" target="_blank" rel="noopener noreferrer">
-              {o.ctaLabel ?? 'Buy Tickets'}
+              {o.ctaLabel ?? t['card.buyTickets']}
             </Button>
           )}
         </div>

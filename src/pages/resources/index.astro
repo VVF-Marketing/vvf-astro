@@ -2,17 +2,21 @@
 // All resources — live /resources-categories/all.
 import PageLayout from '../../layouts/PageLayout.astro'
 import ResourceList from '../../components/ResourceList.astro'
-import { getResources } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getResources, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const all = await getResources(undefined, locale)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Resources | Victoria Venezuela Foundation"
-  description="Stories, news, events and financial reports from Victoria Venezuela Foundation, a 501(c)(3) supporting children in Venezuela."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <ResourceList resources={all} all={all} />
 </PageLayout>

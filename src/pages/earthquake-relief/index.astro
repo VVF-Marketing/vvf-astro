@@ -12,87 +12,91 @@ import PastelCard from '../../components/PastelCard.astro'
 import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import Card from '../../components/Card.astro'
 import ResponseTimeline from '../../components/ResponseTimeline.astro'
-import { getCampaignUpdates } from '../../lib/content'
-import { localeFromPath } from '../../lib/i18n'
+import { getCampaignUpdates, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
 import { earthquakeReliefUrl } from '../../lib/donorbox'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const donateUrl = earthquakeReliefUrl()
 const updates = await getCampaignUpdates(locale)
 const detail = 'font-body text-size-sm leading-body text-brand-primary'
+const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
 
 <PageLayout
-  title="Venezuela Earthquake Relief | Victoria Venezuela Foundation"
-  description="Back-to-back earthquakes have upended life across Venezuela. 100% of net proceeds go to children and families displaced by the June 2026 earthquakes."
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
 >
   <Hero
     align="right"
     imageUrl="/images/pages/406e389b-98.png"
-    imageAlt="A man carrying a child away from a building destroyed by the earthquakes in Venezuela."
-    heading="Venezuela Earthquake Relief"
-    subtext="Back-to-back earthquakes have upended life across Venezuela. Your gift delivers help now."
-    primaryCta={{ label: 'Donate Here', href: donateUrl }}
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: donateUrl }}
   />
 
   <section class="px-6 text-center">
-    <SectionTitle heading="100% of net proceeds go to earthquake relief." />
-    <div class="mt-8 flex justify-center"><Button href="#how-to-help" variant="primary-inverse" size="sm">See ways to help</Button></div>
+    <SectionTitle heading={copy['sectionTitle.heading']} />
+    <div class="mt-8 flex justify-center"><Button href="#how-to-help" variant="primary-inverse" size="sm">{copy['button.text']}</Button></div>
   </section>
 
   <MediaSplit
     imageSide="right"
-    heading="What happened"
-    text="On June 24, two powerful earthquakes struck northern Venezuela less than a minute apart, the strongest the country has seen in over a century. La Guaira and Caracas were hit hardest. Thousands of families lost their homes, and many are now sleeping outside, cut off from clean water and medical care."
+    heading={copy['mediaSplit.heading']}
+    text={copy['mediaSplit.text']}
     images={[
-      { url: '/images/pages/2b2a02c7-image-11.png', alt: 'An excavator and workers clearing rubble from a collapsed building.' },
-      { url: '/images/pages/8e3aa6c2-image-12.png', alt: 'A damaged apartment tower standing above the surrounding city.' },
-      { url: '/images/pages/005e8213-image-14.png', alt: 'Two people walking out of a building wrecked by the earthquake.' },
-      { url: '/images/pages/4fd38a77-image-13.png', alt: 'A woman standing among the rubble of destroyed homes.' },
+      { url: '/images/pages/2b2a02c7-image-11.png', alt: copy['mediaSplit.alt.1'] },
+      { url: '/images/pages/8e3aa6c2-image-12.png', alt: copy['mediaSplit.alt.2'] },
+      { url: '/images/pages/005e8213-image-14.png', alt: copy['mediaSplit.alt.3'] },
+      { url: '/images/pages/4fd38a77-image-13.png', alt: copy['mediaSplit.alt.4'] },
     ]}
   />
 
   <MediaSplit
     imageSide="right"
     imagePanel
-    heading="Support Centers"
-    text="In the weeks after the earthquakes we opened two temporary support centres for displaced families. Both have since closed. We are now building a permanent centre in La Guaira."
+    heading={copy['mediaSplit2.heading']}
+    text={copy['mediaSplit2.text']}
     imageUrl="/images/pages/6fa550cb-mapa-ve.png"
-    imageAlt="Map of Venezuela marking Caracas and La Guaira, the areas hit by the June 2026 earthquakes."
+    imageAlt={copy['mediaSplit2.imageAlt']}
   />
 
   <div class="pt-16 md:pt-[120px]">
     <AppealPanel
-      heading="100% of net proceeds benefit children and families displaced by the June 2026 earthquakes in Venezuela."
-      text="Funds raised from this campaign will go towards the construction of VVF's permanent support centre in La Guaira. When it opens it will provide shelter, nutrition and medical care to 500 displaced children and their families."
+      heading={copy['appealPanel.heading']}
+      text={copy['appealPanel.text']}
       imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
-      imageAlt="Render of the planned VVF support centre in La Guaira, seen from the street."
-      caption="How the centre in La Guaira will look. The centre is not built yet."
-      cardsLabel="What your gift will pay for"
+      imageAlt={copy['appealPanel.imageAlt']}
+      caption={copy['appealPanel.caption']}
+      cardsLabel={copy['appealPanel.cardsLabel']}
       cards={[
-        { title: 'Shelter', text: 'A safe place to stay for families whose homes were destroyed in the June 2026 earthquakes.', imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: 'Families arriving at the courtyard of the planned VVF support centre.' },
-        { title: 'Medical care', text: 'Check-ups, medicine and treatment for children and their families at the center.', imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: 'A nurse examining a young girl while her mother sits beside her.' },
-        { title: 'Nutrition', text: 'Daily meals for the children staying at the support center in La Guaira.', imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: "Children eating a hot meal together in the centre's dining room." },
+        { title: copy['appealPanel.title.1'], text: copy['appealPanel.text.1'], imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: copy['appealPanel.imageAlt.1'] },
+        { title: copy['appealPanel.title.2'], text: copy['appealPanel.text.2'], imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: copy['appealPanel.imageAlt.2'] },
+        { title: copy['appealPanel.title.3'], text: copy['appealPanel.text.3'], imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: copy['appealPanel.cards.nutritionAlt'] },
       ]}
-      primaryCta={{ label: 'Give to the appeal', href: donateUrl }}
+      primaryCta={{ label: copy['appealPanel.label.1'], href: donateUrl }}
     />
   </div>
 
   <section class="px-6 pt-10 md:px-20">
-    <img src="/images/pages/bc6541aa-image-15.png" alt="A man carrying a water container past earthquake-damaged houses." class="mx-auto aspect-[1280/720] w-full max-w-screen-xl rounded-2xl object-cover" loading="lazy" />
+    <img src="/images/pages/bc6541aa-image-15.png" alt={copy['img.alt']} class="mx-auto aspect-[1280/720] w-full max-w-screen-xl rounded-2xl object-cover" loading="lazy" />
   </section>
 
   <section id="how-to-help" class="mt-16 scroll-mt-8 bg-neutral-white px-6 py-16 md:py-[120px] md:px-20">
-    <SectionTitle heading="How to Help" />
+    <SectionTitle heading={copy['sectionTitle2.heading']} />
     <div class="mx-auto mt-16 grid max-w-[880px] justify-items-center gap-6 md:grid-cols-2">
-      <PastelCard tone="sun" iconUrl="/images/pages/bf4b24b4-uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg" eyebrow="First" title="Pray" body="Join our team in daily prayer." />
-      <PastelCard tone="sky" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow="Second" title="Donate" body="Your financial gift allows VVF and local partners to respond promptly and effectively, bringing relief and hope." cta={{ label: 'Donate', href: donateUrl }} />
+      <PastelCard tone="sun" iconUrl="/images/pages/bf4b24b4-uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg" eyebrow={copy['pastelCard.eyebrow']} title={copy['pastelCard.title']} body={copy['pastelCard.body']} />
+      <PastelCard tone="sky" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow={copy['pastelCard2.eyebrow']} title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: donateUrl }} />
     </div>
   </section>
 
   <section class="px-6 pt-16 md:pt-[120px] md:px-20">
-    <SectionTitle heading="Keep up with our work on the ground." />
+    <SectionTitle heading={copy['sectionTitle3.heading']} />
     <div class="mx-auto mt-12 max-w-[700px]"><NewsletterSignup width="wide" /></div>
   </section>
 
@@ -101,43 +105,43 @@ const detail = 'font-body text-size-sm leading-body text-brand-primary'
       <Card radius="2xl" class="flex flex-col gap-6 p-10 md:p-16">
         <div class="flex items-center gap-4">
           <img src="/images/pages/41d18615-home.svg" alt="" width="36" height="36" />
-          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">Point of Contact</h2>
+          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{copy['h2.text']}</h2>
         </div>
-        <p class="font-body text-size-md leading-body text-brand-primary">Is your organization interested in investing in the children and the future of Venezuela? Let’s make a positive impact together.</p>
+        <p class="font-body text-size-md leading-body text-brand-primary">{copy['p.text']}</p>
       </Card>
       <Card tone="sky" radius="2xl" class="flex flex-col gap-6 p-10 md:p-16">
         <div>
-          <p class="font-sans text-size-md font-bold text-brand-primary">Weston</p>
-          <p class={detail}>P.O. Box 327222, Weston, FL 33332</p>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p2.text']}</p>
+          <p class={detail}>{copy['p3.text']}</p>
           <p class={detail}><a href="tel:+19543710557" class="text-brand-primary">+1 (954) 371-0557</a></p>
         </div>
         <div>
-          <p class="font-sans text-size-md font-bold text-brand-primary">Business hours</p>
-          <p class={detail}>Monday through Friday, 8:30 AM to 5:30 PM Eastern Time</p>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p5.text']}</p>
+          <p class={detail}>{copy['p6.text']}</p>
         </div>
         <div>
-          <p class="font-sans text-size-md font-bold text-brand-primary">Email anytime</p>
-          <p class={detail}><a href="mailto:info@victoriavenezuelafoundation.org" class="text-brand-primary underline">info@victoriavenezuelafoundation.org</a></p>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p7.text']}</p>
+          <p class={detail}><a href="mailto:info@victoriavenezuelafoundation.org" class="text-brand-primary underline">{copy['a2.text']}</a></p>
         </div>
       </Card>
     </div>
   </section>
 
   <ResponseTimeline
-    heading="Our Response"
-    text="Our emergency response is now completed. Our team is now building a permanent support centre in La Guaira for the children and families displaced by the earthquakes."
+    heading={copy['responseTimeline.heading']}
+    text={copy['responseTimeline.text']}
     phases={[
-      { title: 'Assessment', text: 'Identifying the hardest-hit communities and their most urgent needs.', status: 'completed' },
-      { title: 'Stabilization', text: 'Delivering food, water, medical supplies, and shelter.', status: 'completed' },
-      { title: 'Strengthening', text: 'Helping families restore stability and routine', status: 'in-progress' },
-      { title: 'Sustainability', text: 'Supporting long-term recovery and resilience.', status: 'upcoming' },
+      { title: copy['responseTimeline.title.1'], text: copy['responseTimeline.text.1'], status: 'completed' },
+      { title: copy['responseTimeline.title.2'], text: copy['responseTimeline.text.2'], status: 'completed' },
+      { title: copy['responseTimeline.title.3'], text: copy['responseTimeline.text.3'], status: 'in-progress' },
+      { title: copy['responseTimeline.title.4'], text: copy['responseTimeline.text.4'], status: 'upcoming' },
     ]}
   />
 
   {
     updates.length > 0 && (
       <section class="px-6 pb-16 md:pb-[120px] md:px-20">
-        <SectionTitle heading="Campaign updates" />
+        <SectionTitle heading={copy['sectionTitle4.heading']} />
         <ul class="mx-auto mt-12 grid max-w-screen-xl gap-6 md:grid-cols-3">
           {updates.map((u) => (
             <li>

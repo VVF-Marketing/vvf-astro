@@ -30,7 +30,9 @@ const {
   getResourcesByCategory,
   getResource,
   getPartners,
+  getPageCopy,
 } = await import('./index')
+const { defineCopy } = await import('../copy')
 
 function entry(slug: string, data: Record<string, unknown>) {
   return { slug, data }
@@ -95,6 +97,48 @@ describe('getEvents', () => {
     const [event] = await getEvents()
 
     expect(event.sponsors).toEqual([])
+  })
+})
+
+describe('event appeal and contact fields', () => {
+  it('maps the appeal section and contact details', async () => {
+    getEmDashCollection.mockResolvedValue({
+      entries: [
+        entry('golf', {
+          title: 'Golf',
+          start_date: '2026-11-09',
+          location: 'Weston',
+          appeal_heading: 'Supports relief',
+          appeal_text: 'All proceeds help.',
+          appeal_image: { src: '/a.jpg' },
+          appeal_image_alt: 'Centre',
+          appeal_cards_label: 'Three steps',
+          appeal_cards: [{ title: 'Shelter', text: 'A safe place.', image_url: '/s.jpg', image_alt: 'Families' }],
+          appeal_cta_label: 'Learn More',
+          appeal_cta_url: '/earthquake-relief',
+          contact_email: 'golf@example.org',
+        }),
+      ],
+    })
+    const [event] = await getEvents()
+    expect(event.appeal).toEqual({
+      heading: 'Supports relief',
+      text: 'All proceeds help.',
+      imageUrl: '/a.jpg',
+      imageAlt: 'Centre',
+      caption: undefined,
+      cardsLabel: 'Three steps',
+      cards: [{ title: 'Shelter', text: 'A safe place.', imageUrl: '/s.jpg', imageAlt: 'Families' }],
+      cta: { label: 'Learn More', href: '/earthquake-relief' },
+    })
+    expect(event.contact).toEqual({ phone: undefined, email: 'golf@example.org', address: undefined })
+  })
+
+  it('has no appeal or contact when the fields are empty', async () => {
+    getEmDashCollection.mockResolvedValue({ entries: [entry('e', { title: 'E', start_date: '2026-01-01', location: 'X' })] })
+    const [event] = await getEvents()
+    expect(event.appeal).toBeUndefined()
+    expect(event.contact).toBeUndefined()
   })
 })
 
@@ -488,6 +532,48 @@ describe('locale resolution', () => {
     getMenu.mockResolvedValue(null)
     await getPrimaryMenu('es')
     expect(getMenu).toHaveBeenCalledWith('primary', { locale: 'es' })
+  })
+})
+
+describe('getPageCopy', () => {
+  const manifest = defineCopy('/ways-to-give', {
+    'seo.title': { label: 'SEO title', default: 'Ways to Give' },
+    'hero.heading': { label: 'Hero heading', default: 'Ways to give' },
+    'hero.body': { label: 'Hero text', default: 'Every gift counts.' },
+  })
+
+  function copyRows(rows: Record<string, { key: string; value: string }[]>) {
+    getEmDashCollection.mockImplementation(async (collection: string, filter: { locale?: string; where?: unknown }) => {
+      expect(collection).toBe('page_copy')
+      expect(filter.where).toEqual({ route_path: '/ways-to-give' })
+      return { entries: (rows[filter.locale ?? 'en'] ?? []).map((d) => ({ slug: d.key, data: d })) }
+    })
+  }
+
+  it('resolves slots with es -> en -> default fallback, and counts the page as Spanish once its SEO title is', async () => {
+    copyRows({
+      en: [{ key: 'hero.heading', value: 'Ways to Give' }],
+      es: [
+        { key: 'seo.title', value: 'Formas de ayudar | VVF' },
+        { key: 'hero.heading', value: 'Formas de ayudar' },
+      ],
+    })
+    const { copy, locales } = await getPageCopy(manifest, 'es')
+    expect(copy).toEqual({ 'seo.title': 'Formas de ayudar | VVF', 'hero.heading': 'Formas de ayudar', 'hero.body': 'Every gift counts.' })
+    expect(locales).toEqual(['en', 'es'])
+  })
+
+  it('reports English only while the Spanish SEO title is empty, even with other Spanish text', async () => {
+    copyRows({
+      en: [{ key: 'hero.heading', value: 'Ways to Give' }],
+      es: [
+        { key: 'seo.title', value: ' ' },
+        { key: 'hero.heading', value: 'Formas de ayudar' },
+      ],
+    })
+    const { copy, locales } = await getPageCopy(manifest, 'es')
+    expect(copy['hero.heading']).toBe('Formas de ayudar')
+    expect(locales).toEqual(['en'])
   })
 })
 

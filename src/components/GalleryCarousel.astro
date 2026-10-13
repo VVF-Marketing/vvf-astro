@@ -2,6 +2,9 @@
 // Live counterpart: past-event "Event photos" carousel (`.recap-gallery`) —
 // pages of five rounded photos (three over two) with round prev/next
 // controls and page dots.
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 export interface Props {
   photos: { url: string; alt?: string }[]
   perPage?: number
@@ -35,7 +38,7 @@ const control = 'flex h-12 w-12 items-center justify-center rounded-full border-
   {
     pages.length > 1 && (
       <div class="flex items-center justify-center gap-6">
-        <button type="button" class={control} aria-label="Previous photos" data-gallery-prev>
+        <button type="button" class={control} aria-label={t['a11y.prevPhotos']} data-gallery-prev>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </button>
         <div class="flex gap-2">
@@ -43,7 +46,7 @@ const control = 'flex h-12 w-12 items-center justify-center rounded-full border-
             <span class={`h-2 w-2 rounded-full ${p === 0 ? 'bg-brand-accent' : 'bg-neutral-light-gray'}`} data-gallery-dot />
           ))}
         </div>
-        <button type="button" class={control} aria-label="Next photos" data-gallery-next>
+        <button type="button" class={control} aria-label={t['a11y.nextPhotos']} data-gallery-next>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </button>
       </div>

@@ -4,6 +4,9 @@
 // photo with the quote and labeled facts (Since / From / Based in), then the
 // bio with a "Background" sidebar. Empty facts are omitted.
 import type { TeamMemberItem } from '../lib/content/types'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   member: Pick<TeamMemberItem, 'name' | 'role' | 'imageUrl' | 'quote' | 'since' | 'from' | 'basedIn' | 'bio' | 'longBio' | 'background' | 'socialLinks'>
@@ -11,9 +14,9 @@ export interface Props {
 
 const { member } = Astro.props as Props
 const facts = [
-  { label: 'Since', value: member.since },
-  { label: 'From', value: member.from },
-  { label: 'Based in', value: member.basedIn },
+  { label: t['team.since'], value: member.since },
+  { label: t['team.from'], value: member.from },
+  { label: t['team.basedIn'], value: member.basedIn },
 ].filter((f) => f.value)
 const linkedin = member.socialLinks?.find((s) => s.platform === 'linkedin')
 const paragraphs = (member.longBio ?? '').split(/\n{2,}/).filter(Boolean)
@@ -22,7 +25,7 @@ const paragraphs = (member.longBio ?? '').split(/\n{2,}/).filter(Boolean)
 <article>
   <div class="bg-brand-primary px-6 pb-0 pt-12 md:px-16 md:pt-[72px]">
     <div class="mx-auto max-w-[1312px]">
-      <p class="font-body text-[13px] font-semibold uppercase leading-body text-brand-accent-soft">Our Team</p>
+      <p class="font-body text-[13px] font-semibold uppercase leading-body text-brand-accent-soft">{t['team.eyebrow']}</p>
       <h1 class="mt-3 text-h1-mobile leading-[1.1] text-neutral-white md:text-[3.5rem]">{member.name}</h1>
       <p class="mt-4 font-body text-size-lg leading-body text-neutral-white/90">{member.role}</p>
     </div>
@@ -59,7 +62,7 @@ const paragraphs = (member.longBio ?? '').split(/\n{2,}/).filter(Boolean)
     {
       member.background && member.background.length > 0 && (
         <aside class="h-fit rounded-[20px] bg-sun p-7">
-          <p class="font-body text-size-sm uppercase leading-body text-brand-primary">Background</p>
+          <p class="font-body text-size-sm uppercase leading-body text-brand-primary">{t['team.background']}</p>
           <ul class="mt-4 flex flex-col gap-4">
             {member.background.map((b) => (
               <li>
