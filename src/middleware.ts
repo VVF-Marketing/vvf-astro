@@ -5,6 +5,9 @@ import { localeFromPath, localizePath, stripLocale } from './lib/i18n'
 import { projectPathFor } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
 import type { CopyManifest } from './lib/copy'
+import { guardEmDashApi } from './lib/emdashGuard'
+import { activityChannel, runWithActivityActor } from './lib/activityContext'
+import { normalizeApiPath } from './lib/marketingGuard'
 
 // Runs once per process, on the first request - covers `astro dev` and the
 // deployed `@astrojs/node` standalone server uniformly, since neither has a
@@ -46,6 +49,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
     } else {
       console.warn('[static-page-sync] EMDASH_SYNC_PAT not set, skipping sync')
     }
+  }
+
+  // EmDash API: non-admin CMS users (marketing) go through the guard, and
+  // every request runs with its user and channel for the activity log.
+  const apiPath = normalizeApiPath(context.url.pathname)
+  if (apiPath.startsWith('/_emdash/api/')) {
+    const user = (context.locals as { user?: { id: string; email: string; name?: string | null } }).user
+    const actor = { user: user && { id: user.id, email: user.email, name: user.name }, channel: activityChannel(apiPath, context.request.headers) }
+    return runWithActivityActor(actor, async () => (await guardEmDashApi(context, next)) ?? next())
   }
 
   // Spanish pages are rendered from the shared (English-path) page modules,

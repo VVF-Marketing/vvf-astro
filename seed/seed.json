@@ -12,6 +12,10 @@
       "routable": false,
       "titleField": "title",
       "dateField": "start_date",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "title",
@@ -241,6 +245,10 @@
       "labelSingular": "Sponsored child",
       "routable": false,
       "titleField": "display_name",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "display_name",
@@ -319,6 +327,10 @@
       "labelSingular": "Team member",
       "routable": false,
       "titleField": "name",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "name",
@@ -443,6 +455,10 @@
       "routable": false,
       "titleField": "title",
       "dateField": "published_on",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "title",
@@ -515,6 +531,10 @@
       "labelSingular": "Sponsor",
       "routable": false,
       "titleField": "name",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "name",
@@ -561,6 +581,10 @@
       "labelSingular": "Sponsorship package",
       "routable": false,
       "titleField": "tier_name",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "scope",
@@ -653,6 +677,10 @@
       "labelSingular": "Silent auction item",
       "routable": false,
       "titleField": "name",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "name",
@@ -683,6 +711,10 @@
       "labelSingular": "FAQ",
       "routable": false,
       "titleField": "question",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "question",
@@ -726,6 +758,10 @@
       "routable": false,
       "titleField": "title",
       "dateField": "date",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "title",
@@ -763,6 +799,10 @@
       "labelSingular": "Campaign settings",
       "routable": false,
       "hidden": false,
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "active",
@@ -789,6 +829,10 @@
       "routable": false,
       "titleField": "title",
       "dateField": "published_on",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
       "fields": [
         {
           "slug": "title",

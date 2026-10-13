@@ -5,7 +5,7 @@ description: How content flows from EmDash into pages and components.
 
 ## One adapter rule
 
-All content is read through one adapter, [`src/lib/content/index.ts`](https://github.com/anclist/vvf-astro/blob/main/src/lib/content/index.ts), which wraps EmDash's `getEmDashCollection`/`getEmDashEntry` and returns the normalized shapes defined in [`src/lib/content/types.ts`](https://github.com/anclist/vvf-astro/blob/main/src/lib/content/types.ts). Pages and components never query EmDash directly — this keeps the CMS shape swappable and the rendering layer simple.
+All content is read through one adapter (every getter takes a locale and handles Spanish → English fallback — see [Localization & Page Copy](/localization-and-copy/)), [`src/lib/content/index.ts`](https://github.com/anclist/vvf-astro/blob/main/src/lib/content/index.ts), which wraps EmDash's `getEmDashCollection`/`getEmDashEntry` and returns the normalized shapes defined in [`src/lib/content/types.ts`](https://github.com/anclist/vvf-astro/blob/main/src/lib/content/types.ts). Pages and components never query EmDash directly — this keeps the CMS shape swappable and the rendering layer simple.
 
 Normalized types: `EventItem`, `ChildItem`, `TeamMemberItem`, `PostItem`, `Sponsor`, `SponsorshipPackage`, `AuctionItem`, `Faq`, `CampaignUpdate`, `CampaignSettings`, `NavItem`.
 
@@ -13,7 +13,7 @@ Normalized types: `EventItem`, `ChildItem`, `TeamMemberItem`, `PostItem`, `Spons
 
 `seed/seed.json` defines both the EmDash collection **schema** (fields, types, validation) and the starter **content**, and is version-controlled. It has four top-level sections: `version`, `meta`, `collections` (schema), and `content` (seed data), plus `menus` (nav structure).
 
-Collections: `events`, `children` (sponsorship profiles), `team_members`, `posts` (blog), `sponsors`, `sponsorship_packages`, `auction_items`, `faqs`, `campaign_updates`, `campaign_settings` (singleton).
+Collections: `events`, `children` (sponsorship profiles), `team_members`, `posts` (blog), `sponsors`, `sponsorship_packages`, `auction_items`, `faqs`, `campaign_updates`, `campaign_settings` (singleton), `resources`, `page_copy` (copy slots: page text, SEO and site-wide interface text), and `pages` (the sync-maintained page inventory). Every collection except `pages` keeps drafts and revisions. Entries exist per locale (`en`, `es`), linked as translations.
 
 To change the schema or seed content: edit `seed/seed.json`, then `npm run seed` (or just restart the dev server — EmDash auto-seeds on boot if the database doesn't have content yet).
 
