@@ -391,6 +391,22 @@ describe('getPrimaryMenu', () => {
     ])
   })
 
+  // Spec 3.1: the News item shows only while News has an article.
+  it('drops the News item while News has no article', async () => {
+    const menu = { items: [{ label: 'Resources', url: '#', children: [{ label: 'Stories', url: '/resources/stories', children: [] }, { label: 'News', url: '/resources/news', children: [] }] }] }
+    const articles = (withNews: boolean) => async (collection: string) =>
+      collection === 'categories'
+        ? { entries: [{ id: 'category-news', slug: 'news', data: {} }] }
+        : collection === 'articles' && withNews
+          ? { entries: [entry('press-a', { title: 'Nota', category: 'category-news', external: true, external_url: 'https://outlet.example/a' })] }
+          : { entries: [] }
+    getMenu.mockResolvedValue(menu)
+    getEmDashCollection.mockImplementation(articles(false))
+    expect((await getPrimaryMenu())[0].children?.map((c) => c.label)).toEqual(['Stories'])
+    getEmDashCollection.mockImplementation(articles(true))
+    expect((await getPrimaryMenu())[0].children?.map((c) => c.label)).toEqual(['Stories', 'News'])
+  })
+
   it('returns an empty menu when none is configured', async () => {
     getMenu.mockResolvedValue(null)
     expect(await getPrimaryMenu()).toEqual([])

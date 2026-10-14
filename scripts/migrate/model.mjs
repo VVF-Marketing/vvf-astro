@@ -443,6 +443,9 @@ export function toContentModel(content) {
         external: en.external ? true : undefined,
         external_url: en.external_url,
         outlet: en.outlet,
+        // Per language: the English card says "In Spanish"; the Spanish one
+        // shows no tag (the article is already in Spanish).
+        language_tag: d.language_tag || undefined,
       })
     },
     'articles'

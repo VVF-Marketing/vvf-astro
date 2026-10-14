@@ -34,6 +34,7 @@ export const COPY_PAGES = [
   // Explicit slug: the derived one (47 characters) breaks EmDash's index names
   // on Postgres (63-character identifier limit; see collectionNames.test.ts).
   { route: '/resources/financials', name: 'Resources: Financial Reports', slug: 'copy_resources_financials' },
+  { route: '/resources/news', name: 'Resources: News', slug: 'copy_resources_news' },
   { route: '/venezuela-earthquake-relief', name: 'Earthquake Relief', slug: 'copy_earthquake_relief' },
   { route: '/children', name: 'Children (list page)', slug: 'copy_sponsor_a_child_children' },
   { route: '/contact', name: 'Contact' },

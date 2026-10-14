@@ -23,4 +23,13 @@ export default [
     }),
     'seo.titleTemplate': titleTemplate,
   }),
+  // Shown only while a News article is published (spec 3.1).
+  defineCopy('/resources/news', {
+    ...seoSlots({
+      title: 'News | Resources | Victoria Venezuela Foundation',
+      description: 'News and announcements from Victoria Venezuela Foundation about our work with children in Venezuela.',
+      image: '/images/pages/57692375-vvf-home-shareimage-v2.jpg',
+    }),
+    'seo.titleTemplate': titleTemplate,
+  }),
 ]

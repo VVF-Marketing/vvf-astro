@@ -8,6 +8,7 @@
 // How Give opens is decided per page (spec 8.1): Ways to Give opens the
 // Donorbox popup (`popup`), which loads Donorbox's script once, here only;
 // elsewhere it's a link to the campaign page.
+import tokens from '../styles/tokens.cjs'
 import AppealPanel from './AppealPanel.astro'
 import { getGlobalCopy } from '../lib/globalCopy'
 import { getDonorboxCampaigns } from '../lib/content'
@@ -27,8 +28,9 @@ export interface Props {
 const { heading, learnMore = false, query, popup = false } = Astro.props as Props
 const { earthquake } = await getDonorboxCampaigns()
 const giveUrl = query ? `${earthquakeReliefUrl(earthquake)}?${query}` : earthquakeReliefUrl(earthquake)
-// The popup button uses the spec's `blue` (5.1; today's widget code has #128AED).
-const BLUE = '#00abf9'
+// The popup button uses the spec's `blue` (5.1; today's widget code has
+// #128AED), from the colour tokens: the widget takes a colour, not a class.
+const BLUE = tokens.colors.blue
 ---
 
 <AppealPanel

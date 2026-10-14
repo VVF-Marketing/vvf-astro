@@ -14,17 +14,14 @@ import ArticleCard from './ArticleCard.astro'
 import { getResources, getTeamMembers, getPageCopy } from '../lib/content'
 import { alternatePaths, LANG_TAGS, localeFromPath } from '../lib/i18n'
 import { fill, getGlobalCopy } from '../lib/globalCopy'
-import { RESOURCE_CATEGORY_PATHS, resourceTag, type ResourceCategory, type ResourceItem } from '../lib/content/types'
+import { RESOURCE_CATEGORY_PATHS, resourceCategoryLabels, resourceTag, type ResourceItem } from '../lib/content/types'
 import templateCopy from '../pages/resources/_copy.detail'
 import { articleLd } from '../lib/structuredData'
 
 const locale = localeFromPath(Astro.originPathname)
 const { copy } = await getPageCopy(templateCopy, locale)
 const t = await getGlobalCopy(Astro)
-const categoryLabels: Record<ResourceCategory, string> = {
-  stories: t['resources.category.stories'],
-  'financials-transparency': t['resources.category.financials'],
-}
+const categoryLabels = resourceCategoryLabels(t)
 
 interface Props {
   resource: ResourceItem
@@ -61,7 +58,7 @@ const crumbs = [
   <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-16 md:px-[72px]">
     <div class="mx-auto max-w-[1296px]">
       <Breadcrumbs items={crumbs} />
-      {updatedLabel && <p class="mt-12 font-label text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">{fill(copy['lastUpdated'], { date: updatedLabel })}</p>}
+      {updatedLabel && <p class="mt-12 font-label text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent-text">{fill(copy['lastUpdated'], { date: updatedLabel })}</p>}
       <h1 class="mt-4 text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{resource.title}</h1>
       {
         resource.authors && resource.authors.length > 0 && (

@@ -1183,6 +1183,113 @@
       "hidden": false
     },
     {
+      "slug": "copy_resources_news",
+      "label": "Resources: News",
+      "labelSingular": "Text slot",
+      "routable": false,
+      "titleField": "title",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "admin": {
+        "listColumns": []
+      },
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title (number on the page · section · where it appears)",
+          "type": "string",
+          "required": true,
+          "indexed": true,
+          "translatable": false
+        },
+        {
+          "slug": "key",
+          "label": "Slot key",
+          "type": "string",
+          "required": true,
+          "indexed": true,
+          "translatable": false
+        },
+        {
+          "slug": "label",
+          "label": "Where this text appears",
+          "type": "string",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "section",
+          "label": "Section",
+          "type": "select",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "options": [
+              "seo",
+              "content"
+            ]
+          }
+        },
+        {
+          "slug": "position",
+          "label": "Number on the page",
+          "type": "integer",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "format",
+          "label": "Format",
+          "type": "select",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "options": [
+              "plain",
+              "rich",
+              "image"
+            ]
+          }
+        },
+        {
+          "slug": "max_length",
+          "label": "Maximum length (characters)",
+          "type": "integer",
+          "translatable": false
+        },
+        {
+          "slug": "value",
+          "label": "Text",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "rich_value",
+          "label": "Rich text",
+          "type": "portableText"
+        },
+        {
+          "slug": "image_value",
+          "label": "Image",
+          "type": "image"
+        },
+        {
+          "slug": "stale",
+          "label": "Stale (slot no longer used by the page)",
+          "type": "boolean",
+          "defaultValue": false,
+          "indexed": true,
+          "translatable": false
+        }
+      ],
+      "description": "Text and SEO (search title, description, share image) of the Resources: News page (/resources/news). Edit the text only.",
+      "group": "Pages & SEO",
+      "sortOrder": 12,
+      "hidden": false
+    },
+    {
       "slug": "copy_earthquake_relief",
       "label": "Earthquake Relief",
       "labelSingular": "Text slot",
@@ -1286,7 +1393,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Earthquake Relief page (/venezuela-earthquake-relief). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 12,
+      "sortOrder": 13,
       "hidden": false
     },
     {
@@ -1393,7 +1500,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Children (list page) page (/children). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 13,
+      "sortOrder": 14,
       "hidden": false
     },
     {
@@ -1500,7 +1607,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Contact page (/contact). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 14,
+      "sortOrder": 15,
       "hidden": false
     },
     {
@@ -1607,7 +1714,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Privacy Policy page (/privacy-policy). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 15,
+      "sortOrder": 16,
       "hidden": false
     },
     {
@@ -1714,7 +1821,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Thank you: sponsorship page (/thank-you-sponsorship). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 16,
+      "sortOrder": 17,
       "hidden": false
     },
     {
@@ -1821,7 +1928,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Thank you: donation page (/thank-you-donation). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 17,
+      "sortOrder": 18,
       "hidden": false
     },
     {
@@ -1928,7 +2035,7 @@
       ],
       "description": "Text and SEO (search title, description, share image) of the Thank you: earthquake relief page (/thank-you-earthquake-relief). Edit the text only.",
       "group": "Pages & SEO",
-      "sortOrder": 18,
+      "sortOrder": 19,
       "hidden": false
     },
     {
@@ -2035,7 +2142,7 @@
       ],
       "description": "Text and labels shown on every event page. Edit the text only; titles show where each piece appears.",
       "group": "Pages & SEO",
-      "sortOrder": 19,
+      "sortOrder": 20,
       "hidden": false
     },
     {
@@ -2142,7 +2249,7 @@
       ],
       "description": "Text and labels shown on every resource page. Edit the text only; titles show where each piece appears.",
       "group": "Pages & SEO",
-      "sortOrder": 20,
+      "sortOrder": 21,
       "hidden": false
     },
     {
@@ -2249,7 +2356,7 @@
       ],
       "description": "Text and labels shown on every child profile. Edit the text only; titles show where each piece appears.",
       "group": "Pages & SEO",
-      "sortOrder": 21,
+      "sortOrder": 22,
       "hidden": false
     },
     {
@@ -2356,7 +2463,7 @@
       ],
       "description": "Text and labels shown on the header, footer, buttons and forms on every page. Edit the text only; titles show where each piece appears.",
       "group": "Pages & SEO",
-      "sortOrder": 22,
+      "sortOrder": 23,
       "hidden": false
     },
     {
@@ -2704,7 +2811,7 @@
       ],
       "description": "One item per event edition, with its page under /events, listed on /events-and-campaigns.",
       "group": "CMS collections",
-      "sortOrder": 23,
+      "sortOrder": 24,
       "hidden": false
     },
     {
@@ -2780,7 +2887,7 @@
       ],
       "description": "Tickets, sponsorship packages and special opportunities, picked on each event.",
       "group": "CMS collections",
-      "sortOrder": 24,
+      "sortOrder": 25,
       "hidden": false
     },
     {
@@ -2829,7 +2936,7 @@
       ],
       "description": "Rows of an event's sponsorship benefits grid.",
       "group": "CMS collections",
-      "sortOrder": 25,
+      "sortOrder": 26,
       "hidden": false
     },
     {
@@ -2887,7 +2994,7 @@
       ],
       "description": "Items shown in an event’s silent auction section. Never winners or bids.",
       "group": "CMS collections",
-      "sortOrder": 26,
+      "sortOrder": 27,
       "hidden": false
     },
     {
@@ -2928,7 +3035,7 @@
       ],
       "description": "Quotes shown on event recaps.",
       "group": "CMS collections",
-      "sortOrder": 27,
+      "sortOrder": 28,
       "hidden": false
     },
     {
@@ -2976,7 +3083,7 @@
       ],
       "description": "Questions and answers; tick the pages each one shows on. Events pick their own.",
       "group": "CMS collections",
-      "sortOrder": 31,
+      "sortOrder": 32,
       "hidden": false
     },
     {
@@ -3079,7 +3186,7 @@
       ],
       "description": "Sponsorship profiles. Restricted: only the safeguarding team can change them.",
       "group": "CMS collections",
-      "sortOrder": 35,
+      "sortOrder": 36,
       "hidden": false
     },
     {
@@ -3219,7 +3326,7 @@
       ],
       "description": "One record per person, each with a bio page under /our-team.",
       "group": "CMS collections",
-      "sortOrder": 32,
+      "sortOrder": 33,
       "hidden": false
     },
     {
@@ -3349,7 +3456,7 @@
       ],
       "description": "Stories, news, reports and press coverage, listed on /resources and its categories.",
       "group": "CMS collections",
-      "sortOrder": 28,
+      "sortOrder": 29,
       "hidden": false
     },
     {
@@ -3383,7 +3490,7 @@
       ],
       "description": "Stories, Financial Reports and News, each listed at /resources/<category>.",
       "group": "CMS collections",
-      "sortOrder": 29,
+      "sortOrder": 30,
       "hidden": false
     },
     {
@@ -3430,7 +3537,7 @@
       ],
       "description": "Article bylines, linked to the team bio when the author is on the team.",
       "group": "CMS collections",
-      "sortOrder": 30,
+      "sortOrder": 31,
       "hidden": false
     },
     {
@@ -3515,7 +3622,7 @@
       ],
       "description": "Sponsor and partner logos for every logo strip.",
       "group": "CMS collections",
-      "sortOrder": 33,
+      "sortOrder": 34,
       "hidden": false
     },
     {
@@ -3586,7 +3693,7 @@
       ],
       "description": "Impact figures shown across the site, each with its period and source.",
       "group": "CMS collections",
-      "sortOrder": 34,
+      "sortOrder": 35,
       "hidden": false
     },
     {
@@ -3645,7 +3752,7 @@
       ],
       "description": "The four tiers on Corporate Sponsorships.",
       "group": "CMS collections",
-      "sortOrder": 36,
+      "sortOrder": 37,
       "hidden": false
     },
     {
@@ -3683,7 +3790,7 @@
       ],
       "description": "The Donorbox campaign IDs every donate button and form uses. Change them here only.",
       "group": "CMS collections",
-      "sortOrder": 37,
+      "sortOrder": 38,
       "hidden": false
     },
     {
@@ -3716,7 +3823,7 @@
       ],
       "description": "The banner at the top of every page: its text and whether it shows.",
       "group": "Banner",
-      "sortOrder": 38
+      "sortOrder": 39
     },
     {
       "slug": "pages",
@@ -16087,6 +16194,135 @@
         }
       }
     ],
+    "copy_resources_news": [
+      {
+        "id": "copy_resources_news--seo.title",
+        "status": "published",
+        "data": {
+          "key": "seo.title",
+          "label": "SEO title (browser tab and search results)",
+          "title": "01 · SEO · SEO title (browser tab and search results)",
+          "section": "seo",
+          "position": 1,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "News | Resources | Victoria Venezuela Foundation"
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.title--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_resources_news--seo.title",
+        "data": {
+          "key": "seo.title",
+          "label": "SEO title (browser tab and search results)",
+          "title": "01 · SEO · SEO title (browser tab and search results)",
+          "section": "seo",
+          "position": 1,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "Noticias | Recursos | Fundación Victoria Venezuela"
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.description",
+        "status": "published",
+        "data": {
+          "key": "seo.description",
+          "label": "Meta description (search results)",
+          "title": "02 · SEO · Meta description (search results)",
+          "section": "seo",
+          "position": 2,
+          "format": "plain",
+          "max_length": 160,
+          "stale": false,
+          "value": "News and announcements from Victoria Venezuela Foundation about our work with children in Venezuela."
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.description--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_resources_news--seo.description",
+        "data": {
+          "key": "seo.description",
+          "label": "Meta description (search results)",
+          "title": "02 · SEO · Meta description (search results)",
+          "section": "seo",
+          "position": 2,
+          "format": "plain",
+          "max_length": 160,
+          "stale": false,
+          "value": "Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela."
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.image",
+        "status": "published",
+        "data": {
+          "key": "seo.image",
+          "label": "Social share image",
+          "title": "03 · SEO · Social share image",
+          "section": "seo",
+          "position": 3,
+          "format": "image",
+          "stale": false,
+          "image_value": {
+            "src": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
+          }
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.image--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_resources_news--seo.image",
+        "data": {
+          "key": "seo.image",
+          "label": "Social share image",
+          "title": "03 · SEO · Social share image",
+          "section": "seo",
+          "position": 3,
+          "format": "image",
+          "stale": false
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.titleTemplate",
+        "status": "published",
+        "data": {
+          "key": "seo.titleTemplate",
+          "label": "SEO title ({name} is the category name)",
+          "title": "04 · SEO · SEO title ({name} is the category name)",
+          "section": "seo",
+          "position": 4,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Resources | Victoria Venezuela Foundation"
+        }
+      },
+      {
+        "id": "copy_resources_news--seo.titleTemplate--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_resources_news--seo.titleTemplate",
+        "data": {
+          "key": "seo.titleTemplate",
+          "label": "SEO title ({name} is the category name)",
+          "title": "04 · SEO · SEO title ({name} is the category name)",
+          "section": "seo",
+          "position": 4,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Recursos | Fundación Victoria Venezuela"
+        }
+      }
+    ],
     "copy_sponsor_a_child_children": [
       {
         "id": "copy_sponsor_a_child_children--seo.title",
@@ -19082,14 +19318,46 @@
         }
       },
       {
+        "id": "copy_site--resources.category.news",
+        "status": "published",
+        "data": {
+          "key": "resources.category.news",
+          "label": "Resource category: News (tags, filters)",
+          "title": "081 · Content · Resource category: News (tags, filters)",
+          "section": "content",
+          "position": 81,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "News"
+        }
+      },
+      {
+        "id": "copy_site--resources.category.news--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_site--resources.category.news",
+        "data": {
+          "key": "resources.category.news",
+          "label": "Resource category: News (tags, filters)",
+          "title": "081 · Content · Resource category: News (tags, filters)",
+          "section": "content",
+          "position": 81,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "Noticias"
+        }
+      },
+      {
         "id": "copy_site--report.download",
         "status": "published",
         "data": {
           "key": "report.download",
           "label": "Report card: download button",
-          "title": "081 · Content · Report card: download button",
+          "title": "082 · Content · Report card: download button",
           "section": "content",
-          "position": 81,
+          "position": 82,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19104,9 +19372,9 @@
         "data": {
           "key": "report.download",
           "label": "Report card: download button",
-          "title": "081 · Content · Report card: download button",
+          "title": "082 · Content · Report card: download button",
           "section": "content",
-          "position": 81,
+          "position": 82,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19119,9 +19387,9 @@
         "data": {
           "key": "report.read",
           "label": "Report card: read button",
-          "title": "082 · Content · Report card: read button",
+          "title": "083 · Content · Report card: read button",
           "section": "content",
-          "position": 82,
+          "position": 83,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19136,9 +19404,9 @@
         "data": {
           "key": "report.read",
           "label": "Report card: read button",
-          "title": "082 · Content · Report card: read button",
+          "title": "083 · Content · Report card: read button",
           "section": "content",
-          "position": 82,
+          "position": 83,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19151,9 +19419,9 @@
         "data": {
           "key": "team.eyebrow",
           "label": "Team profile: label above name",
-          "title": "083 · Content · Team profile: label above name",
+          "title": "084 · Content · Team profile: label above name",
           "section": "content",
-          "position": 83,
+          "position": 84,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19168,9 +19436,9 @@
         "data": {
           "key": "team.eyebrow",
           "label": "Team profile: label above name",
-          "title": "083 · Content · Team profile: label above name",
+          "title": "084 · Content · Team profile: label above name",
           "section": "content",
-          "position": 83,
+          "position": 84,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19183,9 +19451,9 @@
         "data": {
           "key": "team.since",
           "label": "Team profile: \"Since\" label",
-          "title": "084 · Content · Team profile: \"Since\" label",
+          "title": "085 · Content · Team profile: \"Since\" label",
           "section": "content",
-          "position": 84,
+          "position": 85,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19200,9 +19468,9 @@
         "data": {
           "key": "team.since",
           "label": "Team profile: \"Since\" label",
-          "title": "084 · Content · Team profile: \"Since\" label",
+          "title": "085 · Content · Team profile: \"Since\" label",
           "section": "content",
-          "position": 84,
+          "position": 85,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19215,9 +19483,9 @@
         "data": {
           "key": "team.from",
           "label": "Team profile: \"From\" label",
-          "title": "085 · Content · Team profile: \"From\" label",
+          "title": "086 · Content · Team profile: \"From\" label",
           "section": "content",
-          "position": 85,
+          "position": 86,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19232,9 +19500,9 @@
         "data": {
           "key": "team.from",
           "label": "Team profile: \"From\" label",
-          "title": "085 · Content · Team profile: \"From\" label",
+          "title": "086 · Content · Team profile: \"From\" label",
           "section": "content",
-          "position": 85,
+          "position": 86,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19247,9 +19515,9 @@
         "data": {
           "key": "team.basedIn",
           "label": "Team profile: \"Based in\" label",
-          "title": "086 · Content · Team profile: \"Based in\" label",
+          "title": "087 · Content · Team profile: \"Based in\" label",
           "section": "content",
-          "position": 86,
+          "position": 87,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19264,9 +19532,9 @@
         "data": {
           "key": "team.basedIn",
           "label": "Team profile: \"Based in\" label",
-          "title": "086 · Content · Team profile: \"Based in\" label",
+          "title": "087 · Content · Team profile: \"Based in\" label",
           "section": "content",
-          "position": 86,
+          "position": 87,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19279,9 +19547,9 @@
         "data": {
           "key": "team.background",
           "label": "Team profile: background heading",
-          "title": "087 · Content · Team profile: background heading",
+          "title": "088 · Content · Team profile: background heading",
           "section": "content",
-          "position": 87,
+          "position": 88,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19296,9 +19564,9 @@
         "data": {
           "key": "team.background",
           "label": "Team profile: background heading",
-          "title": "087 · Content · Team profile: background heading",
+          "title": "088 · Content · Team profile: background heading",
           "section": "content",
-          "position": 87,
+          "position": 88,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19311,9 +19579,9 @@
         "data": {
           "key": "team.linkedin",
           "label": "Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
-          "title": "088 · Content · Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
+          "title": "089 · Content · Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
           "section": "content",
-          "position": 88,
+          "position": 89,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19328,9 +19596,9 @@
         "data": {
           "key": "team.linkedin",
           "label": "Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
-          "title": "088 · Content · Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
+          "title": "089 · Content · Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)",
           "section": "content",
-          "position": 88,
+          "position": 89,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19343,9 +19611,9 @@
         "data": {
           "key": "child.age",
           "label": "Child profile: age label",
-          "title": "089 · Content · Child profile: age label",
+          "title": "090 · Content · Child profile: age label",
           "section": "content",
-          "position": 89,
+          "position": 90,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19360,9 +19628,9 @@
         "data": {
           "key": "child.age",
           "label": "Child profile: age label",
-          "title": "089 · Content · Child profile: age label",
+          "title": "090 · Content · Child profile: age label",
           "section": "content",
-          "position": 89,
+          "position": 90,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19375,9 +19643,9 @@
         "data": {
           "key": "child.ageValue",
           "label": "Child profile: age ({age} is replaced with the number)",
-          "title": "090 · Content · Child profile: age ({age} is replaced with the number)",
+          "title": "091 · Content · Child profile: age ({age} is replaced with the number)",
           "section": "content",
-          "position": 90,
+          "position": 91,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19392,9 +19660,9 @@
         "data": {
           "key": "child.ageValue",
           "label": "Child profile: age ({age} is replaced with the number)",
-          "title": "090 · Content · Child profile: age ({age} is replaced with the number)",
+          "title": "091 · Content · Child profile: age ({age} is replaced with the number)",
           "section": "content",
-          "position": 90,
+          "position": 91,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19407,9 +19675,9 @@
         "data": {
           "key": "child.birthday",
           "label": "Child profile: birthday label",
-          "title": "091 · Content · Child profile: birthday label",
+          "title": "092 · Content · Child profile: birthday label",
           "section": "content",
-          "position": 91,
+          "position": 92,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19424,9 +19692,9 @@
         "data": {
           "key": "child.birthday",
           "label": "Child profile: birthday label",
-          "title": "091 · Content · Child profile: birthday label",
+          "title": "092 · Content · Child profile: birthday label",
           "section": "content",
-          "position": 91,
+          "position": 92,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19439,9 +19707,9 @@
         "data": {
           "key": "child.gender",
           "label": "Child profile: gender label",
-          "title": "092 · Content · Child profile: gender label",
+          "title": "093 · Content · Child profile: gender label",
           "section": "content",
-          "position": 92,
+          "position": 93,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19456,9 +19724,9 @@
         "data": {
           "key": "child.gender",
           "label": "Child profile: gender label",
-          "title": "092 · Content · Child profile: gender label",
+          "title": "093 · Content · Child profile: gender label",
           "section": "content",
-          "position": 92,
+          "position": 93,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19471,9 +19739,9 @@
         "data": {
           "key": "child.dream",
           "label": "Child profile: dream label",
-          "title": "093 · Content · Child profile: dream label",
+          "title": "094 · Content · Child profile: dream label",
           "section": "content",
-          "position": 93,
+          "position": 94,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19488,9 +19756,9 @@
         "data": {
           "key": "child.dream",
           "label": "Child profile: dream label",
-          "title": "093 · Content · Child profile: dream label",
+          "title": "094 · Content · Child profile: dream label",
           "section": "content",
-          "position": 93,
+          "position": 94,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19503,9 +19771,9 @@
         "data": {
           "key": "child.gender.Male",
           "label": "Child profile: gender value \"Male\"",
-          "title": "094 · Content · Child profile: gender value \"Male\"",
+          "title": "095 · Content · Child profile: gender value \"Male\"",
           "section": "content",
-          "position": 94,
+          "position": 95,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19520,9 +19788,9 @@
         "data": {
           "key": "child.gender.Male",
           "label": "Child profile: gender value \"Male\"",
-          "title": "094 · Content · Child profile: gender value \"Male\"",
+          "title": "095 · Content · Child profile: gender value \"Male\"",
           "section": "content",
-          "position": 94,
+          "position": 95,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19535,9 +19803,9 @@
         "data": {
           "key": "child.gender.Female",
           "label": "Child profile: gender value \"Female\"",
-          "title": "095 · Content · Child profile: gender value \"Female\"",
+          "title": "096 · Content · Child profile: gender value \"Female\"",
           "section": "content",
-          "position": 95,
+          "position": 96,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19552,9 +19820,9 @@
         "data": {
           "key": "child.gender.Female",
           "label": "Child profile: gender value \"Female\"",
-          "title": "095 · Content · Child profile: gender value \"Female\"",
+          "title": "096 · Content · Child profile: gender value \"Female\"",
           "section": "content",
-          "position": 95,
+          "position": 96,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19567,9 +19835,9 @@
         "data": {
           "key": "child.breadcrumb",
           "label": "Child profile: breadcrumb back link",
-          "title": "096 · Content · Child profile: breadcrumb back link",
+          "title": "097 · Content · Child profile: breadcrumb back link",
           "section": "content",
-          "position": 96,
+          "position": 97,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -19584,9 +19852,9 @@
         "data": {
           "key": "child.breadcrumb",
           "label": "Child profile: breadcrumb back link",
-          "title": "096 · Content · Child profile: breadcrumb back link",
+          "title": "097 · Content · Child profile: breadcrumb back link",
           "section": "content",
-          "position": 96,
+          "position": 97,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -19599,9 +19867,9 @@
         "data": {
           "key": "child.carouselLabel",
           "label": "Children carousel name (screen readers)",
-          "title": "097 · Content · Children carousel name (screen readers)",
+          "title": "098 · Content · Children carousel name (screen readers)",
           "section": "content",
-          "position": 97,
+          "position": 98,
           "format": "plain",
           "stale": false,
           "value": "More children"
@@ -19615,9 +19883,9 @@
         "data": {
           "key": "child.carouselLabel",
           "label": "Children carousel name (screen readers)",
-          "title": "097 · Content · Children carousel name (screen readers)",
+          "title": "098 · Content · Children carousel name (screen readers)",
           "section": "content",
-          "position": 97,
+          "position": 98,
           "format": "plain",
           "stale": false,
           "value": "Más niños"
@@ -19629,9 +19897,9 @@
         "data": {
           "key": "child.carouselPrev",
           "label": "Children carousel: previous button (screen readers)",
-          "title": "098 · Content · Children carousel: previous button (screen readers)",
+          "title": "099 · Content · Children carousel: previous button (screen readers)",
           "section": "content",
-          "position": 98,
+          "position": 99,
           "format": "plain",
           "stale": false,
           "value": "Previous children"
@@ -19645,9 +19913,9 @@
         "data": {
           "key": "child.carouselPrev",
           "label": "Children carousel: previous button (screen readers)",
-          "title": "098 · Content · Children carousel: previous button (screen readers)",
+          "title": "099 · Content · Children carousel: previous button (screen readers)",
           "section": "content",
-          "position": 98,
+          "position": 99,
           "format": "plain",
           "stale": false,
           "value": "Niños anteriores"
@@ -19659,9 +19927,9 @@
         "data": {
           "key": "event.whatWhenWhere",
           "label": "Event page: details heading",
-          "title": "099 · Content · Event page: details heading",
+          "title": "100 · Content · Event page: details heading",
           "section": "content",
-          "position": 99,
+          "position": 100,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19676,9 +19944,9 @@
         "data": {
           "key": "event.whatWhenWhere",
           "label": "Event page: details heading",
-          "title": "099 · Content · Event page: details heading",
+          "title": "100 · Content · Event page: details heading",
           "section": "content",
-          "position": 99,
+          "position": 100,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19691,9 +19959,9 @@
         "data": {
           "key": "event.specialHeading",
           "label": "Event page: special opportunities heading (default)",
-          "title": "100 · Content · Event page: special opportunities heading (default)",
+          "title": "101 · Content · Event page: special opportunities heading (default)",
           "section": "content",
-          "position": 100,
+          "position": 101,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19708,9 +19976,9 @@
         "data": {
           "key": "event.specialHeading",
           "label": "Event page: special opportunities heading (default)",
-          "title": "100 · Content · Event page: special opportunities heading (default)",
+          "title": "101 · Content · Event page: special opportunities heading (default)",
           "section": "content",
-          "position": 100,
+          "position": 101,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -19723,9 +19991,9 @@
         "data": {
           "key": "event.soldTab",
           "label": "Event page: added to a sold-out special opportunity tab",
-          "title": "101 · Content · Event page: added to a sold-out special opportunity tab",
+          "title": "102 · Content · Event page: added to a sold-out special opportunity tab",
           "section": "content",
-          "position": 101,
+          "position": 102,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19740,9 +20008,9 @@
         "data": {
           "key": "event.soldTab",
           "label": "Event page: added to a sold-out special opportunity tab",
-          "title": "101 · Content · Event page: added to a sold-out special opportunity tab",
+          "title": "102 · Content · Event page: added to a sold-out special opportunity tab",
           "section": "content",
-          "position": 101,
+          "position": 102,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -19755,9 +20023,9 @@
         "data": {
           "key": "event.packagesLabel",
           "label": "Event page: sponsor package tabs (screen readers)",
-          "title": "102 · Content · Event page: sponsor package tabs (screen readers)",
+          "title": "103 · Content · Event page: sponsor package tabs (screen readers)",
           "section": "content",
-          "position": 102,
+          "position": 103,
           "format": "plain",
           "stale": false,
           "value": "Sponsor packages"
@@ -19771,9 +20039,9 @@
         "data": {
           "key": "event.packagesLabel",
           "label": "Event page: sponsor package tabs (screen readers)",
-          "title": "102 · Content · Event page: sponsor package tabs (screen readers)",
+          "title": "103 · Content · Event page: sponsor package tabs (screen readers)",
           "section": "content",
-          "position": 102,
+          "position": 103,
           "format": "plain",
           "stale": false,
           "value": "Paquetes de patrocinio"
@@ -19785,9 +20053,9 @@
         "data": {
           "key": "event.recognition",
           "label": "Sponsor package: Recognition group",
-          "title": "103 · Content · Sponsor package: Recognition group",
+          "title": "104 · Content · Sponsor package: Recognition group",
           "section": "content",
-          "position": 103,
+          "position": 104,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19802,9 +20070,9 @@
         "data": {
           "key": "event.recognition",
           "label": "Sponsor package: Recognition group",
-          "title": "103 · Content · Sponsor package: Recognition group",
+          "title": "104 · Content · Sponsor package: Recognition group",
           "section": "content",
-          "position": 103,
+          "position": 104,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -19816,9 +20084,9 @@
         "data": {
           "key": "event.promotional",
           "label": "Sponsor package: Promotional Items group",
-          "title": "104 · Content · Sponsor package: Promotional Items group",
+          "title": "105 · Content · Sponsor package: Promotional Items group",
           "section": "content",
-          "position": 104,
+          "position": 105,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19833,9 +20101,9 @@
         "data": {
           "key": "event.promotional",
           "label": "Sponsor package: Promotional Items group",
-          "title": "104 · Content · Sponsor package: Promotional Items group",
+          "title": "105 · Content · Sponsor package: Promotional Items group",
           "section": "content",
-          "position": 104,
+          "position": 105,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -19847,9 +20115,9 @@
         "data": {
           "key": "event.activities",
           "label": "Sponsor package: Activities group",
-          "title": "105 · Content · Sponsor package: Activities group",
+          "title": "106 · Content · Sponsor package: Activities group",
           "section": "content",
-          "position": 105,
+          "position": 106,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -19864,9 +20132,9 @@
         "data": {
           "key": "event.activities",
           "label": "Sponsor package: Activities group",
-          "title": "105 · Content · Sponsor package: Activities group",
+          "title": "106 · Content · Sponsor package: Activities group",
           "section": "content",
-          "position": 105,
+          "position": 106,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -19878,9 +20146,9 @@
         "data": {
           "key": "event.benefitsTable",
           "label": "Benefits table name (screen readers)",
-          "title": "106 · Content · Benefits table name (screen readers)",
+          "title": "107 · Content · Benefits table name (screen readers)",
           "section": "content",
-          "position": 106,
+          "position": 107,
           "format": "plain",
           "stale": false,
           "value": "Sponsorship benefits by package"
@@ -19894,9 +20162,9 @@
         "data": {
           "key": "event.benefitsTable",
           "label": "Benefits table name (screen readers)",
-          "title": "106 · Content · Benefits table name (screen readers)",
+          "title": "107 · Content · Benefits table name (screen readers)",
           "section": "content",
-          "position": 106,
+          "position": 107,
           "format": "plain",
           "stale": false
         }
@@ -19907,9 +20175,9 @@
         "data": {
           "key": "event.benefitsHeader",
           "label": "Benefits table: first column heading",
-          "title": "107 · Content · Benefits table: first column heading",
+          "title": "108 · Content · Benefits table: first column heading",
           "section": "content",
-          "position": 107,
+          "position": 108,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -19924,9 +20192,9 @@
         "data": {
           "key": "event.benefitsHeader",
           "label": "Benefits table: first column heading",
-          "title": "107 · Content · Benefits table: first column heading",
+          "title": "108 · Content · Benefits table: first column heading",
           "section": "content",
-          "position": 107,
+          "position": 108,
           "format": "plain",
           "max_length": 40,
           "stale": false
@@ -19938,9 +20206,9 @@
         "data": {
           "key": "event.included",
           "label": "Benefits table: included mark (screen readers)",
-          "title": "108 · Content · Benefits table: included mark (screen readers)",
+          "title": "109 · Content · Benefits table: included mark (screen readers)",
           "section": "content",
-          "position": 108,
+          "position": 109,
           "format": "plain",
           "stale": false,
           "value": "Included"
@@ -19954,9 +20222,9 @@
         "data": {
           "key": "event.included",
           "label": "Benefits table: included mark (screen readers)",
-          "title": "108 · Content · Benefits table: included mark (screen readers)",
+          "title": "109 · Content · Benefits table: included mark (screen readers)",
           "section": "content",
-          "position": 108,
+          "position": 109,
           "format": "plain",
           "stale": false
         }
@@ -19967,9 +20235,9 @@
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "109 · Content · Gift amounts name (screen readers)",
+          "title": "110 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 109,
+          "position": 110,
           "format": "plain",
           "stale": false,
           "value": "Gift amount"
@@ -19983,9 +20251,9 @@
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "109 · Content · Gift amounts name (screen readers)",
+          "title": "110 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 109,
+          "position": 110,
           "format": "plain",
           "stale": false
         }
@@ -19996,9 +20264,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "110 · Content · Gift amounts: other amount",
+          "title": "111 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20013,9 +20281,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "110 · Content · Gift amounts: other amount",
+          "title": "111 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20028,9 +20296,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "111 · Content · Gift amounts: continue button (default)",
+          "title": "112 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20045,9 +20313,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "111 · Content · Gift amounts: continue button (default)",
+          "title": "112 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20060,9 +20328,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "112 · Content · Earthquake appeal: text",
+          "title": "113 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20077,9 +20345,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "112 · Content · Earthquake appeal: text",
+          "title": "113 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20092,9 +20360,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "113 · Content · Earthquake appeal: render description",
+          "title": "114 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20109,9 +20377,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "113 · Content · Earthquake appeal: render description",
+          "title": "114 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20124,9 +20392,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "114 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20141,9 +20409,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "114 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20156,9 +20424,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "115 · Content · Earthquake appeal: cards heading",
+          "title": "116 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20173,9 +20441,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "115 · Content · Earthquake appeal: cards heading",
+          "title": "116 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20188,9 +20456,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "116 · Content · Earthquake appeal: card 1 title",
+          "title": "117 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20205,9 +20473,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "116 · Content · Earthquake appeal: card 1 title",
+          "title": "117 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20220,9 +20488,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "117 · Content · Earthquake appeal: card 1 text",
+          "title": "118 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20237,9 +20505,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "117 · Content · Earthquake appeal: card 1 text",
+          "title": "118 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20252,9 +20520,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "118 · Content · Earthquake appeal: card 1 image description",
+          "title": "119 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20269,9 +20537,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "118 · Content · Earthquake appeal: card 1 image description",
+          "title": "119 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20284,9 +20552,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "119 · Content · Earthquake appeal: card 2 title",
+          "title": "120 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20301,9 +20569,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "119 · Content · Earthquake appeal: card 2 title",
+          "title": "120 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20316,9 +20584,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "120 · Content · Earthquake appeal: card 2 text",
+          "title": "121 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20333,9 +20601,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "120 · Content · Earthquake appeal: card 2 text",
+          "title": "121 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20348,9 +20616,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "121 · Content · Earthquake appeal: card 2 image description",
+          "title": "122 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20365,9 +20633,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "121 · Content · Earthquake appeal: card 2 image description",
+          "title": "122 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20380,9 +20648,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "122 · Content · Earthquake appeal: card 3 title",
+          "title": "123 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20397,9 +20665,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "122 · Content · Earthquake appeal: card 3 title",
+          "title": "123 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20412,9 +20680,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "123 · Content · Earthquake appeal: card 3 text",
+          "title": "124 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20429,9 +20697,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "123 · Content · Earthquake appeal: card 3 text",
+          "title": "124 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20444,9 +20712,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "124 · Content · Earthquake appeal: card 3 image description",
+          "title": "125 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20461,9 +20729,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "124 · Content · Earthquake appeal: card 3 image description",
+          "title": "125 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20476,9 +20744,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "125 · Content · Earthquake appeal: give button",
+          "title": "126 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20493,9 +20761,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "125 · Content · Earthquake appeal: give button",
+          "title": "126 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20508,9 +20776,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "126 · Content · Earthquake appeal: learn more button",
+          "title": "127 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20525,9 +20793,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "126 · Content · Earthquake appeal: learn more button",
+          "title": "127 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20540,9 +20808,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "127 · Content · Not Found page: heading and title",
+          "title": "128 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20557,9 +20825,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "127 · Content · Not Found page: heading and title",
+          "title": "128 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20572,9 +20840,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "128 · Content · Pagination: previous page",
+          "title": "129 · Content · Pagination: previous page",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20589,9 +20857,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "128 · Content · Pagination: previous page",
+          "title": "129 · Content · Pagination: previous page",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20604,9 +20872,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "129 · Content · Pagination: next page",
+          "title": "130 · Content · Pagination: next page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20621,9 +20889,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "129 · Content · Pagination: next page",
+          "title": "130 · Content · Pagination: next page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20636,9 +20904,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "130 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20653,9 +20921,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "130 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20668,9 +20936,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "131 · Content · Pagination name (screen readers)",
+          "title": "132 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "stale": false,
           "value": "Pages"
@@ -20684,9 +20952,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "131 · Content · Pagination name (screen readers)",
+          "title": "132 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "stale": false,
           "value": "Páginas"
@@ -20698,9 +20966,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "132 · Content · Breadcrumb name (screen readers)",
+          "title": "133 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false,
           "value": "Breadcrumb"
@@ -20714,9 +20982,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "132 · Content · Breadcrumb name (screen readers)",
+          "title": "133 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false
         }
@@ -20727,9 +20995,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "133 · Content · Gallery: previous button (screen readers)",
+          "title": "134 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false,
           "value": "Previous photos"
@@ -20743,9 +21011,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "133 · Content · Gallery: previous button (screen readers)",
+          "title": "134 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false
         }
@@ -20756,9 +21024,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "134 · Content · Gallery: next button (screen readers)",
+          "title": "135 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false,
           "value": "Next photos"
@@ -20772,9 +21040,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "134 · Content · Gallery: next button (screen readers)",
+          "title": "135 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false
         }
@@ -20785,9 +21053,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "135 · Content · Logo carousel: previous button (screen readers)",
+          "title": "136 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false,
           "value": "Previous logos"
@@ -20801,9 +21069,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "135 · Content · Logo carousel: previous button (screen readers)",
+          "title": "136 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false
         }
@@ -20814,9 +21082,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "136 · Content · Logo carousel: next button (screen readers)",
+          "title": "137 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false,
           "value": "Next logos"
@@ -20830,9 +21098,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "136 · Content · Logo carousel: next button (screen readers)",
+          "title": "137 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false
         }
@@ -20843,9 +21111,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "137 · Content · Stories carousel: previous button (screen readers)",
+          "title": "138 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false,
           "value": "Previous story"
@@ -20859,9 +21127,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "137 · Content · Stories carousel: previous button (screen readers)",
+          "title": "138 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false
         }
@@ -20872,9 +21140,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "138 · Content · Stories carousel: next button (screen readers)",
+          "title": "139 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false,
           "value": "Next story"
@@ -20888,9 +21156,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "138 · Content · Stories carousel: next button (screen readers)",
+          "title": "139 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false
         }
@@ -20901,9 +21169,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "139 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false,
           "value": "Show item {n}"
@@ -20917,9 +21185,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "139 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false,
           "value": "Mostrar elemento {n}"
@@ -20931,9 +21199,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "140 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Show photo {n}"
@@ -20947,9 +21215,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "140 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Mostrar foto {n}"
@@ -20961,9 +21229,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "141 · Content · Added to every link to another website (screen readers)",
+          "title": "142 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20978,9 +21246,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "141 · Content · Added to every link to another website (screen readers)",
+          "title": "142 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -47011,6 +47279,202 @@
         }
       },
       {
+        "id": "article-press-quepasaenvenezuela-2026-08-04",
+        "slug": "press-quepasaenvenezuela-2026-08-04",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos",
+          "publish_date": "2026-08-04T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "45HM269E0JMNXDHA7FKFYNGVN3",
+            "alt": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos",
+            "width": 1600,
+            "height": 1066,
+            "mimeType": "image/jpeg",
+            "filename": "eb60c6dc-vvf-press-quepasaenvenezuela-boywithbook-v1.jpeg",
+            "meta": {
+              "storageKey": "45HM269E0JMNXDHA7FKFYNGVN3.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://quepasaenvenezuela.org/fundacion-victoria-lleva-esperanza-y-servicio-a-comunidades-afectadas-por-los-sismos/",
+          "outlet": "Que Pasa en Venezuela",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-cglatinmagazine-2026-08-03",
+        "slug": "press-cglatinmagazine-2026-08-03",
+        "status": "published",
+        "data": {
+          "title": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas",
+          "publish_date": "2026-08-03T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "61XN5YJSQMWKZP4Q542YHHF5ZC",
+            "alt": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas",
+            "width": 1600,
+            "height": 1200,
+            "mimeType": "image/jpeg",
+            "filename": "31bbcfe3-vvf-press-cglatinmagazine-teamgroup-v1.jpeg",
+            "meta": {
+              "storageKey": "61XN5YJSQMWKZP4Q542YHHF5ZC.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://cg.com.ve/la-fe-que-se-vuelve-servicio-fundacion-victoria-en-las-zonas-afectadas/",
+          "outlet": "CG Latin Magazine",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-alourbano-2026-05-18",
+        "slug": "press-alourbano-2026-05-18",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria Venezuela impulsa jornadas de salud infantil",
+          "publish_date": "2026-05-18T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "6AM6YWECXSPWACS87QNDN2MR3N",
+            "alt": "Fundación Victoria Venezuela impulsa jornadas de salud infantil",
+            "width": 1600,
+            "height": 1200,
+            "mimeType": "image/jpeg",
+            "filename": "faf23788-vvf-press-alourbano-healthtalk-v1.jpeg",
+            "meta": {
+              "storageKey": "6AM6YWECXSPWACS87QNDN2MR3N.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://alourbano.net/fundacion-victoria-venezuela-jornadas-salud/",
+          "outlet": "AloUrbano",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-vidayarte-2026-05-06",
+        "slug": "press-vidayarte-2026-05-06",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas",
+          "publish_date": "2026-05-06T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "00WY7NPE4YRTAQV54Z3RSNY0BX",
+            "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas",
+            "width": 1600,
+            "height": 1066,
+            "mimeType": "image/jpeg",
+            "filename": "0a27cc4f-vvf-press-vidayarte-consulttables-v1.jpeg",
+            "meta": {
+              "storageKey": "00WY7NPE4YRTAQV54Z3RSNY0BX.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://www.vidayarte.com/salud/fundacion-victoria-venezuela-impulsa-jornadas-de-salud-beneficas",
+          "outlet": "Vida y Arte",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-noticias-en-venezuela-2024-02-05",
+        "slug": "press-noticias-en-venezuela-2024-02-05",
+        "status": "published",
+        "data": {
+          "title": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!",
+          "publish_date": "2024-02-05T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "5XWNZ16RDWSM5HBEV685TDA71F",
+            "alt": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!",
+            "width": 1200,
+            "height": 791,
+            "mimeType": "image/png",
+            "filename": "9456f310-kkk.png",
+            "meta": {
+              "storageKey": "5XWNZ16RDWSM5HBEV685TDA71F.png"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://noticiasenvenezuela.com/helen-y-randy-han-ayudado-a-mas-de-42mil-ninos-en-venezuela/",
+          "outlet": "Noticias En Venezuela",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-caracasnews24-2022-12-13",
+        "slug": "press-caracasnews24-2022-12-13",
+        "status": "published",
+        "data": {
+          "title": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela",
+          "publish_date": "2022-12-13T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "27TAHQKJ0QYAKQCQ107SXRDKVP",
+            "alt": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela",
+            "width": 1000,
+            "height": 666,
+            "mimeType": "image/jpeg",
+            "filename": "d9bbab10-vvf-press-2022christmas-crowd-v1.jpeg",
+            "meta": {
+              "storageKey": "27TAHQKJ0QYAKQCQ107SXRDKVP.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://caracasnews24.com/400-ninos-fueron-sorprendidos-por-la-fundacion-mision-victoria-venezuela/",
+          "outlet": "CaracasNews24",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
+        "id": "article-press-la-revista-del-tuy-2022-12-13",
+        "slug": "press-la-revista-del-tuy-2022-12-13",
+        "status": "published",
+        "data": {
+          "title": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy",
+          "publish_date": "2022-12-13T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "07DXQ4A1YJ6XFTPNKPRYC86WX3",
+            "alt": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy",
+            "width": 524,
+            "height": 352,
+            "mimeType": "image/jpeg",
+            "filename": "5e16c21b-navidad-en-el-tuy-compressed.jpeg",
+            "meta": {
+              "storageKey": "07DXQ4A1YJ6XFTPNKPRYC86WX3.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://larevistadeltuy.com/la-fundacion-mision-victoria-venezuela-llevaron-la-navidad-a-ninos-en-los-valles-del-tuy/",
+          "outlet": "La Revista del Tuy",
+          "language_tag": "In Spanish"
+        }
+      },
+      {
         "id": "article-annual-report-2022--es",
         "slug": "annual-report-2022",
         "status": "published",
@@ -55017,6 +55481,209 @@
         },
         "locale": "es",
         "translationOf": "article-your-impact-3q2024"
+      },
+      {
+        "id": "article-press-quepasaenvenezuela-2026-08-04--es",
+        "slug": "press-quepasaenvenezuela-2026-08-04",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos",
+          "publish_date": "2026-08-04T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "45HM269E0JMNXDHA7FKFYNGVN3",
+            "alt": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos",
+            "width": 1600,
+            "height": 1066,
+            "mimeType": "image/jpeg",
+            "filename": "eb60c6dc-vvf-press-quepasaenvenezuela-boywithbook-v1.jpeg",
+            "meta": {
+              "storageKey": "45HM269E0JMNXDHA7FKFYNGVN3.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://quepasaenvenezuela.org/fundacion-victoria-lleva-esperanza-y-servicio-a-comunidades-afectadas-por-los-sismos/",
+          "outlet": "Que Pasa en Venezuela"
+        },
+        "locale": "es",
+        "translationOf": "article-press-quepasaenvenezuela-2026-08-04"
+      },
+      {
+        "id": "article-press-cglatinmagazine-2026-08-03--es",
+        "slug": "press-cglatinmagazine-2026-08-03",
+        "status": "published",
+        "data": {
+          "title": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas",
+          "publish_date": "2026-08-03T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "61XN5YJSQMWKZP4Q542YHHF5ZC",
+            "alt": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas",
+            "width": 1600,
+            "height": 1200,
+            "mimeType": "image/jpeg",
+            "filename": "31bbcfe3-vvf-press-cglatinmagazine-teamgroup-v1.jpeg",
+            "meta": {
+              "storageKey": "61XN5YJSQMWKZP4Q542YHHF5ZC.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://cg.com.ve/la-fe-que-se-vuelve-servicio-fundacion-victoria-en-las-zonas-afectadas/",
+          "outlet": "CG Latin Magazine"
+        },
+        "locale": "es",
+        "translationOf": "article-press-cglatinmagazine-2026-08-03"
+      },
+      {
+        "id": "article-press-alourbano-2026-05-18--es",
+        "slug": "press-alourbano-2026-05-18",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria Venezuela impulsa jornadas de salud infantil",
+          "publish_date": "2026-05-18T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "6AM6YWECXSPWACS87QNDN2MR3N",
+            "alt": "Fundación Victoria Venezuela impulsa jornadas de salud infantil",
+            "width": 1600,
+            "height": 1200,
+            "mimeType": "image/jpeg",
+            "filename": "faf23788-vvf-press-alourbano-healthtalk-v1.jpeg",
+            "meta": {
+              "storageKey": "6AM6YWECXSPWACS87QNDN2MR3N.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://alourbano.net/fundacion-victoria-venezuela-jornadas-salud/",
+          "outlet": "AloUrbano"
+        },
+        "locale": "es",
+        "translationOf": "article-press-alourbano-2026-05-18"
+      },
+      {
+        "id": "article-press-vidayarte-2026-05-06--es",
+        "slug": "press-vidayarte-2026-05-06",
+        "status": "published",
+        "data": {
+          "title": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas",
+          "publish_date": "2026-05-06T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "00WY7NPE4YRTAQV54Z3RSNY0BX",
+            "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas",
+            "width": 1600,
+            "height": 1066,
+            "mimeType": "image/jpeg",
+            "filename": "0a27cc4f-vvf-press-vidayarte-consulttables-v1.jpeg",
+            "meta": {
+              "storageKey": "00WY7NPE4YRTAQV54Z3RSNY0BX.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://www.vidayarte.com/salud/fundacion-victoria-venezuela-impulsa-jornadas-de-salud-beneficas",
+          "outlet": "Vida y Arte"
+        },
+        "locale": "es",
+        "translationOf": "article-press-vidayarte-2026-05-06"
+      },
+      {
+        "id": "article-press-noticias-en-venezuela-2024-02-05--es",
+        "slug": "press-noticias-en-venezuela-2024-02-05",
+        "status": "published",
+        "data": {
+          "title": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!",
+          "publish_date": "2024-02-05T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "5XWNZ16RDWSM5HBEV685TDA71F",
+            "alt": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!",
+            "width": 1200,
+            "height": 791,
+            "mimeType": "image/png",
+            "filename": "9456f310-kkk.png",
+            "meta": {
+              "storageKey": "5XWNZ16RDWSM5HBEV685TDA71F.png"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://noticiasenvenezuela.com/helen-y-randy-han-ayudado-a-mas-de-42mil-ninos-en-venezuela/",
+          "outlet": "Noticias En Venezuela"
+        },
+        "locale": "es",
+        "translationOf": "article-press-noticias-en-venezuela-2024-02-05"
+      },
+      {
+        "id": "article-press-caracasnews24-2022-12-13--es",
+        "slug": "press-caracasnews24-2022-12-13",
+        "status": "published",
+        "data": {
+          "title": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela",
+          "publish_date": "2022-12-13T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "27TAHQKJ0QYAKQCQ107SXRDKVP",
+            "alt": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela",
+            "width": 1000,
+            "height": 666,
+            "mimeType": "image/jpeg",
+            "filename": "d9bbab10-vvf-press-2022christmas-crowd-v1.jpeg",
+            "meta": {
+              "storageKey": "27TAHQKJ0QYAKQCQ107SXRDKVP.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://caracasnews24.com/400-ninos-fueron-sorprendidos-por-la-fundacion-mision-victoria-venezuela/",
+          "outlet": "CaracasNews24"
+        },
+        "locale": "es",
+        "translationOf": "article-press-caracasnews24-2022-12-13"
+      },
+      {
+        "id": "article-press-la-revista-del-tuy-2022-12-13--es",
+        "slug": "press-la-revista-del-tuy-2022-12-13",
+        "status": "published",
+        "data": {
+          "title": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy",
+          "publish_date": "2022-12-13T00:00:00.000Z",
+          "category": "$ref:category-news",
+          "authors": [],
+          "featured_image": {
+            "provider": "local",
+            "id": "07DXQ4A1YJ6XFTPNKPRYC86WX3",
+            "alt": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy",
+            "width": 524,
+            "height": 352,
+            "mimeType": "image/jpeg",
+            "filename": "5e16c21b-navidad-en-el-tuy-compressed.jpeg",
+            "meta": {
+              "storageKey": "07DXQ4A1YJ6XFTPNKPRYC86WX3.jpeg"
+            }
+          },
+          "featured": false,
+          "external": true,
+          "external_url": "https://larevistadeltuy.com/la-fundacion-mision-victoria-venezuela-llevaron-la-navidad-a-ninos-en-los-valles-del-tuy/",
+          "outlet": "La Revista del Tuy"
+        },
+        "locale": "es",
+        "translationOf": "article-press-la-revista-del-tuy-2022-12-13"
       }
     ],
     "testimonials": [],
@@ -55253,6 +55920,11 @@
               "type": "custom",
               "label": "Financial Reports",
               "url": "/resources/financials"
+            },
+            {
+              "type": "custom",
+              "label": "News",
+              "url": "/resources/news"
             }
           ]
         }
@@ -55333,6 +56005,11 @@
               "type": "custom",
               "label": "Informes financieros",
               "url": "/es/resources/financials"
+            },
+            {
+              "type": "custom",
+              "label": "Noticias",
+              "url": "/es/resources/news"
             }
           ]
         }

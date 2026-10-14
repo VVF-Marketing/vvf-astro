@@ -30,7 +30,8 @@ const size = variant === 'footer' ? 'text-size-sm' : 'text-size-base'
 const link = [
   'border-b-2 pb-px pt-[3px] font-body uppercase leading-[1.5] whitespace-nowrap text-neutral-white no-underline',
   'transition-[opacity,border-color] duration-200',
-  'focus-visible:rounded-[4px] focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent',
+  // The focus ring itself is the site-wide one (src/index.css).
+  'focus-visible:rounded-tag focus-visible:opacity-100',
   size,
 ].join(' ')
 ---

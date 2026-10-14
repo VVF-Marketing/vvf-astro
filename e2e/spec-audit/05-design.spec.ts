@@ -1,6 +1,7 @@
 // Spec section 5: design system (checks 5.9-1, 3, 4, 6, 7, 8, 9, 10).
 import { expect, test, type Page } from '@playwright/test'
 import { bilingual, HAS_CHILD_DATA, NO_CHILD_DATA, open, LANGS, single, SPEC_PAGES } from './helpers'
+import tokens from '../../src/styles/tokens.cjs'
 
 const WIDTHS = [1440, 1280, 768, 440, 375]
 const isPhone = (w: number) => w < 768
@@ -229,8 +230,9 @@ for (const lang of LANGS) {
 }
 
 // 5.9-2: every colour in the site's CSS (the stylesheets public pages load)
-// is a palette token (5.1) or a shadow token (5.4, 5.6).
-const PALETTE = ['#02335e', '#00abf9', '#c1e7f5', '#f9eac6', '#ffd7d7', '#e7e7e7', '#ffffff', '#f2f2f2', '#1e73be', '#cef5ca', '#114e0b', '#fcf8d8', '#5e5515', '#f8e4e4', '#3b0b0b']
+// is a palette token (5.1, from src/styles/tokens.cjs) or a shadow token
+// (5.4, 5.6).
+const PALETTE: string[] = Object.values(tokens.colors as Record<string, string>).map((v) => v.toLowerCase())
 const SHADOWS = ['rgba(2,51,94,0.06)', 'rgba(0,0,0,0.18)', 'rgba(2,51,94,0.12)']
 
 export function offPalette(css: string): string[] {

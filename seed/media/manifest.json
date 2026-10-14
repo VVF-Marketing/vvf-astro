@@ -1192,5 +1192,54 @@
     "bytes": 812975,
     "sha256": "48a86346ed20c4b8072d1109f548e84001be5d824023a9e308a7e8ed46307b97",
     "alt": "Four golfers on the fairway, one raising his arm to celebrate."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681c5dcff0b8af59611f1_kkk.png": {
+    "path": "seed/media/resources/9456f310-kkk.png",
+    "contentType": "image/png",
+    "bytes": 1167160,
+    "sha256": "597c24204043fc31943fd295538bcda498a1cc3b9554fbe7c5a329194bcce0a7",
+    "alt": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681c5dcff0b8af5961265_navidad-en-el-tuy-compressed.jpeg": {
+    "path": "seed/media/resources/5e16c21b-navidad-en-el-tuy-compressed.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 11981,
+    "sha256": "fbc18cbde917cb64c490a822eaafba0d7828beba53da6316ca2259af725c2c92",
+    "alt": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681f8c9044ce98bbe2a3b_6ac681e05802228af63ccada_VVF_Press_2022Christmas_Crowd_v1.jpeg": {
+    "path": "seed/media/resources/d9bbab10-vvf-press-2022christmas-crowd-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 137768,
+    "sha256": "c5fe88042830f36fbd07b8843e1910962da078299b9a2633d39e99bd1b0734b9",
+    "alt": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d72_6ac806236154b70b091bf2e6_VVF_Press_QuePasaEnVenezuela_BoyWithBook_v1.jpeg": {
+    "path": "seed/media/resources/eb60c6dc-vvf-press-quepasaenvenezuela-boywithbook-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 267944,
+    "sha256": "306997c486a02168233e8102c27a3c976486698969120b2cd2425ec65276c41a",
+    "alt": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d76_6ac80643e738a2dea4bf504b_VVF_Press_AloUrbano_HealthTalk_v1.jpeg": {
+    "path": "seed/media/resources/faf23788-vvf-press-alourbano-healthtalk-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 522039,
+    "sha256": "7df8e77d5439237d6a9db32f6d191f6438ee26f89f4b98333332d81a15b269db",
+    "alt": "Fundación Victoria Venezuela impulsa jornadas de salud infantil"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d7a_6ac805ff1bd43ab27b730b41_VVF_Press_CGLatinMagazine_TeamGroup_v1.jpeg": {
+    "path": "seed/media/resources/31bbcfe3-vvf-press-cglatinmagazine-teamgroup-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 464930,
+    "sha256": "239740b74f55b0d70c4d9f410d8bbf94544655beae5e53cc8397e470e5a5f77e",
+    "alt": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d81_6ac80663930ddff8d4e6a73c_VVF_Press_VidaYArte_ConsultTables_v1.jpeg": {
+    "path": "seed/media/resources/0a27cc4f-vvf-press-vidayarte-consulttables-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 357278,
+    "sha256": "6285c8d487415e089c5aa93783d28f7a7c82ef392cdf651fbffe0ae179013b66",
+    "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas"
   }
 }

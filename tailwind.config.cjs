@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 // VVF design tokens, from the VVF website spec's design system (sections 5.1
-// to 5.4). Class names predate the spec; each token's comment names the spec
-// token it implements. No other colour may be used (spec 5.9, check 2), so
-// the colour palette replaces Tailwind's defaults instead of extending them.
-const navy = '#02335e' // spec 5.1 `navy`
-const blue = '#00abf9' // spec 5.1 `blue`
+// to 5.4). Colour values live in src/styles/tokens.cjs; class names predate
+// the spec, and each one's comment names the spec token it implements. No
+// other colour may be used (spec 5.9, check 2), so the colour palette
+// replaces Tailwind's defaults instead of extending them.
+const plugin = require('tailwindcss/plugin')
+const { colors: c, focus } = require('./src/styles/tokens.cjs')
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -19,27 +20,28 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       brand: {
-        primary: navy, // `navy`
-        accent: blue, // `blue`
+        primary: c.navy, // `navy`
+        accent: c.blue, // `blue`: fills, bullets, and text on navy only
+        'accent-text': c['blue-text'], // `blue-text`: blue text and lines on light backgrounds
       },
       neutral: {
-        white: '#ffffff', // `white`
-        'light-gray': '#e7e7e7', // `grey-line`
+        white: c.white, // `white`
+        'light-gray': c['grey-line'], // `grey-line`
       },
-      page: '#f2f2f2', // `page`
-      link: '#1e73be', // `link`
-      focus: blue, // focus outline is `blue` (spec 5.1)
-      sun: '#f9eac6', // `sun`
-      salmon: '#ffd7d7', // `salmon`
-      sky: '#c1e7f5', // `sky`
-      success: { DEFAULT: '#cef5ca', dark: '#114e0b' }, // `success`
-      warning: { DEFAULT: '#fcf8d8', dark: '#5e5515' }, // `warning`
-      error: { DEFAULT: '#f8e4e4', dark: '#3b0b0b' }, // `error`
+      page: c.page, // `page`
+      link: c.link, // `link`
+      focus: { DEFAULT: focus.outline, inner: focus.inner }, // focus outline and its inner ring (Q12)
+      sun: c.sun, // `sun`
+      salmon: c.salmon, // `salmon`
+      sky: c.sky, // `sky`
+      success: { DEFAULT: c.success, dark: c['success-dark'] }, // `success`
+      warning: { DEFAULT: c.warning, dark: c['warning-dark'] }, // `warning`
+      error: { DEFAULT: c.error, dark: c['error-dark'] }, // `error`
       // Preflight's placeholder colour: navy, faded.
       gray: { 400: 'rgb(2 51 94 / 0.6)' },
     },
-    borderColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: '#e7e7e7' }), // `grey-line`
-    ringColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: blue }),
+    borderColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: c['grey-line'] }), // `grey-line`
+    ringColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: c.blue }),
     ringOffsetColor: ({ theme }) => theme('colors'),
     boxShadow: {
       card: '0 2px 16px rgba(2,51,94,0.06)', // `shadow-card` (spec 5.4)
@@ -131,5 +133,18 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // The colour tokens as CSS variables (--navy, --blue-text, …) plus the
+    // focus ring's (--focus, --focus-inner), for src/index.css and the few
+    // styles Tailwind classes can't reach.
+    plugin(({ addBase }) => {
+      addBase({
+        ':root': {
+          ...Object.fromEntries(Object.entries(c).map(([name, value]) => [`--${name}`, value])),
+          '--focus': focus.outline,
+          '--focus-inner': focus.inner,
+        },
+      })
+    }),
+  ],
 }

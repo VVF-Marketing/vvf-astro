@@ -1406,6 +1406,11 @@
     "seo.description": "Historias de nuestros programas de nutrición, atención médica y educación para niños en Venezuela.",
     "seo.titleTemplate": "{name} | Recursos | Fundación Victoria Venezuela"
   },
+  "/resources/news": {
+    "seo.title": "Noticias | Recursos | Fundación Victoria Venezuela",
+    "seo.description": "Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela.",
+    "seo.titleTemplate": "{name} | Recursos | Fundación Victoria Venezuela"
+  },
   "/resources/financials": {
     "seo.title": "Informes financieros | Recursos | Fundación Victoria Venezuela",
     "seo.description": "Nuestros informes de impacto anuales y trimestrales, junto con estados financieros resumidos. Victoria Venezuela Foundation es una organización 501(c)(3), EIN 88-3282100.",
@@ -1465,6 +1470,7 @@
     "resources.related": "Relacionado",
     "resources.category.stories": "Historias",
     "resources.category.financials": "Informes financieros",
+    "resources.category.news": "Noticias",
     "report.download": "Descargar",
     "report.read": "Leer",
     "team.eyebrow": "Nuestro equipo",

@@ -1,17 +1,19 @@
 ---
 // /resources/<slug>: a category listing for the category paths (stories,
-// financials; spec 2.2), otherwise an article. News has no category yet, so
-// /resources/news answers 404 until a News article exists (spec 3.1).
+// financials, news; spec 2.2), otherwise an article. News answers 404 while
+// it has no published article (spec 3.1).
 import ResourcesCategoryPage from '../../components/ResourcesCategoryPage.astro'
 import ResourceArticlePage from '../../components/ResourceArticlePage.astro'
-import { getResource } from '../../lib/content'
+import { getResource, hasNews } from '../../lib/content'
 import { localeFromPath } from '../../lib/i18n'
 import { categoryForPath } from '../../lib/content/types'
 
 const slug = Astro.params.slug!
+const locale = Astro.originPathname ? localeFromPath(Astro.originPathname) : 'en'
 const category = categoryForPath(slug)
-const resource = category ? undefined : await getResource(slug, Astro.originPathname ? localeFromPath(Astro.originPathname) : 'en')
+const resource = category ? undefined : await getResource(slug, locale)
 if (!category && !resource) return Astro.rewrite('/404')
+if (category === 'news' && !(await hasNews(locale))) return Astro.rewrite('/404')
 ---
 
 {category ? <ResourcesCategoryPage category={category} /> : <ResourceArticlePage resource={resource!} />}

@@ -186,6 +186,22 @@ describe('mapResources', () => {
     expect(r.data).toMatchObject({ published_on: '2026-02-03T00:00:00.000Z', updated_on: '2026-03-01T00:00:00.000Z', seo_title: 'Report | VVF' })
     expect(r.data.body.find((b) => b._type === 'image').asset.url).toBe('/_emdash/api/media/file/inline.png')
   })
+
+  it('keeps a press article external, with its outlet and language tag', () => {
+    const ctx = createContext(mediaMap)
+    const [r] = mapResources(
+      [
+        {
+          slug: 'press-outlet-2026-08-04',
+          url: 'https://outlet.example/nota/',
+          categories: ['news'],
+          card: { title: 'Nota', date: 'August 4, 2026', external: true, externalUrl: 'https://outlet.example/nota/', outlet: 'Outlet', languageTag: 'In Spanish' },
+        },
+      ],
+      ctx
+    )
+    expect(r.data).toMatchObject({ title: 'Nota', categories: ['news'], external: true, external_url: 'https://outlet.example/nota/', outlet: 'Outlet', language_tag: 'In Spanish' })
+  })
 })
 
 describe('rich text', () => {

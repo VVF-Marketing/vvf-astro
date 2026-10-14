@@ -103,6 +103,7 @@ export default defineCopy(GLOBAL_ROUTE, {
   'resources.related': { label: 'Resource page: related heading', default: 'Related', maxLength: 40 },
   'resources.category.stories': { label: 'Resource category: Stories (tags, filters)', default: 'Stories', maxLength: 30 },
   'resources.category.financials': { label: 'Resource category: Financials (tags, filters)', default: 'Financial Reports', maxLength: 30 },
+  'resources.category.news': { label: 'Resource category: News (tags, filters)', default: 'News', maxLength: 30 },
 
   // Financial report cards
   'report.download': { label: 'Report card: download button', default: 'Download', maxLength: 20 },

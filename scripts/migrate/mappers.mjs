@@ -283,6 +283,15 @@ export function mapResources(resources, ctx) {
       seo_title: r.seo?.title,
       seo_description: r.seo?.description,
       social_image: ctx.media(r.seo?.ogImage),
+      // Press articles (News): the card links out, with the outlet and a
+      // language tag ("In Spanish"); no page of their own (spec 7.13).
+      external: r.card?.external || undefined,
+      external_url: r.card?.externalUrl,
+      outlet: r.card?.outlet,
+      // `false`, not missing, when a card has none: the Spanish card shows no
+      // tag and must not inherit the English one when the two are paired
+      // (transform.mjs merges English data under Spanish). model.mjs drops it.
+      language_tag: r.card?.external ? (r.card.languageTag ?? false) : undefined,
     })
   )
 }

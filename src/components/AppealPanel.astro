@@ -41,7 +41,7 @@ const { heading, text, imageUrl, imageAlt = '', caption, cardsLabel, cards, prim
           {/* `primary` slot: an action that isn't a link (e.g. a Donorbox popup). */}
           <slot name="primary" />
           {primaryCta && <Button href={primaryCta.href} variant="primary">{primaryCta.label}</Button>}
-          {secondaryCta && <Button href={secondaryCta.href} variant="outline">{secondaryCta.label}</Button>}
+          {secondaryCta && <Button href={secondaryCta.href} variant="outline" on="dark">{secondaryCta.label}</Button>}
         </div>
       )
     }

@@ -27,7 +27,7 @@ const Tag = href ? 'a' : 'div'
     <p class="absolute inset-x-0 bottom-0 bg-brand-primary/80 py-2 text-center font-label text-size-sm font-semibold uppercase tracking-[0.1em] text-neutral-white">{concludedLabel}</p>
   </div>
   <div class={`flex flex-1 flex-col items-start gap-4 p-6 ${wide ? 'md:justify-center md:p-10' : ''}`}>
-    <p class="font-label text-size-xs font-bold uppercase tracking-[0.12em] text-brand-accent">{tag}</p>
+    <p class="font-label text-size-xs font-bold uppercase tracking-[0.12em] text-brand-accent-text">{tag}</p>
     <h3 class="text-h4 text-brand-primary">{title}</h3>
     {wide && summary && <p class="font-body text-size-md leading-body text-brand-primary">{summary}</p>}
     <Button variant="outline" as="span" class="mt-auto">{buttonLabel}</Button>

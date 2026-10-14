@@ -165,7 +165,8 @@ export interface Seo {
   imageUrl?: string
 }
 
-export const RESOURCE_CATEGORIES = ['stories', 'financials-transparency'] as const
+// News (spec 3.1) shows only while a News article is published: see hasNews().
+export const RESOURCE_CATEGORIES = ['stories', 'financials-transparency', 'news'] as const
 export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number]
 
 // Short labels (tags, breadcrumbs, filter pills) and full page titles, as
@@ -173,17 +174,30 @@ export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number]
 export const RESOURCE_CATEGORY_LABELS: Record<ResourceCategory, string> = {
   stories: 'Stories',
   'financials-transparency': 'Financials',
+  news: 'News',
 }
 
 export const RESOURCE_CATEGORY_TITLES: Record<ResourceCategory, string> = {
   stories: 'Stories',
   'financials-transparency': 'Financials & Transparency',
+  news: 'News',
+}
+
+// Each category's label in the page's language, from the site-wide copy
+// slots (`t` is getGlobalCopy's result): tags, filter pills, breadcrumbs.
+export function resourceCategoryLabels(t: Record<string, string>): Record<ResourceCategory, string> {
+  return {
+    stories: t['resources.category.stories'],
+    'financials-transparency': t['resources.category.financials'],
+    news: t['resources.category.news'],
+  }
 }
 
 // Path segment of each category's listing page, /resources/<path> (spec 2.2).
 export const RESOURCE_CATEGORY_PATHS: Record<ResourceCategory, string> = {
   stories: 'stories',
   'financials-transparency': 'financials',
+  news: 'news',
 }
 
 // The category listed at /resources/<path>, if that path is a category page.

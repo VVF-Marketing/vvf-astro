@@ -35,9 +35,9 @@ Run: 2026-10-04T12:13:03.139Z against https://www.victoriavenezuelafoundation.or
 
 ## Asset harvest
 
-- Planned: 218 assets; downloaded 0, already present 218.
+- Planned: 225 assets; downloaded 7, already present 218.
 - Site chrome: candidSeal, socialFacebook, socialInstagram, socialLinkedin, socialYoutube, logo, footerLogo, favicon, appleTouchIcon, ogImage, childIcon_age, childIcon_birthday, childIcon_gender, childIcon_dream.
-- Removed 0 files no longer referenced by the snapshot.
+- Removed 12 files no longer referenced by the snapshot.
 - Failed downloads: none.
 
 ## Transform
@@ -56,7 +56,7 @@ Run: 2026-10-04T12:13:03.139Z against https://www.victoriavenezuelafoundation.or
 | team_members | 17 + 17 Spanish |
 | categories | 3 + 3 Spanish |
 | authors | 3 + 3 Spanish |
-| articles | 10 + 10 Spanish |
+| articles | 17 + 17 Spanish |
 | testimonials | 0 + 0 Spanish |
 | auction_items | 0 + 0 Spanish |
 | site_facts | 6 + 6 Spanish |

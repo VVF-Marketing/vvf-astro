@@ -22,7 +22,7 @@ const textColor = tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'
 ---
 
 <div class={`flex max-w-3xl flex-col gap-4 ${alignClass} ${className}`}>
-  {tagline && <Eyebrow>{tagline}</Eyebrow>}
+  {tagline && <Eyebrow on={tone === 'light' ? 'dark' : 'light'}>{tagline}</Eyebrow>}
   <div class={`flex flex-col gap-6 ${alignClass}`}>
     <Heading class={`text-[2.25rem] leading-[1.16] tracking-[-1px] md:text-h2 md:leading-[1.1] md:tracking-normal ${textColor}`}>{heading}</Heading>
     {text && <p class={`font-sans text-size-md leading-body ${textColor}`}>{text}</p>}

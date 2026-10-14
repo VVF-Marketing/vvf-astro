@@ -3,19 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* VVF design tokens as CSS variables, the same values as
-     tailwind.config.cjs, named after the spec's tokens (spec 5.1 to 5.4). */
+  /* Colour variables (--navy, --blue, …) come from src/styles/tokens.cjs
+     through tailwind.config.cjs; fonts are set here (spec 5.2). */
   :root {
-    --navy: #02335e;
-    --blue: #00abf9;
-    --sky: #c1e7f5;
-    --sun: #f9eac6;
-    --salmon: #ffd7d7;
-    --grey-line: #e7e7e7;
-    --white: #ffffff;
-    --page: #f2f2f2;
-    --link: #1e73be;
-
     --font-heading: Nunito, sans-serif;
     --font-body: Nunito, sans-serif;
     --font-label: 'Open Sans', sans-serif;
@@ -74,8 +64,14 @@
     line-height: 1.5;
   }
 
-  :focus-visible {
-    outline: 2px solid var(--blue);
-    outline-offset: 2px;
-  }
+}
+
+/* Keyboard focus, everywhere (Q12 on the spec card): a `blue` outline with a
+   `navy` ring filling the gap inside it, so it shows on white and on blue.
+   Outside the layers so it comes after the utilities, and keeps an element's
+   own shadow (--tw-shadow, set by Tailwind's shadow classes). */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--focus-inner), var(--tw-shadow, 0 0 #0000);
 }

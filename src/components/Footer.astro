@@ -5,7 +5,7 @@
 // the small language switch next to Privacy policy.
 import { fill, getGlobalCopy, lines } from '../lib/globalCopy'
 import { localeFromPath, type Locale } from '../lib/i18n'
-import { getResources } from '../lib/content'
+import { hasNews } from '../lib/content'
 import { ORG } from '../lib/structuredData'
 import LanguageSwitch from './LanguageSwitch.astro'
 
@@ -16,7 +16,7 @@ interface Props {
 
 const t = await getGlobalCopy(Astro)
 // News shows only while a News article is published (spec 3.1).
-const hasNews = (await getResources(undefined, localeFromPath(Astro.originPathname))).some((r) => (r.categories as string[]).includes('news'))
+const newsShown = await hasNews(localeFromPath(Astro.originPathname))
 const linkColumns = [
   [
     { label: t['footer.link.ourPrograms'], href: '/our-programs' },
@@ -28,7 +28,7 @@ const linkColumns = [
   ],
   [
     { label: t['footer.link.earthquake'], href: '/venezuela-earthquake-relief' },
-    ...(hasNews ? [{ label: t['footer.link.news'], href: '/resources/news' }] : []),
+    ...(newsShown ? [{ label: t['footer.link.news'], href: '/resources/news' }] : []),
     { label: t['footer.link.financials'], href: '/financials-and-transparency' },
     { label: t['footer.link.donate'], href: '/ways-to-give' },
     { label: t['footer.link.contact'], href: '/contact' },

@@ -558,6 +558,14 @@ export async function getCategory(category: ResourceCategory, locale: Locale = D
   return e ? { name: e.data.name, description: e.data.description || undefined } : undefined
 }
 
+// News, its menu item, filter button, footer link and sitemap entry exist
+// only while a News article is published (spec 3.1).
+export async function hasNews(locale: Locale = DEFAULT_LOCALE): Promise<boolean> {
+  return (await getResources('news', locale)).length > 0
+}
+
+const NEWS_PATH = /^(\/es)?\/resources\/news\/?$/
+
 export function getResourcesByCategory(category: ResourceCategory, locale: Locale = DEFAULT_LOCALE): Promise<ResourceItem[]> {
   return getResources(category, locale)
 }
@@ -707,7 +715,13 @@ function toNavItem(item: MenuItem): NavItem {
 export async function getPrimaryMenu(locale: Locale = DEFAULT_LOCALE): Promise<NavItem[]> {
   const menu = await getMenu('primary', { locale })
   if (!menu) return []
-  return menu.items.map(toNavItem)
+  const items = menu.items.map(toNavItem)
+  // The News item shows only while News has an article (spec 3.1); the
+  // articles are only looked up when the menu has that item.
+  const linksNews = (list: NavItem[]): boolean => list.some((i) => NEWS_PATH.test(i.url) || linksNews(i.children ?? []))
+  if (!linksNews(items) || (await hasNews(locale))) return items
+  const withoutNews = (list: NavItem[]): NavItem[] => list.filter((i) => !NEWS_PATH.test(i.url)).map((i) => (i.children ? { ...i, children: withoutNews(i.children) } : i))
+  return withoutNews(items)
 }
 
 // --- Sitemap ------------------------------------------------------------------

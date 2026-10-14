@@ -434,5 +434,145 @@
       "ogDescription": "Your Impact 3Q2024: 16,797 meals served, 350 children given medical attention, a new education program and FestiKids in Ciudad Bolivar.",
       "ogImage": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aabe3010b2a2bd6e7cd0855_6aabe163dd88664d1fb8f6a2_VVF_FinancialsCover_Quarterly_Social_v1.png"
     }
+  },
+  {
+    "slug": "press-quepasaenvenezuela-2026-08-04",
+    "url": "https://quepasaenvenezuela.org/fundacion-victoria-lleva-esperanza-y-servicio-a-comunidades-afectadas-por-los-sismos/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-quepasaenvenezuela-2026-08-04",
+      "title": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos",
+      "date": "August 4, 2026",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d72_6ac806236154b70b091bf2e6_VVF_Press_QuePasaEnVenezuela_BoyWithBook_v1.jpeg",
+        "alt": "Fundación Victoria lleva esperanza y servicio a comunidades afectadas por los sismos"
+      },
+      "external": true,
+      "externalUrl": "https://quepasaenvenezuela.org/fundacion-victoria-lleva-esperanza-y-servicio-a-comunidades-afectadas-por-los-sismos/",
+      "languageTag": "In Spanish",
+      "outlet": "Que Pasa en Venezuela"
+    }
+  },
+  {
+    "slug": "press-cglatinmagazine-2026-08-03",
+    "url": "https://cg.com.ve/la-fe-que-se-vuelve-servicio-fundacion-victoria-en-las-zonas-afectadas/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-cglatinmagazine-2026-08-03",
+      "title": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas",
+      "date": "August 3, 2026",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d7a_6ac805ff1bd43ab27b730b41_VVF_Press_CGLatinMagazine_TeamGroup_v1.jpeg",
+        "alt": "La fe que se vuelve servicio: Fundación Victoria en las zonas afectadas"
+      },
+      "external": true,
+      "externalUrl": "https://cg.com.ve/la-fe-que-se-vuelve-servicio-fundacion-victoria-en-las-zonas-afectadas/",
+      "languageTag": "In Spanish",
+      "outlet": "CG Latin Magazine"
+    }
+  },
+  {
+    "slug": "press-alourbano-2026-05-18",
+    "url": "https://alourbano.net/fundacion-victoria-venezuela-jornadas-salud/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-alourbano-2026-05-18",
+      "title": "Fundación Victoria Venezuela impulsa jornadas de salud infantil",
+      "date": "May 18, 2026",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d76_6ac80643e738a2dea4bf504b_VVF_Press_AloUrbano_HealthTalk_v1.jpeg",
+        "alt": "Fundación Victoria Venezuela impulsa jornadas de salud infantil"
+      },
+      "external": true,
+      "externalUrl": "https://alourbano.net/fundacion-victoria-venezuela-jornadas-salud/",
+      "languageTag": "In Spanish",
+      "outlet": "AloUrbano"
+    }
+  },
+  {
+    "slug": "press-vidayarte-2026-05-06",
+    "url": "https://www.vidayarte.com/salud/fundacion-victoria-venezuela-impulsa-jornadas-de-salud-beneficas",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-vidayarte-2026-05-06",
+      "title": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas",
+      "date": "May 6, 2026",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d81_6ac80663930ddff8d4e6a73c_VVF_Press_VidaYArte_ConsultTables_v1.jpeg",
+        "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas"
+      },
+      "external": true,
+      "externalUrl": "https://www.vidayarte.com/salud/fundacion-victoria-venezuela-impulsa-jornadas-de-salud-beneficas",
+      "languageTag": "In Spanish",
+      "outlet": "Vida y Arte"
+    }
+  },
+  {
+    "slug": "press-noticias-en-venezuela-2024-02-05",
+    "url": "https://noticiasenvenezuela.com/helen-y-randy-han-ayudado-a-mas-de-42mil-ninos-en-venezuela/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-noticias-en-venezuela-2024-02-05",
+      "title": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!",
+      "date": "February 5, 2024",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681c5dcff0b8af59611f1_kkk.png",
+        "alt": "¡Helen y Randy han ayudado a más de 42mil niños en Venezuela!"
+      },
+      "external": true,
+      "externalUrl": "https://noticiasenvenezuela.com/helen-y-randy-han-ayudado-a-mas-de-42mil-ninos-en-venezuela/",
+      "languageTag": "In Spanish",
+      "outlet": "Noticias En Venezuela"
+    }
+  },
+  {
+    "slug": "press-caracasnews24-2022-12-13",
+    "url": "https://caracasnews24.com/400-ninos-fueron-sorprendidos-por-la-fundacion-mision-victoria-venezuela/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-caracasnews24-2022-12-13",
+      "title": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela",
+      "date": "December 13, 2022",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681f8c9044ce98bbe2a3b_6ac681e05802228af63ccada_VVF_Press_2022Christmas_Crowd_v1.jpeg",
+        "alt": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela"
+      },
+      "external": true,
+      "externalUrl": "https://caracasnews24.com/400-ninos-fueron-sorprendidos-por-la-fundacion-mision-victoria-venezuela/",
+      "languageTag": "In Spanish",
+      "outlet": "CaracasNews24"
+    }
+  },
+  {
+    "slug": "press-la-revista-del-tuy-2022-12-13",
+    "url": "https://larevistadeltuy.com/la-fundacion-mision-victoria-venezuela-llevaron-la-navidad-a-ninos-en-los-valles-del-tuy/",
+    "categories": [
+      "news"
+    ],
+    "card": {
+      "slug": "press-la-revista-del-tuy-2022-12-13",
+      "title": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy",
+      "date": "December 13, 2022",
+      "image": {
+        "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac681c5dcff0b8af5961265_navidad-en-el-tuy-compressed.jpeg",
+        "alt": "La fundación Misión Victoria Venezuela llevó la Navidad a niños en Los Valles del Tuy"
+      },
+      "external": true,
+      "externalUrl": "https://larevistadeltuy.com/la-fundacion-mision-victoria-venezuela-llevaron-la-navidad-a-ninos-en-los-valles-del-tuy/",
+      "languageTag": "In Spanish",
+      "outlet": "La Revista del Tuy"
+    }
   }
 ]

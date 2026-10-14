@@ -191,20 +191,34 @@ export function parseChildList(html) {
 // --- Resources ---------------------------------------------------------
 
 // Resource listing / category pages: one card per resource.
+// One card per list item. A press article (News, spec v0.17) carries a
+// second, external link (`.is-external`) with its address, language tag
+// ("In Spanish") and outlet; its own /resources/<slug> link stays hidden.
 export function parseResourceList(html) {
   const $ = load(html)
-  return $('a.resources_card-link')
-    .map((_, a) => {
-      const $a = $(a)
-      return {
-        slug: $a.attr('href')?.split('/').filter(Boolean).pop(),
-        title: clean($a.find('.article-card_heading').text()),
-        date: clean($a.find('.article-card_date').text()),
-        excerpt: clean($a.find('.article-card_excerpt').text()),
-        image: img($, $a.find('img.article-card_image')),
-      }
-    })
-    .get()
+  const cardOf = ($a) => ({
+    slug: $a.attr('href')?.split('/').filter(Boolean).pop(),
+    title: clean($a.find('.article-card_heading').text()),
+    date: clean($a.find('.article-card_date').text()),
+    excerpt: clean($a.find('.article-card_excerpt').text()),
+    image: img($, $a.find('img.article-card_image')),
+  })
+  const items = $('.w-dyn-item').has('a.resources_card-link')
+  const groups = items.length ? items.map((_, item) => [$(item).find('a.resources_card-link').toArray()]).get() : $('a.resources_card-link').map((_, a) => [[a]]).get()
+  return groups.map((anchors) => {
+    const internal = anchors.map((a) => $(a)).find(($a) => !$a.hasClass('is-external'))
+    const external = anchors.map((a) => $(a)).find(($a) => $a.hasClass('is-external'))
+    const card = cardOf(internal ?? external)
+    if (!external) return card
+    return {
+      ...card,
+      image: card.image ?? img($, external.find('img.article-card_image')),
+      external: true,
+      externalUrl: external.attr('href'),
+      languageTag: clean(external.find('.tag_component').text()) || undefined,
+      outlet: clean(external.find('.button.is-secondary').text()) || undefined,
+    }
+  })
 }
 
 export function parseNextPageHref(html) {

@@ -1,7 +1,7 @@
 // The site's sitemap (src/lib/sitemap.ts). Defining it here replaces
 // EmDash's own /sitemap.xml, which only lists collections with a URL pattern.
 import type { APIRoute } from 'astro'
-import { getPageCopy, getSitemapDetailPages } from '../lib/content'
+import { getPageCopy, getSitemapDetailPages, hasNews } from '../lib/content'
 import type { CopyManifest } from '../lib/copy'
 import { sitemapXml, staticPages } from '../lib/sitemap'
 
@@ -12,8 +12,10 @@ const MANIFESTS = Object.values(
 ).flatMap((m) => (Array.isArray(m.default) ? m.default : [m.default]))
 
 export const GET: APIRoute = async ({ site, url }) => {
+  // News is listed only while it has an article (spec 3.1).
+  const manifests = (await hasNews()) ? MANIFESTS : MANIFESTS.filter((m) => m.route !== '/resources/news')
   const [pages, details] = await Promise.all([
-    staticPages(MANIFESTS, async (m) => (await getPageCopy(m, 'es')).locales),
+    staticPages(manifests, async (m) => (await getPageCopy(m, 'es')).locales),
     getSitemapDetailPages(),
   ])
   return new Response(sitemapXml(site ?? url, [...pages, ...details]), {

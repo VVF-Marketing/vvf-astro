@@ -5,7 +5,9 @@
 // newsletter and three Related articles. Press articles (on other websites)
 // link to the outlet and never appear in Related.
 import type { ResourceCategory, ResourceItem } from '../lib/content/types'
-import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_PATHS, resourceTag } from '../lib/content/types'
+import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_PATHS, resourceCategoryLabels, resourceTag } from '../lib/content/types'
+import { hasNews } from '../lib/content'
+import { localeFromPath } from '../lib/i18n'
 import ArticleCard from './ArticleCard.astro'
 import Breadcrumbs from './Breadcrumbs.astro'
 import NewsletterSignup from './NewsletterSignup.astro'
@@ -33,13 +35,15 @@ const { items, page, pages } = paginate(listed, Astro.url.searchParams.get('page
 const related = resources.filter((r) => r !== featured && !r.external).slice(0, 3)
 const listUrl = new URL(Astro.originPathname + Astro.url.search, Astro.url)
 
-const pill = 'inline-flex items-center rounded-pill border-2 border-brand-accent px-6 py-2 font-sans text-size-md font-bold no-underline'
-const categoryLabels: Record<ResourceCategory, string> = {
-  stories: t['resources.category.stories'],
-  'financials-transparency': t['resources.category.financials'],
-}
+// Filter pills, outlined like the Outline button: `blue-text` on the page,
+// and a `blue` fill with `navy` text when active (text on `blue` is always
+// `navy`, spec 5.1; Q13).
+const pill = 'inline-flex items-center rounded-pill border-2 px-6 py-2 font-sans text-size-md font-bold no-underline'
+const categoryLabels = resourceCategoryLabels(t)
+// News gets a filter button only while it has an article (spec 3.1).
+const newsShown = await hasNews(localeFromPath(Astro.originPathname))
 const filters = [{ label: t['resources.viewAll'], href: '/resources', active: !category }].concat(
-  RESOURCE_CATEGORIES.map((c) => ({ label: categoryLabels[c], href: `/resources/${RESOURCE_CATEGORY_PATHS[c]}`, active: c === category }))
+  RESOURCE_CATEGORIES.filter((c) => c !== 'news' || newsShown).map((c) => ({ label: categoryLabels[c], href: `/resources/${RESOURCE_CATEGORY_PATHS[c]}`, active: c === category }))
 )
 const tag = (r: ResourceItem) => resourceTag(r, categoryLabels)
 const card = (r: ResourceItem) =>
@@ -73,7 +77,7 @@ const card = (r: ResourceItem) =>
         <nav aria-label={t['resources.filtersLabel']} class="flex flex-wrap justify-center gap-3">
           {
             filters.map((f) => (
-              <a href={f.href} class={`${pill} ${f.active ? 'bg-brand-accent text-neutral-white' : 'bg-transparent text-brand-accent'}`} aria-current={f.active ? 'page' : undefined}>
+              <a href={f.href} class={`${pill} ${f.active ? 'border-brand-accent bg-brand-accent text-brand-primary' : 'border-brand-accent-text bg-transparent text-brand-accent-text'}`} aria-current={f.active ? 'page' : undefined}>
                 {f.label}
               </a>
             ))
