@@ -79,7 +79,8 @@ for (const p of PAGES) {
 }
 
 // 3.4-4: the News page, menu item and filter button follow published News articles.
-const hasNews = seedItems('resources').some((e) => !e.locale && /news/i.test(JSON.stringify(e.data.categories ?? e.data.category ?? '')))
+// Articles carry their category as a reference to `category-news` (content model, spec 4.3).
+const hasNews = seedItems('articles').some((e) => !e.locale && /news/i.test(JSON.stringify(e.data.category ?? '')))
 for (const lang of LANGS as Lang[]) {
   single('3.4-4', `${lang} News ${hasNews ? 'shown' : 'hidden'}`, async ({ page }) => {
     const label = lang === 'es' ? 'Noticias' : 'News'
