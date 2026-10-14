@@ -12,6 +12,7 @@ const maria: ChildItem = {
   dream: 'She wants to be a teacher when she grows up.',
   about: 'Maria lives with her grandmother and two cousins and loves drawing.',
   published: true,
+  sponsorshipStatus: 'available',
   donorboxSponsorshipRef: 'maria-sponsorship',
 }
 
@@ -25,6 +26,8 @@ export default {
 export const Default = {
   args: {
     child: maria,
+    listLabel: 'Meet the Children',
+    aboutHeading: 'About Maria',
     slots: {
       donation: {
         component: DonationAmountWidget,
@@ -40,6 +43,8 @@ export const Default = {
 export const MinimalData = {
   args: {
     child: { slug: 'jose', displayName: 'Jose', age: 5, published: true },
+    listLabel: 'Meet the Children',
+    aboutHeading: 'About Jose',
     slots: {
       donation: {
         component: DonationAmountWidget,

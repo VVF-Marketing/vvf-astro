@@ -1,4 +1,4 @@
-import { ageRangeOf, type ChildAgeRange } from './content/types'
+import { ageRangeOf, CHILD_AGE_RANGES, type ChildAgeRange } from './content/types'
 
 export interface ChildFilterCriteria {
   nameQuery?: string
@@ -16,4 +16,22 @@ export function childMatchesFilters(
     if (!child.displayName.toLowerCase().includes(criteria.nameQuery.trim().toLowerCase())) return false
   }
   return true
+}
+
+// The filter state lives in the URL (spec 7.3) so a filtered list can be
+// shared: `?name=<text>&age=1-5&age=6-10`.
+export function childFiltersFrom(params: URLSearchParams): ChildFilterCriteria {
+  const ages = params.getAll('age').filter((a): a is ChildAgeRange => (CHILD_AGE_RANGES as readonly string[]).includes(a))
+  return { nameQuery: params.get('name')?.trim() ?? '', ageRanges: ages }
+}
+
+export function childFilterParams(criteria: ChildFilterCriteria): URLSearchParams {
+  const params = new URLSearchParams()
+  if (criteria.nameQuery?.trim()) params.set('name', criteria.nameQuery.trim())
+  for (const a of criteria.ageRanges ?? []) params.append('age', a)
+  return params
+}
+
+export function hasChildFilters(criteria: ChildFilterCriteria): boolean {
+  return Boolean(criteria.nameQuery?.trim() || criteria.ageRanges?.length)
 }

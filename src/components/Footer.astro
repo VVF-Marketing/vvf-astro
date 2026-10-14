@@ -4,7 +4,9 @@
 // contact details and social icons on the right; credits row below, with
 // the small language switch next to Privacy policy.
 import { fill, getGlobalCopy, lines } from '../lib/globalCopy'
-import type { Locale } from '../lib/i18n'
+import { localeFromPath, type Locale } from '../lib/i18n'
+import { getResources } from '../lib/content'
+import { ORG } from '../lib/structuredData'
 import LanguageSwitch from './LanguageSwitch.astro'
 
 interface Props {
@@ -13,29 +15,27 @@ interface Props {
 }
 
 const t = await getGlobalCopy(Astro)
+// News shows only while a News article is published (spec 3.1).
+const hasNews = (await getResources(undefined, localeFromPath(Astro.originPathname))).some((r) => (r.categories as string[]).includes('news'))
 const linkColumns = [
   [
+    { label: t['footer.link.ourPrograms'], href: '/our-programs' },
     { label: t['footer.link.ourTeam'], href: '/our-team' },
     { label: t['footer.link.sponsorChild'], href: '/sponsor-a-child' },
     { label: t['footer.link.waysToGive'], href: '/ways-to-give' },
     { label: t['footer.link.corporate'], href: '/corporate-sponsorships' },
-    { label: t['footer.link.events'], href: '/events' },
+    { label: t['footer.link.events'], href: '/events-and-campaigns' },
   ],
   [
-    { label: t['footer.link.earthquake'], href: '/earthquake-relief' },
-    { label: t['footer.link.news'], href: '/resources' },
+    { label: t['footer.link.earthquake'], href: '/venezuela-earthquake-relief' },
+    ...(hasNews ? [{ label: t['footer.link.news'], href: '/resources/news' }] : []),
     { label: t['footer.link.financials'], href: '/financials-and-transparency' },
     { label: t['footer.link.donate'], href: '/ways-to-give' },
     { label: t['footer.link.contact'], href: '/contact' },
   ],
 ]
 
-const socialLinks = [
-  { label: 'Facebook', href: 'https://www.facebook.com/victoriavenezuelafoundation', icon: '/images/footer/facebook.svg' },
-  { label: 'Instagram', href: 'https://www.instagram.com/victoriavenezuelafoundation/', icon: '/images/footer/instagram.svg' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/victoriavenezuelafoundation/posts/?feedView=all', icon: '/images/footer/linkedin.svg' },
-  { label: 'YouTube', href: 'https://www.youtube.com/channel/UC5EnslQqm_S4KHb1_T3hnew', icon: '/images/footer/youtube.svg' },
-]
+const socialLinks = ORG.social
 
 const text = 'font-sans text-size-sm leading-body text-neutral-white'
 const link = `${text} no-underline hover:text-brand-accent`
@@ -56,7 +56,7 @@ const credit = 'font-sans text-size-xs leading-body text-neutral-white sm:text-s
           {lines(t['footer.address']).map((line, i) => (<>{i > 0 && <br />}{line}</>))}
         </p>
         <div class="flex items-center gap-6">
-          <a href="https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc" class="shrink-0">
+          <a href={ORG.candid} class="shrink-0">
             <img src="/images/footer/candid-seal.png" alt={t['footer.candidAlt']} width="99" height="99" class="h-auto max-w-[100px]" loading="lazy" />
           </a>
           <p class={`${text} max-w-[220px]`}>{t['footer.candidText']}</p>

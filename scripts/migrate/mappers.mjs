@@ -103,8 +103,6 @@ export function mapChildren(snapshot, ctx) {
     const order = snapshot.order.indexOf(c.displayName)
     return entry(`child-${c.slug}`, c.slug, {
       display_name: c.displayName,
-      // Never populated by migration (public repo, minors' data).
-      private_full_name: undefined,
       age: c.age,
       birthday: parseLiveDate(c.birthday),
       gender: c.gender,
@@ -225,7 +223,7 @@ const EVENT_EXTRAS = {
       },
     ],
     appeal_cta_label: 'Learn More',
-    appeal_cta_url: '/earthquake-relief',
+    appeal_cta_url: '/venezuela-earthquake-relief',
     contact_phone: '+1 (305) 922-5585',
     contact_email: 'charitygolf@victoriavenezuelafoundation.org',
     contact_address: 'Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100',

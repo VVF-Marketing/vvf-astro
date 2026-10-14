@@ -14,11 +14,14 @@ describe('scanStaticPageRoutes', () => {
       '/',
       '/contact',
       '/corporate-sponsorships',
-      '/earthquake-relief',
       '/financials-and-transparency',
       '/our-programs',
       '/privacy-policy',
       '/sponsor-a-child',
+      '/thank-you-donation',
+      '/thank-you-earthquake-relief',
+      '/thank-you-sponsorship',
+      '/venezuela-earthquake-relief',
       '/ways-to-give',
     ])
   })
@@ -27,9 +30,9 @@ describe('scanStaticPageRoutes', () => {
     const routes = scanStaticPageRoutes(PAGES_DIR).map((r) => r.routePath)
 
     expect(routes).not.toContain('/blog')
-    expect(routes).not.toContain('/events')
+    expect(routes).not.toContain('/events-and-campaigns')
     expect(routes).not.toContain('/our-team')
-    expect(routes).not.toContain('/sponsor-a-child/children')
+    expect(routes).not.toContain('/children')
     expect(routes).not.toContain('/resources')
     expect(routes.some((r) => r.includes('['))).toBe(false)
   })
@@ -123,8 +126,8 @@ describe('syncStaticPages', () => {
     const result = await syncStaticPages({ ...opts, client: db.client })
 
     const pages = db.items.filter((i) => i.collection === 'pages')
-    expect(result.created).toBe(18)
-    expect(pages.filter((p) => p.locale === 'en')).toHaveLength(9)
+    expect(result.created).toBe(24)
+    expect(pages.filter((p) => p.locale === 'en')).toHaveLength(12)
     const contactEn = pages.find((p) => p.locale === 'en' && p.data.route_path === '/contact')!
     const contactEs = pages.find((p) => p.locale === 'es' && p.data.route_path === '/contact')!
     expect(contactEs.translationGroup).toBe(contactEn.translationGroup)
@@ -136,25 +139,25 @@ describe('syncStaticPages', () => {
     await syncStaticPages({ ...opts, client: db.client })
     const result = await syncStaticPages({ ...opts, client: db.client })
 
-    expect(result).toMatchObject({ created: 0, updated: 18 })
-    expect(db.items.filter((i) => i.collection === 'pages')).toHaveLength(18)
+    expect(result).toMatchObject({ created: 0, updated: 24 })
+    expect(db.items.filter((i) => i.collection === 'pages')).toHaveLength(24)
   })
 
   it('inventories listing routes that declare copy', async () => {
     const db = fakeEmDash()
-    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/events')] })
+    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/events-and-campaigns')] })
 
-    const events = db.items.filter((i) => i.collection === 'pages' && i.data.route_path === '/events')
+    const events = db.items.filter((i) => i.collection === 'pages' && i.data.route_path === '/events-and-campaigns')
     expect(events.map((e) => e.locale).sort()).toEqual(['en', 'es'])
   })
 
   it('flags pages whose route is gone as stale, without deleting them', async () => {
     const db = fakeEmDash()
-    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/events')] })
+    await syncStaticPages({ ...opts, client: db.client, manifests: [copyFor('/events-and-campaigns')] })
     const result = await syncStaticPages({ ...opts, client: db.client })
 
     expect(result.markedStale).toBe(2)
-    expect(db.items.filter((i) => i.data.route_path === '/events' && i.collection === 'pages').every((i) => i.data.stale)).toBe(true)
+    expect(db.items.filter((i) => i.data.route_path === '/events-and-campaigns' && i.collection === 'pages').every((i) => i.data.stale)).toBe(true)
   })
 
   it('creates a published English slot with its default and an empty published Spanish slot', async () => {
@@ -406,15 +409,17 @@ describe('manifestSources', () => {
     const sources = manifestSources(
       {
         '/src/pages/contact/_copy.ts': { default: manifest },
-        '/src/pages/resources/category/_copy.ts': { default: [cat('/resources/category/stories'), cat('/resources/category/financials-transparency')] },
+        '/src/pages/resources/category/_copy.ts': { default: [cat('/resources/stories'), cat('/resources/financials')] },
         '/src/pages/events/_copy.detail.ts': { default: cat('/events/*') },
       },
       listPageFiles(PAGES_DIR)
     )
     expect(sources.map((s) => [s.manifest.route, s.sourceFile])).toEqual([
       ['/contact', 'src/pages/contact/index.astro'],
-      ['/resources/category/stories', 'src/pages/resources/category/[category].astro'],
-      ['/resources/category/financials-transparency', 'src/pages/resources/category/[category].astro'],
+      // Category pages render through resources/[slug].astro; their manifests
+      // have no page beside them, so the manifest file stands in.
+      ['/resources/stories', 'src/pages/resources/category/_copy.ts'],
+      ['/resources/financials', 'src/pages/resources/category/_copy.ts'],
       ['/events/*', 'src/pages/events/[slug].astro'],
     ])
   })

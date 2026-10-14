@@ -37,3 +37,6 @@ emdash-env.d.ts
 # OS / editor files
 .DS_Store
 /.obsidian/
+
+# VVF website spec audit: confidential spec copy, coverage map, results, report (public repo)
+/.spec-audit/

@@ -4,11 +4,11 @@ import PageLayout from '../../layouts/PageLayout.astro'
 import SplitHero from '../../components/SplitHero.astro'
 import LogoCarousel from '../../components/LogoCarousel.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
-import StatIconCard from '../../components/StatIconCard.astro'
+import FeatureCard from '../../components/FeatureCard.astro'
 import SponsorshipTierTable from '../../components/SponsorshipTierTable.astro'
 import Card from '../../components/Card.astro'
 import EmployerMatchWidget from '../../components/EmployerMatchWidget.astro'
-import { getPartners, getSponsorshipPackages, getPageCopy } from '../../lib/content'
+import { getPartners, getSiteFacts, getSponsorshipPackages, getTeamMemberBySlug, getPageCopy } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
 import pageCopy from './_copy'
 
@@ -17,6 +17,13 @@ const locale = localeFromPath(Astro.originPathname)
 const partners = await getPartners(locale)
 const tiers = await getSponsorshipPackages(locale)
 const { copy, locales } = await getPageCopy(pageCopy, locale)
+// Impact figures come from the site facts (spec 7.6, section 3).
+const facts = await getSiteFacts(locale)
+// The point of contact's name, title and photo come from their team record,
+// so they stay in step with Our Team (spec 7.6, section 6).
+const CONTACT_PERSON = 'juan-tomasini'
+const contact = await getTeamMemberBySlug(CONTACT_PERSON, locale)
+const CONTACT_PHONE = '+1-954-440-9172'
 ---
 
 <PageLayout
@@ -35,7 +42,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
 
   {
     partners.length > 0 && (
-      <section class="bg-neutral-white py-4">
+      <section class="bg-neutral-white py-10 md:py-16">
         <LogoCarousel logos={partners} />
       </section>
     )
@@ -43,11 +50,12 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
 
   <section class="px-6 py-16 md:px-16">
     <SectionTitle heading={copy['sectionTitle.heading']} />
-    <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <StatIconCard tone="salmon" iconUrl="/images/pages/b62b0e1d-15-nutrition.svg" label={copy['statIconCard.label']} value="77,300+" text={copy['statIconCard.text']} />
-      <StatIconCard tone="sky" iconUrl="/images/pages/6bbc919e-expanded.svg" label={copy['statIconCard2.label']} value="1,012" text={copy['statIconCard2.text']} />
-      <StatIconCard tone="sun" iconUrl="/images/pages/a037d128-vector.svg" label={copy['statIconCard3.label']} value="99" text={copy['statIconCard3.text']} />
-      <StatIconCard tone="white" iconUrl="/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg" label={copy['statIconCard4.label']} value="41+" text={copy['statIconCard4.text']} />
+    <!-- Four across from 1440 px, two below: 56 px figures don't fit four across (spec 5.2). -->
+    <div class="mx-auto mt-16 grid max-w-[1312px] gap-6 sm:grid-cols-2 min-[1440px]:grid-cols-4">
+      <FeatureCard tone="salmon" iconUrl="/images/pages/b62b0e1d-15-nutrition.svg" title={copy['statIconCard.label']} figure={facts.meals_served?.value ?? '77,300+'} body={copy['statIconCard.text']} />
+      <FeatureCard tone="sky" iconUrl="/images/pages/6bbc919e-expanded.svg" title={copy['statIconCard2.label']} figure={facts.medical_visits?.value ?? '1,012+'} body={copy['statIconCard2.text']} />
+      <FeatureCard tone="sun" iconUrl="/images/pages/a037d128-vector.svg" title={copy['statIconCard3.label']} figure={facts.children_in_education?.value ?? '99'} body={copy['statIconCard3.text']} />
+      <FeatureCard tone="white" iconUrl="/images/pages/56305efd-uuid-9f92b5ec-fdac-4b0e-91c6-6d79799e72b8.svg" title={copy['statIconCard4.label']} figure={facts.corporate_sponsors?.value ?? '41+'} body={copy['statIconCard4.text']} />
     </div>
   </section>
 
@@ -56,7 +64,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     <div class="mx-auto mt-16 max-w-[1312px]"><SponsorshipTierTable tiers={tiers} /></div>
   </section>
 
-  <section class="px-6 pb-16 md:pb-[120px] md:px-20">
+  <section id="company-matching" class="scroll-mt-8 px-6 pb-16 md:pb-[120px] md:px-20">
     <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
       <SectionTitle
         align="left"
@@ -75,23 +83,32 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
 
   <section class="px-6 pb-16 md:pb-[120px] md:px-28">
     <div class="mx-auto grid max-w-[1214px] gap-6 md:grid-cols-[634fr_556fr]">
-      <Card radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
+      <Card radius="card" class="flex min-w-0 flex-col gap-8 p-10 md:px-16 md:py-16">
         <div class="flex items-center gap-4">
           <img src="/images/pages/daa9ccaf-phone-call-1.svg" alt="" width="44" height="44" />
-          <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{copy['h2.text']}</h2>
+          <h2 class="text-brand-primary">{copy['h2.text']}</h2>
         </div>
         <p class="font-body text-size-md leading-body text-brand-primary">
           {copy['p.text']}
         </p>
       </Card>
-      <Card tone="sky" radius="card" class="flex flex-col gap-8 p-10 md:px-16 md:py-16">
-        <h2 class="text-h4-mobile leading-[1.4] text-brand-primary md:text-h4">{copy['h22.text']}</h2>
-        <p class="font-body text-size-md leading-body text-brand-primary">
-          {copy['p2.text']}<br />+1-954-440-9172
+      <Card tone="sky" radius="card" class="flex min-w-0 flex-col gap-8 p-10 md:px-16 md:py-16">
+        {
+          contact && (
+            <div class="flex items-center gap-6">
+              {contact.imageUrl && <img src={contact.imageUrl} alt={contact.name} width="96" height="96" class="h-24 w-24 shrink-0 rounded-full object-cover" loading="lazy" />}
+              <div>
+                <p class="font-heading text-h4 text-brand-primary">{contact.name}</p>
+                <p class="font-body text-size-md leading-body text-brand-primary">{contact.title}</p>
+              </div>
+            </div>
+          )
+        }
+        <p class="font-body text-size-md leading-body">
+          <a href={`tel:${CONTACT_PHONE.replace(/[^+\d]/g, '')}`} class="text-brand-primary underline">{CONTACT_PHONE}</a>
         </p>
         <p class="font-body text-size-md leading-body">
-          <a href="mailto:donate@victoriavenezuelafoundation.org" class="text-brand-accent underline">{copy['a.text']}</a><br />
-          <a href="https://www.victoriavenezuelafoundation.org" class="text-brand-accent underline">{copy['a2.text']}</a>
+          <a href="mailto:donate@victoriavenezuelafoundation.org" class="break-all text-brand-accent underline">{copy['a.text']}</a>
         </p>
       </Card>
     </div>

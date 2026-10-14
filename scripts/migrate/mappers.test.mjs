@@ -222,11 +222,11 @@ describe('buildSeeds', () => {
         resources: [],
       },
       mediaMap: {},
-      currentSeed: { version: '1', collections: [], content: { posts: [{ id: 'p1' }], auction_items: [{ id: 'old' }] } },
+      currentSeed: { version: '1', collections: [], content: { campaign_settings: [{ id: 'p1' }], auction_items: [{ id: 'old' }] } },
     })
     expect(full.content.children).toHaveLength(1)
     expect(pub.content.children).toEqual([])
-    expect(pub.content.posts).toEqual([{ id: 'p1' }])
+    expect(pub.content.campaign_settings).toEqual([{ id: 'p1' }])
     expect(pub.content.auction_items).toEqual([])
   })
 

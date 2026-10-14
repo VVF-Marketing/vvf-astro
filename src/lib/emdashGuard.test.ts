@@ -53,3 +53,44 @@ describe('REST request bodies', () => {
     expect(await (await call('/_emdash/api/media', { method: 'POST', body: upload }, editor))?.text()).toBe('next')
   })
 })
+
+// Spec 4.5, check 2: an English item is published only once its Spanish
+// version has every required field, whoever publishes and however.
+describe('Spanish-complete publishing', () => {
+  const faqs: Record<string, { locale: string; data: Record<string, unknown> }> = {
+    en1: { locale: 'en', data: { question: 'Q?', answer: 'A.' } },
+    es1: { locale: 'es', data: { question: '¿P?', answer: '' } },
+    en2: { locale: 'en', data: { question: 'Q2?', answer: 'A2.' } },
+    es2: { locale: 'es', data: { question: '¿P2?', answer: 'R2.' } },
+  }
+  const cms = {
+    handleContentGet: async (_c: string, id: string) => (faqs[id] ? { success: true, data: { item: faqs[id] } } : { success: false }),
+    handleContentTranslations: async (_c: string, id: string) => ({
+      success: true,
+      data: { translationGroup: 'g', translations: [`en${id.slice(-1)}`, `es${id.slice(-1)}`].map((t) => ({ id: t, locale: faqs[t].locale })) },
+    }),
+  }
+  const admin = { id: 'a1', email: 'admin@example.org', role: 50 }
+  const send = (path: string, init: RequestInit = {}) => {
+    const url = new URL(`http://localhost${path}`)
+    const context = { url, request: new Request(url, init), locals: { user: admin, emdash: cms } } as unknown as APIContext
+    return guardEmDashApi(context, async () => new Response('next'))
+  }
+
+  it('refuses publishing an English FAQ whose Spanish answer is empty', async () => {
+    const res = await send('/_emdash/api/content/faqs/en1/publish', { method: 'POST' })
+    expect(res?.status).toBe(400)
+    expect(await res?.text()).toMatch(/Spanish version.*Answer/i)
+  })
+
+  it('refuses it over MCP too, as a tool error', async () => {
+    const body = { jsonrpc: '2.0', id: 7, method: 'tools/call', params: { name: 'content_publish', arguments: { collection: 'faqs', id: 'en1' } } }
+    const res = await send('/_emdash/api/mcp', { method: 'POST', body: JSON.stringify(body) })
+    expect(await res?.json()).toMatchObject({ id: 7, result: { isError: true } })
+  })
+
+  it('publishes once the Spanish version is complete', async () => {
+    // No response from the guard: the request goes on to EmDash.
+    expect(await send('/_emdash/api/content/faqs/en2/publish', { method: 'POST' })).toBeUndefined()
+  })
+})

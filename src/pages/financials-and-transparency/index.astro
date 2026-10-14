@@ -24,7 +24,7 @@ const [annual, quarterly, board] = await Promise.all([
   getTeamMembers('board', locale),
 ])
 const boardLines = [copy['board.member.1'], copy['board.member.2'], copy['board.member.3']]
-const point = 'flex flex-col gap-2 border-b border-[#e6e6e6] py-4 md:px-6 md:py-5'
+const point = 'flex flex-col gap-2 border-b border-neutral-light-gray py-4 md:px-6 md:py-5'
 ---
 
 <PageLayout

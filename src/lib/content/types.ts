@@ -11,10 +11,30 @@ interface Localized {
   alternates?: Partial<Record<Locale, string>>
 }
 
+export type Lifecycle = 'upcoming' | 'past' | 'cancelled'
+export type Registration = 'open' | 'sold_out' | 'closed' | 'not_needed'
+
 export interface EventItem extends Localized {
   slug: string
   title: string
   startDate: string // ISO
+  endDate?: string
+  lifecycle: Lifecycle
+  registration: Registration
+  featured: boolean
+  summary?: string
+  city?: string
+  state?: string
+  registrationUrl?: string
+  ticketsFrom?: number
+  amountRaised?: string
+  stats?: { value: string; label?: string }[]
+  recapVideo?: string
+  faqs?: Faq[]
+  previousEditions?: { slug: string; title: string; startDate: string }[]
+  nextEdition?: { slug: string; title: string; startDate: string }
+  // Sponsorship benefits grid (spec 4.5-6): one column per package offer.
+  benefitGrid?: { columns: string[]; rows: { section: string; name: string; cells: { check?: boolean; text?: string }[] }[] }
   location: string
   description?: string
   imageUrl?: string
@@ -62,6 +82,7 @@ export interface ChildItem extends Localized {
   imageUrl?: string
   imageAlt?: string
   published: boolean
+  sponsorshipStatus: 'available' | 'sponsored' | 'graduated'
   order?: number
   donorboxSponsorshipRef?: string
 }
@@ -73,6 +94,11 @@ export interface TeamMemberItem extends Localized {
   name: string
   role: string
   tier: TeamTier
+  groups: TeamTier[]
+  boardPosition?: string
+  title?: string
+  openSeat?: boolean
+  linkedin?: string
   imageUrl?: string
   bio?: string
   longBio?: string
@@ -85,19 +111,6 @@ export interface TeamMemberItem extends Localized {
   // Slug of this person's profile page; undefined when they have none.
   profileSlug?: string
   order?: number
-}
-
-export interface PostItem extends Localized {
-  slug: string
-  title: string
-  author?: string
-  publishedAt: string
-  updatedAt?: string
-  category: 'Stories' | 'Events' | 'Financials' | 'News'
-  excerpt?: string
-  imageUrl?: string
-  body?: string
-  featured?: boolean
 }
 
 export interface Sponsor {
@@ -136,14 +149,6 @@ export interface Faq {
   order?: number
 }
 
-export interface CampaignUpdate {
-  title: string
-  date: string
-  imageUrl?: string
-  videoUrl?: string
-  body?: string
-}
-
 export interface CampaignSettings {
   active: boolean
   bannerText?: string
@@ -175,6 +180,17 @@ export const RESOURCE_CATEGORY_TITLES: Record<ResourceCategory, string> = {
   'financials-transparency': 'Financials & Transparency',
 }
 
+// Path segment of each category's listing page, /resources/<path> (spec 2.2).
+export const RESOURCE_CATEGORY_PATHS: Record<ResourceCategory, string> = {
+  stories: 'stories',
+  'financials-transparency': 'financials',
+}
+
+// The category listed at /resources/<path>, if that path is a category page.
+export function categoryForPath(path: string): ResourceCategory | undefined {
+  return RESOURCE_CATEGORIES.find((c) => RESOURCE_CATEGORY_PATHS[c] === path)
+}
+
 // Tag shown on resource cards: Financials wins when an item is in both
 // categories, as on the live site.
 // `labels` lets pages pass the localized labels from their copy slots.
@@ -202,7 +218,20 @@ export interface ResourceItem extends Localized {
   imageAlt?: string
   body?: PortableTextBlock[]
   fileUrl?: string
+  featured?: boolean
+  external?: boolean
+  externalUrl?: string
+  outlet?: string
+  languageTag?: string
   seo?: Seo
+}
+
+export interface SiteFact {
+  key: 'meals_served' | 'medical_visits' | 'children_in_programs' | 'children_in_education' | 'corporate_sponsors' | 'program_share'
+  value: string
+  label: string
+  detail?: string
+  period: string
 }
 
 export interface Testimonial {
@@ -218,14 +247,13 @@ export interface NavItem {
   children?: NavItem[]
 }
 
-export const CHILD_AGE_RANGES = ['0-2', '3-5', '6-8', '9-11', '12-14', '15+'] as const
+// Age ranges of the child list filter (spec 7.3).
+export const CHILD_AGE_RANGES = ['1-5', '6-10', '11-15', '16+'] as const
 export type ChildAgeRange = (typeof CHILD_AGE_RANGES)[number]
 
 export function ageRangeOf(age: number): ChildAgeRange {
-  if (age <= 2) return '0-2'
-  if (age <= 5) return '3-5'
-  if (age <= 8) return '6-8'
-  if (age <= 11) return '9-11'
-  if (age <= 14) return '12-14'
-  return '15+'
+  if (age <= 5) return '1-5'
+  if (age <= 10) return '6-10'
+  if (age <= 15) return '11-15'
+  return '16+'
 }

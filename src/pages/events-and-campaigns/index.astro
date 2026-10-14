@@ -1,0 +1,200 @@
+---
+// Events & Campaigns (spec 7.7): active campaigns, upcoming events, and an
+// archive of past events and completed campaigns, six a page. Campaigns are
+// cards on this page (src/lib/campaigns.ts). Below 768px the sections sit
+// under two tabs, Events and Campaigns; a link to one of the anchors opens
+// its tab.
+import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import EventCard from '../../components/EventCard.astro'
+import CampaignCard from '../../components/CampaignCard.astro'
+import ArchiveCard from '../../components/ArchiveCard.astro'
+import Pagination from '../../components/Pagination.astro'
+import SwipeDots from '../../components/SwipeDots.astro'
+import NewsletterSignup from '../../components/NewsletterSignup.astro'
+import { getEvents, isUpcoming, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import { archiveItems, campaignsFrom } from '../../lib/campaigns'
+import { paginate } from '../../lib/pagination'
+import pageCopy, { CAMPAIGNS } from './_copy'
+
+const ARCHIVE_PER_PAGE = 6
+const LIST_MAX = 4
+const locale = localeFromPath(Astro.originPathname)
+
+const events = await getEvents(locale)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+const campaigns = campaignsFrom(copy as Record<string, string>, CAMPAIGNS)
+const active = campaigns.filter((c) => c.status === 'active')
+const upcoming = events.filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))
+const past = events.filter((e) => e.lifecycle !== 'cancelled' && !isUpcoming(e))
+const archive = paginate(archiveItems(past, campaigns), Astro.url.searchParams.get('page'), ARCHIVE_PER_PAGE)
+const openTab = active.length > 0 ? 'campaigns' : 'events'
+const listUrl = new URL(Astro.originPathname + Astro.url.search, Astro.url)
+
+// Up to four cards, then "See all N"; an odd number shown makes the first wide.
+const shownCount = (n: number) => Math.min(n, LIST_MAX)
+const itemClass = (i: number, n: number) =>
+  [
+    'w-full shrink-0 snap-start md:w-auto',
+    i === 0 && shownCount(n) % 2 === 1 ? 'md:col-span-2' : '',
+  ].join(' ')
+const list = 'flex snap-x snap-mandatory gap-6 overflow-x-auto [scrollbar-width:none] md:grid md:grid-cols-2 md:overflow-visible [&::-webkit-scrollbar]:hidden'
+const tab = 'flex-1 rounded-pill px-4 py-2 font-sans text-size-sm font-bold text-brand-primary aria-selected:bg-brand-primary aria-selected:text-neutral-white'
+---
+
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
+  <Hero
+    align="right"
+    imageUrl="/images/pages/ec68af0e-98.png"
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+  />
+
+  <div data-evc data-open-tab={openTab}>
+    <div class="mx-6 mb-8 flex gap-2 rounded-pill bg-neutral-white p-1 md:hidden" role="tablist" aria-label={copy['hero.heading']}>
+      <button type="button" role="tab" id="tab-events" aria-controls="panel-events" aria-selected={openTab === 'events' ? 'true' : 'false'} class={tab} data-tab="events">{copy['tabs.events']}</button>
+      {active.length > 0 && <button type="button" role="tab" id="tab-campaigns" aria-controls="panel-campaigns" aria-selected={openTab === 'campaigns' ? 'true' : 'false'} class={tab} data-tab="campaigns">{copy['tabs.campaigns']}</button>}
+    </div>
+
+    <div class="flex flex-col max-md:mx-4 max-md:rounded-2xl max-md:bg-sky max-md:py-10">
+      {
+        active.length > 0 && (
+          <div id="panel-campaigns" role="tabpanel" aria-labelledby="tab-campaigns" class="order-1 max-md:data-[hidden=true]:hidden md:order-none" data-panel="campaigns" data-hidden={openTab !== 'campaigns' ? 'true' : 'false'}>
+            <section id="campaigns" class="scroll-mt-8 px-6 py-16 md:bg-sky md:px-20 md:py-[120px]">
+              <div class="mx-auto max-w-screen-xl">
+                <SectionTitle tagline={copy['campaigns.eyebrow']} heading={copy['campaigns.heading']} />
+                <div class="mt-12" data-swipe>
+                  <ul class={list} data-track>
+                    {active.map((c, i) => (
+                      <li class={`${itemClass(i, active.length)} ${i >= LIST_MAX ? 'hidden' : ''}`} data-extra={i >= LIST_MAX ? 'true' : undefined}>
+                        <CampaignCard campaign={c} buttonLabel={copy['campaigns.button']} />
+                      </li>
+                    ))}
+                  </ul>
+                  <SwipeDots count={shownCount(active.length)} class="mt-6 md:hidden" />
+                  {active.length > LIST_MAX && <div class="mt-10 flex justify-center"><button type="button" class="rounded-pill border-2 border-brand-primary px-6 py-3 font-sans font-bold text-brand-primary" data-see-all>{fill(copy['list.seeAll'], { count: active.length })}</button></div>}
+                </div>
+              </div>
+            </section>
+          </div>
+        )
+      }
+
+      <div id="panel-events" role="tabpanel" aria-labelledby="tab-events" class="order-2 max-md:data-[hidden=true]:hidden md:order-none" data-panel="events" data-hidden={openTab !== 'events' ? 'true' : 'false'}>
+        {
+          upcoming.length > 0 && (
+            <section id="upcoming-events" class="scroll-mt-8 px-6 pt-16 md:px-20 md:pt-[120px]">
+              <div class="mx-auto max-w-screen-xl">
+                <SectionTitle tagline={copy['upcoming.eyebrow']} heading={copy['upcoming.heading']} />
+                <div class="mt-12" data-swipe>
+                  <ul class={list} data-track>
+                    {upcoming.map((e, i) => (
+                      <li class={`${itemClass(i, upcoming.length)} ${i >= LIST_MAX ? 'hidden' : ''}`} data-extra={i >= LIST_MAX ? 'true' : undefined}>
+                        <EventCard event={e} />
+                      </li>
+                    ))}
+                  </ul>
+                  <SwipeDots count={shownCount(upcoming.length)} class="mt-6 md:hidden" />
+                  {upcoming.length > LIST_MAX && <div class="mt-10 flex justify-center"><button type="button" class="rounded-pill border-2 border-brand-primary px-6 py-3 font-sans font-bold text-brand-primary" data-see-all>{fill(copy['list.seeAll'], { count: upcoming.length })}</button></div>}
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        {
+          archive.items.length > 0 && (
+            <section id="past-events" class="scroll-mt-8 px-6 pt-16 md:px-20 md:pt-[120px]">
+              <div class="mx-auto max-w-screen-xl">
+                <SectionTitle tagline={copy['archive.eyebrow']} heading={copy['archive.heading']} />
+                <div class="mt-12" data-swipe>
+                  <ul class={`flex snap-x snap-mandatory gap-6 overflow-x-auto [scrollbar-width:none] md:grid md:overflow-visible [&::-webkit-scrollbar]:hidden ${archive.items.length > 1 ? 'md:grid-cols-3' : ''}`} data-track>
+                    {archive.items.map((item) => (
+                      <li class="w-full shrink-0 snap-start md:w-auto">
+                        {item.kind === 'event' ? (
+                          <ArchiveCard
+                            href={`/events/${item.event.slug}`}
+                            imageUrl={item.event.imageUrl}
+                            tag={copy['tag.event']}
+                            title={item.event.title}
+                            summary={item.event.summary}
+                            concludedLabel={copy['archive.concluded']}
+                            buttonLabel={copy['archive.button']}
+                            wide={archive.items.length === 1}
+                          />
+                        ) : (
+                          <ArchiveCard
+                            href={item.campaign.link}
+                            imageUrl={item.campaign.imageUrl}
+                            imageAlt={item.campaign.imageAlt}
+                            tag={copy['tag.campaign']}
+                            title={item.campaign.title}
+                            summary={item.campaign.summary}
+                            concludedLabel={copy['archive.concluded']}
+                            buttonLabel={copy['archive.button']}
+                            wide={archive.items.length === 1}
+                          />
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  <SwipeDots count={archive.items.length} class="mt-6 md:hidden" />
+                </div>
+                <Pagination page={archive.page} pages={archive.pages} hash="#past-events" url={listUrl} />
+              </div>
+            </section>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <section class="px-6 pb-16 pt-16 md:px-20 md:pb-[120px] md:pt-[120px]">
+    <div class="mx-auto max-w-screen-xl">
+      <NewsletterSignup heading={copy['newsletterSignup.heading']} text={copy['newsletterSignup.text']} width="wide" />
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  import { initSwipes } from '../../lib/swipe'
+
+  initSwipes()
+  const root = document.querySelector<HTMLElement>('[data-evc]')
+  const tabs = Array.from(root?.querySelectorAll<HTMLButtonElement>('[data-tab]') ?? [])
+  const panels = Array.from(root?.querySelectorAll<HTMLElement>('[data-panel]') ?? [])
+
+  function select(name: string) {
+    tabs.forEach((t) => t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'))
+    panels.forEach((p) => (p.dataset.hidden = p.dataset.panel === name ? 'false' : 'true'))
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => select(t.dataset.tab!)))
+
+  // #campaigns, #upcoming-events or #past-events opens its tab, then scrolls to it.
+  function openHash() {
+    const target = location.hash ? document.getElementById(location.hash.slice(1)) : null
+    const panel = target?.closest<HTMLElement>('[data-panel]')
+    if (!target || !panel) return
+    select(panel.dataset.panel!)
+    target.scrollIntoView()
+  }
+  window.addEventListener('hashchange', openHash)
+  openHash()
+
+  // "See all N" shows the rest of its list.
+  document.querySelectorAll<HTMLButtonElement>('[data-see-all]').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.closest('[data-swipe]')?.querySelectorAll<HTMLElement>('[data-extra]').forEach((li) => li.classList.remove('hidden'))
+      button.remove()
+    })
+  })
+</script>

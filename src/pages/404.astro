@@ -1,0 +1,16 @@
+---
+// Not Found (spec 7.18): status 404, the navbar, the footer and a heading,
+// in the visitor's language (a path under /es/ gets the Spanish page).
+import PageLayout from '../layouts/PageLayout.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+Astro.response.status = 404
+const t = await getGlobalCopy(Astro)
+---
+
+<PageLayout title={t['notFound.heading']} noindex>
+  <section class="px-6 py-24 text-center md:py-[160px]">
+    <p class="font-label text-size-lg font-semibold text-brand-accent">404</p>
+    <h1 class="mt-4 text-h1-mobile text-brand-primary md:text-h1">{t['notFound.heading']}</h1>
+  </section>
+</PageLayout>

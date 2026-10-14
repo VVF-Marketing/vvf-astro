@@ -75,6 +75,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // which read their locale from Astro.originPathname. On every page, links
   // back into the site are then pointed at the page's language
   // (src/lib/localizeLinks.ts).
+  // Webflow's /en/(.*) → /%1 (spec 2.6): one 301 to today's page.
+  const en = context.url.pathname.match(/^\/en(\/.*)?$/)
+  if (en) return context.redirect(projectPathFor(en[1] ?? '/') + context.url.search, 301)
   const locale = localeFromPath(context.url.pathname)
   const path = stripLocale(context.url.pathname)
   if (path.startsWith('/_')) return next()

@@ -32,7 +32,7 @@ const list = layout === 'grid' ? 'grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'm
             <time datetime={r.publishedAt.slice(0, 10)}>{date(r.publishedAt)}</time>
           </Badge>
         )}
-        <h3 class="w-full font-heading text-size-lg font-extrabold leading-[1.4] text-brand-primary">{r.title}</h3>
+        <h3 class="w-full text-h4 text-brand-primary">{r.title}</h3>
         {r.excerpt && <p class="w-full font-body text-size-md leading-body text-brand-primary">{r.excerpt}</p>}
         <div class="mt-auto flex flex-wrap justify-center gap-x-6 gap-y-3 pt-6 md:justify-start">
           {r.fileUrl && (

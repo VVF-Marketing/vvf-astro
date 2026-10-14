@@ -10,7 +10,8 @@ export interface Props {
   align?: 'center' | 'left'
   // `light` for navy/dark sections.
   tone?: 'default' | 'light'
-  headingLevel?: 'h1' | 'h2' | 'h3'
+  // `p`: a lead line styled like a heading that isn't one (Home's About block, spec 7.1).
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'p'
   class?: string
 }
 

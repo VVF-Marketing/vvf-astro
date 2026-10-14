@@ -16,6 +16,9 @@ export interface Props {
 
 const { heading = t['event.specialHeading'], offers } = Astro.props as Props
 const id = `opps-${Math.random().toString(36).slice(2, 8)}`
+// A sold-out opportunity reads "(SOLD)" and can't be opened (spec 7.8, section 7).
+const sold = ` ${t['event.soldTab']}`
+const first = Math.max(0, offers.findIndex((o) => !o.soldOut))
 ---
 
 <section class="px-6 py-16 md:px-[152px] md:py-[120px]" data-opps-tabs>
@@ -24,9 +27,15 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
   <div class="mt-10 flex flex-col gap-3 md:hidden">
     {
       offers.map((o) => (
-        <details class={`group rounded-md px-6 py-5 ${o.soldOut ? 'bg-salmon' : 'bg-neutral-white open:bg-sky'}`}>
+        o.soldOut ? (
+          <div class="flex items-center justify-between gap-4 rounded-md bg-salmon px-6 py-5 font-sans text-size-md font-bold text-brand-primary" aria-disabled="true">
+            <span>{o.shortName ?? o.tierName}{sold}</span>
+            <span>{o.price}</span>
+          </div>
+        ) : (
+        <details class="group rounded-md bg-neutral-white px-6 py-5 open:bg-sky">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-sans text-size-md font-bold text-brand-primary [&::-webkit-details-marker]:hidden">
-            <span>{o.shortName ?? o.tierName}{o.soldOut && ' (SOLD)'}</span>
+            <span>{o.shortName ?? o.tierName}</span>
             <span class="flex items-center gap-3">
               {o.price}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="transition-transform group-open:rotate-180"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
@@ -34,13 +43,14 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
           </summary>
           {o.benefits && o.benefits.length > 0 && (
             <ul class="mt-4 flex list-disc flex-col gap-2 pl-6 marker:text-brand-accent">
-              {o.benefits.map((b) => <li class="font-body text-size-sm leading-body text-brand-primary">{b}</li>)}
+              {o.benefits.map((b) => <li class="font-label text-size-sm leading-body text-brand-primary">{b}</li>)}
             </ul>
           )}
-          {!o.soldOut && o.ctaUrl && (
+          {o.ctaUrl && (
             <Button href={o.ctaUrl} variant="outline" size="sm" class="mt-4">{o.ctaLabel ?? t['card.buyTickets']}</Button>
           )}
         </details>
+        )
       ))
     }
   </div>
@@ -54,14 +64,16 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
             role="tab"
             id={`${id}-tab-${i}`}
             aria-controls={`${id}-panel-${i}`}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            tabindex={i === 0 ? 0 : -1}
+            aria-selected={i === first ? 'true' : 'false'}
+            aria-disabled={o.soldOut ? 'true' : undefined}
+            disabled={o.soldOut}
+            tabindex={i === first ? 0 : -1}
             class={`flex items-center justify-between gap-4 rounded-md px-6 py-5 text-left font-sans text-size-md font-bold text-brand-primary ${o.soldOut ? 'bg-salmon' : 'bg-neutral-white aria-selected:bg-sky'}`}
             data-opp-tab
           >
             <span>
               {o.shortName ?? o.tierName}
-              {o.soldOut && ' (SOLD)'}
+              {o.soldOut && sold}
             </span>
             <span>{o.price}</span>
           </button>
@@ -70,7 +82,7 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
     </div>
     {
       offers.map((o, i) => (
-        <div role="tabpanel" id={`${id}-panel-${i}`} aria-labelledby={`${id}-tab-${i}`} hidden={i !== 0} class="h-fit rounded-2xl bg-sky p-12" data-opp-panel>
+        <div role="tabpanel" id={`${id}-panel-${i}`} aria-labelledby={`${id}-tab-${i}`} hidden={i !== first} class="h-fit rounded-2xl bg-sky p-12" data-opp-panel>
           <h3 class="text-h5 leading-[1.3] text-brand-primary md:text-h4">{o.tierName}</h3>
           {o.price && <p class="font-sans text-size-lg font-extrabold leading-body text-brand-primary">{o.price}</p>}
           {o.benefits && o.benefits.length > 0 && (
@@ -95,6 +107,9 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
   document.querySelectorAll<HTMLElement>('[data-opps-tabs]').forEach((root) => {
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-opp-tab]'))
     const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-opp-panel]'))
+    // Sold-out tabs are disabled; arrow keys skip them.
+    const open = tabs.map((tab, i) => (tab.disabled ? -1 : i)).filter((i) => i >= 0)
+    const step = (i: number, by: number) => open[(open.indexOf(i) + by + open.length) % open.length]
     const select = (index: number, focus = false) => {
       tabs.forEach((tab, i) => {
         tab.setAttribute('aria-selected', String(i === index))
@@ -106,8 +121,8 @@ const id = `opps-${Math.random().toString(36).slice(2, 8)}`
     tabs.forEach((tab, i) => {
       tab.addEventListener('click', () => select(i))
       tab.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowDown') select((i + 1) % tabs.length, true)
-        else if (event.key === 'ArrowUp') select((i - 1 + tabs.length) % tabs.length, true)
+        if (event.key === 'ArrowDown') select(step(i, 1), true)
+        else if (event.key === 'ArrowUp') select(step(i, -1), true)
         else return
         event.preventDefault()
       })

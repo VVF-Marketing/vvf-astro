@@ -1,40 +1,58 @@
 ---
-// Live counterpart: /resources-categories/<category> — "Resources" heading,
-// the newest resource as a wide featured card, category filter pills, a
-// two-column grid of article cards, and a sidebar with the newsletter box
-// and related resources.
+// Resources and its category pages share this layout (spec 7.12): header,
+// the featured article, filter buttons, a grid of six articles a page
+// (`?page=2`) leaving out the featured one, and a sidebar with the
+// newsletter and three Related articles. Press articles (on other websites)
+// link to the outlet and never appear in Related.
 import type { ResourceCategory, ResourceItem } from '../lib/content/types'
-import { RESOURCE_CATEGORIES, resourceTag } from '../lib/content/types'
+import { RESOURCE_CATEGORIES, RESOURCE_CATEGORY_PATHS, resourceTag } from '../lib/content/types'
 import ArticleCard from './ArticleCard.astro'
+import Breadcrumbs from './Breadcrumbs.astro'
 import NewsletterSignup from './NewsletterSignup.astro'
+import Pagination from './Pagination.astro'
 import { getGlobalCopy } from '../lib/globalCopy'
+import { paginate } from '../lib/pagination'
 
 const t = await getGlobalCopy(Astro)
 
+const PER_PAGE = 6
+
 export interface Props {
+  // The page's articles, newest first: every article, or one category's.
   resources: ResourceItem[]
-  // Every resource (for the sidebar "Related" list).
-  all: ResourceItem[]
   category?: ResourceCategory
+  // Category pages: the category's name and description.
+  heading?: string
+  description?: string
 }
 
-const { resources, all, category } = Astro.props as Props
-const [featured] = all
-const related = all.filter((r) => r.slug !== featured?.slug).slice(0, 3)
+const { resources, category, heading = t['resources.heading'], description } = Astro.props as Props
+const featured = resources.find((r) => r.featured && !r.external)
+const listed = resources.filter((r) => r !== featured)
+const { items, page, pages } = paginate(listed, Astro.url.searchParams.get('page'), PER_PAGE)
+const related = resources.filter((r) => r !== featured && !r.external).slice(0, 3)
+const listUrl = new URL(Astro.originPathname + Astro.url.search, Astro.url)
+
 const pill = 'inline-flex items-center rounded-pill border-2 border-brand-accent px-6 py-2 font-sans text-size-md font-bold no-underline'
 const categoryLabels: Record<ResourceCategory, string> = {
   stories: t['resources.category.stories'],
   'financials-transparency': t['resources.category.financials'],
 }
 const filters = [{ label: t['resources.viewAll'], href: '/resources', active: !category }].concat(
-  RESOURCE_CATEGORIES.map((c) => ({ label: categoryLabels[c], href: `/resources/category/${c}`, active: c === category }))
+  RESOURCE_CATEGORIES.map((c) => ({ label: categoryLabels[c], href: `/resources/${RESOURCE_CATEGORY_PATHS[c]}`, active: c === category }))
 )
 const tag = (r: ResourceItem) => resourceTag(r, categoryLabels)
+const card = (r: ResourceItem) =>
+  r.external && r.externalUrl
+    ? { href: r.externalUrl, outlet: r.outlet ?? new URL(r.externalUrl).hostname, languageTag: r.languageTag }
+    : { href: `/resources/${r.slug}` }
 ---
 
-<section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-[72px] md:px-16">
+<section class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-16 md:px-16">
   <div class="mx-auto max-w-[1312px]">
-    <h1 class="text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{t['resources.heading']}</h1>
+    {category && <Breadcrumbs items={[{ label: t['resources.breadcrumb'], href: '/resources' }, { label: heading }]} />}
+    <h1 class="mt-6 text-center text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h1>
+    {description && <p class="mx-auto mt-4 max-w-3xl text-center font-body text-size-md leading-body text-brand-primary">{description}</p>}
     {
       featured && (
         <div class="mt-12">
@@ -51,7 +69,7 @@ const tag = (r: ResourceItem) => resourceTag(r, categoryLabels)
       )
     }
     <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_413px]">
-      <div>
+      <div id="articles" class="scroll-mt-8">
         <nav aria-label={t['resources.filtersLabel']} class="flex flex-wrap justify-center gap-3">
           {
             filters.map((f) => (
@@ -63,21 +81,28 @@ const tag = (r: ResourceItem) => resourceTag(r, categoryLabels)
         </nav>
         <ul class="mt-6 grid gap-6 sm:grid-cols-2">
           {
-            resources.map((r) => (
+            items.map((r) => (
               <li>
-                <ArticleCard href={`/resources/${r.slug}`} title={r.title} date={r.publishedAt} excerpt={r.excerpt} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
+                <ArticleCard {...card(r)} title={r.title} date={r.publishedAt} excerpt={r.excerpt} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
               </li>
             ))
           }
         </ul>
-        {resources.length === 0 && <p class="mt-10 text-center font-body text-size-md text-brand-primary">{t['resources.empty']}</p>}
+        {
+          resources.length === 0 && (
+            <p class="mt-10 text-center font-body text-size-md text-brand-primary">
+              {t['resources.empty']} <a href="/resources" class="font-bold text-brand-primary underline">{t['resources.viewAll']}</a>
+            </p>
+          )
+        }
+        <Pagination page={page} pages={pages} hash="#articles" url={listUrl} />
       </div>
       <aside class="flex flex-col gap-10">
         <NewsletterSignup />
         {
           related.length > 0 && (
             <div class="flex flex-col gap-6">
-              <h2 class="text-h3-mobile leading-[1.2] text-brand-primary">{t['resources.related']}</h2>
+              <h2 class="text-h4 text-brand-primary">{t['resources.related']}</h2>
               {related.map((r) => (
                 <ArticleCard variant="related" href={`/resources/${r.slug}`} title={r.title} imageUrl={r.imageUrl} imageAlt={r.imageAlt} category={tag(r)} />
               ))}

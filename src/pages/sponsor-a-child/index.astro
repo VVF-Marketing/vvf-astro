@@ -5,18 +5,19 @@ import Hero from '../../components/Hero.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
 import Button from '../../components/Button.astro'
 import ChildCarousel from '../../components/ChildCarousel.astro'
-import PastelCard from '../../components/PastelCard.astro'
+import FeatureCard from '../../components/FeatureCard.astro'
 import ChecklistPanel from '../../components/ChecklistPanel.astro'
-import IconCard from '../../components/IconCard.astro'
 import FaqAccordion from '../../components/FaqAccordion.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
 import { getChildren, getFaqs, getPageCopy } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { contactHref } from '../../lib/contactTopics'
 import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
-const children = (await getChildren(locale)).slice(0, 12)
+// Every available child, newest first (spec 7.2, section 3).
+const children = await getChildren(locale)
 const faqs = await getFaqs('sponsorship', locale)
 const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
@@ -34,7 +35,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     imageAlt={copy['hero.imageAlt']}
     heading={copy['hero.heading']}
     subtext={copy['hero.subtext']}
-    primaryCta={{ label: copy['hero.label.1'], href: '/sponsor-a-child/children' }}
+    primaryCta={{ label: copy['hero.label.1'], href: '/children' }}
     secondaryCta={{ label: copy['hero.label.2'], href: '#how-it-works' }}
   />
 
@@ -45,7 +46,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
       text={copy['sectionTitle.text']}
     >
       <div class="flex flex-wrap justify-center gap-8 pt-6">
-        <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button.text']}</Button>
+        <Button href="/children" variant="primary-inverse">{copy['button.text']}</Button>
         <Button href="#how-it-works" variant="outline">{copy['button2.text']}</Button>
       </div>
     </SectionTitle>
@@ -60,16 +61,16 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     <SectionTitle tagline={copy['sectionTitle2.tagline']} heading={copy['sectionTitle2.heading']} text={copy['sectionTitle2.text']} />
     {children.length > 0 && <div class="mt-16"><ChildCarousel items={children} /></div>}
     <div class="mt-16 flex justify-center">
-      <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button3.text']}</Button>
+      <Button href="/children" variant="primary-inverse">{copy['button3.text']}</Button>
     </div>
   </section>
 
   <section id="how-it-works" class="px-6 pt-16 md:pt-[120px] md:px-16">
     <SectionTitle tagline={copy['sectionTitle3.tagline']} heading={copy['sectionTitle3.heading']} text={copy['sectionTitle3.text']} />
     <div class="mx-auto mt-20 grid max-w-[1312px] justify-items-center gap-8 md:grid-cols-3">
-      <PastelCard tone="sun" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard.eyebrow']} title={copy['pastelCard.title']} body={copy['pastelCard.body']} />
-      <PastelCard tone="salmon" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow={copy['pastelCard2.eyebrow']} title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} />
-      <PastelCard tone="sky" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard3.eyebrow']} title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} />
+      <FeatureCard tone="sun" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard.eyebrow']} title={copy['pastelCard.title']} body={copy['pastelCard.body']} />
+      <FeatureCard tone="salmon" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow={copy['pastelCard2.eyebrow']} title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} />
+      <FeatureCard tone="sky" iconUrl="/images/pages/13e19084-uuid-b16d0e76-bdc8-400e-a421-98f3d0ed3307.svg" eyebrow={copy['pastelCard3.eyebrow']} title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} />
     </div>
   </section>
 
@@ -87,20 +88,20 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     />
   </div>
 
-  <section class="px-6 pt-16 md:pt-[160px] md:px-20">
+  <section class="px-6 pt-16 md:pt-[120px] md:px-20">
     <SectionTitle
       tagline={copy['sectionTitle4.tagline']}
       heading={copy['sectionTitle4.heading']}
       text={copy['sectionTitle4.text']}
     />
     <div class="mx-auto mt-20 grid max-w-screen-xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <IconCard iconUrl="/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg" title={copy['iconCard.title']} text={copy['iconCard.text']} />
-      <IconCard iconUrl="/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg" title={copy['iconCard2.title']} text={copy['iconCard2.text']} />
-      <IconCard iconUrl="/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg" title={copy['iconCard3.title']} text={copy['iconCard3.text']} />
-      <IconCard iconUrl="/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg" title={copy['iconCard4.title']} text={copy['iconCard4.text']} />
+      <FeatureCard iconUrl="/images/pages/f11a8c87-vvf-icon-reward-letters-v1.svg" title={copy['iconCard.title']} body={copy['iconCard.text']} />
+      <FeatureCard iconUrl="/images/pages/45ed50ce-vvf-icon-reward-photos-v1.svg" title={copy['iconCard2.title']} body={copy['iconCard2.text']} />
+      <FeatureCard iconUrl="/images/pages/221ee42b-vvf-icon-reward-prayer-v1.svg" title={copy['iconCard3.title']} body={copy['iconCard3.text']} />
+      <FeatureCard iconUrl="/images/pages/2543e1f7-vvf-icon-reward-report-v1.svg" title={copy['iconCard4.title']} body={copy['iconCard4.text']} />
     </div>
     <div class="mt-20 flex justify-center">
-      <Button href="/sponsor-a-child/children" variant="primary-inverse">{copy['button4.text']}</Button>
+      <Button href="/children" variant="primary-inverse">{copy['button4.text']}</Button>
     </div>
   </section>
 
@@ -115,7 +116,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
         <p class="font-body text-size-md leading-body text-brand-primary">
           {copy['p.text']}
         </p>
-        <Button href="/contact" variant="primary-inverse">{copy['button5.text']}</Button>
+        <Button href={contactHref('Child sponsorship')} variant="primary-inverse">{copy['button5.text']}</Button>
       </div>
     </div>
   </section>
@@ -124,8 +125,8 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     <ProgramsCta
       heading={copy['programsCta.heading']}
       text={copy['programsCta.text']}
-      primaryCta={{ label: copy['programsCta.label.1'], href: '/sponsor-a-child/children' }}
-      secondaryCta={{ label: copy['programsCta.label.2'], href: '/resources/category/financials-transparency' }}
+      primaryCta={{ label: copy['programsCta.label.1'], href: '/children' }}
+      secondaryCta={{ label: copy['programsCta.label.2'], href: '/resources/financials' }}
     />
   </section>
 </PageLayout>

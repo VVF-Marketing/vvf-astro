@@ -11,11 +11,10 @@ import { DEFAULT_LOCALE, LOCALES, type Locale } from './i18n'
 // the `pages` collection only covers routes with no other EmDash presence.
 // (A listing route still gets a `pages` row when it declares copy slots.)
 const COLLECTION_INDEX_ROUTES = new Set([
-  'blog/index.astro',
-  'events/index.astro',
+  'events-and-campaigns/index.astro',
   'our-team/index.astro',
   'resources/index.astro',
-  'sponsor-a-child/children/index.astro',
+  'children/index.astro',
 ])
 
 export interface StaticPageRoute {
@@ -57,6 +56,7 @@ export function staticRoutesFrom(pageFiles: string[]): StaticPageRoute[] {
     .filter((rel) => rel.endsWith('.astro'))
     .filter((rel) => !rel.includes('[')) // dynamic routes belong to a collection
     .filter((rel) => !COLLECTION_INDEX_ROUTES.has(rel))
+    .filter((rel) => rel !== '404.astro') // the Not Found page isn't a page of the site
     .map((rel) => ({
       routePath: toRoutePath(rel),
       sourceFile: `src/pages/${rel}`,

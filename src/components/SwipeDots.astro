@@ -1,0 +1,32 @@
+---
+// One dot per slide for a [data-swipe] row (src/lib/swipe.ts). Renders
+// nothing for a single slide.
+import { fill, getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
+
+export interface Props {
+  count: number
+  // Screen-reader name of each dot; {n} is the slide number.
+  label?: string
+  class?: string
+}
+
+const { count, label = t['a11y.slide'], class: className = '' } = Astro.props as Props
+---
+
+{
+  count > 1 && (
+    <div class={`flex justify-center gap-2 ${className}`} data-dots>
+      {Array.from({ length: count }, (_, i) => (
+        <button
+          type="button"
+          class="h-3 w-3 rounded-full border border-brand-primary bg-transparent aria-[current=true]:bg-brand-primary"
+          aria-label={fill(label, { n: i + 1 })}
+          aria-current={i === 0 ? 'true' : 'false'}
+          data-dot
+        />
+      ))}
+    </div>
+  )
+}

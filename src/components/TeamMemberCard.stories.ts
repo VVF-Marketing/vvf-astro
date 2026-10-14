@@ -20,6 +20,6 @@ export const WithoutProfile = {
 export const OpenSeat = {
   args: {
     member: { name: 'Join our board', role: "We're looking for a new board member" },
-    openSeat: { kicker: 'Board seat open', heading: 'Help guide the Foundation', cta: 'Get in touch', href: '/contact' },
+    openSeat: { kicker: 'Board seats open', heading: 'Help guide the Foundation', cta: 'Get in touch', href: '/contact?topic=Other' },
   },
 }

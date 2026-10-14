@@ -3,18 +3,19 @@
 // implement. Sponsor-a-child's exact campaign slug wasn't given in the nav
 // map (only that it's a Donorbox-embedded form); `sponsorChildEmbedUrl`
 // uses the campaign the live Webflow child pages embed.
+//
+// Campaign IDs are stored once, in the CMS's Donorbox campaigns entry
+// (spec 8.1, rule 1; getDonorboxCampaigns). The defaults are today's IDs,
+// for when that entry is missing.
+import { contactHref } from './contactTopics'
+import { DONORBOX_CAMPAIGNS } from './contentModel.mjs'
 
-const GENERAL_DONATION_CAMPAIGN = 'general-donation-vvf'
-const EARTHQUAKE_RELIEF_CAMPAIGN = 'venezuela-earthquake-relief'
-// Campaign used by every child page on the live site (dbox-widget).
-const SPONSOR_CHILD_CAMPAIGN = 'make-a-difference-55'
-
-export function generalDonationUrl(): string {
-  return `https://donorbox.org/${GENERAL_DONATION_CAMPAIGN}`
+export function generalDonationUrl(campaign: string = DONORBOX_CAMPAIGNS.general): string {
+  return `https://donorbox.org/${campaign}`
 }
 
-export function earthquakeReliefUrl(): string {
-  return `https://donorbox.org/${EARTHQUAKE_RELIEF_CAMPAIGN}`
+export function earthquakeReliefUrl(campaign: string = DONORBOX_CAMPAIGNS.earthquake): string {
+  return `https://donorbox.org/${campaign}`
 }
 
 export function eventTicketUrl(donorboxEventId: string): string {
@@ -32,14 +33,14 @@ export function eventSponsorUrl(donorboxEventId: string, tierName?: string): str
 // `ref` tells the foundation which child a donation is for, so it's the
 // child's English slug on every locale's page: a Spanish slug that differs
 // would file the same child's donations under a second reference.
-export function sponsorChildEmbedUrl(child: { slug: string; alternates?: { en?: string } }): string {
+export function sponsorChildEmbedUrl(child: { slug: string; alternates?: { en?: string } }, campaign: string = DONORBOX_CAMPAIGNS.sponsorship): string {
   const ref = child.alternates?.en || child.slug
-  return `https://donorbox.org/embed/${SPONSOR_CHILD_CAMPAIGN}?default_interval=m&ref=${encodeURIComponent(ref)}`
+  return `https://donorbox.org/embed/${campaign}?default_interval=m&ref=${encodeURIComponent(ref)}`
 }
 
 // Corporate Sponsorships' "Partner with Us" CTA deliberately does NOT go to
 // Donorbox — it routes to the inquiry flow (see donation-integration:
 // Corporate sponsorship inquiry).
 export function corporateSponsorshipInquiryUrl(): string {
-  return '/contact?topic=corporate-partnerships'
+  return contactHref('Corporate partnership')
 }

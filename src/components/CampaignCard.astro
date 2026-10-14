@@ -1,0 +1,24 @@
+---
+// An active campaign on Events & Campaigns (spec 7.7, section 2): photo,
+// date range, title, summary; the whole card links to the campaign's page.
+import type { Campaign } from '../lib/campaigns'
+import Button from './Button.astro'
+
+export interface Props {
+  campaign: Campaign
+  buttonLabel: string
+}
+
+const { campaign, buttonLabel } = Astro.props as Props
+const Tag = campaign.link ? 'a' : 'div'
+---
+
+<Tag href={campaign.link} class="flex h-full flex-col overflow-hidden rounded-card bg-neutral-white no-underline transition-shadow hover:shadow-hover md:flex-row">
+  {campaign.imageUrl && <img src={campaign.imageUrl} alt={campaign.imageAlt ?? ''} class="h-[183px] w-full object-cover md:h-auto md:w-1/2" loading="lazy" draggable="false" />}
+  <div class="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center md:items-start md:p-10 md:text-left">
+    {campaign.dates && <p class="font-label text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">{campaign.dates}</p>}
+    <h3 class="text-h4 text-brand-primary">{campaign.title}</h3>
+    {campaign.summary && <p class="font-body text-size-md leading-body text-brand-primary">{campaign.summary}</p>}
+    {campaign.link && <Button variant="outline" as="span">{buttonLabel}</Button>}
+  </div>
+</Tag>

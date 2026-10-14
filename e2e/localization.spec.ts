@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { projectPathFor } from '../src/lib/legacyRoutes.mjs'
-import { firstBoardMember, firstEvent, firstPost } from './fixtures'
+import { firstBoardMember, firstEvent } from './fixtures'
 
 const SITE = 'https://www.victoriavenezuelafoundation.org'
 
@@ -12,8 +12,11 @@ test('every static page is served under /es', async ({ request }) => {
   }
 })
 
+// Webflow's list sends /en/(.*) to /%1 (spec 2.6): a redirect, never a copy.
 test('/en is not a duplicate of the unprefixed English site', async ({ request }) => {
-  expect((await request.get('/en/ways-to-give')).status()).toBe(404)
+  const res = await request.get('/en/ways-to-give', { maxRedirects: 0 })
+  expect(res.status()).toBe(301)
+  expect(new URL(res.headers().location, 'http://x').pathname).toBe('/ways-to-give')
 })
 
 test('on every page, links back into the site follow the page language', async ({ request }) => {
@@ -68,15 +71,6 @@ test('pages declare their language', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('lang', 'es-VE')
 })
 
-test('an untranslated page under /es is canonicalized to English with no es-VE alternate', async ({ page }) => {
-  // Blog posts are project-only and have no Spanish versions.
-  const post = firstPost()
-  await page.goto(`/es/blog/${post.slug}`)
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${SITE}/blog/${post.slug}`)
-  await expect(page.locator('link[rel="alternate"][hreflang="es-VE"]')).toHaveCount(0)
-  await expect(page.locator('main')).toHaveAttribute('lang', 'en-US')
-})
-
 test('a translated page is its own canonical and lists both locales', async ({ page }) => {
   const event = firstEvent()
   await page.goto(`/es/events/${event.slug}`)
@@ -126,10 +120,10 @@ test('a Spanish page shows the Spanish menu, linking to /es routes', async ({ pa
 
 test('old Spanish Webflow URLs redirect once to the Spanish project route', async ({ request }) => {
   for (const [from, to] of [
-    ['/es/all-events', '/es/events'],
+    ['/es/all-events', '/es/events-and-campaigns'],
     ['/es/team-members/randy-lander', '/es/our-team/randy-lander'],
-    ['/es/resources-categories/stories', '/es/resources/category/stories'],
-    ['/es/venezuela-earthquake-relief', '/es/earthquake-relief'],
+    ['/es/resources-categories/stories', '/es/resources/stories'],
+    ['/es/earthquake-relief', '/es/venezuela-earthquake-relief'],
   ]) {
     const res = await request.get(from, { maxRedirects: 0 })
     expect(res.status(), from).toBe(301)

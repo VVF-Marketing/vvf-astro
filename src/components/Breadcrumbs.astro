@@ -17,7 +17,7 @@ export interface Props {
 }
 
 const { items, tone = 'default', class: className = '' } = Astro.props as Props
-const link = tone === 'light' ? 'text-brand-accent-soft' : 'text-brand-accent'
+const link = tone === 'light' ? 'text-brand-accent' : 'text-brand-accent'
 const current = tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'
 const sep = tone === 'light' ? 'text-neutral-white opacity-85' : 'text-brand-primary opacity-45'
 const text = 'font-body text-[13px] font-semibold uppercase leading-body no-underline'

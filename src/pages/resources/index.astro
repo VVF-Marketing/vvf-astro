@@ -1,9 +1,10 @@
 ---
-// All resources — live /resources-categories/all.
+// Resources (spec 7.12): every article, newest first.
 import PageLayout from '../../layouts/PageLayout.astro'
 import ResourceList from '../../components/ResourceList.astro'
 import { getResources, getPageCopy } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { withPage } from '../../lib/pagination'
 import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
@@ -16,7 +17,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
   title={copy['seo.title']}
   description={copy['seo.description']}
   image={copy['seo.image']}
-  alternates={pageAlternates(pageCopy.route, locales)}
+  alternates={withPage(pageAlternates(pageCopy.route, locales), Astro.url.searchParams.get('page'))}
 >
-  <ResourceList resources={all} all={all} />
+  <ResourceList resources={all} />
 </PageLayout>

@@ -10,7 +10,7 @@ const locale = localeFromPath(Astro.originPathname)
 // One profile per person; when they appear in several tiers,
 // getTeamMemberBySlug picks the entry carrying the full bio.
 const member = await getTeamMemberBySlug(Astro.params.slug!, locale)
-if (!member) return new Response('Not found', { status: 404 })
+if (!member) return Astro.rewrite('/404')
 ---
 
 <PageLayout

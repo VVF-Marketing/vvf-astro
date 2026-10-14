@@ -24,7 +24,7 @@ Every variable is documented in `.env.example`. In deployed mode the launcher (`
 
 - `DATABASE_URL` (and `DATABASE_SSL=true` for hosted databases);
 - `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_REGION`, optional `S3_PUBLIC_URL`;
-- optional `EMDASH_SYNC_PAT` (static-page sync), `SAFEGUARDING_USERS`, `DTD_PUBLIC_KEY`.
+- optional `EMDASH_SYNC_PAT` (static-page sync), `SAFEGUARDING_USERS`, `DTD_PUBLIC_KEY`, `GTM_CONTAINER_ID` (Google Tag Manager; set in production only), `FORM_MAIL_API_KEY` (Resend; turns on the form emails), `FORM_MAIL_FROM`, `FORM_MAIL_TO`.
 
 ## Images
 

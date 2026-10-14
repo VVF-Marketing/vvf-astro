@@ -11,6 +11,6 @@ const { tone = 'accent', class: className = '' } = Astro.props as Props
 const tones = { accent: 'text-brand-accent', light: 'text-neutral-white' }
 ---
 
-<p class={`font-body text-size-sm font-semibold uppercase leading-body tracking-[0.1em] ${tones[tone]} ${className}`}>
+<p class={`font-label text-size-sm font-semibold uppercase leading-body tracking-[0.1em] ${tones[tone]} ${className}`}>
   <slot />
 </p>

@@ -1,0 +1,128 @@
+---
+// Venezuela Earthquake Relief — as the live page (Enrique, Q11 on the spec
+// card): its sections, including Point of Contact and Our Response, whose
+// titles are styled text there rather than headings.
+import PageLayout from '../../layouts/PageLayout.astro'
+import Hero from '../../components/Hero.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import Button from '../../components/Button.astro'
+import MediaSplit from '../../components/MediaSplit.astro'
+import EarthquakeAppeal from '../../components/EarthquakeAppeal.astro'
+import FeatureCard from '../../components/FeatureCard.astro'
+import NewsletterSignup from '../../components/NewsletterSignup.astro'
+import Card from '../../components/Card.astro'
+import ResponseTimeline from '../../components/ResponseTimeline.astro'
+import { getDonorboxCampaigns, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { earthquakeReliefUrl } from '../../lib/donorbox'
+import pageCopy from './_copy'
+
+const locale = localeFromPath(Astro.originPathname)
+
+const donateUrl = earthquakeReliefUrl((await getDonorboxCampaigns()).earthquake)
+const detail = 'font-label text-size-sm leading-body text-brand-primary'
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+---
+
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
+  <Hero
+    align="right"
+    imageUrl="/images/pages/406e389b-98.png"
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: donateUrl }}
+  />
+
+  <section class="px-6 text-center">
+    <SectionTitle heading={copy['sectionTitle.heading']} />
+    <div class="mt-8 flex justify-center"><Button href="#how-to-help" variant="primary-inverse" size="sm">{copy['button.text']}</Button></div>
+  </section>
+
+  <MediaSplit
+    imageSide="right"
+    heading={copy['mediaSplit.heading']}
+    text={copy['mediaSplit.text']}
+    images={[
+      { url: '/images/pages/2b2a02c7-image-11.png', alt: copy['mediaSplit.alt.1'] },
+      { url: '/images/pages/8e3aa6c2-image-12.png', alt: copy['mediaSplit.alt.2'] },
+      { url: '/images/pages/005e8213-image-14.png', alt: copy['mediaSplit.alt.3'] },
+      { url: '/images/pages/4fd38a77-image-13.png', alt: copy['mediaSplit.alt.4'] },
+    ]}
+  />
+
+  <MediaSplit
+    imageSide="right"
+    imagePanel
+    heading={copy['mediaSplit2.heading']}
+    text={copy['mediaSplit2.text']}
+    imageUrl="/images/pages/6fa550cb-mapa-ve.png"
+    imageAlt={copy['mediaSplit2.imageAlt']}
+  />
+
+  <div class="pt-16 md:pt-[120px]">
+    <EarthquakeAppeal heading={copy['appealPanel.heading']} />
+  </div>
+
+  <section class="px-6 pt-10 md:px-20 md:pt-16">
+    <img src="/images/pages/bc6541aa-image-15.png" alt={copy['img.alt']} class="mx-auto aspect-[1280/720] w-full max-w-screen-xl rounded-2xl object-cover" loading="lazy" />
+  </section>
+
+  <section id="how-to-help" class="mt-16 scroll-mt-8 bg-neutral-white px-6 py-16 md:py-[120px] md:px-20">
+    <SectionTitle heading={copy['sectionTitle2.heading']} />
+    <div class="mx-auto mt-16 grid max-w-[880px] justify-items-center gap-6 md:grid-cols-2">
+      <FeatureCard tone="sun" iconUrl="/images/pages/bf4b24b4-uuid-44b213d5-4ccc-4af1-aa0d-adeed8e87986.svg" eyebrow={copy['pastelCard.eyebrow']} title={copy['pastelCard.title']} body={copy['pastelCard.body']} />
+      <FeatureCard tone="sky" iconUrl="/images/pages/18e3545d-uuid-fbb82aa0-466c-47ff-bed6-28fb0d6195ab.svg" eyebrow={copy['pastelCard2.eyebrow']} title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: donateUrl }} />
+    </div>
+  </section>
+
+  <section class="px-6 pt-16 md:pt-[120px] md:px-20">
+    <SectionTitle heading={copy['sectionTitle3.heading']} />
+    <div class="mx-auto mt-12 max-w-[700px]"><NewsletterSignup width="wide" /></div>
+  </section>
+
+  <section class="px-6 pt-16 md:pt-[120px] md:px-20">
+    <div class="mx-auto grid max-w-screen-xl gap-6 md:grid-cols-2">
+      <Card radius="2xl" class="flex flex-col gap-6 p-10 md:p-16">
+        <div class="flex items-center gap-4">
+          <img src="/images/pages/41d18615-home.svg" alt="" width="36" height="36" />
+          <p class="font-heading text-h4-mobile font-extrabold leading-[1.4] text-brand-primary md:text-h4">{copy['h2.text']}</p>
+        </div>
+        <p class="font-body text-size-md leading-body text-brand-primary">{copy['p.text']}</p>
+      </Card>
+      <Card tone="sky" radius="2xl" class="flex flex-col gap-6 p-10 md:p-16">
+        <div>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p2.text']}</p>
+          <p class={detail}>{copy['p3.text']}</p>
+          <p class={detail}><a href="tel:+19543710557" class="text-brand-primary">+1 (954) 371-0557</a></p>
+        </div>
+        <div>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p5.text']}</p>
+          <p class={detail}>{copy['p6.text']}</p>
+        </div>
+        <div>
+          <p class="font-sans text-size-md font-bold text-brand-primary">{copy['p7.text']}</p>
+          <p class={detail}><a href="mailto:info@victoriavenezuelafoundation.org" class="text-brand-primary underline">{copy['a2.text']}</a></p>
+        </div>
+      </Card>
+    </div>
+  </section>
+
+  <ResponseTimeline
+    heading={copy['responseTimeline.heading']}
+    headingTag="p"
+    text={copy['responseTimeline.text']}
+    phases={[
+      { title: copy['responseTimeline.title.1'], text: copy['responseTimeline.text.1'], status: 'completed' },
+      { title: copy['responseTimeline.title.2'], text: copy['responseTimeline.text.2'], status: 'completed' },
+      { title: copy['responseTimeline.title.3'], text: copy['responseTimeline.text.3'], status: 'in-progress' },
+      { title: copy['responseTimeline.title.4'], text: copy['responseTimeline.text.4'], status: 'upcoming' },
+    ]}
+  />
+
+</PageLayout>

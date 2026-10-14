@@ -17,8 +17,9 @@ const pages: [string, keyof typeof CUE][] = [
 for (const [path, locale] of pages) {
   test(`external links on ${path} open in a new tab and say so`, async ({ page }) => {
     await page.goto(path)
+    // The site's own links: third-party widgets (Donorbox's popup) add theirs after load.
     const links = await page.locator('a[href]').evaluateAll((els) =>
-      els.map((a) => ({ href: a.getAttribute('href') ?? '', target: a.getAttribute('target'), rel: a.getAttribute('rel') ?? '', label: a.getAttribute('aria-label'), text: a.textContent ?? '' }))
+      els.filter((a) => !a.closest('dbox-widget')).map((a) => ({ href: a.getAttribute('href') ?? '', target: a.getAttribute('target'), rel: a.getAttribute('rel') ?? '', label: a.getAttribute('aria-label'), text: a.textContent ?? '' }))
     )
     const external = links.filter((l) => isExternal(l.href))
     expect(external.length).toBeGreaterThan(0)

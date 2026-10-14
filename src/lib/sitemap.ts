@@ -11,10 +11,14 @@ import { LANG_TAGS, pageAlternates, type Locale } from './i18n'
 
 export type Alternates = Partial<Record<Locale, string>>
 
-// Copy manifests that belong to a single static page (not detail templates
-// such as `/events/*`, not the site-wide copy).
+// Pages kept out of search results (spec 2.4): the thank-you pages carry
+// `noindex` and aren't listed.
+export const NOINDEX_ROUTES = ['/thank-you-sponsorship', '/thank-you-donation', '/thank-you-earthquake-relief']
+
+// Copy manifests that belong to a single, indexable static page (not detail
+// templates such as `/events/*`, not the site-wide copy).
 export function staticManifests(manifests: CopyManifest[]): CopyManifest[] {
-  return manifests.filter((m) => m.route.startsWith('/') && !m.route.includes('*'))
+  return manifests.filter((m) => m.route.startsWith('/') && !m.route.includes('*') && !NOINDEX_ROUTES.includes(m.route))
 }
 
 export async function staticPages(manifests: CopyManifest[], localesFor: (m: CopyManifest) => Promise<Locale[]>): Promise<Alternates[]> {

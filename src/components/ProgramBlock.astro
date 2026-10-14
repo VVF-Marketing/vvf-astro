@@ -1,0 +1,66 @@
+---
+// The spec's program block (5.5, row 27; Our Programs 7.19): tagline, H2,
+// one paragraph, a Support button, and a row of photos with captions. More
+// than one photo makes a swipe row with dots and mouse drag; one photo has
+// no dots.
+import Eyebrow from './Eyebrow.astro'
+import Button from './Button.astro'
+import SwipeDots from './SwipeDots.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
+
+export interface ProgramPhoto {
+  url: string
+  alt: string
+  title: string
+  text: string
+}
+
+export interface Props {
+  id: string
+  tagline: string
+  heading: string
+  text: string
+  cta: { label: string; href: string }
+  photos: ProgramPhoto[]
+  tone?: 'sun' | 'salmon' | 'sky'
+}
+
+const { id, tagline, heading, text, cta, photos, tone = 'sky' } = Astro.props as Props
+const tones = { sun: 'bg-sun', salmon: 'bg-salmon', sky: 'bg-sky' }
+---
+
+<section id={id} class="scroll-mt-8 px-6 py-10 md:px-20 md:py-16">
+  <div class="mx-auto grid max-w-screen-xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-20">
+    <div class="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
+      <Eyebrow>{tagline}</Eyebrow>
+      <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h2>
+      <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>
+      <Button href={cta.href} variant="primary-inverse">{cta.label}</Button>
+    </div>
+    <div class="flex min-w-0 flex-col gap-4" data-swipe>
+      <ul class="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-track>
+        {
+          photos.map((p) => (
+            <li class="w-full shrink-0 snap-start">
+              <figure class="flex flex-col overflow-hidden rounded-2xl">
+                <img src={p.url} alt={p.alt} class="aspect-[4/3] w-full select-none object-cover" loading="lazy" draggable="false" />
+                <figcaption class={`flex flex-col gap-1 px-6 py-5 ${tones[tone]}`}>
+                  <h3 class="text-h5 leading-[1.4] text-brand-primary">{p.title}</h3>
+                  <p class="font-body text-size-sm leading-body text-brand-primary">{p.text}</p>
+                </figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+      <SwipeDots count={photos.length} label={t['a11y.photoDot']} />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initSwipes } from '../lib/swipe'
+  initSwipes()
+</script>

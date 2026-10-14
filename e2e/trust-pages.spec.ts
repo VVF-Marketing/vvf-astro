@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
-// Financials & Transparency (mirrors the live page) and Our Programs (from
-// the design), in both locales.
+// Financials & Transparency and Our Programs (both mirror the live pages),
+// in both locales.
 
 test('Financials & Transparency shows its sections and report lists', async ({ page, request }) => {
   const res = await request.get('/financials-and-transparency', { maxRedirects: 0 })
@@ -28,17 +28,20 @@ test('Financials & Transparency in Spanish shows the live Spanish copy', async (
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/es\/financials-and-transparency$/)
 })
 
+// Our Programs follows the live page (spec 7.19): hero, how the programs
+// work together, three program blocks, global goals and the videos.
 for (const width of [1440, 390]) {
   test(`Our Programs shows its sections at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.goto('/our-programs')
     await expect(page.getByRole('heading', { level: 1 })).toHaveText("Our programs transform children's lives")
-    const programs = page.locator('#programs h2')
-    await expect(programs).toHaveText(['Nutrition program feeds hungry children', 'Medical care restores health and hope', 'Education opens doors for Venezuelan children'])
-    for (const name of ['Support', 'View gallery']) expect(await page.locator('#programs').getByRole('link', { name, exact: true }).count()).toBe(3)
+    const blocks = page.locator('#programs h2, #medical-care h2, #education h2')
+    await expect(blocks).toHaveText(['Nutrition program feeds hungry children', 'Medical care restores health and hope', 'Education opens doors for Venezuelan children'])
+    for (const id of ['#programs', '#medical-care', '#education']) {
+      await expect(page.locator(id).getByRole('link', { name: 'Support', exact: true })).toHaveAttribute('href', '/sponsor-a-child')
+    }
     await expect(page.getByRole('heading', { level: 2, name: 'Our work aligns with global development goals' })).toBeVisible()
-    await expect(page.getByRole('heading', { level: 2, name: 'Support our programs' })).toBeVisible()
-    await expect(page.getByRole('heading', { level: 2, name: 'Dig deeper into our work' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 2, name: 'Stories of transformation' })).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
   })
 }
@@ -46,15 +49,15 @@ for (const width of [1440, 390]) {
 test('Our Programs publishes no testimonials while the collection is empty', async ({ page }) => {
   await page.goto('/our-programs')
   await expect(page.locator('[data-testimonials]')).toHaveCount(0)
-  await expect(page.getByText('Stories of transformation')).toHaveCount(0)
+  await expect(page.locator('main blockquote')).toHaveCount(0)
   await expect(page.getByText('Maria Santos')).toHaveCount(0)
 })
 
-test('Our Programs in Spanish falls back to English and canonicalizes to it', async ({ page }) => {
+// The live /es page's copy, migrated like every other page (spec 2.1, 6.1).
+test('Our Programs in Spanish has its own copy and canonical', async ({ page }) => {
   await page.goto('/es/our-programs')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText("Our programs transform children's lives")
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/our-programs$/)
-  await expect(page.locator('link[rel="canonical"]')).not.toHaveAttribute('href', /\/es\//)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nuestros programas transforman la vida de los niños')
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/es\/our-programs$/)
 })
 
 test('About lists Our Team, Our Programs and Financials & Transparency in both locales', async ({ page }) => {

@@ -27,10 +27,10 @@ test.describe('legacy Webflow URLs', () => {
   test('redirect permanently to project routes', async ({ request }) => {
     for (const [from, to] of [
       ['/team-members/randy-lander', '/our-team/randy-lander'],
-      ['/venezuela-earthquake-relief', '/earthquake-relief'],
-      ['/all-events', '/events'],
+      ['/earthquake-relief', '/venezuela-earthquake-relief'],
+      ['/all-events', '/events-and-campaigns'],
       ['/resources-categories/all', '/resources'],
-      ['/resources-categories/stories', '/resources/category/stories'],
+      ['/resources-categories/stories', '/resources/stories'],
     ]) {
       const response = await request.get(from, { maxRedirects: 0 })
       expect(response.status(), from).toBe(301)

@@ -23,23 +23,27 @@ export const COPY_PAGES = [
   { route: '/sponsor-a-child', name: 'Sponsor a Child' },
   { route: '/ways-to-give', name: 'Ways to Give' },
   { route: '/corporate-sponsorships', name: 'Corporate Sponsorships' },
-  { route: '/events', name: 'Events (list page)' },
+  // Pages moved to the spec's URL map (openspec change audit-build-against-site-spec)
+  // keep their copy collection, so stored text and translations stay put.
+  { route: '/events-and-campaigns', name: 'Events & Campaigns (list page)', slug: 'copy_events' },
   { route: '/our-team', name: 'Our Team' },
   { route: '/our-programs', name: 'Our Programs' },
   { route: '/financials-and-transparency', name: 'Financials & Transparency' },
   { route: '/resources', name: 'Resources (list page)' },
-  { route: '/resources/category/stories', name: 'Resources: Stories' },
+  { route: '/resources/stories', name: 'Resources: Stories', slug: 'copy_resources_category_stories' },
   // Explicit slug: the derived one (47 characters) breaks EmDash's index names
   // on Postgres (63-character identifier limit; see collectionNames.test.ts).
-  { route: '/resources/category/financials-transparency', name: 'Resources: Financials & Transparency', slug: 'copy_resources_financials' },
-  { route: '/earthquake-relief', name: 'Earthquake Relief' },
-  { route: '/sponsor-a-child/children', name: 'Children (list page)' },
-  { route: '/blog', name: 'Blog (list page)' },
+  { route: '/resources/financials', name: 'Resources: Financial Reports', slug: 'copy_resources_financials' },
+  { route: '/venezuela-earthquake-relief', name: 'Earthquake Relief', slug: 'copy_earthquake_relief' },
+  { route: '/children', name: 'Children (list page)', slug: 'copy_sponsor_a_child_children' },
   { route: '/contact', name: 'Contact' },
   { route: '/privacy-policy', name: 'Privacy Policy' },
+  { route: '/thank-you-sponsorship', name: 'Thank you: sponsorship' },
+  { route: '/thank-you-donation', name: 'Thank you: donation' },
+  { route: '/thank-you-earthquake-relief', name: 'Thank you: earthquake relief', slug: 'copy_thank_you_earthquake' },
   { route: '/events/*', name: 'Event pages (shared text)', shared: 'every event page' },
   { route: '/resources/*', name: 'Resource pages (shared text)', shared: 'every resource page' },
-  { route: '/blog/*', name: 'Blog post pages (shared text)', shared: 'every blog post' },
+  { route: '/children/*', name: 'Child profiles (shared text)', shared: 'every child profile', slug: 'copy_children_detail' },
   { route: '_global', name: 'Site-wide text', shared: 'the header, footer, buttons and forms on every page' },
 ]
 
@@ -76,17 +80,23 @@ function copyDescription(page) {
 
 // Other site collections, in sidebar order within their folder.
 export const CONTENT_COLLECTIONS = [
-  { slug: 'events', group: 'collections', label: 'Events', description: 'Events and campaigns, each with its own page under /events.' },
-  { slug: 'posts', group: 'collections', label: 'Blog posts', description: 'Blog posts, listed on /blog with a page each.' },
-  { slug: 'resources', group: 'collections', label: 'Resources', description: 'Stories, reports and downloads, listed on /resources and its categories.' },
-  { slug: 'faqs', group: 'collections', label: 'FAQs', description: 'Questions and answers shown on Ways to Give, Sponsor a Child and event pages.' },
-  { slug: 'testimonials', group: 'collections', label: 'Testimonials', description: 'Quotes from families, volunteers and partners, shown on Our Programs once published.' },
-  { slug: 'team_members', group: 'collections', label: 'Team members', description: 'People on Our Team, each with a profile page.' },
-  { slug: 'sponsors', group: 'collections', label: 'Sponsors / partners', description: 'Sponsor and partner logos shown on the home, event and sponsorship pages.' },
-  { slug: 'sponsorship_packages', group: 'collections', label: 'Sponsorship packages', description: 'Packages and tiers shown on Corporate Sponsorships and event pages.' },
-  { slug: 'auction_items', group: 'collections', label: 'Silent auction items', description: 'Items shown in an event’s silent auction section.' },
-  { slug: 'campaign_updates', group: 'collections', label: 'Earthquake relief updates', labelSingular: 'Earthquake relief update', description: 'Updates shown on the Earthquake Relief page.' },
+  // The content model (src/lib/contentModel.mjs, spec Appendix B).
+  { slug: 'events', group: 'collections', label: 'Events', description: 'One item per event edition, with its page under /events, listed on /events-and-campaigns.' },
+  { slug: 'event_offers', group: 'collections', label: 'Event offers', description: 'Tickets, sponsorship packages and special opportunities, picked on each event.' },
+  { slug: 'benefit_rows', group: 'collections', label: 'Event benefit rows', description: "Rows of an event's sponsorship benefits grid." },
+  { slug: 'auction_items', group: 'collections', label: 'Silent auction items', description: 'Items shown in an event’s silent auction section. Never winners or bids.' },
+  { slug: 'testimonials', group: 'collections', label: 'Testimonials', description: 'Quotes shown on event recaps.' },
+  { slug: 'articles', group: 'collections', label: 'Articles', description: 'Stories, news, reports and press coverage, listed on /resources and its categories.' },
+  { slug: 'categories', group: 'collections', label: 'Article categories', description: 'Stories, Financial Reports and News, each listed at /resources/<category>.' },
+  { slug: 'authors', group: 'collections', label: 'Authors', description: 'Article bylines, linked to the team bio when the author is on the team.' },
+  { slug: 'faqs', group: 'collections', label: 'FAQs', description: 'Questions and answers; tick the pages each one shows on. Events pick their own.' },
+  { slug: 'team_members', group: 'collections', label: 'Team members', description: 'One record per person, each with a bio page under /our-team.' },
+  { slug: 'partners', group: 'collections', label: 'Partners', description: 'Sponsor and partner logos for every logo strip.' },
+  { slug: 'site_facts', group: 'collections', label: 'Site facts', description: 'Impact figures shown across the site, each with its period and source.' },
   { slug: 'children', group: 'collections', label: 'Children', labelSingular: 'Child', description: 'Sponsorship profiles. Restricted: only the safeguarding team can change them.' },
+  // Other site collections.
+  { slug: 'corporate_tiers', group: 'collections', label: 'Corporate sponsorship tiers', description: 'The four tiers on Corporate Sponsorships.' },
+  { slug: 'donorbox_settings', group: 'collections', label: 'Donorbox campaigns', description: 'The Donorbox campaign IDs every donate button and form uses. Change them here only.' },
   {
     slug: 'campaign_settings',
     group: 'banner',

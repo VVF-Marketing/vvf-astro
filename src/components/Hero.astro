@@ -28,7 +28,7 @@ const { imageUrl, mobileImageUrl, imageAlt = '', heading, subtext, primaryCta, s
 const cardPosition = align === 'right' ? 'md:ml-auto md:mr-20' : 'md:ml-20'
 ---
 
-<section class={`relative flex items-start pt-[230px] md:min-h-[768px] md:items-center md:pt-0 ${flush ? '' : 'mb-8 md:mb-[120px]'}`}>
+<section class={`relative flex items-start md:min-h-[768px] md:items-center ${flush ? '' : 'mb-8 md:mb-[120px]'}`}>
   {
     imageUrl && (
       <picture>
@@ -37,7 +37,8 @@ const cardPosition = align === 'right' ? 'md:ml-auto md:mr-20' : 'md:ml-20'
       </picture>
     )
   }
-  <div class={`relative z-10 w-full px-6 md:w-auto md:px-0 md:py-20 ${cardPosition}`}>
+  <!-- On phones the photo sits above the card: a margin, not section padding (spec 5.3). -->
+  <div class={`relative z-10 mt-[230px] w-full px-6 md:mt-0 md:w-auto md:px-0 md:py-20 ${cardPosition}`}>
     <div class="flex max-w-[608px] flex-col items-center gap-10 rounded-2xl bg-neutral-white px-6 py-10 text-center md:items-start md:px-16 md:py-20 md:text-left">
       <div class="flex flex-col gap-4">
         <h1 class="text-[2.25rem] leading-[1.16] md:text-[3rem]">{heading}</h1>
