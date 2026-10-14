@@ -1,6 +1,6 @@
 // Spec section 5: design system (checks 5.9-1, 3, 4, 6, 7, 8, 9, 10).
-import { expect, type Page } from '@playwright/test'
-import { bilingual, open, LANGS, single, SPEC_PAGES } from './helpers'
+import { expect, test, type Page } from '@playwright/test'
+import { bilingual, HAS_CHILD_DATA, NO_CHILD_DATA, open, LANGS, single, SPEC_PAGES } from './helpers'
 
 const WIDTHS = [1440, 1280, 768, 440, 375]
 const isPhone = (w: number) => w < 768
@@ -204,6 +204,8 @@ for (const lang of LANGS) {
   })
 
   single('5.9-8', `${lang} carousel arrows by keyboard`, async ({ page }) => {
+    // The carousel lists available children, so it isn't rendered without them.
+    test.skip(!HAS_CHILD_DATA, NO_CHILD_DATA)
     await open(page, L('/sponsor-a-child'))
     const carousel = page.locator('[data-child-carousel], [data-carousel]').first()
     const next = carousel.locator('button:visible').last()

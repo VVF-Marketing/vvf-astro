@@ -41,7 +41,7 @@ const contactLines = [
   />
 
   <section id="contact-form" class="scroll-mt-8 px-6 py-16 md:py-[120px] md:px-20">
-    <div class="mx-auto grid max-w-screen-xl items-start gap-10 lg:grid-cols-[540px_1fr]">
+    <div class="mx-auto grid max-w-screen-xl grid-cols-1 items-start gap-10 lg:grid-cols-[540px_1fr]">
       <div class="flex flex-col gap-6 rounded-2xl bg-neutral-white p-8 md:p-16">
         <p class="font-sans text-size-sm font-semibold text-brand-primary">{copy['p2.text']}</p>
         <h2 class="text-h2-mobile leading-[1.2] text-brand-primary md:text-h2">{copy['h22.text']}</h2>
@@ -57,7 +57,7 @@ const contactLines = [
                   {line.icon === 'phone' && <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z" stroke-linejoin="round" />}
                   {line.icon === 'pin' && <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />}
                 </svg>
-                {line.href ? <a href={line.href} class="text-brand-primary underline">{line.label}</a> : <span>{line.label}</span>}
+                {line.href ? <a href={line.href} class="min-w-0 text-brand-primary underline [overflow-wrap:anywhere]">{line.label}</a> : <span class="min-w-0">{line.label}</span>}
               </li>
             ))
           }

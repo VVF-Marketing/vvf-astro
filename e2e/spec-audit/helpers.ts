@@ -72,14 +72,15 @@ export const SPEC_PAGES = [
 export const THANK_YOU_PAGES = ['/thank-you-sponsorship', '/thank-you-donation', '/thank-you-earthquake-relief'] as const
 
 // Seed fixtures. Children exist only in the gitignored seed.local.json, so
-// child checks report blocked (skipped with a reason) where it's missing.
+// child checks report blocked (skipped with a reason) where it has none.
+// `npm run seed` writes that file in CI too, just without children.
 const localSeedPath = fileURLToPath(new URL('../../seed/seed.local.json', import.meta.url))
 const seedPath = existsSync(localSeedPath) ? localSeedPath : fileURLToPath(new URL('../../seed/seed.json', import.meta.url))
 export const seed = JSON.parse(readFileSync(seedPath, 'utf-8')) as {
   content: Record<string, { slug?: string; id?: string; locale?: string; data: Record<string, unknown> }[]>
 }
-export const HAS_CHILD_DATA = existsSync(localSeedPath)
-export const NO_CHILD_DATA = 'blocked: child data not available in this environment (seed/seed.local.json missing)'
+export const HAS_CHILD_DATA = (seed.content.children ?? []).length > 0
+export const NO_CHILD_DATA = 'blocked: child data not available in this environment (no children in the seed)'
 
 export function seedItems(collection: string) {
   return seed.content[collection] ?? []
