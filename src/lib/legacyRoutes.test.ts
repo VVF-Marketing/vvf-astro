@@ -36,6 +36,13 @@ describe('projectPathFor', () => {
     expect(projectPathFor('/resources/impact-report-2025')).toBe('/resources/impact-report-2025')
     expect(projectPathFor('/contact/')).toBe('/contact')
   })
+
+  // Review finding (PR #28): /en//evil.com redirected to //evil.com.
+  it('never returns a path that reads as another host', () => {
+    expect(projectPathFor('//evil.com')).toBe('/evil.com')
+    expect(projectPathFor('/\\evil.com')).toBe('/evil.com')
+    expect(projectPathFor('///evil.com/x')).toBe('/evil.com/x')
+  })
 })
 
 describe('Spanish legacy paths', () => {

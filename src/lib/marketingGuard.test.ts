@@ -16,10 +16,8 @@ const slot = { key: 'hero.heading', label: 'Hero heading', format: 'plain', max_
 const items: Record<string, { status: string; data: Record<string, unknown> }> = {
   'page_copy/s1': { status: 'published', data: slot },
   'page_copy/rich': { status: 'published', data: { key: 'body', label: 'Policy text', format: 'rich' } },
-  'children/pub': { status: 'published', data: { published: true } },
-  'children/pub-numeric': { status: 'published', data: { published: 1 } },
-  'children/hidden': { status: 'published', data: { published: false } },
-  'children/draft': { status: 'draft', data: { published: true } },
+  'children/pub': { status: 'published', data: { name: 'Greiber V.' } },
+  'children/draft': { status: 'draft', data: { name: 'Ana P.' } },
 }
 
 function ctx(overrides: Partial<GuardContext> = {}): GuardContext {
@@ -72,10 +70,10 @@ describe('child profiles', () => {
     expect(await check('content_update', { collection: 'children', id: 'pub', data: {} }, ctx({ safeguarding: true }))).toEqual({ allow: true })
   })
 
-  it('hides unpublished or draft profiles by id', async () => {
+  // Review finding (PR #28): the guard still required the retired
+  // `published` flag, so no child was readable.
+  it('shows published profiles and hides drafts by id', async () => {
     expect((await check('content_get', { collection: 'children', id: 'pub' })).allow).toBe(true)
-    expect((await check('content_get', { collection: 'children', id: 'pub-numeric' })).allow).toBe(true)
-    expect(await check('content_get', { collection: 'children', id: 'hidden' })).toMatchObject({ allow: false, status: 404 })
     expect(await check('content_get', { collection: 'children', id: 'draft' })).toMatchObject({ allow: false, status: 404 })
   })
 
@@ -98,16 +96,15 @@ describe('child profiles', () => {
   it('filters lists: drops unpublished profiles and strips the private name everywhere', () => {
     const body = {
       items: [
-        { id: 'a', status: 'published', data: { display_name: 'A', published: true, private_full_name: 'Secret A' } },
-        { id: 'b', status: 'published', data: { display_name: 'B', published: false } },
-        { id: 'c', status: 'draft', data: { display_name: 'C', published: true } },
-        { id: 'd', status: 'published', data: { display_name: 'D', published: 1 } },
+        { id: 'a', status: 'published', data: { name: 'A', private_full_name: 'Secret A' } },
+        { id: 'c', status: 'draft', data: { name: 'C' } },
+        { id: 'd', status: 'published', data: { name: 'D' } },
       ],
     }
     expect(filterChildData(body, true)).toEqual({
       items: [
-        { id: 'a', status: 'published', data: { display_name: 'A', published: true } },
-        { id: 'd', status: 'published', data: { display_name: 'D', published: 1 } },
+        { id: 'a', status: 'published', data: { name: 'A' } },
+        { id: 'd', status: 'published', data: { name: 'D' } },
       ],
     })
     expect(filterChildData({ results: [{ collection: 'children', title: 'A' }, { collection: 'faqs', title: 'Q' }] })).toEqual({

@@ -114,6 +114,7 @@ export default defineCopy(GLOBAL_ROUTE, {
   'team.from': { label: 'Team profile: "From" label', default: 'From', maxLength: 20 },
   'team.basedIn': { label: 'Team profile: "Based in" label', default: 'Based in', maxLength: 20 },
   'team.background': { label: 'Team profile: background heading', default: 'Background', maxLength: 30 },
+  'team.linkedin': { label: 'Team profile: LinkedIn link, read by screen readers ({name} is replaced with the name)', default: '{name} on LinkedIn', maxLength: 60 },
 
   // Children
   'child.age': { label: 'Child profile: age label', default: 'Age', maxLength: 20 },

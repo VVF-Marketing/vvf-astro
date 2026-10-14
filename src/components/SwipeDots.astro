@@ -1,6 +1,7 @@
 ---
 // One dot per slide for a [data-swipe] row (src/lib/swipe.ts). Renders
-// nothing for a single slide.
+// nothing for a single slide. Each dot is 12 px, inside a 24 px button so it
+// meets the minimum touch target (WCAG 2.5.8).
 import { fill, getGlobalCopy } from '../lib/globalCopy'
 
 const t = await getGlobalCopy(Astro)
@@ -17,15 +18,17 @@ const { count, label = t['a11y.slide'], class: className = '' } = Astro.props as
 
 {
   count > 1 && (
-    <div class={`flex justify-center gap-2 ${className}`} data-dots>
+    <div class={`flex justify-center ${className}`} data-dots>
       {Array.from({ length: count }, (_, i) => (
         <button
           type="button"
-          class="h-3 w-3 rounded-full border border-brand-primary bg-transparent aria-[current=true]:bg-brand-primary"
+          class="group flex h-6 w-6 items-center justify-center rounded-full"
           aria-label={fill(label, { n: i + 1 })}
           aria-current={i === 0 ? 'true' : 'false'}
           data-dot
-        />
+        >
+          <span class="h-3 w-3 rounded-full border border-brand-primary bg-transparent group-aria-[current=true]:bg-brand-primary" aria-hidden="true" />
+        </button>
       ))}
     </div>
   )

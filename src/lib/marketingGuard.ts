@@ -5,7 +5,8 @@
 //
 //  1. Child profiles: only safeguarding-allowlisted users may change them; for
 //     everyone else only published profiles are readable, without the
-//     private full name.
+//     private full name (removed from the model, Q5; still stripped from
+//     databases that kept it).
 //  2. Copy slots (every page's copy collection, see cmsNavigation.mjs, and
 //     the retired `page_copy`): only the value (in the slot's format, within
 //     its maximum length, rich text limited to supported formatting) may
@@ -351,10 +352,11 @@ export function filterChildData(value: unknown, inChildren = false): unknown {
   return value
 }
 
-// Public on the site: published status and the safeguarding `published`
-// flag set (stored as 1/0 by SQLite, true/false elsewhere).
-function isVisibleChild(item: { status?: string; data?: Record<string, any> }): boolean {
-  return item.status === 'published' && Boolean(item.data?.published)
+// Public on the site: published status. (The old safeguarding `published`
+// flag is gone from the content model, spec 4.3; only the safeguarding team
+// can publish a child, rule 1.)
+function isVisibleChild(item: { status?: string }): boolean {
+  return item.status === 'published'
 }
 
 function isUnpublishedChild(v: unknown): boolean {

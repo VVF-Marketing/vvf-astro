@@ -31,7 +31,7 @@
     "migrate:fix-copy": "node --env-file-if-exists=.env scripts/migrate/cli.mjs fix-copy",
     "migrate:copy-collections": "node --env-file-if-exists=.env scripts/migrate/copy-collections.mjs",
     "test:parity": "playwright test -c playwright.parity.config.ts",
-    "test:spec-audit": "vitest run -c vitest.spec-audit.config.ts; playwright test -c playwright.spec-audit.config.ts",
+    "test:spec-audit": "vitest run -c vitest.spec-audit.config.ts; unit=$?; playwright test -c playwright.spec-audit.config.ts; e2e=$?; exit $((unit || e2e))",
     "spec-audit:report": "node scripts/spec-audit/report.mjs",
     "migrate:validate": "node --env-file-if-exists=.env scripts/migrate/cli.mjs validate"
   },

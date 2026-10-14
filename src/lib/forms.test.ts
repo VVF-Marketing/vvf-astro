@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { deliver, pageFrom, validate } from './forms'
+import { MAX_BODY_BYTES, MAX_FIELD_LENGTH, deliver, isHoneypotFilled, isTooLarge, pageFrom, validate } from './forms'
 
 const contact = { firstName: 'Ana', lastName: 'Pérez', email: 'ana@example.org', topic: 'Volunteering', message: 'Hola', privacyConsent: 'on' }
 
@@ -26,7 +26,27 @@ describe('pageFrom', () => {
     expect(pageFrom('/es/contact')).toBe('/es/contact')
     expect(pageFrom('https://evil.example/x')).toBe('/')
     expect(pageFrom('//evil.example')).toBe('/')
+    expect(pageFrom('/\\evil.example')).toBe('/')
     expect(pageFrom(undefined)).toBe('/')
+  })
+})
+
+// Review finding (PR #28): no honeypot and no size limit.
+describe('abuse limits', () => {
+  it('spots a filled honeypot', () => {
+    expect(isHoneypotFilled({ ...contact, website: 'http://spam.example' })).toBe(true)
+    expect(isHoneypotFilled({ ...contact, website: '' })).toBe(false)
+    expect(isHoneypotFilled(contact)).toBe(false)
+  })
+
+  it('refuses a request without a length or over the cap', () => {
+    expect(isTooLarge(new Headers({ 'content-length': '512' }))).toBe(false)
+    expect(isTooLarge(new Headers({ 'content-length': String(MAX_BODY_BYTES + 1) }))).toBe(true)
+    expect(isTooLarge(new Headers())).toBe(true)
+  })
+
+  it('refuses a field over the length cap', () => {
+    expect(validate('contact', { ...contact, message: 'x'.repeat(MAX_FIELD_LENGTH + 1) })).toEqual({ ok: false, invalid: ['message'] })
   })
 })
 

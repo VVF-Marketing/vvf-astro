@@ -4,7 +4,7 @@
 // photo with the quote and labeled facts (Since / From / Based in), then the
 // bio with a "Background" sidebar. Empty facts are omitted.
 import type { TeamMemberItem } from '../lib/content/types'
-import { getGlobalCopy } from '../lib/globalCopy'
+import { fill, getGlobalCopy } from '../lib/globalCopy'
 
 const t = await getGlobalCopy(Astro)
 
@@ -43,7 +43,7 @@ const paragraphs = (member.longBio ?? '').split(/\n{2,}/).filter(Boolean)
                 </div>
               ))}
               {linkedin && (
-                <a href={linkedin.url} class="ml-auto" aria-label={`${member.name} on LinkedIn`}>
+                <a href={linkedin.url} class="ml-auto" aria-label={fill(t['team.linkedin'], { name: member.name })}>
                   <img src="/images/footer/linkedin.svg" alt="" width="24" height="24" />
                 </a>
               )}

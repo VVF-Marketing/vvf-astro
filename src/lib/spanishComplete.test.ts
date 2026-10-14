@@ -35,6 +35,12 @@ describe('Spanish-complete publishing', () => {
   it('allows a complete Spanish version, and publishing the Spanish item itself', async () => {
     expect(await spanishIncompleteError({ collection: 'faqs', id: 'en3' }, lookup)).toBeUndefined()
     expect(await spanishIncompleteError({ collection: 'faqs', id: 'es1' }, lookup)).toBeUndefined()
-    expect(await spanishIncompleteError({ collection: 'faqs', id: 'x', locale: 'es' }, lookup)).toBeUndefined()
+  })
+
+  // Review finding (PR #28): `?locale=es` or `locale` in the body skipped the check.
+  it("doesn't trust the caller's locale", async () => {
+    expect(await spanishIncompleteError({ collection: 'faqs', id: 'en2', locale: 'es' }, lookup)).toMatch(/Add the Spanish version/)
+    expect(await spanishIncompleteError({ collection: 'faqs', id: 'en1', locale: 'es' }, lookup)).toMatch(/Still empty/)
+    expect(await spanishIncompleteError({ collection: 'faqs', id: 'es1', locale: 'es' }, lookup)).toBeUndefined()
   })
 })

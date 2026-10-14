@@ -17,7 +17,7 @@ Collections follow the VVF spec's content model (`src/lib/contentModel.mjs`): `e
 
 To change the schema or seed content: edit `seed/seed.json`, then `npm run seed` (or just restart the dev server — EmDash auto-seeds on boot if the database doesn't have content yet).
 
-The `children` collection has a `published` flag gated behind "safeguarding sign-off" per its field description — unpublished child profiles should never render on the public site regardless of what other data exists on the record.
+A child profile is public once it's published, and only the safeguarding team can publish one (see [Marketing Access](/marketing-access/)). The `children` collection has only the spec's fields (4.3, "add none"), plus the Donorbox reference (Q5); there's no separate safeguarding flag.
 
 ## Storage
 

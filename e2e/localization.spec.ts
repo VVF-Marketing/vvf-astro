@@ -19,6 +19,15 @@ test('/en is not a duplicate of the unprefixed English site', async ({ request }
   expect(new URL(res.headers().location, 'http://x').pathname).toBe('/ways-to-give')
 })
 
+// Review finding (PR #28): /en//evil.com redirected to //evil.com, another host.
+test('/en never redirects off the site', async ({ request }) => {
+  for (const path of ['/en//evil.com', '/en/\\evil.com', '/es//evil.com']) {
+    const res = await request.get(path, { maxRedirects: 0 })
+    const location = res.headers().location
+    if (location) expect(new URL(location, 'http://x').host, path).toBe('x')
+  }
+})
+
 test('on every page, links back into the site follow the page language', async ({ request }) => {
   const read = (rel: string) => JSON.parse(readFileSync(new URL(rel, import.meta.url), 'utf-8')).urls as string[]
   const projectPaths = [...new Set(read('../scripts/migrate/snapshot/sitemap.json').map((p) => projectPathFor(p)))]

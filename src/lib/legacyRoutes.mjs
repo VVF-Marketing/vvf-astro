@@ -161,9 +161,11 @@ export const DYNAMIC_REDIRECTS = {
   '/sponsor-a-child/children/[slug]': '/children/[slug]',
 }
 
-// Resolve a live path to its project path (identity when unchanged).
+// Resolve a live path to its project path (identity when unchanged). Leading
+// slashes and backslashes collapse to one, so a result never reads as another
+// host (`//evil.com`, `/\evil.com`) when it's used as a redirect target.
 export function projectPathFor(livePath) {
-  const path = livePath.replace(/\/$/, '') || '/'
+  const path = livePath.replace(/^[/\\]+/, '/').replace(/\/$/, '') || '/'
   if (STATIC_REDIRECTS[path]) return STATIC_REDIRECTS[path]
   for (const [from, to] of Object.entries(DYNAMIC_REDIRECTS)) {
     const prefix = from.replace(/\[[^\]]+\]$/, '')

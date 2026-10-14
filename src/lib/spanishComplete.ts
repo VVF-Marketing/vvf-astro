@@ -54,10 +54,12 @@ export interface SpanishLookup {
 export async function spanishIncompleteError(target: PublishTarget, lookup: SpanishLookup): Promise<string | undefined> {
   const required = requiredSpanishFields(target.collection)
   if (required.length === 0) return undefined
-  if (target.locale === 'es') return undefined
   const list = (fields: FieldDef[]) => fields.map((f) => f.label).join(', ')
   if (!target.id) return `Save this item and add its Spanish version before publishing. The Spanish version needs: ${list(required)}.`
-  const item = await lookup.get(target.collection, target.id)
+  // The caller's locale only helps find the item (a slug is shared by both
+  // languages); whether it's the Spanish version is decided by its stored
+  // locale, never by what the caller says (review finding on PR #28).
+  const item = (target.locale && (await lookup.get(target.collection, target.id, target.locale))) || (await lookup.get(target.collection, target.id))
   if (!item || item.locale === 'es') return undefined
   const es = (await lookup.translations(target.collection, target.id)).find((t) => t.locale === 'es')
   if (!es) return `Add the Spanish version before publishing. It needs: ${list(required)}.`

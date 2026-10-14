@@ -21,16 +21,36 @@ export interface Submission {
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-// The page a form was sent from: a same-site path only.
+// The page a form was sent from: a same-site path only (`/\\host` reads as
+// `//host` to browsers, so a backslash after the first slash is refused too).
 export function pageFrom(value: unknown): string {
   const page = typeof value === 'string' ? value.trim() : ''
-  return /^\/(?!\/)[^\s?#]*$/.test(page) ? page : '/'
+  return /^\/(?![/\\])[^\s?#\\]*$/.test(page) ? page : '/'
+}
+
+// Spam and abuse limits (8.4 rule 6 leaves captchas out until spam starts):
+// a hidden field people never see but bots fill in, and a size cap on the
+// request and on each field.
+export const HONEYPOT = 'website'
+export const MAX_BODY_BYTES = 16 * 1024
+export const MAX_FIELD_LENGTH = 5000
+
+export function isHoneypotFilled(data: Record<string, unknown>): boolean {
+  return typeof data[HONEYPOT] === 'string' && data[HONEYPOT] !== ''
+}
+
+// A form post without a length, or over the cap, is refused before reading.
+export function isTooLarge(headers: Headers): boolean {
+  const length = Number(headers.get('content-length'))
+  return !Number.isFinite(length) || length <= 0 || length > MAX_BODY_BYTES
 }
 
 // Server-side check of what the browser checks first (8.4 rule 4). Returns
 // the cleaned fields, or the names of the fields that fail.
 export function validate(form: FormName, data: Record<string, unknown>): { ok: true; fields: Record<string, string> } | { ok: false; invalid: string[] } {
   const get = (k: string) => (typeof data[k] === 'string' ? (data[k] as string).trim() : '')
+  const tooLong = Object.entries(data).filter(([, v]) => typeof v === 'string' && v.length > MAX_FIELD_LENGTH).map(([k]) => k)
+  if (tooLong.length) return { ok: false, invalid: tooLong }
   if (form === 'newsletter') {
     const email = get('email')
     return EMAIL.test(email) ? { ok: true, fields: { email } } : { ok: false, invalid: ['email'] }

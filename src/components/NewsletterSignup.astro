@@ -31,6 +31,8 @@ const result = ['sent', 'invalid', 'unavailable'].find((r) => r === Astro.url.se
     data-msg-email={t['form.email']}
   >
     <input type="hidden" name="page" value={Astro.originPathname.replace(/\/$/, '') || '/'} />
+    <!-- Honeypot (src/lib/forms.ts): off screen and out of the tab order; only bots fill it in. -->
+    <div aria-hidden="true" class="absolute -left-[9999px] h-px w-px overflow-hidden"><input type="text" name="website" tabindex="-1" autocomplete="off" /></div>
     {
       result && (
         <p role="status" class="font-label text-size-sm font-semibold text-brand-primary" data-form-result={result}>
