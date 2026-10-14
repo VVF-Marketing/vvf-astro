@@ -10,14 +10,16 @@
 //    (seedMedia, the same step `npm run db:setup` uses for Postgres + S3).
 //
 // Children are included only when the gitignored child snapshot and media
-// exist locally (`npm run migrate:extract`); CI seeds without them.
+// exist locally (`npm run migrate:extract`); CI seeds made-up ones instead
+// (SEED_FIXTURE_CHILDREN=1, scripts/lib/fixture-children.mjs).
 import { execFileSync } from 'node:child_process'
-import { existsSync, rmSync } from 'node:fs'
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { Kysely } from 'kysely'
 import { createDialect } from 'emdash/db/sqlite'
 import { createStorage } from 'emdash/storage/local'
 import { confirmDestructive } from './lib/confirm.mjs'
+import { withFixtureChildren } from './lib/fixture-children.mjs'
 import { readManifests, seedMedia } from './lib/seed-media.mjs'
 import { transform } from './migrate/transform.mjs'
 import { LOCAL_SEED_PATH, ROOT_DIR } from './migrate/lib/paths.mjs'
@@ -46,6 +48,17 @@ rmSync(path.join(ROOT_DIR, 'seed/media/emdash-media.local.json'), { force: true 
 console.log('\n▶ seed files')
 console.log(await transform())
 if (!existsSync(LOCAL_SEED_PATH)) throw new Error(`${LOCAL_SEED_PATH} was not written`)
+// CI has no child data: SEED_FIXTURE_CHILDREN=1 adds made-up profiles so the
+// child pages get tested (scripts/lib/fixture-children.mjs). Real children,
+// when the local snapshot has them, are left as they are.
+if (process.env.SEED_FIXTURE_CHILDREN === '1') {
+  const seed = JSON.parse(readFileSync(LOCAL_SEED_PATH, 'utf8'))
+  const withFixtures = withFixtureChildren(seed)
+  if (withFixtures !== seed) {
+    writeFileSync(LOCAL_SEED_PATH, `${JSON.stringify(withFixtures, null, 2)}\n`)
+    console.log(`added ${withFixtures.content.children.length} fixture child entries (made up, for tests)`)
+  }
+}
 
 console.log('\n▶ schema and content')
 execFileSync('npx', ['emdash', 'seed', path.relative(ROOT_DIR, LOCAL_SEED_PATH)], { cwd: ROOT_DIR, stdio: 'inherit' })
