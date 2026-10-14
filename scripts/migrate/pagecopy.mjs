@@ -226,6 +226,9 @@ export const MANUAL_TRANSLATIONS = {
     'child.dream': 'Sueño',
     'child.gender.Male': 'Masculino',
     'child.gender.Female': 'Femenino',
+    // Review of PR #28: the LinkedIn link's screen-reader name, and News (Q14).
+    'team.linkedin': '{name} en LinkedIn',
+    'resources.category.news': 'Noticias',
   },
   // Spec 7.1 (Home): the past-event fallback and the program cards' button.
   '/': {
@@ -249,6 +252,12 @@ export const MANUAL_TRANSLATIONS = {
     'breadcrumb.list': 'Conoce a los niños',
     'about.heading': 'Sobre {name}',
     'form.title': 'Apadrina a {name} a través de Donorbox',
+  },
+  // News (spec 3.1, Q14): the live Spanish News page's title and description.
+  '/resources/news': {
+    'seo.title': 'Noticias | Recursos | Fundación Victoria Venezuela',
+    'seo.description': 'Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela.',
+    'seo.titleTemplate': '{name} | Recursos | Fundación Victoria Venezuela',
   },
   // Spec 7.9 (Our Team): the open-seat tile's button.
   '/our-team': {
