@@ -1,0 +1,49 @@
+---
+// The thank-you page Donorbox returns donors to (spec 7.17): hero, checklist
+// card, what happens next, closing photo. Not indexed, not in the sitemap,
+// linked from nowhere on the site; GTM counts the gift on these paths (8.2).
+import PageLayout from '../layouts/PageLayout.astro'
+import Hero from './Hero.astro'
+import ChecklistPanel from './ChecklistPanel.astro'
+import SectionTitle from './SectionTitle.astro'
+import Button from './Button.astro'
+import { getPageCopy } from '../lib/content'
+import { localeFromPath, pageAlternates } from '../lib/i18n'
+import type { ThankYouManifest } from '../lib/thankYouCopy'
+
+interface Props {
+  manifest: ThankYouManifest
+}
+
+const { manifest } = Astro.props
+const locale = localeFromPath(Astro.originPathname)
+const { copy, locales } = await getPageCopy(manifest, locale)
+const items = [1, 2, 3, 4].map((n) => ({
+  title: copy[`checklist.item.${n}.title` as keyof typeof copy],
+  text: copy[`checklist.item.${n}.text` as keyof typeof copy],
+}))
+---
+
+<PageLayout title={copy['seo.title']} description={copy['seo.description']} image={copy['seo.image']} alternates={pageAlternates(manifest.route, locales)} noindex>
+  <Hero
+    imageUrl="/images/pages/5b51a5f8-98.png"
+    mobileImageUrl="/images/pages/91f6fb13-vvf-sponsorarticle-featured-v2.jpg"
+    imageAlt={copy['hero.imageAlt']}
+    heading={copy['hero.heading']}
+    subtext={copy['hero.subtext']}
+    primaryCta={{ label: copy['hero.label.1'], href: '/' }}
+  />
+  <div class="px-0 md:px-[72px]">
+    <div class="mx-auto max-w-[1296px]">
+      <ChecklistPanel tagline={copy['checklist.tagline']} heading={copy['checklist.heading']} items={items} />
+    </div>
+  </div>
+  <section class="px-6 py-16 text-center md:py-[120px]">
+    <SectionTitle heading={copy['next.heading']} text={copy['next.text']} />
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <Button href="/contact" variant="primary-inverse">{copy['next.label.1']}</Button>
+      <Button href="/" variant="outline">{copy['next.label.2']}</Button>
+    </div>
+  </section>
+  <img src="/images/pages/ae149422-15d77ffd-ad0c-4914-a5cb-538fd74e2f6e-1.png" alt={copy['image.alt']} class="h-[320px] w-full object-cover md:h-[560px]" />
+</PageLayout>

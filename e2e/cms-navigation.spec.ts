@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test'
+// @ts-expect-error -- plain ESM module
+import { CONTENT_COLLECTIONS } from '../src/lib/cmsNavigation.mjs'
 
 // The admin sidebar's organization as EmDash serves it
 // (openspec/changes/organize-cms-admin-navigation). Reading the schema needs
@@ -30,19 +32,10 @@ test('the sidebar has Pages & SEO, CMS collections and Banner, in that order', a
   expect(pages.at(-1)).toMatchObject({ slug: 'copy_site', label: 'Site-wide text' })
   expect(pages.map((c) => c.label)).toContain('Event pages (shared text)')
 
-  expect(visible.filter((c) => c.group === 'CMS collections').map((c) => c.label)).toEqual([
-    'Events',
-    'Blog posts',
-    'Resources',
-    'FAQs',
-    'Testimonials',
-    'Team members',
-    'Sponsors / partners',
-    'Sponsorship packages',
-    'Silent auction items',
-    'Earthquake relief updates',
-    'Children',
-  ])
+  // In the order src/lib/cmsNavigation.mjs gives them.
+  expect(visible.filter((c) => c.group === 'CMS collections').map((c) => c.label)).toEqual(
+    CONTENT_COLLECTIONS.filter((c: { group: string }) => c.group === 'collections').map((c: { label: string }) => c.label)
+  )
   expect(visible.filter((c) => c.group === 'Banner').map((c) => c.label)).toEqual(['Site banner'])
   expect(collections.find((c) => c.slug === 'pages')?.hidden).toBe(true)
 })

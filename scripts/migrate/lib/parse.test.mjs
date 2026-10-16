@@ -103,6 +103,17 @@ describe('parseResource', () => {
         excerpt: 'Short excerpt.',
         image: { src: 'https://cdn.prod.website-files.com/site/card.jpeg', alt: 'Card' },
       },
+      {
+        slug: 'press-example-2026-08-04',
+        title: 'Nota de prensa',
+        date: 'August 4, 2026',
+        excerpt: undefined,
+        image: { src: 'https://cdn.prod.website-files.com/site/press.jpeg', alt: 'Nota' },
+        external: true,
+        externalUrl: 'https://outlet.example/nota/',
+        languageTag: 'In Spanish',
+        outlet: 'Outlet Example',
+      },
     ])
   })
 })

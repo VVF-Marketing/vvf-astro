@@ -17,7 +17,15 @@ describe('copyCollectionFor', () => {
     expect(copyCollectionFor('_global')).toBe('copy_site')
     expect(copyCollectionFor('/ways-to-give')).toBe('copy_ways_to_give')
     expect(copyCollectionFor('/events/*')).toBe('copy_events_detail')
-    expect(copyCollectionFor('/resources/category/financials-transparency')).toBe('copy_resources_financials')
+    expect(copyCollectionFor('/resources/financials')).toBe('copy_resources_financials')
+  })
+
+  // Pages moved to the spec's URL map keep the collection their text lives in.
+  it('keeps the copy collection of moved pages', () => {
+    expect(copyCollectionFor('/events-and-campaigns')).toBe('copy_events')
+    expect(copyCollectionFor('/children')).toBe('copy_sponsor_a_child_children')
+    expect(copyCollectionFor('/venezuela-earthquake-relief')).toBe('copy_earthquake_relief')
+    expect(copyCollectionFor('/resources/stories')).toBe('copy_resources_category_stories')
   })
 
   it('gives every copy page a valid, unique EmDash slug', () => {

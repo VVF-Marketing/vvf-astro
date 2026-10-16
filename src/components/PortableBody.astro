@@ -1,15 +1,18 @@
 ---
-// Portable Text from the CMS (resource bodies, the privacy policy), rendered
-// with EmDash's components except tables, which use the site's live table
-// style (ContentTable.astro). Wrap it in RichText for the prose styles.
-import { PortableText } from 'emdash/ui'
+// Portable Text from the CMS (resource bodies, the privacy policy): text
+// blocks, lists and links with astro-portabletext's defaults, images and
+// tables with the site's own components. EmDash's renderer isn't used: it
+// ships CSS for every embed type, outside the site's palette (spec 5.9-2).
+// Wrap it in RichText for the prose styles.
+import { PortableText } from 'astro-portabletext'
 import ContentTable from './ContentTable.astro'
+import RichImage from './RichImage.astro'
 
 export interface Props {
   value: unknown
 }
 
-const components = { type: { table: ContentTable } }
+const components = { type: { table: ContentTable, image: RichImage } }
 ---
 
 <PortableText value={Astro.props.value as never} components={components} />

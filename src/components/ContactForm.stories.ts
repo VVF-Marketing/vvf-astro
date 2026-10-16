@@ -24,5 +24,5 @@ export const Default = {
 }
 
 export const PreselectedTopic = {
-  args: { defaultTopic: 'corporate-partnerships' },
+  args: { defaultTopic: 'Corporate partnership' },
 }

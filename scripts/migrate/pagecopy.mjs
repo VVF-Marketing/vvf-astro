@@ -24,6 +24,22 @@ import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { projectPathFor } from '../../src/lib/legacyRoutes.mjs'
 
 const GLOBAL = '_global'
+
+// Live Spanish corrected per slot:
+// - where it differs by place while the English is the same: "Contact Us" is
+//   "Contacto" on the navbar button but "Contáctanos" in the live footer, and
+//   the spec takes the footer's words from the live footer (VVF website
+//   spec 6.3);
+// - where it speaks as *usted* outside Corporate Sponsorships; the site uses
+//   *tú* everywhere else (spec 8.6, rule 1).
+export const SLOT_CORRECTIONS = {
+  [GLOBAL]: { 'footer.link.contact': 'Contáctanos' },
+  '/sponsor-a-child': { 'checklistPanel.items.7': 'Conexión contigo:', 'checklistPanel.title.4': 'Conexión contigo:' },
+  '/ways-to-give': {
+    'pastelCard.body': 'Muchas empresas duplican las donaciones de sus empleados. Busca a tu empleador y descúbrelo en pocos segundos.',
+    'pastelCard2.body': 'Realiza tus donaciones benéficas desde tu cuenta DAF usando nuestro EIN, 88-3282100. Te ayudaremos a completar la designación.',
+  },
+}
 export const PAGE_COPY_ES_PATH = path.join(ROOT_DIR, 'seed/page-copy.es.json')
 const TRANSLATIONS_PATH = path.join(SNAPSHOT_DIR, 'es/translations.json')
 
@@ -135,6 +151,7 @@ export async function pageCopy() {
         const lines = spec.default.split('\n').map((l) => translate(pageTable, l))
         value = lines.every(Boolean) ? lines.join('\n') : undefined
       } else value = translate(pageTable, spec.default)
+      value = SLOT_CORRECTIONS[manifest.route]?.[key] ?? value
       if (value) {
         ;(out[manifest.route] ??= {})[key] = value
         mapped++
@@ -158,6 +175,93 @@ export async function pageCopy() {
 export const MANUAL_TRANSLATIONS = {
   _global: {
     'a11y.newTab': '(se abre en una pestaña nueva)',
+    'contactForm.topicPlaceholder': 'Elige un tema',
+    'pagination.previous': 'Anterior',
+    'pagination.next': 'Siguiente',
+    'pagination.status': 'Página {page} de {pages}',
+    'pagination.label': 'Páginas',
+    'a11y.slide': 'Mostrar elemento {n}',
+    'child.carouselPrev': 'Niños anteriores',
+    'child.carouselLabel': 'Más niños',
+    'event.soldTab': '(AGOTADO)',
+    'notFound.heading': 'Página no encontrada',
+    // Forms (spec 8.4): the live Spanish success and error messages, and the
+    // validation messages in the page's language.
+    'contactForm.sent': 'Hemos recibido tu mensaje. Un miembro de nuestro equipo se pondrá en contacto contigo pronto.',
+    'newsletter.sent': '¡Gracias por tu interés! A partir de ahora, te mantendremos al tanto de nuestros eventos y campañas.',
+    'form.required': 'Completa este campo.',
+    'form.email': 'Escribe un correo electrónico válido.',
+    'form.topic': 'Elige un tema.',
+    'form.consent': 'Acepta la Política de privacidad para enviar tu mensaje.',
+    'form.invalid': '¡Vaya! Algo salió mal al enviar el formulario.',
+    'form.unavailable': 'Todavía no podemos enviar este formulario. Escríbenos a info@victoriavenezuelafoundation.org.',
+    // Spec 7.12: "Financial Reports" (renamed 2026-10-07), the All filter, press cards.
+    'resources.category.financials': 'Informes financieros',
+    'resources.viewAll': 'Todos',
+    'resources.breadcrumb': 'Recursos',
+    'card.readOnOutlet': 'Leer en {outlet} ↗',
+    'a11y.photoDot': 'Mostrar foto {n}',
+    // The live Spanish list shows "years old" in English (a stylesheet leftover).
+    // The shared earthquake appeal (from Ways to Give's live Spanish; "tu", spec 8.9).
+    'appeal.text': "Los fondos recaudados en esta campaña se destinarán a la construcción del centro de apoyo permanente de VVF en La Guaira. Cuando abra sus puertas, ofrecerá alojamiento, nutrición y atención médica a 500 niños desplazados y sus familias.",
+    'appeal.imageAlt': "Representación del futuro centro de apoyo de VVF en La Guaira, visto desde la calle.",
+    'appeal.caption': "Así será el centro en La Guaira. El centro aún no está construido. Estas imágenes son representaciones generadas por IA.",
+    'appeal.cardsLabel': "En qué se utilizará tu donativo",
+    'appeal.title.1': "Alojamiento",
+    'appeal.text.1': "Un lugar seguro donde alojarse para las familias cuyos hogares fueron destruidos en los terremotos de junio de 2026.",
+    'appeal.imageAlt.1': "Familias llegando al patio del futuro centro de apoyo de VVF.",
+    'appeal.title.2': "Atención médica",
+    'appeal.text.2': "Revisiones, medicamentos y tratamiento para los niños y sus familias en el centro.",
+    'appeal.imageAlt.2': "Una enfermera examina a una niña mientras su madre está sentada a su lado.",
+    'appeal.title.3': "Nutrición",
+    'appeal.text.3': "Comidas diarias para los niños que se alojen en el centro de apoyo de La Guaira.",
+    'appeal.imageAlt.3': "Niños comiendo juntos una comida caliente en el comedor del centro.",
+    'appeal.give': "Donar a la campaña",
+    'appeal.learnMore': "Más información",
+    'child.ageValue': '{age} años',
+    // The live Spanish profile shows these in English too.
+    'child.age': 'Edad',
+    'child.birthday': 'Fecha de nacimiento',
+    'child.gender': 'Género',
+    'child.dream': 'Sueño',
+    'child.gender.Male': 'Masculino',
+    'child.gender.Female': 'Femenino',
+    // Review of PR #28: the LinkedIn link's screen-reader name, and News (Q14).
+    'team.linkedin': '{name} en LinkedIn',
+    'resources.category.news': 'Noticias',
+  },
+  // Spec 7.1 (Home): the past-event fallback and the program cards' button.
+  '/': {
+    'events.pastLabel': 'Pasado',
+    'events.pastButton': 'Ver lo más destacado',
+    'programs.learnMore': 'Más información',
+  },
+  // Spec 7.3 (Meet the Children): result count and empty states.
+  '/children': {
+    'filters.clear': 'Borrar filtros',
+    'results.count': '{count} niños',
+    'results.countOne': '1 niño',
+    'empty.text': 'En este momento todos los niños de nuestros programas tienen padrino. Puedes ayudar de otras formas.',
+    'empty.button': 'Formas de ayudar',
+  },
+  // Spec 7.4 (Child Profile). The Spanish description is the live page's, with
+  // the foundation named as the spec's Spanish titles and descriptions name it (8.10).
+  '/children/*': {
+    'seo.titleTemplate': '{name} | Apadrina a un niño | Fundación Victoria Venezuela',
+    'seo.descriptionTemplate': 'Te presentamos a {name}, uno de los niños que recibe apoyo de la Fundación Victoria Venezuela en Venezuela. Descubre cómo funciona el programa de apadrinamiento.',
+    'breadcrumb.list': 'Conoce a los niños',
+    'about.heading': 'Sobre {name}',
+    'form.title': 'Apadrina a {name} a través de Donorbox',
+  },
+  // News (spec 3.1, Q14): the live Spanish News page's title and description.
+  '/resources/news': {
+    'seo.title': 'Noticias | Recursos | Fundación Victoria Venezuela',
+    'seo.description': 'Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela.',
+    'seo.titleTemplate': '{name} | Recursos | Fundación Victoria Venezuela',
+  },
+  // Spec 7.9 (Our Team): the open-seat tile's button.
+  '/our-team': {
+    'openSeat.cta': 'Escríbenos',
   },
 }
 

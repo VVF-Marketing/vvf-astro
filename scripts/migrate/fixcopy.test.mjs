@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it, vi } from 'vitest'
-import { contentCorrections, fixCopy } from './fixcopy.mjs'
+import { CORRECTIONS, contentCorrections, fixCopy } from './fixcopy.mjs'
+import { SLOT_CORRECTIONS } from './pagecopy.mjs'
 
 function fakeClient(rows) {
   return {
@@ -100,5 +101,18 @@ describe('contentCorrections', () => {
     expect(fields).toContain('sp-general-trustee--es tier_name')
     expect(fields.filter((f) => f.includes('_benefits'))).toHaveLength(9)
     expect(fields.filter((f) => f.startsWith('event-2026-golf-tournament--es'))).toContain('event-2026-golf-tournament--es appeal_cards')
+  })
+})
+
+// Review finding (PR #28): the *usted* → *tú* slot corrections reached new
+// imports only; a CMS that already imported the old copy kept it.
+describe('CORRECTIONS', () => {
+  it("carries every *tú* slot correction the migration makes", () => {
+    for (const [route, slots] of Object.entries(SLOT_CORRECTIONS)) {
+      for (const [key, value] of Object.entries(slots)) {
+        if (route === '_global') continue // footer wording, never wrong in a CMS
+        expect(CORRECTIONS.find(([r, k]) => r === route && k === key)?.[3], `${route} ${key}`).toBe(value)
+      }
+    }
   })
 })

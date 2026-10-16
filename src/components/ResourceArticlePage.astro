@@ -1,0 +1,145 @@
+---
+// Resource detail at /resources/<slug>: breadcrumbs, last-updated date,
+// title, authors, share link, featured image, body, PDF download and a
+// sponsorship CTA, with the newsletter box and related resources alongside.
+// Rendered by src/pages/resources/[slug].astro, which answers 404 for
+// unknown slugs.
+import PageLayout from '../layouts/PageLayout.astro'
+import Breadcrumbs from './Breadcrumbs.astro'
+import RichText from './RichText.astro'
+import PortableBody from './PortableBody.astro'
+import Button from './Button.astro'
+import NewsletterSignup from './NewsletterSignup.astro'
+import ArticleCard from './ArticleCard.astro'
+import { getResources, getTeamMembers, getPageCopy } from '../lib/content'
+import { alternatePaths, LANG_TAGS, localeFromPath } from '../lib/i18n'
+import { fill, getGlobalCopy } from '../lib/globalCopy'
+import { RESOURCE_CATEGORY_PATHS, resourceCategoryLabels, resourceTag, type ResourceItem } from '../lib/content/types'
+import templateCopy from '../pages/resources/_copy.detail'
+import { articleLd } from '../lib/structuredData'
+
+const locale = localeFromPath(Astro.originPathname)
+const { copy } = await getPageCopy(templateCopy, locale)
+const t = await getGlobalCopy(Astro)
+const categoryLabels = resourceCategoryLabels(t)
+
+interface Props {
+  resource: ResourceItem
+}
+
+const { resource } = Astro.props
+
+const primary = resource.categories.includes('financials-transparency') ? 'financials-transparency' : resource.categories[0]
+const related = (await getResources(undefined, locale))
+  .filter((r) => r.slug !== resource.slug && (!primary || r.categories.includes(primary)))
+  .slice(0, 3)
+// Author headshots come from the team collection (matched by name).
+const team = await getTeamMembers(undefined, locale)
+const photoFor = (name: string) => team.find((m) => m.name === name && m.imageUrl)?.imageUrl
+const updated = resource.updatedAt ?? resource.publishedAt
+const updatedLabel = updated
+  ? new Date(updated).toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  : undefined
+const crumbs = [
+  { label: t['resources.heading'], href: '/resources' },
+  ...(primary ? [{ label: categoryLabels[primary], href: `/resources/${RESOURCE_CATEGORY_PATHS[primary]}` }] : []),
+  { label: resource.title },
+]
+---
+
+<PageLayout
+  title={resource.seo?.title ?? fill(copy['seo.titleFallback'], { title: resource.title })}
+  description={resource.seo?.description ?? resource.excerpt}
+  image={resource.seo?.imageUrl ?? resource.imageUrl}
+  alternates={alternatePaths('/resources', resource.alternates)}
+  contentLocale={resource.fallbackLocale}
+  jsonLd={[articleLd(resource, Astro.site ?? Astro.url, new URL(Astro.originPathname, Astro.site ?? Astro.url).href)]}
+>
+  <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-16 md:px-[72px]">
+    <div class="mx-auto max-w-[1296px]">
+      <Breadcrumbs items={crumbs} />
+      {updatedLabel && <p class="mt-12 font-label text-size-sm font-semibold uppercase tracking-[0.1em] text-brand-accent-text">{fill(copy['lastUpdated'], { date: updatedLabel })}</p>}
+      <h1 class="mt-4 text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{resource.title}</h1>
+      {
+        resource.authors && resource.authors.length > 0 && (
+          <ul class="mt-6 flex flex-col gap-3">
+            {resource.authors.map((a, i) => (
+              <li class="flex items-center gap-3 font-body text-size-md leading-body text-brand-primary">
+                {photoFor(a.name) && <img src={photoFor(a.name)} alt="" width="40" height="40" class="h-10 w-10 rounded-full object-cover" />}
+                <span>
+                {i === 0 && `${copy['byPrefix']} `}
+                {a.name}
+                {a.role && `, ${a.role}`}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <button
+        type="button"
+        class="mt-8 flex h-[58px] w-[58px] items-center justify-center rounded-full bg-brand-accent text-neutral-white"
+        aria-label={copy['button.aria-label']}
+        data-share
+        data-copied-label={copy['share.copied']}
+        data-failed-label={copy['share.failed']}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1 1M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="mt-16 grid gap-16 lg:grid-cols-[768px_1fr] lg:gap-[120px]">
+        <div>
+          {resource.imageUrl && <img src={resource.imageUrl} alt={resource.imageAlt ?? ''} class="mb-12 w-full rounded-[20px] object-cover" />}
+          {resource.body && (
+            <RichText>
+              <PortableBody value={resource.body} />
+            </RichText>
+          )}
+          {resource.fileUrl && (
+            <div class="mt-12">
+              <Button href={resource.fileUrl} variant="outline" download>
+                {copy['button.text']}
+              </Button>
+            </div>
+          )}
+          <div class="mt-16 flex flex-col items-start gap-6 rounded-2xl bg-sun p-10">
+            <p class="font-sans text-h5 font-extrabold leading-[1.3] text-brand-primary">{copy['p2.text']}</p>
+            <Button href="/sponsor-a-child" variant="primary-inverse">{copy['button2.text']}</Button>
+          </div>
+        </div>
+        <aside class="flex flex-col gap-16">
+          <NewsletterSignup />
+          {related.length > 0 && (
+            <div class="flex flex-col gap-6">
+              <h2 class="text-h4 text-brand-primary">{copy['h2.text']}</h2>
+              {related.map((r) => (
+                <ArticleCard
+                  variant="related"
+                  href={`/resources/${r.slug}`}
+                  title={r.title}
+                  imageUrl={r.imageUrl}
+                  imageAlt={r.imageAlt}
+                  category={resourceTag(r, categoryLabels)}
+                />
+              ))}
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </article>
+</PageLayout>
+
+<script>
+  document.querySelector<HTMLButtonElement>('[data-share]')?.addEventListener('click', async (event) => {
+    const button = event.currentTarget as HTMLButtonElement
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      button.setAttribute('aria-label', button.dataset.copiedLabel ?? '')
+    } catch {
+      button.setAttribute('aria-label', button.dataset.failedLabel ?? '')
+    }
+  })
+</script>

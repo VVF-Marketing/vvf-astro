@@ -2,7 +2,8 @@
 // Live counterpart: `.section_child-detail` — breadcrumb, name on a sky
 // card over the photo, four pastel fact cards (age, birthday, gender,
 // dream) with icons, the donation form on the right, and "About <name>"
-// below.
+// below. On phones the form follows the name and photo (spec 7.4): name
+// and photo, form, facts, story.
 import type { ChildItem } from '../lib/content/types'
 import Breadcrumbs from './Breadcrumbs.astro'
 import { fill, getGlobalCopy } from '../lib/globalCopy'
@@ -13,9 +14,13 @@ const locale = localeFromPath(Astro.originPathname)
 
 export interface Props {
   child: ChildItem
+  // Middle breadcrumb (Meet the Children) and the story heading, from the
+  // profile template's copy (src/pages/children/_copy.detail.ts).
+  listLabel: string
+  aboutHeading: string
 }
 
-const { child } = Astro.props as Props
+const { child, listLabel, aboutHeading } = Astro.props as Props
 const birthdayLabel = child.birthday
   ? new Date(child.birthday).toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
   : undefined
@@ -29,21 +34,21 @@ const facts = [
 ---
 
 <section class="px-6 py-12 lg:px-[95px]">
-  <Breadcrumbs items={[{ label: t['child.breadcrumb'], href: '/sponsor-a-child' }, { label: child.displayName }]} />
+  <Breadcrumbs items={[{ label: t['child.breadcrumb'], href: '/sponsor-a-child' }, { label: listLabel, href: '/children' }, { label: child.displayName }]} />
 
   <div class="mt-12 grid gap-6 lg:mt-[71px] lg:grid-cols-[483fr_294fr_425fr]">
-    <div class="flex flex-col gap-6">
+    <div class="order-1 flex flex-col gap-6 lg:order-none">
       <div class="rounded-[20px] bg-sky p-6">
         <h1 class="text-h1-mobile leading-[1.1] text-brand-primary md:text-h1">{child.displayName}</h1>
       </div>
       {
         child.imageUrl && (
-          <img src={child.imageUrl} alt={child.imageAlt ?? `Photo of ${child.displayName}`} class="aspect-[483/604] w-full rounded-[20px] object-cover" />
+          <img src={child.imageUrl} alt={child.displayName} class="aspect-[483/604] w-full rounded-[20px] object-cover" />
         )
       }
     </div>
 
-    <ul class="grid content-start gap-6 sm:grid-cols-2 lg:grid-cols-1">
+    <ul class="order-3 grid content-start gap-6 sm:grid-cols-2 lg:order-none lg:grid-cols-1">
       {
         facts.map((f) => (
           <li class={`flex flex-col gap-4 rounded-[20px] px-8 py-6 ${f.tone}`}>
@@ -57,14 +62,14 @@ const facts = [
       }
     </ul>
 
-    <div class="lg:row-span-2">
+    <div class="order-2 lg:order-none lg:row-span-2">
       <slot name="donation" />
     </div>
 
     {
       child.about && (
-        <div class="lg:col-span-2">
-          <h2 class="text-h3-mobile leading-[1.5] text-brand-primary md:text-[2rem]">About {child.displayName}</h2>
+        <div class="order-4 lg:order-none lg:col-span-2">
+          <h2 class="text-h3-mobile leading-[1.5] text-brand-primary md:text-[2rem]">{aboutHeading}</h2>
           {child.about.split(/\n{2,}/).map((p) => (
             <p class="font-body text-size-md leading-body text-brand-primary">{p}</p>
           ))}

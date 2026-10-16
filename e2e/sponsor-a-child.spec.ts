@@ -1,37 +1,42 @@
 import { expect, test } from '@playwright/test'
 import { firstChild } from './fixtures'
 
-test('children list renders, name filter narrows results, and a card links to its detail page', async ({
+// Filters and the page number live in the URL (spec 7.3), so a filtered
+// list can be shared; the page swaps its results as the visitor types.
+test('children list renders, name filter narrows results via the URL, and a card links to its detail page', async ({
   page,
 }) => {
   const child = firstChild()
   test.skip(!child, 'No children in the seed (child data is local-only)')
   if (!child) return
 
-  await page.goto('/sponsor-a-child/children')
+  await page.goto('/children')
   await expect(page.getByRole('heading', { level: 1, name: 'Meet the children' })).toBeVisible()
 
-  const cards = page.locator('[data-child-card]')
-  const visibleCards = page.locator('[data-child-card]:visible')
+  const cards = page.locator('main a[href^="/children/"]')
   const totalCount = await cards.count()
   expect(totalCount).toBeGreaterThan(0)
+  expect(totalCount).toBeLessThanOrEqual(20)
 
-  const targetCard = page.locator(`[data-child-card][data-name="${child.displayName.toLowerCase()}"]`)
+  const search = page.getByRole('searchbox')
+  await search.fill(child.displayName)
+  await expect(page).toHaveURL(/name=/)
+  await expect(page.locator(`main a[href="/children/${child.slug}"]`)).toBeVisible()
 
-  await page.locator('[data-name-filter]').fill(child.displayName)
-  await expect(targetCard).toBeVisible()
-  const narrowedCount = await visibleCards.count()
-  expect(narrowedCount).toBeLessThanOrEqual(totalCount)
-  await expect(page.locator('[data-empty-state]')).toBeHidden()
+  await search.fill('a-name-that-matches-nobody')
+  await expect(page.getByText('No children match your filters.')).toBeVisible()
+  await expect(cards).toHaveCount(0)
 
-  await page.locator('[data-name-filter]').fill('a-name-that-matches-nobody')
-  await expect(page.locator('[data-empty-state]')).toBeVisible()
-  await expect(visibleCards).toHaveCount(0)
+  // The shared URL shows the same filtered list.
+  await page.goto(`/children?name=${encodeURIComponent(child.displayName)}`)
+  await expect(page.locator(`main a[href="/children/${child.slug}"]`)).toBeVisible()
 
-  await page.locator('[data-name-filter]').fill('')
-  await expect(visibleCards).toHaveCount(totalCount)
+  await page.getByRole('searchbox').fill('a-name-that-matches-nobody')
+  await page.getByRole('link', { name: 'Clear filters' }).click()
+  await expect(cards).toHaveCount(totalCount)
 
-  await page.goto(`/sponsor-a-child/children/${child.slug}`)
+  // The Donorbox form's own third-party scripts can keep `load` from firing.
+  await page.goto(`/children/${child.slug}`, { waitUntil: 'domcontentloaded' })
   await expect(page.getByRole('heading', { level: 1, name: child.displayName })).toBeVisible()
 })
 
@@ -40,7 +45,8 @@ test('child detail breadcrumb links back to Sponsor a Child and marks the child 
   test.skip(!child, 'No children in the seed (child data is local-only)')
   if (!child) return
 
-  await page.goto(`/sponsor-a-child/children/${child.slug}`)
+  // The Donorbox form's own third-party scripts can keep `load` from firing.
+  await page.goto(`/children/${child.slug}`, { waitUntil: 'domcontentloaded' })
   const crumbs = page.getByRole('navigation', { name: 'Breadcrumb' })
   await expect(crumbs.getByRole('link', { name: 'Sponsor a Child' })).toHaveAttribute('href', '/sponsor-a-child')
   await expect(crumbs.locator('[aria-current="page"]')).toHaveText(child.displayName)

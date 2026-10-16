@@ -1,16 +1,19 @@
 ---
 // Live counterpart: `.title_tagline` — small uppercase Open Sans label in
-// the accent color above section headings.
+// blue above section headings.
 export interface Props {
-  // `light` for navy/dark sections.
+  // `light`: white instead of blue.
   tone?: 'accent' | 'light'
+  // The background: blue text is `blue` on navy and `blue-text` on light
+  // backgrounds, where `blue` is too faint (spec 5.1, Q13).
+  on?: 'light' | 'dark'
   class?: string
 }
 
-const { tone = 'accent', class: className = '' } = Astro.props as Props
-const tones = { accent: 'text-brand-accent', light: 'text-neutral-white' }
+const { tone = 'accent', on = 'light', class: className = '' } = Astro.props as Props
+const tones = { accent: on === 'dark' ? 'text-brand-accent' : 'text-brand-accent-text', light: 'text-neutral-white' }
 ---
 
-<p class={`font-body text-size-sm font-semibold uppercase leading-body tracking-[0.1em] ${tones[tone]} ${className}`}>
+<p class={`font-label text-size-sm font-semibold uppercase leading-body tracking-[0.1em] ${tones[tone]} ${className}`}>
   <slot />
 </p>

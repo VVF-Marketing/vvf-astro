@@ -45,6 +45,6 @@ describe('donorbox url builders', () => {
   })
 
   it('routes corporate sponsorship inquiries to contact, not donorbox', () => {
-    expect(corporateSponsorshipInquiryUrl()).toBe('/contact?topic=corporate-partnerships')
+    expect(corporateSponsorshipInquiryUrl()).toBe('/contact?topic=Corporate%20partnership')
   })
 })

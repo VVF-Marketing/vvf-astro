@@ -42,6 +42,16 @@ const env = {
     EMDASH_SYNC_PAT: envField.string({ context: 'server', access: 'secret', optional: true }),
     SAFEGUARDING_USERS: envField.string({ context: 'server', access: 'secret', optional: true }),
     DTD_PUBLIC_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+    // Google Tag Manager container (spec 8.3). Set in production; unset, no
+    // tags load (staging and preview wait on the spec card's Q10). Not a
+    // secret, but `secret` access is read when the server starts rather than
+    // fixed at build, so one image serves every environment.
+    // Form emails (spec 8.4; Q9): a Resend API key turns sending on. The
+    // sender's domain must be verified in Resend (two DNS records).
+    FORM_MAIL_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+    FORM_MAIL_FROM: envField.string({ context: 'server', access: 'secret', optional: true }),
+    FORM_MAIL_TO: envField.string({ context: 'server', access: 'secret', optional: true }),
+    GTM_CONTAINER_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
     // Optional here (Astro also checks required secrets at build); required at
     // startup in Postgres mode by scripts/start.mjs.
     DATABASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
@@ -91,6 +101,17 @@ export default defineConfig({
           allowedHosts: [],
           storage: { entries: { indexes: ['timestamp', 'action', 'collection', 'userId'] } },
           adminPages: [{ path: '/activity', label: 'Activity', icon: 'history' }],
+        },
+        // Dashboard reminder for events past their date with no recap yet
+        // (spec 7.8; the reminder email waits on hosting).
+        {
+          id: 'recap-reminder',
+          version: '1.0.0',
+          format: 'standard',
+          entrypoint: fileURLToPath(new URL('./src/plugins/recapReminder.ts', import.meta.url)),
+          capabilities: ['content:read'],
+          allowedHosts: [],
+          adminWidgets: [{ id: 'recap-reminder', size: 'full', title: 'Event recaps' }],
         },
       ],
     }),

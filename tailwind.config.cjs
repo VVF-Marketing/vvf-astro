@@ -1,109 +1,150 @@
 /** @type {import('tailwindcss').Config} */
-// VVF design tokens, mirrored 1:1 from the live Webflow site's CSS custom
-// properties (vvfstaging.webflow.shared.css). Each token names the live
-// variable it comes from; the same values are exposed as CSS variables in
-// src/index.css. Do not add raw hex values in components — add a token here.
+// VVF design tokens, from the VVF website spec's design system (sections 5.1
+// to 5.4). Colour values live in src/styles/tokens.cjs; class names predate
+// the spec, and each one's comment names the spec token it implements. No
+// other colour may be used (spec 5.9, check 2), so the colour palette
+// replaces Tailwind's defaults instead of extending them.
+const plugin = require('tailwindcss/plugin')
+const { colors: c, focus } = require('./src/styles/tokens.cjs')
+
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    // Webflow breakpoints (max-width 479/767/991, min-width 1280) as
-    // Tailwind's mobile-first min-widths.
     screens: {
-      sm: '480px', // Webflow mobile-landscape (max-width 479px)
-      md: '768px', // Webflow tablet (max-width 767px)
-      lg: '992px', // Webflow desktop (max-width 991px)
-      xl: '1280px', // Webflow @media (min-width:1280px)
+      sm: '480px', // spec 5.3: large phone from 480
+      md: '768px', // spec 5.3: tablet from 768 (desktop type sizes from here)
+      lg: '992px', // spec 5.3: desktop from 992
+      xl: '1280px',
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      brand: {
+        primary: c.navy, // `navy`
+        accent: c.blue, // `blue`: fills, bullets, and text on navy only
+        'accent-text': c['blue-text'], // `blue-text`: blue text and lines on light backgrounds
+      },
+      neutral: {
+        white: c.white, // `white`
+        'light-gray': c['grey-line'], // `grey-line`
+      },
+      page: c.page, // `page`
+      link: c.link, // `link`
+      focus: { DEFAULT: focus.outline, inner: focus.inner }, // focus outline and its inner ring (Q12)
+      sun: c.sun, // `sun`
+      salmon: c.salmon, // `salmon`
+      sky: c.sky, // `sky`
+      success: { DEFAULT: c.success, dark: c['success-dark'] }, // `success`
+      warning: { DEFAULT: c.warning, dark: c['warning-dark'] }, // `warning`
+      error: { DEFAULT: c.error, dark: c['error-dark'] }, // `error`
+      // Preflight's placeholder colour: navy, faded.
+      gray: { 400: 'rgb(2 51 94 / 0.6)' },
+    },
+    borderColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: c['grey-line'] }), // `grey-line`
+    ringColor: ({ theme }) => ({ ...theme('colors'), DEFAULT: c.blue }),
+    ringOffsetColor: ({ theme }) => theme('colors'),
+    boxShadow: {
+      card: '0 2px 16px rgba(2,51,94,0.06)', // `shadow-card` (spec 5.4)
+      arrow: '0 4px 9px rgba(0,0,0,0.18)', // `shadow-arrow` (spec 5.4)
+      hover: '0 8px 24px rgba(2,51,94,0.12)', // linked card hover (spec 5.6)
+      none: 'none',
     },
     extend: {
-      colors: {
-        brand: {
-          primary: '#02335e', // --base-color-branding--brand-primary
-          accent: '#00abf9', // --base-color-branding--brand-accent
-          'accent-soft': '#6fb9ea', // live .crumbs_link on dark backgrounds (no variable)
-        },
-        neutral: {
-          white: '#ffffff', // --base-color-branding--neutral-white
-          100: '#f8f9fa', // --base-color-branding--neutral-100
-          'light-gray': '#e7e7e7', // --base-color-branding--neutral-light-gray
-          'bg-gray': '#f9f9f9', // --base-color-branding--bg-gray
-          section: '#f5f5f5', // live .section-2.is-grey / .body-3 (event pages; hard-coded on live)
-          'table-darker': '#dddddd', // live .sponsor-title-darker-gray
-          'table-dark': '#ededed', // live .sponsor-title-dark-gray
-          card: '#f7f7f7', // live children-list card background (hard-coded on live, no variable)
-          ink: '#222222', // Webflow default .w-tab-link color (inactive sponsor tier tabs)
-        },
-        page: '#f2f2f2', // --body-background
-        link: '#1e73be', // --link-color--link-primary
-        focus: '#1e73be', // --base-color-system--focus-state
-        sun: '#f9eac6', // --base-color-system--sun
-        salmon: '#ffd7d7', // --base-color-system--salmon
-        sky: '#c1e7f5', // --base-color-system--sky
-        success: { DEFAULT: '#cef5ca', dark: '#114e0b' }, // --base-color-system--success-green(-dark)
-        warning: { DEFAULT: '#fcf8d8', dark: '#5e5515' }, // --base-color-system--warning-yellow(-dark)
-        error: { DEFAULT: '#f8e4e4', dark: '#3b0b0b' }, // --base-color-system--error-red(-dark)
-        'table-border': '#dce4ec', // live .article_body table/th/td border (page style block, no variable)
-        'table-note': '#7c878f', // live .article_body table + p (source note after a table, no variable)
-      },
       fontFamily: {
-        heading: ['Nunito', 'sans-serif'], // --base-fonts-branding--font-heading
-        sans: ['Nunito', 'sans-serif'], // --base-fonts-branding--font-body
-        body: ['"Open Sans"', 'sans-serif'], // live `p` / copy classes
-        poppins: ['Poppins', 'sans-serif'], // live sponsorship benefits grid
+        // Nunito for headings, buttons and body text; Open Sans for taglines,
+        // labels and small text (spec 5.2). Nothing else loads.
+        heading: ['Nunito', 'sans-serif'],
+        sans: ['Nunito', 'sans-serif'],
+        body: ['Nunito', 'sans-serif'],
+        label: ['"Open Sans"', 'sans-serif'],
       },
       fontSize: {
-        h1: ['4rem', { lineHeight: '1.1', fontWeight: '800' }], // live h1
-        h2: ['3rem', { lineHeight: '1.2', fontWeight: '800' }], // live h2 / --_typography---text-sizes--heading-2
-        h3: ['2rem', { lineHeight: '1.2', fontWeight: '800' }], // live h3
-        h4: ['2rem', { lineHeight: '1.4', fontWeight: '800' }], // live h4 / --_typography---text-sizes--heading-4
-        h5: ['1.25rem', { lineHeight: '1.5', fontWeight: '800' }], // live h5
-        h6: ['1.25rem', { lineHeight: '1.5', fontWeight: '800' }], // live h6 / --_typography---text-sizes--heading-6
-        'h1-mobile': ['2.5rem', { lineHeight: '1.1', fontWeight: '800' }], // live h1 @media (max-width:767px)
-        'h2-mobile': ['2rem', { lineHeight: '1.2', fontWeight: '800' }], // live h2 @media (max-width:767px)
-        'h3-mobile': ['1.5rem', { lineHeight: '1.2', fontWeight: '800' }], // live h3 @media (max-width:767px)
-        'h4-mobile': ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }], // live h4 @media (max-width:767px)
-        'h5-mobile': ['1rem', { lineHeight: '1.5', fontWeight: '800' }], // live h5 @media (max-width:767px)
-        'h6-mobile': ['0.875rem', { lineHeight: '1.5', fontWeight: '800' }], // live h6 @media (max-width:767px)
-        body: ['1.125rem', { lineHeight: '1.5' }], // live p / --_typography---text-sizes--text-medium
-        'size-xs': '0.75rem', // --text-size--xs
-        'size-sm': '0.875rem', // --text-size--sm
-        'size-base': '1rem', // --text-size--base
-        'size-md': '1.125rem', // --text-size--md
-        'size-lg': '20px', // --text-size--lg
-        'size-xl': '2.375rem', // --text-size--xl
-        'size-2xl': '3.5rem', // --text-size--2xl
-        'size-3xl': '4.375rem', // --text-size--3xl
+        // spec 5.2: desktop sizes from 768 px, phone sizes below.
+        h1: ['3rem', { lineHeight: '1.1', fontWeight: '800' }], // H1 48
+        h2: ['3rem', { lineHeight: '1.2', fontWeight: '800' }], // H2 48
+        h3: ['2rem', { lineHeight: '1.2', fontWeight: '700' }], // H3 32
+        h4: ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }], // H4 20
+        h5: ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }], // small card titles (= H4 size)
+        h6: ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }],
+        'h1-mobile': ['2.25rem', { lineHeight: '1.1', fontWeight: '800' }], // H1 36
+        'h2-mobile': ['2.25rem', { lineHeight: '1.2', fontWeight: '800' }], // H2 36
+        'h3-mobile': ['1.5rem', { lineHeight: '1.2', fontWeight: '700' }], // H3 24
+        'h4-mobile': ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }], // H4 20
+        'h5-mobile': ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }],
+        'h6-mobile': ['1.25rem', { lineHeight: '1.4', fontWeight: '800' }],
+        'big-number': ['5rem', { lineHeight: '1.3', fontWeight: '800' }], // Big number 80
+        'big-number-mobile': ['4rem', { lineHeight: '1.3', fontWeight: '800' }], // 64
+        stat: ['3.5rem', { lineHeight: '1.16', fontWeight: '800' }], // Stat figure 56
+        'stat-mobile': ['3rem', { lineHeight: '1.16', fontWeight: '800' }], // 48
+        'rich-h2': ['2rem', { lineHeight: '1.2', fontWeight: '700' }], // article section heading 32
+        'rich-h2-mobile': ['1.75rem', { lineHeight: '1.2', fontWeight: '700' }], // 28
+        newsletter: ['2.25rem', { lineHeight: '1.2', fontWeight: '800' }], // newsletter card title 36 (named exception, spec 5.8)
+        body: ['1.125rem', { lineHeight: '1.5' }], // Body 18
+        'body-mobile': ['1rem', { lineHeight: '1.5' }], // Body 16
+        tagline: ['0.875rem', { lineHeight: '1.5', letterSpacing: '1.4px', fontWeight: '600' }], // Tagline 14
+        button: ['1.125rem', { lineHeight: '1.5', fontWeight: '700' }], // Button 18
+        'size-xs': '0.75rem',
+        'size-sm': '0.875rem', // Small 14
+        'size-base': '1rem',
+        'size-md': '1.125rem',
+        'size-lg': '1.25rem',
+        'size-xl': '2.375rem',
+        'size-2xl': '3.5rem',
+        'size-3xl': '4.375rem',
       },
       lineHeight: {
-        tight: '1.1', // --line-height--tight
-        snug: '1.25', // --line-height--snug
-        normal: '1.4', // --line-height--normal
-        relaxed: '1.6', // --line-height--relaxed
-        body: '1.5', // live body / .button line-height
+        tight: '1.1',
+        snug: '1.25',
+        normal: '1.4',
+        relaxed: '1.6',
+        body: '1.5',
       },
       borderRadius: {
-        sm: '0.25rem', // --radius--sm
-        md: '0.5rem', // --radius--md
-        lg: '0.75rem', // --radius--lg
-        xl: '1rem', // --radius--xl
-        '2xl': '2.5rem', // --radius--2xl
-        full: '9999px', // --radius--full
-        pill: '100px', // live .button border-radius
-        DEFAULT: '0.5rem', // = --radius--md
+        // spec 5.4
+        pill: '9999px', // `radius-pill`
+        'card-lg': '2.5rem', // `radius-card-lg` 40
+        card: '1.25rem', // `radius-card` 20
+        'card-sm': '1rem', // `radius-card-sm` 16
+        tag: '0.25rem', // `radius-tag` 4
+        sm: '0.25rem',
+        md: '0.5rem',
+        lg: '0.75rem',
+        xl: '1rem',
+        '2xl': '2.5rem',
+        full: '9999px',
+        DEFAULT: '0.5rem',
       },
       spacing: {
-        // --spacing--1…24 match Tailwind's default 4px scale already.
-        gutter: '1.25rem', // --spacing--padding-global
-        'section-sm': '3rem', // --spacing--section-sm
-        section: '5rem', // --spacing--section-md
-        'section-lg': '6.25rem', // --spacing--section-lg
+        // spec 5.3: side gutters and section padding.
+        gutter: '4rem', // 64 from 768 px
+        'gutter-sm': '2rem', // 32 from 480 to 767 px
+        'gutter-xs': '1.5rem', // 24 below 480 px
+        'section-sm': '2.5rem', // phones: medium 40
+        section: '4rem', // desktop medium 64 / phones large 64
+        'section-lg': '7.5rem', // desktop large 120
+        'title-gap': '4rem', // title block to content, 64 (40 on phones)
       },
       maxWidth: {
-        'container-medium': '75rem', // --container--medium
-        'container-large': '83.75rem', // --container--large
-        'container-small': '480px', // --_spacing-sizing---max-width--max-width-small
-        card: '417px', // --card-max-width
+        content: '80rem', // spec 5.3: one column, at most 1280 px
+        'container-medium': '75rem',
+        'container-large': '80rem',
+        'container-small': '480px',
+        card: '417px',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // The colour tokens as CSS variables (--navy, --blue-text, …) plus the
+    // focus ring's (--focus, --focus-inner), for src/index.css and the few
+    // styles Tailwind classes can't reach.
+    plugin(({ addBase }) => {
+      addBase({
+        ':root': {
+          ...Object.fromEntries(Object.entries(c).map(([name, value]) => [`--${name}`, value])),
+          '--focus': focus.outline,
+          '--focus-inner': focus.inner,
+        },
+      })
+    }),
+  ],
 }

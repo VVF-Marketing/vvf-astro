@@ -1,0 +1,20 @@
+---
+// Portable Text `image` block in CMS bodies (resources, Privacy Policy).
+// Replaces EmDash's Image.astro so the site loads none of EmDash's rich-text
+// component CSS (spec 5.9, check 2: only palette colours).
+export interface Props {
+  node: { asset?: { url?: string; _ref?: string }; alt?: string; caption?: string }
+}
+
+const { node } = Astro.props
+const src = node.asset?.url ?? node.asset?._ref
+---
+
+{
+  src && (
+    <figure>
+      <img src={src} alt={node.alt ?? ''} loading="lazy" class="w-full object-cover" />
+      {node.caption && <figcaption class="mt-2 font-label text-size-sm">{node.caption}</figcaption>}
+    </figure>
+  )
+}

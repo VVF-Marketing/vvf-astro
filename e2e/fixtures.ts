@@ -19,36 +19,35 @@ function collection(name: string): SeedEntry[] {
 
 // Undefined when the seed has no children (CI, where child data isn't available).
 export function firstChild() {
-  const child = collection('children').find((c) => c.data.published)
-  return child ? { slug: child.slug, displayName: child.data.display_name as string, age: child.data.age as number } : undefined
+  const child = collection('children').find((c) => c.data.sponsorship_status === 'available')
+  return child ? { slug: child.slug, displayName: child.data.name as string, age: child.data.age as number } : undefined
 }
 
 export function firstEvent() {
   const [event] = collection('events')
   if (!event) throw new Error('seed/seed.json has no event fixture')
-  return { slug: event.slug, title: event.data.title as string }
+  return { slug: event.slug, title: event.data.name as string }
 }
 
-export function firstPost() {
-  const [post] = collection('posts')
-  if (!post) throw new Error('seed/seed.json has no post fixture')
-  return { slug: post.slug, title: post.data.title as string }
-}
+// One record per person (src/lib/contentModel.mjs), in one or more groups.
+const inGroup = (group: string) => (m: SeedEntry) => ((m.data.groups as string[] | undefined) ?? []).includes(group) && !m.data.open_seat
 
 export function firstBoardMember() {
-  const member = collection('team_members').find((m) => m.data.tier === 'board' && m.data.profile_slug)
-  if (!member) throw new Error('seed has no board-tier team member with a profile')
-  return { slug: member.data.profile_slug as string, name: member.data.name as string }
+  const member = collection('team_members').find(inGroup('board'))
+  if (!member) throw new Error('seed has no board member with a profile')
+  return { slug: member.slug, name: member.data.name as string }
 }
 
 export function firstStaffMember() {
-  const member = collection('team_members').find((m) => m.data.tier === 'staff')
-  if (!member) throw new Error('seed has no staff-tier team member fixture')
-  return { slug: member.slug, name: member.data.name as string, profileSlug: member.data.profile_slug as string | undefined }
+  const member = collection('team_members').find(inGroup('staff'))
+  if (!member) throw new Error('seed has no staff member fixture')
+  return { slug: member.slug, name: member.data.name as string }
 }
 
+// Category refs are seed `$ref:category-<slug>` values.
 export function firstResource() {
-  const [resource] = collection('resources')
-  if (!resource) throw new Error('seed has no resource fixture')
-  return { slug: resource.slug, title: resource.data.title as string, categories: (resource.data.categories as string[]) ?? [] }
+  const [article] = collection('articles').filter((a) => !(a as { locale?: string }).locale)
+  if (!article) throw new Error('seed has no article fixture')
+  const category = String(article.data.category ?? '').replace(/^\$ref:category-/, '')
+  return { slug: article.slug, title: article.data.title as string, categories: category ? [category === 'financials' ? 'financials-transparency' : category] : [] }
 }

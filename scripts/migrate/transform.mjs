@@ -23,6 +23,7 @@ import {
 } from './mappers.mjs'
 import { mediaMapFor, readManifests } from '../lib/seed-media.mjs'
 import { LOCAL_SEED_PATH, ROOT_DIR, SEED_PATH, SNAPSHOT_DIR } from './lib/paths.mjs'
+import { childRedirects, readWebflowRedirects } from './redirects.mjs'
 import { projectPathFor } from '../../src/lib/legacyRoutes.mjs'
 import { MANIFEST_PATH } from './lib/paths.mjs'
 import { createSection } from './lib/report.mjs'
@@ -31,6 +32,8 @@ import { loadManifests, PAGE_COPY_ES_PATH, translationTable } from './pagecopy.m
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { CONTENT_COLLECTIONS, copyCollectionFor } from '../../src/lib/cmsNavigation.mjs'
 import { organizeCollections, slotLayout } from '../../src/lib/copyCollections.mjs'
+import { CORPORATE_TIERS, DONORBOX_SETTINGS, MODEL_COLLECTIONS, MODEL_SLUGS, RETIRED_COLLECTIONS, collectionDefinition } from '../../src/lib/contentModel.mjs'
+import { modelCounts, toContentModel } from './model.mjs'
 
 const MEDIA_FILE_BASE_URL = '/_emdash/api/media/file'
 
@@ -228,6 +231,18 @@ function withTranslations(live, es) {
   return Object.fromEntries(Object.entries(live).map(([k, v]) => [k, [...v, ...(es[k] ?? [])]]))
 }
 
+// The seed's collection list with the content model's collections in place
+// of the earlier ones (src/lib/contentModel.mjs), keeping every other
+// collection and the sidebar order of the copy collections.
+export function withModelCollections(collections) {
+  const replaced = new Set([...MODEL_SLUGS, ...RETIRED_COLLECTIONS, CORPORATE_TIERS.slug, DONORBOX_SETTINGS.slug])
+  const kept = collections.filter((c) => !replaced.has(c.slug))
+  const firstContent = kept.findIndex((c) => !c.slug.startsWith('copy_'))
+  const model = [...MODEL_COLLECTIONS, CORPORATE_TIERS, DONORBOX_SETTINGS].map(collectionDefinition)
+  const at = firstContent === -1 ? kept.length : firstContent
+  return organizeCollections([...kept.slice(0, at), ...model, ...kept.slice(at)], CONTENT_COLLECTIONS)
+}
+
 // Pure core: snapshots (+ Spanish snapshots) + media maps + current seed →
 // { full, public, ctx }. `mediaMap` (public + child media) fills the local
 // seed; `publicMediaMap` (public manifest only) fills the public one.
@@ -245,14 +260,18 @@ export function buildSeeds({ snapshots, snapshotsEs, mediaMap, publicMediaMap = 
     unpaired = es.unpaired
   }
   // Links back into the site are stored as paths (the live site writes some
-  // as full addresses), so pages show them in the reader's language.
-  const content = (c) => relativizeSameSiteLinks(c)
+  // as full addresses), so pages show them in the reader's language. The
+  // mapped content is then reshaped into the spec's content model
+  // (model.mjs, src/lib/contentModel.mjs).
+  const content = (c) => toContentModel(relativizeSameSiteLinks(c))
+  const fullContent = content({ ...currentSeed.content, ...full })
+  const collections = withModelCollections(currentSeed.collections ?? [])
   return {
-    full: { ...currentSeed, content: content({ ...currentSeed.content, ...full }) },
-    public: { ...currentSeed, content: content({ ...currentSeed.content, ...pub, children: [] }) },
+    full: { ...currentSeed, collections, content: fullContent },
+    public: { ...currentSeed, collections, content: content({ ...currentSeed.content, ...pub, children: [] }) },
     ctx,
     unpaired,
-    counts: Object.fromEntries(Object.entries(full).map(([k, v]) => [k, v.length])),
+    counts: modelCounts(Object.fromEntries(Object.entries(fullContent).filter(([k]) => !k.startsWith('copy_')))),
   }
 }
 
@@ -265,9 +284,18 @@ export function buildPageSeo(pageSnapshots, manifest) {
     if (/^\/events\//.test(snap.path)) continue
     const img = snap.seo?.ogImage
     const local = img && manifest[img] ? `/${manifest[img].path.replace(/^public\//, '')}` : undefined
-    seo[projectPathFor(snap.path)] = compact({ title: snap.seo?.title, description: snap.seo?.description, image: local })
+    const route = projectPathFor(snap.path)
+    seo[route] = compact({ title: snap.seo?.title, description: snap.seo?.description, image: local, ...SEO_CORRECTIONS[route] })
   }
   return seo
+}
+
+// Titles the spec sets that differ from the snapshot: the page was renamed
+// on the live site after the snapshot (7.7, "Events & Campaigns") or by the
+// spec (7.12, "Financial Reports", renamed 2026-10-07).
+export const SEO_CORRECTIONS = {
+  '/events-and-campaigns': { title: 'Events & Campaigns | Victoria Venezuela Foundation' },
+  '/resources/financials': { title: 'Financial Reports | Resources | Victoria Venezuela Foundation' },
 }
 
 function compact(o) {
@@ -316,19 +344,23 @@ export async function transform() {
   mkdirSync(path.join(ROOT_DIR, 'src/data'), { recursive: true })
   writeFileSync(path.join(ROOT_DIR, 'src/data/page-seo.json'), `${JSON.stringify(pageSeo, null, 2)}\n`)
 
+  // Redirects to child profiles go in the local seed only: their old
+  // addresses carry children's full names (scripts/migrate/redirects.mjs).
+  const childRedirectRows = childRedirects(readWebflowRedirects())
+  if (childRedirectRows.length) full.redirects = childRedirectRows
   writeFileSync(LOCAL_SEED_PATH, `${JSON.stringify(full, null, 2)}\n`)
   writeFileSync(SEED_PATH, `${JSON.stringify(publicSeed, null, 2)}\n`)
 
-  report.line('| Collection | Entries |')
+  report.line('| Collection | Entries (English + Spanish) |')
   report.line('| --- | --- |')
-  for (const [k, v] of Object.entries(counts)) report.line(`| ${k} | ${v} |`)
+  for (const [k, v] of Object.entries(counts)) report.line(`| ${k} | ${v.en} + ${v.es} Spanish |`)
   report.line()
   report.line(snapshotsEs ? '- Counts include Spanish entries (linked translations of the English ones).' : '- No Spanish snapshot: English only.')
   if (unpaired.length) {
     report.line(`- English entries with no Spanish version on the live site (${unpaired.length}); they fall back to English:`)
     report.list(unpaired)
   }
-  report.line(`- \`seed/seed.json\` (committed) omits the ${counts.children} children and child media; \`seed/seed.local.json\` (gitignored) has both.`)
+  report.line(`- \`seed/seed.json\` (committed) omits the ${counts.children ? counts.children.en + counts.children.es : 0} children and child media; \`seed/seed.local.json\` (gitignored) has both.`)
   report.line(
     ctx.missing.size
       ? `- Media missing from the manifests (${ctx.missing.size}); image fields left empty. Run \`npm run migrate:harvest\` to download them.`

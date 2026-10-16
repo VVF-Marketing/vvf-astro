@@ -14,16 +14,37 @@ export interface Props {
 }
 
 const { heading = t['newsletter.heading'], text = t['newsletter.text'], width = 'narrow' } = Astro.props as Props
+// The result of the last send (?form=sent|invalid|unavailable, /api/forms).
+const result = ['sent', 'invalid', 'unavailable'].find((r) => r === Astro.url.searchParams.get('form'))
 ---
 
-<div class="flex flex-col items-center gap-6 rounded-2xl bg-sky p-10 text-center md:p-16">
+<div id="newsletter" class="flex scroll-mt-8 flex-col items-center gap-6 rounded-2xl bg-sky p-10 text-center md:p-16">
   <h2 class={`leading-[1.16] tracking-[-0.01em] text-brand-primary ${width === 'wide' ? 'text-h2-mobile md:text-h2' : 'text-[2.25rem]'}`}>{heading}</h2>
   <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>
-  <form class={`mt-8 flex w-full flex-col items-center gap-4 ${width === 'wide' ? 'max-w-[520px]' : ''}`} data-newsletter-form>
+  <!-- A normal HTML form post (spec 8.4) carrying the page it was sent from. -->
+  <form
+    method="post"
+    action="/api/forms/newsletter"
+    class={`mt-8 flex w-full flex-col items-center gap-4 ${width === 'wide' ? 'max-w-[520px]' : ''}`}
+    data-newsletter-form
+    data-msg-required={t['form.required']}
+    data-msg-email={t['form.email']}
+  >
+    <input type="hidden" name="page" value={Astro.originPathname.replace(/\/$/, '') || '/'} />
+    <!-- Honeypot (src/lib/forms.ts): off screen and out of the tab order; only bots fill it in. -->
+    <div aria-hidden="true" class="absolute -left-[9999px] h-px w-px overflow-hidden"><input type="text" name="website" tabindex="-1" autocomplete="off" /></div>
+    {
+      result && (
+        <p role="status" class="font-label text-size-sm font-semibold text-brand-primary" data-form-result={result}>
+          {result === 'sent' ? t['newsletter.sent'] : result === 'invalid' ? t['form.invalid'] : t['form.unavailable']}
+        </p>
+      )
+    }
     <label class="sr-only" for="newsletter-email">{t['newsletter.emailLabel']}</label>
     <input
       id="newsletter-email"
       type="email"
+      name="email"
       required
       placeholder={t['newsletter.placeholder']}
       autocomplete="email"
@@ -33,3 +54,9 @@ const { heading = t['newsletter.heading'], text = t['newsletter.text'], width = 
   </form>
   <p class="mt-8 font-sans text-size-sm leading-body text-brand-primary">{t['newsletter.privacy']}</p>
 </div>
+
+<script>
+  import { localizeValidation } from '../lib/formValidation'
+
+  document.querySelectorAll<HTMLFormElement>('[data-newsletter-form]').forEach(localizeValidation)
+</script>

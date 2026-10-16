@@ -31,6 +31,8 @@
     "migrate:fix-copy": "node --env-file-if-exists=.env scripts/migrate/cli.mjs fix-copy",
     "migrate:copy-collections": "node --env-file-if-exists=.env scripts/migrate/copy-collections.mjs",
     "test:parity": "playwright test -c playwright.parity.config.ts",
+    "test:spec-audit": "vitest run -c vitest.spec-audit.config.ts; unit=$?; playwright test -c playwright.spec-audit.config.ts; e2e=$?; exit $((unit || e2e))",
+    "spec-audit:report": "node scripts/spec-audit/report.mjs",
     "migrate:validate": "node --env-file-if-exists=.env scripts/migrate/cli.mjs validate"
   },
   "dependencies": {
@@ -39,6 +41,7 @@
     "@aws-sdk/client-s3": "^3.1146.0",
     "@aws-sdk/s3-request-presigner": "^3.1146.0",
     "astro": "^7.3.2",
+    "astro-portabletext": "^0.11.4",
     "db0": "^0.4.1",
     "emdash": "^0.38.0",
     "pg": "^8.23.1",

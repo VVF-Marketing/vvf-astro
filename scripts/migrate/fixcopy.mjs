@@ -1,5 +1,5 @@
 // One-off: correct Spanish content that the migration got wrong in an existing
-// CMS (review findings on PR #15, Steps 5 and 21). The seed files are fixed,
+// CMS (review findings on PR #15, Steps 5 and 21, and the *tú* fixes from PR #28). The seed files are fixed,
 // but `import-copy` only fills empty slots and the seed doesn't overwrite
 // loaded content, so a CMS that already imported the old values keeps them.
 //
@@ -25,21 +25,38 @@ export const CORRECTIONS = [
   ['/', 'hero.label.2', 'Apadrina a un niño', 'Formas de ayudar'],
   ['/sponsor-a-child', 'button4.text', 'Formas de ayudar', 'Apadrina a un niño'],
   ['/sponsor-a-child', 'programsCta.label.1', 'Formas de ayudar', 'Apadrina a un niño'],
-  ['/blog', 'filter.Stories', 'Finanzas y transparencia', 'Historias'],
   ['_global', 'footer.link.sponsorChild', 'Formas de ayudar', 'Apadrina a un niño'],
   ['_global', 'footer.link.waysToGive', 'Apadrina a un niño', 'Formas de ayudar'],
   ['_global', 'child.breadcrumb', 'Formas de ayudar', 'Apadrina a un niño'],
   ['_global', 'resources.heading', 'Nosotros', 'Recursos'],
   ['_global', 'resources.category.stories', 'Finanzas y transparencia', 'Historias'],
+  // Spec 8.6 rule 1: *tú*, not *usted*, outside Corporate Sponsorships (the
+  // migration's SLOT_CORRECTIONS in pagecopy.mjs; review finding on PR #28).
+  ['/sponsor-a-child', 'checklistPanel.items.7', 'Conexión con usted:', 'Conexión contigo:'],
+  ['/sponsor-a-child', 'checklistPanel.title.4', 'Conexión con usted:', 'Conexión contigo:'],
+  [
+    '/ways-to-give',
+    'pastelCard.body',
+    'Muchas empresas duplican las donaciones de sus empleados. Busque a su empleador y descúbralo en pocos segundos.',
+    'Muchas empresas duplican las donaciones de sus empleados. Busca a tu empleador y descúbrelo en pocos segundos.',
+  ],
+  [
+    '/ways-to-give',
+    'pastelCard2.body',
+    'Realice sus donaciones benéficas desde su cuenta DAF utilizando nuestro EIN, 88-3282100. Le ayudaremos a completar la designación.',
+    'Realiza tus donaciones benéficas desde tu cuenta DAF usando nuestro EIN, 88-3282100. Te ayudaremos a completar la designación.',
+  ],
   // Step 21: never translated on the live site (empty in Spanish until now).
-  ...['/ways-to-give', '/earthquake-relief'].flatMap((route) => [
+  ...['/ways-to-give', '/venezuela-earthquake-relief'].flatMap((route) => [
     [route, 'appealPanel.imageAlt.1', '', 'Familias llegando al patio del futuro centro de apoyo de VVF.'],
     [route, 'appealPanel.imageAlt.2', '', 'Una enfermera examina a una niña mientras su madre está sentada a su lado.'],
     [route, 'appealPanel.cards.nutritionAlt', '', 'Niños comiendo juntos una comida caliente en el comedor del centro.'],
   ]),
 ]
 
-const MEDIA_FIELDS = ['image', 'hero_image', 'hero_image_mobile']
+// Event image fields, in the content model (src/lib/contentModel.mjs) and the
+// earlier one.
+const MEDIA_FIELDS = ['hero_photo', 'hero_photo_phone', 'image', 'hero_image', 'hero_image_mobile']
 const BENEFIT_FIELDS = ['recognition_benefits', 'activity_benefits', 'promotional_benefits']
 
 // Step 21 corrections for CMS entries, from the seed's Spanish entries and
@@ -54,11 +71,14 @@ export function contentCorrections(seed) {
   const add = (collection, entry, field, wrong, right) => {
     if (JSON.stringify(wrong) !== JSON.stringify(right)) out.push({ collection, id: entry.id, slug: entry.slug, field, wrong, right })
   }
-  for (const entry of content.sponsorship_packages ?? []) {
-    const en = entry.locale === 'es' && entry.id.startsWith('sp-general-') && english('sponsorship_packages', entry.translationOf)
+  // Corporate tiers: `corporate_tiers` in the content model, part of
+  // `sponsorship_packages` before it.
+  const tiers = content.corporate_tiers ? 'corporate_tiers' : 'sponsorship_packages'
+  for (const entry of content[tiers] ?? []) {
+    const en = entry.locale === 'es' && entry.id.startsWith('sp-general-') && english(tiers, entry.translationOf)
     if (!en) continue
-    if (entry.data.tier_name === 'Benefactor') add('sponsorship_packages', entry, 'tier_name', 'Patrocinador', 'Benefactor')
-    for (const field of BENEFIT_FIELDS) if (entry.data[field]) add('sponsorship_packages', entry, field, en.data[field], entry.data[field])
+    if (entry.data.tier_name === 'Benefactor') add(tiers, entry, 'tier_name', 'Patrocinador', 'Benefactor')
+    for (const field of BENEFIT_FIELDS) if (entry.data[field]) add(tiers, entry, field, en.data[field], entry.data[field])
   }
   for (const entry of content.events ?? []) {
     const en = entry.locale === 'es' && english('events', entry.translationOf)

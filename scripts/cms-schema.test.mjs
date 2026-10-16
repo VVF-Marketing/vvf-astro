@@ -34,17 +34,11 @@ function fakeApi(collections) {
 }
 
 const existingSite = () => [
-  { slug: 'events', label: 'Events' },
-  { slug: 'posts', label: 'Blog posts' },
-  { slug: 'resources', label: 'Resources' },
-  { slug: 'faqs', label: 'FAQs' },
-  { slug: 'testimonials', label: 'Testimonials' },
-  { slug: 'team_members', label: 'Team members' },
-  { slug: 'sponsors', label: 'Sponsors / partners' },
-  { slug: 'sponsorship_packages', label: 'Sponsorship packages' },
-  { slug: 'auction_items', label: 'Silent auction items' },
-  { slug: 'campaign_updates', label: 'Campaign updates' },
+  // The content model's collections (src/lib/contentModel.mjs) and the others.
+  ...['events', 'event_offers', 'benefit_rows', 'auction_items', 'testimonials', 'articles', 'categories', 'authors', 'faqs', 'team_members', 'partners', 'site_facts'].map((slug) => ({ slug, label: slug })),
   { slug: 'children', label: 'Sponsored children' },
+  { slug: 'corporate_tiers', label: 'Corporate tiers' },
+  { slug: 'donorbox_settings', label: 'Donorbox campaigns' },
   {
     slug: 'campaign_settings',
     label: 'Earthquake relief campaign settings',

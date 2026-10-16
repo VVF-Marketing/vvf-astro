@@ -18,7 +18,13 @@ test('contact form submit button is gated on the privacy checkbox', async ({ pag
   await expect(submit).toBeDisabled()
 })
 
-test('a reach-us card preselects its topic in the form via query param', async ({ page }) => {
-  await page.goto('/contact?topic=corporate-partnerships')
-  await expect(page.locator('[data-topic-select]')).toHaveValue('corporate-partnerships')
+// Topics are stored by their English name (spec 7.14); an unknown value
+// leaves the prompt chosen.
+test('?topic= preselects the form topic by its stored value', async ({ page }) => {
+  await page.goto('/contact?topic=Corporate%20partnership')
+  await expect(page.locator('[data-topic-select]')).toHaveValue('Corporate partnership')
+  await page.goto('/es/contact?topic=Volunteering')
+  await expect(page.locator('[data-topic-select]')).toHaveValue('Volunteering')
+  await page.goto('/contact?topic=not-a-topic')
+  await expect(page.locator('[data-topic-select]')).toHaveValue('')
 })

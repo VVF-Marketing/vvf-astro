@@ -15,7 +15,9 @@ export const Upcoming = {
       location: '2600 Country Club Way, Weston, FL 33332',
       description: 'Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.',
       imageUrl: '/seed-media/events/56f00201-98.png',
-      category: 'golf-tournament',
+      lifecycle: 'upcoming',
+      registration: 'open',
+      featured: true,
     } satisfies EventItem,
   },
 }
@@ -28,7 +30,9 @@ export const Past = {
       startDate: '2025-11-10T00:00:00.000Z',
       location: 'Weston',
       description: '74 golfers came together at The Club at Weston Hills to support over 700 children in Venezuela.',
-      category: 'golf-tournament',
+      lifecycle: 'upcoming',
+      registration: 'open',
+      featured: true,
     } satisfies EventItem,
   },
 }

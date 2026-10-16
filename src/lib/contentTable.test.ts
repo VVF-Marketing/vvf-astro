@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { layoutContentTable } from './contentTable'
 
 const seed = JSON.parse(readFileSync(path.join(process.cwd(), 'seed/seed.json'), 'utf8'))
-const impactReport = seed.content.resources.find((e: { slug?: string; locale?: string }) => e.slug === 'impact-report-2025' && (e.locale ?? 'en') === 'en')
+const impactReport = seed.content.articles.find((e: { slug?: string; locale?: string }) => e.slug === 'impact-report-2025' && (e.locale ?? 'en') === 'en')
 const seedTables = (impactReport.data.body as { _type: string }[]).filter((b) => b._type === 'table')
 
 let n = 0

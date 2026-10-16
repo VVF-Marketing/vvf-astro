@@ -1,0 +1,141 @@
+---
+// Meet the Children (spec 7.3): available children, newest first, 20 a page.
+// The name and age filters and the page number live in the URL, so a
+// filtered list can be shared and works without scripts; the script below
+// refreshes the results as the visitor types or ticks.
+import PageLayout from '../../layouts/PageLayout.astro'
+import ChildCard from '../../components/ChildCard.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import Button from '../../components/Button.astro'
+import Pagination from '../../components/Pagination.astro'
+import { getChildren, getPageCopy } from '../../lib/content'
+import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import { childFiltersFrom, childMatchesFilters, hasChildFilters } from '../../lib/childFilter'
+import { paginate } from '../../lib/pagination'
+import { CHILD_AGE_RANGES } from '../../lib/content/types'
+import pageCopy from './_copy'
+
+const PER_PAGE = 20
+const locale = localeFromPath(Astro.originPathname)
+
+const children = await getChildren(locale)
+const criteria = childFiltersFrom(Astro.url.searchParams)
+const filtering = hasChildFilters(criteria)
+const matches = children.filter((c) => childMatchesFilters(c, criteria))
+const { items, page, pages } = paginate(matches, Astro.url.searchParams.get('page'), PER_PAGE)
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+const count = matches.length === 1 ? copy['results.countOne'] : fill(copy['results.count'], { count: matches.length })
+const listUrl = new URL(Astro.originPathname + Astro.url.search, Astro.url)
+---
+
+<PageLayout
+  title={copy['seo.title']}
+  description={copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={pageAlternates(pageCopy.route, locales)}
+>
+  <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-16 md:pt-[120px] md:px-16">
+    <SectionTitle
+      tagline={copy['sectionTitle.tagline']}
+      heading={copy['sectionTitle.heading']}
+      text={copy['sectionTitle.text']}
+      headingLevel="h1"
+    />
+
+    {
+      children.length > 0 && (
+        <form method="get" action="/children" class="mx-auto mt-12 flex max-w-screen-xl flex-wrap items-center justify-center gap-4" data-child-filters>
+          <label class="sr-only" for="child-name-filter">{copy['label.text']}</label>
+          <input
+            id="child-name-filter"
+            type="search"
+            name="name"
+            value={criteria.nameQuery}
+            placeholder={copy['input.placeholder']}
+            autocomplete="off"
+            class="h-[38px] rounded-pill border border-brand-primary bg-transparent px-5 font-sans text-size-sm text-brand-primary placeholder:text-brand-primary/50"
+          />
+          <fieldset class="flex flex-wrap gap-2">
+            <legend class="sr-only">{copy['legend.text']}</legend>
+            {
+              CHILD_AGE_RANGES.map((range) => (
+                <label class="flex cursor-pointer items-center gap-1 rounded-pill border border-brand-primary px-3 py-1 font-sans text-size-sm text-brand-primary has-[:checked]:bg-sky">
+                  <input type="checkbox" name="age" value={range} checked={criteria.ageRanges?.includes(range)} class="accent-brand-primary" />
+                  {range}
+                </label>
+              ))
+            }
+          </fieldset>
+        </form>
+      )
+    }
+
+    <div id="children-list" class="scroll-mt-8" data-child-results aria-live="polite">
+      {children.length > 0 && <p class="mt-6 text-center font-label text-size-sm text-brand-primary">{count}</p>}
+      {
+        items.length > 0 && (
+          <div class="mx-auto mt-6 grid max-w-[1312px] grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6 lg:grid-cols-4">
+            {items.map((child) => <ChildCard child={child} />)}
+          </div>
+        )
+      }
+      {
+        children.length > 0 && matches.length === 0 && (
+          <div class="mt-10 flex flex-col items-center gap-6 text-center">
+            <p class="font-label text-size-md text-brand-primary">{copy['p.text']}</p>
+            <Button href="/children" variant="outline-navy" data-clear-filters>{copy['filters.clear']}</Button>
+          </div>
+        )
+      }
+      {
+        children.length === 0 && (
+          <div class="mt-10 flex flex-col items-center gap-6 text-center">
+            <p class="font-label text-size-md text-brand-primary">{copy['empty.text']}</p>
+            <Button href="/ways-to-give" variant="primary-inverse">{copy['empty.button']}</Button>
+          </div>
+        )
+      }
+      <Pagination page={page} pages={pages} hash="#children-list" url={listUrl} />
+    </div>
+    {filtering && <span hidden data-filtered />}
+  </section>
+</PageLayout>
+
+<script>
+  // Results update as the visitor types or ticks: the URL changes in place
+  // and the result block is swapped for the server's.
+  const form = document.querySelector<HTMLFormElement>('[data-child-filters]')
+  const results = document.querySelector<HTMLElement>('[data-child-results]')
+  let timer: number | undefined
+  let latest = 0
+
+  async function refresh() {
+    if (!form || !results) return
+    const params = new URLSearchParams()
+    for (const [k, v] of new FormData(form)) if (String(v).trim()) params.append(k, String(v).trim())
+    const url = `${location.pathname}${params.size ? `?${params}` : ''}`
+    history.replaceState(null, '', url)
+    const request = ++latest
+    const html = await (await fetch(url)).text()
+    if (request !== latest) return
+    const next = new DOMParser().parseFromString(html, 'text/html').querySelector('[data-child-results]')
+    if (next) results.innerHTML = next.innerHTML
+  }
+
+  form?.addEventListener('input', (e) => {
+    window.clearTimeout(timer)
+    timer = window.setTimeout(refresh, (e.target as HTMLInputElement).type === 'search' ? 250 : 0)
+  })
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    refresh()
+  })
+  results?.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('[data-clear-filters]') || !form) return
+    e.preventDefault()
+    form.reset()
+    form.querySelectorAll<HTMLInputElement>('input').forEach((i) => (i.type === 'checkbox' ? (i.checked = false) : (i.value = '')))
+    refresh()
+  })
+</script>

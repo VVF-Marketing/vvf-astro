@@ -31,6 +31,7 @@ import { createStorage as createS3Storage } from 'emdash/storage/s3'
 import { createDialect as createPostgresDialect } from '../src/lib/db/postgresRuntime.mjs'
 import { contentTypeFor, listKeys } from './media-copy.mjs'
 import { LEGACY_COLLECTIONS } from './migrate/copy-collections.mjs'
+import { RETIRED_COLLECTIONS as RETIRED_MODEL_COLLECTIONS } from '../src/lib/contentModel.mjs'
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export const FORMAT_VERSION = 1
@@ -140,9 +141,11 @@ export function schemaSeed(collectionRows, fieldRows) {
 }
 
 // Collections not carried into an import: retired ones whose rows already
-// moved (LEGACY_COLLECTIONS, e.g. a slug too long for Postgres). Any other
-// collection whose identifiers don't fit Postgres stops the import.
-export const RETIRED_COLLECTIONS = new Set(LEGACY_COLLECTIONS.map((l) => l.collection))
+// moved (LEGACY_COLLECTIONS, e.g. a slug too long for Postgres), and the types
+// the spec's content model retired (contentModel.mjs: the blog, campaign
+// updates, ...). Any other collection whose identifiers don't fit Postgres
+// stops the import.
+export const RETIRED_COLLECTIONS = new Set([...LEGACY_COLLECTIONS.map((l) => l.collection), ...RETIRED_MODEL_COLLECTIONS])
 const PG_SAFE_SLUG = 35 // idx_ec_<slug>_deleted_published_id within 63 characters
 
 export function collectionsToImport(collectionRows, targetKind) {

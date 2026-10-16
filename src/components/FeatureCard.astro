@@ -1,0 +1,64 @@
+---
+// The spec's Feature card (5.5, row 4): one component for the reward, step,
+// appeal, giving and stat cards. Variants change colour and media, never the
+// content. Card titles are H3 (spec 6.1, rule 2) in the small card-title
+// style (5.2); a stat card shows its figure in the stat-figure style.
+import Button from './Button.astro'
+
+export interface CtaLink {
+  label: string
+  href: string
+  // Names the target when the visible label repeats (spec 5.6).
+  ariaLabel?: string
+}
+
+export interface Props {
+  tone?: 'white' | 'sky' | 'sun' | 'salmon' | 'navy'
+  // Media at the top: an icon, or a figure (stat cards).
+  iconUrl?: string
+  figure?: string
+  eyebrow?: string
+  title: string
+  body?: string
+  cta?: CtaLink
+  // Centre the copy and button at every width.
+  centered?: boolean
+}
+
+const { tone = 'white', iconUrl, figure, eyebrow, title, body, cta, centered = false } = Astro.props as Props
+const tones = {
+  white: 'bg-neutral-white text-brand-primary',
+  sky: 'bg-sky text-brand-primary',
+  sun: 'bg-sun text-brand-primary',
+  salmon: 'bg-salmon text-brand-primary',
+  navy: 'bg-brand-primary text-neutral-white',
+}
+const isStat = figure !== undefined
+const align = centered || isStat ? 'items-center text-center' : iconUrl ? 'items-center text-center md:items-stretch md:text-left' : ''
+---
+
+<article class={`flex h-full flex-col overflow-hidden rounded-card-lg ${tones[tone]}`}>
+  {
+    iconUrl && (
+      <div class={`flex items-center justify-center p-10 ${isStat ? 'h-[170px] pb-0' : 'h-[211px]'}`}>
+        <img src={iconUrl} alt="" class="h-full w-auto" loading="lazy" />
+      </div>
+    )
+  }
+  <div class={`flex flex-1 flex-col gap-6 ${iconUrl ? 'px-8 pb-8 pt-6' : 'p-6 md:p-16'} ${align}`}>
+    <div class={`flex flex-col gap-4 ${iconUrl && eyebrow ? 'border-t border-current/40 pt-8' : ''}`}>
+      {isStat && <p class="font-label text-tagline uppercase">{title}</p>}
+      {isStat && <p class="font-heading text-stat-mobile md:text-stat">{figure}</p>}
+      {eyebrow && <p class="font-label text-tagline uppercase">{eyebrow}</p>}
+      {!isStat && <h3 class="text-h4">{title}</h3>}
+    </div>
+    {body && <p class="font-body">{body}</p>}
+    {
+      cta && (
+        <Button href={cta.href} aria-label={cta.ariaLabel} variant={tone === 'navy' ? 'primary' : 'outline-navy'} class={`mt-auto ${centered ? 'self-center' : iconUrl ? 'self-center md:self-start' : 'self-start'}`}>
+          {cta.label}
+        </Button>
+      )
+    }
+  </div>
+</article>

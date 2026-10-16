@@ -186,6 +186,13 @@ async function extractLocale(locale, sitemapUrls, report) {
       ...parseResource(await get(url)),
     })
   }
+  // Press articles (News, spec v0.17) link out and have no page of their
+  // own in the sitemap: their card is the whole article.
+  for (const card of Object.values(cards)) {
+    if (card.external && !resources.some((r) => r.slug === card.slug)) {
+      resources.push({ slug: card.slug, url: card.externalUrl, categories: [...(categories[card.slug] ?? [])], card })
+    }
+  }
   snap('resources', resources)
 
   snap('corporate_tiers', parseCorporateTiers(await get(`${base}/corporate-sponsorships`)))
