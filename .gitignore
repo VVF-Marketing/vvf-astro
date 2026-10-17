@@ -37,3 +37,6 @@ emdash-env.d.ts
 # OS / editor files
 .DS_Store
 /.obsidian/
+
+# Basecamp CLI local config
+.basecamp/

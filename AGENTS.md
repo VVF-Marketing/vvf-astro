@@ -14,6 +14,14 @@ npm run build     # Production build
 npm run preview   # Preview production build
 ```
 
+## Security & Restriction Rules
+
+### Basecamp Access Restriction
+**CRITICAL:** Basecamp API access and CLI usage in this project must be restricted **only** to the VVF project (`ID: 43742602`). No other Basecamp projects, accounts, or buckets may be accessed, queried, or modified.
+
+### Environment Variables
+Always set `BASECAMP_PROJECT_ID=43742602` in your environment. Never change it to point to other projects.
+
 ## Basecamp ticketing
 
 Requirements for this project come from cards on the VVF project's "Tareas" board in Basecamp (`basecamp cards list -p 43742602`, once authenticated via `basecamp auth login` — see README.md). Convention:
