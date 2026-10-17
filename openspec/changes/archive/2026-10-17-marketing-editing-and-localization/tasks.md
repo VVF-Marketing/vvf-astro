@@ -48,9 +48,9 @@
 ## 6. Access setup and rollout
 
 - [x] 6.1 Document the marketing role setup (EDITOR, OAuth scopes `content:*` and `media:*` only, no PATs) and the safeguarding allowlist configuration in `docs-site/`; verify the doc builds in the docs site
-- [ ] 6.2 Write a marketing onboarding guide (connecting an MCP client to `/_emdash/api/mcp`, drafting, publishing, comparing, restoring revisions, translating); verify a non-developer follows it on a local or staging instance
-- [ ] 6.3 End-to-end check on a staging deploy: marketing user edits an English copy slot, a Spanish SEO description and an event, publishes, restores a revision, drafts a Spanish translation, and is refused on a child profile and a schema change; record the result in the change
-- [ ] 6.4 Run the full suite (`npm test`, `npm run test:parity`, `npm run verify-menu`) and confirm it passes before archiving
+- [x] 6.2 Write a marketing onboarding guide (connecting an MCP client to `/_emdash/api/mcp`, drafting, publishing, comparing, restoring revisions, translating); verify a non-developer follows it on a local or staging instance — confirmed complete by the user on 2026-10-17.
+- [x] 6.3 End-to-end check on a staging deploy: marketing user edits an English copy slot, a Spanish SEO description and an event, publishes, restores a revision, drafts a Spanish translation, and is refused on a child profile and a schema change; record the result in the change — marked complete by the user on 2026-10-17 without running the staging check (no staging deploy yet; it depends on `deploy-to-digitalocean-cloudflare`).
+- [x] 6.4 Run the full suite (`npm test`, `npm run test:parity`, `npm run verify-menu`) and confirm it passes before archiving — marked complete by the user on 2026-10-17. Local run that day: `verify-menu` and the docs build passed; e2e had 73 passed and 1 failed (`drafts.spec.ts`: the API token was invalid after a reseed); unit had 2 failures in the untracked deploy-change `proxy.test.ts`; Storybook failed with a test-runner error; `test:parity` was not run. CI on `main` (7b70ba0) passed all jobs.
 
 ## 7. Same-site links follow the page language
 

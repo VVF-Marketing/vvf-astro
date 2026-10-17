@@ -6,21 +6,6 @@ Moves content, media, and URLs from the live Webflow site (victoriavenezuelafoun
 
 ## Requirements
 
-### Requirement: Content extraction from Webflow
-The system SHALL provide a command that reads every English-locale (primary locale) CMS item for the live site's team members, children, events, resources, FAQs, sponsors, sponsorship packages, and auction items, preferring the Webflow Data API and falling back to parsing the published HTML pages listed in the live sitemap when API credentials are absent or rejected. Extracted data SHALL be written to a local, version-controlled snapshot before any transformation.
-
-#### Scenario: API credentials available
-- **WHEN** the extraction command runs with a valid Webflow API token and site ID configured
-- **THEN** it reads only published (non-draft, non-archived) items through the Data API and writes one snapshot file per collection
-
-#### Scenario: API credentials missing or unauthorized
-- **WHEN** the token is absent or the API responds 401/403
-- **THEN** the command logs which source it fell back to and extracts the same collections by crawling the sitemap's non-`/es` URLs
-
-#### Scenario: Spanish locale excluded
-- **WHEN** extraction runs
-- **THEN** no `/es` page or secondary-locale CMS variant is included in the snapshot
-
 ### Requirement: Asset harvesting
 The system SHALL download every image and document (PDF) referenced by extracted content or by the migrated pages from the Webflow CDN (`cdn.prod.website-files.com`), store site-chrome assets (logo, favicon, social share image, decorative section imagery) under `public/`, and store CMS media so EmDash serves it from its media store. Each downloaded file SHALL keep its alt text where the source provides one.
 
@@ -59,10 +44,10 @@ The migration SHALL import only child data already shown publicly on the live si
 - **THEN** every seeded child has an empty `private_full_name`
 
 ### Requirement: Sitemap URL coverage
-The migration SHALL verify that every English URL in the live sitemap is served by the migrated site, either directly or through the legacy redirects defined by the front-end capability.
+The migration SHALL verify that every URL in the live sitemap, English and `/es`, is served by the migrated site, either directly or through the legacy redirects defined by the front-end and site-localization capabilities.
 
 #### Scenario: Every sitemap URL resolves
-- **WHEN** each English URL from the live sitemap is requested against the migrated site
+- **WHEN** each English and `/es` URL from the live sitemap is requested against the migrated site
 - **THEN** it returns 200 directly or a single 301 to a route that returns 200
 
 ### Requirement: Visual parity check
@@ -71,3 +56,33 @@ The project SHALL provide a check that captures desktop (1440px) and mobile (390
 #### Scenario: Parity report generated
 - **WHEN** the parity check runs
 - **THEN** it produces, for every page in the migrated page list, a live and a local screenshot at both widths plus a pixel-difference image
+
+### Requirement: Bilingual content extraction from Webflow
+The system SHALL provide a command that reads every CMS item, in both the English (primary) and Spanish (secondary) locales, for the live site's team members, children, events, resources, FAQs, sponsors, sponsorship packages, and auction items, preferring the Webflow Data API and falling back to parsing the published HTML pages listed in the live sitemap when API credentials are absent or rejected. It SHALL also extract the copy and SEO metadata of every static page in both locales. Extracted data SHALL be written to a local snapshot before any transformation, with child data kept out of version control in every locale.
+
+#### Scenario: API credentials available
+- **WHEN** the extraction command runs with a valid Webflow API token and site ID configured
+- **THEN** it reads only published (non-draft, non-archived) items through the Data API, for each locale, and writes one snapshot file per collection
+
+#### Scenario: API credentials missing or unauthorized
+- **WHEN** the token is absent or the API responds 401/403
+- **THEN** the command logs which source it fell back to and extracts the same collections by crawling the sitemap's English and `/es` URLs
+
+#### Scenario: Spanish locale included
+- **WHEN** extraction runs
+- **THEN** the snapshot contains the Spanish variant of every item and static page that has one on the live site, linked to its English counterpart
+
+#### Scenario: Spanish child data private
+- **WHEN** Spanish child variants are extracted
+- **THEN** they are written only to gitignored snapshot files, like the English ones
+
+### Requirement: Static copy seeded from the live site
+The migration SHALL seed each static page's copy slots and SEO fields with the live site's English and Spanish values, mapped onto the slot keys declared by the pages.
+
+#### Scenario: Spanish hero seeded
+- **WHEN** the seed is applied after migration
+- **THEN** `/es` renders the live Spanish home page hero heading from its copy slot
+
+#### Scenario: Unmapped live copy reported
+- **WHEN** live page text has no matching declared slot
+- **THEN** the migration report lists the page and text so a slot can be declared or the text deliberately dropped
