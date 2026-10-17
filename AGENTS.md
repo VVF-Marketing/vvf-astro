@@ -43,3 +43,13 @@ Full docs live in `docs-site/` ([`npm run dev` there](docs-site/src/content/docs
 - [Component Library](docs-site/src/content/docs/components.md) — where components live, atomic-design tiers
 - [Styling & Design Tokens](docs-site/src/content/docs/styling.md) — `tailwind.config.cjs` colors, type scale, radii, spacing
 - [Testing & CI](docs-site/src/content/docs/testing-and-ci.md) — test suites, what runs in CI
+
+## Agent skills
+
+### Issue tracker
+
+Basecamp cards (VVF project 43742602 only) → OpenSpec changes → GitHub PRs. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context: root `GLOSSARY.md` + `docs/adr/`. See `docs/agents/domain.md`.
