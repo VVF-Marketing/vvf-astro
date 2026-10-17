@@ -21,7 +21,7 @@ const arrow = 'absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 da
 ---
 
 <div class="flex flex-col items-center gap-5 py-12" data-logo-carousel>
-  {heading && <h3 class="max-w-[700px] text-center text-h2-mobile md:text-h2 md:leading-[1.1] text-brand-primary">{heading}</h3>}
+  {heading && <h2 class="max-w-[700px] text-center text-brand-primary">{heading}</h2>}
   <div class="relative w-full max-w-screen-xl px-12 py-10">
     <button type="button" class={`${arrow} left-0`} aria-label={t['a11y.prevLogos']} data-prev>
       <img src="/images/pages/76726afb-arrow-left.svg" alt="" width="24" height="24" />
@@ -37,7 +37,7 @@ const arrow = 'absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 da
           return (
             <li class="mx-3 flex h-[116px] w-[186px] shrink-0 items-center justify-center">
               {logo.website ? (
-                <a href={logo.website} class="flex h-full w-full items-center justify-center">
+                <a href={logo.website} class="relative flex h-full w-full items-center justify-center">
                   {content}
                 </a>
               ) : (

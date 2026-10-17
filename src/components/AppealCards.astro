@@ -21,7 +21,7 @@ const tones = ['bg-sun', 'bg-sky', 'bg-salmon']
 ---
 
 <div class="flex flex-col gap-6">
-  {label && <p class={`font-body text-size-sm font-semibold leading-body ${tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'}`}>{label}</p>}
+  {label && <p class={`font-label text-size-sm font-semibold leading-body ${tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'}`}>{label}</p>}
   <ul class="grid gap-6 md:grid-cols-3">
     {
       cards.map((card, i) => (

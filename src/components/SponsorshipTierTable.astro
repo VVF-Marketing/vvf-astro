@@ -35,7 +35,7 @@ const groups = (tier: SponsorshipPackage) => ({
           aria-controls={`${id}-panel-${i}`}
           aria-selected={i === 0 ? 'true' : 'false'}
           tabindex={i === 0 ? 0 : -1}
-          class="group flex flex-col items-center justify-center rounded-[20px] bg-neutral-white p-6 text-neutral-ink aria-selected:bg-sky aria-selected:text-brand-primary md:p-10"
+          class="group flex flex-col items-center justify-center rounded-[20px] bg-neutral-white p-6 text-brand-primary aria-selected:bg-sky aria-selected:text-brand-primary md:p-10"
           data-tier-tab
         >
           <span class="font-sans text-h5 font-extrabold leading-[1.4] md:text-h4">{tier.tierName}</span>

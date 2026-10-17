@@ -68,6 +68,12 @@ describe('collectionsToImport', () => {
     expect(collectionsToImport(rows, 'postgres')).toEqual({ kept: [rows[0]], skipped: ['copy_resources_category_financials_transparency'] })
   })
 
+  // Review finding (PR #28): the content model's retired types were imported.
+  it("leaves the content model's retired types out", () => {
+    const old = [{ id: '1', slug: 'events' }, { id: '4', slug: 'posts' }, { id: '5', slug: 'campaign_updates' }]
+    expect(collectionsToImport(old, 'sqlite')).toEqual({ kept: [old[0]], skipped: ['posts', 'campaign_updates'] })
+  })
+
   it('stops on any other collection name too long for Postgres', () => {
     expect(() => collectionsToImport([{ id: '3', slug: 'copy_a_very_long_collection_name_indeed_x' }], 'postgres')).toThrow(/too long for Postgres/)
     expect(collectionsToImport([{ id: '3', slug: 'copy_a_very_long_collection_name_indeed_x' }], 'sqlite').kept).toHaveLength(1)

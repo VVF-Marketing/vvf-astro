@@ -1,6 +1,6 @@
 {
-  "/events": {
-    "title": "Events | Victoria Venezuela Foundation",
+  "/events-and-campaigns": {
+    "title": "Events & Campaigns | Victoria Venezuela Foundation",
     "description": "Events and campaigns from Victoria Venezuela Foundation, including our annual charity golf tournament in Weston, FL, supporting children in Venezuela.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
   },
@@ -34,17 +34,17 @@
     "description": "Stories, news, events and financial reports from Victoria Venezuela Foundation, a 501(c)(3) supporting children in Venezuela.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
   },
-  "/resources/category/financials-transparency": {
-    "title": "Financials & Transparency | Resources | Victoria Venezuela Foundation",
+  "/resources/financials": {
+    "title": "Financial Reports | Resources | Victoria Venezuela Foundation",
     "description": "Our annual and quarterly impact reports, with condensed financials. Victoria Venezuela Foundation is a 501(c)(3), EIN 88-3282100.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
   },
-  "/resources/category/stories": {
+  "/resources/stories": {
     "title": "Stories | Resources | Victoria Venezuela Foundation",
     "description": "Stories from our nutrition, medical care and education programs for children in Venezuela.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
   },
-  "/sponsor-a-child/children": {
+  "/children": {
     "title": "Meet the Children | Victoria Venezuela Foundation",
     "description": "Meet children in Venezuela who are waiting for a sponsor. Sponsorship starts at $25 a month and covers meals, medical care and school.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
@@ -54,7 +54,7 @@
     "description": "Sponsor a child in Venezuela from $25 a month. Your gift funds weekly meals, medical checkups twice a year and school support for the children in our care.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"
   },
-  "/earthquake-relief": {
+  "/venezuela-earthquake-relief": {
     "title": "Venezuela Earthquake Relief | Victoria Venezuela Foundation",
     "description": "Back-to-back earthquakes hit Venezuela in June 2026. 100% of net proceeds go to relief for displaced children and families. See how to help.",
     "image": "/images/pages/57692375-vvf-home-shareimage-v2.jpg"

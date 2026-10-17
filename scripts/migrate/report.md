@@ -35,27 +35,35 @@ Run: 2026-10-04T12:13:03.139Z against https://www.victoriavenezuelafoundation.or
 
 ## Asset harvest
 
-- Planned: 218 assets; downloaded 0, already present 218.
+- Planned: 225 assets; downloaded 7, already present 218.
 - Site chrome: candidSeal, socialFacebook, socialInstagram, socialLinkedin, socialYoutube, logo, footerLogo, favicon, appleTouchIcon, ogImage, childIcon_age, childIcon_birthday, childIcon_gender, childIcon_dream.
-- Removed 0 files no longer referenced by the snapshot.
+- Removed 12 files no longer referenced by the snapshot.
 - Failed downloads: none.
 
 ## Transform
 
-| Collection | Entries |
+| Collection | Entries (English + Spanish) |
 | --- | --- |
-| team_members | 38 |
-| children | 80 |
-| events | 4 |
-| sponsorship_packages | 34 |
-| sponsors | 108 |
-| auction_items | 0 |
-| faqs | 30 |
-| resources | 20 |
+| campaign_settings | 1 + 1 Spanish |
+| corporate_tiers | 4 + 4 Spanish |
+| donorbox_settings | 1 + 0 Spanish |
+| partners | 54 + 54 Spanish |
+| event_offers | 13 + 13 Spanish |
+| faqs | 15 + 15 Spanish |
+| benefit_rows | 20 + 20 Spanish |
+| events | 2 + 2 Spanish |
+| children | 40 + 40 Spanish |
+| team_members | 17 + 17 Spanish |
+| categories | 3 + 3 Spanish |
+| authors | 3 + 3 Spanish |
+| articles | 17 + 17 Spanish |
+| testimonials | 0 + 0 Spanish |
+| auction_items | 0 + 0 Spanish |
+| site_facts | 6 + 6 Spanish |
 
 - Counts include Spanish entries (linked translations of the English ones).
-- `seed/seed.json` (committed) omits the 80 children and all media values; `seed/seed.local.json` (gitignored) has both.
-- Media: every referenced file resolved to an EmDash media item.
+- `seed/seed.json` (committed) omits the 80 children and child media; `seed/seed.local.json` (gitignored) has both.
+- Media: every referenced file resolved to a seed media value.
 - Decisions and dropped content:
 - Team: "Join our board" (board) is an open-seat call to action; rendered by the Our Team page, not seeded. Its live profile URL redirects to /contact.
 
@@ -95,9 +103,9 @@ Run: 2026-10-03T02:51:01.622Z
 
 ## Spanish page copy
 
-Aligned 43 live pages with their /es versions (1344 translated strings).
-- Slots translated: 442; without a live Spanish counterpart: 99 (they fall back to English).
-- Pages with no live Spanish version (left for marketing to translate): /blog/*, /blog, /our-programs
+Aligned 49 live pages with their /es versions (1435 translated strings).
+- Slots translated: 548; without a live Spanish counterpart: 123 (they fall back to English).
+- Pages with no live Spanish version (left for marketing to translate): /blog/*, /blog
 - / `hero.imageAlt`: A smiling girl at a Victoria Venezuela Foundation event.
 - / `hero.subtext`: Every child deserves nutrition, medical care, and education. Victoria Venezuela Foundation delivers all three through programs that reach the children who need them most.
 - / `sectionTitle2.heading`: What we've accomplished together
@@ -115,18 +123,15 @@ Aligned 43 live pages with their /es versions (1344 translated strings).
 - /resources/* `lastUpdated`: Last updated {date}
 - /resources/* `share.copied`: Link copied
 - /resources/* `share.failed`: Copy failed — copy the address bar link instead
-- /sponsor-a-child `hero.imageAlt`: Smiling girl sitting at a table eating empanadas with orange cups nearby.
+- /venezuela-earthquake-relief `hero.imageAlt`: A man carrying a child away from a building destroyed by the earthquakes in Venezuela.
+- /venezuela-earthquake-relief `p2.text`: Weston
+- /venezuela-earthquake-relief `p3.text`: P.O. Box 327222, Weston, FL 33332
+- /venezuela-earthquake-relief `a2.text`: info@victoriavenezuelafoundation.org
+- /venezuela-earthquake-relief `sectionTitle4.heading`: Campaign updates
 - /ways-to-give `hero.imageAlt`: Baby in pink dress held near red and white balloons and a large striped candy cane balloon.
 - /ways-to-give `featureBand.imageAlt`: Smiling young girl with pigtails playing inside a colorful inflatable bounce house.
 - /ways-to-give `mediaSplit.imageAlt`: Smiling boy holding cotton candy with children playing near an inflatable bounce house outdoors.
 - /ways-to-give `featureBand2.imageAlt`: Golfers standing by the lake at the Victoria Venezuela Foundation charity golf tournament, holding Venezuelan flags.
-- /ways-to-give `appealPanel.imageAlt.1`: Families arriving at the courtyard of the planned VVF support centre.
-- /ways-to-give `appealPanel.imageAlt.2`: A nurse examining a young girl while her mother sits beside her.
-- /ways-to-give `appealPanel.cards.nutritionAlt`: Children eating a hot meal together in the centre's dining room.
-- /sponsor-a-child/children `label.text`: Search by name
-- /sponsor-a-child/children `input.placeholder`: Search by name
-- /sponsor-a-child/children `legend.text`: Age range
-- /sponsor-a-child/children `p.text`: No children match your filters.
 - _global `header.homeLink`: Victoria Venezuela Foundation home
 - _global `header.menuButton`: Menu
 - _global `header.languageLabel`: Language
@@ -168,6 +173,11 @@ Benefits
 - _global `a11y.nextLogos`: Next logos
 - _global `a11y.prevStory`: Previous story
 - _global `a11y.nextStory`: Next story
+- _global `a11y.newTab`: (opens in a new tab)
+- /children `label.text`: Search by name
+- /children `input.placeholder`: Search by name
+- /children `legend.text`: Age range
+- /children `p.text`: No children match your filters.
 - /contact `hero.imageAlt`: A young girl holding cotton candy at a Victoria Venezuela Foundation event.
 - /contact `sectionTitle.tagline`: Ways to connect
 - /contact `sectionTitle.heading`: Multiple ways to reach us
@@ -184,22 +194,44 @@ Benefits
 - /corporate-sponsorships `img.alt`: Benevity
 - /corporate-sponsorships `img2.alt`: YourCause from Blackbaud
 - /corporate-sponsorships `img3.alt`: GuideStar by Candid
-- /earthquake-relief `hero.imageAlt`: A man carrying a child away from a building destroyed by the earthquakes in Venezuela.
-- /earthquake-relief `appealPanel.imageAlt.1`: Families arriving at the courtyard of the planned VVF support centre.
-- /earthquake-relief `appealPanel.imageAlt.2`: A nurse examining a young girl while her mother sits beside her.
-- /earthquake-relief `p2.text`: Weston
-- /earthquake-relief `p3.text`: P.O. Box 327222, Weston, FL 33332
-- /earthquake-relief `a2.text`: info@victoriavenezuelafoundation.org
-- /earthquake-relief `sectionTitle4.heading`: Campaign updates
-- /earthquake-relief `appealPanel.cards.nutritionAlt`: Children eating a hot meal together in the centre's dining room.
 - /events/* `impactPanel.imageAlt`: A Victoria Venezuela Foundation volunteer checking a child's heartbeat with a stethoscope.
 - /events/* `seo.titleFallback`: {title} | Victoria Venezuela Foundation
 - /events/* `memories.heading`: {year} Memories
 - /events/* `contact.heading`: Golf. Give. Transform lives in Venezuela. Join us {date}!
-- /events `hero.imageAlt`: A golfer hugging a young boy on the course at the charity golf tournament.
+- /events-and-campaigns `hero.imageAlt`: A golfer hugging a young boy on the course at the charity golf tournament.
 - /financials-and-transparency `seo.description`: Our annual and quarterly impact reports, Candid Platinum Seal of Transparency and IRS registration. Victoria Venezuela Foundation is a 501(c)(3), Tax ID 88-3282100.
-- /financials-and-transparency `hero.imageAlt`: Young girl focused on writing in a notebook at a blue desk in a classroom with other children.
 - /financials-and-transparency `confidence.imageAlt`: A smiling boy at a table with a meal. Overlay: 4 Years of Excellence, Candid Platinum Seal of Transparency for the fourth year in a row.
+- /our-programs `seo.description`: Nutrition, medical care and education work together to support children in Venezuela. See how our programs feed, heal and teach.
+- /our-programs `hero.imageAlt`: A boy smiling at a blue table during a meal at one of our nutrition centers.
+- /our-programs `together.heading`: How we work together
+- /our-programs `together.text`: "We believe children need more than one type of support—they need holistic care." Nutrition feeds the body. Medical care heals the sick. Education opens doors. Faith sustains the spirit. At Victoria Venezuela Foundation, these four pillars work as one, guided by partnerships with local churches that know their communities best.
+- /our-programs `together.cta1`: Learn
+- /our-programs `together.cta2`: Give
+- /our-programs `nutrition.cardTitle`: Families strengthened
+- /our-programs `nutrition.cardText`: Ordinary people discover they can do extraordinary things for their neighbors
+- /our-programs `nutrition.imageAlt`: A boy eating a meal at one of our nutrition centers.
+- /our-programs `medical.imageAlt`: A volunteer nurse listening to a boy’s heartbeat during a medical attention day.
+- /our-programs `education.cardText`: Financial support covering enrollment fees so families can send their children to school without hardship.
+- /our-programs `education.imageAlt`: A girl writing in her notebook at a classroom table.
+- /our-programs `program.gallery`: View gallery
+- /our-programs `goals.tagline`: Global
+- /our-programs `goals.text`: Victoria Venezuela Foundation's programs directly support the United Nations Sustainable Development Goals. We work toward a world where every child has food, health, and education—the foundation for human dignity and opportunity.
+- /our-programs `goals.bullet2`: Good health and well being
+- /our-programs `goals.imageAlt`: A smiling girl with a plate of food at a program activity.
+- /our-programs `support.heading`: Support our programs
+- /our-programs `support.text`: Choose how you want to make a difference in children's lives.
+- /our-programs `deeper.heading`: Dig deeper into our work
+- /our-programs `deeper.text`: Explore the stories, data, and context behind what we do.
+- /our-programs `deeper.card1.title`: See the impact we've made
+- /our-programs `deeper.card1.text`: Numbers and stories showing real change in children's lives.
+- /our-programs `deeper.card1.imageAlt`: A boy holding a plate of food outside his home.
+- /our-programs `deeper.card2.eyebrow`: Crisis
+- /our-programs `deeper.card2.title`: Understand Venezuela's struggle
+- /our-programs `deeper.card2.text`: The conditions driving our mission and the need for help.
+- /our-programs `deeper.card2.cta`: Learn
+- /our-programs `deeper.card3.title`: Sponsor a child today
+- /our-programs `deeper.card3.text`: Provide nutrition, medical care, and education year round.
+- /our-programs `deeper.card3.imageAlt`: A smiling girl with a plate of food at a program activity.
 
 ## Spanish page copy import
 

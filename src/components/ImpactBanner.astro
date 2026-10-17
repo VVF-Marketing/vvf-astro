@@ -28,7 +28,7 @@ const highlightTones = { sun: 'text-sun', sky: 'text-sky' }
 <section class="mx-0 rounded-xl bg-brand-primary px-6 py-10 text-neutral-white sm:mx-6 md:rounded-2xl md:px-10 md:py-16">
   <div class="mx-auto flex max-w-screen-xl flex-col-reverse gap-10 lg:flex-row lg:items-center lg:gap-20">
     <div class="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      {eyebrow && <Eyebrow on="dark">{eyebrow}</Eyebrow>}
       <h2 class="my-4 text-h2-mobile leading-[1.1] text-neutral-white md:text-h2">{heading}</h2>
       {body && <p class="font-sans text-size-md leading-body text-neutral-white">{body}</p>}
       {
@@ -67,7 +67,7 @@ const highlightTones = { sun: 'text-sun', sky: 'text-sky' }
                 {cta.label}
               </Button>
             )}
-            <Button href={secondaryCta.href} variant="outline">
+            <Button href={secondaryCta.href} variant="outline" on="dark">
               {secondaryCta.label}
             </Button>
           </div>

@@ -30,16 +30,18 @@ const { heading, text, imageUrl, imageAlt = '', caption, cardsLabel, cards, prim
       imageUrl && (
         <figure class="flex flex-col gap-6">
           <img src={imageUrl} alt={imageAlt} class="aspect-[2/1] w-full rounded-2xl object-cover" loading="lazy" />
-          {caption && <figcaption class="text-center font-body text-size-sm leading-body text-neutral-white">{caption}</figcaption>}
+          {caption && <figcaption class="text-center font-label text-size-sm leading-body text-neutral-white">{caption}</figcaption>}
         </figure>
       )
     }
     <AppealCards label={cardsLabel} cards={cards} />
     {
-      (primaryCta || secondaryCta) && (
-        <div class="flex flex-wrap justify-center gap-4">
+      (primaryCta || secondaryCta || Astro.slots.has('primary')) && (
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          {/* `primary` slot: an action that isn't a link (e.g. a Donorbox popup). */}
+          <slot name="primary" />
           {primaryCta && <Button href={primaryCta.href} variant="primary">{primaryCta.label}</Button>}
-          {secondaryCta && <Button href={secondaryCta.href} variant="outline">{secondaryCta.label}</Button>}
+          {secondaryCta && <Button href={secondaryCta.href} variant="outline" on="dark">{secondaryCta.label}</Button>}
         </div>
       )
     }

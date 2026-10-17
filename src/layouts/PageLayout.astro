@@ -5,6 +5,7 @@ import AnnouncementBanner from '../components/AnnouncementBanner.astro'
 import Footer from '../components/Footer.astro'
 import { getCampaignSettings } from '../lib/content'
 import { LANG_TAGS, localeFromPath, type Locale } from '../lib/i18n'
+import type { JsonLd } from '../lib/structuredData'
 
 const locale = localeFromPath(Astro.originPathname)
 
@@ -12,19 +13,22 @@ export interface Props {
   title: string
   description?: string
   image?: string
-  background?: 'page' | 'section'
   // See Layout.astro.
   alternates?: Partial<Record<Locale, string>>
   // Locale the main content is actually in, when it fell back to another
   // locale (e.g. an event with no Spanish version on /es).
   contentLocale?: Locale
+  // See Layout.astro.
+  noindex?: boolean
+  // See Layout.astro.
+  jsonLd?: JsonLd[]
 }
 
-const { title, description, image, background, alternates, contentLocale } = Astro.props as Props
+const { title, description, image, alternates, contentLocale, noindex, jsonLd } = Astro.props as Props
 const campaignSettings = await getCampaignSettings(locale)
 ---
 
-<Layout title={title} description={description} image={image} background={background} alternates={alternates}>
+<Layout title={title} description={description} image={image} alternates={alternates} noindex={noindex} jsonLd={jsonLd}>
   <AnnouncementBanner active={campaignSettings.active} text={campaignSettings.bannerText} />
   <Header alternates={alternates} />
   <main lang={contentLocale && contentLocale !== locale ? LANG_TAGS[contentLocale] : undefined}>

@@ -5,7 +5,7 @@ import PageLayout from '../layouts/PageLayout.astro'
 import Hero from '../components/Hero.astro'
 import SectionTitle from '../components/SectionTitle.astro'
 import StatTileRow from '../components/StatTileRow.astro'
-import PastelCard from '../components/PastelCard.astro'
+import FeatureCard from '../components/FeatureCard.astro'
 import ImpactBanner from '../components/ImpactBanner.astro'
 import VideoGrid from '../components/VideoGrid.astro'
 import EventCard from '../components/EventCard.astro'
@@ -13,15 +13,30 @@ import Eyebrow from '../components/Eyebrow.astro'
 import Button from '../components/Button.astro'
 import LogoCarousel from '../components/LogoCarousel.astro'
 import ProgramsCta from '../components/ProgramsCta.astro'
-import { getEvents, getPartners, isUpcoming, getPageCopy } from '../lib/content'
+import { getEvents, getPartners, getReports, getSiteFacts, isUpcoming, latestPast, getPageCopy } from '../lib/content'
+import { ngo } from '../lib/structuredData'
 import { localeFromPath, pageAlternates } from '../lib/i18n'
 import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
-const upcoming = (await getEvents(locale)).filter(isUpcoming)
+const events = await getEvents(locale)
+// Featured upcoming events, soonest first; with none, the latest past event (spec 7.1, section 6).
+const upcoming = events.filter((e) => e.featured && isUpcoming(e)).sort((a, b) => a.startDate.localeCompare(b.startDate))
+const past = upcoming.length ? undefined : latestPast(events)
+const shownEvents = past ? [past] : upcoming
 const partners = await getPartners(locale)
+// The impact report button follows the newest annual report (spec 7.1, section 2).
+const [latestAnnual] = await getReports('annual', locale)
 const { copy, locales } = await getPageCopy(pageCopy, locale)
+const site = Astro.site ?? Astro.url
+// The four impact figures come from the site facts (spec 7.1, section 2).
+const facts = await getSiteFacts(locale)
+const stat = (key: 'meals_served' | 'medical_visits' | 'children_in_programs' | 'corporate_sponsors', n: number) => ({
+  value: facts[key]?.value ?? copy[`statTileRow.value.${n}` as 'statTileRow.value.1'],
+  label: facts[key]?.label ?? copy[`statTileRow.label.${n}` as 'statTileRow.label.1'],
+  caption: facts[key]?.detail ?? copy[`statTileRow.caption.${n}` as 'statTileRow.caption.1'],
+})
 ---
 
 <PageLayout
@@ -29,9 +44,11 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
   description={copy['seo.description']}
   image={copy['seo.image']}
   alternates={pageAlternates(pageCopy.route, locales)}
+  jsonLd={[ngo(site, copy['seo.description'])]}
 >
   <Hero
-    imageUrl="/images/pages/58f867b6-0013cec9b576cf4aaa971d208bb29bf49d01c57c.webp"
+    imageUrl={copy['hero.image']}
+    mobileImageUrl={copy['hero.imagePhone'] || undefined}
     imageAlt={copy['hero.imageAlt']}
     heading={copy['hero.heading']}
     subtext={copy['hero.subtext']}
@@ -43,6 +60,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     <SectionTitle
       tagline={copy['sectionTitle.tagline']}
       heading={copy['sectionTitle.heading']}
+      headingLevel="p"
       text={copy['sectionTitle.text']}
     />
     <div class="mx-auto mt-16 flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
@@ -53,16 +71,11 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
           heading={copy['sectionTitle2.heading']}
           text={copy['sectionTitle2.text']}
         />
-        <Button href="/resources/impact-report-2025" variant="outline">{copy['button.text']}</Button>
+        <Button href={latestAnnual ? `/resources/${latestAnnual.slug}` : '/financials-and-transparency'} variant="outline">{copy['button.text']}</Button>
       </div>
       <div class="lg:w-[800px]">
         <StatTileRow
-          stats={[
-            { value: copy['statTileRow.value.1'], label: copy['statTileRow.label.1'], caption: copy['statTileRow.caption.1'] },
-            { value: copy['statTileRow.value.2'], label: copy['statTileRow.label.2'], caption: copy['statTileRow.caption.2'] },
-            { value: copy['statTileRow.value.3'], label: copy['statTileRow.label.3'], caption: copy['statTileRow.caption.3'] },
-            { value: copy['statTileRow.value.4'], label: copy['statTileRow.label.4'], caption: copy['statTileRow.caption.4'] },
-          ]}
+          stats={[stat('meals_served', 1), stat('medical_visits', 2), stat('children_in_programs', 3), stat('corporate_sponsors', 4)]}
         />
       </div>
     </div>
@@ -74,27 +87,31 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
       heading={copy['sectionTitle3.heading']}
       text={copy['sectionTitle3.text']}
     />
-    <div class="mx-auto mt-16 grid max-w-screen-xl justify-items-center gap-8 md:grid-cols-3">
-      <PastelCard
+    <!-- 768 to 991px: the cards stack full width so the button stays on one line (spec 7.1, section 3). -->
+    <div class="mx-auto mt-16 grid max-w-screen-xl justify-items-center gap-8 lg:grid-cols-3">
+      <FeatureCard
         tone="sun"
         iconUrl="/images/pages/b62b0e1d-15-nutrition.svg"
         eyebrow={copy['pastelCard.eyebrow']}
         title={copy['pastelCard.title']}
         body={copy['pastelCard.body']}
+        cta={{ label: copy['programs.learnMore'], href: '/our-programs#programs', ariaLabel: `${copy['programs.learnMore']}: ${copy['pastelCard.title']}` }}
       />
-      <PastelCard
+      <FeatureCard
         tone="salmon"
         iconUrl="/images/pages/6bbc919e-expanded.svg"
         eyebrow={copy['pastelCard2.eyebrow']}
         title={copy['pastelCard2.title']}
         body={copy['pastelCard2.body']}
+        cta={{ label: copy['programs.learnMore'], href: '/our-programs#medical-care', ariaLabel: `${copy['programs.learnMore']}: ${copy['pastelCard2.title']}` }}
       />
-      <PastelCard
+      <FeatureCard
         tone="sky"
         iconUrl="/images/pages/a037d128-vector.svg"
         eyebrow={copy['pastelCard3.eyebrow']}
         title={copy['pastelCard3.title']}
         body={copy['pastelCard3.body']}
+        cta={{ label: copy['programs.learnMore'], href: '/our-programs#education', ariaLabel: `${copy['programs.learnMore']}: ${copy['pastelCard3.title']}` }}
       />
     </div>
   </section>
@@ -110,7 +127,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     ]}
     imageUrl="/images/pages/d9d1e4da-8006bc582f67d04432c0e2c17b85765bf066fbaa.jpg"
     imageAlt={copy['impactBanner.imageAlt']}
-    cta={{ label: copy['impactBanner.label.1'], href: '/sponsor-a-child/children' }}
+    cta={{ label: copy['impactBanner.label.1'], href: '/children' }}
   />
 
   <div class="mt-16 md:mt-[120px]">
@@ -125,28 +142,28 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     />
   </div>
 
-  <section class="px-6 pb-16 md:pb-[120px] pt-[60px]">
+  <section class="px-6 pb-16 md:pb-[120px] pt-16">
     <SectionTitle tagline={copy['sectionTitle4.tagline']} heading={copy['sectionTitle4.heading']} />
     {
-      upcoming.length > 0 && (
+      shownEvents.length > 0 && (
         <div class="mx-auto mt-16 flex max-w-[1200px] flex-col items-center gap-10">
-          <Eyebrow>{copy['eyebrow.text']}</Eyebrow>
+          <Eyebrow>{past ? copy['events.pastLabel'] : copy['eyebrow.text']}</Eyebrow>
           <div class="flex w-full flex-col gap-6">
-            {upcoming.map((e) => (
-              <EventCard event={e} />
+            {shownEvents.map((e) => (
+              <EventCard event={e} ctaLabel={past ? copy['events.pastButton'] : undefined} />
             ))}
           </div>
         </div>
       )
     }
     <div class="mt-20 flex justify-center">
-      <Button href="/events" variant="primary-inverse">{copy['button2.text']}</Button>
+      <Button href="/events-and-campaigns" variant="primary-inverse">{copy['button2.text']}</Button>
     </div>
   </section>
 
   {
     partners.length > 0 && (
-      <section class="bg-neutral-white py-4">
+      <section class="bg-neutral-white py-10 md:py-16">
         <LogoCarousel heading={copy['logoCarousel.heading']} logos={partners} />
       </section>
     )
@@ -156,7 +173,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     <ProgramsCta
       heading={copy['programsCta.heading']}
       text={copy['programsCta.text']}
-      primaryCta={{ label: copy['programsCta.label.1'], href: '/resources/category/financials-transparency' }}
+      primaryCta={{ label: copy['programsCta.label.1'], href: '/financials-and-transparency' }}
     />
   </section>
 </PageLayout>

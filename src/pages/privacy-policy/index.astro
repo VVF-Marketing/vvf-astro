@@ -19,11 +19,11 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
   image={copy['seo.image']}
   alternates={pageAlternates(pageCopy.route, locales)}
 >
-  <section class="px-6 pt-16 md:pt-[72px] text-center">
-    <p class="font-body text-size-sm font-semibold text-brand-primary">{copy['p.text']}</p>
+  <section class="px-6 pt-16 md:pt-16 text-center">
+    <p class="font-label text-size-sm font-semibold text-brand-primary">{copy['p.text']}</p>
     <h1 class="mt-4 text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{copy['h1.text']}</h1>
   </section>
-  <section class="px-6 pb-16 md:pb-[120px] pt-[88px]">
+  <section class="px-6 pb-16 md:pb-[120px] pt-16">
     <RichText class="mx-auto max-w-[760px]">
       <PortableBody value={copy['body']} />
     </RichText>

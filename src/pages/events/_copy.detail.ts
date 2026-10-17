@@ -45,6 +45,7 @@ export default defineCopy('/events/*', {
   'contact.heading': { label: 'Upcoming event: contact box heading ({date} is replaced with the event day)', default: 'Golf. Give. Transform lives in Venezuela. Join us {date}!', maxLength: 90 },
   'recap.tagline': { label: 'Past event: results tagline', default: 'Results', maxLength: 30 },
   'recap.heading': { label: 'Past event: results heading', default: 'What we did together', maxLength: 50 },
+  'recap.raised': { label: 'Past event: amount raised label', default: 'Raised', maxLength: 30 },
   'recap.text': { label: 'Past event: results text', default: 'Here is what one day on the course made possible for children in Venezuela.', maxLength: 160 },
   'programsCta.label.2': { label: "Programs cta: button 2", default: "See next year's tournament", maxLength: 40 },
 })

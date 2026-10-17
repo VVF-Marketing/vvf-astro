@@ -9,7 +9,7 @@ test('resources list, category filter and detail page', async ({ page }) => {
 
   const filters = page.getByRole('navigation', { name: 'Resource categories' })
   await filters.getByRole('link', { name: 'Stories' }).click()
-  await expect(page).toHaveURL(/\/resources\/category\/stories$/)
+  await expect(page).toHaveURL(/\/resources\/stories$/)
   await expect(filters.getByRole('link', { name: 'Stories' })).toHaveAttribute('aria-current', 'page')
 
   await page.goto(`/resources/${resource.slug}`)
@@ -41,7 +41,7 @@ for (const path of ['/resources/impact-report-2025', '/es/resources/impact-repor
     await expect(page.locator('.emdash-table')).toHaveCount(0)
     const card = page.locator('.content-table').first()
     await expect(card).toHaveCSS('border-top-left-radius', '16px')
-    await expect(card).toHaveCSS('border-top-color', 'rgb(220, 228, 236)')
+    await expect(card).toHaveCSS('border-top-color', 'rgb(231, 231, 231)')
     await expect(card).toHaveCSS('background-color', 'rgb(255, 255, 255)')
     await expect(card.locator('thead th').first()).toHaveCSS('background-color', 'rgb(193, 231, 245)')
     await expect(card.locator('thead th').first()).toHaveCSS('font-weight', '600')
@@ -51,16 +51,16 @@ for (const path of ['/resources/impact-report-2025', '/es/resources/impact-repor
     await expect(rows.nth(0).locator('td').first()).toHaveCSS('font-weight', '600')
     await expect(rows.nth(0).locator('td').nth(1)).toHaveCSS('font-weight', '400')
     await expect(rows.nth(0).locator('td').first()).toHaveCSS('font-size', '16px')
-    await expect(rows.nth(0).locator('td').first()).toHaveCSS('border-top-color', 'rgb(220, 228, 236)')
+    await expect(rows.nth(0).locator('td').first()).toHaveCSS('border-top-color', 'rgb(231, 231, 231)')
   })
 }
 
-test('a paragraph right after a table is a small grey source note', async ({ page }) => {
+test('a paragraph right after a table is a small source note', async ({ page }) => {
   await page.goto('/resources/how-to-sponsor-a-child-directly')
   const note = page.locator('.content-table + p').first()
   await expect(note).toContainText('Large-charity costs')
   await expect(note).toHaveCSS('font-size', '14px')
-  await expect(note).toHaveCSS('color', 'rgb(124, 135, 143)')
+  await expect(note).toHaveCSS('color', 'rgb(2, 51, 94)')
 })
 
 test('tables fit a phone: smaller text and no page-wide horizontal scroll', async ({ page }) => {

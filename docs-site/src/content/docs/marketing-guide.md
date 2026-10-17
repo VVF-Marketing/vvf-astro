@@ -17,8 +17,8 @@ The sidebar has three folders:
 
 | Folder | What's in it |
 | --- | --- |
-| **Pages & SEO** | One entry per page: *Home*, *Ways to Give*, *Our Programs*… Each holds that page's text and its search/sharing details. Text shared by every event, resource or blog post page is under *Event pages (shared text)* and similar; the header, footer, buttons and forms are under *Site-wide text*, at the bottom. |
-| **CMS collections** | Events, Blog posts, Resources, FAQs, Testimonials, Team members, Sponsors / partners, Sponsorship packages, Silent auction items, Earthquake relief updates and Children. |
+| **Pages & SEO** | One entry per page: *Home*, *Ways to Give*, *Our Programs*… Each holds that page's text and its search/sharing details. Text shared by every event, article or child profile page is under *Event pages (shared text)* and similar; the header, footer, buttons and forms are under *Site-wide text*, at the bottom. |
+| **CMS collections** | Events and their offers and benefit rows, Silent auction items, Testimonials, Articles, Article categories, Authors, FAQs, Team members, Partners, Site facts, Children, Corporate sponsorship tiers and Donorbox campaigns. |
 | **Banner** | *Site banner*: the message at the top of every page, and the switch that shows or hides it. |
 
 **Inside a page**, click the **Title** column to sort: the page's search and sharing details come first (*01 · SEO · …*), then its text from the top of the page down (*04 · Content · Hero heading*, *05 · Content · …*). To find an entry by the words you see on the site, type them into the list's **search** box.

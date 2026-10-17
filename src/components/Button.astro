@@ -4,18 +4,24 @@
 export interface Props {
   href?: string
   // primary        cyan fill, navy text (`.button.is-primary`)
-  // primary-inverse cyan fill, white text — on navy/dark sections
-  // outline        transparent, 2px cyan border + text (`.button.is-secondary`)
+  // primary-inverse cyan fill on navy/dark sections (text on `blue` is always `navy`, spec 5.1)
+  // outline        transparent, 2px blue border + text (`.button.is-secondary`):
+  //                `blue-text` on light backgrounds, `blue` on navy (`on`, Q13)
   // outline-navy   transparent, 2px navy border + text
-  // link           text-only cyan link that underlines on hover
+  // link           text-only blue link that underlines on hover (same rule as outline)
   // icon           round icon-only control (carousel arrows)
   variant?: 'primary' | 'primary-inverse' | 'outline' | 'outline-navy' | 'link' | 'icon'
   size?: 'sm' | 'md' | 'lg'
+  // The background the button sits on. `blue` text is only legible on navy
+  // (5:1); on white, `page` and the pastels it's `blue-text` (spec 5.1, Q13).
+  on?: 'light' | 'dark'
+  // `span`: the button look inside a card that is itself the link (spec 5.6).
+  as?: 'span'
   class?: string
   [key: string]: any
 }
 
-const { href, variant = 'primary', size = 'md', class: className = '', type, ...rest } = Astro.props as Props
+const { href, variant = 'primary', size = 'md', on = 'light', as, class: className = '', type, ...rest } = Astro.props as Props
 
 const sizes = {
   sm: 'px-5 py-2',
@@ -23,23 +29,26 @@ const sizes = {
   lg: 'px-8 py-4',
 }
 
+// Full class names, so Tailwind finds them.
+const blue = on === 'dark' ? { border: 'border-brand-accent', text: 'text-brand-accent' } : { border: 'border-brand-accent-text', text: 'text-brand-accent-text' }
 const variants = {
   primary: 'border border-brand-accent bg-brand-accent text-brand-primary',
-  'primary-inverse': 'border border-brand-accent bg-brand-accent text-neutral-white',
-  outline: 'border-2 border-brand-accent bg-transparent text-brand-accent',
+  'primary-inverse': 'border border-brand-accent bg-brand-accent text-brand-primary',
+  outline: `border-2 ${blue.border} bg-transparent ${blue.text}`,
   'outline-navy': 'border-2 border-brand-primary bg-transparent text-brand-primary',
-  link: 'border border-transparent bg-transparent text-brand-accent hover:underline',
+  link: `border border-transparent bg-transparent ${blue.text} hover:underline`,
   icon: '',
 }
 
 const base =
   variant === 'icon'
     ? 'inline-flex shrink-0 items-center justify-center rounded-full border border-brand-primary/20 p-2 text-brand-primary'
-    : `inline-flex items-center justify-center rounded-pill text-center font-heading text-size-md font-bold leading-body no-underline ${sizes[size]} ${variants[variant]} disabled:cursor-not-allowed disabled:opacity-50`
+    : // A label never breaks onto two lines (spec 5.5, row 1); rows of buttons wrap instead.
+      `inline-flex items-center justify-center whitespace-nowrap rounded-pill text-center font-heading text-size-md font-bold leading-body no-underline ${sizes[size]} ${variants[variant]} disabled:cursor-not-allowed disabled:opacity-50`
 
-const Tag = href ? 'a' : 'button'
+const Tag = as ?? (href ? 'a' : 'button')
 ---
 
-<Tag href={href} type={!href ? (type ?? 'button') : undefined} class={`${base} ${className}`} {...rest}>
+<Tag href={href} type={Tag === 'button' ? (type ?? 'button') : undefined} class={`${base} ${className}`} {...rest}>
   <slot />
 </Tag>

@@ -5,15 +5,17 @@ import Hero from '../../components/Hero.astro'
 import SectionTitle from '../../components/SectionTitle.astro'
 import TeamMemberCard from '../../components/TeamMemberCard.astro'
 import ImpactBanner from '../../components/ImpactBanner.astro'
-import { getTeamMembers, getPageCopy } from '../../lib/content'
+import { getOpenSeats, getTeamMembers, getPageCopy } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { contactHref } from '../../lib/contactTopics'
 import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
 
 const board = await getTeamMembers('board', locale)
-const leaders = await getTeamMembers('leader', locale)
 const staff = await getTeamMembers('staff', locale)
+// One invitation tile covers every open seat; it has no bio (spec 7.9).
+const [openSeat] = await getOpenSeats(locale)
 const grid = 'mx-auto mt-16 grid max-w-screen-xl grid-cols-2 gap-x-6 gap-y-10 md:gap-y-16 lg:grid-cols-4'
 const { copy, locales } = await getPageCopy(pageCopy, locale)
 ---
@@ -33,10 +35,10 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     heading={copy['hero.heading']}
     subtext={copy['hero.subtext']}
     primaryCta={{ label: copy['hero.label.1'], href: '/ways-to-give' }}
-    secondaryCta={{ label: copy['hero.label.2'], href: '/contact' }}
+    secondaryCta={{ label: copy['hero.label.2'], href: contactHref('Volunteering') }}
   />
 
-  <section class="bg-neutral-section px-6 pb-[60px] pt-[60px] md:px-16">
+  <section class="bg-page px-6 pb-16 pt-16 md:px-16">
     <SectionTitle
       tagline={copy['sectionTitle.tagline']}
       heading={copy['sectionTitle.heading']}
@@ -44,25 +46,21 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
     />
     <ul class={grid}>
       {board.map((m) => <li><TeamMemberCard member={m} /></li>)}
-      <li>
-        <TeamMemberCard
-          member={{ name: copy['teamMemberCard2.name.1'], role: "We're looking for a new board member" }}
-          openSeat={{ kicker: 'Board seat open', heading: copy['teamMemberCard2.heading.1'], cta: 'Get in touch', href: '/contact' }}
-        />
-      </li>
+      {
+        openSeat && (
+          <li>
+            <TeamMemberCard
+              member={{ name: copy['teamMemberCard2.name.1'], role: openSeat.boardPosition ?? '' }}
+              openSeat={{ kicker: openSeat.name, heading: copy['teamMemberCard2.heading.1'], cta: copy['openSeat.cta'], href: contactHref('Other') }}
+            />
+          </li>
+        )
+      }
     </ul>
   </section>
 
-  {
-    leaders.length > 0 && (
-      <section class="bg-neutral-white px-6 pb-[60px] pt-[60px] md:px-16">
-        <SectionTitle tagline={copy['sectionTitle2.tagline']} heading={copy['sectionTitle2.heading']} />
-        <ul class={grid}>{leaders.map((m) => <li><TeamMemberCard member={m} /></li>)}</ul>
-      </section>
-    )
-  }
-
-  <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-[60px] md:px-16">
+  <!-- The leadership group isn't shown on this page (spec 7.9). -->
+  <section class="bg-neutral-white px-6 pb-16 md:pb-[120px] pt-16 md:px-16">
     <SectionTitle tagline={copy['sectionTitle3.tagline']} heading={copy['sectionTitle3.heading']} text={copy['sectionTitle3.text']} />
     <ul class={grid}>{staff.map((m) => <li><TeamMemberCard member={m} /></li>)}</ul>
   </section>
@@ -78,7 +76,7 @@ const { copy, locales } = await getPageCopy(pageCopy, locale)
       ]}
       imageUrl="/images/pages/4e21b6fc-placeholder-image.png"
       imageAlt={copy['impactBanner.imageAlt']}
-      cta={{ label: copy['impactBanner.label.1'], href: '/contact' }}
+      cta={{ label: copy['impactBanner.label.1'], href: contactHref('Volunteering') }}
       ctaVariant="primary-inverse"
     />
   </div>

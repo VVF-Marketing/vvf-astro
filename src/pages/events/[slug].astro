@@ -20,20 +20,21 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro'
 import StatTileRow from '../../components/StatTileRow.astro'
 import GalleryCarousel from '../../components/GalleryCarousel.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
-import PastelCard from '../../components/PastelCard.astro'
+import FeatureCard from '../../components/FeatureCard.astro'
 import Button from '../../components/Button.astro'
-import { getEventBySlug, getEvents, getFaqs, isUpcoming, getPageCopy } from '../../lib/content'
+import { getEventBySlug, getEvents, isUpcoming, getPageCopy } from '../../lib/content'
 import { alternatePaths, LANG_TAGS, localeFromPath } from '../../lib/i18n'
 import { fill } from '../../lib/globalCopy'
 import { eventTicketUrl } from '../../lib/donorbox'
 import { listItemTexts, listItemsWithLead } from '../../lib/portableText'
 import templateCopy from './_copy.detail'
+import { eventLd } from '../../lib/structuredData'
 
 const locale = localeFromPath(Astro.originPathname)
 const { copy } = await getPageCopy(templateCopy, locale)
 
 const event = await getEventBySlug(Astro.params.slug!, locale)
-if (!event) return new Response('Not found', { status: 404 })
+if (!event) return Astro.rewrite('/404')
 
 const upcoming = isUpcoming(event)
 const ticketUrl = event.donorboxEventId ? `${eventTicketUrl(event.donorboxEventId)}/steps/choose_tickets` : '/contact'
@@ -41,7 +42,8 @@ const offers = [...(event.sponsorPackages ?? [])].sort((a, b) => (a.order ?? 0) 
 const tickets = offers.filter((o) => o.kind === 'ticket')
 const packages = offers.filter((o) => o.kind === 'package')
 const specials = offers.filter((o) => o.kind === 'special')
-const faqs = upcoming ? await getFaqs('tournament', locale) : []
+// The event's own FAQ, in the order picked (spec 7.8, section 11).
+const faqs = upcoming ? (event.faqs ?? []) : []
 const date = new Date(event.startDate)
 const monthDay = date.toLocaleDateString(LANG_TAGS[locale], { month: 'long', day: 'numeric', timeZone: 'UTC' })
 const longDate = date.toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
@@ -55,9 +57,9 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
   title={event.seo?.title ?? fill(copy['seo.titleFallback'], { title: event.title })}
   description={event.seo?.description ?? event.description}
   image={event.seo?.imageUrl ?? event.heroImageUrl ?? event.imageUrl}
-  background="section"
   alternates={alternatePaths('/events', event.alternates)}
   contentLocale={event.fallbackLocale}
+  jsonLd={[eventLd(event, Astro.site ?? Astro.url, new URL(Astro.originPathname, Astro.site ?? Astro.url).href)]}
 >
   <Hero
     imageUrl={event.heroImageUrl ?? event.imageUrl}
@@ -152,7 +154,7 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
       </>
     ) : (
       <>
-        {event.recapStats && event.recapStats.length > 0 && (
+        {(event.amountRaised || (event.recapStats && event.recapStats.length > 0)) && (
           <section class="px-6 pt-16 md:pt-[120px] md:px-20">
             <div class="mx-auto flex max-w-screen-xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
               <div class="flex max-w-[400px] flex-col items-start gap-6">
@@ -160,7 +162,12 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
                 <Button href="#photos" variant="outline">{copy['button.text']}</Button>
               </div>
               <div class="lg:w-[800px]">
-                <StatTileRow stats={event.recapStats.map((s) => ({ value: s.number, label: s.heading ?? '', caption: s.label }))} />
+                <StatTileRow
+                  stats={[
+                    ...(event.amountRaised ? [{ value: event.amountRaised, label: copy['recap.raised'], caption: '' }] : []),
+                    ...(event.recapStats ?? []).map((s) => ({ value: s.number, label: s.heading ?? '', caption: s.label ?? '' })),
+                  ]}
+                />
               </div>
             </div>
           </section>
@@ -191,16 +198,16 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
         <section class="px-6 pt-16 md:pt-[120px] md:px-20">
           <SectionTitle tagline={copy['sectionTitle6.tagline']} heading={copy['sectionTitle6.heading']} text={copy['sectionTitle6.text']} />
           <div class="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-3">
-            <PastelCard centered tone="sun" title={copy['pastelCard.title']} body={copy['pastelCard.body']} cta={{ label: copy['pastelCard.label.1'], href: '/sponsor-a-child' }} />
-            <PastelCard centered tone="salmon" title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: '/ways-to-give' }} />
-            <PastelCard centered tone="sky" title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} cta={{ label: copy['pastelCard3.label.1'], href: '/corporate-sponsorships' }} />
+            <FeatureCard centered tone="sun" title={copy['pastelCard.title']} body={copy['pastelCard.body']} cta={{ label: copy['pastelCard.label.1'], href: '/sponsor-a-child' }} />
+            <FeatureCard centered tone="salmon" title={copy['pastelCard2.title']} body={copy['pastelCard2.body']} cta={{ label: copy['pastelCard2.label.1'], href: '/ways-to-give' }} />
+            <FeatureCard centered tone="sky" title={copy['pastelCard3.title']} body={copy['pastelCard3.body']} cta={{ label: copy['pastelCard3.label.1'], href: '/corporate-sponsorships' }} />
           </div>
         </section>
       </>
     )
   }
 
-  <section class="px-6 pb-16 md:pb-[120px] pt-[60px] md:px-16">
+  <section class="px-6 pb-16 md:pb-[120px] pt-16 md:px-16">
     <div class="mx-auto max-w-[1312px]"><NewsletterSignup width="wide" /></div>
   </section>
 </PageLayout>

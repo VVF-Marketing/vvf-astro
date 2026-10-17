@@ -21,7 +21,7 @@ const {
 ---
 
 <Card class="p-6" data-donation-widget>
-  <div class="flex w-fit rounded-pill bg-neutral-100 p-1">
+  <div class="flex w-fit rounded-pill bg-page p-1">
     <button
       type="button"
       class="rounded-pill px-4 py-1 font-sans text-size-sm font-semibold text-brand-primary"
@@ -40,7 +40,7 @@ const {
     </button>
   </div>
 
-  <p class="mt-4 font-body text-size-sm text-brand-primary/70">{currency}</p>
+  <p class="mt-4 font-label text-size-sm text-brand-primary/70">{currency}</p>
 
   <div class="mt-2 grid grid-cols-3 gap-2">
     {
@@ -62,7 +62,7 @@ const {
 
   {
     sponsorTargetLabel && (
-      <p class="mt-4 font-body text-size-sm text-brand-primary">
+      <p class="mt-4 font-label text-size-sm text-brand-primary">
         Sponsoring: <span class="font-semibold">{sponsorTargetLabel}</span>
       </p>
     )

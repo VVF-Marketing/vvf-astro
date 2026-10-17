@@ -3,6 +3,8 @@
 // own middleware has authenticated the request (locals.user).
 import { SAFEGUARDING_USERS } from 'astro:env/server'
 import type { APIContext, MiddlewareNext } from 'astro'
+import { reservedSlugError, writtenSlug } from './reservedSlugs'
+import { publishTarget, spanishIncompleteError, type SpanishLookup } from './spanishComplete'
 import {
   checkOperation,
   filterChildData,
@@ -68,10 +70,59 @@ export async function guardEmDashApi(context: APIContext, next: MiddlewareNext):
   if (path === `${API}snapshot`) {
     return json({ error: { code: 'FORBIDDEN_BY_POLICY', message: 'Snapshots are disabled on this site.' } }, 403)
   }
+  // Content rules that hold for everyone (spec 2.2: article slugs can't take
+  // a category page's path).
+  if (request.method !== 'GET') {
+    const body = await request.clone().json().catch(() => undefined)
+    const written = writtenSlug(path, request.method, body)
+    const refused = written && reservedSlugError(written.collection, written.slug)
+    if (refused) return json({ error: { code: 'VALIDATION_ERROR', message: refused } }, 400)
+    // An English item is published only once its Spanish version is
+    // complete (spec 4.5, check 2).
+    const incomplete = await spanishRefusal(context, path, request.method, body)
+    if (incomplete) {
+      if (path !== `${API}mcp`) return json({ error: { code: 'VALIDATION_ERROR', message: incomplete.message } }, 400)
+      const reply = (id: unknown) => ({ jsonrpc: '2.0', id: id ?? null, result: { isError: true, content: [{ type: 'text', text: incomplete.message }] } })
+      return json(Array.isArray(body) ? [reply(incomplete.id)] : reply(incomplete.id))
+    }
+  }
   const user = (context.locals as { user?: GuardUser }).user
   if (!isRestricted(user)) return undefined
   const ctx = guardContext(context, user!)
   return path === `${API}mcp` ? guardMcp(request, ctx, next) : guardRest(context, ctx, next)
+}
+
+// The publish calls in a request (REST, or MCP tool calls), checked against
+// the Spanish-complete rule. Returns the first refusal.
+async function spanishRefusal(context: APIContext, path: string, method: string, body: any): Promise<{ message: string; id?: unknown } | undefined> {
+  const emdash = (context.locals as { emdash?: any }).emdash
+  if (!emdash) return undefined
+  const lookup: SpanishLookup = {
+    async get(collection, id, locale) {
+      const res = await emdash.handleContentGet(collection, id, locale)
+      const item = res?.success ? res.data?.item : undefined
+      return item ? { locale: item.locale, data: item.data ?? {} } : undefined
+    },
+    async translations(collection, id) {
+      const res = await emdash.handleContentTranslations(collection, id)
+      return res?.success ? res.data.translations : []
+    },
+  }
+  const calls: { op: Operation; id?: unknown }[] = []
+  if (path === `${API}mcp`) {
+    for (const msg of (Array.isArray(body) ? body : [body]) as RpcMessage[]) {
+      if (msg?.method === 'tools/call' && msg.params?.name) calls.push({ op: { tool: msg.params.name, args: msg.params.arguments ?? {} }, id: msg.id })
+    }
+  } else {
+    const op = restOperation(method, context.url.pathname, body, context.url.searchParams)
+    if (op) calls.push({ op })
+  }
+  for (const { op, id } of calls) {
+    const target = publishTarget(op)
+    const message = target && (await spanishIncompleteError(target, lookup))
+    if (message) return { message, id }
+  }
+  return undefined
 }
 
 // --- MCP (JSON-RPC over Streamable HTTP) ----------------------------------

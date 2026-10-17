@@ -1,0 +1,33 @@
+---
+// Resources by category, at /resources/<category> (spec 2.2, 7.12). Rendered
+// by src/pages/resources/[slug].astro, whose slugs it shares. The heading,
+// title and description come from the category's CMS entry.
+import PageLayout from '../layouts/PageLayout.astro'
+import ResourceList from './ResourceList.astro'
+import { getCategory, getResources, getPageCopy } from '../lib/content'
+import { localeFromPath, pageAlternates } from '../lib/i18n'
+import { fill } from '../lib/globalCopy'
+import { withPage } from '../lib/pagination'
+import { RESOURCE_CATEGORY_PATHS, type ResourceCategory } from '../lib/content/types'
+import categoryCopy from '../pages/resources/category/_copy'
+
+interface Props {
+  category: ResourceCategory
+}
+
+const { category } = Astro.props
+const locale = localeFromPath(Astro.originPathname)
+const pageCopy = categoryCopy.find((m) => m.route === `/resources/${RESOURCE_CATEGORY_PATHS[category]}`)!
+const { copy, locales } = await getPageCopy(pageCopy, locale)
+const info = await getCategory(category, locale)
+const resources = await getResources(category, locale)
+---
+
+<PageLayout
+  title={info ? fill(copy['seo.titleTemplate'], { name: info.name }) : copy['seo.title']}
+  description={info?.description ?? copy['seo.description']}
+  image={copy['seo.image']}
+  alternates={withPage(pageAlternates(pageCopy.route, locales), Astro.url.searchParams.get('page'))}
+>
+  <ResourceList resources={resources} category={category} heading={info?.name} description={info?.description} />
+</PageLayout>

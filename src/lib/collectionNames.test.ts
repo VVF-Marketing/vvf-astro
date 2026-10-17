@@ -39,6 +39,6 @@ describe('collection names fit Postgres', () => {
   })
 
   it('uses the short slug for the Financials resources category', () => {
-    expect(copyCollectionFor('/resources/category/financials-transparency')).toBe('copy_resources_financials')
+    expect(copyCollectionFor('/resources/financials')).toBe('copy_resources_financials')
   })
 })

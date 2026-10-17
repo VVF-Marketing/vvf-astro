@@ -103,8 +103,6 @@ export function mapChildren(snapshot, ctx) {
     const order = snapshot.order.indexOf(c.displayName)
     return entry(`child-${c.slug}`, c.slug, {
       display_name: c.displayName,
-      // Never populated by migration (public repo, minors' data).
-      private_full_name: undefined,
       age: c.age,
       birthday: parseLiveDate(c.birthday),
       gender: c.gender,
@@ -225,7 +223,7 @@ const EVENT_EXTRAS = {
       },
     ],
     appeal_cta_label: 'Learn More',
-    appeal_cta_url: '/earthquake-relief',
+    appeal_cta_url: '/venezuela-earthquake-relief',
     contact_phone: '+1 (305) 922-5585',
     contact_email: 'charitygolf@victoriavenezuelafoundation.org',
     contact_address: 'Victoria Venezuela Foundation, 501(c)(3), Tax ID: 88-3282100',
@@ -285,6 +283,15 @@ export function mapResources(resources, ctx) {
       seo_title: r.seo?.title,
       seo_description: r.seo?.description,
       social_image: ctx.media(r.seo?.ogImage),
+      // Press articles (News): the card links out, with the outlet and a
+      // language tag ("In Spanish"); no page of their own (spec 7.13).
+      external: r.card?.external || undefined,
+      external_url: r.card?.externalUrl,
+      outlet: r.card?.outlet,
+      // `false`, not missing, when a card has none: the Spanish card shows no
+      // tag and must not inherit the English one when the two are paired
+      // (transform.mjs merges English data under Spanish). model.mjs drops it.
+      language_tag: r.card?.external ? (r.card.languageTag ?? false) : undefined,
     })
   )
 }

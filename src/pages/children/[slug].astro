@@ -1,0 +1,45 @@
+---
+// Child Profile (spec 7.4). The share image is the site's, never the child's
+// photo, so a shared link doesn't spread it. A child who isn't available
+// keeps the page and the form (sponsorship gifts are pooled).
+import PageLayout from '../../layouts/PageLayout.astro'
+import ChildProfile from '../../components/ChildProfile.astro'
+import { getChildBySlug, getDonorboxCampaigns, getPageCopy } from '../../lib/content'
+import { alternatePaths, localeFromPath } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import { sponsorChildEmbedUrl } from '../../lib/donorbox'
+import { DEFAULT_SHARE_IMAGE } from '../../lib/copy'
+import templateCopy from './_copy.detail'
+import listCopy from '../sponsor-a-child/_copy'
+
+const locale = localeFromPath(Astro.originPathname)
+
+const child = await getChildBySlug(Astro.params.slug!, locale)
+if (!child) return Astro.rewrite('/404')
+const embedUrl = sponsorChildEmbedUrl(child, (await getDonorboxCampaigns()).sponsorship)
+const { copy } = await getPageCopy(templateCopy, locale)
+// The site share image: the one Sponsor a Child uses.
+const { copy: sponsorCopy } = await getPageCopy(listCopy, locale)
+const name = { name: child.displayName }
+---
+
+<PageLayout
+  title={fill(copy['seo.titleTemplate'], name)}
+  description={fill(copy['seo.descriptionTemplate'], name)}
+  image={sponsorCopy['seo.image'] ?? DEFAULT_SHARE_IMAGE}
+  alternates={alternatePaths('/children', child.alternates)}
+  contentLocale={child.fallbackLocale}
+>
+  <ChildProfile child={child} listLabel={copy['breadcrumb.list']} aboutHeading={fill(copy['about.heading'], name)}>
+    <div slot="donation" class="overflow-hidden rounded-[20px] bg-neutral-white">
+      <iframe
+        title={fill(copy['form.title'], name)}
+        src={embedUrl}
+        class="w-full"
+        height="980"
+        style="border:none;max-width:100%;"
+        loading="lazy"
+      />
+    </div>
+  </ChildProfile>
+</PageLayout>

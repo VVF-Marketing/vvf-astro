@@ -1,18 +1,22 @@
 ---
 import '../index.css';
 import { LANG_TAGS, localeFromPath, stripLocale, type Locale } from '../lib/i18n';
+import { serialize, type JsonLd } from '../lib/structuredData';
+import { GTM_CONTAINER_ID } from 'astro:env/server';
 
 interface Props {
   title: string;
   description?: string;
   // Share image (path or absolute URL); defaults to the live site's.
   image?: string;
-  // Live event pages use a lighter body background (neutral-section).
-  background?: 'page' | 'section';
   // This page's path in each locale it has its own content in. Defaults to
   // English only; a Spanish request for a page without Spanish content is
   // then canonicalized to the English URL and gets no hreflang alternates.
   alternates?: Partial<Record<Locale, string>>;
+  // Keep the page out of search results (thank-you pages, spec 2.4).
+  noindex?: boolean;
+  // schema.org blocks for this page (src/lib/structuredData.ts).
+  jsonLd?: JsonLd[];
 }
 
 // Static pages pass their SEO from their copy slots (src/lib/copy.ts); CMS
@@ -25,7 +29,6 @@ const props = Astro.props;
 const title = props.title;
 const description = props.description ?? 'Victoria Venezuela Foundation provides nutrition, medical care and education to children in Venezuela.';
 const image = props.image ?? DEFAULT_IMAGE;
-const background = props.background ?? 'page';
 const site = Astro.site ?? Astro.url;
 const alternates = props.alternates ?? { en: path };
 const canonical = new URL(alternates[locale] ?? alternates.en ?? path, site).href;
@@ -37,14 +40,22 @@ const hreflangs =
       ]
     : [];
 const imageUrl = new URL(image, site).href;
+// Google Tag Manager is the only tag loader (spec 8.3): the standard
+// snippet, once, in the head of every page.
+const gtm = GTM_CONTAINER_ID && /^GTM-[A-Z0-9]+$/.test(GTM_CONTAINER_ID) ? GTM_CONTAINER_ID : undefined;
+const gtmSnippet = gtm
+  ? `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtm}');`
+  : undefined;
 ---
 
 <!DOCTYPE html>
 <html lang={LANG_TAGS[locale]}>
   <head>
     <meta charset="UTF-8"/>
+    {gtmSnippet && <script is:inline set:html={gtmSnippet}/>}
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content={description}/>
+    {props.noindex && <meta name="robots" content="noindex"/>}
     <link rel="canonical" href={canonical}/>
     {hreflangs.map((h) => <link rel="alternate" hreflang={h.lang} href={h.href}/>)}
     <meta property="og:locale" content={LANG_TAGS[locale].replace('-', '_')}/>
@@ -58,11 +69,13 @@ const imageUrl = new URL(image, site).href;
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <title>{title}</title>
+    {(props.jsonLd ?? []).map((block) => <script type="application/ld+json" set:html={serialize(block)}/>)}
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
    </head>
-  <body class={background === 'section' ? 'bg-neutral-section' : undefined}>
+  <body>
+    {gtm && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtm}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>}
     <slot/>
    </body>
 </html>

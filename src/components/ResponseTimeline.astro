@@ -10,11 +10,14 @@ export interface Phase {
 
 export interface Props {
   heading: string
+  // `p`: the title as styled text, as on the live Earthquake Relief page.
+  headingTag?: 'h2' | 'p'
   text?: string
   phases: Phase[]
 }
 
-const { heading, text, phases } = Astro.props as Props
+const { heading, text, phases, headingTag = 'h2' } = Astro.props as Props
+const Heading = headingTag
 const tile = { completed: 'bg-sky', 'in-progress': 'bg-sun', upcoming: 'bg-neutral-light-gray' }
 const label = { completed: 'Completed', 'in-progress': 'In progress', upcoming: 'Upcoming' }
 ---
@@ -22,7 +25,7 @@ const label = { completed: 'Completed', 'in-progress': 'In progress', upcoming: 
 <section class="px-6 py-16 md:py-[120px] md:px-20">
   <div class="mx-auto grid max-w-screen-xl gap-12 lg:grid-cols-[1fr_620px]">
     <div class="flex flex-col gap-6">
-      <h2 class="text-h3-mobile leading-[1.2] text-brand-primary md:text-h3">{heading}</h2>
+      <Heading class="font-heading text-h3-mobile font-extrabold leading-[1.2] text-brand-primary md:text-h3">{heading}</Heading>
       {text && <p class="font-body text-size-md leading-body text-brand-primary">{text}</p>}
     </div>
     <ol class="flex flex-col gap-6">

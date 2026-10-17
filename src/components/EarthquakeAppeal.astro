@@ -1,0 +1,69 @@
+---
+// The shared earthquake appeal block (spec 7.5 section 6, 7.15 section 5):
+// the render of the planned centre with its AI-render caption, "What your
+// gift will pay for" and "Give to the appeal", which opens the earthquake
+// campaign. Its copy is site-wide (`appeal.*`), so both pages say the same
+// thing; each page keeps its own heading.
+//
+// How Give opens is decided per page (spec 8.1): Ways to Give opens the
+// Donorbox popup (`popup`), which loads Donorbox's script once, here only;
+// elsewhere it's a link to the campaign page.
+import tokens from '../styles/tokens.cjs'
+import AppealPanel from './AppealPanel.astro'
+import { getGlobalCopy } from '../lib/globalCopy'
+import { getDonorboxCampaigns } from '../lib/content'
+import { earthquakeReliefUrl } from '../lib/donorbox'
+
+const t = await getGlobalCopy(Astro)
+
+export interface Props {
+  heading: string
+  // Learn more → /venezuela-earthquake-relief (left out on that page).
+  learnMore?: boolean
+  // Tracking tags for the Give link (Ways to Give's, spec 8.1 rule 2).
+  query?: string
+  popup?: boolean
+}
+
+const { heading, learnMore = false, query, popup = false } = Astro.props as Props
+const { earthquake } = await getDonorboxCampaigns()
+const giveUrl = query ? `${earthquakeReliefUrl(earthquake)}?${query}` : earthquakeReliefUrl(earthquake)
+// The popup button uses the spec's `blue` (5.1; today's widget code has
+// #128AED), from the colour tokens: the widget takes a colour, not a class.
+const BLUE = tokens.colors.blue
+---
+
+<AppealPanel
+  heading={heading}
+  text={t['appeal.text']}
+  imageUrl="/images/pages/5547e143-vvf-laguaira-centre-exterior-web-v1.jpg"
+  imageAlt={t['appeal.imageAlt']}
+  caption={t['appeal.caption']}
+  cardsLabel={t['appeal.cardsLabel']}
+  cards={[
+    { title: t['appeal.title.1'], text: t['appeal.text.1'], imageUrl: '/images/pages/467d8fd3-vvf-laguaira-card-shelter-web-v1.jpg', imageAlt: t['appeal.imageAlt.1'] },
+    { title: t['appeal.title.2'], text: t['appeal.text.2'], imageUrl: '/images/pages/2631b854-vvf-laguaira-card-medicalcare-web-v1.jpg', imageAlt: t['appeal.imageAlt.2'] },
+    { title: t['appeal.title.3'], text: t['appeal.text.3'], imageUrl: '/images/pages/c84863db-vvf-laguaira-card-nutrition-web-v1.jpg', imageAlt: t['appeal.imageAlt.3'] },
+  ]}
+  primaryCta={popup ? undefined : { label: t['appeal.give'], href: giveUrl }}
+  secondaryCta={learnMore ? { label: t['appeal.learnMore'], href: '/venezuela-earthquake-relief' } : undefined}
+>
+  {
+    popup && (
+      <Fragment slot="primary">
+        <dbox-widget
+          campaign={earthquake}
+          type="popup"
+          button-label={t['appeal.give']}
+          button-type="regular"
+          button-color={BLUE}
+          button-size="medium"
+          regular-position="left"
+          show-icon=""
+          data-donorbox-popup
+        />
+        <script is:inline type="module" src="https://donorbox.org/widgets.js" async />
+      </Fragment>
+    )
+  }
+</AppealPanel>

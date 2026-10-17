@@ -5,6 +5,9 @@
 //   compact `.sponsor-children_item` — rounded photo with the name below
 //           (Sponsor a Child page strip).
 import type { ChildItem } from '../lib/content/types'
+import { fill, getGlobalCopy } from '../lib/globalCopy'
+
+const t = await getGlobalCopy(Astro)
 
 export interface Props {
   child: Pick<ChildItem, 'slug' | 'displayName' | 'age' | 'imageUrl'>
@@ -12,23 +15,23 @@ export interface Props {
 }
 
 const { child, variant = 'list' } = Astro.props as Props
-const href = `/sponsor-a-child/children/${child.slug}`
+const href = `/children/${child.slug}`
 ---
 
 {
   variant === 'compact' ? (
     <a href={href} class="flex flex-col items-center gap-1 no-underline">
       <img src={child.imageUrl} alt={child.displayName} class="aspect-square w-full max-w-[231px] rounded-[24px] bg-neutral-light-gray object-cover" loading="lazy" />
-      <h3 class="font-sans text-size-sm font-bold leading-body text-brand-primary">{child.displayName}</h3>
+      <p class="font-sans text-size-sm font-bold leading-body text-brand-primary">{child.displayName}</p>
     </a>
   ) : (
-    <a href={href} class="block rounded-2xl bg-neutral-card no-underline">
+    <a href={href} class="block rounded-2xl bg-neutral-white no-underline transition-shadow hover:shadow-hover">
       <div class="p-6">
         <img src={child.imageUrl} alt={child.displayName} class="aspect-[262/233] w-full rounded-[24px] bg-neutral-light-gray object-cover" loading="lazy" />
       </div>
       <div class="flex flex-col gap-2 px-8 pb-8">
-        <p class="font-body text-size-sm font-semibold uppercase leading-body text-brand-primary">{child.age} years old</p>
-        <h3 class="text-h5 leading-[1.4] text-brand-primary">{child.displayName}</h3>
+        <p class="font-label text-size-sm font-semibold uppercase leading-body text-brand-primary">{fill(t['child.ageValue'], { age: child.age })}</p>
+        <p class="font-heading text-h4 text-brand-primary">{child.displayName}</p>
       </div>
     </a>
   )

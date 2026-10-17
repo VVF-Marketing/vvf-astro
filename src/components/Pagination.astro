@@ -1,0 +1,30 @@
+---
+// Previous, "Page 1 of N", Next (spec 7.3, 7.7, 7.12). Renders nothing for a
+// single page. Links keep the list's other parameters (filters).
+import { fill, getGlobalCopy } from '../lib/globalCopy'
+import { pageHref } from '../lib/pagination'
+
+const t = await getGlobalCopy(Astro)
+
+export interface Props {
+  page: number
+  pages: number
+  // Anchor the links scroll back to (the list's id).
+  hash?: string
+  // The page's URL, when it isn't Astro.url (e.g. a rewritten /es path).
+  url?: URL
+}
+
+const { page, pages, hash = '', url = Astro.url } = Astro.props as Props
+const link = 'inline-flex min-h-11 items-center rounded-pill border-2 border-brand-primary px-5 font-sans text-size-sm font-bold text-brand-primary no-underline hover:bg-brand-primary hover:text-neutral-white'
+---
+
+{
+  pages > 1 && (
+    <nav class="mt-12 flex items-center justify-center gap-4" aria-label={t['pagination.label']} data-pagination>
+      {page > 1 ? <a href={pageHref(url, page - 1, hash)} rel="prev" class={link}>{t['pagination.previous']}</a> : <span class={`${link} pointer-events-none opacity-40`} aria-disabled="true">{t['pagination.previous']}</span>}
+      <p class="font-label text-size-sm text-brand-primary" aria-current="page">{fill(t['pagination.status'], { page: String(page), pages: String(pages) })}</p>
+      {page < pages ? <a href={pageHref(url, page + 1, hash)} rel="next" class={link}>{t['pagination.next']}</a> : <span class={`${link} pointer-events-none opacity-40`} aria-disabled="true">{t['pagination.next']}</span>}
+    </nav>
+  )
+}

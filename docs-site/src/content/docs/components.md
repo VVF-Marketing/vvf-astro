@@ -10,7 +10,7 @@ All 28 components live flat in [`src/components/`](https://github.com/anclist/vv
 | Tier | Components |
 | --- | --- |
 | Atoms | AnnouncementBanner, Badge, Button, Card, Eyebrow, TeamMemberCard, TextArea, TextField |
-| Molecules | AuctionItemCard, BlogCard, ChildCard, ContactForm, ContentTable, DonationAmountWidget, EmployerMatchWidget, EventCard, FaqAccordion, ImpactBanner, LogoCarousel, NewsletterSignup, PastelCard, SponsorshipTierTable, StatTileRow, TicketCard, TestimonialCarousel |
+| Molecules | AuctionItemCard, ChildCard, ContactForm, ContentTable, DonationAmountWidget, EmployerMatchWidget, EventCard, FaqAccordion, ImpactBanner, LogoCarousel, NewsletterSignup, FeatureCard, SponsorshipTierTable, StatTileRow, TicketCard, TestimonialCarousel |
 | Organisms | ChildProfile, Footer, Header, Hero |
 
 `TeamMemberCard` is filed under Atoms in Storybook despite being a "Card" component like the Molecules-tier cards — double-check with the team before assuming it's intentional rather than a miscategorization.

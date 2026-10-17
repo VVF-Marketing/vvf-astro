@@ -40,3 +40,6 @@ emdash-env.d.ts
 
 # Basecamp CLI local config
 .basecamp/
+
+# VVF website spec audit: confidential spec copy, coverage map, results, report (public repo)
+/.spec-audit/

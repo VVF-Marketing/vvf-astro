@@ -104,6 +104,16 @@ export const resourceListHtml = chrome(`
     <div class="article-card_content"><div class="article-card_date">February 3, 2026</div>
       <div class="article-card_text"><h3 class="article-card_heading">Example Report</h3><p class="article-card_excerpt">Short excerpt.</p></div></div>
   </div></a>
+</div><div class="w-dyn-item">
+  <a class="resources_card-link w-inline-block" href="/resources/press-example-2026-08-04"><div class="article-card_component">
+    <div class="article-card_content"><div class="article-card_date">August 4, 2026</div>
+      <div class="article-card_text"><h3 class="article-card_heading">Nota de prensa</h3></div></div>
+  </div></a>
+  <a class="resources_card-link is-external w-inline-block" rel="noopener" target="_blank" href="https://outlet.example/nota/"><div class="article-card_component">
+    <div class="article-card_image-wrapper"><img class="article-card_image" src="${CDN}/press.jpeg" alt="Nota"></div>
+    <div class="article-card_content"><div><div class="tag_component">In Spanish</div></div><div class="article-card_date">August 4, 2026</div>
+      <div class="article-card_text"><h3 class="article-card_heading">Nota de prensa</h3></div><div class="button is-secondary">Outlet Example</div></div>
+  </div></a>
 </div></div></section>`)
 
 export const eventHtml = chrome(`

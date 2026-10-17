@@ -30,8 +30,8 @@ manifest; `scripts/lib/public-seed.test.mjs` checks this). `npm run seed` applie
 `seed/seed.local.json` when it exists, otherwise `seed/seed.json`. Run
 `npm run migrate` locally to regenerate the child data.
 
-Only fields already public on the live site are imported; `private_full_name`
-is always left empty.
+Only fields already public on the live site are imported. Children have no
+full-name field: the site shows first name and last initial only.
 
 ## API access status
 
