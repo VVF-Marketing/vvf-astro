@@ -20,6 +20,7 @@ export default defineConfig({
         { label: 'Webflow Migration', link: '/migration/' },
         { label: 'Testing & CI', link: '/testing-and-ci/' },
         { label: 'Running Anywhere', link: '/running-anywhere/' },
+        { label: 'Deploying to Vercel', link: '/deploying-to-vercel/' },
       ],
     }),
   ],

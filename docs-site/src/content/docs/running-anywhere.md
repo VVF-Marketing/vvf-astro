@@ -3,7 +3,7 @@ title: Running Anywhere
 description: One container image, configured at runtime, on Postgres and S3-compatible storage, with data you can move between hosts.
 ---
 
-The site runs from one container image in every deployed environment: staging, previews and production. Its data moves between environments and hosts with one archive. No hosting provider is assumed; anything that runs a container with Postgres and an S3-compatible bucket works.
+The site runs from one container image in every deployed environment: staging, previews and production. Its data moves between environments and hosts with one archive. No hosting provider is assumed; anything that runs a container with Postgres and an S3-compatible bucket works. The same app also builds for Vercel's functions instead of a container: see [Deploying to Vercel](/deploying-to-vercel/).
 
 ## Two modes
 

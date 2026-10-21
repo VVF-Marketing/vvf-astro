@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs'
 import path from 'node:path'
-import { EmDashApiError, EmDashClient } from 'emdash/client'
+import { EmDashApiError, EmDashClient, type Interceptor } from 'emdash/client'
 import { copyCollectionFor } from './cmsNavigation.mjs'
 import { slotLayout } from './copyCollections.mjs'
 import { GLOBAL_ROUTE, slotFormat, type CopyManifest, type SlotSpec } from './copy'
@@ -112,6 +112,18 @@ export interface SyncStaticPagesOptions {
   pageFiles: string[]
   manifests?: ManifestSource[]
   client?: Client
+  // Extra headers on every CMS call, e.g. Vercel's protection bypass on a
+  // protected preview (src/lib/vercel/protectionBypass.ts).
+  headers?: Record<string, string>
+}
+
+// Adds fixed headers to every request the CMS client makes.
+export function headerInterceptor(extra: Record<string, string>): Interceptor {
+  return (request, next) => {
+    const headers = new Headers(request.headers)
+    for (const [name, value] of Object.entries(extra)) headers.set(name, value)
+    return next(new Request(request, { headers }))
+  }
 }
 
 export interface SyncStaticPagesResult {
@@ -160,7 +172,9 @@ async function listAll(client: Client, collection: string, locale?: Locale): Pro
  * openspec/changes/organize-cms-admin-navigation/design.md (D5).
  */
 export async function syncStaticPages(options: SyncStaticPagesOptions): Promise<SyncStaticPagesResult> {
-  const client = options.client ?? new EmDashClient({ baseUrl: options.baseUrl, token: options.token })
+  const client =
+    options.client ??
+    new EmDashClient({ baseUrl: options.baseUrl, token: options.token, interceptors: options.headers ? [headerInterceptor(options.headers)] : [] })
   const manifests = options.manifests ?? []
   const result: SyncStaticPagesResult = {
     created: 0,
