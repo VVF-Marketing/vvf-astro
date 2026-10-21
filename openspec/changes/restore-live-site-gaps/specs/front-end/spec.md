@@ -56,3 +56,24 @@ Every past event page SHALL show a "Previous editions" section with its tagline,
 #### Scenario: 2025 recap
 - **WHEN** `/events/2025-golf-tournament` or `/es/events/2025-golf-tournament` is rendered
 - **THEN** it shows "Previous editions" ("Ediciones anteriores") with a button to the events page in that language
+
+### Requirement: Form W-9 on Financials
+The Financials & Transparency page SHALL link the foundation's signed Form W-9 PDF beside the IRS letter, opening it in a new tab, with a label in the page's language.
+
+#### Scenario: Spanish W-9 link
+- **WHEN** `/es/financials-and-transparency` is rendered
+- **THEN** a "Nuestro formulario W-9" link opens `/files/vvf-form-w9.pdf` in a new tab
+
+### Requirement: Special opportunities on phones and tablets
+Below 992 px, special event opportunities SHALL show as an accordion with nothing open until tapped. From 992 px they SHALL show as tabs with the first opportunity that isn't sold open. A sold opportunity never shows a purchase button.
+
+#### Scenario: iPad
+- **WHEN** an upcoming event page is rendered at 820 px
+- **THEN** no opportunity is open and no tab panel shows
+
+### Requirement: Video descriptions
+Each video under "See our work in Venezuela" on Home, and under the videos heading on Our Programs, SHALL show its caption and a short description in the page's language.
+
+#### Scenario: Spanish Our Programs
+- **WHEN** `/es/our-programs` is rendered
+- **THEN** each of the three videos has its Spanish description

@@ -10,6 +10,25 @@ for (const [lang, prefix] of [
   ['en', ''],
   ['es', '/es'],
 ] as const) {
+  for (const path of ['/', '/our-programs']) {
+    test(`${lang}: the videos on ${path} each have their description`, async ({ page }) => {
+      await page.goto(`${prefix}${path}`)
+      const text = lang === 'en' ? 'Our community kitchens cook healthy meals for children in Venezuela.' : 'Nuestros comedores comunitarios preparan comidas saludables para niños en Venezuela.'
+      await expect(page.getByText(text)).toBeVisible()
+      await expect(page.locator('li:has(iframe[src*="youtube"]) p')).toHaveCount(3)
+    })
+  }
+
+  test(`${lang}: Financials links the signed Form W-9, opening it in a new tab`, async ({ page, request }) => {
+    await page.goto(`${prefix}/financials-and-transparency`)
+    const w9 = page.getByRole('link', { name: lang === 'en' ? /^Our Form W-9/ : /^Nuestro formulario W-9/ })
+    await expect(w9).toHaveAttribute('href', '/files/vvf-form-w9.pdf')
+    await expect(w9).toHaveAttribute('target', '_blank')
+    const pdf = await request.get('/files/vvf-form-w9.pdf')
+    expect(pdf.ok()).toBe(true)
+    expect(pdf.headers()['content-type']).toContain('application/pdf')
+  })
+
   test(`${lang}: recap stats show their captions, the raised tile too`, async ({ page }) => {
     await page.goto(`${prefix}/events/2025-golf-tournament`)
     const golfers = lang === 'en' ? 'Took part for children in Venezuela' : 'Participaron por los niños de Venezuela'
@@ -77,6 +96,64 @@ test.describe('Our Team hero on a phone', () => {
     await expect(phone).toHaveAttribute('alt', /doctor listens to a boy's chest/)
     await expect(page.locator('img[src*="ourpeople-hero-desktop"]')).toBeHidden()
     expect(requested.some((u) => u.includes('ourpeople-hero-desktop'))).toBe(false)
+  })
+})
+
+// Sponsors added on Webflow on 2026-10-08 and 2026-10-21, with the Marlins
+// first wherever partner logos show.
+const NEW_SPONSORS = ['Miami Marlins', 'interCaribbean Airways', 'Galaxis', 'Yoloeight', 'MVP Cuts Barbershop', 'Maglé', 'Beyond the Catch', 'Luminis Global Partners']
+
+for (const path of ['/', '/corporate-sponsorships', '/events/2026-golf-tournament']) {
+  test(`sponsor logos on ${path} start with the Marlins and include the new sponsors`, async ({ page }) => {
+    await page.goto(path)
+    const names = await page.locator('[data-logo-carousel] [data-track] img').evaluateAll((imgs) => imgs.map((i) => i.getAttribute('alt')))
+    expect(names[0]).toBe('Miami Marlins')
+    for (const name of NEW_SPONSORS) expect(names, name).toContain(name)
+  })
+}
+
+test.describe('Home hero on an iPad', () => {
+  test.use({ viewport: { width: 820, height: 1180 } })
+
+  test('the photo sits on top and the card below it, not over it', async ({ page }) => {
+    await page.goto('/')
+    const hero = page.locator('[data-hero-layout="stacked"]')
+    const photo = await hero.locator('img').first().boundingBox()
+    const card = await hero.locator('[data-hero-card]').boundingBox()
+    expect(photo && card).toBeTruthy()
+    expect(card!.y).toBeGreaterThanOrEqual(photo!.y + photo!.height - 1)
+  })
+})
+
+test.describe('Special Event Opportunities on a tablet', () => {
+  test.use({ viewport: { width: 820, height: 1180 } })
+
+  test('is an accordion with nothing open until tapped, and sold ones never offer tickets', async ({ page }) => {
+    await gotoFixtureEvent(page, FIXTURE_OPEN_EVENT)
+    const section = page.locator('[data-opps-tabs]')
+    await expect(section.getByRole('tablist')).toBeHidden()
+    await expect(section.getByRole('tabpanel')).toHaveCount(0)
+    const items = section.locator('details')
+    expect(await items.count()).toBeGreaterThan(0)
+    expect(await items.evaluateAll((ds) => ds.filter((d) => (d as HTMLDetailsElement).open).length)).toBe(0)
+    await items.first().locator('summary').click()
+    await expect(items.first()).toHaveAttribute('open', '')
+    await expect(section.locator('[aria-disabled="true"] a')).toHaveCount(0)
+  })
+})
+
+test.describe('Sponsor logos on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 } })
+
+  // Lazy photos off screen have no size until they load; SVG logos must have
+  // one regardless, since some are saved without width and height.
+  test('every SVG logo in the slider has a size', async ({ page }) => {
+    await page.goto('/')
+    const svgs = page.locator('[data-logo-carousel] [data-track] img[src$=".svg"]')
+    await svgs.first().scrollIntoViewIfNeeded()
+    expect(await svgs.count()).toBeGreaterThan(0)
+    const widths = await svgs.evaluateAll((imgs) => imgs.map((i) => [i.getAttribute('alt'), i.getBoundingClientRect().width] as const))
+    expect(widths.filter(([, w]) => w === 0)).toEqual([])
   })
 })
 

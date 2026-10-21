@@ -233,6 +233,11 @@ export const MANUAL_TRANSLATIONS = {
   },
   // Spec 7.1 (Home): the past-event fallback and the program cards' button.
   '/': {
+    // The video descriptions, shown on Webflow since 2026-10-21 (read from
+    // the Webflow page content; not in the 2026-10-04 scrape).
+    'videoGrid.description.1': 'Los padrinos escriben a los niños que apoyan. Entregamos las cartas personalmente. El apadrinamiento también cubre comidas saludables, útiles escolares y atención médica.',
+    'videoGrid.description.2': 'Nuestros comedores comunitarios preparan comidas saludables para niños en Venezuela. Este es uno de ellos.',
+    'videoGrid.description.3': 'Donantes, voluntarios, embajadores y padrinos hacen posible este día cada año.',
     'events.pastLabel': 'Pasado',
     'events.pastButton': 'Ver lo más destacado',
     'programs.learnMore': 'Más información',
@@ -266,9 +271,46 @@ export const MANUAL_TRANSLATIONS = {
   },
   // A project page (no live counterpart): the Spanish brand in its title, and
   // a Spanish description.
+  // The page has no live Spanish counterpart: all of its Spanish is ours,
+  // kept here so a re-run of this step keeps it.
   '/financials-and-transparency': {
     'seo.title': 'Finanzas y transparencia | Fundación Victoria Venezuela',
     'seo.description': 'Informes de impacto anuales y trimestrales, Sello Platino de Transparencia de Candid y registro ante el IRS. Somos una 501(c)(3), Tax ID 88-3282100.',
+    'hero.heading': 'Finanzas y transparencia',
+    'hero.subtext': 'Creemos en rendir cuentas por completo a nuestros donantes. Cada dólar importa, y mereces saber exactamente cómo tu donación cambia vidas en Venezuela.',
+    'hero.imageAlt': 'Una niña escribe concentrada en un cuaderno en un pupitre azul, en un salón con otros niños.',
+    'hero.cta': 'Donar',
+    'confidence.tagline': 'Dona con confianza',
+    'confidence.heading': 'Revisados de forma independiente por su transparencia',
+    'confidence.text': 'Candid evalúa qué tan abiertamente las organizaciones sin fines de lucro de EE. UU. comparten sus metas, sus finanzas y sus resultados. Platino es el nivel más alto de su Sello de Transparencia.',
+    'confidence.point1.title': 'Sello de Transparencia Platino de Candid',
+    'confidence.point1.text': 'Otorgado cuatro años seguidos, de 2023 a 2026.',
+    'confidence.point2.title': 'Organización benéfica registrada 501(c)(3)',
+    'confidence.point2.text': 'Número de identificación fiscal (EIN) 88-3282100. Nuestro registro es público ante el IRS.',
+    'confidence.candidLink': 'Nuestro perfil en Candid',
+    'confidence.irsLink': 'Carta de determinación del IRS',
+    'confidence.w9Link': 'Nuestro formulario W-9',
+    'confidence.imageAlt': 'Un niño sonriente en una mesa con su comida. Superposición: 4 años de excelencia, Sello Platino de Transparencia Candid por cuarto año consecutivo.',
+    'allocation.tagline': 'Distribución',
+    'allocation.heading': 'A dónde va tu donación',
+    'allocation.text': 'Mantenemos los costos administrativos en cero, así que tu donación va al trabajo en Venezuela y a los eventos que lo financian.',
+    'allocation.cta': 'Lee el informe 2025',
+    'annual.tagline': 'Informes',
+    'annual.heading': 'Informes anuales',
+    'annual.text': 'Cada año publicamos un informe sobre nuestros programas y nuestras finanzas. Léelo en el sitio o descarga el PDF.',
+    'quarterly.tagline': 'Actualizaciones',
+    'quarterly.heading': 'Informes de impacto trimestrales',
+    'quarterly.text': 'Entre un informe anual y otro, compartimos breves actualizaciones trimestrales sobre comidas, consultas médicas y apoyo escolar.',
+    'board.tagline': 'Liderazgo',
+    'board.heading': 'Nuestra junta directiva supervisa la fundación',
+    'board.text': 'Nuestra junta directiva supervisa las finanzas y el rumbo de la fundación. Puedes conocer a cada miembro en la página de nuestro equipo.',
+    'board.member.1': 'Randy Lander, fundador y presidente',
+    'board.member.2': 'Helen Bello, cofundadora, directora de finanzas y vicepresidenta',
+    'board.member.3': 'Pastor Jose Guerrero, miembro de la junta directiva',
+    'board.cta': 'Conoce a la junta',
+    'contact.heading': '¿Todavía tienes preguntas?',
+    'contact.text': 'Pregúntanos sobre nuestros informes, nuestras finanzas o cómo se usa tu donación.',
+    'contact.cta': 'Contacto',
   },
   // Spec 7.9 (Our Team): the open-seat tile's button. The live Spanish page
   // keeps both hero photo descriptions in English.

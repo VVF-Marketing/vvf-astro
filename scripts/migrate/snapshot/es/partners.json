@@ -1,5 +1,13 @@
 [
   {
+    "name": "Miami Marlins",
+    "website": "https://www.mlb.com/marlins",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad91657873b3ec8107a67a6_6ad9163dd689f0320a0237c4_VVF_Golf2026_Sponsor_MiamiMarlins_v3.svg",
+      "alt": "Miami Marlins"
+    }
+  },
+  {
     "name": "Boeing",
     "website": "https://www.boeing.com/",
     "logo": {
@@ -429,6 +437,61 @@
     "logo": {
       "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa784dab3dcf82351d6c46a_6aa77a504e94200fb5f5b832_Wells-Fargo.png",
       "alt": "Wells Fargo"
+    }
+  },
+  {
+    "name": "MVP Cuts Barbershop",
+    "website": "https://www.mvp-cuts.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e4d8_6ac7df454dc5b370e27444aa_VVF_Golf2026_Sponsor_MVPCutsBarberShop_v1.png",
+      "alt": "MVP Cuts Barbershop"
+    }
+  },
+  {
+    "name": "Maglé",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e50b_6ac7df45c7fecae81937f3e9_VVF_Golf2026_Sponsor_Magle_v1.jpeg",
+      "alt": "Maglé"
+    }
+  },
+  {
+    "name": "Beyond the Catch",
+    "website": "https://www.beyondthecatch.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e526_6ac7df45d22efcefd4197e13_VVF_Golf2026_Sponsor_BeyondTheCatch_v1.jpeg",
+      "alt": "Beyond the Catch"
+    }
+  },
+  {
+    "name": "Luminis Global Partners",
+    "website": "https://luminisgp.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac829fe6642957f6a868a43_6ac829e75c059c2181e31ea2_VVF_Golf2026_Sponsor_LuminisGlobalPartners_v2.png",
+      "alt": "Luminis Global Partners"
+    }
+  },
+  {
+    "name": "interCaribbean Airways",
+    "website": "https://www.intercaribbean.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8fde82678614229566e89_6ad8fdc8fba343d21a795e33_InterCaribbean_Airways_Logo.svg",
+      "alt": "interCaribbean Airways"
+    }
+  },
+  {
+    "name": "Galaxis",
+    "website": "https://en.galaxis-tech.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a911ff3_6ad8ef2f5d7b9aaeca8c3e26_VVF_Golf2026_Sponsor_Galaxis_v1.png",
+      "alt": "Galaxis"
+    }
+  },
+  {
+    "name": "Yoloeight",
+    "website": "https://yolo8meats.com/",
+    "logo": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a912031_6ad8ef2f5d7b9aaeca8c3e6f_VVF_Golf2026_Sponsor_Yoloeight_v1.jpeg",
+      "alt": "Yoloeight"
     }
   }
 ]

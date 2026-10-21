@@ -79,7 +79,7 @@
   1. Contact "ways to reach us" cards: leave them out. They took a lot of space for little gain, and the form's topic dropdown covers them.
   2. Events page headings: he doesn't see the 2026-10-04 headings on live today. Keep the build's.
   3. "Previous editions": unclear to him. The user chose to restore it without asking again. Built (2.9).
-  4. Home hero subtext: live hides it on desktop, so he doesn't see it. The build shows it. Re-asked whether to show it; still open.
+  4. Home hero subtext: live hid it on desktop (body text size 0); Webflow fixed that on 2026-10-21, so it shows on live too. Keep it.
   5. La Guaira caption wording: he doesn't see a difference. Keep the build's.
   6. Card photo: it was cropped so the players are centered. Built (2.8).
   7. "N of M benefits": live is right ("19 de 19 beneficios"); the English text was the build's. Fixed (4.6).
@@ -90,3 +90,11 @@
   - closed or sold-out registration hides the hero's "Become a Sponsor" button too;
   - `llms.txt` links external reports where they're published, and only promises the same Spanish path for the key pages;
   - the WebSite JSON-LD node gets an `@id` per language.
+
+## 5. Webflow changes, 2026-10-21
+
+- [x] 5.1 Financials: "Our Form W-9" button (slot `confidence.w9Link`, en/es) opening `public/files/vvf-form-w9.pdf` in a new tab, with the screen-reader cue; the sharper Candid photo. The page's Spanish moves into `MANUAL_TRANSLATIONS`. e2e in both languages.
+- [x] 5.2 Sponsors: 62 partners in CMS order (Marlins first; 4 new today, 4 from Oct 8 that the first refresh missed) and the 2026 event's 25 sponsors, harvested via S3. `LogoCarousel` sizes SVG logos to their slot, so one without width and height can't vanish. Storybook story and e2e (order on Home, Corporate and the 2026 page; SVG sizes at 390 px).
+- [x] 5.3 Golf: Spirits Sponsor available again. Special Event Opportunities is an accordion below 992 px, with nothing open until tapped; tabs from 992 px open the first opportunity that isn't sold. e2e at 820 px.
+- [x] 5.4 Home: on tablets the hero photo sits on top and the card below it (`Hero` `tablet="stacked"`). The three video descriptions (slots `videoGrid.description.*`, en/es) show on Home and Our Programs. Storybook story and e2e.
+

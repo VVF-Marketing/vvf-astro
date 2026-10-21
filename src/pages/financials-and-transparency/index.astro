@@ -12,12 +12,14 @@ import Button from '../../components/Button.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
 import { getPageCopy, getReports, getTeamMembers } from '../../lib/content'
 import { localeFromPath, pageAlternates } from '../../lib/i18n'
+import { getGlobalCopy } from '../../lib/globalCopy'
 import pageCopy from './_copy'
 
 const CANDID_PROFILE = 'https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc-88-3282100'
 
 const locale = localeFromPath(Astro.originPathname)
 const { copy, locales } = await getPageCopy(pageCopy, locale)
+const t = await getGlobalCopy(Astro)
 const [annual, quarterly, board] = await Promise.all([
   getReports('annual', locale),
   getReports('quarterly', locale),
@@ -64,6 +66,11 @@ const point = 'flex flex-col gap-2 border-b border-neutral-light-gray py-4 md:px
     <div class="flex flex-col items-stretch gap-4 md:items-start">
       <Button href={CANDID_PROFILE} variant="primary-inverse">{copy['confidence.candidLink']}</Button>
       <Button href="/files/vvf-irs-determination-letter.pdf" variant="outline">{copy['confidence.irsLink']}</Button>
+      {/* A PDF on this site, opened in a new tab like Webflow's, so it gets
+          the same screen-reader cue the middleware adds to external links. */}
+      <Button href="/files/vvf-form-w9.pdf" variant="outline" target="_blank" rel="noopener">
+        {copy['confidence.w9Link']}<span class="sr-only"> {t['a11y.newTab']}</span>
+      </Button>
     </div>
   </MediaSplit>
 

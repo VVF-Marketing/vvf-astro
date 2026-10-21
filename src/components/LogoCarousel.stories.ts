@@ -32,3 +32,16 @@ export const Default = {
     expect(canvas.getAllByRole('img')).toHaveLength(6)
   },
 }
+
+// An SVG saved with a viewBox but no width or height (the Marlins logo on
+// Webflow, Oct 2026) still fills its slot instead of shrinking to nothing.
+const SIZELESS_SVG = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><rect width="100" height="50" fill="#0a2240"/></svg>')}`
+
+export const SvgWithoutSize = {
+  args: { logos: [{ name: 'Sizeless logo', logoUrl: SIZELESS_SVG }] },
+  play: async ({ canvasElement }) => {
+    const img = within(canvasElement).getByRole('img', { name: 'Sizeless logo' })
+    await new Promise((resolve) => (img.complete ? resolve(null) : img.addEventListener('load', resolve, { once: true })))
+    expect(img.getBoundingClientRect().width).toBeGreaterThan(0)
+  },
+}

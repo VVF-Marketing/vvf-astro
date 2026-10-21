@@ -26,7 +26,7 @@
 - Make the comparison with live repeatable (`migrate:drift`).
 
 **Non-Goals:**
-- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These went to Enrique (answers in `tasks.md` 4.5): the cards, the headings and the caption stay as built; "Previous editions" is restored (D13); the home hero subtext is still open.
+- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These went to Enrique (answers in `tasks.md` 4.5): the cards, the headings and the caption stay as built; "Previous editions" is restored (D13); the home hero subtext stays (it shows on live too since 2026-10-21).
 - Empty live sections ("Thank you, donors", "What they said"); 7.8-4 hides them.
 - Rendering the 2026 long description as a new page section. No spec row or live evidence places it, so it is stored only as the event's rich description.
 
@@ -111,6 +111,12 @@
 - Every past event page shows it, between the sponsors and "Mark your calendar". Its text comes from four page-copy slots (`editions.*`).
 - The editions in `previous_editions` show as compact `EventCard`s, newest first. The button goes to `/events-and-campaigns`, where live's `/all-events` redirects.
 - It isn't an empty section in the 7.8-4 sense: the button always leads somewhere.
+
+### D14. Webflow changes of 2026-10-21
+- **Snapshot, hand-merged as in D1:** the partners and the 2026 sponsors from the CMS, and Spirits available again. The extractor reads both lists from the live pages in display order, so the next scrape agrees; no API path is needed for them.
+- **Tablet hero:** `Hero` gains `tablet?: 'overlay' | 'stacked'`. Home uses `stacked`: from 768 to 991 px the photo keeps a fixed height on top and the card sits below it, and the overlay starts at 992 px. Other pages keep the overlay, as on live.
+- **Special Event Opportunities:** the accordion now covers tablets too (below `lg`, 992 px, the spec's desktop breakpoint). Live opens nothing until tapped there.
+- **SVG logos:** `LogoCarousel` makes SVGs fill their 186×116 slot (`object-contain`) and leaves raster logos at their own size. That way an SVG without width and height can't collapse, which is what happened to the Marlins logo on Webflow.
 
 ### D11. Asset downloads fall back to Webflow's S3 bucket
 - Webflow serves each CDN file (`cdn.prod.website-files.com/<path>`) from `s3.amazonaws.com/webflow-prod-assets/<path>` too.

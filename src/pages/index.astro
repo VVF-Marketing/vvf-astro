@@ -54,6 +54,7 @@ const stat = (key: 'meals_served' | 'medical_visits' | 'children_in_programs' | 
     subtext={copy['hero.subtext']}
     primaryCta={{ label: copy['hero.label.1'], href: '/sponsor-a-child' }}
     secondaryCta={{ label: copy['hero.label.2'], href: '/ways-to-give' }}
+    tablet="stacked"
   />
 
   <section class="px-6 md:px-20">
@@ -135,9 +136,9 @@ const stat = (key: 'meals_served' | 'medical_visits' | 'children_in_programs' | 
       heading={copy['videoGrid.heading']}
       text={copy['videoGrid.text']}
       videos={[
-        { youtubeId: 'QcC-iVlZDSI', caption: copy['videoGrid.caption.1'] },
-        { youtubeId: 'D9oa77B6sQk', caption: copy['videoGrid.caption.2'] },
-        { youtubeId: 'JZkA3l_LDk4', caption: copy['videoGrid.caption.3'] },
+        { youtubeId: 'QcC-iVlZDSI', caption: copy['videoGrid.caption.1'], description: copy['videoGrid.description.1'] },
+        { youtubeId: 'D9oa77B6sQk', caption: copy['videoGrid.caption.2'], description: copy['videoGrid.description.2'] },
+        { youtubeId: 'JZkA3l_LDk4', caption: copy['videoGrid.caption.3'], description: copy['videoGrid.description.3'] },
       ]}
     />
   </div>

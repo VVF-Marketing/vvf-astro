@@ -32,13 +32,14 @@ Basecamp card: _to be added_ (no card yet).
 - **"Previous editions".** Past event pages get live's "Previous editions" section back: cards for earlier years when the event links any, and an "All events" button.
 - **Card photo.** Events get an optional card photo for event lists (Enrique: the crop centers the players). The 2026 tournament's comes from the CMS.
 - **Spanish benefits count.** The phone benefits list said "N of M benefits" in English on Spanish pages; it now reads "N de M beneficios".
+- **Webflow changes of 2026-10-21:** the Form W-9 button and a sharper Candid photo on Financials; eight new sponsors, Marlins first; Spirits Sponsor available again; tablets get the accordion for special opportunities and, on Home, the photo above the hero card; descriptions under the three videos on Home and Our Programs; SVG logos can't collapse in the slider.
 - **Drift check.** `npm run migrate:drift` lists live strings (text, alt text, SEO) that the build doesn't contain, so the comparison can be re-run.
 - **Mobile.** Event detail pages and team profiles join the 375–1440 px no-sideways-scroll sweep.
 - **Not built; asked Enrique** (answers in `tasks.md` 4.5):
   - the contact page's four "ways to reach us" cards and its "Get Involved" button: left out;
   - the Events page headings: kept as built;
   - the "Previous editions" recap section: restored (see below);
-  - the home hero subtext: still open;
+  - the home hero subtext: kept (live shows it again since 2026-10-21);
   - the La Guaira caption wording: kept as built.
 - **Skipped:** the empty "Thank you, donors" and "What they said" sections (spec 7.8-4 hides empty sections).
 

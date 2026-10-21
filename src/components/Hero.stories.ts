@@ -15,6 +15,12 @@ export const Default = {
   },
 }
 
+// Home: on tablets the photo stays on top and the card sits below it (view
+// at 768–991px); from 992px it's the usual overlay.
+export const TabletStacked = {
+  args: { ...Default.args, tablet: 'stacked' },
+}
+
 export const CardRight = {
   args: {
     imageUrl: '/images/og-default.jpg',
