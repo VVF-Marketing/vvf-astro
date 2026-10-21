@@ -89,12 +89,19 @@ jobs:
           node scripts/s3-bucket.mjs
       - name: Migrate and seed Postgres + S3 (public seed and media)
         run: npm run db:setup
-      - name: Data export/import round trip through Postgres
+      - name: Postgres integration tests (data round trip, sync once per deployment, sessions)
         env:
           TEST_POSTGRES_URL: postgres://vvf:vvf@localhost:5432/vvf_import
         run: |
           psql postgres://vvf:vvf@localhost:5432/vvf -c 'create database vvf_import'
-          npx vitest run scripts/data.integration.test.mjs
+          npx vitest run --no-file-parallelism scripts/data.integration.test.mjs src/lib/deploymentSync.integration.test.ts src/lib/db/sessionDriver.integration.test.ts
+      # The Vercel target (openspec/changes/run-on-vercel-functions): one
+      # Node.js function under the size limit, EmDash's timer off, waitUntil
+      # on, and every legacy redirect with its status.
+      - name: Build the Vercel target and check its output
+        run: |
+          DEPLOY_TARGET=vercel npx astro build
+          npx vitest run scripts/vercel-build.test.mjs
       - name: Run the image and wait until it's ready
         run: |
           docker run -d --name site --network host -e PORT=4321 \

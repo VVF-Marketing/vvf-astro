@@ -9,7 +9,8 @@
 // Steps 2-3 run only into an empty database; existing content is never
 // re-seeded unless --force. With --no-seed, stop after migrations (a target
 // for npm run data:import).
-// Needs DB_ADAPTER=postgres and DATABASE_URL; STORAGE=s3 (with S3_*) uploads
+// Needs DB_ADAPTER=postgres and DATABASE_URL (or DATABASE_URL_UNPOOLED, the
+// direct connection, which it prefers); STORAGE=s3 (with S3_*) uploads
 // media to the bucket, otherwise to ./uploads.
 //
 // Migrating needs the target confirmed first (confirmTarget): a pinned
@@ -24,7 +25,7 @@ import { applySeed } from 'emdash/seed'
 import { createStorage as createLocalStorage } from 'emdash/storage/local'
 import { createStorage as createS3Storage } from 'emdash/storage/s3'
 import { readManifests, seedMedia } from './lib/seed-media.mjs'
-import { createDialect, databaseUrl } from '../src/lib/db/postgresRuntime.mjs'
+import { createDirectDialect, directDatabaseUrl } from '../src/lib/db/postgresRuntime.mjs'
 import { confirmDestructive } from './lib/confirm.mjs'
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
@@ -53,7 +54,7 @@ export const shouldSeed = (collectionCount, force = false) => force || collectio
 
 // The CLI reports on stderr; read both streams.
 function emdash(args) {
-  const r = spawnSync('npx', ['emdash', 'migrate', '--from-config', ...args], { cwd: ROOT, encoding: 'utf8', env: { ...process.env, DB_ADAPTER: 'postgres' } })
+  const r = spawnSync('npx', ['emdash', 'migrate', '--from-config', ...args], { cwd: ROOT, encoding: 'utf8', env: { ...process.env, DB_ADAPTER: 'postgres', DATABASE_URL: directDatabaseUrl() } })
   const out = `${r.stdout ?? ''}${r.stderr ?? ''}`
   if (r.status !== 0) throw new Error(`emdash migrate failed:\n${out}`)
   return out
@@ -91,7 +92,7 @@ export async function setupDatabase({
   storage,
   log = console.log,
 } = {}) {
-  const target = describeTarget(databaseUrl())
+  const target = describeTarget(directDatabaseUrl())
   // Before anything is written: where the seed media will go.
   const mediaStorage = seed ? (storage ?? openStorage()) : undefined
   const fingerprint = targetFingerprint()
@@ -102,7 +103,7 @@ export async function setupDatabase({
   const executed = emdash([`--expected-target-fingerprint=${fingerprint}`]).match(/Executed: (.*)/)?.[1]?.trim() ?? ''
   log(`Migrations: ${executed && executed !== 'none' ? executed.split(',').length + ' applied' : 'up to date'}`)
   if (!seed) return { seeded: false } // --no-seed: an empty, migrated database (e.g. for npm run data:import)
-  const db = new Kysely({ dialect: createDialect() })
+  const db = new Kysely({ dialect: createDirectDialect() })
   try {
     const { rows } = await sql`select count(*)::int as n from _emdash_collections`.execute(db)
     if (!shouldSeed(rows[0].n, force)) {

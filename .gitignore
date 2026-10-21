@@ -40,3 +40,4 @@ emdash-env.d.ts
 
 # VVF website spec audit: confidential spec copy, coverage map, results, report (public repo)
 /.spec-audit/
+.vercel/
