@@ -21,7 +21,7 @@ export const KEY_PAGES: { path: string; en: [string, string]; es: string }[] = [
 export interface LlmsInput {
   site: string
   upcoming: Pick<EventItem, 'slug' | 'title' | 'startDate' | 'location' | 'summary'>[]
-  reports: Pick<ResourceItem, 'slug' | 'title' | 'publishedAt'>[]
+  reports: Pick<ResourceItem, 'slug' | 'title' | 'publishedAt' | 'external' | 'externalUrl'>[]
   faqs: Pick<Faq, 'question' | 'answer'>[]
 }
 
@@ -48,7 +48,11 @@ export function buildLlmsTxt({ site, upcoming, reports, faqs }: LlmsInput): stri
   }
   if (reports.length) {
     lines.push('', '## Latest reports', '')
-    for (const r of reports) lines.push(`- [${r.title}](${url(`/resources/${r.slug}`)})${r.publishedAt ? `: ${day(r.publishedAt)}` : ''}`)
+    for (const r of reports) {
+      // An external report has no page here: link where it's published.
+      const href = r.external && r.externalUrl ? r.externalUrl : url(`/resources/${r.slug}`)
+      lines.push(`- [${r.title}](${href})${r.publishedAt ? `: ${day(r.publishedAt)}` : ''}`)
+    }
   }
   if (faqs.length) {
     lines.push('', '## Common questions', '')
@@ -58,7 +62,7 @@ export function buildLlmsTxt({ site, upcoming, reports, faqs }: LlmsInput): stri
     '',
     '## Spanish',
     '',
-    'Every page above exists in Spanish under /es, with the same path.',
+    'The key pages exist in Spanish under /es, with the same path. Events and articles can have a different address in Spanish; each page links its other language.',
     '',
     ...KEY_PAGES.map((p) => `- [${p.es}](${url(p.path === '/' ? '/es' : `/es${p.path}`)})`),
     ''

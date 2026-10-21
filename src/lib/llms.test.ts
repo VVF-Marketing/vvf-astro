@@ -27,6 +27,17 @@ describe('buildLlmsTxt', () => {
     expect(text).toContain('- **How much does it cost?** $25 a month.')
   })
 
+  it('links an external report where it is published, not to a page here', () => {
+    const out = buildLlmsTxt({ site, upcoming: [], faqs: [], reports: [{ slug: 'form-990', title: 'Form 990', external: true, externalUrl: 'https://projects.propublica.org/nonprofits/990' }] })
+    expect(out).toContain('- [Form 990](https://projects.propublica.org/nonprofits/990)')
+    expect(out).not.toContain('/resources/form-990')
+  })
+
+  it('only promises the same Spanish path for the key pages', () => {
+    expect(text).not.toContain('Every page above exists in Spanish')
+    expect(text).toContain('The key pages exist in Spanish under /es, with the same path.')
+  })
+
   it('leaves out empty sections', () => {
     const bare = buildLlmsTxt({ site, upcoming: [], reports: [], faqs: [] })
     expect(bare).not.toContain('## Upcoming events')

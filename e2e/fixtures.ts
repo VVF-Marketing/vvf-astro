@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+import { expect, test, type Page } from '@playwright/test'
 
 // Reuses the seed `npm run seed` applied as the single source of truth for
 // E2E fixtures: seed/seed.local.json (gitignored; includes children) when it
@@ -56,4 +57,19 @@ export function firstResource() {
   if (!article) throw new Error('seed has no article fixture')
   const category = String(article.data.category ?? '').replace(/^\$ref:category-/, '')
   return { slug: article.slug, title: article.data.title as string, categories: category ? [category === 'financials' ? 'financials-transparency' : category] : [] }
+}
+
+// Made-up upcoming events (SEED_FIXTURE_EVENTS=1, scripts/lib/fixture-events.mjs),
+// dated 2099 so upcoming-event checks don't break when a real event's date
+// passes.
+export const FIXTURE_OPEN_EVENT = '/events/fixture-open-registration'
+export const FIXTURE_CLOSED_EVENT = '/events/fixture-closed-registration'
+
+// Opens a fixture event page. When the run was seeded with the fixtures (CI),
+// a missing one fails the test; otherwise the test is skipped.
+export async function gotoFixtureEvent(page: Page, path: string) {
+  const res = await page.goto(path)
+  if (res?.status() !== 404) return
+  expect(process.env.SEED_FIXTURE_EVENTS, `${path} is missing although SEED_FIXTURE_EVENTS=1`).not.toBe('1')
+  test.skip(true, 'no fixture event (seed with SEED_FIXTURE_EVENTS=1)')
 }

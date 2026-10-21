@@ -1,8 +1,8 @@
-import { mkdirSync, mkdtempSync, readdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { collectAssets, download, harvestPlan, localFileName, planAssets, pruneUnreferenced, s3Mirror } from './harvest.mjs'
+import { collectAssets, download, harvestPlan, localFileName, manifestPaths, planAssets, pruneUnreferenced, s3Mirror } from './harvest.mjs'
 
 const CDN = 'https://cdn.prod.website-files.com/site'
 
@@ -107,6 +107,24 @@ describe('download from the S3 mirror', () => {
 })
 
 describe('pruneUnreferenced', () => {
+  it('removes the old copy of an asset that moved folder', async () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'harvest-'))
+    mkdirSync(path.join(root, 'public/images/pages'), { recursive: true })
+    writeFileSync(path.join(root, 'public/images/pages/hero.webp'), 'x')
+    const manifests = { main: { [`${CDN}/hero.webp`]: { path: 'public/images/pages/hero.webp' } }, children: {} }
+    const plan = new Map([[`${CDN}/hero.webp`, { dir: 'seed/media/events', manifest: 'main' }]])
+    const before = manifestPaths(manifests)
+    const downloadImpl = async (url, dir) => {
+      mkdirSync(path.join(root, dir), { recursive: true })
+      writeFileSync(path.join(root, dir, 'hero.webp'), 'x')
+      return { path: `${dir}/hero.webp` }
+    }
+    await harvestPlan(plan, manifests, { downloadImpl, root })
+    expect(pruneUnreferenced(plan, manifests, root, before)).toBe(1)
+    expect(existsSync(path.join(root, 'public/images/pages/hero.webp'))).toBe(false)
+    expect(existsSync(path.join(root, 'seed/media/events/hero.webp'))).toBe(true)
+  })
+
   it('removes downloads the snapshot no longer uses, never hand-added project images', () => {
     const root = mkdtempSync(path.join(tmpdir(), 'harvest-'))
     const dir = path.join(root, 'public/images/pages')

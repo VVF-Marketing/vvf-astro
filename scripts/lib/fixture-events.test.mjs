@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { FIXTURE_EVENT_SLUG, withFixtureEvents } from './fixture-events.mjs'
+import { FIXTURE_EVENT_SLUG, FIXTURE_OPEN_EVENT_SLUG, withFixtureEvents } from './fixture-events.mjs'
 
 const upcoming = { id: 'event-golf', slug: 'golf', status: 'published', data: { name: 'Golf', lifecycle: 'upcoming', registration: 'open', featured: true, start: '2026-11-09' } }
 const spanish = { id: 'event-golf--es', slug: 'golf', status: 'published', locale: 'es', translationOf: 'event-golf', data: { ...upcoming.data, name: 'Golf ES' } }
@@ -16,6 +16,15 @@ describe('withFixtureEvents', () => {
     for (const e of added) expect(e.data).toMatchObject({ lifecycle: 'upcoming', registration: 'closed', featured: false, start: '2099-11-09T00:00:00.000Z' })
     // The real event is untouched.
     expect(seed.content.events.find((e) => e.id === 'event-golf').data.registration).toBe('open')
+  })
+
+  it('adds an open-registration copy too, dated before the closed one', () => {
+    const seed = withFixtureEvents({ content: { events: [upcoming, spanish] } })
+    const open = seed.content.events.filter((e) => e.slug === FIXTURE_OPEN_EVENT_SLUG)
+    expect(open.map((e) => e.locale)).toEqual([undefined, 'es'])
+    for (const e of open) expect(e.data).toMatchObject({ lifecycle: 'upcoming', registration: 'open', featured: false, start: '2099-11-08T00:00:00.000Z' })
+    const closed = seed.content.events.find((e) => e.slug === FIXTURE_EVENT_SLUG && !e.locale)
+    expect(open[0].data.start < closed.data.start).toBe(true)
   })
 
   it('leaves the seed alone when the fixture exists or nothing is upcoming', () => {

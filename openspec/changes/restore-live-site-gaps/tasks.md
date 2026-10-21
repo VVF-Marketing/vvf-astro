@@ -84,3 +84,9 @@
   6. Card photo: it was cropped so the players are centered. Built (2.8).
   7. "N of M benefits": live is right ("19 de 19 beneficios"); the English text was the build's. Fixed (4.6).
 - [x] 4.6 Phone benefits list: the count ("{included} of {total} benefits") is a site copy slot, `event.benefitsCount`, with Spanish "{included} de {total} beneficios". e2e at 390 px in both languages.
+- [x] 4.7 Review fixes (Eduardo, PR #31):
+  - upcoming-event e2e checks use a new open-registration fixture event (2099), so they don't break on 2026-11-09; with `SEED_FIXTURE_EVENTS=1` a missing fixture fails instead of skipping;
+  - `migrate:harvest` cleanup also removes the old copy of an asset that moved folder (unit test);
+  - closed or sold-out registration hides the hero's "Become a Sponsor" button too;
+  - `llms.txt` links external reports where they're published, and only promises the same Spanish path for the key pages;
+  - the WebSite JSON-LD node gets an `@id` per language.

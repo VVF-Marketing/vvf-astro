@@ -11,8 +11,9 @@
 //
 // Children are included only when the gitignored child snapshot and media
 // exist locally (`npm run migrate:extract`); CI seeds made-up ones instead
-// (SEED_FIXTURE_CHILDREN=1, scripts/lib/fixture-children.mjs), and a made-up
-// closed-registration event (SEED_FIXTURE_EVENTS=1, scripts/lib/fixture-events.mjs).
+// (SEED_FIXTURE_CHILDREN=1, scripts/lib/fixture-children.mjs), and
+// made-up events with open and closed registration (SEED_FIXTURE_EVENTS=1,
+// scripts/lib/fixture-events.mjs).
 import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -61,14 +62,15 @@ if (process.env.SEED_FIXTURE_CHILDREN === '1') {
     console.log(`added ${withFixtures.content.children.length} fixture child entries (made up, for tests)`)
   }
 }
-// The live content has no upcoming event with closed registration, so spec
-// 7.8-2 needs a made-up one (SEED_FIXTURE_EVENTS=1).
+// Made-up upcoming events (SEED_FIXTURE_EVENTS=1): one with open registration,
+// so upcoming-event checks don't depend on a real event's date, and one with
+// closed registration for spec 7.8-2, which the live content has none for.
 if (process.env.SEED_FIXTURE_EVENTS === '1') {
   const seed = JSON.parse(readFileSync(LOCAL_SEED_PATH, 'utf8'))
   const withFixture = withFixtureEvents(seed)
   if (withFixture !== seed) {
     writeFileSync(LOCAL_SEED_PATH, `${JSON.stringify(withFixture, null, 2)}\n`)
-    console.log('added a fixture event with closed registration (made up, for tests)')
+    console.log('added fixture events with open and closed registration (made up, for tests)')
   }
 }
 

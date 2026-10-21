@@ -240,6 +240,9 @@ export async function harvest() {
   mkdirSync(PUBLIC_IMAGES_DIR, { recursive: true })
   const manifests = { main: readJson(MANIFEST_PATH, {}), children: readJson(CHILD_MANIFEST_PATH, {}) }
   const plan = planAssets(readSnapshots())
+  // Taken before the run: harvestPlan rewrites the entry of an asset that
+  // moved folder, and its old copy must still count as downloaded.
+  const before = manifestPaths(manifests)
   const result = await harvestPlan(plan, manifests)
 
   // Site chrome is read from the live home page; when only the asset hosts
@@ -251,7 +254,7 @@ export async function harvest() {
     chrome = readJson(path.join(MEDIA_DIR, 'site-chrome.json'), {})
     report.line(`- Site chrome: live site unreachable (${err.message}); kept \`seed/media/site-chrome.json\`.`)
   }
-  const pruned = pruneUnreferenced(plan, manifests)
+  const pruned = pruneUnreferenced(plan, manifests, ROOT_DIR, before)
   mkdirSync(path.dirname(CHILD_MANIFEST_PATH), { recursive: true })
   writeFileSync(MANIFEST_PATH, `${JSON.stringify(sortKeys(manifests.main), null, 2)}\n`)
   writeFileSync(CHILD_MANIFEST_PATH, `${JSON.stringify(sortKeys(manifests.children), null, 2)}\n`)
@@ -269,16 +272,20 @@ export async function harvest() {
   return { planned: plan.size, ...result, failures: result.failures.length }
 }
 
+// Every file path the manifests list, i.e. every file the harvest downloaded.
+export const manifestPaths = (manifests) => Object.values(manifests).flatMap((m) => Object.values(m).map((e) => e.path))
+
 // Deletes downloaded files (and manifest entries) the current plan no longer
 // references, e.g. an asset that moved from page imagery to CMS media. Only
-// files the harvest downloaded (listed in a manifest) are removed: images
-// added by hand for project-only pages (Our Programs, Financials) share
+// files the harvest downloaded are removed: those listed in a manifest now or
+// in `downloadedBefore` (the manifests' paths before this run). Images added
+// by hand for project-only pages (Our Programs, Financials) share
 // public/images/pages and stay.
 const MANAGED_DIRS = ['public/images/pages', 'seed/media/team_members', 'seed/media/events', 'seed/media/resources', 'seed/media/sponsors', 'seed/media/children']
 
-export function pruneUnreferenced(plan, manifests, root = ROOT_DIR) {
+export function pruneUnreferenced(plan, manifests, root = ROOT_DIR, downloadedBefore = []) {
   const keep = new Set()
-  const harvested = new Set()
+  const harvested = new Set(downloadedBefore)
   for (const [url, entries] of [...Object.entries(manifests.main), ...Object.entries(manifests.children)]) {
     harvested.add(entries.path)
     if (plan.has(url) && entries.path.startsWith(`${plan.get(url).dir}/`)) keep.add(entries.path)

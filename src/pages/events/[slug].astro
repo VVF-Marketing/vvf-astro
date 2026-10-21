@@ -76,7 +76,7 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
     heading={event.heroHeading ?? event.title}
     subtext={event.heroBody}
     primaryCta={upcoming ? (notice ? undefined : { label: copy['hero.label.1'], href: ticketUrl }) : { label: copy['hero.label.2'], href: '#photos' }}
-    secondaryCta={upcoming ? { label: copy['hero.label.3'], href: '#sponsor-packages' } : { label: copy['hero.label.4'], href: '#next-edition' }}
+    secondaryCta={upcoming ? (notice ? undefined : { label: copy['hero.label.3'], href: '#sponsor-packages' }) : { label: copy['hero.label.4'], href: '#next-edition' }}
     flush
   />
 

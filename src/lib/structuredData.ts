@@ -66,12 +66,15 @@ export function ngo(site: URL, description: string, locale: Locale = 'en'): Json
 }
 
 export function webSite(site: URL, locale: Locale): JsonLd {
+  const url = abs(localizePath('/', locale), site)
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': new URL('/#website', site).href,
+    // One node per language: the English and Spanish sites differ in URL and
+    // language, so they can't share an @id.
+    '@id': `${url}#website`,
     name: ORG.name,
-    url: abs(localizePath('/', locale), site),
+    url,
     inLanguage: LANG_TAGS[locale],
     publisher: { '@id': orgId(site) },
   }

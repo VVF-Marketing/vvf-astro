@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test'
-import { eventCardPhotoFile } from './fixtures'
+import { eventCardPhotoFile, FIXTURE_CLOSED_EVENT, FIXTURE_OPEN_EVENT, gotoFixtureEvent } from './fixtures'
 
 // Live content restored by the `restore-live-site-gaps` change, in both
-// languages.
-
-const FIXTURE_EVENT = '/events/fixture-closed-registration'
+// languages. Upcoming-event checks use the made-up fixture events (copies of
+// the 2026 tournament dated 2099), so they keep passing once the real
+// tournament's date passes and its page turns into a recap.
 
 for (const [lang, prefix] of [
   ['en', ''],
@@ -25,38 +25,41 @@ for (const [lang, prefix] of [
     await expect(section.getByRole('link', { name: lang === 'en' ? 'All events' : 'Todos los eventos' })).toHaveAttribute('href', `${prefix}/events-and-campaigns`)
   })
 
-  test(`${lang}: the 2026 memories mosaic uses the page's own photos`, async ({ page }) => {
-    await page.goto(`${prefix}/events/2026-golf-tournament`)
+  test(`${lang}: the upcoming tournament's memories mosaic uses the page's own photos`, async ({ page }) => {
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
     const mosaic = page.locator('img[src*="vvf-golf2025-memories-"]')
     await expect(mosaic).toHaveCount(5)
     await expect(mosaic.first()).toHaveAttribute('alt', 'A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament.')
   })
 
   test(`${lang}: the physical therapy lounge keeps its paragraph`, async ({ page }) => {
-    await page.goto(`${prefix}/events/2026-golf-tournament`)
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
     const text = lang === 'en' ? 'Help golfers warm up, improve mobility' : 'Ayuda a los golfistas a calentar'
     await expect(page.locator('[data-opp-panel]', { hasText: text })).toHaveCount(1)
   })
 
   test(`${lang}: closed registration hides every purchase link and shows the note`, async ({ page }) => {
-    const res = await page.goto(`${prefix}${FIXTURE_EVENT}`)
-    test.skip(res?.status() === 404, 'no fixture event (seed with SEED_FIXTURE_EVENTS=1)')
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_CLOSED_EVENT}`)
     const note = lang === 'en' ? 'Registration is closed.' : 'Las inscripciones están cerradas.'
     await expect(page.getByText(note)).toBeVisible()
     await expect(page.locator('main a[href*="donorbox.org/events"]')).toHaveCount(0)
+    // Nor a hero button down to the (button-less) sponsor packages.
+    await expect(page.locator('main a[href="#sponsor-packages"]')).toHaveCount(0)
   })
 
-  test(`${lang}: the 2026 card in event lists uses its card photo at every width`, async ({ page }) => {
+  test(`${lang}: an upcoming event's card uses its card photo at every width`, async ({ page }) => {
+    // The fixture copies the 2026 tournament, card photo included.
     const file = eventCardPhotoFile('2026-golf-tournament')
     expect(file).toBeTruthy()
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
     await page.goto(`${prefix}/events-and-campaigns`)
-    const card = page.locator('a[href$="/events/2026-golf-tournament"]', { has: page.locator('img') }).first()
+    const card = page.locator(`a[href$="${FIXTURE_OPEN_EVENT}"]`, { has: page.locator('img') }).first()
     await expect(card.locator('img')).toHaveAttribute('src', new RegExp(`${file}$`))
     await expect(card.locator('source')).toHaveCount(0)
   })
 
   test(`${lang}: open registration keeps the purchase links and shows no note`, async ({ page }) => {
-    await page.goto(`${prefix}/events/2026-golf-tournament`)
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
     await expect(page.locator('main a[href*="donorbox.org/events"]').first()).toBeAttached()
     await expect(page.locator('#registration')).toHaveCount(0)
   })
@@ -85,7 +88,7 @@ test.describe('Sponsor benefits on a phone', () => {
     ['es', '/es', /^\d+ de \d+ beneficios$/],
   ] as const) {
     test(`${lang}: each package says how many benefits it includes, in the page's language`, async ({ page }) => {
-      await page.goto(`${prefix}/events/2026-golf-tournament`)
+      await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
       await expect(page.locator('details summary').getByText(count).first()).toBeVisible()
     })
   }
@@ -94,13 +97,13 @@ test.describe('Sponsor benefits on a phone', () => {
 // Detail pages aren't in the spec audit's page sweep (SPEC_PAGES), so the
 // same no-sideways-scroll check runs here for them, in both languages.
 const WIDTHS = [1440, 1280, 768, 440, 375]
-const DETAIL_PAGES = ['/events/2025-golf-tournament', '/events/2026-golf-tournament', FIXTURE_EVENT, '/our-team/randy-lander']
+const DETAIL_PAGES = ['/events/2025-golf-tournament', '/events/2026-golf-tournament', FIXTURE_OPEN_EVENT, FIXTURE_CLOSED_EVENT, '/our-team/randy-lander']
 
 for (const path of DETAIL_PAGES) {
   for (const prefix of ['', '/es']) {
     test(`no sideways scroll on ${prefix}${path}, 375 to 1440 px`, async ({ page }) => {
-      const res = await page.goto(`${prefix}${path}`)
-      test.skip(res?.status() === 404, 'page not in this seed')
+      if (path.includes('/fixture-')) await gotoFixtureEvent(page, `${prefix}${path}`)
+      else expect((await page.goto(`${prefix}${path}`))?.status()).toBe(200)
       const problems: string[] = []
       for (const width of WIDTHS) {
         await page.setViewportSize({ width, height: 900 })

@@ -34,6 +34,11 @@ describe('webSite', () => {
   it("is published by the organization, in the page's language", () => {
     expect(webSite(site, 'es')).toMatchObject({ '@type': 'WebSite', url: 'https://www.victoriavenezuelafoundation.org/es', inLanguage: 'es-VE', publisher: { '@id': ORG_ID } })
   })
+
+  it('gives each language its own @id', () => {
+    expect(webSite(site, 'en')['@id']).toBe('https://www.victoriavenezuelafoundation.org/#website')
+    expect(webSite(site, 'es')['@id']).toBe('https://www.victoriavenezuelafoundation.org/es#website')
+  })
 })
 
 describe('organization references', () => {

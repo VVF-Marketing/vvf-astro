@@ -66,7 +66,8 @@
 ### D6. Registration helper
 - `registrationNotice(event)` in `src/lib/content/registration.ts` returns `'closed' | 'sold_out' | null`.
 - The event page reads it once to hide every purchase link (hero CTA, TicketCard buttons, SpecialOpportunities links) and to show the note in a `Card` (tone `sun`). No new component.
-- For CI, `SEED_FIXTURE_EVENTS=1` adds a made-up past-dated "closed" copy of an event. It follows `scripts/lib/fixture-children.mjs`, and the e2e job turns it on, so 7.8-2 runs.
+- For CI, `SEED_FIXTURE_EVENTS=1` adds two made-up copies of the upcoming event, dated 2099: one with registration closed, so 7.8-2 runs, and one with registration open, which the upcoming-event checks use so they don't break when the real event's date passes. It follows `scripts/lib/fixture-children.mjs`, and the e2e job turns it on. With the flag set, a missing fixture fails its test instead of skipping it.
+- With a notice, the hero's sponsor button is hidden too, since it leads to the packages, which have no buttons then.
 
 ### D7. Hero phone alt
 - An optional `mobileImageAlt` prop.

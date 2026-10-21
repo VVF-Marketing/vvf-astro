@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
+import { FIXTURE_OPEN_EVENT, gotoFixtureEvent } from './fixtures'
 
 const pageSeo = JSON.parse(readFileSync(new URL('../src/data/page-seo.json', import.meta.url), 'utf-8'))
 const SITE = 'https://www.victoriavenezuelafoundation.org'
@@ -42,7 +43,6 @@ for (const prefix of ['', '/es']) {
       ['/', ['NGO', 'WebSite']],
       ['/sponsor-a-child', ['FAQPage']],
       ['/ways-to-give', ['FAQPage']],
-      ['/events/2026-golf-tournament', ['Event', 'FAQPage']],
       ['/resources/how-to-sponsor-a-child-directly', ['Article', 'BreadcrumbList']],
       ['/resources/stories', ['BreadcrumbList']],
       ['/our-team/randy-lander', ['Person']],
@@ -51,6 +51,12 @@ for (const prefix of ['', '/es']) {
       await page.goto(`${prefix}${path}`)
       expect(await jsonLdTypes(page), path).toEqual(types)
     }
+  })
+
+  // A made-up upcoming event: the FAQ only shows before an event's date.
+  test(`${lang}: an upcoming event emits Event and FAQPage`, async ({ page }) => {
+    await gotoFixtureEvent(page, `${prefix}${FIXTURE_OPEN_EVENT}`)
+    expect(await jsonLdTypes(page)).toEqual(['Event', 'FAQPage'])
   })
 
   test(`${lang}: the FAQ structured data matches the questions on the page`, async ({ page }) => {
@@ -77,7 +83,7 @@ test('Spanish detail pages use the Spanish brand in their titles', async ({ page
   await page.goto('/es/our-team/randy-lander')
   await expect(page).toHaveTitle('Randy Lander | Nuestro equipo | Fundación Victoria Venezuela')
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /^Te presentamos a Randy Lander/)
-  await page.goto('/es/events/2026-golf-tournament')
+  await page.goto('/es/events/2025-golf-tournament')
   await expect(page).toHaveTitle(/\| Fundación Victoria Venezuela$/)
   await page.goto('/es/financials-and-transparency')
   await expect(page).toHaveTitle('Finanzas y transparencia | Fundación Victoria Venezuela')
@@ -86,7 +92,8 @@ test('Spanish detail pages use the Spanish brand in their titles', async ({ page
 test('llms.txt lists the key pages, the upcoming events and a Spanish section', async ({ request }) => {
   const text = await (await request.get('/llms.txt')).text()
   expect(text).toContain(`[Sponsor a Child](${SITE}/sponsor-a-child)`)
-  expect(text).toContain(`${SITE}/events/2026-golf-tournament`)
+  // Upcoming events with their page (in CI at least the made-up 2099 one).
+  expect(text).toMatch(new RegExp(`## Upcoming events\\n\\n- \\[.+\\]\\(${SITE}/events/[^)]+\\)`))
   expect(text).toContain('## Common questions')
   expect(text).toContain(`(${SITE}/es/sponsor-a-child)`)
 })

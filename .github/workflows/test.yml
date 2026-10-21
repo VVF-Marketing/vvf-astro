@@ -39,8 +39,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       # Child data is local-only (public repo), so the seed gets made-up
       # child profiles and the child pages are tested too
-      # (scripts/lib/fixture-children.mjs), plus a made-up event with closed
-      # registration for spec 7.8-2 (scripts/lib/fixture-events.mjs).
+      # (scripts/lib/fixture-children.mjs), plus made-up upcoming events with
+      # open and closed registration, so upcoming-event checks don't depend on
+      # a real event's date (scripts/lib/fixture-events.mjs).
       - run: npm run test:e2e
         env:
           SEED_FIXTURE_CHILDREN: '1'
