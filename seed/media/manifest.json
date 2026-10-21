@@ -1242,6 +1242,13 @@
     "sha256": "6285c8d487415e089c5aa93783d28f7a7c82ef392cdf651fbffe0ae179013b66",
     "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas"
   },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ace309d309e0c64ac34d496_6ace307ff836e79316cff738_VVF_Golf2026_CardPhoto_v1.jpeg": {
+    "path": "seed/media/events/6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 75394,
+    "sha256": "da350e880b282f9386ba4b516e55620e7e52f31ade30d2118696d0b1adf68919",
+    "alt": "Three golfers and a young boy standing by the flag on the green."
+  },
   "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af3e21aff4651421d5e_6ad10a80733e510d569b95b0_VVF_Golf2025_0J1A2701_v2.webp": {
     "path": "seed/media/events/bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
     "contentType": "image/webp",

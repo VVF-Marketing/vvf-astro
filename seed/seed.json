@@ -2597,6 +2597,12 @@
           "translatable": false
         },
         {
+          "slug": "card_photo",
+          "label": "Card photo for event lists (subject centered; empty uses the hero photos)",
+          "type": "image",
+          "translatable": false
+        },
+        {
           "slug": "share_image",
           "label": "Share image (1200 × 630; empty uses the hero photo)",
           "type": "image",
@@ -20236,14 +20242,46 @@
         }
       },
       {
+        "id": "copy_site--event.benefitsCount",
+        "status": "published",
+        "data": {
+          "key": "event.benefitsCount",
+          "label": "Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "title": "110 · Content · Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "section": "content",
+          "position": 110,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "{included} of {total} benefits"
+        }
+      },
+      {
+        "id": "copy_site--event.benefitsCount--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_site--event.benefitsCount",
+        "data": {
+          "key": "event.benefitsCount",
+          "label": "Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "title": "110 · Content · Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "section": "content",
+          "position": 110,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "{included} de {total} beneficios"
+        }
+      },
+      {
         "id": "copy_site--gift.amountLabel",
         "status": "published",
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "110 · Content · Gift amounts name (screen readers)",
+          "title": "111 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "stale": false,
           "value": "Gift amount"
@@ -20257,9 +20295,9 @@
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "110 · Content · Gift amounts name (screen readers)",
+          "title": "111 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "stale": false
         }
@@ -20270,9 +20308,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "111 · Content · Gift amounts: other amount",
+          "title": "112 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20287,9 +20325,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "111 · Content · Gift amounts: other amount",
+          "title": "112 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20302,9 +20340,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "112 · Content · Gift amounts: continue button (default)",
+          "title": "113 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20319,9 +20357,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "112 · Content · Gift amounts: continue button (default)",
+          "title": "113 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20334,9 +20372,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "113 · Content · Earthquake appeal: text",
+          "title": "114 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20351,9 +20389,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "113 · Content · Earthquake appeal: text",
+          "title": "114 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20366,9 +20404,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "114 · Content · Earthquake appeal: render description",
+          "title": "115 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20383,9 +20421,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "114 · Content · Earthquake appeal: render description",
+          "title": "115 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20398,9 +20436,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "116 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20415,9 +20453,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "116 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20430,9 +20468,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "116 · Content · Earthquake appeal: cards heading",
+          "title": "117 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20447,9 +20485,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "116 · Content · Earthquake appeal: cards heading",
+          "title": "117 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20462,9 +20500,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "117 · Content · Earthquake appeal: card 1 title",
+          "title": "118 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20479,9 +20517,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "117 · Content · Earthquake appeal: card 1 title",
+          "title": "118 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20494,9 +20532,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "118 · Content · Earthquake appeal: card 1 text",
+          "title": "119 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20511,9 +20549,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "118 · Content · Earthquake appeal: card 1 text",
+          "title": "119 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20526,9 +20564,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "119 · Content · Earthquake appeal: card 1 image description",
+          "title": "120 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20543,9 +20581,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "119 · Content · Earthquake appeal: card 1 image description",
+          "title": "120 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20558,9 +20596,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "120 · Content · Earthquake appeal: card 2 title",
+          "title": "121 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20575,9 +20613,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "120 · Content · Earthquake appeal: card 2 title",
+          "title": "121 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20590,9 +20628,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "121 · Content · Earthquake appeal: card 2 text",
+          "title": "122 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20607,9 +20645,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "121 · Content · Earthquake appeal: card 2 text",
+          "title": "122 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20622,9 +20660,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "122 · Content · Earthquake appeal: card 2 image description",
+          "title": "123 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20639,9 +20677,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "122 · Content · Earthquake appeal: card 2 image description",
+          "title": "123 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20654,9 +20692,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "123 · Content · Earthquake appeal: card 3 title",
+          "title": "124 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20671,9 +20709,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "123 · Content · Earthquake appeal: card 3 title",
+          "title": "124 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20686,9 +20724,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "124 · Content · Earthquake appeal: card 3 text",
+          "title": "125 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20703,9 +20741,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "124 · Content · Earthquake appeal: card 3 text",
+          "title": "125 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20718,9 +20756,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "125 · Content · Earthquake appeal: card 3 image description",
+          "title": "126 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20735,9 +20773,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "125 · Content · Earthquake appeal: card 3 image description",
+          "title": "126 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20750,9 +20788,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "126 · Content · Earthquake appeal: give button",
+          "title": "127 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20767,9 +20805,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "126 · Content · Earthquake appeal: give button",
+          "title": "127 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20782,9 +20820,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "127 · Content · Earthquake appeal: learn more button",
+          "title": "128 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20799,9 +20837,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "127 · Content · Earthquake appeal: learn more button",
+          "title": "128 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20814,9 +20852,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "128 · Content · Not Found page: heading and title",
+          "title": "129 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20831,9 +20869,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "128 · Content · Not Found page: heading and title",
+          "title": "129 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20846,9 +20884,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "129 · Content · Pagination: previous page",
+          "title": "130 · Content · Pagination: previous page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20863,9 +20901,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "129 · Content · Pagination: previous page",
+          "title": "130 · Content · Pagination: previous page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20878,9 +20916,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "130 · Content · Pagination: next page",
+          "title": "131 · Content · Pagination: next page",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20895,9 +20933,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "130 · Content · Pagination: next page",
+          "title": "131 · Content · Pagination: next page",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20910,9 +20948,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "132 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20927,9 +20965,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "132 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20942,9 +20980,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "132 · Content · Pagination name (screen readers)",
+          "title": "133 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false,
           "value": "Pages"
@@ -20958,9 +20996,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "132 · Content · Pagination name (screen readers)",
+          "title": "133 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false,
           "value": "Páginas"
@@ -20972,9 +21010,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "133 · Content · Breadcrumb name (screen readers)",
+          "title": "134 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false,
           "value": "Breadcrumb"
@@ -20988,9 +21026,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "133 · Content · Breadcrumb name (screen readers)",
+          "title": "134 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false
         }
@@ -21001,9 +21039,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "134 · Content · Gallery: previous button (screen readers)",
+          "title": "135 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false,
           "value": "Previous photos"
@@ -21017,9 +21055,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "134 · Content · Gallery: previous button (screen readers)",
+          "title": "135 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false
         }
@@ -21030,9 +21068,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "135 · Content · Gallery: next button (screen readers)",
+          "title": "136 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false,
           "value": "Next photos"
@@ -21046,9 +21084,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "135 · Content · Gallery: next button (screen readers)",
+          "title": "136 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false
         }
@@ -21059,9 +21097,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "136 · Content · Logo carousel: previous button (screen readers)",
+          "title": "137 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false,
           "value": "Previous logos"
@@ -21075,9 +21113,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "136 · Content · Logo carousel: previous button (screen readers)",
+          "title": "137 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false
         }
@@ -21088,9 +21126,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "137 · Content · Logo carousel: next button (screen readers)",
+          "title": "138 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false,
           "value": "Next logos"
@@ -21104,9 +21142,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "137 · Content · Logo carousel: next button (screen readers)",
+          "title": "138 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false
         }
@@ -21117,9 +21155,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "138 · Content · Stories carousel: previous button (screen readers)",
+          "title": "139 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false,
           "value": "Previous story"
@@ -21133,9 +21171,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "138 · Content · Stories carousel: previous button (screen readers)",
+          "title": "139 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false
         }
@@ -21146,9 +21184,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "139 · Content · Stories carousel: next button (screen readers)",
+          "title": "140 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false,
           "value": "Next story"
@@ -21162,9 +21200,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "139 · Content · Stories carousel: next button (screen readers)",
+          "title": "140 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false
         }
@@ -21175,9 +21213,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "141 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Show item {n}"
@@ -21191,9 +21229,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "141 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Mostrar elemento {n}"
@@ -21205,9 +21243,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "142 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "stale": false,
           "value": "Show photo {n}"
@@ -21221,9 +21259,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "142 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "stale": false,
           "value": "Mostrar foto {n}"
@@ -21235,9 +21273,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "142 · Content · Added to every link to another website (screen readers)",
+          "title": "143 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 142,
+          "position": 143,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -21252,9 +21290,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "142 · Content · Added to every link to another website (screen readers)",
+          "title": "143 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 142,
+          "position": 143,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -35727,6 +35765,18 @@
               "storageKey": "0HC7W0TS1KVVXHXW1PJS6ZWC41.webp"
             }
           },
+          "card_photo": {
+            "provider": "local",
+            "id": "6ARK2XYQAGZMVTA193AJ596GC4",
+            "alt": "Three golfers and a young boy standing by the flag on the green.",
+            "width": 756,
+            "height": 627,
+            "mimeType": "image/jpeg",
+            "filename": "6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+            "meta": {
+              "storageKey": "6ARK2XYQAGZMVTA193AJ596GC4.jpeg"
+            }
+          },
           "share_image": {
             "provider": "local",
             "id": "1N8AKMJDNTBX8ZBRWGQ2JB9TRX",
@@ -36503,6 +36553,18 @@
             "filename": "bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
             "meta": {
               "storageKey": "0HC7W0TS1KVVXHXW1PJS6ZWC41.webp"
+            }
+          },
+          "card_photo": {
+            "provider": "local",
+            "id": "6ARK2XYQAGZMVTA193AJ596GC4",
+            "alt": "Three golfers and a young boy standing by the flag on the green.",
+            "width": 756,
+            "height": 627,
+            "mimeType": "image/jpeg",
+            "filename": "6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+            "meta": {
+              "storageKey": "6ARK2XYQAGZMVTA193AJ596GC4.jpeg"
             }
           },
           "share_image": {

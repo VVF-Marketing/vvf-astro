@@ -247,6 +247,8 @@ Run: 2026-10-21, read-only, through the Webflow CMS API (the live domain and its
 
 - The 2026 event's new desktop hero (`VVF_Golf2026_HeroDesktop_v2`) and phone hero (`VVF_Golf2025_0J1A2701_v2`), from the CMS item, harvested from Webflow's S3 bucket (`migrate:harvest` falls back to it when `cdn.prod.website-files.com` is unreachable).
 
-Not merged: the card photo (`VVF_Golf2026_CardPhoto_v1`), which has no field in the content model (the listing card uses the hero photo), and the gallery's four re-edited photos (the 2026 page shows the memories mosaic, not its gallery). The memories mosaic uses the page's own five "Memories" photos (they were already harvested).
+- The 2026 event's card photo (`VVF_Golf2026_CardPhoto_v1`, CMS field `card-photo`, en/es alts) as `cardPhoto`, for the new event `card_photo` field (design D12; Enrique: it was cropped so the players are centered). `migrate:extract` reads it from the API like the long description. The 2025 event has no card photo on Webflow.
+
+Not merged: the gallery's four re-edited photos (the 2026 page shows the memories mosaic, not its gallery). The memories mosaic uses the page's own five "Memories" photos (they were already harvested).
 
 Live Spanish shows the closed / sold-out registration notes and the Our Team hero photo descriptions in English; the build has Spanish for them (`MANUAL_TRANSLATIONS`).

@@ -140,6 +140,7 @@ export default defineCopy(GLOBAL_ROUTE, {
   'event.benefitsTable': { label: 'Benefits table name (screen readers)', default: 'Sponsorship benefits by package' },
   'event.benefitsHeader': { label: 'Benefits table: first column heading', default: 'Sponsorship\nBenefits', maxLength: 40 },
   'event.included': { label: 'Benefits table: included mark (screen readers)', default: 'Included' },
+  'event.benefitsCount': { label: 'Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)', default: '{included} of {total} benefits', maxLength: 40 },
 
   // Giving
   'gift.amountLabel': { label: 'Gift amounts name (screen readers)', default: 'Gift amount' },

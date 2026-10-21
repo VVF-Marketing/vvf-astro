@@ -268,6 +268,7 @@ export function toContentModel(content) {
         whats_included: d.includes ?? en.includes,
         hero_photo: en.hero_image ?? en.image,
         hero_photo_phone: en.hero_image_mobile,
+        card_photo: en.card_image,
         share_image: en.social_image,
         venue_name: d.venue ?? en.venue,
         venue_address: en.address ?? en.location,

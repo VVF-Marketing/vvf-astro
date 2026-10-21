@@ -129,6 +129,16 @@ describe('getEvents', () => {
     ])
   })
 
+  it('gives event lists the card photo when there is one, keeping the hero photo for the page', async () => {
+    getEmDashCollection.mockImplementation(async (collection: string) =>
+      collection === 'events'
+        ? { entries: [entry('golf-2026', { name: 'Golf', start: '2026-11-09', hero_photo: { src: '/hero.jpg' }, card_photo: { src: '/card.jpg' } })] }
+        : { entries: [] }
+    )
+    const [event] = await getEvents()
+    expect(event).toMatchObject({ cardImageUrl: '/card.jpg', imageUrl: '/hero.jpg', heroImageUrl: '/hero.jpg' })
+  })
+
   it('drops a ref id that resolves to no entry instead of throwing', async () => {
     getEmDashCollection.mockResolvedValue({
       entries: [entry('e1', { name: 'E', start: '2026-01-01', sponsors: ['missing'] })],

@@ -26,10 +26,9 @@
 - Make the comparison with live repeatable (`migrate:drift`).
 
 **Non-Goals:**
-- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These go to Enrique.
+- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These went to Enrique (answers in `tasks.md` 4.5): the cards, the headings and the caption stay as built; "Previous editions" and the home hero subtext are still open.
 - Empty live sections ("Thank you, donors", "What they said"); 7.8-4 hides them.
 - Rendering the 2026 long description as a new page section. No spec row or live evidence places it, so it is stored only as the event's rich description.
-- The 2026 card photo: the content model has no card-photo field, and the listing card uses the hero photo.
 
 ## Decisions
 
@@ -99,6 +98,12 @@
 ## Open Questions
 
 - Whether the live page now renders the long description can only be confirmed once `www.victoriavenezuelafoundation.org` is allowed.
+
+### D12. Card photo field
+- Webflow keeps a separate card photo for event lists, cropped so the players are centered (Enrique). The hero photo puts its subject on the left for the hero text.
+- The event gains an optional `card_photo` image. `extract.mjs` reads the CMS `card-photo` field with the long description (`withEventApiFields`): the API wins, an empty API value clears it, and a token-less run keeps the snapshot's.
+- `EventCard` and the archive cards use it at every width, with no phone `<source>`, because the crop already suits both. Without it, the cards keep the hero photos. The event page and the JSON-LD keep using the hero.
+- Only the 2026 event has one on Webflow.
 
 ### D11. Asset downloads fall back to Webflow's S3 bucket
 - Webflow serves each CDN file (`cdn.prod.website-files.com/<path>`) from `s3.amazonaws.com/webflow-prod-assets/<path>` too.

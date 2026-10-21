@@ -1522,6 +1522,7 @@
     "child.carouselPrev": "Niños anteriores",
     "child.carouselLabel": "Más niños",
     "event.soldTab": "(AGOTADO)",
+    "event.benefitsCount": "{included} de {total} beneficios",
     "a11y.photoDot": "Mostrar foto {n}",
     "resources.breadcrumb": "Recursos",
     "card.readOnOutlet": "Leer en {outlet} ↗",

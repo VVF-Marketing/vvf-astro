@@ -42,3 +42,10 @@ Team profiles, event pages and resource pages SHALL use Spanish titles and descr
 #### Scenario: Spanish team profile title
 - **WHEN** `/es/our-team/randy-lander` is rendered
 - **THEN** its `<title>` ends with "| Nuestro equipo | Fundación Victoria Venezuela"
+
+### Requirement: Benefits count in the page's language
+On phones, each sponsor package in the benefits list SHALL say how many benefits it includes in the page's language, from a site-wide copy slot.
+
+#### Scenario: Spanish benefits count
+- **WHEN** `/es/events/2026-golf-tournament` is rendered at 390 px
+- **THEN** each package reads "N de M beneficios", with no English text

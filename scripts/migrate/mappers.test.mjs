@@ -302,6 +302,17 @@ describe('event long description and recap captions', () => {
     expect(data.description[1]).toMatchObject({ listItem: 'bullet' })
     expect(seedFor(event()).description[0].children[0].text).toBe('A look back.')
   })
+
+  it('keeps the CMS card photo, and leaves it out when the event has none', () => {
+    const src = 'https://cdn.prod.website-files.com/x/card.jpeg'
+    const withPhoto = buildSeeds({
+      snapshots: { team_members: { sections: [], members: {} }, children: { order: [], items: [] }, events: [event({ cardPhoto: { src, alt: 'Golfers on the green.' } })], corporate_tiers: [], faqs: {}, resources: [] },
+      mediaMap: { [src]: { provider: 'local', id: 'card', alt: 'Golfers on the green.' } },
+      currentSeed: { version: '1', content: {} },
+    }).full.content.events[0].data
+    expect(withPhoto.card_photo).toMatchObject({ id: 'card', alt: 'Golfers on the green.' })
+    expect(seedFor(event())).not.toHaveProperty('card_photo')
+  })
 })
 
 describe('buildSeeds', () => {

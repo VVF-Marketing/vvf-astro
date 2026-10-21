@@ -38,6 +38,7 @@ export const MODEL_COLLECTIONS = [
       { slug: 'whats_included', label: "What's included", type: 'portableText' },
       { slug: 'hero_photo', label: 'Hero photo (subject on the left)', type: 'image', required: true, ...shared },
       { slug: 'hero_photo_phone', label: 'Hero photo for phones', type: 'image', ...shared },
+      { slug: 'card_photo', label: 'Card photo for event lists (subject centered; empty uses the hero photos)', type: 'image', ...shared },
       { slug: 'share_image', label: 'Share image (1200 × 630; empty uses the hero photo)', type: 'image', ...shared },
       { slug: 'venue_name', label: 'Venue name', type: 'string' },
       { slug: 'venue_address', label: 'Venue address', type: 'string', required: true, ...shared },

@@ -319,6 +319,7 @@ async function toEvent(e: LocalizedEntry, locale: Locale): Promise<EventItem> {
       heroBody: past ? d.recap_summary || d.summary : d.summary,
       heroImageUrl: resolveImage(d.hero_photo) ?? EVENT_FALLBACK_PHOTO,
       heroImageMobileUrl: resolveImage(d.hero_photo_phone),
+      cardImageUrl: resolveImage(d.card_photo),
       venue: d.venue_name || undefined,
       address,
       mapUrl: address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : undefined,

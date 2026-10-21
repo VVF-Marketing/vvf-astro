@@ -184,6 +184,8 @@ export function mapEvents(events, ctx) {
         hero_body: e.heroBody,
         hero_image: ctx.media(...imageOf(e.heroImage)),
         hero_image_mobile: ctx.media(...imageOf(e.heroImageMobile)),
+        // From the Webflow CMS: a crop for event lists, subject centered.
+        card_image: ctx.media(...imageOf(e.cardPhoto)),
         venue: e.venue,
         address: e.address,
         map_url: e.mapUrl,

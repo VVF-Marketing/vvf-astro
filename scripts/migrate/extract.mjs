@@ -97,15 +97,18 @@ async function dumpApi(creds, report) {
   return eventItems
 }
 
-// Each event's long description (`descriptionHtml`): from the Webflow API when
-// it was read, otherwise the value already in the snapshot, so a scrape
-// without a token never drops it.
-export function withEventDescriptions(events, apiItems, previous = []) {
+// Event fields only the Webflow CMS has: the long description
+// (`descriptionHtml`) and the photo for event lists (`cardPhoto`). Each comes
+// from the API when it was read, otherwise from the value already in the
+// snapshot, so a scrape without a token never drops it.
+export function withEventApiFields(events, apiItems, previous = []) {
   return events.map((e) => {
-    const fromApi = apiItems?.find((i) => i.fieldData?.slug === e.slug)?.fieldData?.description
-    const kept = previous.find((p) => p.slug === e.slug)?.descriptionHtml
-    const descriptionHtml = fromApi ?? kept
-    return descriptionHtml ? { ...e, descriptionHtml } : e
+    const api = apiItems?.find((i) => i.fieldData?.slug === e.slug)?.fieldData
+    const kept = previous.find((p) => p.slug === e.slug)
+    const photo = api?.['card-photo']
+    const descriptionHtml = api?.description ?? kept?.descriptionHtml
+    const cardPhoto = photo?.url ? { src: photo.url, alt: photo.alt ?? undefined } : api ? undefined : kept?.cardPhoto
+    return { ...e, ...(descriptionHtml && { descriptionHtml }), ...(cardPhoto && { cardPhoto }) }
   })
 }
 
@@ -180,7 +183,7 @@ async function extractLocale(locale, sitemapUrls, report, apiEvents) {
     // that aren't CMS fields; keep their outline for page recomposition.
     pageSnapshots[`events__${slug}`] = { path: new URL(url).pathname, ...parsePage(html) }
   }
-  snap('events', withEventDescriptions(events, apiEvents, readSnapshot(locale === 'en' ? 'events' : `${locale}/events`)))
+  snap('events', withEventApiFields(events, apiEvents, readSnapshot(locale === 'en' ? 'events' : `${locale}/events`)))
 
   // Page snapshots are committed (public repo): strip every child name and
   // photo before writing them.

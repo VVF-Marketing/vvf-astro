@@ -47,6 +47,8 @@ export interface EventItem extends Localized {
   heroBody?: string
   heroImageUrl?: string
   heroImageMobileUrl?: string
+  /** The photo for event lists, cropped with the subject centered. */
+  cardImageUrl?: string
   venue?: string
   address?: string
   mapUrl?: string

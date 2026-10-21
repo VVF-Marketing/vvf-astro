@@ -21,7 +21,7 @@ Basecamp card: _to be added_ (no card yet).
 - **Offer descriptions.** Webflow keeps some offers' text in the offer's "Includes" field as a paragraph rather than a list (the physical therapy lounge: "Help golfers warm up…"). Extraction drops it today. It is now kept, and shown on the offer's card or tab.
 - **"Memories" photos.** The upcoming 2026 event shows the five photos the live page uses, with their alt text.
 - **Phone hero alt text.** The hero can describe its phone image separately. Our Team uses this.
-- **2026 event refresh.** The long description added on Webflow on 2026-10-15 (English and Spanish) goes into the event's rich description field. The new desktop and phone hero photos come from the CMS item: the harvest downloads them from Webflow's S3 bucket when the CDN is blocked. The new card photo has no field in the content model, and the gallery's re-edited photos aren't shown on the 2026 page, so neither is brought in.
+- **2026 event refresh.** The long description added on Webflow on 2026-10-15 (English and Spanish) goes into the event's rich description field. The new desktop and phone hero photos come from the CMS item: the harvest downloads them from Webflow's S3 bucket when the CDN is blocked. The new card photo comes in through a new optional event field (below). The gallery's re-edited photos aren't shown on the 2026 page, so they aren't brought in.
 - **SEO and AEO:**
   - Spanish titles and descriptions for team profiles, event and resource fallbacks, and Financials & Transparency;
   - new JSON-LD: FAQPage, BreadcrumbList, Person and WebSite, plus a richer NGO block with a DonateAction, linked by `@id`;
@@ -29,14 +29,16 @@ Basecamp card: _to be added_ (no card yet).
   - alt text on event card photos;
   - `llms.txt` generated from content, with a Spanish section;
   - `lastmod` in the sitemap.
+- **Card photo.** Events get an optional card photo for event lists (Enrique: the crop centers the players). The 2026 tournament's comes from the CMS.
+- **Spanish benefits count.** The phone benefits list said "N of M benefits" in English on Spanish pages; it now reads "N de M beneficios".
 - **Drift check.** `npm run migrate:drift` lists live strings (text, alt text, SEO) that the build doesn't contain, so the comparison can be re-run.
 - **Mobile.** Event detail pages and team profiles join the 375–1440 px no-sideways-scroll sweep.
-- **Not built; questions for Enrique:**
-  - the contact page's four "ways to reach us" cards and its "Get Involved" button;
-  - the Events page headings;
-  - the "Previous editions" recap section;
-  - the home hero subtext;
-  - the La Guaira caption wording.
+- **Not built; asked Enrique** (answers in `tasks.md` 4.5):
+  - the contact page's four "ways to reach us" cards and its "Get Involved" button: left out;
+  - the Events page headings: kept as built;
+  - the "Previous editions" recap section: still open;
+  - the home hero subtext: still open;
+  - the La Guaira caption wording: kept as built.
 - **Skipped:** the empty "Thank you, donors" and "What they said" sections (spec 7.8-4 hides empty sections).
 
 ## Capabilities
@@ -70,5 +72,5 @@ Basecamp card: _to be added_ (no card yet).
   - e2e checks in English and Spanish;
   - a layout sweep for detail pages;
   - a seed fixture with a closed event.
-- **CMS schema:** one new optional sub-field, `caption`, in the event `stats` repeater. Existing databases pick it up through `scripts/cms-schema.mjs`.
+- **CMS schema:** one new optional sub-field, `caption`, in the event `stats` repeater, and one new optional event field, `card_photo`. Existing databases pick it up through `scripts/cms-schema.mjs`.
 - **External:** read-only Webflow API access. Asset files come from Webflow's S3 bucket (`s3.amazonaws.com/webflow-prod-assets`), which is reachable. A full re-scrape of page text needs `www.victoriavenezuelafoundation.org` allowed in the environment.

@@ -38,6 +38,13 @@ for (const [lang, prefix] of [
     await expect(page.locator('main a[href*="donorbox.org/events"]')).toHaveCount(0)
   })
 
+  test(`${lang}: the 2026 card in event lists uses its card photo at every width`, async ({ page }) => {
+    await page.goto(`${prefix}/events-and-campaigns`)
+    const card = page.locator('a[href$="/events/2026-golf-tournament"]', { has: page.locator('img') }).first()
+    await expect(card.locator('img')).toHaveAttribute('src', /cardphoto/)
+    await expect(card.locator('source')).toHaveCount(0)
+  })
+
   test(`${lang}: open registration keeps the purchase links and shows no note`, async ({ page }) => {
     await page.goto(`${prefix}/events/2026-golf-tournament`)
     await expect(page.locator('main a[href*="donorbox.org/events"]').first()).toBeAttached()
@@ -58,6 +65,20 @@ test.describe('Our Team hero on a phone', () => {
     await expect(page.locator('img[src*="ourpeople-hero-desktop"]')).toBeHidden()
     expect(requested.some((u) => u.includes('ourpeople-hero-desktop'))).toBe(false)
   })
+})
+
+test.describe('Sponsor benefits on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 } })
+
+  for (const [lang, prefix, count] of [
+    ['en', '', /^\d+ of \d+ benefits$/],
+    ['es', '/es', /^\d+ de \d+ beneficios$/],
+  ] as const) {
+    test(`${lang}: each package says how many benefits it includes, in the page's language`, async ({ page }) => {
+      await page.goto(`${prefix}/events/2026-golf-tournament`)
+      await expect(page.locator('details summary').getByText(count).first()).toBeVisible()
+    })
+  }
 })
 
 // Detail pages aren't in the spec audit's page sweep (SPEC_PAGES), so the

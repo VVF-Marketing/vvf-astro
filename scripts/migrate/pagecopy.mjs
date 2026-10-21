@@ -184,6 +184,7 @@ export const MANUAL_TRANSLATIONS = {
     'child.carouselPrev': 'Niños anteriores',
     'child.carouselLabel': 'Más niños',
     'event.soldTab': '(AGOTADO)',
+    'event.benefitsCount': '{included} de {total} beneficios',
     'notFound.heading': 'Página no encontrada',
     // Forms (spec 8.4): the live Spanish success and error messages, and the
     // validation messages in the page's language.

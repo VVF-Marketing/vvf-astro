@@ -22,6 +22,18 @@ export const Upcoming = {
   },
 }
 
+// A card photo, cropped with the players centered, replaces the hero
+// photos at every width.
+export const CardPhoto = {
+  args: {
+    event: {
+      ...Upcoming.args.event,
+      heroImageMobileUrl: '/seed-media/events/bd83b6bf-vvf-golf2025-0j1a2701-v2.webp',
+      cardImageUrl: '/seed-media/events/6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg',
+    } satisfies EventItem,
+  },
+}
+
 export const Past = {
   args: {
     event: {

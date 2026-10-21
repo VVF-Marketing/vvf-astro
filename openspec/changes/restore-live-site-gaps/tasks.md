@@ -31,6 +31,12 @@
   - Storybook story;
   - e2e check of the phone alt text and of no desktop download at 390 px.
 - [x] 2.7 2026 hero photos: the snapshot points at the new desktop and phone photos from the CMS item. `migrate:harvest` downloads them via the S3 fallback, and keeps project-only images when it cleans up. Unit tests in `harvest.test.mjs`.
+- [x] 2.8 Card photo (answer 6 below):
+  - optional event `card_photo` field;
+  - `extract.mjs` reads the CMS `card-photo` (`withEventApiFields`), mappers and model carry it;
+  - `EventCard` and archive cards use it at every width;
+  - the 2026 snapshot gets the CMS photo, harvested via S3;
+  - unit tests, a Storybook story, and e2e in both languages.
 - [x] 2.6 Regenerate `seed/seed.json` and `seed/page-copy.es.json` with the repo's tooling, and confirm the new values appear.
 
 ## 3. SEO / AEO
@@ -68,4 +74,12 @@
 - [x] 4.2 `npm run test:unit` passes.
 - [x] 4.3 Seed, build and `npx playwright test` pass, including the conformant spec-audit set.
 - [x] 4.4 `npm run test:storybook` passes.
-- [ ] 4.5 Draft the Enrique questions (items removed by the spec pass) for the user to send. Record the answers here when they come back.
+- [x] 4.5 Draft the Enrique questions (items removed by the spec pass) for the user to send. Record the answers here when they come back. Answers, 2026-10-21:
+  1. Contact "ways to reach us" cards: leave them out. They took a lot of space for little gain, and the form's topic dropdown covers them.
+  2. Events page headings: he doesn't see the 2026-10-04 headings on live today. Keep the build's.
+  3. "Previous editions": unclear to him. Re-asked with a clearer description; still open.
+  4. Home hero subtext: live hides it on desktop, so he doesn't see it. The build shows it. Re-asked whether to show it; still open.
+  5. La Guaira caption wording: he doesn't see a difference. Keep the build's.
+  6. Card photo: it was cropped so the players are centered. Built (2.8).
+  7. "N of M benefits": live is right ("19 de 19 beneficios"); the English text was the build's. Fixed (4.6).
+- [x] 4.6 Phone benefits list: the count ("{included} of {total} benefits") is a site copy slot, `event.benefitsCount`, with Spanish "{included} de {total} beneficios". e2e at 390 px in both languages.
