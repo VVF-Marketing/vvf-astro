@@ -21,7 +21,7 @@ Basecamp card: _to be added_ (no card yet).
 - **Offer descriptions.** Webflow keeps some offers' text in the offer's "Includes" field as a paragraph rather than a list (the physical therapy lounge: "Help golfers warm up…"). Extraction drops it today. It is now kept, and shown on the offer's card or tab.
 - **"Memories" photos.** The upcoming 2026 event shows the five photos the live page uses, with their alt text.
 - **Phone hero alt text.** The hero can describe its phone image separately. Our Team uses this.
-- **2026 event refresh.** The long description added on Webflow on 2026-10-15 (English and Spanish) goes into the event's rich description field. The four new image files (desktop hero, phone hero, card photo, re-edited gallery photos) stay listed as blocked until the Webflow CDN is reachable.
+- **2026 event refresh.** The long description added on Webflow on 2026-10-15 (English and Spanish) goes into the event's rich description field. The new desktop and phone hero photos come from the CMS item: the harvest downloads them from Webflow's S3 bucket when the CDN is blocked. The new card photo has no field in the content model, and the gallery's re-edited photos aren't shown on the 2026 page, so neither is brought in.
 - **SEO and AEO:**
   - Spanish titles and descriptions for team profiles, event and resource fallbacks, and Financials & Transparency;
   - new JSON-LD: FAQPage, BreadcrumbList, Person and WebSite, plus a richer NGO block with a DonateAction, linked by `@id`;
@@ -71,4 +71,4 @@ Basecamp card: _to be added_ (no card yet).
   - a layout sweep for detail pages;
   - a seed fixture with a closed event.
 - **CMS schema:** one new optional sub-field, `caption`, in the event `stats` repeater. Existing databases pick it up through `scripts/cms-schema.mjs`.
-- **External:** read-only Webflow API access. The new 2026 images, and a full re-scrape of page text, need `www.victoriavenezuelafoundation.org` and `cdn.prod.website-files.com` allowed in the environment.
+- **External:** read-only Webflow API access. Asset files come from Webflow's S3 bucket (`s3.amazonaws.com/webflow-prod-assets`), which is reachable. A full re-scrape of page text needs `www.victoriavenezuelafoundation.org` allowed in the environment.

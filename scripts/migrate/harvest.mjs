@@ -98,10 +98,33 @@ function readSnapshots() {
   }
 }
 
+// Webflow serves the same files from its S3 bucket as from its CDN. Used
+// when the CDN can't be reached (a network that allows one host and not the
+// other); the file is stored under its CDN URL either way.
+export function s3Mirror(url) {
+  const m = /^https:\/\/cdn\.prod\.website-files\.com\/(.+)$/.exec(url)
+  return m ? `https://s3.amazonaws.com/webflow-prod-assets/${m[1]}` : undefined
+}
+
+async function fetchAsset(url, fetchImpl) {
+  let failure
+  try {
+    const res = await fetchImpl(url)
+    if (res.ok) return res
+    failure = new Error(`HTTP ${res.status}`)
+  } catch (err) {
+    failure = err
+  }
+  const mirror = s3Mirror(url)
+  if (!mirror) throw failure
+  const res = await fetchImpl(mirror)
+  if (!res.ok) throw new Error(`HTTP ${res.status} (CDN and S3 mirror)`)
+  return res
+}
+
 // Downloads one asset; returns the manifest entry or throws.
 export async function download(url, destDir, { fetchImpl = fetchWithRetry, root = ROOT_DIR } = {}) {
-  const res = await fetchImpl(url)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  const res = await fetchAsset(url, fetchImpl)
   const bytes = Buffer.from(await res.arrayBuffer())
   const rel = path.join(destDir, localFileName(url))
   mkdirSync(path.join(root, destDir), { recursive: true })
@@ -219,7 +242,15 @@ export async function harvest() {
   const plan = planAssets(readSnapshots())
   const result = await harvestPlan(plan, manifests)
 
-  const chrome = await harvestChrome(report)
+  // Site chrome is read from the live home page; when only the asset hosts
+  // are reachable, the existing list is kept rather than failing the run.
+  let chrome
+  try {
+    chrome = await harvestChrome(report)
+  } catch (err) {
+    chrome = readJson(path.join(MEDIA_DIR, 'site-chrome.json'), {})
+    report.line(`- Site chrome: live site unreachable (${err.message}); kept \`seed/media/site-chrome.json\`.`)
+  }
   const pruned = pruneUnreferenced(plan, manifests)
   mkdirSync(path.dirname(CHILD_MANIFEST_PATH), { recursive: true })
   writeFileSync(MANIFEST_PATH, `${JSON.stringify(sortKeys(manifests.main), null, 2)}\n`)
@@ -239,12 +270,17 @@ export async function harvest() {
 }
 
 // Deletes downloaded files (and manifest entries) the current plan no longer
-// references, e.g. an asset that moved from page imagery to CMS media.
+// references, e.g. an asset that moved from page imagery to CMS media. Only
+// files the harvest downloaded (listed in a manifest) are removed: images
+// added by hand for project-only pages (Our Programs, Financials) share
+// public/images/pages and stay.
 const MANAGED_DIRS = ['public/images/pages', 'seed/media/team_members', 'seed/media/events', 'seed/media/resources', 'seed/media/sponsors', 'seed/media/children']
 
-function pruneUnreferenced(plan, manifests) {
+export function pruneUnreferenced(plan, manifests, root = ROOT_DIR) {
   const keep = new Set()
-  for (const [url, entries] of [...Object.entries(manifests.main), ...Object.entries(manifests.children)].map(([u, e]) => [u, e])) {
+  const harvested = new Set()
+  for (const [url, entries] of [...Object.entries(manifests.main), ...Object.entries(manifests.children)]) {
+    harvested.add(entries.path)
     if (plan.has(url) && entries.path.startsWith(`${plan.get(url).dir}/`)) keep.add(entries.path)
   }
   for (const m of Object.values(manifests)) {
@@ -252,11 +288,11 @@ function pruneUnreferenced(plan, manifests) {
   }
   let removed = 0
   for (const dir of MANAGED_DIRS) {
-    const abs = path.join(ROOT_DIR, dir)
+    const abs = path.join(root, dir)
     if (!existsSync(abs)) continue
     for (const file of readdirSync(abs)) {
       const rel = `${dir}/${file}`
-      if (file === 'manifest.json' || keep.has(rel)) continue
+      if (!harvested.has(rel) || keep.has(rel)) continue
       rmSync(path.join(abs, file))
       removed++
     }

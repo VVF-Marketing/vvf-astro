@@ -45,6 +45,11 @@ source of the normalized snapshot; the API is the cross-check.
 
 ## Re-running the migration
 
+Assets download from Webflow's CDN, or from the same files in Webflow's
+S3 bucket when the CDN host is blocked. The harvest's cleanup removes only
+files it downloaded itself, never images added by hand to
+`public/images/pages`.
+
 Event long descriptions aren't on the event pages: with a token the
 extractor takes them from the Webflow API, and without one it keeps the
 values already in `snapshot/events.json`.

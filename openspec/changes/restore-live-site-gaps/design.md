@@ -9,7 +9,7 @@
   - paragraph-only offer text (`parse.mjs` reads includes as list items only);
   - the 2026 memories photos (the event `gallery` feeds the mosaic instead).
 - **Half-built spec rule.** `event.registration` is never read by the page, so spec 7.8-2 only passes because its test skips: no seeded event is closed.
-- **Network limits in this environment.** The live domain and `cdn.prod.website-files.com` are blocked, so pages can't be re-scraped and new image files can't be downloaded here.
+- **Network limits in this environment.** The live domain and `cdn.prod.website-files.com` are blocked, so pages can't be re-scraped. Webflow's S3 bucket serves the same asset files and is reachable.
 - **Rules every task follows:**
   - all visible text in `_copy.ts` slots (`copyLint`);
   - Spanish in both `MANUAL_TRANSLATIONS` and `seed/page-copy.es.json`;
@@ -29,7 +29,7 @@
 - Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These go to Enrique.
 - Empty live sections ("Thank you, donors", "What they said"); 7.8-4 hides them.
 - Rendering the 2026 long description as a new page section. No spec row or live evidence places it, so it is stored only as the event's rich description.
-- New image files that can't be downloaded here.
+- The 2026 card photo: the content model has no card-photo field, and the listing card uses the hero photo.
 
 ## Decisions
 
@@ -98,4 +98,10 @@
 
 ## Open Questions
 
-- The four new 2026 images, and whether the live page now renders the long description, can only be confirmed once `www.victoriavenezuelafoundation.org` and `cdn.prod.website-files.com` are allowed.
+- Whether the live page now renders the long description can only be confirmed once `www.victoriavenezuelafoundation.org` is allowed.
+
+### D11. Asset downloads fall back to Webflow's S3 bucket
+- Webflow serves each CDN file (`cdn.prod.website-files.com/<path>`) from `s3.amazonaws.com/webflow-prod-assets/<path>` too.
+- `harvest.mjs` tries the CDN first and falls back to S3, storing the file under its CDN URL either way, so manifests stay stable.
+- When the live home page is unreachable, the harvest keeps the existing site-chrome list instead of failing.
+- Its cleanup now removes only files it downloaded (listed in a manifest). Before, it removed every file in `public/images/pages` that the snapshot didn't reference, including the project-only images for Our Programs and Financials.

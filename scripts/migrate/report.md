@@ -245,6 +245,8 @@ Run: 2026-10-21, read-only, through the Webflow CMS API (the live domain and its
 - Offer `golf-spirits-sponsor`: sold out (Webflow 2026-10-08), en/es.
 - Offer `golf-physical-therapy-lounge`: its "Includes" text is a paragraph, not a list ("Help golfers warm up, …"), which the parser used to drop; en/es.
 
-Not merged, pending network access to `cdn.prod.website-files.com`: the 2026 event's new desktop hero (`VVF_Golf2026_HeroDesktop_v2`), phone hero (`VVF_Golf2025_0J1A2701_v2`), card photo (`VVF_Golf2026_CardPhoto_v1`) and the gallery's re-edited photos. The memories mosaic now uses the page's own five "Memories" photos (they were already harvested).
+- The 2026 event's new desktop hero (`VVF_Golf2026_HeroDesktop_v2`) and phone hero (`VVF_Golf2025_0J1A2701_v2`), from the CMS item, harvested from Webflow's S3 bucket (`migrate:harvest` falls back to it when `cdn.prod.website-files.com` is unreachable).
+
+Not merged: the card photo (`VVF_Golf2026_CardPhoto_v1`), which has no field in the content model (the listing card uses the hero photo), and the gallery's four re-edited photos (the 2026 page shows the memories mosaic, not its gallery). The memories mosaic uses the page's own five "Memories" photos (they were already harvested).
 
 Live Spanish shows the closed / sold-out registration notes and the Our Team hero photo descriptions in English; the build has Spanish for them (`MANUAL_TRANSLATIONS`).

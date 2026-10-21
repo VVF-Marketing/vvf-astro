@@ -30,6 +30,7 @@
   - Our Team slot `hero.mobileImageAlt` (en/es);
   - Storybook story;
   - e2e check of the phone alt text and of no desktop download at 390 px.
+- [x] 2.7 2026 hero photos: the snapshot points at the new desktop and phone photos from the CMS item. `migrate:harvest` downloads them via the S3 fallback, and keeps project-only images when it cleans up. Unit tests in `harvest.test.mjs`.
 - [x] 2.6 Regenerate `seed/seed.json` and `seed/page-copy.es.json` with the repo's tooling, and confirm the new values appear.
 
 ## 3. SEO / AEO

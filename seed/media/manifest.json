@@ -1241,5 +1241,19 @@
     "bytes": 357278,
     "sha256": "6285c8d487415e089c5aa93783d28f7a7c82ef392cdf651fbffe0ae179013b66",
     "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af3e21aff4651421d5e_6ad10a80733e510d569b95b0_VVF_Golf2025_0J1A2701_v2.webp": {
+    "path": "seed/media/events/bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
+    "contentType": "image/webp",
+    "bytes": 169648,
+    "sha256": "a8a29b8765e85891e23c7a50a106c44a33601ca075a1a3507e53bac67ed12757",
+    "alt": "A smiling golfer kneels on the green with a young boy holding a putter."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af4e21aff4651421d74_6ad10a80b7271b17b29ce012_VVF_Golf2026_HeroDesktop_v2.webp": {
+    "path": "seed/media/events/0f76993c-vvf-golf2026-herodesktop-v2.webp",
+    "contentType": "image/webp",
+    "bytes": 57094,
+    "sha256": "4e8da9b673d10bfb9395a8652817e038562e81ed41ec6ee755d41f30d910a22b",
+    "alt": "Three golfers and a young boy standing by the flag on the green."
   }
 }
