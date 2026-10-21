@@ -11,11 +11,11 @@ The home page SHALL emit one NGO node with `@id` `<site>/#organization` and a We
 - `areaServed` Venezuela;
 - a `potentialAction` of type DonateAction whose target is the Ways to Give page in the page's language.
 
-Every other node that names the foundation as organizer, publisher or employer SHALL reference it by that `@id`, not repeat it.
+Every other node that names the foundation as organizer, publisher or employer SHALL carry that `@id`.
 
 #### Scenario: Event links to the organization
 - **WHEN** an event page is rendered
-- **THEN** its Event node's `organizer` is `{ "@id": "https://www.victoriavenezuelafoundation.org/#organization" }`
+- **THEN** its Event node's `organizer` has `"@id": "https://www.victoriavenezuelafoundation.org/#organization"`, with the foundation's name and URL beside it for readers that don't join nodes across blocks
 
 #### Scenario: Donate action in Spanish
 - **WHEN** `/es` is rendered
@@ -70,7 +70,7 @@ It SHALL link only to pages that exist.
 - **THEN** `/llms.txt` lists it with its date and page URL
 
 ### Requirement: Sitemap freshness
-Each `/sitemap.xml` entry backed by CMS content SHALL carry a `lastmod` date taken from the content's last update. Static pages SHALL carry the last update of their copy, when known.
+Each `/sitemap.xml` entry backed by CMS content (events, articles, team profiles, child profiles) SHALL carry a `lastmod` date: the newest update of its English or Spanish entry. Static pages carry no `lastmod`, since no reliable date exists for them.
 
 #### Scenario: Event lastmod
 - **WHEN** `/sitemap.xml` is requested

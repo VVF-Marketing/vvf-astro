@@ -59,3 +59,31 @@ test.describe('Our Team hero on a phone', () => {
     expect(requested.some((u) => u.includes('ourpeople-hero-desktop'))).toBe(false)
   })
 })
+
+// Detail pages aren't in the spec audit's page sweep (SPEC_PAGES), so the
+// same no-sideways-scroll check runs here for them, in both languages.
+const WIDTHS = [1440, 1280, 768, 440, 375]
+const DETAIL_PAGES = ['/events/2025-golf-tournament', '/events/2026-golf-tournament', FIXTURE_EVENT, '/our-team/randy-lander']
+
+for (const path of DETAIL_PAGES) {
+  for (const prefix of ['', '/es']) {
+    test(`no sideways scroll on ${prefix}${path}, 375 to 1440 px`, async ({ page }) => {
+      const res = await page.goto(`${prefix}${path}`)
+      test.skip(res?.status() === 404, 'page not in this seed')
+      const problems: string[] = []
+      for (const width of WIDTHS) {
+        await page.setViewportSize({ width, height: 900 })
+        await page.goto(`${prefix}${path}`)
+        // Whether the visitor can actually scroll sideways (as spec check 5.9-1).
+        const overflow = await page.evaluate(() => {
+          window.scrollTo(100000, window.scrollY)
+          const x = window.scrollX
+          window.scrollTo(0, window.scrollY)
+          return x
+        })
+        if (overflow > 0) problems.push(`${width}px: scrolls sideways by ${overflow}px`)
+      }
+      expect(problems).toEqual([])
+    })
+  }
+}

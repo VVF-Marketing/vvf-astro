@@ -51,9 +51,11 @@ const crumbs = [
   title={resource.seo?.title ?? fill(copy['seo.titleFallback'], { title: resource.title })}
   description={resource.seo?.description ?? resource.excerpt}
   image={resource.seo?.imageUrl ?? resource.imageUrl}
+  imageAlt={resource.imageAlt}
+  ogType="article"
   alternates={alternatePaths('/resources', resource.alternates)}
   contentLocale={resource.fallbackLocale}
-  jsonLd={[articleLd(resource, Astro.site ?? Astro.url, new URL(Astro.originPathname, Astro.site ?? Astro.url).href)]}
+  jsonLd={[articleLd(resource, Astro.site ?? Astro.url, new URL(Astro.originPathname, Astro.site ?? Astro.url).href, locale)]}
 >
   <article class="px-6 pb-16 md:pb-[120px] pt-16 md:pt-16 md:px-[72px]">
     <div class="mx-auto max-w-[1296px]">

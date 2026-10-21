@@ -740,9 +740,18 @@ export async function getPrimaryMenu(locale: Locale = DEFAULT_LOCALE): Promise<N
 // Per-locale paths of every CMS detail page, using the same queries as the
 // detail pages themselves (src/lib/sitemap.ts). Child profiles are left out
 // on purpose.
-export async function getSitemapDetailPages(): Promise<Partial<Record<Locale, string>>[]> {
-  const paths = (base: string, slugs: Partial<Record<Locale, string>>) =>
-    alternatePaths(base, Object.fromEntries(Object.entries(slugs).filter(([, s]) => s))) ?? {}
+export async function getSitemapDetailPages(): Promise<{ alternates: Partial<Record<Locale, string>>; lastmod?: string }[]> {
+  // The page's last change: the newest update of its English or Spanish entry.
+  const lastmod = (e: LocalizedEntry) => {
+    const times = Object.values(e.variants)
+      .map((d) => (d?.updatedAt ? new Date(d.updatedAt).getTime() : NaN))
+      .filter((n) => !Number.isNaN(n))
+    return times.length ? new Date(Math.max(...times)).toISOString().slice(0, 10) : undefined
+  }
+  const paths = (base: string, e: LocalizedEntry) => ({
+    alternates: alternatePaths(base, Object.fromEntries(Object.entries(e.slugs).filter(([, s]) => s))) ?? {},
+    lastmod: lastmod(e),
+  })
   const [events, articles, team, children] = await Promise.all([
     listEntries('events', { limit: LIST_LIMIT }, DEFAULT_LOCALE, { withSlugs: true }),
     listEntries('articles', ARTICLES_FILTER, DEFAULT_LOCALE, { withSlugs: true }),
@@ -750,12 +759,12 @@ export async function getSitemapDetailPages(): Promise<Partial<Record<Locale, st
     listEntries('children', CHILDREN_ALL, DEFAULT_LOCALE, { withSlugs: true }),
   ])
   return [
-    ...events.map((e) => paths('/events', e.slugs)),
+    ...events.map((e) => paths('/events', e)),
     // External articles have no page (spec 7.13).
-    ...articles.filter((e) => !e.data.external).map((e) => paths('/resources', e.slugs)),
+    ...articles.filter((e) => !e.data.external).map((e) => paths('/resources', e)),
     // Open seats have no bio page (spec 7.10).
-    ...team.filter((e) => !e.data.open_seat).map((e) => paths('/our-team', e.slugs)),
+    ...team.filter((e) => !e.data.open_seat).map((e) => paths('/our-team', e)),
     // Every child profile is public and open to search engines (spec 2.4, Q1).
-    ...children.map((e) => paths('/children', e.slugs)),
-  ].filter((p) => Object.keys(p).length > 0)
+    ...children.map((e) => paths('/children', e)),
+  ].filter((p) => Object.keys(p.alternates).length > 0)
 }

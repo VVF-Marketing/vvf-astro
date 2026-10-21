@@ -12,8 +12,9 @@ const { heading = 'Program', meta = [], items } = Astro.props as Props
 const pills = ['bg-sky', 'bg-salmon', 'bg-sun']
 ---
 
-<section class="px-6 pb-16 md:px-[128px]">
-  <div class="mx-auto grid max-w-[1184px] gap-10 md:grid-cols-[1fr_625px] md:gap-16">
+<!-- Two columns only from 1280px: the 625px card column doesn't fit beside the heading on tablets. -->
+<section class="px-6 pb-16 md:px-20 xl:px-[128px]">
+  <div class="mx-auto grid max-w-[1184px] gap-10 xl:grid-cols-[1fr_625px] xl:gap-16">
     <div>
       <h2 class="text-h2-mobile leading-[1.1] text-brand-primary md:text-h2">{heading}</h2>
       {meta.length > 0 && <p class="mt-8 font-sans text-size-md font-bold leading-[1.55] text-brand-primary">{meta.map((m, i) => <>{i > 0 && <br />}{m}</>)}</p>}

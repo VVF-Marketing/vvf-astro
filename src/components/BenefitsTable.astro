@@ -59,7 +59,9 @@ const cols = `grid-template-columns: minmax(220px, 383px) repeat(${packages.leng
   }
 </div>
 
-<div class="hidden overflow-x-auto rounded-2xl bg-neutral-white p-16 md:block">
+<!-- `relative`: the cells' screen-reader text (absolutely positioned) stays
+     inside the scroll box instead of widening the page. -->
+<div class="relative hidden overflow-x-auto rounded-2xl bg-neutral-white p-16 md:block">
   <div class="min-w-[720px] font-sans text-brand-primary" role="table" aria-label={t['event.benefitsTable']}>
     <div class="grid" style={cols} role="row">
       <div class="flex items-center p-6 text-size-lg font-semibold uppercase leading-[1.5]" role="columnheader">{lines(t['event.benefitsHeader']).map((line, i) => (<>{i > 0 && <br />}{line}</>))}</div>

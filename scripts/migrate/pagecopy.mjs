@@ -259,17 +259,32 @@ export const MANUAL_TRANSLATIONS = {
     'seo.description': 'Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela.',
     'seo.titleTemplate': '{name} | Recursos | Fundación Victoria Venezuela',
   },
+  // Resource pages without their own Spanish SEO title.
+  '/resources/*': {
+    'seo.titleFallback': '{title} | Fundación Victoria Venezuela',
+  },
+  // A project page (no live counterpart): the Spanish brand in its title, and
+  // a Spanish description.
+  '/financials-and-transparency': {
+    'seo.title': 'Finanzas y transparencia | Fundación Victoria Venezuela',
+    'seo.description': 'Informes de impacto anuales y trimestrales, Sello Platino de Transparencia de Candid y registro ante el IRS. Somos una 501(c)(3), Tax ID 88-3282100.',
+  },
   // Spec 7.9 (Our Team): the open-seat tile's button. The live Spanish page
   // keeps both hero photo descriptions in English.
   '/our-team': {
     'openSeat.cta': 'Escríbenos',
     'hero.imageAlt': 'Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión.',
     'hero.mobileImageAlt': 'Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela.',
+    // Team profile titles and descriptions, as on the live Spanish profiles.
+    'profile.seo.title': '{name} | Nuestro equipo | Fundación Victoria Venezuela',
+    'profile.seo.description': 'Te presentamos a {name}, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela.',
   },
   // Event pages: the raised tile's line (live Spanish recap), and the
   // closed / sold-out notes (spec 7.8-2), which the live Spanish page shows
   // in English.
   '/events/*': {
+    // The live Spanish event pages' brand in the title.
+    'seo.titleFallback': '{title} | Fundación Victoria Venezuela',
     'recap.raisedCaption': 'Para nutrición, atención médica y educación',
     'registration.closed': 'Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',
     'registration.soldOut': 'Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',

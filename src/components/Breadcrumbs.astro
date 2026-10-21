@@ -1,7 +1,10 @@
 ---
 // Live counterpart: `.crumbs_list` — small uppercase Open Sans trail, links
-// in the accent color, "›" separators, current page in navy.
+// in the accent color, "›" separators, current page in navy. Emits the same
+// trail as a schema.org BreadcrumbList.
 import { getGlobalCopy } from '../lib/globalCopy'
+import { localeFromPath } from '../lib/i18n'
+import { breadcrumbList, serialize } from '../lib/structuredData'
 
 const t = await getGlobalCopy(Astro)
 export interface Crumb {
@@ -17,6 +20,8 @@ export interface Props {
 }
 
 const { items, tone = 'default', class: className = '' } = Astro.props as Props
+const site = Astro.site ?? Astro.url
+const jsonLd = breadcrumbList(items, site, localeFromPath(Astro.originPathname), new URL(Astro.originPathname, site).href)
 // Blue links: `blue` on dark backgrounds, `blue-text` on light ones (Q13).
 const link = tone === 'light' ? 'text-brand-accent' : 'text-brand-accent-text'
 const current = tone === 'light' ? 'text-neutral-white' : 'text-brand-primary'
@@ -51,3 +56,4 @@ const text = 'font-body text-[13px] font-semibold uppercase leading-body no-unde
     }
   </ol>
 </nav>
+{jsonLd && <script type="application/ld+json" set:html={serialize(jsonLd)} />}

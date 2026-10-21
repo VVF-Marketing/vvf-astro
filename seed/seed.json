@@ -8649,7 +8649,8 @@
           "position": 1,
           "format": "plain",
           "max_length": 60,
-          "stale": false
+          "stale": false,
+          "value": "{title} | Fundación Victoria Venezuela"
         }
       },
       {
@@ -23618,7 +23619,8 @@
           "position": 1,
           "format": "plain",
           "max_length": 60,
-          "stale": false
+          "stale": false,
+          "value": "{title} | Fundación Victoria Venezuela"
         }
       },
       {
@@ -25422,7 +25424,7 @@
           "format": "plain",
           "max_length": 60,
           "stale": false,
-          "value": "Finanzas y transparencia | Victoria Venezuela Foundation"
+          "value": "Finanzas y transparencia | Fundación Victoria Venezuela"
         }
       },
       {
@@ -25453,7 +25455,8 @@
           "position": 2,
           "format": "plain",
           "max_length": 160,
-          "stale": false
+          "stale": false,
+          "value": "Informes de impacto anuales y trimestrales, Sello Platino de Transparencia de Candid y registro ante el IRS. Somos una 501(c)(3), Tax ID 88-3282100."
         }
       },
       {
@@ -28176,14 +28179,78 @@
         }
       },
       {
+        "id": "copy_our_team--profile.seo.title",
+        "status": "published",
+        "data": {
+          "key": "profile.seo.title",
+          "label": "Team member profile: browser tab title ({name} is replaced)",
+          "title": "06 · Content · Team member profile: browser tab title ({name} is replaced)",
+          "section": "content",
+          "position": 6,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Our Team | Victoria Venezuela Foundation"
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.title--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--profile.seo.title",
+        "data": {
+          "key": "profile.seo.title",
+          "label": "Team member profile: browser tab title ({name} is replaced)",
+          "title": "06 · Content · Team member profile: browser tab title ({name} is replaced)",
+          "section": "content",
+          "position": 6,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Nuestro equipo | Fundación Victoria Venezuela"
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.description",
+        "status": "published",
+        "data": {
+          "key": "profile.seo.description",
+          "label": "Team member profile: search description ({name} is replaced)",
+          "title": "07 · Content · Team member profile: search description ({name} is replaced)",
+          "section": "content",
+          "position": 7,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Meet {name}, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela."
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.description--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--profile.seo.description",
+        "data": {
+          "key": "profile.seo.description",
+          "label": "Team member profile: search description ({name} is replaced)",
+          "title": "07 · Content · Team member profile: search description ({name} is replaced)",
+          "section": "content",
+          "position": 7,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Te presentamos a {name}, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela."
+        }
+      },
+      {
         "id": "copy_our_team--hero.heading",
         "status": "published",
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "06 · Content · Hero: heading",
+          "title": "08 · Content · Hero: heading",
           "section": "content",
-          "position": 6,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28198,9 +28265,9 @@
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "06 · Content · Hero: heading",
+          "title": "08 · Content · Hero: heading",
           "section": "content",
-          "position": 6,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28213,9 +28280,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "07 · Content · Hero: text",
+          "title": "09 · Content · Hero: text",
           "section": "content",
-          "position": 7,
+          "position": 9,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28230,9 +28297,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "07 · Content · Hero: text",
+          "title": "09 · Content · Hero: text",
           "section": "content",
-          "position": 7,
+          "position": 9,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28245,9 +28312,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "08 · Content · Hero: button 1",
+          "title": "10 · Content · Hero: button 1",
           "section": "content",
-          "position": 8,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28262,9 +28329,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "08 · Content · Hero: button 1",
+          "title": "10 · Content · Hero: button 1",
           "section": "content",
-          "position": 8,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28277,9 +28344,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "09 · Content · Hero: button 2",
+          "title": "11 · Content · Hero: button 2",
           "section": "content",
-          "position": 9,
+          "position": 11,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28294,9 +28361,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "09 · Content · Hero: button 2",
+          "title": "11 · Content · Hero: button 2",
           "section": "content",
-          "position": 9,
+          "position": 11,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28309,9 +28376,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "10 · Content · Section title: tagline",
+          "title": "12 · Content · Section title: tagline",
           "section": "content",
-          "position": 10,
+          "position": 12,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28326,9 +28393,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "10 · Content · Section title: tagline",
+          "title": "12 · Content · Section title: tagline",
           "section": "content",
-          "position": 10,
+          "position": 12,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28340,9 +28407,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "11 · Content · Section title: heading",
+          "title": "13 · Content · Section title: heading",
           "section": "content",
-          "position": 11,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28357,9 +28424,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "11 · Content · Section title: heading",
+          "title": "13 · Content · Section title: heading",
           "section": "content",
-          "position": 11,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28372,9 +28439,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "12 · Content · Section title: text",
+          "title": "14 · Content · Section title: text",
           "section": "content",
-          "position": 12,
+          "position": 14,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28389,9 +28456,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "12 · Content · Section title: text",
+          "title": "14 · Content · Section title: text",
           "section": "content",
-          "position": 12,
+          "position": 14,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28404,9 +28471,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "13 · Content · Team member card 2: name 1",
+          "title": "15 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 13,
+          "position": 15,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28421,9 +28488,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "13 · Content · Team member card 2: name 1",
+          "title": "15 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 13,
+          "position": 15,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -28435,9 +28502,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "14 · Content · Open board seat tile: button",
+          "title": "16 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 14,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28452,9 +28519,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "14 · Content · Open board seat tile: button",
+          "title": "16 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 14,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28467,9 +28534,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "15 · Content · Team member card 2: heading 1",
+          "title": "17 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 15,
+          "position": 17,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28484,9 +28551,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "15 · Content · Team member card 2: heading 1",
+          "title": "17 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 15,
+          "position": 17,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28499,9 +28566,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "16 · Content · Section title 3: tagline",
+          "title": "18 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 16,
+          "position": 18,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28516,9 +28583,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "16 · Content · Section title 3: tagline",
+          "title": "18 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 16,
+          "position": 18,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28530,9 +28597,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "17 · Content · Section title 3: heading",
+          "title": "19 · Content · Section title 3: heading",
           "section": "content",
-          "position": 17,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28547,9 +28614,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "17 · Content · Section title 3: heading",
+          "title": "19 · Content · Section title 3: heading",
           "section": "content",
-          "position": 17,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28562,9 +28629,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "18 · Content · Section title 3: text",
+          "title": "20 · Content · Section title 3: text",
           "section": "content",
-          "position": 18,
+          "position": 20,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28579,9 +28646,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "18 · Content · Section title 3: text",
+          "title": "20 · Content · Section title 3: text",
           "section": "content",
-          "position": 18,
+          "position": 20,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28594,9 +28661,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "19 · Content · Impact banner: eyebrow",
+          "title": "21 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 19,
+          "position": 21,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28611,9 +28678,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "19 · Content · Impact banner: eyebrow",
+          "title": "21 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 19,
+          "position": 21,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28626,9 +28693,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "20 · Content · Impact banner: heading",
+          "title": "22 · Content · Impact banner: heading",
           "section": "content",
-          "position": 20,
+          "position": 22,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28643,9 +28710,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "20 · Content · Impact banner: heading",
+          "title": "22 · Content · Impact banner: heading",
           "section": "content",
-          "position": 20,
+          "position": 22,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28658,9 +28725,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "21 · Content · Impact banner: body",
+          "title": "23 · Content · Impact banner: body",
           "section": "content",
-          "position": 21,
+          "position": 23,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28675,9 +28742,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "21 · Content · Impact banner: body",
+          "title": "23 · Content · Impact banner: body",
           "section": "content",
-          "position": 21,
+          "position": 23,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28690,9 +28757,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "22 · Content · Impact banner: highlights 1",
+          "title": "24 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 22,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28707,9 +28774,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "22 · Content · Impact banner: highlights 1",
+          "title": "24 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 22,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28722,9 +28789,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "23 · Content · Impact banner: highlights 2",
+          "title": "25 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 23,
+          "position": 25,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28739,9 +28806,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "23 · Content · Impact banner: highlights 2",
+          "title": "25 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 23,
+          "position": 25,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28754,9 +28821,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "24 · Content · Impact banner: highlights 3",
+          "title": "26 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 24,
+          "position": 26,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28771,9 +28838,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "24 · Content · Impact banner: highlights 3",
+          "title": "26 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 24,
+          "position": 26,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28785,9 +28852,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "25 · Content · Impact banner: highlights 4",
+          "title": "27 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 25,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28802,9 +28869,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "25 · Content · Impact banner: highlights 4",
+          "title": "27 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 25,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28817,9 +28884,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "26 · Content · Impact banner: highlights 5",
+          "title": "28 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 26,
+          "position": 28,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28834,9 +28901,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "26 · Content · Impact banner: highlights 5",
+          "title": "28 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 26,
+          "position": 28,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28849,9 +28916,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "27 · Content · Impact banner: highlights 6",
+          "title": "29 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 27,
+          "position": 29,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28866,9 +28933,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "27 · Content · Impact banner: highlights 6",
+          "title": "29 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 27,
+          "position": 29,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28880,9 +28947,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "28 · Content · Impact banner: title 1",
+          "title": "30 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 28,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28897,9 +28964,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "28 · Content · Impact banner: title 1",
+          "title": "30 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 28,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28912,9 +28979,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "29 · Content · Impact banner: text 1",
+          "title": "31 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 29,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28929,9 +28996,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "29 · Content · Impact banner: text 1",
+          "title": "31 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 29,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28944,9 +29011,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "30 · Content · Impact banner: title 2",
+          "title": "32 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 30,
+          "position": 32,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28961,9 +29028,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "30 · Content · Impact banner: title 2",
+          "title": "32 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 30,
+          "position": 32,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28976,9 +29043,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "31 · Content · Impact banner: text 2",
+          "title": "33 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 31,
+          "position": 33,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28993,9 +29060,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "31 · Content · Impact banner: text 2",
+          "title": "33 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 31,
+          "position": 33,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -29008,9 +29075,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "32 · Content · Impact banner: image description",
+          "title": "34 · Content · Impact banner: image description",
           "section": "content",
-          "position": 32,
+          "position": 34,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -29025,9 +29092,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "32 · Content · Impact banner: image description",
+          "title": "34 · Content · Impact banner: image description",
           "section": "content",
-          "position": 32,
+          "position": 34,
           "format": "plain",
           "max_length": 110,
           "stale": false
@@ -29039,9 +29106,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "33 · Content · Impact banner: button 1",
+          "title": "35 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 33,
+          "position": 35,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -29056,9 +29123,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "33 · Content · Impact banner: button 1",
+          "title": "35 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 33,
+          "position": 35,
           "format": "plain",
           "max_length": 20,
           "stale": false,
