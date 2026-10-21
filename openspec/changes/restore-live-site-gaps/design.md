@@ -26,7 +26,7 @@
 - Make the comparison with live repeatable (`migrate:drift`).
 
 **Non-Goals:**
-- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These went to Enrique (answers in `tasks.md` 4.5): the cards, the headings and the caption stay as built; "Previous editions" and the home hero subtext are still open.
+- Anything the spec pass removed on purpose: contact reach-us cards, events-page headings, "Previous editions", home hero subtext, La Guaira caption wording. These went to Enrique (answers in `tasks.md` 4.5): the cards, the headings and the caption stay as built; "Previous editions" is restored (D13); the home hero subtext is still open.
 - Empty live sections ("Thank you, donors", "What they said"); 7.8-4 hides them.
 - Rendering the 2026 long description as a new page section. No spec row or live evidence places it, so it is stored only as the event's rich description.
 
@@ -104,6 +104,12 @@
 - The event gains an optional `card_photo` image. `extract.mjs` reads the CMS `card-photo` field with the long description (`withEventApiFields`): the API wins, an empty API value clears it, and a token-less run keeps the snapshot's.
 - `EventCard` and the archive cards use it at every width, with no phone `<source>`, because the crop already suits both. Without it, the cards keep the hero photos. The event page and the JSON-LD keep using the hero.
 - Only the 2026 event has one on Webflow.
+
+### D13. "Previous editions" on past events
+- The build never had this section: the migration didn't carry it over. Live's 2025 recap shows it with a tagline, heading, line of text and an "All events" button, and no editions listed (the CMS links none for 2025).
+- Every past event page shows it, between the sponsors and "Mark your calendar". Its text comes from four page-copy slots (`editions.*`).
+- The editions in `previous_editions` show as compact `EventCard`s, newest first. The button goes to `/events-and-campaigns`, where live's `/all-events` redirects.
+- It isn't an empty section in the 7.8-4 sense: the button always leads somewhere.
 
 ### D11. Asset downloads fall back to Webflow's S3 bucket
 - Webflow serves each CDN file (`cdn.prod.website-files.com/<path>`) from `s3.amazonaws.com/webflow-prod-assets/<path>` too.

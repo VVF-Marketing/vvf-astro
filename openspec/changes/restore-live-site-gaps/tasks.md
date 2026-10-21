@@ -37,6 +37,7 @@
   - `EventCard` and archive cards use it at every width;
   - the 2026 snapshot gets the CMS photo, harvested via S3;
   - unit tests, a Storybook story, and e2e in both languages.
+- [x] 2.9 "Previous editions" (answer 3 below): every past event page gets the section (tagline, heading, text, slots `editions.*`, en/es), with cards for the editions it links to and an "All events" button. e2e in both languages.
 - [x] 2.6 Regenerate `seed/seed.json` and `seed/page-copy.es.json` with the repo's tooling, and confirm the new values appear.
 
 ## 3. SEO / AEO
@@ -77,7 +78,7 @@
 - [x] 4.5 Draft the Enrique questions (items removed by the spec pass) for the user to send. Record the answers here when they come back. Answers, 2026-10-21:
   1. Contact "ways to reach us" cards: leave them out. They took a lot of space for little gain, and the form's topic dropdown covers them.
   2. Events page headings: he doesn't see the 2026-10-04 headings on live today. Keep the build's.
-  3. "Previous editions": unclear to him. Re-asked with a clearer description; still open.
+  3. "Previous editions": unclear to him. The user chose to restore it without asking again. Built (2.9).
   4. Home hero subtext: live hides it on desktop, so he doesn't see it. The build shows it. Re-asked whether to show it; still open.
   5. La Guaira caption wording: he doesn't see a difference. Keep the build's.
   6. Card photo: it was cropped so the players are centered. Built (2.8).

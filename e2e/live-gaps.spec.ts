@@ -18,6 +18,13 @@ for (const [lang, prefix] of [
     await expect(page.getByText(raised, { exact: true })).toBeVisible()
   })
 
+  test(`${lang}: a past event links to the other years`, async ({ page }) => {
+    await page.goto(`${prefix}/events/2025-golf-tournament`)
+    const section = page.locator('#previous-editions')
+    await expect(section.getByRole('heading', { name: lang === 'en' ? 'Previous editions' : 'Ediciones anteriores' })).toBeVisible()
+    await expect(section.getByRole('link', { name: lang === 'en' ? 'All events' : 'Todos los eventos' })).toHaveAttribute('href', `${prefix}/events-and-campaigns`)
+  })
+
   test(`${lang}: the 2026 memories mosaic uses the page's own photos`, async ({ page }) => {
     await page.goto(`${prefix}/events/2026-golf-tournament`)
     const mosaic = page.locator('img[src*="vvf-golf2025-memories-"]')

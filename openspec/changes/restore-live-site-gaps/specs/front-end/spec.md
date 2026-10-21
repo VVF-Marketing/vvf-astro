@@ -49,3 +49,10 @@ On phones, each sponsor package in the benefits list SHALL say how many benefits
 #### Scenario: Spanish benefits count
 - **WHEN** `/es/events/2026-golf-tournament` is rendered at 390 px
 - **THEN** each package reads "N de M beneficios", with no English text
+
+### Requirement: Previous editions on past events
+Every past event page SHALL show a "Previous editions" section with its tagline, heading and text from page copy. It lists the event's previous editions as cards, newest first, when there are any, and always ends with a button to the events page.
+
+#### Scenario: 2025 recap
+- **WHEN** `/events/2025-golf-tournament` or `/es/events/2025-golf-tournament` is rendered
+- **THEN** it shows "Previous editions" ("Ediciones anteriores") with a button to the events page in that language

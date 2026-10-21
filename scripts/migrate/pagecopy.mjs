@@ -287,6 +287,10 @@ export const MANUAL_TRANSLATIONS = {
     // The live Spanish event pages' brand in the title.
     'seo.titleFallback': '{title} | Fundación Victoria Venezuela',
     'recap.raisedCaption': 'Para nutrición, atención médica y educación',
+    'editions.tagline': 'Historia',
+    'editions.heading': 'Ediciones anteriores',
+    'editions.text': 'Mira cómo fue el torneo cada año.',
+    'editions.button': 'Todos los eventos',
     'registration.closed': 'Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',
     'registration.soldOut': 'Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',
   },

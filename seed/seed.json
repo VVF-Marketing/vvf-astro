@@ -23978,6 +23978,134 @@
           "stale": false,
           "value": "Ver el torneo del próximo año"
         }
+      },
+      {
+        "id": "copy_events_detail--editions.tagline",
+        "status": "published",
+        "data": {
+          "key": "editions.tagline",
+          "label": "Past event: previous editions tagline",
+          "title": "49 · Content · Past event: previous editions tagline",
+          "section": "content",
+          "position": 49,
+          "format": "plain",
+          "max_length": 20,
+          "stale": false,
+          "value": "History"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.tagline--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.tagline",
+        "data": {
+          "key": "editions.tagline",
+          "label": "Past event: previous editions tagline",
+          "title": "49 · Content · Past event: previous editions tagline",
+          "section": "content",
+          "position": 49,
+          "format": "plain",
+          "max_length": 20,
+          "stale": false,
+          "value": "Historia"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.heading",
+        "status": "published",
+        "data": {
+          "key": "editions.heading",
+          "label": "Past event: previous editions heading",
+          "title": "50 · Content · Past event: previous editions heading",
+          "section": "content",
+          "position": 50,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Previous editions"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.heading--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.heading",
+        "data": {
+          "key": "editions.heading",
+          "label": "Past event: previous editions heading",
+          "title": "50 · Content · Past event: previous editions heading",
+          "section": "content",
+          "position": 50,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Ediciones anteriores"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.text",
+        "status": "published",
+        "data": {
+          "key": "editions.text",
+          "label": "Past event: previous editions text",
+          "title": "51 · Content · Past event: previous editions text",
+          "section": "content",
+          "position": 51,
+          "format": "plain",
+          "max_length": 100,
+          "stale": false,
+          "value": "See how each year's tournament went."
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.text--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.text",
+        "data": {
+          "key": "editions.text",
+          "label": "Past event: previous editions text",
+          "title": "51 · Content · Past event: previous editions text",
+          "section": "content",
+          "position": 51,
+          "format": "plain",
+          "max_length": 100,
+          "stale": false,
+          "value": "Mira cómo fue el torneo cada año."
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.button",
+        "status": "published",
+        "data": {
+          "key": "editions.button",
+          "label": "Past event: previous editions button (to all events)",
+          "title": "52 · Content · Past event: previous editions button (to all events)",
+          "section": "content",
+          "position": 52,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "All events"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.button--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.button",
+        "data": {
+          "key": "editions.button",
+          "label": "Past event: previous editions button (to all events)",
+          "title": "52 · Content · Past event: previous editions button (to all events)",
+          "section": "content",
+          "position": 52,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "Todos los eventos"
+        }
       }
     ],
     "copy_events": [

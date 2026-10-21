@@ -52,7 +52,7 @@ Run: 2026-10-04T12:13:03.139Z against https://www.victoriavenezuelafoundation.or
 | faqs | 15 + 15 Spanish |
 | benefit_rows | 20 + 20 Spanish |
 | events | 2 + 2 Spanish |
-| children | 40 + 40 Spanish |
+| children | 0 + 0 Spanish |
 | team_members | 17 + 17 Spanish |
 | categories | 3 + 3 Spanish |
 | authors | 3 + 3 Spanish |
@@ -62,7 +62,7 @@ Run: 2026-10-04T12:13:03.139Z against https://www.victoriavenezuelafoundation.or
 | site_facts | 6 + 6 Spanish |
 
 - Counts include Spanish entries (linked translations of the English ones).
-- `seed/seed.json` (committed) omits the 80 children and child media; `seed/seed.local.json` (gitignored) has both.
+- `seed/seed.json` (committed) omits the 0 children and child media; `seed/seed.local.json` (gitignored) has both.
 - Media: every referenced file resolved to a seed media value.
 - Decisions and dropped content:
 - Team: "Join our board" (board) is an open-seat call to action; rendered by the Our Team page, not seeded. Its live profile URL redirects to /contact.

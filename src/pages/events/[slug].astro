@@ -23,6 +23,7 @@ import ProgramsCta from '../../components/ProgramsCta.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
 import Button from '../../components/Button.astro'
 import Card from '../../components/Card.astro'
+import EventCard from '../../components/EventCard.astro'
 import { getEventBySlug, getEvents, isUpcoming, getPageCopy, registrationNotice } from '../../lib/content'
 import { alternatePaths, LANG_TAGS, localeFromPath } from '../../lib/i18n'
 import { fill } from '../../lib/globalCopy'
@@ -52,9 +53,12 @@ const faqs = upcoming ? (event.faqs ?? []) : []
 const date = new Date(event.startDate)
 const monthDay = date.toLocaleDateString(LANG_TAGS[locale], { month: 'long', day: 'numeric', timeZone: 'UTC' })
 const longDate = date.toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
-const nextEvent = upcoming
-  ? undefined
-  : (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+const otherEvents = upcoming ? [] : await getEvents(locale)
+const nextEvent = otherEvents.filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+// Earlier years of a past event, newest first.
+const previousEditions = otherEvents
+  .filter((e) => event.previousEditions?.some((p) => p.slug === e.slug))
+  .sort((a, b) => b.startDate.localeCompare(a.startDate))
 const ticketTones = ['sun', 'sky', 'salmon'] as const
 ---
 
@@ -196,6 +200,20 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
         {event.sponsors && event.sponsors.length > 0 && (
           <section class="mt-16 md:mt-[120px] bg-neutral-white"><LogoCarousel heading={copy['logoCarousel2.heading']} logos={event.sponsors} /></section>
         )}
+
+        {/* Shown on every past event, as on live: the editions it links to,
+            if any, and a way to the other years. */}
+        <section id="previous-editions" class="px-6 pt-16 md:pt-[120px] md:px-20">
+          <SectionTitle tagline={copy['editions.tagline']} heading={copy['editions.heading']} text={copy['editions.text']} />
+          {previousEditions.length > 0 && (
+            <div class="mx-auto mt-16 flex max-w-screen-xl flex-wrap justify-center gap-6">
+              {previousEditions.map((e) => <EventCard event={e} variant="compact" />)}
+            </div>
+          )}
+          <div class="mt-12 flex justify-center">
+            <Button href="/events-and-campaigns" variant="outline">{copy['editions.button']}</Button>
+          </div>
+        </section>
 
         {nextEvent && (
           <section id="next-edition" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[296px]">

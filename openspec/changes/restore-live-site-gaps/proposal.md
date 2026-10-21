@@ -29,6 +29,7 @@ Basecamp card: _to be added_ (no card yet).
   - alt text on event card photos;
   - `llms.txt` generated from content, with a Spanish section;
   - `lastmod` in the sitemap.
+- **"Previous editions".** Past event pages get live's "Previous editions" section back: cards for earlier years when the event links any, and an "All events" button.
 - **Card photo.** Events get an optional card photo for event lists (Enrique: the crop centers the players). The 2026 tournament's comes from the CMS.
 - **Spanish benefits count.** The phone benefits list said "N of M benefits" in English on Spanish pages; it now reads "N de M beneficios".
 - **Drift check.** `npm run migrate:drift` lists live strings (text, alt text, SEO) that the build doesn't contain, so the comparison can be re-run.
@@ -36,7 +37,7 @@ Basecamp card: _to be added_ (no card yet).
 - **Not built; asked Enrique** (answers in `tasks.md` 4.5):
   - the contact page's four "ways to reach us" cards and its "Get Involved" button: left out;
   - the Events page headings: kept as built;
-  - the "Previous editions" recap section: still open;
+  - the "Previous editions" recap section: restored (see below);
   - the home hero subtext: still open;
   - the La Guaira caption wording: kept as built.
 - **Skipped:** the empty "Thank you, donors" and "What they said" sections (spec 7.8-4 hides empty sections).
