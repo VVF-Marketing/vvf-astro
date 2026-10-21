@@ -1,12 +1,19 @@
 import { defineConfig, envField } from 'astro/config';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import emdash, { local, s3 } from 'emdash/astro';
 import { postgres, sqlite } from 'emdash/db';
 import { fileURLToPath } from 'node:url';
 import { STATIC_REDIRECTS, DYNAMIC_REDIRECTS, redirectStatus } from './src/lib/legacyRoutes.mjs';
+import { vercelRuntime } from './src/lib/vercel/vitePlugin.mjs';
 
 // https://astro.build/config
+// Hosting target (openspec/changes/run-on-vercel-functions, design D1):
+// DEPLOY_TARGET=vercel at build makes a Vercel deployment (Node.js functions);
+// otherwise the @astrojs/node standalone server (npm run dev, the container
+// image). Like DB_ADAPTER and STORAGE, the build picks it.
+const onVercel = process.env.DEPLOY_TARGET === 'vercel';
 // Database (openspec/changes/make-app-portable, design D2): the build picks
 // the adapter, the runtime supplies the connection. Local builds use SQLite;
 // container images are built with DB_ADAPTER=postgres and read DATABASE_URL
@@ -56,6 +63,11 @@ const env = {
     // startup in Postgres mode by scripts/start.mjs.
     DATABASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
     DATABASE_SSL: envField.boolean({ context: 'server', access: 'secret', optional: true }),
+    // Vercel (run-on-vercel-functions): Vercel Cron's bearer secret for
+    // /api/cron/emdash, and Deployment Protection's bypass for the static-page
+    // sync's calls to its own preview URL.
+    CRON_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
+    VERCEL_AUTOMATION_BYPASS_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
   },
 };
 
@@ -83,7 +95,18 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter: onVercel ? vercel() : node({ mode: 'standalone' }),
+  vite: {
+    // The build's mode, for code that runs where these variables may not be
+    // set (Vercel functions): the settings guard and the sync's marker.
+    define: {
+      'import.meta.env.DEPLOY_TARGET': JSON.stringify(onVercel ? 'vercel' : 'node'),
+      'import.meta.env.DB_ADAPTER': JSON.stringify(usePostgres ? 'postgres' : 'sqlite'),
+      'import.meta.env.STORAGE': JSON.stringify(process.env.STORAGE === 's3' ? 's3' : 'local'),
+      'import.meta.env.BUILD_ID': JSON.stringify(String(Date.now())),
+    },
+    plugins: onVercel ? [vercelRuntime()] : [],
+  },
   integrations: [
     react(),
     emdash({

@@ -36,3 +36,4 @@ blob-report/
 storybook-static/
 *.md
 !README.md
+.vercel/
