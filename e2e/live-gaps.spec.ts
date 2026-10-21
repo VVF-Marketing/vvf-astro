@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { eventCardPhotoFile } from './fixtures'
 
 // Live content restored by the `restore-live-site-gaps` change, in both
 // languages.
@@ -39,9 +40,11 @@ for (const [lang, prefix] of [
   })
 
   test(`${lang}: the 2026 card in event lists uses its card photo at every width`, async ({ page }) => {
+    const file = eventCardPhotoFile('2026-golf-tournament')
+    expect(file).toBeTruthy()
     await page.goto(`${prefix}/events-and-campaigns`)
     const card = page.locator('a[href$="/events/2026-golf-tournament"]', { has: page.locator('img') }).first()
-    await expect(card.locator('img')).toHaveAttribute('src', /cardphoto/)
+    await expect(card.locator('img')).toHaveAttribute('src', new RegExp(`${file}$`))
     await expect(card.locator('source')).toHaveCount(0)
   })
 

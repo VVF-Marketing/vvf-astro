@@ -23,6 +23,12 @@ export function firstChild() {
   return child ? { slug: child.slug, displayName: child.data.name as string, age: child.data.age as number } : undefined
 }
 
+// The file an event's card photo is served from, when it has one.
+export function eventCardPhotoFile(slug: string) {
+  const event = collection('events').find((e) => e.slug === slug)
+  return (event?.data.card_photo as { meta?: { storageKey?: string } } | undefined)?.meta?.storageKey
+}
+
 export function firstEvent() {
   const [event] = collection('events')
   if (!event) throw new Error('seed/seed.json has no event fixture')
