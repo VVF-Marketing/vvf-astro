@@ -50,7 +50,7 @@
 ### D3. Paragraph offer text goes in `benefits`
 - When `.od-includes` has no list items, the parser keeps its paragraphs as the offer's `benefits`.
 - The model's existing `includes` portable text carries them, so there is no new CMS field.
-- `TicketCard` and `SpecialOpportunities` already render `benefits`. A one-item list without a list marker renders as a paragraph.
+- `TicketCard` and `SpecialOpportunities` already render `benefits`, so the text shows as the offer's one item. The lounge is sold out on live too, so its panel stays locked there and here.
 
 ### D4. Stat captions
 - The `stats` repeater gains a `caption` sub-field (`contentModel.mjs`).

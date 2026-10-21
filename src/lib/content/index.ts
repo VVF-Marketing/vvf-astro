@@ -332,7 +332,9 @@ async function toEvent(e: LocalizedEntry, locale: Locale): Promise<EventItem> {
         : undefined,
       amountRaised: d.amount_raised || undefined,
       stats: d.stats?.length ? d.stats : undefined,
-      recapStats: d.stats?.length ? d.stats.map((s: { value: string; label?: string }) => ({ number: s.value, heading: s.label })) : undefined,
+      recapStats: d.stats?.length
+        ? d.stats.map((s: { value: string; label?: string; caption?: string }) => ({ number: s.value, heading: s.label, label: s.caption || undefined }))
+        : undefined,
       recapVideo: d.recap_video || undefined,
       previousEditions: previous.length ? previous : undefined,
       nextEdition: next[0],
@@ -397,6 +399,15 @@ export function latestPast<T extends Pick<EventItem, 'startDate' | 'lifecycle'>>
 
 export function isUpcoming(event: Pick<EventItem, 'startDate'> & { lifecycle?: EventItem['lifecycle'] }): boolean {
   return event.lifecycle !== 'cancelled' && new Date(event.startDate).getTime() >= Date.now()
+}
+
+// Spec 7.8-2: an upcoming event whose registration is closed or sold out sells
+// nothing; its page shows this note in place of every purchase link.
+export function registrationNotice(
+  event: Pick<EventItem, 'startDate' | 'registration'> & { lifecycle?: EventItem['lifecycle'] }
+): 'closed' | 'sold_out' | null {
+  if (!isUpcoming(event)) return null
+  return event.registration === 'closed' || event.registration === 'sold_out' ? event.registration : null
 }
 
 // --- Children -----------------------------------------------------------

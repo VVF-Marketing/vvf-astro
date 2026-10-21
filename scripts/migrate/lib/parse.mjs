@@ -37,6 +37,17 @@ function listItems($, el) {
   return items.length ? items : undefined
 }
 
+// An offer's "Includes" rich text: its bullets, or, when the editor wrote a
+// paragraph instead of a list (the physical therapy lounge), its paragraphs.
+function includedItems($, el) {
+  const paragraphs = $(el)
+    .find('p')
+    .map((_, p) => clean($(p).text()))
+    .get()
+    .filter(Boolean)
+  return listItems($, el) ?? (paragraphs.length ? paragraphs : undefined)
+}
+
 // --- SEO ---------------------------------------------------------------
 
 export function parseSeo(html) {
@@ -316,7 +327,7 @@ export function parseEvent(html) {
         tierName: clean($i.find('.od-name').text()),
         shortName: clean($i.find('.od-short').not('.w-dyn-bind-empty').text()),
         price: clean($i.find('.od-price').text()),
-        benefits: listItems($, $i.find('.od-includes')),
+        benefits: includedItems($, $i.find('.od-includes')),
         ctaLabel: clean($i.find('.od-label').text()),
         ctaUrl: $i.find('a.od-link').attr('href'),
         soldOut: $i.find('.od-sold').length > 0,

@@ -14,6 +14,7 @@ const {
   getEvents,
   getEventBySlug,
   isUpcoming,
+  registrationNotice,
   getChildren,
   getChildBySlug,
   getTeamMembers,
@@ -103,6 +104,31 @@ describe('getEvents', () => {
     })
   })
 
+  it("maps each recap stat's caption under its label", async () => {
+    getEmDashCollection.mockImplementation(async (collection: string) =>
+      collection === 'events'
+        ? {
+            entries: [
+              entry('golf-2025', {
+                name: 'Golf 2025',
+                lifecycle: 'past',
+                start: '2025-11-10',
+                stats: [
+                  { value: '74', label: 'Golfers', caption: 'Took part for children in Venezuela' },
+                  { value: '40+', label: 'Sponsors' },
+                ],
+              }),
+            ],
+          }
+        : { entries: [] }
+    )
+    const [event] = await getEvents()
+    expect(event.recapStats).toEqual([
+      { number: '74', heading: 'Golfers', label: 'Took part for children in Venezuela' },
+      { number: '40+', heading: 'Sponsors', label: undefined },
+    ])
+  })
+
   it('drops a ref id that resolves to no entry instead of throwing', async () => {
     getEmDashCollection.mockResolvedValue({
       entries: [entry('e1', { name: 'E', start: '2026-01-01', sponsors: ['missing'] })],
@@ -165,6 +191,18 @@ describe('getEventBySlug / isUpcoming', () => {
 
     expect(await getEventBySlug('a')).toBeDefined()
     expect(await getEventBySlug('missing')).toBeUndefined()
+  })
+
+  it('gives an upcoming event with closed or sold-out registration its notice, and nothing else', () => {
+    const soon = new Date(Date.now() + 86_400_000).toISOString()
+    const past = '2020-01-01'
+    expect(registrationNotice({ startDate: soon, registration: 'closed' })).toBe('closed')
+    expect(registrationNotice({ startDate: soon, registration: 'sold_out' })).toBe('sold_out')
+    expect(registrationNotice({ startDate: soon, registration: 'open' })).toBeNull()
+    expect(registrationNotice({ startDate: soon, registration: 'not_needed' })).toBeNull()
+    // A recap is past and closed by definition: it gets no notice.
+    expect(registrationNotice({ startDate: past, registration: 'closed' })).toBeNull()
+    expect(registrationNotice({ startDate: soon, registration: 'closed', lifecycle: 'cancelled' })).toBeNull()
   })
 
   it('treats a past date as not upcoming', () => {

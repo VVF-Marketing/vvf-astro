@@ -1,36 +1,36 @@
 ## 1. Live data and drift check
 
-- [ ] 1.1 Merge the API facts read on 2026-10-21 into the committed snapshot:
+- [x] 1.1 Merge the API facts read on 2026-10-21 into the committed snapshot:
   - the Lounge paragraph (en/es);
   - Spirits Sponsor sold out (en/es);
   - the 2026 `descriptionHtml` (en/es).
 
   Record each in `scripts/migrate/report.md`.
-- [ ] 1.2 `parse.mjs`: keep paragraph-only `.od-includes` text as `benefits`. Add a parser unit test.
-- [ ] 1.3 `extract.mjs`: set event `descriptionHtml` from the API dump when available, otherwise carry over the previous snapshot value. Add a unit test for the merge helper.
-- [ ] 1.4 `scripts/migrate/drift.mjs` + `npm run migrate:drift`: report missing live strings per page. Unit-test the matcher in `drift.test.mjs`.
+- [x] 1.2 `parse.mjs`: keep paragraph-only `.od-includes` text as `benefits`. Add a parser unit test.
+- [x] 1.3 `extract.mjs`: set event `descriptionHtml` from the API dump when available, otherwise carry over the previous snapshot value. Add a unit test for the merge helper.
+- [x] 1.4 `scripts/migrate/drift.mjs` + `npm run migrate:drift`: report missing live strings per page. Unit-test the matcher in `drift.test.mjs`.
 
 ## 2. Content gaps
 
-- [ ] 2.1 Stat captions:
+- [x] 2.1 Stat captions:
   - add the `caption` sub-field to the `stats` repeater;
   - `model.mjs` maps `label → caption`;
   - `index.ts` exposes it;
   - new slot `recap.raisedCaption` (en/es);
   - unit tests for the mapper and content.
-- [ ] 2.2 Long description: `model.mjs` prefers `descriptionHtml` for the rich `description`. Add a unit test.
-- [ ] 2.3 Memories photos: `mappers.mjs` builds an upcoming event's `gallery` from the page's memories section, with en/es alts. Add a unit test.
-- [ ] 2.4 Registration notice:
+- [x] 2.2 Long description: `model.mjs` prefers `descriptionHtml` for the rich `description`. Add a unit test.
+- [x] 2.3 Memories photos: `mappers.mjs` builds an upcoming event's `gallery` from the page's memories section, with en/es alts. Add a unit test.
+- [x] 2.4 Registration notice:
   - `registrationNotice()` helper with a test;
   - the event page hides purchase links and shows the note (slots `registration.closed` / `registration.soldOut`, en/es);
   - `SEED_FIXTURE_EVENTS=1` closed-event fixture, turned on in CI;
   - e2e checks in both languages.
-- [ ] 2.5 Hero `mobileImageAlt`:
+- [x] 2.5 Hero `mobileImageAlt`:
   - two-picture rendering;
   - Our Team slot `hero.mobileImageAlt` (en/es);
   - Storybook story;
   - e2e check of the phone alt text and of no desktop download at 390 px.
-- [ ] 2.6 Regenerate `seed/seed.json` and `seed/page-copy.es.json` with the repo's tooling, and confirm the new values appear.
+- [x] 2.6 Regenerate `seed/seed.json` and `seed/page-copy.es.json` with the repo's tooling, and confirm the new values appear.
 
 ## 3. SEO / AEO
 

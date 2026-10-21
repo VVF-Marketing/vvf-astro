@@ -259,9 +259,20 @@ export const MANUAL_TRANSLATIONS = {
     'seo.description': 'Noticias y anuncios de la Fundación Victoria Venezuela sobre nuestra labor con la infancia en Venezuela.',
     'seo.titleTemplate': '{name} | Recursos | Fundación Victoria Venezuela',
   },
-  // Spec 7.9 (Our Team): the open-seat tile's button.
+  // Spec 7.9 (Our Team): the open-seat tile's button. The live Spanish page
+  // keeps both hero photo descriptions in English.
   '/our-team': {
     'openSeat.cta': 'Escríbenos',
+    'hero.imageAlt': 'Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión.',
+    'hero.mobileImageAlt': 'Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela.',
+  },
+  // Event pages: the raised tile's line (live Spanish recap), and the
+  // closed / sold-out notes (spec 7.8-2), which the live Spanish page shows
+  // in English.
+  '/events/*': {
+    'recap.raisedCaption': 'Para nutrición, atención médica y educación',
+    'registration.closed': 'Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',
+    'registration.soldOut': 'Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.',
   },
 }
 

@@ -9,6 +9,7 @@ export default defineCopy('/our-team', {
     image: '/images/pages/57692375-vvf-home-shareimage-v2.jpg',
   }),
   'hero.imageAlt': { label: 'Hero: image description', default: 'Victoria Venezuela Foundation volunteers and staff together in front of a Venezuelan flag during a mission trip.', maxLength: 170 },
+  'hero.mobileImageAlt': { label: 'Hero: phone photo description', default: "A doctor listens to a boy's chest with a stethoscope at a Victoria Venezuela Foundation medical clinic.", maxLength: 170 },
   'hero.heading': { label: 'Hero: heading', default: 'Our People', maxLength: 20 },
   'hero.subtext': { label: 'Hero: text', default: 'The people who serve Venezuela come from different places and different lives, but they share one thing—a commitment to help those who suffer. We are doctors and teachers, business people and students, all of us bound by faith and the belief that change is possible.', maxLength: 400 },
   'hero.label.1': { label: 'Hero: button 1', default: 'Donate', maxLength: 20 },

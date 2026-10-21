@@ -418,6 +418,7 @@
     },
     "heroHeading": "Play for a Purpose",
     "heroBody": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.",
+    "descriptionHtml": "<p>Join us on November 9, 2026, for the Victoria Venezuela Foundation Charity Golf Tournament—an exceptional day of golf, community engagement, and professional networking. This year, 100% of the net proceeds go to our earthquake relief work in Venezuela, helping build our permanent support center in La Guaira.</p><p>Hosted at the prestigious Club at Weston Hills, this annual charity golf event welcomes over 100 golfers and guests, including business leaders, corporate executives, industry professionals, decision-makers, and philanthropists. Participants will have the opportunity to connect with influential members of the community, develop valuable relationships, and explore new collaborations while enjoying a championship-level golf course.</p><p>More than a golf tournament, this event combines friendly competition, meaningful connections, and a shared commitment to creating positive change. Join us on the course on November 9 and help Victoria Venezuela Foundation continue making a lasting difference for the children and families it serves.</p><p><strong>Schedule</strong></p><ul><li>8:00 am Registration and breakfast</li><li>9:30 am Shotgun start</li><li>After play: lunch, silent auction and awards</li></ul>",
     "heroImage": {
       "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
       "alt": "Three golfers and a young boy standing by the flag on the green."
@@ -655,7 +656,7 @@
         ],
         "ctaLabel": "Buy Tickets",
         "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
-        "soldOut": false,
+        "soldOut": true,
         "order": 6
       },
       {
@@ -728,6 +729,9 @@
         "tierName": "Sports Physical Therapy & Performance Lounge",
         "shortName": "Physical Therapy Lounge",
         "price": "$1,000",
+        "benefits": [
+          "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round."
+        ],
         "ctaLabel": "Buy Tickets",
         "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
         "soldOut": true,

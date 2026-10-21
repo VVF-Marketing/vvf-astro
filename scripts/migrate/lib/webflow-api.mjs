@@ -28,12 +28,17 @@ export async function getCollection({ token }, collectionId) {
   return get(`/collections/${collectionId}`, token)
 }
 
-// Published (live) items only, primary locale; drafts and archived items are
-// never returned by the /items/live endpoint.
-export async function listLiveItems({ token }, collectionId) {
+export async function getSite({ token, siteId }) {
+  return get(`/sites/${siteId}`, token)
+}
+
+// Published (live) items only, in the primary locale unless a CMS locale id
+// is given; drafts and archived items are never returned by /items/live.
+export async function listLiveItems({ token }, collectionId, cmsLocaleId) {
+  const locale = cmsLocaleId ? `&cmsLocaleId=${cmsLocaleId}` : ''
   const items = []
   for (let offset = 0; ; offset += 100) {
-    const page = await get(`/collections/${collectionId}/items/live?limit=100&offset=${offset}`, token)
+    const page = await get(`/collections/${collectionId}/items/live?limit=100&offset=${offset}${locale}`, token)
     items.push(...page.items)
     if (items.length >= page.pagination.total || page.items.length === 0) break
   }

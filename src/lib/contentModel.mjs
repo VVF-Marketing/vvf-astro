@@ -56,7 +56,7 @@ export const MODEL_COLLECTIONS = [
       { slug: 'recap_headline', label: 'Recap: headline', type: 'string' },
       { slug: 'recap_summary', label: 'Recap: summary', type: 'text' },
       { slug: 'amount_raised', label: 'Recap: amount raised (as displayed)', type: 'string', ...shared },
-      { slug: 'stats', label: 'Recap: stats (up to three)', ...repeater([sub('value', 'Value'), sub('label', 'Label')]) },
+      { slug: 'stats', label: 'Recap: stats (up to three)', ...repeater([sub('value', 'Value'), sub('label', 'Label'), sub('caption', 'Line under the label')]) },
       { slug: 'gallery', label: 'Gallery', type: 'json', ...shared },
       { slug: 'recap_video', label: 'Recap: video (YouTube or Vimeo)', type: 'url', ...shared },
       { slug: 'contest_winners', label: 'Recap: contest winners', type: 'portableText' },

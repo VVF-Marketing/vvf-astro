@@ -236,3 +236,15 @@ Benefits
 ## Spanish page copy import
 
 Imported 1 Spanish slot values; 0 already had a value (kept); 0 skipped for an open draft.
+
+## Live API refresh
+
+Run: 2026-10-21, read-only, through the Webflow CMS API (the live domain and its CDN weren't reachable from the environment, so no page scrape). Collections changed since the 2026-10-04 extraction: Events and Event Offers only. Merged into the snapshot by hand (change `restore-live-site-gaps`, design D1); the parser and extractor now produce the same values on the next run:
+
+- `events.json`, `es/events.json`: the 2026 tournament's long description (`descriptionHtml`, en/es), added on Webflow 2026-10-15. It isn't on the event page, so `migrate:extract` reads it from the API and keeps the snapshot's value when run without a token.
+- Offer `golf-spirits-sponsor`: sold out (Webflow 2026-10-08), en/es.
+- Offer `golf-physical-therapy-lounge`: its "Includes" text is a paragraph, not a list ("Help golfers warm up, …"), which the parser used to drop; en/es.
+
+Not merged, pending network access to `cdn.prod.website-files.com`: the 2026 event's new desktop hero (`VVF_Golf2026_HeroDesktop_v2`), phone hero (`VVF_Golf2025_0J1A2701_v2`), card photo (`VVF_Golf2026_CardPhoto_v1`) and the gallery's re-edited photos. The memories mosaic now uses the page's own five "Memories" photos (they were already harvested).
+
+Live Spanish shows the closed / sold-out registration notes and the Our Team hero photo descriptions in English; the build has Spanish for them (`MANUAL_TRANSLATIONS`).

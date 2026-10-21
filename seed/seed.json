@@ -2716,6 +2716,11 @@
                 "slug": "label",
                 "label": "Label",
                 "type": "string"
+              },
+              {
+                "slug": "caption",
+                "label": "Line under the label",
+                "type": "string"
               }
             ]
           }
@@ -23775,14 +23780,110 @@
         }
       },
       {
+        "id": "copy_events_detail--recap.raisedCaption",
+        "status": "published",
+        "data": {
+          "key": "recap.raisedCaption",
+          "label": "Past event: line under the amount raised",
+          "title": "44 · Content · Past event: line under the amount raised",
+          "section": "content",
+          "position": 44,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "For nutrition, medical care and education"
+        }
+      },
+      {
+        "id": "copy_events_detail--recap.raisedCaption--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--recap.raisedCaption",
+        "data": {
+          "key": "recap.raisedCaption",
+          "label": "Past event: line under the amount raised",
+          "title": "44 · Content · Past event: line under the amount raised",
+          "section": "content",
+          "position": 44,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "Para nutrición, atención médica y educación"
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.closed",
+        "status": "published",
+        "data": {
+          "key": "registration.closed",
+          "label": "Upcoming event: note when registration is closed (replaces every ticket button)",
+          "title": "45 · Content · Upcoming event: note when registration is closed (replaces every ticket button)",
+          "section": "content",
+          "position": 45,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Registration is closed. Questions? Write to us using the contact details below."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.closed--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--registration.closed",
+        "data": {
+          "key": "registration.closed",
+          "label": "Upcoming event: note when registration is closed (replaces every ticket button)",
+          "title": "45 · Content · Upcoming event: note when registration is closed (replaces every ticket button)",
+          "section": "content",
+          "position": 45,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.soldOut",
+        "status": "published",
+        "data": {
+          "key": "registration.soldOut",
+          "label": "Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "title": "46 · Content · Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "section": "content",
+          "position": 46,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Tickets are sold out. Questions? Write to us using the contact details below."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.soldOut--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--registration.soldOut",
+        "data": {
+          "key": "registration.soldOut",
+          "label": "Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "title": "46 · Content · Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "section": "content",
+          "position": 46,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo."
+        }
+      },
+      {
         "id": "copy_events_detail--recap.text",
         "status": "published",
         "data": {
           "key": "recap.text",
           "label": "Past event: results text",
-          "title": "44 · Content · Past event: results text",
+          "title": "47 · Content · Past event: results text",
           "section": "content",
-          "position": 44,
+          "position": 47,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -23797,9 +23898,9 @@
         "data": {
           "key": "recap.text",
           "label": "Past event: results text",
-          "title": "44 · Content · Past event: results text",
+          "title": "47 · Content · Past event: results text",
           "section": "content",
-          "position": 44,
+          "position": 47,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -23812,9 +23913,9 @@
         "data": {
           "key": "programsCta.label.2",
           "label": "Programs cta: button 2",
-          "title": "45 · Content · Programs cta: button 2",
+          "title": "48 · Content · Programs cta: button 2",
           "section": "content",
-          "position": 45,
+          "position": 48,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -23829,9 +23930,9 @@
         "data": {
           "key": "programsCta.label.2",
           "label": "Programs cta: button 2",
-          "title": "45 · Content · Programs cta: button 2",
+          "title": "48 · Content · Programs cta: button 2",
           "section": "content",
-          "position": 45,
+          "position": 48,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28038,7 +28139,40 @@
           "position": 4,
           "format": "plain",
           "max_length": 170,
-          "stale": false
+          "stale": false,
+          "value": "Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión."
+        }
+      },
+      {
+        "id": "copy_our_team--hero.mobileImageAlt",
+        "status": "published",
+        "data": {
+          "key": "hero.mobileImageAlt",
+          "label": "Hero: phone photo description",
+          "title": "05 · Content · Hero: phone photo description",
+          "section": "content",
+          "position": 5,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "A doctor listens to a boy's chest with a stethoscope at a Victoria Venezuela Foundation medical clinic."
+        }
+      },
+      {
+        "id": "copy_our_team--hero.mobileImageAlt--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--hero.mobileImageAlt",
+        "data": {
+          "key": "hero.mobileImageAlt",
+          "label": "Hero: phone photo description",
+          "title": "05 · Content · Hero: phone photo description",
+          "section": "content",
+          "position": 5,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela."
         }
       },
       {
@@ -28047,9 +28181,9 @@
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "05 · Content · Hero: heading",
+          "title": "06 · Content · Hero: heading",
           "section": "content",
-          "position": 5,
+          "position": 6,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28064,9 +28198,9 @@
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "05 · Content · Hero: heading",
+          "title": "06 · Content · Hero: heading",
           "section": "content",
-          "position": 5,
+          "position": 6,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28079,9 +28213,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "06 · Content · Hero: text",
+          "title": "07 · Content · Hero: text",
           "section": "content",
-          "position": 6,
+          "position": 7,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28096,9 +28230,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "06 · Content · Hero: text",
+          "title": "07 · Content · Hero: text",
           "section": "content",
-          "position": 6,
+          "position": 7,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28111,9 +28245,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "07 · Content · Hero: button 1",
+          "title": "08 · Content · Hero: button 1",
           "section": "content",
-          "position": 7,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28128,9 +28262,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "07 · Content · Hero: button 1",
+          "title": "08 · Content · Hero: button 1",
           "section": "content",
-          "position": 7,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28143,9 +28277,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "08 · Content · Hero: button 2",
+          "title": "09 · Content · Hero: button 2",
           "section": "content",
-          "position": 8,
+          "position": 9,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28160,9 +28294,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "08 · Content · Hero: button 2",
+          "title": "09 · Content · Hero: button 2",
           "section": "content",
-          "position": 8,
+          "position": 9,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28175,9 +28309,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "09 · Content · Section title: tagline",
+          "title": "10 · Content · Section title: tagline",
           "section": "content",
-          "position": 9,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28192,9 +28326,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "09 · Content · Section title: tagline",
+          "title": "10 · Content · Section title: tagline",
           "section": "content",
-          "position": 9,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28206,9 +28340,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "10 · Content · Section title: heading",
+          "title": "11 · Content · Section title: heading",
           "section": "content",
-          "position": 10,
+          "position": 11,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28223,9 +28357,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "10 · Content · Section title: heading",
+          "title": "11 · Content · Section title: heading",
           "section": "content",
-          "position": 10,
+          "position": 11,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28238,9 +28372,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "11 · Content · Section title: text",
+          "title": "12 · Content · Section title: text",
           "section": "content",
-          "position": 11,
+          "position": 12,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28255,9 +28389,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "11 · Content · Section title: text",
+          "title": "12 · Content · Section title: text",
           "section": "content",
-          "position": 11,
+          "position": 12,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28270,9 +28404,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "12 · Content · Team member card 2: name 1",
+          "title": "13 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 12,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28287,9 +28421,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "12 · Content · Team member card 2: name 1",
+          "title": "13 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 12,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -28301,9 +28435,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "13 · Content · Open board seat tile: button",
+          "title": "14 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 13,
+          "position": 14,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28318,9 +28452,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "13 · Content · Open board seat tile: button",
+          "title": "14 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 13,
+          "position": 14,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28333,9 +28467,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "14 · Content · Team member card 2: heading 1",
+          "title": "15 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 14,
+          "position": 15,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28350,9 +28484,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "14 · Content · Team member card 2: heading 1",
+          "title": "15 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 14,
+          "position": 15,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28365,9 +28499,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "15 · Content · Section title 3: tagline",
+          "title": "16 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 15,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28382,9 +28516,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "15 · Content · Section title 3: tagline",
+          "title": "16 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 15,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28396,9 +28530,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "16 · Content · Section title 3: heading",
+          "title": "17 · Content · Section title 3: heading",
           "section": "content",
-          "position": 16,
+          "position": 17,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28413,9 +28547,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "16 · Content · Section title 3: heading",
+          "title": "17 · Content · Section title 3: heading",
           "section": "content",
-          "position": 16,
+          "position": 17,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28428,9 +28562,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "17 · Content · Section title 3: text",
+          "title": "18 · Content · Section title 3: text",
           "section": "content",
-          "position": 17,
+          "position": 18,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28445,9 +28579,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "17 · Content · Section title 3: text",
+          "title": "18 · Content · Section title 3: text",
           "section": "content",
-          "position": 17,
+          "position": 18,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28460,9 +28594,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "18 · Content · Impact banner: eyebrow",
+          "title": "19 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 18,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28477,9 +28611,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "18 · Content · Impact banner: eyebrow",
+          "title": "19 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 18,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28492,9 +28626,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "19 · Content · Impact banner: heading",
+          "title": "20 · Content · Impact banner: heading",
           "section": "content",
-          "position": 19,
+          "position": 20,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28509,9 +28643,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "19 · Content · Impact banner: heading",
+          "title": "20 · Content · Impact banner: heading",
           "section": "content",
-          "position": 19,
+          "position": 20,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28524,9 +28658,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "20 · Content · Impact banner: body",
+          "title": "21 · Content · Impact banner: body",
           "section": "content",
-          "position": 20,
+          "position": 21,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28541,9 +28675,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "20 · Content · Impact banner: body",
+          "title": "21 · Content · Impact banner: body",
           "section": "content",
-          "position": 20,
+          "position": 21,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28556,9 +28690,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "21 · Content · Impact banner: highlights 1",
+          "title": "22 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 21,
+          "position": 22,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28573,9 +28707,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "21 · Content · Impact banner: highlights 1",
+          "title": "22 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 21,
+          "position": 22,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28588,9 +28722,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "22 · Content · Impact banner: highlights 2",
+          "title": "23 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 22,
+          "position": 23,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28605,9 +28739,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "22 · Content · Impact banner: highlights 2",
+          "title": "23 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 22,
+          "position": 23,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28620,9 +28754,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "23 · Content · Impact banner: highlights 3",
+          "title": "24 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 23,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28637,9 +28771,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "23 · Content · Impact banner: highlights 3",
+          "title": "24 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 23,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28651,9 +28785,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "24 · Content · Impact banner: highlights 4",
+          "title": "25 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 24,
+          "position": 25,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28668,9 +28802,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "24 · Content · Impact banner: highlights 4",
+          "title": "25 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 24,
+          "position": 25,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28683,9 +28817,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "25 · Content · Impact banner: highlights 5",
+          "title": "26 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 25,
+          "position": 26,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28700,9 +28834,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "25 · Content · Impact banner: highlights 5",
+          "title": "26 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 25,
+          "position": 26,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28715,9 +28849,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "26 · Content · Impact banner: highlights 6",
+          "title": "27 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 26,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28732,9 +28866,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "26 · Content · Impact banner: highlights 6",
+          "title": "27 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 26,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28746,9 +28880,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "27 · Content · Impact banner: title 1",
+          "title": "28 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 27,
+          "position": 28,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28763,9 +28897,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "27 · Content · Impact banner: title 1",
+          "title": "28 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 27,
+          "position": 28,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28778,9 +28912,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "28 · Content · Impact banner: text 1",
+          "title": "29 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 28,
+          "position": 29,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28795,9 +28929,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "28 · Content · Impact banner: text 1",
+          "title": "29 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 28,
+          "position": 29,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28810,9 +28944,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "29 · Content · Impact banner: title 2",
+          "title": "30 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 29,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28827,9 +28961,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "29 · Content · Impact banner: title 2",
+          "title": "30 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 29,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28842,9 +28976,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "30 · Content · Impact banner: text 2",
+          "title": "31 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 30,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28859,9 +28993,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "30 · Content · Impact banner: text 2",
+          "title": "31 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 30,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28874,9 +29008,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "31 · Content · Impact banner: image description",
+          "title": "32 · Content · Impact banner: image description",
           "section": "content",
-          "position": 31,
+          "position": 32,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -28891,9 +29025,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "31 · Content · Impact banner: image description",
+          "title": "32 · Content · Impact banner: image description",
           "section": "content",
-          "position": 31,
+          "position": 32,
           "format": "plain",
           "max_length": 110,
           "stale": false
@@ -28905,9 +29039,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "32 · Content · Impact banner: button 1",
+          "title": "33 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 32,
+          "position": 33,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28922,9 +29056,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "32 · Content · Impact banner: button 1",
+          "title": "33 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 32,
+          "position": 33,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -32051,7 +32185,7 @@
           ],
           "button_label": "Buy Tickets",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
-          "sold_out": false,
+          "sold_out": true,
           "sort_order": 6
         }
       },
@@ -32379,6 +32513,24 @@
           "short_name": "Physical Therapy Lounge",
           "kind": "special_opportunity",
           "price": "$1,000",
+          "includes": [
+            {
+              "_type": "block",
+              "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0s",
+                  "text": "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round.",
+                  "marks": []
+                }
+              ]
+            }
+          ],
           "button_label": "Buy Tickets",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
           "sold_out": true,
@@ -32827,7 +32979,7 @@
           ],
           "button_label": "Comprar entradas",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
-          "sold_out": false,
+          "sold_out": true,
           "sort_order": 6
         },
         "locale": "es",
@@ -33165,6 +33317,24 @@
           "short_name": "Lounge de fisioterapia",
           "kind": "special_opportunity",
           "price": "$1,000",
+          "includes": [
+            {
+              "_type": "block",
+              "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0s",
+                  "text": "Ayuda a los golfistas a calentar, mejorar su movilidad y preparar el cuerpo para una ronda más fuerte y cómoda.",
+                  "marks": []
+                }
+              ]
+            }
+          ],
           "button_label": "Comprar entradas",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
           "sold_out": true,
@@ -34960,15 +35130,18 @@
           "stats": [
             {
               "value": "74",
-              "label": "Golfers"
+              "label": "Golfers",
+              "caption": "Took part for children in Venezuela"
             },
             {
               "value": "40+",
-              "label": "Sponsors"
+              "label": "Sponsors",
+              "caption": "Companies that backed the day"
             },
             {
               "value": "700+",
-              "label": "Children helped"
+              "label": "Children helped",
+              "caption": "With meals, medicine and school supplies"
             }
           ],
           "gallery": [
@@ -35267,15 +35440,94 @@
           "description": [
             {
               "_type": "block",
-              "_key": "event-2026-golf-tournament-d0",
+              "_key": "ld1",
               "style": "normal",
-              "markDefs": [],
               "children": [
                 {
                   "_type": "span",
-                  "_key": "event-2026-golf-tournament-d0s",
-                  "text": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.",
-                  "marks": []
+                  "_key": "ld0",
+                  "text": "Join us on November 9, 2026, for the Victoria Venezuela Foundation Charity Golf Tournament—an exceptional day of golf, community engagement, and professional networking. This year, 100% of the net proceeds go to our earthquake relief work in Venezuela, helping build our permanent support center in La Guaira."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld3",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld2",
+                  "text": "Hosted at the prestigious Club at Weston Hills, this annual charity golf event welcomes over 100 golfers and guests, including business leaders, corporate executives, industry professionals, decision-makers, and philanthropists. Participants will have the opportunity to connect with influential members of the community, develop valuable relationships, and explore new collaborations while enjoying a championship-level golf course."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld5",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld4",
+                  "text": "More than a golf tournament, this event combines friendly competition, meaningful connections, and a shared commitment to creating positive change. Join us on the course on November 9 and help Victoria Venezuela Foundation continue making a lasting difference for the children and families it serves."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld7",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld6",
+                  "text": "Schedule",
+                  "marks": [
+                    "strong"
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld9",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld8",
+                  "text": "8:00 am Registration and breakfast"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldb",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "lda",
+                  "text": "9:30 am Shotgun start"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldd",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ldc",
+                  "text": "After play: lunch, silent auction and awards"
                 }
               ]
             }
@@ -35491,64 +35743,24 @@
           "meta_description": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela.",
           "gallery": [
             {
-              "provider": "local",
-              "id": "7EXR8YYWGYG3R2KMSJVQX3RPXW",
-              "alt": "Golfers standing by the lake on the course, holding Venezuelan flags.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "c6b3a8d9-dji-fly-20251110-120352-0127-1762797148849-photo-scaled.webp",
-              "meta": {
-                "storageKey": "7EXR8YYWGYG3R2KMSJVQX3RPXW.webp"
-              }
+              "src": "/images/pages/7ccdcf30-vvf-golf2025-memories-1-teeshot-v1.jpg",
+              "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "1M5N6K1XSM07KQWNVQKM3X7DEE",
-              "alt": "Foundation banner beside an inflatable boat displayed on the course.",
-              "width": 1600,
-              "height": 2400,
-              "mimeType": "image/webp",
-              "filename": "a23fdd46-0j1a2800-e1784672229294.webp",
-              "meta": {
-                "storageKey": "1M5N6K1XSM07KQWNVQKM3X7DEE.webp"
-              }
+              "src": "/images/pages/f8241668-vvf-golf2025-memories-2-playersonfairway-v1.jpg",
+              "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "4PX20Q8RBV522K03ZWTM6SRJ9E",
-              "alt": "Participants posing together in front of a board of sponsor logos.",
-              "width": 2400,
-              "height": 1600,
-              "mimeType": "image/webp",
-              "filename": "0eef0daa-helen-randy-participants.webp",
-              "meta": {
-                "storageKey": "4PX20Q8RBV522K03ZWTM6SRJ9E.webp"
-              }
+              "src": "/images/pages/5d4f4ab4-vvf-golf2025-memories-3-juniorgolfer-v1.jpg",
+              "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "79HDSGFKKRRR8PE0RYE2Q205Q7",
-              "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "98b36bc1-panoramica-campo-golf-scaled.webp",
-              "meta": {
-                "storageKey": "79HDSGFKKRRR8PE0RYE2Q205Q7.webp"
-              }
+              "src": "/images/pages/852e7609-vvf-golf2025-memories-4-foundationtent-v1.jpg",
+              "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "2R75EEWBW1NQSS4XPVDTMVK9SQ",
-              "alt": "Four golfers on the tee, one of them holding a Venezuelan flag.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "4fc03922-players-campo6-scaled.webp",
-              "meta": {
-                "storageKey": "2R75EEWBW1NQSS4XPVDTMVK9SQ.webp"
-              }
+              "src": "/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg",
+              "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
             }
           ],
           "previous_editions": [
@@ -35694,15 +35906,18 @@
           "stats": [
             {
               "value": "74",
-              "label": "Golfistas"
+              "label": "Golfistas",
+              "caption": "Participaron por los niños de Venezuela"
             },
             {
               "value": "40+",
-              "label": "Patrocinadores"
+              "label": "Patrocinadores",
+              "caption": "Empresas que apoyaron el día"
             },
             {
               "value": "700+",
-              "label": "Niños ayudados"
+              "label": "Niños ayudados",
+              "caption": "Con comidas, medicinas y útiles escolares"
             }
           ],
           "gallery": [
@@ -36003,15 +36218,94 @@
           "description": [
             {
               "_type": "block",
-              "_key": "event-2026-golf-tournament-d0",
+              "_key": "ld1",
               "style": "normal",
-              "markDefs": [],
               "children": [
                 {
                   "_type": "span",
-                  "_key": "event-2026-golf-tournament-d0s",
-                  "text": "Cada golpe cambia una vida. Ayúdanos a apoyar a los niños venezolanos con educación, nutrición y esperanza.",
-                  "marks": []
+                  "_key": "ld0",
+                  "text": "Acompáñanos el 9 de noviembre de 2026 en el Torneo Benéfico de Golf de Victoria Venezuela Foundation: un día excepcional de golf, participación comunitaria y networking profesional. Este año, el 100 % de las ganancias netas se destinará a nuestra labor de ayuda tras el terremoto en Venezuela, para construir nuestro centro de apoyo permanente en La Guaira."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld3",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld2",
+                  "text": "Celebrado en el prestigioso Club at Weston Hills, este evento benéfico anual recibe a más de 100 golfistas e invitados, entre ellos líderes empresariales, ejecutivos corporativos, profesionales de la industria, tomadores de decisiones y filántropos. Los participantes tendrán la oportunidad de conectar con miembros influyentes de la comunidad, crear relaciones valiosas y explorar nuevas colaboraciones mientras disfrutan de un campo de golf de nivel campeonato."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld5",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld4",
+                  "text": "Más que un torneo de golf, este evento combina la competencia amistosa, las conexiones significativas y un compromiso compartido de generar un cambio positivo. Acompáñanos en el campo el 9 de noviembre y ayuda a Victoria Venezuela Foundation a seguir marcando una diferencia duradera en la vida de los niños y las familias a las que sirve."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld7",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld6",
+                  "text": "Programa",
+                  "marks": [
+                    "strong"
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld9",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld8",
+                  "text": "8:00 a. m. Registro y desayuno"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldb",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "lda",
+                  "text": "9:30 a. m. Salida simultánea (shotgun)"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldd",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ldc",
+                  "text": "Después del juego: almuerzo, subasta silenciosa y premiación"
                 }
               ]
             }
@@ -36227,64 +36521,24 @@
           "meta_description": "Juega con propósito el 9 de noviembre de 2026 en The Club at Weston Hills, en Weston, FL. Nuestro torneo benéfico anual de golf apoya a los niños de Venezuela.",
           "gallery": [
             {
-              "provider": "local",
-              "id": "7EXR8YYWGYG3R2KMSJVQX3RPXW",
-              "alt": "Golfers standing by the lake on the course, holding Venezuelan flags.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "c6b3a8d9-dji-fly-20251110-120352-0127-1762797148849-photo-scaled.webp",
-              "meta": {
-                "storageKey": "7EXR8YYWGYG3R2KMSJVQX3RPXW.webp"
-              }
+              "src": "/images/pages/7ccdcf30-vvf-golf2025-memories-1-teeshot-v1.jpg",
+              "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "1M5N6K1XSM07KQWNVQKM3X7DEE",
-              "alt": "Foundation banner beside an inflatable boat displayed on the course.",
-              "width": 1600,
-              "height": 2400,
-              "mimeType": "image/webp",
-              "filename": "a23fdd46-0j1a2800-e1784672229294.webp",
-              "meta": {
-                "storageKey": "1M5N6K1XSM07KQWNVQKM3X7DEE.webp"
-              }
+              "src": "/images/pages/f8241668-vvf-golf2025-memories-2-playersonfairway-v1.jpg",
+              "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "4PX20Q8RBV522K03ZWTM6SRJ9E",
-              "alt": "Participants posing together in front of a board of sponsor logos.",
-              "width": 2400,
-              "height": 1600,
-              "mimeType": "image/webp",
-              "filename": "0eef0daa-helen-randy-participants.webp",
-              "meta": {
-                "storageKey": "4PX20Q8RBV522K03ZWTM6SRJ9E.webp"
-              }
+              "src": "/images/pages/5d4f4ab4-vvf-golf2025-memories-3-juniorgolfer-v1.jpg",
+              "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "79HDSGFKKRRR8PE0RYE2Q205Q7",
-              "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "98b36bc1-panoramica-campo-golf-scaled.webp",
-              "meta": {
-                "storageKey": "79HDSGFKKRRR8PE0RYE2Q205Q7.webp"
-              }
+              "src": "/images/pages/852e7609-vvf-golf2025-memories-4-foundationtent-v1.jpg",
+              "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "2R75EEWBW1NQSS4XPVDTMVK9SQ",
-              "alt": "Four golfers on the tee, one of them holding a Venezuelan flag.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "4fc03922-players-campo6-scaled.webp",
-              "meta": {
-                "storageKey": "2R75EEWBW1NQSS4XPVDTMVK9SQ.webp"
-              }
+              "src": "/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg",
+              "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
             }
           ],
           "previous_editions": [

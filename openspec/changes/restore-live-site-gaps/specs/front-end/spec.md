@@ -23,11 +23,11 @@ A past event's recap stats SHALL each show their value, label and, when present,
 - **THEN** the "Golfers" tile shows "Took part for children in Venezuela", and the "Raised" tile shows "For nutrition, medical care and education"
 
 ### Requirement: Offer text without a list
-An offer whose included text is a paragraph rather than a list SHALL show that paragraph on its ticket card or special-opportunity tab.
+An offer whose included text is a paragraph rather than a list SHALL carry that text into its ticket card or special-opportunity panel, the same as listed items.
 
 #### Scenario: Physical therapy lounge
-- **WHEN** the 2026 tournament's "Physical Therapy Lounge" tab is opened
-- **THEN** it shows "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round."
+- **WHEN** the 2026 tournament page is rendered
+- **THEN** the "Physical Therapy Lounge" panel holds "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round." (its tab stays locked while the offer is sold out, as on live)
 
 ### Requirement: Event "Memories" photos
 The upcoming 2026 tournament page SHALL show, in its memories mosaic, the five photos the live page uses for that section, each with its live alt text.

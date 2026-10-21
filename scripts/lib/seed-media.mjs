@@ -87,6 +87,17 @@ export async function mediaValueFor(entry, { readFile = (rel) => readFileSync(pa
   }
 }
 
+// Source URL → external image value ({ src, alt }) for the page imagery served
+// from public/, for content that shows a page's own photo (an event page's
+// memories mosaic).
+export function pageImageMapFor(manifest) {
+  const map = {}
+  for (const [url, entry] of Object.entries(manifest)) {
+    if (entry.path.startsWith('public/')) map[url] = { src: entry.path.slice('public'.length), ...(entry.alt ? { alt: entry.alt } : {}) }
+  }
+  return map
+}
+
 // Source URL → media value, for transform.mjs.
 export async function mediaMapFor(manifest, options) {
   const map = {}

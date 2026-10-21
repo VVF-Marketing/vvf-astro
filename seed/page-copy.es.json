@@ -79,7 +79,9 @@
     "impactBanner.title.2": "Comienza ahora",
     "impactBanner.text.2": "Encuentra hoy mismo oportunidades que se ajusten a tus habilidades y horario.",
     "impactBanner.label.1": "Voluntariado",
-    "openSeat.cta": "Escríbenos"
+    "openSeat.cta": "Escríbenos",
+    "hero.imageAlt": "Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión.",
+    "hero.mobileImageAlt": "Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela."
   },
   "/privacy-policy": {
     "seo.title": "Política de privacidad | Fundación Victoria Venezuela",
@@ -1613,7 +1615,10 @@
     "recap.heading": "Lo que logramos juntos",
     "recap.text": "Esto es lo que un día en el campo hizo posible para los niños de Venezuela.",
     "programsCta.label.2": "Ver el torneo del próximo año",
-    "recap.raised": "Recaudado"
+    "recap.raised": "Recaudado",
+    "recap.raisedCaption": "Para nutrición, atención médica y educación",
+    "registration.closed": "Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.",
+    "registration.soldOut": "Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo."
   },
   "/events-and-campaigns": {
     "seo.title": "Eventos y campañas | Fundación Victoria Venezuela",

@@ -25,7 +25,9 @@ test('upcoming event shows tickets, sponsor packages and special opportunities t
   await expect(page.getByRole('heading', { level: 2, name: 'Tickets' })).toBeVisible()
   await expect(page.getByRole('table', { name: 'Sponsorship benefits by package' })).toBeVisible()
 
-  const tabs = page.getByRole('tablist', { name: 'Special Event Opportunities' }).getByRole('tab')
+  // Sold-out opportunities are locked (spec 7.8-3), so the first open one is
+  // selected, whichever it is.
+  const tabs = page.getByRole('tablist', { name: 'Special Event Opportunities' }).getByRole('tab').and(page.locator(':not([disabled])'))
   await expect(tabs.first()).toHaveAttribute('aria-selected', 'true')
   await tabs.nth(1).click()
   await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true')

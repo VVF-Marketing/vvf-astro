@@ -426,6 +426,7 @@
     },
     "heroHeading": "Juega con un propósito",
     "heroBody": "Cada golpe cambia una vida. Ayúdanos a apoyar a los niños venezolanos con educación, nutrición y esperanza.",
+    "descriptionHtml": "<p>Acompáñanos el 9 de noviembre de 2026 en el Torneo Benéfico de Golf de Victoria Venezuela Foundation: un día excepcional de golf, participación comunitaria y networking profesional. Este año, el 100 % de las ganancias netas se destinará a nuestra labor de ayuda tras el terremoto en Venezuela, para construir nuestro centro de apoyo permanente en La Guaira.</p><p>Celebrado en el prestigioso Club at Weston Hills, este evento benéfico anual recibe a más de 100 golfistas e invitados, entre ellos líderes empresariales, ejecutivos corporativos, profesionales de la industria, tomadores de decisiones y filántropos. Los participantes tendrán la oportunidad de conectar con miembros influyentes de la comunidad, crear relaciones valiosas y explorar nuevas colaboraciones mientras disfrutan de un campo de golf de nivel campeonato.</p><p>Más que un torneo de golf, este evento combina la competencia amistosa, las conexiones significativas y un compromiso compartido de generar un cambio positivo. Acompáñanos en el campo el 9 de noviembre y ayuda a Victoria Venezuela Foundation a seguir marcando una diferencia duradera en la vida de los niños y las familias a las que sirve.</p><p><strong>Programa</strong></p><ul><li>8:00 a. m. Registro y desayuno</li><li>9:30 a. m. Salida simultánea (shotgun)</li><li>Después del juego: almuerzo, subasta silenciosa y premiación</li></ul>",
     "heroImage": {
       "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
       "alt": "Tres golfistas y un niño junto a la bandera en el green."
@@ -671,7 +672,7 @@
         ],
         "ctaLabel": "Comprar entradas",
         "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
-        "soldOut": false,
+        "soldOut": true,
         "order": 6
       },
       {
@@ -744,6 +745,9 @@
         "tierName": "Lounge de fisioterapia deportiva y rendimiento",
         "shortName": "Lounge de fisioterapia",
         "price": "$1,000",
+        "benefits": [
+          "Ayuda a los golfistas a calentar, mejorar su movilidad y preparar el cuerpo para una ronda más fuerte y cómoda."
+        ],
         "ctaLabel": "Comprar entradas",
         "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
         "soldOut": true,

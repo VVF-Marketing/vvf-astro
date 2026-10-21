@@ -33,3 +33,16 @@ export const NoImage = {
     primaryCta: { label: 'Donate now', href: '/ways-to-give' },
   },
 }
+
+// A phone photo with its own subject and description (Our Team).
+export const OwnPhonePhoto = {
+  args: {
+    imageUrl: '/images/pages/d44872ac-vvf-ourpeople-hero-desktop-v4-teamphoto.jpg',
+    imageAlt: 'Volunteers and staff together in front of a Venezuelan flag.',
+    mobileImageUrl: '/images/pages/33b4f627-vvf-ourpeople-hero-mobile-v1-1.jpg',
+    mobileImageAlt: "A doctor listens to a boy's chest with a stethoscope.",
+    align: 'right',
+    heading: 'Meet the team',
+    primaryCta: { label: 'Donate', href: '/ways-to-give' },
+  },
+}

@@ -6,7 +6,7 @@
 // prefix removed, so the same parsers (which read slugs from links) apply. When Webflow API credentials are configured and
 // accepted, the raw API collections/items are also dumped to
 // snapshot/api/ for field-level review.
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fetchText, HttpError } from './lib/http.mjs'
 import {
@@ -28,10 +28,15 @@ import {
 import { LIVE_BASE_URL, SNAPSHOT_DIR } from './lib/paths.mjs'
 import { createSection } from './lib/report.mjs'
 import { classifyUrls, isSpanish, parseSitemap } from './lib/sitemap.mjs'
-import { apiCredentials, checkAccess, getCollection, listCollections, listLiveItems } from './lib/webflow-api.mjs'
+import { apiCredentials, checkAccess, getCollection, getSite, listCollections, listLiveItems } from './lib/webflow-api.mjs'
 
 export const LOCALES = ['en', 'es']
 const PREFIX = { en: '', es: '/es' }
+
+function readSnapshot(name) {
+  const file = path.join(SNAPSHOT_DIR, `${name}.json`)
+  return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : undefined
+}
 
 function writeSnapshot(name, data) {
   const file = path.join(SNAPSHOT_DIR, `${name}.json`)
@@ -65,6 +70,9 @@ async function getPaginated(get, url, parse) {
   return results
 }
 
+// Dumps every collection to snapshot/api/ and returns the live event items
+// per locale ({ en, es }), the only source of fields the event pages don't
+// show (the long description).
 async function dumpApi(creds, report) {
   try {
     await checkAccess(creds)
@@ -76,11 +84,29 @@ async function dumpApi(creds, report) {
     throw err
   }
   const collections = await listCollections(creds)
+  const eventItems = {}
   for (const c of collections) {
     const [schema, items] = await Promise.all([getCollection(creds, c.id), listLiveItems(creds, c.id)])
     writeSnapshot(`api/${c.slug}`, { schema, items })
+    if (c.slug === 'events') eventItems.en = items
   }
+  const spanish = (await getSite(creds)).locales?.secondary?.find((l) => l.tag?.startsWith('es'))
+  const events = collections.find((c) => c.slug === 'events')
+  if (spanish && events) eventItems.es = await listLiveItems(creds, events.id, spanish.cmsLocaleId)
   report.line(`- Webflow API: dumped ${collections.length} collections to \`snapshot/api/\`.`)
+  return eventItems
+}
+
+// Each event's long description (`descriptionHtml`): from the Webflow API when
+// it was read, otherwise the value already in the snapshot, so a scrape
+// without a token never drops it.
+export function withEventDescriptions(events, apiItems, previous = []) {
+  return events.map((e) => {
+    const fromApi = apiItems?.find((i) => i.fieldData?.slug === e.slug)?.fieldData?.description
+    const kept = previous.find((p) => p.slug === e.slug)?.descriptionHtml
+    const descriptionHtml = fromApi ?? kept
+    return descriptionHtml ? { ...e, descriptionHtml } : e
+  })
 }
 
 export async function extract() {
@@ -89,18 +115,18 @@ export async function extract() {
   report.line()
 
   const creds = apiCredentials()
-  if (creds) await dumpApi(creds, report)
-  else report.line('- Webflow API: no `WEBFLOW_API_TOKEN`/`WEBFLOW_SITE_ID`; using sitemap scrape.')
+  const apiEvents = creds ? await dumpApi(creds, report) : undefined
+  if (!creds) report.line('- Webflow API: no `WEBFLOW_API_TOKEN`/`WEBFLOW_SITE_ID`; using sitemap scrape.')
   report.line('- Source for normalized snapshot: sitemap HTML scrape (English, then Spanish under `snapshot/es/`).')
 
   const sitemapUrls = parseSitemap(await fetchText(`${LIVE_BASE_URL}/sitemap.xml`))
   const counts = {}
-  for (const locale of LOCALES) counts[locale] = await extractLocale(locale, sitemapUrls, report)
+  for (const locale of LOCALES) counts[locale] = await extractLocale(locale, sitemapUrls, report, apiEvents?.[locale])
   report.write()
   return counts
 }
 
-async function extractLocale(locale, sitemapUrls, report) {
+async function extractLocale(locale, sitemapUrls, report, apiEvents) {
   const get = (url) => getFor(locale, url)
   const base = `${LIVE_BASE_URL}${PREFIX[locale]}`
   const snap = (name, data) => writeSnapshot(locale === 'en' ? name : `${locale}/${name}`, data)
@@ -154,7 +180,7 @@ async function extractLocale(locale, sitemapUrls, report) {
     // that aren't CMS fields; keep their outline for page recomposition.
     pageSnapshots[`events__${slug}`] = { path: new URL(url).pathname, ...parsePage(html) }
   }
-  snap('events', events)
+  snap('events', withEventDescriptions(events, apiEvents, readSnapshot(locale === 'en' ? 'events' : `${locale}/events`)))
 
   // Page snapshots are committed (public repo): strip every child name and
   // photo before writing them.
