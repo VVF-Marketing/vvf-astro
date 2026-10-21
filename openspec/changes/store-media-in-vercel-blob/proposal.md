@@ -38,7 +38,7 @@ Depends on `run-on-vercel-functions`. Basecamp card: _link the hosting card here
   - new `src/lib/storage/vercelBlob.mjs` (EmDash `createStorage` entrypoint);
   - `astro.config.mjs` (the `STORAGE=blob` branch);
   - `src/middleware.ts` (media route behaviour on Vercel, if the spike needs it);
-  - `scripts/media-copy.mjs`, `scripts/lib/seed-media.mjs`, `scripts/data.mjs`, `scripts/start.mjs`/`src/lib/settings.mjs` (required `BLOB_READ_WRITE_TOKEN`);
+  - `scripts/media-copy.mjs`, `scripts/lib/seed-media.mjs`, `scripts/data.mjs`, `scripts/lib/settings.mjs` (required `BLOB_READ_WRITE_TOKEN`);
   - `src/pages/readyz.ts` is unchanged (it already uses `storage.exists`).
 - **Dependencies:** `@vercel/blob`.
 - **Environment variables:** `STORAGE=blob` (build), `BLOB_READ_WRITE_TOKEN` (runtime; one per store), and a second token if the spike picks two stores. Documented in `.env.example`.

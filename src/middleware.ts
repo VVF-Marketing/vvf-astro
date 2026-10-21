@@ -1,14 +1,14 @@
 import { defineMiddleware } from 'astro:middleware'
-import { EMDASH_SYNC_PAT } from 'astro:env/server'
+import { EMDASH_SYNC_PAT, VERCEL_AUTOMATION_BYPASS_SECRET } from 'astro:env/server'
 import { after } from 'emdash'
-import { manifestSources, pageFilesFromGlob, syncStaticPages } from './lib/staticPageSync'
+import { runStaticPageSync } from './lib/staticPageSyncRunner'
+import { createSettingsGuard } from './lib/settingsGuard'
 import { localeFromPath, localizePath, stripLocale, type Locale } from './lib/i18n'
 import { projectPathFor, redirectStatus } from './lib/legacyRoutes.mjs'
 import { localizeLinks } from './lib/localizeLinks'
 import { openExternalLinks } from './lib/externalLinks'
 import { getGlobalCopy } from './lib/globalCopy'
 import globalCopy from './copy/_copy'
-import type { CopyManifest } from './lib/copy'
 import { guardEmDashApi } from './lib/emdashGuard'
 import { activityChannel, runWithActivityActor } from './lib/activityContext'
 import { normalizeApiPath } from './lib/marketingGuard'
@@ -16,7 +16,9 @@ import { normalizeApiPath } from './lib/marketingGuard'
 // Runs once per process, on the first request - covers `astro dev` and the
 // deployed `@astrojs/node` standalone server uniformly, since neither has a
 // build-time hook with a live server to sync against (see
-// openspec/changes/expose-static-pages-to-emdash/design.md).
+// openspec/changes/expose-static-pages-to-emdash/design.md). On Postgres the
+// sync is also once per deployment, so new Vercel instances (or containers)
+// of the same build skip it (run-on-vercel-functions, D5).
 let hasSynced = false
 
 // One sync at a time, across dev-server hot reloads (which re-run this module
@@ -24,21 +26,19 @@ let hasSynced = false
 // create duplicate rows.
 const syncState = globalThis as typeof globalThis & { __staticPageSync?: Promise<unknown> }
 
-// Copy slot manifests (src/lib/copy.ts): one `_copy.ts` per page, a
-// `_copy.detail.ts` per collection detail template, plus the site-wide one.
-// Bundled at build time, so the deployed server has them too.
-const COPY_MANIFESTS = import.meta.glob<{ default: CopyManifest | CopyManifest[] }>(
-  ['/src/pages/**/_copy.ts', '/src/pages/**/_copy.detail.ts', '/src/copy/_copy.ts'],
-  { eager: true }
-)
-
-// Every page file, resolved at build time (keys only; nothing is imported),
-// so the sync needs no src/ directory at runtime (make-app-portable, D5).
-const PAGE_FILES = pageFilesFromGlob(Object.keys(import.meta.glob('/src/pages/**/*.astro')))
+// On Vercel no launcher checks the required settings, so the middleware does
+// (run-on-vercel-functions, D2). DB_ADAPTER/STORAGE are the build's mode.
+const settingsGuard =
+  import.meta.env.DEPLOY_TARGET === 'vercel'
+    ? createSettingsGuard({ env: process.env, mode: { DB_ADAPTER: import.meta.env.DB_ADAPTER, STORAGE: import.meta.env.STORAGE } })
+    : null
 
 const HEALTH_PATHS = new Set(['/healthz', '/readyz'])
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  const unavailable = settingsGuard?.(context.url.pathname)
+  if (unavailable) return unavailable
+
   if (!hasSynced) {
     hasSynced = true
     // Read at runtime (astro:env secret), never baked into the build.
@@ -46,13 +46,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
     if (token) {
       const run = async () => {
-        const result = await syncStaticPages({
-          baseUrl: context.url.origin,
-          token,
-          pageFiles: PAGE_FILES,
-          manifests: manifestSources(COPY_MANIFESTS, PAGE_FILES),
-        })
-        console.log('[static-page-sync]', result)
+        const outcome = await runStaticPageSync({ baseUrl: context.url.origin, token, bypassSecret: VERCEL_AUTOMATION_BYPASS_SECRET })
+        console.log('[static-page-sync]', outcome.ran ? outcome.result : `skipped (${outcome.reason})`)
       }
       const queued = (syncState.__staticPageSync ?? Promise.resolve()).catch(() => {}).then(run)
       syncState.__staticPageSync = queued

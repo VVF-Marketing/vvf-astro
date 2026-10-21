@@ -4,7 +4,7 @@
 
 ## 2. Adapter
 
-- [ ] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, `backups/` handled per the chosen layout). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token(s) in `src/lib/settings.mjs`. Verify:
+- [ ] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, `backups/` handled per the chosen layout). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token(s) in `scripts/lib/settings.mjs`. Verify:
   - `vercelBlob.test.mjs` (mocked SDK) covers every method, 404 mapping, pagination and `backups/` routing or refusal;
   - `grep` finds no token in `.vercel/output` after a build with the token set.
 - [ ] 2.2 Implement direct uploads (`getSignedUploadUrl`, `getClientUploadOrigin`) per D4. Verify on the spike deployment:

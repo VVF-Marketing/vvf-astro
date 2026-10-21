@@ -49,7 +49,7 @@ Basecamp card: _link the "Tareas" card for hosting here when the change is start
 ## Impact
 
 - **Code:**
-  - `astro.config.mjs`: target switch, adapter, Vite aliases for EmDash's scheduler and wait-until modules;
+  - `astro.config.mjs`: target switch, adapter, a Vite plugin (`src/lib/vercel/vitePlugin.mjs`) overriding EmDash's scheduler and wait-until modules;
   - `src/middleware.ts`: sync once per deployment, settings guard;
   - `src/lib/db/postgresRuntime.mjs`, `src/lib/db/sessionDriver.mjs`: pooling, URL selection;
   - `scripts/start.mjs`: `missingSettings` shared with the guard;

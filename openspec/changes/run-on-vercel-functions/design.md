@@ -7,7 +7,7 @@ See proposal.md (Why). What the code does today, and what EmDash 0.38 does, as r
 - **EmDash scheduler** (`emdash/src/astro/integration/virtual-modules.ts`, `generateSchedulerModule`):
   - `virtual:emdash/scheduler` exports `createScheduler = null` only for an `@astrojs/cloudflare` build;
   - every other adapter gets a `NodeCronScheduler` (an in-process timer) that runs scheduled publishing, plugin cron and cleanup;
-  - `runScheduledTasks(config, options)` is exported from `emdash/middleware` for request-less callers. A second sweep is a no-op (`scheduled-publish.ts`: `publish()` clears `scheduled_at`).
+  - `runScheduledTasks(options)` is exported from `emdash/middleware` for request-less callers. A second sweep is a no-op (`scheduled-publish.ts`: `publish()` clears `scheduled_at`).
 - **EmDash `after()`** (`emdash/src/after.ts`): it hands the promise to `waitUntil` from `virtual:emdash/wait-until`. That module only exports one for Cloudflare. Everywhere else the work is fired and forgotten, on the assumption that "the process lives for the next request anyway".
 - **Static-page sync** (`src/middleware.ts`):
   - a module-level `hasSynced` flag plus a `globalThis.__staticPageSync` promise chain run `syncStaticPages` once per process, through `after()`;
@@ -43,11 +43,18 @@ See proposal.md (Why). What the code does today, and what EmDash 0.38 does, as r
 Deploy a throwaway Vercel project from a branch with `DEPLOY_TARGET=vercel`, a Neon database seeded with the public seed (`npm run db:setup`), and an S3-compatible bucket. Answer:
 1. Does `@astrojs/vercel` bundle EmDash's admin, `pg` and `sharp` under the 250 MB limit? Check the size reported by `vercel build` and whether `includeFiles` or `excludeFiles` are needed, e.g. for EmDash's admin assets or the AWS SDK.
 2. Do Astro redirects come out as 301/302 in `.vercel/output/config.json`, or as 308? Does the `/es` rewrite in `src/middleware.ts` work?
-3. Do the Vite aliases for `virtual:emdash/scheduler` and `virtual:emdash/wait-until` (D3, D4) take effect in the Vercel build? Or does EmDash's own Vite plugin win, which would mean an upstream patch or `patch-package`?
+3. Do the overrides for `virtual:emdash/scheduler` and `virtual:emdash/wait-until` (D3, D4) take effect in the Vercel build? Or does EmDash's own Vite plugin win, which would mean an upstream patch or `patch-package`?
 4. Does EmDash's admin sign-in work with db0 sessions on functions: a magic-link sign-in followed by requests landing on different instances?
 5. Cold-start time of the main function, and whether the static-page sync (D5) is done inside one `waitUntil` window.
 
 Record the answers here before the rest is built. Adjust later tasks, and check with the user if an answer changes the scope.
+
+**Local spike results (2026-10-21, `@astrojs/vercel` 11.0.16, EmDash 0.38, `DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=s3 npx astro build`):**
+- **(1) Bundle size:** `.vercel/output` has one function, `_render.func` (`nodejs22.x`, response streaming on), at **48 MB** unzipped, plus 33 MB of static files. That's well under the 250 MB limit; no `includeFiles` or `excludeFiles` needed.
+- **(2) Redirects:** all 126 legacy redirects from `legacyRoutes.mjs` come out in `config.json` as routes with `status: 301` and the right `Location`. There are no 308s, so D7's fix isn't needed; a build-output test guards it (task 7.1). The `/es` rewrite runs in Astro's middleware inside the function, the same as on Node.
+- **(3) Overrides:** an `enforce: 'pre'` Vite plugin (`src/lib/vercel/vitePlugin.mjs`) answers both virtual modules before EmDash's plugin, which works more predictably than a `resolve.alias`. The bundled middleware passes `createScheduler: null`, and the wait-until chunk is `export { waitUntil } from "@vercel/functions"`. `NodeCronScheduler`'s class is still bundled, because EmDash's index exports it, but it's never instantiated. No upstream patch is needed.
+- **(4) Cross-instance sign-in** and **(5) cold start and sync duration** need a live deployment (task 9.1). This session's network can't reach Vercel.
+- **Found while building:** `astro build` fetches Google Fonts, and a blocked fetch is only a warning ("No data found for font family Noto Sans"), not a failure.
 
 ### D1. A build-time target switch
 `astro.config.mjs` reads `DEPLOY_TARGET`:
@@ -59,7 +66,7 @@ The region is set in `vercel.json` (`regions: ["iad1"]`, matching Neon's `us-eas
 **Rejected:** autodetecting Vercel from `VERCEL=1`. It's set during Vercel builds but also in `vercel dev` and `vercel env pull` shells, and an explicit switch is easier to see in CI logs.
 
 ### D2. Required settings without a launcher
-`missingSettings(env)` moves from `scripts/start.mjs` to `src/lib/settings.mjs`. `start.mjs` imports it and behaves as before. On the Vercel target, `src/middleware.ts` runs the check once per instance:
+`missingSettings(env)` moves from `scripts/start.mjs` to `scripts/lib/settings.mjs`. `start.mjs` imports it and behaves as before. On the Vercel target, `src/middleware.ts` runs the check once per instance:
 - when something is missing, it logs `Missing required settings: <names>` and answers 503 for every path except `/healthz`;
 - the response body is generic, like `/readyz`'s.
 
@@ -70,10 +77,10 @@ The pipeline (`add-vercel-deploy-pipeline`) runs the same function against `verc
 - failing the function at import: Vercel would show a generic 500 and a crash loop instead of a named variable.
 
 ### D3. Scheduled work from Vercel Cron
-- **The endpoint:** `src/pages/api/cron/emdash.ts` (`prerender = false`, no-store, not localized, not in the sitemap) checks `Authorization: Bearer ${CRON_SECRET}` and then calls `runScheduledTasks(config)` from `emdash/middleware`. It answers `{ ok: true }` or 500 with no detail. The error name goes to the log, as `src/lib/health.ts` does.
+- **The endpoint:** `src/pages/api/cron/emdash.ts` (`prerender = false`, no-store, not localized, not in the sitemap) checks `Authorization: Bearer ${CRON_SECRET}` and then calls `runScheduledTasks()` from `emdash/middleware` (it resolves the config itself). It answers `{ ok: true }` or 500 with no detail. The error name goes to the log, as `src/lib/health.ts` does.
 - **The schedule:** `vercel.json` `crons: [{ path: "/api/cron/emdash", schedule: "*/5 * * * *" }]`. Vercel Pro allows every minute; 5 minutes is enough for scheduled posts and keeps invocations low.
-- **The in-process timer:** on the Vercel target, a Vite `resolve.alias` (set in `astro.config.mjs` only when `DEPLOY_TARGET=vercel`) points `virtual:emdash/scheduler` at `src/lib/vercel/scheduler.mjs`, which exports `createScheduler = null`. This is the same thing EmDash's Cloudflare branch does.
-- **Fallback if the spike shows EmDash's plugin wins:** a `patch-package` patch adding `@astrojs/vercel` to the serverless check in `generateSchedulerModule`, plus an upstream issue or PR. Overlapping runs are safe (the spec's "Overlapping runs" scenario): scheduled publishing is idempotent, and plugin cron uses EmDash's own claim and lease in the database.
+- **The in-process timer:** on the Vercel target, a Vite plugin (`src/lib/vercel/vitePlugin.mjs`, `enforce: 'pre'`, added in `astro.config.mjs` only when `DEPLOY_TARGET=vercel`) answers `virtual:emdash/scheduler` with `createScheduler = null`. That's the same thing EmDash's Cloudflare branch does. The spike chose a plugin over a `resolve.alias` because it runs before EmDash's own `resolveId` for certain.
+- **Fallback, not needed (D0):** a `patch-package` patch adding `@astrojs/vercel` to the serverless check in `generateSchedulerModule`, plus an upstream issue or PR. Overlapping runs are safe (the spec's "Overlapping runs" scenario): scheduled publishing is idempotent, and plugin cron uses EmDash's own claim and lease in the database.
 - **Why the recap reminder matters:** the `recap-reminder` plugin's email "waits on hosting" (spec 7.8). This makes its cron run on Vercel. Sending the email itself is out of scope.
 
 **Rejected:**
@@ -81,7 +88,7 @@ The pipeline (`add-vercel-deploy-pipeline`) runs the same function against `verc
 - GitHub Actions `schedule`: it's less reliable (delays of 10+ minutes) and needs the secret outside Vercel.
 
 ### D4. `waitUntil` for deferred work
-Same mechanism as D3: on the Vercel target, `virtual:emdash/wait-until` is aliased to `src/lib/vercel/waitUntil.mjs`, which re-exports `waitUntil` from `@vercel/functions`. EmDash's `after()` and the site's own uses (the static-page sync) are then kept alive until they finish.
+Same mechanism as D3: on the Vercel target, the same plugin answers `virtual:emdash/wait-until` with a re-export of `waitUntil` from `@vercel/functions`. EmDash's `after()` and the site's own uses (the static-page sync) are then kept alive until they finish.
 
 ### D5. Static-page sync once per deployment
 - **The marker:** EmDash's options table (or a one-row `site_sync` table) stores the deployment ID of the last successful sync: `VERCEL_DEPLOYMENT_ID` on Vercel, and the build's `buildTime` from `virtual:emdash/build` elsewhere.
@@ -110,6 +117,16 @@ Same mechanism as D3: on the Vercel target, `virtual:emdash/wait-until` is alias
 
 ### D7. Bundle and redirects (from the spike)
 If D0 finds 308s, set each redirect's status explicitly in the Vercel adapter's output (the adapter's `redirects` option, or moving `STATIC_REDIRECTS` into `vercel.json` `redirects` with `statusCode`). Keep `legacyRoutes.mjs` as the single source, with a generator or check script so the two can't drift. If the bundle is over the limit, exclude the AWS SDK from the Vercel bundle once Blob replaces S3 (`store-media-in-vercel-blob`), and record the measured size here.
+
+**Spike outcome:** neither applies. Redirects keep their 301s, and the function is 48 MB (D0). `scripts/vercel-build.test.mjs` checks both on every Vercel build: every redirect's status and destination, and the function under 250 MB. The CI container job builds the Vercel target and runs it.
+
+### Found while implementing
+- **db0's Postgres connector would have broken sign-ins on Vercel.** It opens one `pg.Client` and keeps it for the life of the process. When that connection drops, for example while an instance is frozen, every later session read fails with "Client has encountered a connection error and is not queryable" until the instance is recycled. `src/lib/db/sessionDriver.mjs` now gives db0 a `Client` that runs each query on a 2-connection pool, through the connector's `lib` option, so db0's parameter handling is kept. `src/lib/db/sessionDriver.integration.test.ts` terminates the driver's connections between two reads. It fails with db0's own client and passes with the pooled one.
+- **`missingSettings` lives in `scripts/lib/settings.mjs`.** The container image copies only the launcher from `scripts/` and has no `src/`. So the shared module sits next to the launcher (one more `COPY` line in the Dockerfile), and the middleware's guard (`src/lib/settingsGuard.ts`) imports it from there.
+- **The site makes its own Postgres pool.** EmDash's `createDialect` keeps its pool private, so it can't be passed to `attachDatabasePool`. `src/lib/db/postgresRuntime.mjs` builds the same thing EmDash does, a `pg` pool plus `FailFastPostgresDialect` from `emdash/database/pg-migration-lock`, logs pool errors by code only, and attaches the pool only when `VERCEL` is set, because outside a Vercel request `attachDatabasePool` only warns.
+- **The build's mode reaches runtime code through `vite.define`.** `import.meta.env.DEPLOY_TARGET`, `DB_ADAPTER`, `STORAGE` and `BUILD_ID` are inlined at build (typed in `src/env.d.ts`). The middleware's guard and the sync runner know the mode even where those variables aren't set at runtime, as on Vercel, and `BUILD_ID` gives the container a per-build sync marker.
+- **Concurrent first requests can see "busy" instead of "already synced".** The marker is read under the lock, so an instance that arrives while another is reading it skips as `busy`. Either way it doesn't sync. The pipeline's endpoint answers 202 in that case, because the other holder is syncing the same deployment.
+- **The sitemap can't list the new endpoints.** It's built from copy manifests (`src/lib/sitemap.ts`), and endpoints never have one. `e2e/platform-endpoints.spec.ts` checks it anyway, next to the 401 checks.
 
 ## Risks / Trade-offs
 

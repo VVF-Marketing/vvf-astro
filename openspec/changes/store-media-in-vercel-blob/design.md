@@ -59,7 +59,7 @@ Record the answers here. D2 and D3 below carry defaults that a spike answer can 
 
 `getPublicUrl` returns the site's media route, not the Blob URL. That keeps content identical across modes and keeps the privacy decision (D2) in one place.
 
-`src/lib/settings.mjs` requires `BLOB_READ_WRITE_TOKEN` when `STORAGE=blob`.
+`scripts/lib/settings.mjs` requires `BLOB_READ_WRITE_TOKEN` when `STORAGE=blob`.
 
 ### D2. Store layout and privacy (default: one private store)
 **Default:** if D0.1 confirms private blobs, use one private store per environment. Everything, backups included, is read only through the site, so the media route stays the single public door, and it already refuses `backups/`. Visitors never see a Blob URL.

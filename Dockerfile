@@ -48,6 +48,7 @@ COPY --from=prod-deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=tools --chown=node:node /app/dist ./dist
 COPY --chown=node:node package.json ./
 COPY --chown=node:node scripts/start.mjs ./scripts/start.mjs
+COPY --chown=node:node scripts/lib/settings.mjs ./scripts/lib/settings.mjs
 USER node
 EXPOSE 4321
 HEALTHCHECK --interval=15s --timeout=5s --start-period=20s --retries=3 \
