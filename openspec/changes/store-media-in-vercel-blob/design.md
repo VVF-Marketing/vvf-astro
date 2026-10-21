@@ -61,23 +61,15 @@ Record the answers here. D2 and D3 below carry defaults that a spike answer can 
 
 `scripts/lib/settings.mjs` requires `BLOB_READ_WRITE_TOKEN` when `STORAGE=blob`.
 
-### D2. Store layout and privacy (default: one private store)
-**Default:** if D0.1 confirms private blobs, use one private store per environment. Everything, backups included, is read only through the site, so the media route stays the single public door, and it already refuses `backups/`. Visitors never see a Blob URL.
+### D2. Store layout and privacy: one private store, no public fallback
+One **private** store per environment. Everything, backups and child photos included, is read only through the site, so the media route stays the single public door, and it already refuses `backups/`. Visitors never see a Blob URL. Deleting a file or rotating the store's token cuts off access, and every read goes through a function, where it can be logged.
 
-**Fallback if private blobs aren't available:** two stores per environment.
-- A public store holds media (ULID keys, 80 random bits, and the store can't be listed without the token).
-- A private store, or a refusal, handles `backups/`: the adapter routes every key under `backups/` to a second token (`BLOB_PRIVATE_READ_WRITE_TOKEN`), or throws, so a misconfiguration fails closed.
+**If D0.1 shows Blob can't keep files private, the change stops there and goes back to the user.** It does not fall back to a public store. The proposed alternative is a private S3-compatible bucket, outside Vercel, behind the same media route; that's `STORAGE=s3`, which already works.
 
-Child photos in a public store would be as private as their URL, the same exposure as today, where the media route serves them to anyone holding the URL.
-
-**Rejected:** a public store for everything. Backup names are predictable and hold child data.
+**Rejected:** a public store for media with backups routed to a private one (the earlier fallback). When a file is uploaded, the adapter can't tell a child photo from any other image, so child photos would land in the public store. A public Blob URL can't be revoked or audited, and keeps working after a profile is unpublished. Raised in Eduardo's review on #32. Also rejected: a public store for everything, since backup names are predictable and hold child data.
 
 ### D3. Serving within Vercel's limits
-**Default:** keep EmDash's streaming media route, and rely on the CDN caching it already asks for. If D0.3 shows streamed responses over 4.5 MB fail, the site's middleware answers `/_emdash/api/media/file/<key>` on the Vercel target with a short-lived redirect:
-- to the public Blob URL (fallback layout), or
-- to a signed download URL (private layout),
-
-keeping the same headers policy (`Content-Disposition`, `nosniff`) where Blob allows it. Content URLs never change either way.
+**Default:** keep EmDash's streaming media route, and rely on the CDN caching it already asks for. If D0.3 shows streamed responses over 4.5 MB fail, the site's middleware answers `/_emdash/api/media/file/<key>` on the Vercel target with a short-lived redirect to a signed download URL for the private blob (minutes, not days), keeping the same headers policy (`Content-Disposition`, `nosniff`) where Blob allows it. Content URLs never change either way.
 
 ### D4. Direct uploads
 `getSignedUploadUrl` returns the Blob client-upload request (per D0.2) with headers, and `getClientUploadOrigin` returns Blob's upload origin, so EmDash's admin CSP allows it. The token is limited to the one pathname, the declared content type and size, and a 10-minute expiry.
@@ -91,7 +83,7 @@ If D0.2 shows Blob's client upload can't be expressed as one PUT, `getSignedUplo
 - `s3-bucket.mjs` is skipped when `STORAGE=blob`, because stores are created in Vercel.
 
 ### D6. Tests
-- **Unit tests:** `vercelBlob.test.mjs` with `@vercel/blob` mocked covers every method's mapping, 404s, pagination, the token never in config, and `backups/` routing (the fallback layout).
+- **Unit tests:** `vercelBlob.test.mjs` with `@vercel/blob` mocked covers every method's mapping, 404s, pagination, the token never in config, and that no upload is ever made with public access.
 - **Live check:** a `blob` CI step, only when `BLOB_TEST_TOKEN` is set, round-trips upload/exists/download/list/delete against the test store, and seeds public media into it under a per-run prefix that it then deletes.
 - **E2E:** the full e2e run on Neon + Blob happens on Vercel previews (`add-vercel-deploy-pipeline`).
 
@@ -100,7 +92,7 @@ If D0.2 shows Blob's client upload can't be expressed as one PUT, `getSignedUplo
 - **[EmDash's admin may assume S3-style signed PUTs]** → D0.2 proves it first. The fallback is explicit and needs the user's sign-off.
 - **[Function bandwidth cost: every media byte passes through a function]** → The CDN cache (D0.3) makes repeat views free of function time. The redirect option exists if costs show up.
 - **[Vendor lock-in for media]** → Keys and URLs are unchanged, and `media:copy` and `data:export` work in both directions, so moving back to S3 is a copy.
-- **[Two tokens in the fallback layout]** → Both are required at startup when the layout needs them, so a missing one fails closed.
+- **[Blob might not support private files]** → D0.1 answers it before any code. There's no public fallback (D2); the change goes back to the user with the private S3 bucket as the alternative.
 
 ## Migration Plan
 

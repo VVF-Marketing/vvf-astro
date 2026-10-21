@@ -14,7 +14,7 @@ Depends on `run-on-vercel-functions`. Basecamp card: _link the hosting card here
 - **Private by default:**
   - backups and other non-public files are never readable through a public Blob URL;
   - child media follows the same access rules as on S3;
-  - the store layout (private store, or a public store plus a private one) is decided by the spike.
+  - every store is private: no media, child photos included, is ever stored where a public URL can read it. If the spike finds Blob can't keep files private, the change goes back to the user rather than falling back to a public store.
 - **Tooling targets Blob:**
   - `npm run media:copy` copies from disk or S3 to Blob;
   - `npm run db:setup` seeds the public seed's media into Blob;

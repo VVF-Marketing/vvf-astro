@@ -68,7 +68,8 @@ The region is set in `vercel.json` (`regions: ["iad1"]`, matching Neon's `us-eas
 ### D2. Required settings without a launcher
 `missingSettings(env)` moves from `scripts/start.mjs` to `scripts/lib/settings.mjs`. `start.mjs` imports it and behaves as before. On the Vercel target, `src/middleware.ts` runs the check once per instance:
 - when something is missing, it logs `Missing required settings: <names>` and answers 503 for every path except `/healthz`;
-- the response body is generic, like `/readyz`'s.
+- the response body is generic, like `/readyz`'s;
+- on the Vercel target, `CRON_SECRET` and `EMDASH_SYNC_PAT` are required too. Nothing else runs scheduled publishing or the sync there, so without them both would stop silently (cron calls get 401, the sync is skipped). From Eduardo's review on #32.
 
 The pipeline (`add-vercel-deploy-pipeline`) runs the same function against `vercel env pull` output before deploying.
 
@@ -98,7 +99,7 @@ Same mechanism as D3: on the Vercel target, the same plugin answers `virtual:emd
   - an instance that doesn't get the lock skips, because the holder is syncing.
 
   On SQLite (dev) the existing per-process behaviour stays: one process, nothing to coordinate.
-- **Pipeline trigger:** `POST /api/internal/sync-static-pages`, authorised with `EMDASH_SYNC_PAT` as a Bearer token, runs the same guarded sync and answers with the sync's counts. The pipeline calls it right after a deploy. Preview deployments behind Deployment Protection need the `x-vercel-protection-bypass` header. Then the first real visitor never pays for it, and a failed sync fails the deploy job instead of only being logged.
+- **Pipeline trigger:** `POST /api/internal/sync-static-pages`, authorised with `EMDASH_SYNC_PAT` as a Bearer token, runs the same guarded sync and answers with the sync's counts (200), or 202 when another instance holds the lock. The pipeline calls it right after a deploy and retries a 202 until it gets 200, with a time limit (a 202 isn't success). The `/es/` copies of this endpoint and of `/api/cron/emdash` answer 404, like the health endpoints. Preview deployments behind Deployment Protection need the `x-vercel-protection-bypass` header. Then the first real visitor never pays for it, and a failed sync fails the deploy job instead of only being logged.
 - **The sync's own calls** go to `context.url.origin`. On a protected preview, the sync adds the bypass header when `VERCEL_AUTOMATION_BYPASS_SECRET` is set, which Vercel provides when Protection Bypass for Automation is enabled.
 
 **Rejected:**

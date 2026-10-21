@@ -7,8 +7,8 @@ import { missingSettings } from '../../scripts/lib/settings.mjs'
 
 export interface SettingsGuardOptions {
   env: Record<string, string | undefined>
-  // The build's mode (DB_ADAPTER/STORAGE), which may not be set at runtime.
-  mode: { DB_ADAPTER?: string; STORAGE?: string }
+  // The build's mode, which may not be set at runtime.
+  mode: { DEPLOY_TARGET?: string; DB_ADAPTER?: string; STORAGE?: string }
   log?: (message: string) => void
 }
 

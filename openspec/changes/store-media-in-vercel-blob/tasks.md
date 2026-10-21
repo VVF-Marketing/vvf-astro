@@ -1,11 +1,11 @@
 ## 1. Spike
 
-- [ ] 1.1 With a test Blob store and the `run-on-vercel-functions` spike deployment, answer D0's four questions: access modes, direct-upload shape and CSP origin, streamed serving of 10–20 MB files with CDN caching, and key and list mapping. Record them in design.md. Pick the D2 layout and the D3 serving mode from the answers, and confirm with the user if the fallback layout or the D4 fallback is needed.
+- [ ] 1.1 With a test Blob store and the `run-on-vercel-functions` spike deployment, answer D0's four questions: access modes, direct-upload shape and CSP origin, streamed serving of 10–20 MB files with CDN caching, and key and list mapping. Record them in design.md. Pick the D3 serving mode from the answers. If Blob can't keep files private, stop and go back to the user (D2: no public fallback), and confirm with them if the D4 fallback is needed.
 
 ## 2. Adapter
 
-- [ ] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, `backups/` handled per the chosen layout). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token(s) in `scripts/lib/settings.mjs`. Verify:
-  - `vercelBlob.test.mjs` (mocked SDK) covers every method, 404 mapping, pagination and `backups/` routing or refusal;
+- [ ] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, one private store, nothing ever uploaded with public access). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token in `scripts/lib/settings.mjs`. Verify:
+  - `vercelBlob.test.mjs` (mocked SDK) covers every method, 404 mapping and pagination, and that no upload uses public access;
   - `grep` finds no token in `.vercel/output` after a build with the token set.
 - [ ] 2.2 Implement direct uploads (`getSignedUploadUrl`, `getClientUploadOrigin`) per D4. Verify on the spike deployment:
   - a 20 MB PDF and a 6 MB image upload through the admin and confirm;

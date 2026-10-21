@@ -15,6 +15,7 @@ Depends on `run-on-vercel-functions` and `store-media-in-vercel-blob`. Basecamp 
 ## What Changes
 
 - **GitHub Actions drive every deploy; Vercel's Git auto-deploys are off.** A deploy happens only after the checks it depends on have passed, and every deploy uses a prebuilt output (`vercel build` → `vercel deploy --prebuilt`).
+- **Previews can't touch production, not even with their own credentials.** Vercel access tokens are valid for a whole team, not one project or environment, so previews live in a **separate Vercel team** with its own token. A PR branch can change workflows and use any secret its job gets, so the credentials PR workflows hold must be unable to deploy production or read its variables. Neon's API key for previews is scoped to the preview project. Production variables in Vercel are marked *sensitive* (write-only).
 - **A preview per pull request:**
   - a Neon branch per PR, from a **separate preview Neon project** seeded only with the public seed;
   - a shared **preview Blob store** holding public seed media;
@@ -53,9 +54,10 @@ Depends on `run-on-vercel-functions` and `store-media-in-vercel-blob`. Basecamp 
   - `.github/workflows/test.yml` becomes callable (`workflow_call`) so deploys can depend on it;
   - `playwright.container.config.ts`, or a new `playwright.preview.config.ts`, adds the protection-bypass header and an external base URL.
 - **External setup (one-time, documented):**
-  - Vercel project on the foundation's Pro team;
-  - Neon projects `vvf-production` and `vvf-preview` through the Vercel Marketplace;
-  - Blob stores `vvf-media-production` and `vvf-media-preview`;
-  - GitHub environments and their secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `NEON_API_KEY`, `NEON_PREVIEW_PROJECT_ID`, `PRODUCTION_DATABASE_URL_UNPOOLED`, `EMDASH_TARGET_FINGERPRINT`, `VERCEL_AUTOMATION_BYPASS_SECRET`, `EMDASH_SYNC_PAT` (production and preview values).
+  - two Vercel teams: the foundation's production team (Pro) with the production project, and a separate preview team with the preview project;
+  - Neon projects `vvf-production` and `vvf-preview` through the Vercel Marketplace, one in each team;
+  - Blob stores `vvf-media-production` and `vvf-media-preview`, one in each team;
+  - GitHub environment `preview`: `VERCEL_PREVIEW_TOKEN` (preview team only), `VERCEL_PREVIEW_ORG_ID`, `VERCEL_PREVIEW_PROJECT_ID`, `NEON_PREVIEW_API_KEY` (scoped to `vvf-preview`), `NEON_PREVIEW_PROJECT_ID`, the preview `VERCEL_AUTOMATION_BYPASS_SECRET` and `EMDASH_SYNC_PAT`;
+  - GitHub environment `production` (`main` only): `VERCEL_TOKEN` (production team only), `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `PRODUCTION_DATABASE_URL_UNPOOLED`, `EMDASH_TARGET_FINGERPRINT`, the production `EMDASH_SYNC_PAT`.
 - **Docs:** `deploying-to-vercel.md` (pipeline, environments, rollback runbook, migration rule); `testing-and-ci.md`; README "Running in a container" gains a pointer to Vercel.
-- **Safeguarding:** previews never contain production data, and PR workflows never see production secrets (they're scoped to the `production` GitHub environment, which only `main` can use).
+- **Safeguarding:** previews never contain production data. PR workflows never hold a credential that reaches production: production's GitHub secrets live in the `production` environment, which only `main` can use, and the Vercel and Neon credentials previews get are limited to the preview team and project, so they can't deploy production or read its variables (which hold the database with child data). Raised in Eduardo's review on #32.

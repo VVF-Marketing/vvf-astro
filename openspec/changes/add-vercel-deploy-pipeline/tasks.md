@@ -1,10 +1,11 @@
 ## 1. One-time setup
 
-- [ ] 1.1 Create the Vercel project on the foundation's Pro team (Node.js runtime, region per `run-on-vercel-functions` D1, Deployment Protection on previews with Protection Bypass for Automation). Create the Neon projects `vvf-production` and `vvf-preview` and the Blob stores `vvf-media-production` and `vvf-media-preview` through the Vercel Marketplace and Storage, attached per environment (D1, D2). Verify `vercel env ls` shows the database and Blob variables scoped as in D7, with production values only in Production.
+- [ ] 1.0 Create the separate preview Vercel team (D0) and its project. Verify that a token created in it can't see the production team's projects (`vercel project ls --scope <production team>` fails), can't deploy there (`vercel deploy --prod --scope <production team>` fails), and can't pull production variables.
+- [ ] 1.1 Create the production Vercel project on the foundation's Pro team, with every production variable marked sensitive (D0) (Node.js runtime, region per `run-on-vercel-functions` D1, Deployment Protection on previews with Protection Bypass for Automation). Create the Neon projects `vvf-production` and `vvf-preview` and the Blob stores `vvf-media-production` and `vvf-media-preview` through the Vercel Marketplace and Storage, attached per environment (D1, D2). Verify `vercel env ls` shows the database and Blob variables scoped as in D7, with production values only in Production.
 - [ ] 1.2 Seed `vvf-preview/main` with `npm run db:setup -- --yes` (public seed and media into the preview store), and mint its static-page-sync token (D1). Verify:
   - a Neon branch made from it shows seeded content when the site points at it;
   - a query for child profiles returns only the public seed's fixture rows, if any (`scripts/lib/fixture-children.mjs`), and no real ones.
-- [ ] 1.3 Create the GitHub environments `preview` and `production` (`production` limited to `main`) with the secrets from proposal.md. Verify a PR-triggered test workflow can't read a `production` secret: a dry-run job that echoes whether the secret is set prints "unset".
+- [ ] 1.3 Create the GitHub environments `preview` and `production` (`production` limited to `main`) with the secrets from proposal.md: preview-team token and a Neon key scoped to `vvf-preview` in `preview`, production-team credentials only in `production` (D0). Verify a PR-triggered test workflow can't read a `production` secret: a dry-run job that echoes whether the secret is set prints "unset".
 
 ## 2. Preview deployments
 

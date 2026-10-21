@@ -78,15 +78,19 @@ After 14 days without rollback, raise the TTLs back to normal.
 - **Private key:** held offline (password manager) by two named people, recorded in the runbook by role, not in the repository.
 
 ### D5. Restore drill
-`scripts/backup/restore.mjs`:
-1. downloads an archive and decrypts it with a provided key file;
+Decrypted, the archive is child data, so the drill never leaves it on a personal laptop or on any disk (Eduardo's review on #32):
+- **Where:** a disposable machine made for the drill (a throwaway cloud VM or container in the foundation's account), destroyed afterwards. Not a personal laptop.
+- **No plaintext on disk:** `scripts/backup/restore.mjs` streams the download through `age` decryption and extracts into a RAM-backed directory (`/dev/shm` on Linux), which the script refuses to run without. The key file is read from the key holder's password manager into that same directory.
+
+The script:
+1. downloads an archive and decrypts it in memory as above;
 2. creates an empty scratch Neon branch (a new root branch in `vvf-production`, migrated with `db:setup --no-seed`);
 3. imports into it with a scratch Blob prefix (`restore-drill/<date>/`);
 4. prints counts against the manifest;
-5. a local server pointed at it renders the home page and a child profile page for a signed-in safeguarding user;
-6. deletes the scratch branch and prefix.
+5. a local server pointed at it renders the home page and a child profile page for a signed-in safeguarding user, in a private browser window;
+6. **cleans up in a `finally`, so it also runs when a step fails:** removes the RAM directory (archive, media, key file), deletes the scratch branch and Blob prefix, then checks that none of them exist any more, and prints that check. A failed cleanup exits non-zero and says what's left.
 
-Run before launch, using the first daily archive, and then quarterly, with the result logged in the runbook.
+Then the VM or container is destroyed. Run before launch, using the first daily archive, and then quarterly, with the result and the cleanup check logged in the runbook.
 
 ### D6. Uptime monitoring
 An external monitor checks `https://www.victoriavenezuelafoundation.org/` and `/readyz` every 5 minutes from at least two regions, and alerts the team by email after 2 failures. That's within the spec's 10 minutes. The monitor holds no secrets: both endpoints are public and reveal only status.

@@ -61,11 +61,15 @@ Production SHALL have point-in-time recovery of its database covering at least t
 - **THEN** they can't read any of its contents
 
 ### Requirement: Restore drill
-Restoring from backup SHALL be rehearsed before launch and every quarter after: a backup is restored into a scratch environment, checked against production counts, and then destroyed. The outcome SHALL be recorded.
+Restoring from backup SHALL be rehearsed before launch and every quarter after: a backup is restored into a scratch environment, checked against production counts, and then destroyed. Decrypted backup data SHALL never be written to persistent disk or kept on a personal device, and SHALL be deleted when the drill ends, including when it fails. The outcome SHALL be recorded.
 
 #### Scenario: Quarterly drill
 - **WHEN** the quarterly drill restores the latest archive into a scratch Neon branch and Blob prefix
 - **THEN** row and media counts match that day's production, the site renders from it, and the scratch environment is deleted afterwards
+
+#### Scenario: Drill fails half-way
+- **WHEN** the import step fails during a drill
+- **THEN** the decrypted files, the scratch branch and the scratch media are still deleted, and the drill reports that nothing is left
 
 ### Requirement: Uptime alerts
 The team SHALL be alerted within 10 minutes when the home page or `/readyz` on the production domain stops answering 200.

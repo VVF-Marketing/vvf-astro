@@ -75,6 +75,10 @@ Files that aren't meant for visitors (CMS backups under `backups/`) SHALL NOT be
 - **WHEN** an admin creates a CMS backup on a Blob-backed site
 - **THEN** neither the media route nor a direct Blob URL built from the backup's key returns it to an anonymous visitor
 
+#### Scenario: No public store URLs
+- **WHEN** a child photo is uploaded on a Blob-backed site, and later deleted
+- **THEN** it's never readable through a public store URL, only through the site's media route, and after the deletion that route answers 404 for it
+
 #### Scenario: Guessing media URLs
 - **WHEN** an anonymous visitor requests store URLs for keys that no page links to
 - **THEN** they can't list the store, and they can't derive other files' keys from the ones they've seen

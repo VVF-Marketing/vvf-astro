@@ -27,6 +27,13 @@ describe('createSettingsGuard', () => {
     expect(guard('/readyz')?.status).toBe(503)
   })
 
+  it('stops a Vercel deployment whose scheduled work would silently not run', () => {
+    const log = vi.fn()
+    const guard = createSettingsGuard({ env: { EMDASH_SYNC_PAT: 'p' }, mode: { DEPLOY_TARGET: 'vercel' }, log })
+    expect(guard('/')?.status).toBe(503)
+    expect(log.mock.calls[0][0]).toContain('CRON_SECRET')
+  })
+
   it("uses the build's mode, not the runtime's", () => {
     const guard = createSettingsGuard({ env: { DB_ADAPTER: 'sqlite' }, mode: postgres, log: vi.fn() })
     expect(guard('/')?.status).toBe(503)

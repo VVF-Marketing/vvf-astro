@@ -24,6 +24,10 @@ On Vercel, when a setting required by the deployment's mode is missing, the site
 - **WHEN** a Vercel deployment built for Postgres runs without `DATABASE_URL`
 - **THEN** pages answer 503, `/readyz` answers 503, and the function log names `DATABASE_URL`
 
+#### Scenario: Cron secret missing
+- **WHEN** a Vercel deployment runs without `CRON_SECRET` (or without `EMDASH_SYNC_PAT`)
+- **THEN** it answers 503 and the log names the variable, instead of silently never publishing scheduled entries
+
 #### Scenario: Checked before deploy
 - **WHEN** the pre-deploy check runs against an environment missing a required variable
 - **THEN** it exits non-zero naming the variable, and nothing is deployed
@@ -34,6 +38,10 @@ On Vercel, scheduled publishing, plugin cron jobs and CMS cleanup SHALL be run b
 #### Scenario: Scheduled post goes live
 - **WHEN** an editor schedules an entry for 10:00 and no visitor requests the site around that time
 - **THEN** the entry is published by 10:05
+
+#### Scenario: No Spanish copy
+- **WHEN** `/es/api/cron/emdash` is requested
+- **THEN** it answers 404
 
 #### Scenario: Unauthorised call
 - **WHEN** the scheduled-work endpoint is called without the cron secret

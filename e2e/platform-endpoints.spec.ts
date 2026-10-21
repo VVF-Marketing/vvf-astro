@@ -13,6 +13,11 @@ test('refuse callers without their secret, uncached', async ({ request }) => {
   expect(await sync.json()).toEqual({ ran: false })
 })
 
+test('have no Spanish copy', async ({ request }) => {
+  expect((await request.get('/es/api/cron/emdash', { maxRedirects: 0 })).status()).toBe(404)
+  expect((await request.post('/es/api/internal/sync-static-pages', { maxRedirects: 0 })).status()).toBe(404)
+})
+
 test('stay out of the sitemap', async ({ request }) => {
   const sitemap = await (await request.get('/sitemap.xml')).text()
   expect(sitemap).not.toMatch(/\/api\//)

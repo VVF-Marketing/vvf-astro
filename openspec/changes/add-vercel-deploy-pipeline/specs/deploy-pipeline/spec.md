@@ -76,8 +76,12 @@ The team SHALL be able to put the previous production deployment back on the dom
 - **THEN** running the documented rollback restores the previous deployment on the domain within a minute, and it works against the current database
 
 ### Requirement: Secrets scoped to their environment
-Production secrets SHALL be available only to workflow jobs deploying `main` to production. Workflows for pull requests SHALL only receive preview secrets. Every variable each environment needs SHALL be documented.
+Production secrets SHALL be available only to workflow jobs deploying `main` to production. Workflows for pull requests SHALL only receive preview credentials, and those credentials SHALL be unable to deploy to production, read production's variables, or reach production's database or media store, even when a pull request changes the workflow. Every variable each environment needs SHALL be documented.
 
 #### Scenario: Workflow from a pull request
 - **WHEN** a workflow runs for a pull request
 - **THEN** it can't read the production database URL, Blob token, fingerprint or sync token
+
+#### Scenario: Pull request changes the deploy workflow
+- **WHEN** a pull request edits the workflow to run `vercel deploy --prod` or `vercel env pull --environment=production` with the credentials its job receives
+- **THEN** the command fails, because those credentials only work on the preview team and project

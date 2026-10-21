@@ -12,7 +12,12 @@
   - the archive can't be read without the private key;
   - the run produced no GitHub artifact and no plaintext in its logs;
   - a seeded 31-day-old test object is pruned.
-- [ ] 2.2 Add `scripts/backup/restore.mjs` (D5), and run the first drill from the latest archive into a scratch Neon branch and Blob prefix. Verify counts match the manifest, the site renders from it, and the scratch branch and prefix are deleted. Log the result in the runbook.
+- [ ] 2.2 Add `scripts/backup/restore.mjs` (D5: in-memory decryption into a RAM-backed directory, refusal without one, cleanup in `finally` with a check that nothing is left), with unit tests for the refusal and for cleanup running after a failed step. Run the first drill from the latest archive on a disposable VM or container, into a scratch Neon branch and Blob prefix. Verify:
+  - counts match the manifest, and the site renders from it;
+  - the cleanup check shows the RAM directory, scratch branch and prefix all gone;
+  - the VM or container is destroyed.
+
+  Log the result in the runbook.
 - [ ] 2.3 Confirm the production Neon plan's point-in-time history is at least 7 days, and rehearse a restore to a timestamp into a branch (D4). Verify the branch has the data as of that time. Then delete it.
 - [ ] 2.4 Write the backup, restore and drill runbook in `deploying-to-vercel.md`, and verify the docs site builds.
 

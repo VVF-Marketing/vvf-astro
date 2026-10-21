@@ -27,13 +27,19 @@ let hasSynced = false
 const syncState = globalThis as typeof globalThis & { __staticPageSync?: Promise<unknown> }
 
 // On Vercel no launcher checks the required settings, so the middleware does
-// (run-on-vercel-functions, D2). DB_ADAPTER/STORAGE are the build's mode.
+// (run-on-vercel-functions, D2), using the build's mode.
 const settingsGuard =
   import.meta.env.DEPLOY_TARGET === 'vercel'
-    ? createSettingsGuard({ env: process.env, mode: { DB_ADAPTER: import.meta.env.DB_ADAPTER, STORAGE: import.meta.env.STORAGE } })
+    ? createSettingsGuard({
+        env: process.env,
+        mode: { DEPLOY_TARGET: import.meta.env.DEPLOY_TARGET, DB_ADAPTER: import.meta.env.DB_ADAPTER, STORAGE: import.meta.env.STORAGE },
+      })
     : null
 
+// Endpoints only platforms call: health checks, Vercel Cron, the deploy
+// pipeline's sync.
 const HEALTH_PATHS = new Set(['/healthz', '/readyz'])
+const isPlatformPath = (path: string) => HEALTH_PATHS.has(path) || path.startsWith('/api/cron/') || path.startsWith('/api/internal/')
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const unavailable = settingsGuard?.(context.url.pathname)
@@ -76,9 +82,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const locale = localeFromPath(context.url.pathname)
   const path = stripLocale(context.url.pathname)
   if (path.startsWith('/_')) return next()
-  // Health endpoints: answered as-is, never localized or rewritten, and only
+  // Platform endpoints: answered as-is, never localized or rewritten, and only
   // at their own path (no /es copy).
-  if (HEALTH_PATHS.has(path)) return locale === 'en' ? next() : new Response('Not found', { status: 404 })
+  if (isPlatformPath(path)) return locale === 'en' ? next() : new Response('Not found', { status: 404 })
   if (locale === 'en') return withLocalizedLinks(await next(), locale, context)
   // Old Webflow /es URLs: one permanent redirect straight to the Spanish
   // project route (the English redirects in astro.config.mjs would otherwise
