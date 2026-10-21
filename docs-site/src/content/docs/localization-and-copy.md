@@ -62,7 +62,7 @@ Add the page's `_copy.ts`, add it to `COPY_PAGES` in `src/lib/cmsNavigation.mjs`
 
 1. Declare it in the page's `_copy.ts` (or the template's `_copy.detail.ts`, or `src/copy/_copy.ts`) with the current English text as `default`.
 2. Use it in the page: `copy['my.key']` (or `t['my.key']` for site-wide text).
-3. Start the server: the static-page sync (first request after start, needs `EMDASH_SYNC_PAT`) creates the English row with the default and an empty Spanish row, and updates labels, formats and limits that changed in code. It never overwrites a value, never publishes over an editor's draft, and flags slots removed from code as stale instead of deleting them.
+3. Start the server: the static-page sync (first request after start, needs `EMDASH_SYNC_PAT`; once per deployment on Postgres and Vercel, see [Deploying to Vercel](/deploying-to-vercel/#static-page-sync)) creates the English row with the default and an empty Spanish row, and updates labels, formats and limits that changed in code. It never overwrites a value, never publishes over an editor's draft, and flags slots removed from code as stale instead of deleting them.
 
 ## Spanish content from the live site
 
