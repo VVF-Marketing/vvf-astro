@@ -9,7 +9,7 @@
 
 ## 2. Build target
 
-- [ ] 2.1 Add `@astrojs/vercel` (v11) and `@vercel/functions`. In `astro.config.mjs`, select the adapter from `DEPLOY_TARGET` (D1), and add `vercel.json` with `regions` only. Verify:
+- [x] 2.1 Add `@astrojs/vercel` (v11) and `@vercel/functions`. In `astro.config.mjs`, select the adapter from `DEPLOY_TARGET` (D1), and add `vercel.json` with `regions` only. Verify:
   - `npm run dev` and the default `npm run build` behave as before (unit and SQLite e2e suites green; the container CI job stays green on the PR);
   - `DEPLOY_TARGET=vercel DB_ADAPTER=postgres npx astro build` produces `.vercel/output` with one Node.js function.
 - [x] 2.2 Document `DEPLOY_TARGET` in `.env.example` and in a new `docs-site/src/content/docs/deploying-to-vercel.md` (runtime section: target, region, runtime), and link it from `running-anywhere.md`. Verify the docs site builds (`docs-build` CI job).
@@ -40,7 +40,7 @@
 
 ## 6. Postgres on functions
 
-- [ ] 6.1 Add `directDatabaseUrl()` (`DATABASE_URL_UNPOOLED`, falling back to `DATABASE_URL`). Use it in `scripts/db-setup.mjs` and `scripts/data.mjs`. Cap the pool sizes (`DATABASE_POOL_MAX`, default 5; sessions 2), and attach both pools with `attachDatabasePool` on the Vercel target (D6). Document the new variables in `.env.example`. Verify:
+- [x] 6.1 Add `directDatabaseUrl()` (`DATABASE_URL_UNPOOLED`, falling back to `DATABASE_URL`). Use it in `scripts/db-setup.mjs` and `scripts/data.mjs`. Cap the pool sizes (`DATABASE_POOL_MAX`, default 5; sessions 2), and attach both pools with `attachDatabasePool` on the Vercel target (D6). Document the new variables in `.env.example`. Verify:
   - unit tests for URL selection and pool options;
   - `db-setup.test.mjs` still passes;
   - `npm run db:setup -- --yes` against local Postgres 16 with only `DATABASE_URL_UNPOOLED` set for migrations succeeds;
@@ -52,7 +52,7 @@
 
 ## 8. Integration check (local)
 
-- [ ] 8.1 Run the unit suite, the SQLite e2e suite on the default build, and `openspec validate run-on-vercel-functions --strict`. Then open a draft PR and get its CI (unit, Storybook, e2e, container, docs) green.
+- [x] 8.1 Run the unit suite, the SQLite e2e suite on the default build, and `openspec validate run-on-vercel-functions --strict`. Then open a draft PR and get its CI (unit, Storybook, e2e, container, docs) green.
 
 ## 9. Live verification on Vercel
 
