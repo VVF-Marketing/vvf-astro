@@ -1,0 +1,44 @@
+name: Preview build
+
+# Builds a pull request's Vercel preview (openspec/changes/add-vercel-deploy-pipeline,
+# D0/D3). This runs the pull request's own code and workflow file, so it gets
+# NO secrets: `vercel build` runs against a settings-only project file. The
+# output goes up as an artifact; deploy.yml (`preview-deploy`, always main's
+# definition) deploys it.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Same repository only: forks get no preview.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Build the Vercel target
+        run: |
+          mkdir -p .vercel
+          echo '{"projectId":"_","orgId":"_","settings":{"framework":"astro"}}' > .vercel/project.json
+          DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=blob npx --yes vercel@64.7.0 build --yes
+          npx vitest run scripts/vercel-build.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preview-output
+          path: .vercel/output
+          include-hidden-files: true
+          retention-days: 3
+          if-no-files-found: error

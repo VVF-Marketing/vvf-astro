@@ -5,6 +5,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  # deploy.yml runs the tests before deploying to production
+  # (add-vercel-deploy-pipeline, D3).
+  workflow_call:
 
 jobs:
   unit:

@@ -14,14 +14,14 @@
 - [ ] 2.1 Add `vercel.json` `git.deploymentEnabled: false`, make `test.yml` callable (`workflow_call`), and add `scripts/deploy/check-settings.mjs` (D5) with unit tests (missing names reported, values never printed). Verify:
   - pushing a branch creates no Vercel deployment on its own;
   - the unit tests pass;
-  - one manual `vercel deploy --prebuilt --env DATABASE_URL=…` shows the per-deployment variable at runtime (`/readyz` 200 against a branch database). Otherwise switch to the fallback in Risks.
+  - one manual `vercel deploy --prebuilt --env DATABASE_URL=…` shows the per-deployment variable at runtime (`/readyz` 200 against a branch database). Otherwise switch to the fallback in Risks. _Built 2026-10-22: `vercel.json` `git.deploymentEnabled: false`, `test.yml` `workflow_call`, `scripts/deploy/check-settings.mjs` (+ tests). The deploy and runtime checks wait for the projects (1.x)._
 - [ ] 2.2 Add `.github/workflows/preview-build.yml` (no secrets, uploads the artifact) and the `preview-deploy` workflow (`workflow_run`, environment `preview`) per D3: Neon branch with expiry, settings check, deploy, then the PR's migrations with only the branch URL, ready, sync, PR comment. Add `playwright.preview.config.ts` (base URL from an environment variable, bypass header). Verify on this change's PR:
   - the preview URL is posted;
   - `/readyz` is 200;
   - the full e2e suite passes against the preview;
   - a second push redeploys on the same branch;
-  - a throwaway PR that edits `preview-deploy` still gets deployed by `main`'s version (the edit has no effect), and one that edits `preview-build` to echo `VERCEL_TOKEN` prints nothing.
-- [ ] 2.3 Add `preview-cleanup` (`pull_request_target` closed, never checking out the PR; delete the branch) and the `reset-preview-parent` manual workflow (D1). Verify: closing a test PR deletes `pr-<n>`, and the reset re-seeds `vvf-preview/main`.
+  - a throwaway PR that edits `preview-deploy` still gets deployed by `main`'s version (the edit has no effect), and one that edits `preview-build` to echo `VERCEL_TOKEN` prints nothing. _Built 2026-10-22: `preview-build.yml`, `deploy.yml` (`preview-deploy`, then `preview-verify` on a fresh runner for ready/sync/comment/e2e), `scripts/deploy/neon-branch.mjs` and `ready-and-sync.mjs` (+ tests), `playwright.preview.config.ts` with `e2e/preview-setup.ts` (the bypass secret is traded once for Vercel's cookie, not sent to third parties), and `scripts/deploy/workflows.test.mjs`, which fails if PR code runs before a credential step, a preview deploys with `--prod`, or `preview-build` gets a secret. The live checks wait for the projects (1.x) and for `deploy.yml` to be on `main` (`workflow_run` only runs from the default branch). Neon's branch API fields (`expires_at`, `connection_uri`) are unverified until then._
+- [ ] 2.3 Add `preview-cleanup` (`pull_request_target` closed, never checking out the PR; delete the branch) and the `reset-preview-parent` manual workflow (D1). Verify: closing a test PR deletes `pr-<n>`, and the reset re-seeds `vvf-preview/main`. _(`preview-cleanup` is built in `deploy.yml`; `reset-preview-parent` isn't yet.)_
 - [ ] 2.4 Add the preview banner (D8), shown only when `VERCEL_ENV=preview`, with a unit test. Verify on a preview that the banner shows, responses carry `X-Robots-Tag: noindex`, and canonical URLs point at production.
 - [ ] 2.5 Verify isolation: two PRs that each add a different test collection get previews that only have their own collection. Revert both test PRs afterwards.
 
