@@ -76,12 +76,20 @@ The team SHALL be able to put the previous production deployment back on the dom
 - **THEN** running the documented rollback restores the previous deployment on the domain within a minute, and it works against the current database
 
 ### Requirement: Secrets scoped to their environment
-Production secrets SHALL be available only to workflow jobs deploying `main` to production. Workflows for pull requests SHALL only receive preview credentials, and those credentials SHALL be unable to deploy to production, read production's variables, or reach production's database or media store, even when a pull request changes the workflow. Every variable each environment needs SHALL be documented.
+Production secrets SHALL be available only to workflow jobs deploying `main` to production. A pull request's code SHALL never run in a job that holds a deploy credential (the Vercel token or the Neon API key), even when the pull request changes a workflow: pull-request code is built without secrets, and the job that deploys previews SHALL always run the workflow definition on `main`, and SHALL run pull-request code only after its last use of those credentials. Production's Vercel variables SHALL be write-only (sensitive). Every variable each environment needs SHALL be documented.
 
 #### Scenario: Workflow from a pull request
 - **WHEN** a workflow runs for a pull request
-- **THEN** it can't read the production database URL, Blob token, fingerprint or sync token
+- **THEN** it can't read the production database URL, Blob token, fingerprint or sync token, and it gets no Vercel token or Neon key
+
+#### Scenario: Pull request changes the build workflow
+- **WHEN** a pull request edits the preview build workflow to print or use a secret, or to run `vercel deploy --prod`
+- **THEN** the job has no secret to print or use, so nothing reaches Vercel or Neon
 
 #### Scenario: Pull request changes the deploy workflow
-- **WHEN** a pull request edits the workflow to run `vercel deploy --prod` or `vercel env pull --environment=production` with the credentials its job receives
-- **THEN** the command fails, because those credentials only work on the preview team and project
+- **WHEN** a pull request edits the preview deploy workflow
+- **THEN** its preview is still deployed by the definition on `main`; the edit takes effect only after it's reviewed and merged
+
+#### Scenario: Pull-request code runs during a preview deploy
+- **WHEN** the preview deploy job runs the pull request's migrations
+- **THEN** that step's environment holds only the pull request's preview branch database URL, and every step that uses the Vercel token or the Neon key has already finished
