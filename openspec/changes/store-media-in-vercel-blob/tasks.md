@@ -1,31 +1,31 @@
 ## 1. Spike
 
-- [ ] 1.1 With a test Blob store and the `run-on-vercel-functions` spike deployment, answer D0's four questions: access modes, direct-upload shape and CSP origin, streamed serving of 10–20 MB files with CDN caching, and key and list mapping. Record them in design.md. Pick the D3 serving mode from the answers. If Blob can't keep files private, stop and go back to the user (D2: no public fallback), and confirm with them if the D4 fallback is needed.
+- [x] 1.1 With a test Blob store and the `run-on-vercel-functions` spike deployment, answer D0's four questions: access modes, direct-upload shape and CSP origin, streamed serving of 10–20 MB files with CDN caching, and key and list mapping. Record them in design.md. Pick the D3 serving mode from the answers. If Blob can't keep files private, stop and go back to the user (D2: no public fallback), and confirm with them if the D4 fallback is needed. _Done 2026-10-22: all four answered under D0; Blob keeps files private. D3 gained a short CDN cache, decided with the user._
 
 ## 2. Adapter
 
-- [ ] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, one private store, nothing ever uploaded with public access). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token in `scripts/lib/settings.mjs`. Verify:
+- [x] 2.1 Add `@vercel/blob` and `src/lib/storage/vercelBlob.mjs` per D1/D2 (token read at runtime, `getPublicUrl` through the media route, one private store, nothing ever uploaded with public access). Add the `STORAGE=blob` branch in `astro.config.mjs`, and require the token in `scripts/lib/settings.mjs`. Verify:
   - `vercelBlob.test.mjs` (mocked SDK) covers every method, 404 mapping and pagination, and that no upload uses public access;
-  - `grep` finds no token in `.vercel/output` after a build with the token set.
-- [ ] 2.2 Implement direct uploads (`getSignedUploadUrl`, `getClientUploadOrigin`) per D4. Verify on the spike deployment:
+  - `grep` finds no token in `.vercel/output` after a build with the token set. _(0 hits for the Blob token and the database password, both in the build env.)_
+- [x] 2.2 Implement direct uploads (`getSignedUploadUrl`, `getClientUploadOrigin`) per D4. Verify on the spike deployment:
   - a 20 MB PDF and a 6 MB image upload through the admin and confirm;
   - the admin's CSP allows the upload origin and blocks others;
-  - an expired or reused token is refused.
-- [ ] 2.3 Implement media serving per D3. Verify on the spike deployment:
+  - an expired or reused token is refused. _(Reuse was accepted until the link was made single-use with `allowOverwrite: false`; see D4.)_
+- [x] 2.3 Implement media serving per D3. Verify on the spike deployment:
   - the 20 MB PDF downloads with `Content-Disposition: attachment`, and images render inline;
-  - the second request is a CDN hit;
+  - the second request is a CDN hit; _(for files up to about 5 MB; Vercel's CDN doesn't cache the 10 and 20 MB test files, which are still served in full; see D3)_
   - a `backups/…` key answers 404 through the media route, and its direct Blob URL is unreadable anonymously.
-- [ ] 2.4 Document the Blob mode in `deploying-to-vercel.md` (media section: stores, tokens, privacy layout, size limits) and in `running-anywhere.md` (storage modes table). Add `STORAGE=blob` and the token(s) to `.env.example`. Verify the docs site builds.
+- [x] 2.4 Document the Blob mode in `deploying-to-vercel.md` (media section: stores, tokens, privacy layout, size limits) and in `running-anywhere.md` (storage modes table). Add `STORAGE=blob` and the token(s) to `.env.example`. Verify the docs site builds.
 
 ## 3. Tooling
 
-- [ ] 3.1 Add the `blob` kind to `scripts/data.mjs` `openStorage()` and `scripts/media-copy.mjs` (`--from`/`--to`), and skip `s3-bucket.mjs` under Blob (D5). Verify:
+- [x] 3.1 Add the `blob` kind to `scripts/data.mjs` `openStorage()` and `scripts/media-copy.mjs` (`--from`/`--to`), and skip `s3-bucket.mjs` under Blob (D5). Verify:
   - `media-copy.test.mjs` and `data.test.mjs` cover the new kind (mocked);
-  - against the test store, copying `uploads/` from a public-seeded local site makes every seeded image render on the spike deployment.
-- [ ] 3.2 Seed public media into Blob through `npm run db:setup` (D5). Verify:
+  - against the test store, copying `uploads/` from a public-seeded local site makes every seeded image render on the spike deployment. _Run against a scratch folder of public seed files instead, because a local `uploads/` can hold child photos: 3 copied, a re-run copied 0, each served by the spike. All 130 seeded images render there (2.3). Also: the scripts share `scripts/lib/storage.mjs`, and `readManifests()` leaves child media out unless asked for._
+- [x] 3.2 Seed public media into Blob through `npm run db:setup` (D5). Verify:
   - against an empty Neon branch + test store, the "New Neon + Blob environment" scenario holds;
-  - a second run uploads nothing and creates no rows (`seed-media.test.mjs` extended with the Blob kind).
-- [ ] 3.3 Round-trip `data:export` → `data:import` into Neon + Blob on a scratch copy of a public-seeded site (never the real CMS here). Verify the same counts and that sitemap pages are byte-identical (the method from `make-app-portable`'s verified round trip).
+  - a second run uploads nothing and creates no rows (`seed-media.test.mjs` extended with the Blob kind). _Run against a fresh database in the spike's Neon project (dropped afterwards) and the test store: 76 migrations, 130 media uploaded, 40 collections, 1797 entries; the second run changed nothing. The Blob kind is covered by `db-setup.test.mjs` and `scripts/lib/storage.test.mjs`._
+- [x] 3.3 Round-trip `data:export` → `data:import` into Neon + Blob on a scratch copy of a public-seeded site (never the real CMS here). Verify the same counts and that sitemap pages are byte-identical (the method from `make-app-portable`'s verified round trip). _Spike (public seed, its admin account, test files) → a fresh Neon database + the same store: every table's row count matches, except the runtime-only `astro_sessions` and `vvf_static_page_sync`, which aren't carried over; all 138 archived files are in Blob byte for byte; the sitemap (88 URLs) and all 88 pages are identical served from each database, once the per-render random element ids (`field-`, `opps-`, `tiers-`) are normalised. Import skips files the target already has, so with the same store no file was re-uploaded; uploads into Blob are covered by 3.1 and 3.2. Scratch databases and the archive were deleted._
 
 ## 4. CI
 

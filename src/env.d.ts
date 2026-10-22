@@ -4,6 +4,6 @@
 interface ImportMetaEnv {
   readonly DEPLOY_TARGET: 'vercel' | 'node'
   readonly DB_ADAPTER: 'postgres' | 'sqlite'
-  readonly STORAGE: 's3' | 'local'
+  readonly STORAGE: 's3' | 'blob' | 'local'
   readonly BUILD_ID: string
 }

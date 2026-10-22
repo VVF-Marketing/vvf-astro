@@ -11,7 +11,7 @@ The site runs from one container image in every deployed environment: staging, p
 | --- | --- | --- |
 | Start | `npm run dev` | the image (`docker build -t vvf-site .`) |
 | Database | SQLite, `./data.db` | Postgres (`DATABASE_URL`) |
-| Media | disk, `./uploads` | S3-compatible bucket (`S3_*`) |
+| Media | disk, `./uploads` | S3-compatible bucket (`S3_*`), or a private Vercel Blob store on Vercel (`BLOB_READ_WRITE_TOKEN`) |
 | Admin sessions | files | the database (`astro_sessions`) |
 
 The database and storage kind are fixed when the site is built (`DB_ADAPTER=postgres`, `STORAGE=s3`; the Dockerfile sets both). Connection details and every secret are read when the server starts, never baked into the build (`astro:env`, `astro.config.mjs`). So the same image is promoted from staging to production, with only its environment variables changing.
@@ -53,7 +53,7 @@ Compose runs the site image, Postgres 16 and SeaweedFS (an S3-compatible store; 
 ## A new environment
 
 1. Create an empty Postgres database and a bucket.
-2. Migrate and seed: `npm run db:setup` (migrations, then the public media and seed, only into an empty database; `--no-seed` stops after migrations). It prints the target database and its fingerprint, and asks before migrating; `--force` (re-applying the seed over content) always asks. Set `STORAGE=s3` (with the `S3_*` settings) so the media goes to the bucket the site reads; `STORAGE=local` uploads to `./uploads` instead, and leaving it unset is refused.
+2. Migrate and seed: `npm run db:setup` (migrations, then the public media and seed, only into an empty database; `--no-seed` stops after migrations). It prints the target database and its fingerprint, and asks before migrating; `--force` (re-applying the seed over content) always asks. Set `STORAGE=s3` (with the `S3_*` settings) or `STORAGE=blob` (with `BLOB_READ_WRITE_TOKEN`) so the media goes to the storage the site reads; `STORAGE=local` uploads to `./uploads` instead, and leaving it unset is refused.
 
 ## Seeded media
 
@@ -84,7 +84,7 @@ The import runs in one transaction: if it fails, the target stays empty and can 
 Exports contain children's data and account data. They're written outside the repository by default (the script refuses a path inside it), readable only by you (file `0600`, a new folder `0700`), and never over an existing file. Store and delete them as safeguarding data, and never use them to fill preview environments: previews seed the public `seed/seed.json`.
 :::
 
-To copy only media from disk to a bucket, use `npm run media:copy`. It keeps the same keys, so content doesn't change, and it's safe to re-run.
+To copy only media, use `npm run media:copy`: from disk (`./uploads`, or `MEDIA_SOURCE_DIR`) by default, or from a bucket with `--from s3`, into `$STORAGE` (`s3` or `blob`), or the storage named with `--to`. It keeps the same keys, so content doesn't change, and it skips files already there, so it's safe to re-run. Check what's in the source first: a local `uploads/` from a migrated site holds child photos.
 
 ## Database differences to keep in mind
 

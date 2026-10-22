@@ -22,8 +22,7 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { Kysely, sql } from 'kysely'
 import { applySeed } from 'emdash/seed'
-import { createStorage as createLocalStorage } from 'emdash/storage/local'
-import { createStorage as createS3Storage } from 'emdash/storage/s3'
+import { openStorageKind } from './lib/storage.mjs'
 import { readManifests, seedMedia } from './lib/seed-media.mjs'
 import { createDirectDialect, directDatabaseUrl } from '../src/lib/db/postgresRuntime.mjs'
 import { confirmDestructive } from './lib/confirm.mjs'
@@ -35,9 +34,8 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 // media on the machine running setup, where the deployed site can't see it
 // (review finding on PR #26). STORAGE=local is the deliberate disk option.
 export function openStorage(env = process.env) {
-  if (env.STORAGE === 's3') return createS3Storage({})
-  if (env.STORAGE === 'local') return createLocalStorage({ directory: path.join(ROOT, 'uploads'), baseUrl: '/_emdash/api/media/file' })
-  throw new Error('Set STORAGE=s3 (with the S3_* settings) so the seed media goes to the bucket the site reads, or STORAGE=local to upload to ./uploads.')
+  if (['s3', 'blob', 'local'].includes(env.STORAGE)) return openStorageKind(env.STORAGE, { dir: path.join(ROOT, 'uploads'), env })
+  throw new Error('Set STORAGE=s3 (with the S3_* settings) or STORAGE=blob (with BLOB_READ_WRITE_TOKEN) so the seed media goes to the storage the site reads, or STORAGE=local to upload to ./uploads.')
 }
 
 // Where setup is about to write, without credentials: "host:port/database".

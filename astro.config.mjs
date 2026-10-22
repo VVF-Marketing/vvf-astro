@@ -27,14 +27,19 @@ const database =
 
 // Media storage (design D3): STORAGE=s3 at build uses any S3-compatible bucket,
 // whose S3_* settings EmDash's adapter reads at runtime (nothing baked in);
-// otherwise media lives on local disk as before.
+// STORAGE=blob uses one private Vercel Blob store, whose token the adapter
+// reads at runtime (store-media-in-vercel-blob, D1); otherwise media lives on
+// local disk as before.
+const storageMode = ['s3', 'blob'].includes(process.env.STORAGE) ? process.env.STORAGE : 'local';
 const storage =
-  process.env.STORAGE === 's3'
+  storageMode === 's3'
     ? s3()
-    : local({
-        directory: './uploads',
-        baseUrl: '/_emdash/api/media/file',
-      });
+    : storageMode === 'blob'
+      ? { entrypoint: fileURLToPath(new URL('./src/lib/storage/vercelBlob.mjs', import.meta.url)), config: {} }
+      : local({
+          directory: './uploads',
+          baseUrl: '/_emdash/api/media/file',
+        });
 
 // Runtime configuration (make-app-portable, design D1): secrets are read from
 // the environment when the server starts, never inlined into the build, so
@@ -102,7 +107,7 @@ export default defineConfig({
     define: {
       'import.meta.env.DEPLOY_TARGET': JSON.stringify(onVercel ? 'vercel' : 'node'),
       'import.meta.env.DB_ADAPTER': JSON.stringify(usePostgres ? 'postgres' : 'sqlite'),
-      'import.meta.env.STORAGE': JSON.stringify(process.env.STORAGE === 's3' ? 's3' : 'local'),
+      'import.meta.env.STORAGE': JSON.stringify(storageMode),
       'import.meta.env.BUILD_ID': JSON.stringify(String(Date.now())),
     },
     plugins: onVercel ? [vercelRuntime()] : [],

@@ -5,12 +5,12 @@ description: How the site runs on Vercel's functions — the build target, setti
 
 The site can be hosted on Vercel, with its data in Neon Postgres (Vercel Marketplace). It's the same app as the [container image](/running-anywhere/), built for a different target. Vercel runs it as short-lived functions rather than one long-lived server, so a few things work differently, described below. The design is in `openspec/changes/run-on-vercel-functions/`.
 
-Media in Vercel Blob, the deploy pipeline (previews per pull request, staged production deploys) and the production move are separate changes still to come (`store-media-in-vercel-blob`, `add-vercel-deploy-pipeline`, `move-production-to-vercel`). Until then, a Vercel deployment uses an S3-compatible bucket for media (`STORAGE=s3`).
+Media lives in a private Vercel Blob store (`STORAGE=blob`, [below](#media); `STORAGE=s3` still works). The deploy pipeline (previews per pull request, staged production deploys) and the production move are separate changes still to come (`add-vercel-deploy-pipeline`, `move-production-to-vercel`).
 
 ## Building for Vercel
 
 ```bash
-DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=s3 vercel build   # writes .vercel/output
+DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=blob vercel build   # writes .vercel/output
 vercel deploy --prebuilt                                           # uploads it
 ```
 
@@ -23,7 +23,7 @@ vercel deploy --prebuilt                                           # uploads it
 
 ## Settings
 
-The same variables as the container (see `.env.example`), set per environment in Vercel. There's no launcher on Vercel to refuse a bad start, so the site checks on each instance's first request instead: if a setting the build's mode needs is missing (`DATABASE_URL` for Postgres, the `S3_*` settings for S3, and on Vercel always `CRON_SECRET` and `EMDASH_SYNC_PAT`), every request except `/healthz` answers **503**, and the function log says `Missing required settings: …`. The response itself never names the variable. The last two are required so that scheduled publishing and the page sync can't stop without anyone noticing.
+The same variables as the container (see `.env.example`), set per environment in Vercel. There's no launcher on Vercel to refuse a bad start, so the site checks on each instance's first request instead: if a setting the build's mode needs is missing (`DATABASE_URL` for Postgres, the `S3_*` settings for S3, `BLOB_READ_WRITE_TOKEN` for Blob, and on Vercel always `CRON_SECRET` and `EMDASH_SYNC_PAT`), every request except `/healthz` answers **503**, and the function log says `Missing required settings: …`. The response itself never names the variable. The last two are required so that scheduled publishing and the page sync can't stop without anyone noticing.
 
 Vercel-only settings:
 
@@ -37,6 +37,16 @@ Vercel-only settings:
 - **Runtime:** `DATABASE_URL`, Neon's **pooled** URL (the `-pooler` host the integration sets). Each instance keeps at most `DATABASE_POOL_MAX` connections (default 5) plus 2 for sign-in sessions, closes idle ones after 10 seconds, and on Vercel lets Fluid compute release them before an instance is frozen.
 - **Migrations, setup and imports:** `DATABASE_URL_UNPOOLED`, the **direct** URL. `npm run db:setup` and `npm run data:import` prefer it (Neon's pooler runs in transaction mode, which migrations' locks don't survive), and fall back to `DATABASE_URL`.
 - **Sessions** use their own small pool rather than one long-lived connection, so a sign-in survives an instance being frozen and resumed.
+
+## Media
+
+With `STORAGE=blob`, every media file is in **one private Blob store** per environment: photos, report PDFs, child photos and EmDash's `backups/`. The design is in `openspec/changes/store-media-in-vercel-blob/`.
+
+- **Store and token.** Create the store as private (`vercel blob create-store <name> --access private --region iad1`, or in the dashboard) and connect it to the project, which sets `BLOB_READ_WRITE_TOKEN`. The adapter (`src/lib/storage/vercelBlob.mjs`) reads the token at runtime; it's never in the build. Creating a store from the CLI also pulls every one of the project's variables into the repo's `.env.local`, which `npm run dev` reads: trim it back afterwards.
+- **Privacy.** Nothing is ever uploaded with public access, so a blob's own URL answers 403 to anyone without the token. Visitors only get files through the site's media route, `/_emdash/api/media/file/<key>`, which never serves `backups/`. That's the same URL in every storage mode, so content doesn't change.
+- **Uploads go straight to Blob.** The admin asks for a signed upload link, valid for 10 minutes, for one key, its type and its size, and usable once; Blob enforces each limit. So files larger than functions' 4.5 MB request limit upload fine (tested with 20 MB). The admin's CSP allows `https://vercel.com`, where those links point.
+- **Serving.** The media route streams files of any size from Blob (tested with 20 MB; functions' 4.5 MB limit doesn't apply to streamed responses). On Vercel, the middleware also has Vercel's CDN cache each file for **10 minutes** (`src/lib/mediaCdnCache.ts`); files above about 5 MB aren't cached by the CDN and are served through the function each time. A removed or replaced file, a child's photo included, can therefore still be served for up to 10 minutes. To stop that at once, purge the CDN: `vercel cache purge --type cdn`.
+- **Seeding and copying.** `npm run db:setup` with `STORAGE=blob` uploads the public seed media into the store. `npm run media:copy -- --to blob` copies from disk, and `--from s3 --to blob` from an S3 bucket ([Running Anywhere](/running-anywhere/)).
 
 ## Scheduled work
 

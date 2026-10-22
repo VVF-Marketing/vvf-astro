@@ -81,7 +81,7 @@ console.log('\n▶ media')
 const db = new Kysely({ dialect: createDialect({ url: `file:${DB_PATH}` }) })
 try {
   const storage = createStorage({ directory: UPLOADS_DIR, baseUrl: '/_emdash/api/media/file' })
-  const result = await seedMedia({ db, storage, manifest: readManifests().all })
+  const result = await seedMedia({ db, storage, manifest: readManifests({ children: true }).all })
   console.log(`uploaded ${result.uploaded}, already present ${result.skipped}`)
 } finally {
   await db.destroy()
