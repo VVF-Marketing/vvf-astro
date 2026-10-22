@@ -14,6 +14,10 @@ export interface Props {
   description?: string
   image?: string
   // See Layout.astro.
+  imageAlt?: string
+  // See Layout.astro.
+  ogType?: 'website' | 'article'
+  // See Layout.astro.
   alternates?: Partial<Record<Locale, string>>
   // Locale the main content is actually in, when it fell back to another
   // locale (e.g. an event with no Spanish version on /es).
@@ -24,11 +28,11 @@ export interface Props {
   jsonLd?: JsonLd[]
 }
 
-const { title, description, image, alternates, contentLocale, noindex, jsonLd } = Astro.props as Props
+const { title, description, image, imageAlt, ogType, alternates, contentLocale, noindex, jsonLd } = Astro.props as Props
 const campaignSettings = await getCampaignSettings(locale)
 ---
 
-<Layout title={title} description={description} image={image} alternates={alternates} noindex={noindex} jsonLd={jsonLd}>
+<Layout title={title} description={description} image={image} imageAlt={imageAlt} ogType={ogType} alternates={alternates} noindex={noindex} jsonLd={jsonLd}>
   <AnnouncementBanner active={campaignSettings.active} text={campaignSettings.bannerText} />
   <Header alternates={alternates} />
   <main lang={contentLocale && contentLocale !== locale ? LANG_TAGS[contentLocale] : undefined}>

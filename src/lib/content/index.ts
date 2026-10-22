@@ -319,6 +319,7 @@ async function toEvent(e: LocalizedEntry, locale: Locale): Promise<EventItem> {
       heroBody: past ? d.recap_summary || d.summary : d.summary,
       heroImageUrl: resolveImage(d.hero_photo) ?? EVENT_FALLBACK_PHOTO,
       heroImageMobileUrl: resolveImage(d.hero_photo_phone),
+      cardImageUrl: resolveImage(d.card_photo),
       venue: d.venue_name || undefined,
       address,
       mapUrl: address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : undefined,
@@ -332,7 +333,9 @@ async function toEvent(e: LocalizedEntry, locale: Locale): Promise<EventItem> {
         : undefined,
       amountRaised: d.amount_raised || undefined,
       stats: d.stats?.length ? d.stats : undefined,
-      recapStats: d.stats?.length ? d.stats.map((s: { value: string; label?: string }) => ({ number: s.value, heading: s.label })) : undefined,
+      recapStats: d.stats?.length
+        ? d.stats.map((s: { value: string; label?: string; caption?: string }) => ({ number: s.value, heading: s.label, label: s.caption || undefined }))
+        : undefined,
       recapVideo: d.recap_video || undefined,
       previousEditions: previous.length ? previous : undefined,
       nextEdition: next[0],
@@ -397,6 +400,15 @@ export function latestPast<T extends Pick<EventItem, 'startDate' | 'lifecycle'>>
 
 export function isUpcoming(event: Pick<EventItem, 'startDate'> & { lifecycle?: EventItem['lifecycle'] }): boolean {
   return event.lifecycle !== 'cancelled' && new Date(event.startDate).getTime() >= Date.now()
+}
+
+// Spec 7.8-2: an upcoming event whose registration is closed or sold out sells
+// nothing; its page shows this note in place of every purchase link.
+export function registrationNotice(
+  event: Pick<EventItem, 'startDate' | 'registration'> & { lifecycle?: EventItem['lifecycle'] }
+): 'closed' | 'sold_out' | null {
+  if (!isUpcoming(event)) return null
+  return event.registration === 'closed' || event.registration === 'sold_out' ? event.registration : null
 }
 
 // --- Children -----------------------------------------------------------
@@ -729,9 +741,18 @@ export async function getPrimaryMenu(locale: Locale = DEFAULT_LOCALE): Promise<N
 // Per-locale paths of every CMS detail page, using the same queries as the
 // detail pages themselves (src/lib/sitemap.ts). Child profiles are left out
 // on purpose.
-export async function getSitemapDetailPages(): Promise<Partial<Record<Locale, string>>[]> {
-  const paths = (base: string, slugs: Partial<Record<Locale, string>>) =>
-    alternatePaths(base, Object.fromEntries(Object.entries(slugs).filter(([, s]) => s))) ?? {}
+export async function getSitemapDetailPages(): Promise<{ alternates: Partial<Record<Locale, string>>; lastmod?: string }[]> {
+  // The page's last change: the newest update of its English or Spanish entry.
+  const lastmod = (e: LocalizedEntry) => {
+    const times = Object.values(e.variants)
+      .map((d) => (d?.updatedAt ? new Date(d.updatedAt).getTime() : NaN))
+      .filter((n) => !Number.isNaN(n))
+    return times.length ? new Date(Math.max(...times)).toISOString().slice(0, 10) : undefined
+  }
+  const paths = (base: string, e: LocalizedEntry) => ({
+    alternates: alternatePaths(base, Object.fromEntries(Object.entries(e.slugs).filter(([, s]) => s))) ?? {},
+    lastmod: lastmod(e),
+  })
   const [events, articles, team, children] = await Promise.all([
     listEntries('events', { limit: LIST_LIMIT }, DEFAULT_LOCALE, { withSlugs: true }),
     listEntries('articles', ARTICLES_FILTER, DEFAULT_LOCALE, { withSlugs: true }),
@@ -739,12 +760,12 @@ export async function getSitemapDetailPages(): Promise<Partial<Record<Locale, st
     listEntries('children', CHILDREN_ALL, DEFAULT_LOCALE, { withSlugs: true }),
   ])
   return [
-    ...events.map((e) => paths('/events', e.slugs)),
+    ...events.map((e) => paths('/events', e)),
     // External articles have no page (spec 7.13).
-    ...articles.filter((e) => !e.data.external).map((e) => paths('/resources', e.slugs)),
+    ...articles.filter((e) => !e.data.external).map((e) => paths('/resources', e)),
     // Open seats have no bio page (spec 7.10).
-    ...team.filter((e) => !e.data.open_seat).map((e) => paths('/our-team', e.slugs)),
+    ...team.filter((e) => !e.data.open_seat).map((e) => paths('/our-team', e)),
     // Every child profile is public and open to search engines (spec 2.4, Q1).
-    ...children.map((e) => paths('/children', e.slugs)),
-  ].filter((p) => Object.keys(p).length > 0)
+    ...children.map((e) => paths('/children', e)),
+  ].filter((p) => Object.keys(p.alternates).length > 0)
 }

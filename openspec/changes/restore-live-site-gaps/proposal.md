@@ -1,0 +1,78 @@
+## Why
+
+A drift audit on 2026-10-20 compared the build with the live Webflow site, using the committed scrape (`scripts/migrate/snapshot/`, 2026-10-04) and, on 2026-10-21, the Webflow CMS API. Pages, collections and URLs mostly match. A few pieces of live content are missing for three reasons:
+- the migration dropped them: recap stat captions, an offer description, the 2026 "Memories" photos, and the phone hero's own alt text;
+- a spec rule is only half built: closed or sold-out registration shows no note;
+- the 2026 event changed on Webflow after the scrape.
+
+SEO and answer-engine coverage also has gaps:
+- only three JSON-LD types exist (NGO, Event, Article);
+- some Spanish titles and descriptions fall back to English;
+- `llms.txt` is a hand-kept list.
+
+The spec stays the reference (v0.27, user decision): only live content the spec allows is restored. Anything the spec pass removed on purpose goes to Enrique as a question.
+
+Basecamp card: _to be added_ (no card yet).
+
+## What Changes
+
+- **Registration notice.** When an event's registration is `closed` or `sold_out`, the event page hides every ticket button and shows the live note, in both languages. Spec 7.8-2 now runs against a seeded closed event instead of skipping.
+- **Recap stat captions.** Each recap stat carries the short line under it ("Took part for children in Venezuela"), from extraction through to the page. The "Raised" tile gets its line from a copy slot.
+- **Offer descriptions.** Webflow keeps some offers' text in the offer's "Includes" field as a paragraph rather than a list (the physical therapy lounge: "Help golfers warm up…"). Extraction drops it today. It is now kept, and shown on the offer's card or tab.
+- **"Memories" photos.** The upcoming 2026 event shows the five photos the live page uses, with their alt text.
+- **Phone hero alt text.** The hero can describe its phone image separately. Our Team uses this.
+- **2026 event refresh.** The long description added on Webflow on 2026-10-15 (English and Spanish) goes into the event's rich description field. The new desktop and phone hero photos come from the CMS item: the harvest downloads them from Webflow's S3 bucket when the CDN is blocked. The new card photo comes in through a new optional event field (below). The gallery's re-edited photos aren't shown on the 2026 page, so they aren't brought in.
+- **SEO and AEO:**
+  - Spanish titles and descriptions for team profiles, event and resource fallbacks, and Financials & Transparency;
+  - new JSON-LD: FAQPage, BreadcrumbList, Person and WebSite, plus a richer NGO block with a DonateAction, linked by `@id`;
+  - Twitter tags, `og:image:alt`, `og:type` and `theme-color`;
+  - alt text on event card photos;
+  - `llms.txt` generated from content, with a Spanish section;
+  - `lastmod` in the sitemap.
+- **"Previous editions".** Past event pages get live's "Previous editions" section back: cards for earlier years when the event links any, and an "All events" button.
+- **Card photo.** Events get an optional card photo for event lists (Enrique: the crop centers the players). The 2026 tournament's comes from the CMS.
+- **Spanish benefits count.** The phone benefits list said "N of M benefits" in English on Spanish pages; it now reads "N de M beneficios".
+- **Webflow changes of 2026-10-21:** the Form W-9 button and a sharper Candid photo on Financials; eight new sponsors, Marlins first; Spirits Sponsor available again; tablets get the accordion for special opportunities and, on Home, the photo above the hero card; descriptions under the three videos on Home and Our Programs; SVG logos can't collapse in the slider.
+- **Drift check.** `npm run migrate:drift` lists live strings (text, alt text, SEO) that the build doesn't contain, so the comparison can be re-run.
+- **Mobile.** Event detail pages and team profiles join the 375–1440 px no-sideways-scroll sweep.
+- **Not built; asked Enrique** (answers in `tasks.md` 4.5):
+  - the contact page's four "ways to reach us" cards and its "Get Involved" button: left out;
+  - the Events page headings: kept as built;
+  - the "Previous editions" recap section: restored (see below);
+  - the home hero subtext: kept (live shows it again since 2026-10-21);
+  - the La Guaira caption wording: kept as built.
+- **Skipped:** the empty "Thank you, donors" and "What they said" sections (spec 7.8-4 hides empty sections).
+
+## Capabilities
+
+### New Capabilities
+- `structured-data`: the machine-readable layer of every page: JSON-LD types and how they link, social meta tags, `llms.txt`, and sitemap freshness.
+
+### Modified Capabilities
+- `front-end`: adds the registration notice, recap stat captions, offer descriptions, the 2026 "Memories" photos, and Spanish SEO for detail pages.
+- `cms-collections`: the event `stats` repeater gains a caption.
+- `site-migration`: extraction keeps stat captions, paragraph-only offer text, the memories photos and the event's long description; a drift check compares the build with the snapshot.
+- `component-library`: the Hero gains an optional separate alt text for its phone image.
+
+## Impact
+
+- **Code:**
+  - `src/pages/events/[slug].astro` and `_copy.detail.ts`
+  - `src/pages/our-team/[slug].astro` and `index.astro`
+  - `src/components/Hero.astro`, `TicketCard.astro`, `SpecialOpportunities.astro` and `EventCard.astro`
+  - `src/lib/content/` (types, mappers, a registration helper)
+  - `src/lib/structuredData.ts`, `src/layouts/Layout.astro`, `src/pages/llms.txt.ts` and `src/lib/sitemap.ts`
+- **Migration:**
+  - `scripts/migrate/lib/parse.mjs`, `mappers.mjs` and `model.mjs`
+  - `src/lib/contentModel.mjs`
+  - the snapshot (2026 event)
+  - a new `scripts/migrate/drift.mjs`
+  - `seed/seed.json` and `seed/page-copy.es.json`, regenerated by the seed tooling
+  - Spanish slot text in `scripts/migrate/pagecopy.mjs` (`MANUAL_TRANSLATIONS`)
+- **Tests:**
+  - Vitest for the new helpers and builders, and the mapper changes;
+  - e2e checks in English and Spanish;
+  - a layout sweep for detail pages;
+  - a seed fixture with a closed event.
+- **CMS schema:** one new optional sub-field, `caption`, in the event `stats` repeater, and one new optional event field, `card_photo`. Existing databases pick it up through `scripts/cms-schema.mjs`.
+- **External:** read-only Webflow API access. Asset files come from Webflow's S3 bucket (`s3.amazonaws.com/webflow-prod-assets`), which is reachable. A full re-scrape of page text needs `www.victoriavenezuelafoundation.org` allowed in the environment.

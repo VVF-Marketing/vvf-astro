@@ -2597,6 +2597,12 @@
           "translatable": false
         },
         {
+          "slug": "card_photo",
+          "label": "Card photo for event lists (subject centered; empty uses the hero photos)",
+          "type": "image",
+          "translatable": false
+        },
+        {
           "slug": "share_image",
           "label": "Share image (1200 × 630; empty uses the hero photo)",
           "type": "image",
@@ -2715,6 +2721,11 @@
               {
                 "slug": "label",
                 "label": "Label",
+                "type": "string"
+              },
+              {
+                "slug": "caption",
+                "label": "Line under the label",
                 "type": "string"
               }
             ]
@@ -5585,14 +5596,110 @@
         }
       },
       {
+        "id": "copy_home--videoGrid.description.1",
+        "status": "published",
+        "data": {
+          "key": "videoGrid.description.1",
+          "label": "Video grid: description 1",
+          "title": "55 · Content · Video grid: description 1",
+          "section": "content",
+          "position": 55,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Sponsors write to the children they support. We deliver the letters by hand. Sponsorship also pays for healthy meals, school supplies and medical care."
+        }
+      },
+      {
+        "id": "copy_home--videoGrid.description.1--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_home--videoGrid.description.1",
+        "data": {
+          "key": "videoGrid.description.1",
+          "label": "Video grid: description 1",
+          "title": "55 · Content · Video grid: description 1",
+          "section": "content",
+          "position": 55,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Los padrinos escriben a los niños que apoyan. Entregamos las cartas personalmente. El apadrinamiento también cubre comidas saludables, útiles escolares y atención médica."
+        }
+      },
+      {
+        "id": "copy_home--videoGrid.description.2",
+        "status": "published",
+        "data": {
+          "key": "videoGrid.description.2",
+          "label": "Video grid: description 2",
+          "title": "56 · Content · Video grid: description 2",
+          "section": "content",
+          "position": 56,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Our community kitchens cook healthy meals for children in Venezuela. This is one of them."
+        }
+      },
+      {
+        "id": "copy_home--videoGrid.description.2--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_home--videoGrid.description.2",
+        "data": {
+          "key": "videoGrid.description.2",
+          "label": "Video grid: description 2",
+          "title": "56 · Content · Video grid: description 2",
+          "section": "content",
+          "position": 56,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Nuestros comedores comunitarios preparan comidas saludables para niños en Venezuela. Este es uno de ellos."
+        }
+      },
+      {
+        "id": "copy_home--videoGrid.description.3",
+        "status": "published",
+        "data": {
+          "key": "videoGrid.description.3",
+          "label": "Video grid: description 3",
+          "title": "57 · Content · Video grid: description 3",
+          "section": "content",
+          "position": 57,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Supporters, volunteers, ambassadors and sponsors make this day happen every year."
+        }
+      },
+      {
+        "id": "copy_home--videoGrid.description.3--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_home--videoGrid.description.3",
+        "data": {
+          "key": "videoGrid.description.3",
+          "label": "Video grid: description 3",
+          "title": "57 · Content · Video grid: description 3",
+          "section": "content",
+          "position": 57,
+          "format": "plain",
+          "max_length": 180,
+          "stale": false,
+          "value": "Donantes, voluntarios, embajadores y padrinos hacen posible este día cada año."
+        }
+      },
+      {
         "id": "copy_home--sectionTitle4.tagline",
         "status": "published",
         "data": {
           "key": "sectionTitle4.tagline",
           "label": "Section title 4: tagline",
-          "title": "55 · Content · Section title 4: tagline",
+          "title": "58 · Content · Section title 4: tagline",
           "section": "content",
-          "position": 55,
+          "position": 58,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5607,9 +5714,9 @@
         "data": {
           "key": "sectionTitle4.tagline",
           "label": "Section title 4: tagline",
-          "title": "55 · Content · Section title 4: tagline",
+          "title": "58 · Content · Section title 4: tagline",
           "section": "content",
-          "position": 55,
+          "position": 58,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5622,9 +5729,9 @@
         "data": {
           "key": "sectionTitle4.heading",
           "label": "Section title 4: heading",
-          "title": "56 · Content · Section title 4: heading",
+          "title": "59 · Content · Section title 4: heading",
           "section": "content",
-          "position": 56,
+          "position": 59,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -5639,9 +5746,9 @@
         "data": {
           "key": "sectionTitle4.heading",
           "label": "Section title 4: heading",
-          "title": "56 · Content · Section title 4: heading",
+          "title": "59 · Content · Section title 4: heading",
           "section": "content",
-          "position": 56,
+          "position": 59,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -5654,9 +5761,9 @@
         "data": {
           "key": "eyebrow.text",
           "label": "Eyebrow: text",
-          "title": "57 · Content · Eyebrow: text",
+          "title": "60 · Content · Eyebrow: text",
           "section": "content",
-          "position": 57,
+          "position": 60,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5671,9 +5778,9 @@
         "data": {
           "key": "eyebrow.text",
           "label": "Eyebrow: text",
-          "title": "57 · Content · Eyebrow: text",
+          "title": "60 · Content · Eyebrow: text",
           "section": "content",
-          "position": 57,
+          "position": 60,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5686,9 +5793,9 @@
         "data": {
           "key": "events.pastLabel",
           "label": "Events: label when showing the latest past event",
-          "title": "58 · Content · Events: label when showing the latest past event",
+          "title": "61 · Content · Events: label when showing the latest past event",
           "section": "content",
-          "position": 58,
+          "position": 61,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5703,9 +5810,9 @@
         "data": {
           "key": "events.pastLabel",
           "label": "Events: label when showing the latest past event",
-          "title": "58 · Content · Events: label when showing the latest past event",
+          "title": "61 · Content · Events: label when showing the latest past event",
           "section": "content",
-          "position": 58,
+          "position": 61,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5718,9 +5825,9 @@
         "data": {
           "key": "events.pastButton",
           "label": "Events: card button when showing the latest past event",
-          "title": "59 · Content · Events: card button when showing the latest past event",
+          "title": "62 · Content · Events: card button when showing the latest past event",
           "section": "content",
-          "position": 59,
+          "position": 62,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5735,9 +5842,9 @@
         "data": {
           "key": "events.pastButton",
           "label": "Events: card button when showing the latest past event",
-          "title": "59 · Content · Events: card button when showing the latest past event",
+          "title": "62 · Content · Events: card button when showing the latest past event",
           "section": "content",
-          "position": 59,
+          "position": 62,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5750,9 +5857,9 @@
         "data": {
           "key": "programs.learnMore",
           "label": "Program cards: button",
-          "title": "60 · Content · Program cards: button",
+          "title": "63 · Content · Program cards: button",
           "section": "content",
-          "position": 60,
+          "position": 63,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5767,9 +5874,9 @@
         "data": {
           "key": "programs.learnMore",
           "label": "Program cards: button",
-          "title": "60 · Content · Program cards: button",
+          "title": "63 · Content · Program cards: button",
           "section": "content",
-          "position": 60,
+          "position": 63,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -5782,9 +5889,9 @@
         "data": {
           "key": "button2.text",
           "label": "Button 2: text",
-          "title": "61 · Content · Button 2: text",
+          "title": "64 · Content · Button 2: text",
           "section": "content",
-          "position": 61,
+          "position": 64,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5799,9 +5906,9 @@
         "data": {
           "key": "button2.text",
           "label": "Button 2: text",
-          "title": "61 · Content · Button 2: text",
+          "title": "64 · Content · Button 2: text",
           "section": "content",
-          "position": 61,
+          "position": 64,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5814,9 +5921,9 @@
         "data": {
           "key": "logoCarousel.heading",
           "label": "Logo carousel: heading",
-          "title": "62 · Content · Logo carousel: heading",
+          "title": "65 · Content · Logo carousel: heading",
           "section": "content",
-          "position": 62,
+          "position": 65,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5831,9 +5938,9 @@
         "data": {
           "key": "logoCarousel.heading",
           "label": "Logo carousel: heading",
-          "title": "62 · Content · Logo carousel: heading",
+          "title": "65 · Content · Logo carousel: heading",
           "section": "content",
-          "position": 62,
+          "position": 65,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5846,9 +5953,9 @@
         "data": {
           "key": "programsCta.heading",
           "label": "Programs cta: heading",
-          "title": "63 · Content · Programs cta: heading",
+          "title": "66 · Content · Programs cta: heading",
           "section": "content",
-          "position": 63,
+          "position": 66,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -5863,9 +5970,9 @@
         "data": {
           "key": "programsCta.heading",
           "label": "Programs cta: heading",
-          "title": "63 · Content · Programs cta: heading",
+          "title": "66 · Content · Programs cta: heading",
           "section": "content",
-          "position": 63,
+          "position": 66,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -5878,9 +5985,9 @@
         "data": {
           "key": "programsCta.text",
           "label": "Programs cta: text",
-          "title": "64 · Content · Programs cta: text",
+          "title": "67 · Content · Programs cta: text",
           "section": "content",
-          "position": 64,
+          "position": 67,
           "format": "plain",
           "max_length": 330,
           "stale": false,
@@ -5895,9 +6002,9 @@
         "data": {
           "key": "programsCta.text",
           "label": "Programs cta: text",
-          "title": "64 · Content · Programs cta: text",
+          "title": "67 · Content · Programs cta: text",
           "section": "content",
-          "position": 64,
+          "position": 67,
           "format": "plain",
           "max_length": 330,
           "stale": false,
@@ -5910,9 +6017,9 @@
         "data": {
           "key": "programsCta.label.1",
           "label": "Programs cta: button 1",
-          "title": "65 · Content · Programs cta: button 1",
+          "title": "68 · Content · Programs cta: button 1",
           "section": "content",
-          "position": 65,
+          "position": 68,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -5927,9 +6034,9 @@
         "data": {
           "key": "programsCta.label.1",
           "label": "Programs cta: button 1",
-          "title": "65 · Content · Programs cta: button 1",
+          "title": "68 · Content · Programs cta: button 1",
           "section": "content",
-          "position": 65,
+          "position": 68,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -8644,7 +8751,8 @@
           "position": 1,
           "format": "plain",
           "max_length": 60,
-          "stale": false
+          "stale": false,
+          "value": "{title} | Fundación Victoria Venezuela"
         }
       },
       {
@@ -20230,14 +20338,46 @@
         }
       },
       {
+        "id": "copy_site--event.benefitsCount",
+        "status": "published",
+        "data": {
+          "key": "event.benefitsCount",
+          "label": "Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "title": "110 · Content · Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "section": "content",
+          "position": 110,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "{included} of {total} benefits"
+        }
+      },
+      {
+        "id": "copy_site--event.benefitsCount--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_site--event.benefitsCount",
+        "data": {
+          "key": "event.benefitsCount",
+          "label": "Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "title": "110 · Content · Benefits table (phones): how many benefits a package includes ({included} and {total} are replaced)",
+          "section": "content",
+          "position": 110,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "{included} de {total} beneficios"
+        }
+      },
+      {
         "id": "copy_site--gift.amountLabel",
         "status": "published",
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "110 · Content · Gift amounts name (screen readers)",
+          "title": "111 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "stale": false,
           "value": "Gift amount"
@@ -20251,9 +20391,9 @@
         "data": {
           "key": "gift.amountLabel",
           "label": "Gift amounts name (screen readers)",
-          "title": "110 · Content · Gift amounts name (screen readers)",
+          "title": "111 · Content · Gift amounts name (screen readers)",
           "section": "content",
-          "position": 110,
+          "position": 111,
           "format": "plain",
           "stale": false
         }
@@ -20264,9 +20404,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "111 · Content · Gift amounts: other amount",
+          "title": "112 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20281,9 +20421,9 @@
         "data": {
           "key": "gift.other",
           "label": "Gift amounts: other amount",
-          "title": "111 · Content · Gift amounts: other amount",
+          "title": "112 · Content · Gift amounts: other amount",
           "section": "content",
-          "position": 111,
+          "position": 112,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20296,9 +20436,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "112 · Content · Gift amounts: continue button (default)",
+          "title": "113 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20313,9 +20453,9 @@
         "data": {
           "key": "gift.continue",
           "label": "Gift amounts: continue button (default)",
-          "title": "112 · Content · Gift amounts: continue button (default)",
+          "title": "113 · Content · Gift amounts: continue button (default)",
           "section": "content",
-          "position": 112,
+          "position": 113,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20328,9 +20468,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "113 · Content · Earthquake appeal: text",
+          "title": "114 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20345,9 +20485,9 @@
         "data": {
           "key": "appeal.text",
           "label": "Earthquake appeal: text",
-          "title": "113 · Content · Earthquake appeal: text",
+          "title": "114 · Content · Earthquake appeal: text",
           "section": "content",
-          "position": 113,
+          "position": 114,
           "format": "plain",
           "max_length": 340,
           "stale": false,
@@ -20360,9 +20500,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "114 · Content · Earthquake appeal: render description",
+          "title": "115 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20377,9 +20517,9 @@
         "data": {
           "key": "appeal.imageAlt",
           "label": "Earthquake appeal: render description",
-          "title": "114 · Content · Earthquake appeal: render description",
+          "title": "115 · Content · Earthquake appeal: render description",
           "section": "content",
-          "position": 114,
+          "position": 115,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20392,9 +20532,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "116 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20409,9 +20549,9 @@
         "data": {
           "key": "appeal.caption",
           "label": "Earthquake appeal: render caption (must say the images are AI renders)",
-          "title": "115 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
+          "title": "116 · Content · Earthquake appeal: render caption (must say the images are AI renders)",
           "section": "content",
-          "position": 115,
+          "position": 116,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20424,9 +20564,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "116 · Content · Earthquake appeal: cards heading",
+          "title": "117 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20441,9 +20581,9 @@
         "data": {
           "key": "appeal.cardsLabel",
           "label": "Earthquake appeal: cards heading",
-          "title": "116 · Content · Earthquake appeal: cards heading",
+          "title": "117 · Content · Earthquake appeal: cards heading",
           "section": "content",
-          "position": 116,
+          "position": 117,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -20456,9 +20596,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "117 · Content · Earthquake appeal: card 1 title",
+          "title": "118 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20473,9 +20613,9 @@
         "data": {
           "key": "appeal.title.1",
           "label": "Earthquake appeal: card 1 title",
-          "title": "117 · Content · Earthquake appeal: card 1 title",
+          "title": "118 · Content · Earthquake appeal: card 1 title",
           "section": "content",
-          "position": 117,
+          "position": 118,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20488,9 +20628,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "118 · Content · Earthquake appeal: card 1 text",
+          "title": "119 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20505,9 +20645,9 @@
         "data": {
           "key": "appeal.text.1",
           "label": "Earthquake appeal: card 1 text",
-          "title": "118 · Content · Earthquake appeal: card 1 text",
+          "title": "119 · Content · Earthquake appeal: card 1 text",
           "section": "content",
-          "position": 118,
+          "position": 119,
           "format": "plain",
           "max_length": 140,
           "stale": false,
@@ -20520,9 +20660,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "119 · Content · Earthquake appeal: card 1 image description",
+          "title": "120 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20537,9 +20677,9 @@
         "data": {
           "key": "appeal.imageAlt.1",
           "label": "Earthquake appeal: card 1 image description",
-          "title": "119 · Content · Earthquake appeal: card 1 image description",
+          "title": "120 · Content · Earthquake appeal: card 1 image description",
           "section": "content",
-          "position": 119,
+          "position": 120,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20552,9 +20692,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "120 · Content · Earthquake appeal: card 2 title",
+          "title": "121 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20569,9 +20709,9 @@
         "data": {
           "key": "appeal.title.2",
           "label": "Earthquake appeal: card 2 title",
-          "title": "120 · Content · Earthquake appeal: card 2 title",
+          "title": "121 · Content · Earthquake appeal: card 2 title",
           "section": "content",
-          "position": 120,
+          "position": 121,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20584,9 +20724,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "121 · Content · Earthquake appeal: card 2 text",
+          "title": "122 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20601,9 +20741,9 @@
         "data": {
           "key": "appeal.text.2",
           "label": "Earthquake appeal: card 2 text",
-          "title": "121 · Content · Earthquake appeal: card 2 text",
+          "title": "122 · Content · Earthquake appeal: card 2 text",
           "section": "content",
-          "position": 121,
+          "position": 122,
           "format": "plain",
           "max_length": 120,
           "stale": false,
@@ -20616,9 +20756,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "122 · Content · Earthquake appeal: card 2 image description",
+          "title": "123 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20633,9 +20773,9 @@
         "data": {
           "key": "appeal.imageAlt.2",
           "label": "Earthquake appeal: card 2 image description",
-          "title": "122 · Content · Earthquake appeal: card 2 image description",
+          "title": "123 · Content · Earthquake appeal: card 2 image description",
           "section": "content",
-          "position": 122,
+          "position": 123,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20648,9 +20788,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "123 · Content · Earthquake appeal: card 3 title",
+          "title": "124 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20665,9 +20805,9 @@
         "data": {
           "key": "appeal.title.3",
           "label": "Earthquake appeal: card 3 title",
-          "title": "123 · Content · Earthquake appeal: card 3 title",
+          "title": "124 · Content · Earthquake appeal: card 3 title",
           "section": "content",
-          "position": 123,
+          "position": 124,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20680,9 +20820,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "124 · Content · Earthquake appeal: card 3 text",
+          "title": "125 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20697,9 +20837,9 @@
         "data": {
           "key": "appeal.text.3",
           "label": "Earthquake appeal: card 3 text",
-          "title": "124 · Content · Earthquake appeal: card 3 text",
+          "title": "125 · Content · Earthquake appeal: card 3 text",
           "section": "content",
-          "position": 124,
+          "position": 125,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -20712,9 +20852,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "125 · Content · Earthquake appeal: card 3 image description",
+          "title": "126 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20729,9 +20869,9 @@
         "data": {
           "key": "appeal.imageAlt.3",
           "label": "Earthquake appeal: card 3 image description",
-          "title": "125 · Content · Earthquake appeal: card 3 image description",
+          "title": "126 · Content · Earthquake appeal: card 3 image description",
           "section": "content",
-          "position": 125,
+          "position": 126,
           "format": "plain",
           "max_length": 100,
           "stale": false,
@@ -20744,9 +20884,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "126 · Content · Earthquake appeal: give button",
+          "title": "127 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20761,9 +20901,9 @@
         "data": {
           "key": "appeal.give",
           "label": "Earthquake appeal: give button",
-          "title": "126 · Content · Earthquake appeal: give button",
+          "title": "127 · Content · Earthquake appeal: give button",
           "section": "content",
-          "position": 126,
+          "position": 127,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20776,9 +20916,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "127 · Content · Earthquake appeal: learn more button",
+          "title": "128 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20793,9 +20933,9 @@
         "data": {
           "key": "appeal.learnMore",
           "label": "Earthquake appeal: learn more button",
-          "title": "127 · Content · Earthquake appeal: learn more button",
+          "title": "128 · Content · Earthquake appeal: learn more button",
           "section": "content",
-          "position": 127,
+          "position": 128,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20808,9 +20948,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "128 · Content · Not Found page: heading and title",
+          "title": "129 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20825,9 +20965,9 @@
         "data": {
           "key": "notFound.heading",
           "label": "Not Found page: heading and title",
-          "title": "128 · Content · Not Found page: heading and title",
+          "title": "129 · Content · Not Found page: heading and title",
           "section": "content",
-          "position": 128,
+          "position": 129,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -20840,9 +20980,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "129 · Content · Pagination: previous page",
+          "title": "130 · Content · Pagination: previous page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20857,9 +20997,9 @@
         "data": {
           "key": "pagination.previous",
           "label": "Pagination: previous page",
-          "title": "129 · Content · Pagination: previous page",
+          "title": "130 · Content · Pagination: previous page",
           "section": "content",
-          "position": 129,
+          "position": 130,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20872,9 +21012,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "130 · Content · Pagination: next page",
+          "title": "131 · Content · Pagination: next page",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20889,9 +21029,9 @@
         "data": {
           "key": "pagination.next",
           "label": "Pagination: next page",
-          "title": "130 · Content · Pagination: next page",
+          "title": "131 · Content · Pagination: next page",
           "section": "content",
-          "position": 130,
+          "position": 131,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -20904,9 +21044,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "132 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20921,9 +21061,9 @@
         "data": {
           "key": "pagination.status",
           "label": "Pagination: where you are ({page} and {pages} are replaced)",
-          "title": "131 · Content · Pagination: where you are ({page} and {pages} are replaced)",
+          "title": "132 · Content · Pagination: where you are ({page} and {pages} are replaced)",
           "section": "content",
-          "position": 131,
+          "position": 132,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -20936,9 +21076,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "132 · Content · Pagination name (screen readers)",
+          "title": "133 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false,
           "value": "Pages"
@@ -20952,9 +21092,9 @@
         "data": {
           "key": "pagination.label",
           "label": "Pagination name (screen readers)",
-          "title": "132 · Content · Pagination name (screen readers)",
+          "title": "133 · Content · Pagination name (screen readers)",
           "section": "content",
-          "position": 132,
+          "position": 133,
           "format": "plain",
           "stale": false,
           "value": "Páginas"
@@ -20966,9 +21106,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "133 · Content · Breadcrumb name (screen readers)",
+          "title": "134 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false,
           "value": "Breadcrumb"
@@ -20982,9 +21122,9 @@
         "data": {
           "key": "a11y.breadcrumb",
           "label": "Breadcrumb name (screen readers)",
-          "title": "133 · Content · Breadcrumb name (screen readers)",
+          "title": "134 · Content · Breadcrumb name (screen readers)",
           "section": "content",
-          "position": 133,
+          "position": 134,
           "format": "plain",
           "stale": false
         }
@@ -20995,9 +21135,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "134 · Content · Gallery: previous button (screen readers)",
+          "title": "135 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false,
           "value": "Previous photos"
@@ -21011,9 +21151,9 @@
         "data": {
           "key": "a11y.prevPhotos",
           "label": "Gallery: previous button (screen readers)",
-          "title": "134 · Content · Gallery: previous button (screen readers)",
+          "title": "135 · Content · Gallery: previous button (screen readers)",
           "section": "content",
-          "position": 134,
+          "position": 135,
           "format": "plain",
           "stale": false
         }
@@ -21024,9 +21164,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "135 · Content · Gallery: next button (screen readers)",
+          "title": "136 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false,
           "value": "Next photos"
@@ -21040,9 +21180,9 @@
         "data": {
           "key": "a11y.nextPhotos",
           "label": "Gallery: next button (screen readers)",
-          "title": "135 · Content · Gallery: next button (screen readers)",
+          "title": "136 · Content · Gallery: next button (screen readers)",
           "section": "content",
-          "position": 135,
+          "position": 136,
           "format": "plain",
           "stale": false
         }
@@ -21053,9 +21193,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "136 · Content · Logo carousel: previous button (screen readers)",
+          "title": "137 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false,
           "value": "Previous logos"
@@ -21069,9 +21209,9 @@
         "data": {
           "key": "a11y.prevLogos",
           "label": "Logo carousel: previous button (screen readers)",
-          "title": "136 · Content · Logo carousel: previous button (screen readers)",
+          "title": "137 · Content · Logo carousel: previous button (screen readers)",
           "section": "content",
-          "position": 136,
+          "position": 137,
           "format": "plain",
           "stale": false
         }
@@ -21082,9 +21222,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "137 · Content · Logo carousel: next button (screen readers)",
+          "title": "138 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false,
           "value": "Next logos"
@@ -21098,9 +21238,9 @@
         "data": {
           "key": "a11y.nextLogos",
           "label": "Logo carousel: next button (screen readers)",
-          "title": "137 · Content · Logo carousel: next button (screen readers)",
+          "title": "138 · Content · Logo carousel: next button (screen readers)",
           "section": "content",
-          "position": 137,
+          "position": 138,
           "format": "plain",
           "stale": false
         }
@@ -21111,9 +21251,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "138 · Content · Stories carousel: previous button (screen readers)",
+          "title": "139 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false,
           "value": "Previous story"
@@ -21127,9 +21267,9 @@
         "data": {
           "key": "a11y.prevStory",
           "label": "Stories carousel: previous button (screen readers)",
-          "title": "138 · Content · Stories carousel: previous button (screen readers)",
+          "title": "139 · Content · Stories carousel: previous button (screen readers)",
           "section": "content",
-          "position": 138,
+          "position": 139,
           "format": "plain",
           "stale": false
         }
@@ -21140,9 +21280,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "139 · Content · Stories carousel: next button (screen readers)",
+          "title": "140 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false,
           "value": "Next story"
@@ -21156,9 +21296,9 @@
         "data": {
           "key": "a11y.nextStory",
           "label": "Stories carousel: next button (screen readers)",
-          "title": "139 · Content · Stories carousel: next button (screen readers)",
+          "title": "140 · Content · Stories carousel: next button (screen readers)",
           "section": "content",
-          "position": 139,
+          "position": 140,
           "format": "plain",
           "stale": false
         }
@@ -21169,9 +21309,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "141 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Show item {n}"
@@ -21185,9 +21325,9 @@
         "data": {
           "key": "a11y.slide",
           "label": "Swipe row: dot for one slide (screen readers; {n} is the number)",
-          "title": "140 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
+          "title": "141 · Content · Swipe row: dot for one slide (screen readers; {n} is the number)",
           "section": "content",
-          "position": 140,
+          "position": 141,
           "format": "plain",
           "stale": false,
           "value": "Mostrar elemento {n}"
@@ -21199,9 +21339,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "142 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "stale": false,
           "value": "Show photo {n}"
@@ -21215,9 +21355,9 @@
         "data": {
           "key": "a11y.photoDot",
           "label": "Program photos: dot for one photo (screen readers; {n} is the number)",
-          "title": "141 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
+          "title": "142 · Content · Program photos: dot for one photo (screen readers; {n} is the number)",
           "section": "content",
-          "position": 141,
+          "position": 142,
           "format": "plain",
           "stale": false,
           "value": "Mostrar foto {n}"
@@ -21229,9 +21369,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "142 · Content · Added to every link to another website (screen readers)",
+          "title": "143 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 142,
+          "position": 143,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -21246,9 +21386,9 @@
         "data": {
           "key": "a11y.newTab",
           "label": "Added to every link to another website (screen readers)",
-          "title": "142 · Content · Added to every link to another website (screen readers)",
+          "title": "143 · Content · Added to every link to another website (screen readers)",
           "section": "content",
-          "position": 142,
+          "position": 143,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -23613,7 +23753,8 @@
           "position": 1,
           "format": "plain",
           "max_length": 60,
-          "stale": false
+          "stale": false,
+          "value": "{title} | Fundación Victoria Venezuela"
         }
       },
       {
@@ -23775,14 +23916,110 @@
         }
       },
       {
+        "id": "copy_events_detail--recap.raisedCaption",
+        "status": "published",
+        "data": {
+          "key": "recap.raisedCaption",
+          "label": "Past event: line under the amount raised",
+          "title": "44 · Content · Past event: line under the amount raised",
+          "section": "content",
+          "position": 44,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "For nutrition, medical care and education"
+        }
+      },
+      {
+        "id": "copy_events_detail--recap.raisedCaption--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--recap.raisedCaption",
+        "data": {
+          "key": "recap.raisedCaption",
+          "label": "Past event: line under the amount raised",
+          "title": "44 · Content · Past event: line under the amount raised",
+          "section": "content",
+          "position": 44,
+          "format": "plain",
+          "max_length": 60,
+          "stale": false,
+          "value": "Para nutrición, atención médica y educación"
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.closed",
+        "status": "published",
+        "data": {
+          "key": "registration.closed",
+          "label": "Upcoming event: note when registration is closed (replaces every ticket button)",
+          "title": "45 · Content · Upcoming event: note when registration is closed (replaces every ticket button)",
+          "section": "content",
+          "position": 45,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Registration is closed. Questions? Write to us using the contact details below."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.closed--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--registration.closed",
+        "data": {
+          "key": "registration.closed",
+          "label": "Upcoming event: note when registration is closed (replaces every ticket button)",
+          "title": "45 · Content · Upcoming event: note when registration is closed (replaces every ticket button)",
+          "section": "content",
+          "position": 45,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.soldOut",
+        "status": "published",
+        "data": {
+          "key": "registration.soldOut",
+          "label": "Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "title": "46 · Content · Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "section": "content",
+          "position": 46,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Tickets are sold out. Questions? Write to us using the contact details below."
+        }
+      },
+      {
+        "id": "copy_events_detail--registration.soldOut--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--registration.soldOut",
+        "data": {
+          "key": "registration.soldOut",
+          "label": "Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "title": "46 · Content · Upcoming event: note when tickets are sold out (replaces every ticket button)",
+          "section": "content",
+          "position": 46,
+          "format": "plain",
+          "max_length": 140,
+          "stale": false,
+          "value": "Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo."
+        }
+      },
+      {
         "id": "copy_events_detail--recap.text",
         "status": "published",
         "data": {
           "key": "recap.text",
           "label": "Past event: results text",
-          "title": "44 · Content · Past event: results text",
+          "title": "47 · Content · Past event: results text",
           "section": "content",
-          "position": 44,
+          "position": 47,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -23797,9 +24034,9 @@
         "data": {
           "key": "recap.text",
           "label": "Past event: results text",
-          "title": "44 · Content · Past event: results text",
+          "title": "47 · Content · Past event: results text",
           "section": "content",
-          "position": 44,
+          "position": 47,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -23812,9 +24049,9 @@
         "data": {
           "key": "programsCta.label.2",
           "label": "Programs cta: button 2",
-          "title": "45 · Content · Programs cta: button 2",
+          "title": "48 · Content · Programs cta: button 2",
           "section": "content",
-          "position": 45,
+          "position": 48,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -23829,13 +24066,141 @@
         "data": {
           "key": "programsCta.label.2",
           "label": "Programs cta: button 2",
-          "title": "45 · Content · Programs cta: button 2",
+          "title": "48 · Content · Programs cta: button 2",
           "section": "content",
-          "position": 45,
+          "position": 48,
           "format": "plain",
           "max_length": 40,
           "stale": false,
           "value": "Ver el torneo del próximo año"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.tagline",
+        "status": "published",
+        "data": {
+          "key": "editions.tagline",
+          "label": "Past event: previous editions tagline",
+          "title": "49 · Content · Past event: previous editions tagline",
+          "section": "content",
+          "position": 49,
+          "format": "plain",
+          "max_length": 20,
+          "stale": false,
+          "value": "History"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.tagline--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.tagline",
+        "data": {
+          "key": "editions.tagline",
+          "label": "Past event: previous editions tagline",
+          "title": "49 · Content · Past event: previous editions tagline",
+          "section": "content",
+          "position": 49,
+          "format": "plain",
+          "max_length": 20,
+          "stale": false,
+          "value": "Historia"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.heading",
+        "status": "published",
+        "data": {
+          "key": "editions.heading",
+          "label": "Past event: previous editions heading",
+          "title": "50 · Content · Past event: previous editions heading",
+          "section": "content",
+          "position": 50,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Previous editions"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.heading--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.heading",
+        "data": {
+          "key": "editions.heading",
+          "label": "Past event: previous editions heading",
+          "title": "50 · Content · Past event: previous editions heading",
+          "section": "content",
+          "position": 50,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Ediciones anteriores"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.text",
+        "status": "published",
+        "data": {
+          "key": "editions.text",
+          "label": "Past event: previous editions text",
+          "title": "51 · Content · Past event: previous editions text",
+          "section": "content",
+          "position": 51,
+          "format": "plain",
+          "max_length": 100,
+          "stale": false,
+          "value": "See how each year's tournament went."
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.text--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.text",
+        "data": {
+          "key": "editions.text",
+          "label": "Past event: previous editions text",
+          "title": "51 · Content · Past event: previous editions text",
+          "section": "content",
+          "position": 51,
+          "format": "plain",
+          "max_length": 100,
+          "stale": false,
+          "value": "Mira cómo fue el torneo cada año."
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.button",
+        "status": "published",
+        "data": {
+          "key": "editions.button",
+          "label": "Past event: previous editions button (to all events)",
+          "title": "52 · Content · Past event: previous editions button (to all events)",
+          "section": "content",
+          "position": 52,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "All events"
+        }
+      },
+      {
+        "id": "copy_events_detail--editions.button--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_events_detail--editions.button",
+        "data": {
+          "key": "editions.button",
+          "label": "Past event: previous editions button (to all events)",
+          "title": "52 · Content · Past event: previous editions button (to all events)",
+          "section": "content",
+          "position": 52,
+          "format": "plain",
+          "max_length": 30,
+          "stale": false,
+          "value": "Todos los eventos"
         }
       }
     ],
@@ -25321,7 +25686,7 @@
           "format": "plain",
           "max_length": 60,
           "stale": false,
-          "value": "Finanzas y transparencia | Victoria Venezuela Foundation"
+          "value": "Finanzas y transparencia | Fundación Victoria Venezuela"
         }
       },
       {
@@ -25352,7 +25717,8 @@
           "position": 2,
           "format": "plain",
           "max_length": 160,
-          "stale": false
+          "stale": false,
+          "value": "Informes de impacto anuales y trimestrales, Sello Platino de Transparencia de Candid y registro ante el IRS. Somos una 501(c)(3), Tax ID 88-3282100."
         }
       },
       {
@@ -25803,14 +26169,46 @@
         }
       },
       {
+        "id": "copy_financials_and_transparency--confidence.w9Link",
+        "status": "published",
+        "data": {
+          "key": "confidence.w9Link",
+          "label": "Give with Confidence: Form W-9 link (opens the PDF in a new tab)",
+          "title": "17 · Content · Give with Confidence: Form W-9 link (opens the PDF in a new tab)",
+          "section": "content",
+          "position": 17,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Our Form W-9"
+        }
+      },
+      {
+        "id": "copy_financials_and_transparency--confidence.w9Link--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_financials_and_transparency--confidence.w9Link",
+        "data": {
+          "key": "confidence.w9Link",
+          "label": "Give with Confidence: Form W-9 link (opens the PDF in a new tab)",
+          "title": "17 · Content · Give with Confidence: Form W-9 link (opens the PDF in a new tab)",
+          "section": "content",
+          "position": 17,
+          "format": "plain",
+          "max_length": 40,
+          "stale": false,
+          "value": "Nuestro formulario W-9"
+        }
+      },
+      {
         "id": "copy_financials_and_transparency--confidence.imageAlt",
         "status": "published",
         "data": {
           "key": "confidence.imageAlt",
           "label": "Give with Confidence: image description",
-          "title": "17 · Content · Give with Confidence: image description",
+          "title": "18 · Content · Give with Confidence: image description",
           "section": "content",
-          "position": 17,
+          "position": 18,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -25825,12 +26223,13 @@
         "data": {
           "key": "confidence.imageAlt",
           "label": "Give with Confidence: image description",
-          "title": "17 · Content · Give with Confidence: image description",
+          "title": "18 · Content · Give with Confidence: image description",
           "section": "content",
-          "position": 17,
+          "position": 18,
           "format": "plain",
           "max_length": 200,
-          "stale": false
+          "stale": false,
+          "value": "Un niño sonriente en una mesa con su comida. Superposición: 4 años de excelencia, Sello Platino de Transparencia Candid por cuarto año consecutivo."
         }
       },
       {
@@ -25839,9 +26238,9 @@
         "data": {
           "key": "allocation.tagline",
           "label": "Where your donation goes: tagline",
-          "title": "18 · Content · Where your donation goes: tagline",
+          "title": "19 · Content · Where your donation goes: tagline",
           "section": "content",
-          "position": 18,
+          "position": 19,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -25856,9 +26255,9 @@
         "data": {
           "key": "allocation.tagline",
           "label": "Where your donation goes: tagline",
-          "title": "18 · Content · Where your donation goes: tagline",
+          "title": "19 · Content · Where your donation goes: tagline",
           "section": "content",
-          "position": 18,
+          "position": 19,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -25871,9 +26270,9 @@
         "data": {
           "key": "allocation.heading",
           "label": "Where your donation goes: heading",
-          "title": "19 · Content · Where your donation goes: heading",
+          "title": "20 · Content · Where your donation goes: heading",
           "section": "content",
-          "position": 19,
+          "position": 20,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -25888,9 +26287,9 @@
         "data": {
           "key": "allocation.heading",
           "label": "Where your donation goes: heading",
-          "title": "19 · Content · Where your donation goes: heading",
+          "title": "20 · Content · Where your donation goes: heading",
           "section": "content",
-          "position": 19,
+          "position": 20,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -25903,9 +26302,9 @@
         "data": {
           "key": "allocation.text",
           "label": "Where your donation goes: text",
-          "title": "20 · Content · Where your donation goes: text",
+          "title": "21 · Content · Where your donation goes: text",
           "section": "content",
-          "position": 20,
+          "position": 21,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -25920,9 +26319,9 @@
         "data": {
           "key": "allocation.text",
           "label": "Where your donation goes: text",
-          "title": "20 · Content · Where your donation goes: text",
+          "title": "21 · Content · Where your donation goes: text",
           "section": "content",
-          "position": 20,
+          "position": 21,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -25935,9 +26334,9 @@
         "data": {
           "key": "allocation.cta",
           "label": "Where your donation goes: button",
-          "title": "21 · Content · Where your donation goes: button",
+          "title": "22 · Content · Where your donation goes: button",
           "section": "content",
-          "position": 21,
+          "position": 22,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -25952,9 +26351,9 @@
         "data": {
           "key": "allocation.cta",
           "label": "Where your donation goes: button",
-          "title": "21 · Content · Where your donation goes: button",
+          "title": "22 · Content · Where your donation goes: button",
           "section": "content",
-          "position": 21,
+          "position": 22,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -25967,9 +26366,9 @@
         "data": {
           "key": "allocation.imageAlt",
           "label": "Where your donation goes: image description",
-          "title": "22 · Content · Where your donation goes: image description",
+          "title": "23 · Content · Where your donation goes: image description",
           "section": "content",
-          "position": 22,
+          "position": 23,
           "format": "plain",
           "max_length": 150,
           "stale": false,
@@ -25984,9 +26383,9 @@
         "data": {
           "key": "allocation.imageAlt",
           "label": "Where your donation goes: image description",
-          "title": "22 · Content · Where your donation goes: image description",
+          "title": "23 · Content · Where your donation goes: image description",
           "section": "content",
-          "position": 22,
+          "position": 23,
           "format": "plain",
           "max_length": 150,
           "stale": false
@@ -25998,9 +26397,9 @@
         "data": {
           "key": "annual.tagline",
           "label": "Annual reports: tagline",
-          "title": "23 · Content · Annual reports: tagline",
+          "title": "24 · Content · Annual reports: tagline",
           "section": "content",
-          "position": 23,
+          "position": 24,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26015,9 +26414,9 @@
         "data": {
           "key": "annual.tagline",
           "label": "Annual reports: tagline",
-          "title": "23 · Content · Annual reports: tagline",
+          "title": "24 · Content · Annual reports: tagline",
           "section": "content",
-          "position": 23,
+          "position": 24,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26030,9 +26429,9 @@
         "data": {
           "key": "annual.heading",
           "label": "Annual reports: heading",
-          "title": "24 · Content · Annual reports: heading",
+          "title": "25 · Content · Annual reports: heading",
           "section": "content",
-          "position": 24,
+          "position": 25,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -26047,9 +26446,9 @@
         "data": {
           "key": "annual.heading",
           "label": "Annual reports: heading",
-          "title": "24 · Content · Annual reports: heading",
+          "title": "25 · Content · Annual reports: heading",
           "section": "content",
-          "position": 24,
+          "position": 25,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -26062,9 +26461,9 @@
         "data": {
           "key": "annual.text",
           "label": "Annual reports: text",
-          "title": "25 · Content · Annual reports: text",
+          "title": "26 · Content · Annual reports: text",
           "section": "content",
-          "position": 25,
+          "position": 26,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26079,9 +26478,9 @@
         "data": {
           "key": "annual.text",
           "label": "Annual reports: text",
-          "title": "25 · Content · Annual reports: text",
+          "title": "26 · Content · Annual reports: text",
           "section": "content",
-          "position": 25,
+          "position": 26,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26094,9 +26493,9 @@
         "data": {
           "key": "quarterly.tagline",
           "label": "Quarterly reports: tagline",
-          "title": "26 · Content · Quarterly reports: tagline",
+          "title": "27 · Content · Quarterly reports: tagline",
           "section": "content",
-          "position": 26,
+          "position": 27,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26111,9 +26510,9 @@
         "data": {
           "key": "quarterly.tagline",
           "label": "Quarterly reports: tagline",
-          "title": "26 · Content · Quarterly reports: tagline",
+          "title": "27 · Content · Quarterly reports: tagline",
           "section": "content",
-          "position": 26,
+          "position": 27,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26126,9 +26525,9 @@
         "data": {
           "key": "quarterly.heading",
           "label": "Quarterly reports: heading",
-          "title": "27 · Content · Quarterly reports: heading",
+          "title": "28 · Content · Quarterly reports: heading",
           "section": "content",
-          "position": 27,
+          "position": 28,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26143,9 +26542,9 @@
         "data": {
           "key": "quarterly.heading",
           "label": "Quarterly reports: heading",
-          "title": "27 · Content · Quarterly reports: heading",
+          "title": "28 · Content · Quarterly reports: heading",
           "section": "content",
-          "position": 27,
+          "position": 28,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26158,9 +26557,9 @@
         "data": {
           "key": "quarterly.text",
           "label": "Quarterly reports: text",
-          "title": "28 · Content · Quarterly reports: text",
+          "title": "29 · Content · Quarterly reports: text",
           "section": "content",
-          "position": 28,
+          "position": 29,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26175,9 +26574,9 @@
         "data": {
           "key": "quarterly.text",
           "label": "Quarterly reports: text",
-          "title": "28 · Content · Quarterly reports: text",
+          "title": "29 · Content · Quarterly reports: text",
           "section": "content",
-          "position": 28,
+          "position": 29,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26190,9 +26589,9 @@
         "data": {
           "key": "board.tagline",
           "label": "Board: tagline",
-          "title": "29 · Content · Board: tagline",
+          "title": "30 · Content · Board: tagline",
           "section": "content",
-          "position": 29,
+          "position": 30,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26207,9 +26606,9 @@
         "data": {
           "key": "board.tagline",
           "label": "Board: tagline",
-          "title": "29 · Content · Board: tagline",
+          "title": "30 · Content · Board: tagline",
           "section": "content",
-          "position": 29,
+          "position": 30,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26222,9 +26621,9 @@
         "data": {
           "key": "board.heading",
           "label": "Board: heading",
-          "title": "30 · Content · Board: heading",
+          "title": "31 · Content · Board: heading",
           "section": "content",
-          "position": 30,
+          "position": 31,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26239,9 +26638,9 @@
         "data": {
           "key": "board.heading",
           "label": "Board: heading",
-          "title": "30 · Content · Board: heading",
+          "title": "31 · Content · Board: heading",
           "section": "content",
-          "position": 30,
+          "position": 31,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26254,9 +26653,9 @@
         "data": {
           "key": "board.text",
           "label": "Board: text",
-          "title": "31 · Content · Board: text",
+          "title": "32 · Content · Board: text",
           "section": "content",
-          "position": 31,
+          "position": 32,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26271,9 +26670,9 @@
         "data": {
           "key": "board.text",
           "label": "Board: text",
-          "title": "31 · Content · Board: text",
+          "title": "32 · Content · Board: text",
           "section": "content",
-          "position": 31,
+          "position": 32,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -26286,9 +26685,9 @@
         "data": {
           "key": "board.member.1",
           "label": "Board: first member line",
-          "title": "32 · Content · Board: first member line",
+          "title": "33 · Content · Board: first member line",
           "section": "content",
-          "position": 32,
+          "position": 33,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26303,9 +26702,9 @@
         "data": {
           "key": "board.member.1",
           "label": "Board: first member line",
-          "title": "32 · Content · Board: first member line",
+          "title": "33 · Content · Board: first member line",
           "section": "content",
-          "position": 32,
+          "position": 33,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26318,9 +26717,9 @@
         "data": {
           "key": "board.member.2",
           "label": "Board: second member line",
-          "title": "33 · Content · Board: second member line",
+          "title": "34 · Content · Board: second member line",
           "section": "content",
-          "position": 33,
+          "position": 34,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26335,9 +26734,9 @@
         "data": {
           "key": "board.member.2",
           "label": "Board: second member line",
-          "title": "33 · Content · Board: second member line",
+          "title": "34 · Content · Board: second member line",
           "section": "content",
-          "position": 33,
+          "position": 34,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26350,9 +26749,9 @@
         "data": {
           "key": "board.member.3",
           "label": "Board: third member line",
-          "title": "34 · Content · Board: third member line",
+          "title": "35 · Content · Board: third member line",
           "section": "content",
-          "position": 34,
+          "position": 35,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26367,9 +26766,9 @@
         "data": {
           "key": "board.member.3",
           "label": "Board: third member line",
-          "title": "34 · Content · Board: third member line",
+          "title": "35 · Content · Board: third member line",
           "section": "content",
-          "position": 34,
+          "position": 35,
           "format": "plain",
           "max_length": 70,
           "stale": false,
@@ -26382,9 +26781,9 @@
         "data": {
           "key": "board.cta",
           "label": "Board: button",
-          "title": "35 · Content · Board: button",
+          "title": "36 · Content · Board: button",
           "section": "content",
-          "position": 35,
+          "position": 36,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26399,9 +26798,9 @@
         "data": {
           "key": "board.cta",
           "label": "Board: button",
-          "title": "35 · Content · Board: button",
+          "title": "36 · Content · Board: button",
           "section": "content",
-          "position": 35,
+          "position": 36,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26414,9 +26813,9 @@
         "data": {
           "key": "contact.heading",
           "label": "Contact box: heading",
-          "title": "36 · Content · Contact box: heading",
+          "title": "37 · Content · Contact box: heading",
           "section": "content",
-          "position": 36,
+          "position": 37,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26431,9 +26830,9 @@
         "data": {
           "key": "contact.heading",
           "label": "Contact box: heading",
-          "title": "36 · Content · Contact box: heading",
+          "title": "37 · Content · Contact box: heading",
           "section": "content",
-          "position": 36,
+          "position": 37,
           "format": "plain",
           "max_length": 60,
           "stale": false,
@@ -26446,9 +26845,9 @@
         "data": {
           "key": "contact.text",
           "label": "Contact box: text",
-          "title": "37 · Content · Contact box: text",
+          "title": "38 · Content · Contact box: text",
           "section": "content",
-          "position": 37,
+          "position": 38,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -26463,9 +26862,9 @@
         "data": {
           "key": "contact.text",
           "label": "Contact box: text",
-          "title": "37 · Content · Contact box: text",
+          "title": "38 · Content · Contact box: text",
           "section": "content",
-          "position": 37,
+          "position": 38,
           "format": "plain",
           "max_length": 160,
           "stale": false,
@@ -26478,9 +26877,9 @@
         "data": {
           "key": "contact.cta",
           "label": "Contact box: button",
-          "title": "38 · Content · Contact box: button",
+          "title": "39 · Content · Contact box: button",
           "section": "content",
-          "position": 38,
+          "position": 39,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -26495,9 +26894,9 @@
         "data": {
           "key": "contact.cta",
           "label": "Contact box: button",
-          "title": "38 · Content · Contact box: button",
+          "title": "39 · Content · Contact box: button",
           "section": "content",
-          "position": 38,
+          "position": 39,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28038,7 +28437,104 @@
           "position": 4,
           "format": "plain",
           "max_length": 170,
-          "stale": false
+          "stale": false,
+          "value": "Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión."
+        }
+      },
+      {
+        "id": "copy_our_team--hero.mobileImageAlt",
+        "status": "published",
+        "data": {
+          "key": "hero.mobileImageAlt",
+          "label": "Hero: phone photo description",
+          "title": "05 · Content · Hero: phone photo description",
+          "section": "content",
+          "position": 5,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "A doctor listens to a boy's chest with a stethoscope at a Victoria Venezuela Foundation medical clinic."
+        }
+      },
+      {
+        "id": "copy_our_team--hero.mobileImageAlt--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--hero.mobileImageAlt",
+        "data": {
+          "key": "hero.mobileImageAlt",
+          "label": "Hero: phone photo description",
+          "title": "05 · Content · Hero: phone photo description",
+          "section": "content",
+          "position": 5,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela."
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.title",
+        "status": "published",
+        "data": {
+          "key": "profile.seo.title",
+          "label": "Team member profile: browser tab title ({name} is replaced)",
+          "title": "06 · Content · Team member profile: browser tab title ({name} is replaced)",
+          "section": "content",
+          "position": 6,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Our Team | Victoria Venezuela Foundation"
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.title--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--profile.seo.title",
+        "data": {
+          "key": "profile.seo.title",
+          "label": "Team member profile: browser tab title ({name} is replaced)",
+          "title": "06 · Content · Team member profile: browser tab title ({name} is replaced)",
+          "section": "content",
+          "position": 6,
+          "format": "plain",
+          "max_length": 70,
+          "stale": false,
+          "value": "{name} | Nuestro equipo | Fundación Victoria Venezuela"
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.description",
+        "status": "published",
+        "data": {
+          "key": "profile.seo.description",
+          "label": "Team member profile: search description ({name} is replaced)",
+          "title": "07 · Content · Team member profile: search description ({name} is replaced)",
+          "section": "content",
+          "position": 7,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Meet {name}, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela."
+        }
+      },
+      {
+        "id": "copy_our_team--profile.seo.description--es",
+        "status": "published",
+        "locale": "es",
+        "translationOf": "copy_our_team--profile.seo.description",
+        "data": {
+          "key": "profile.seo.description",
+          "label": "Team member profile: search description ({name} is replaced)",
+          "title": "07 · Content · Team member profile: search description ({name} is replaced)",
+          "section": "content",
+          "position": 7,
+          "format": "plain",
+          "max_length": 170,
+          "stale": false,
+          "value": "Te presentamos a {name}, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela."
         }
       },
       {
@@ -28047,9 +28543,9 @@
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "05 · Content · Hero: heading",
+          "title": "08 · Content · Hero: heading",
           "section": "content",
-          "position": 5,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28064,9 +28560,9 @@
         "data": {
           "key": "hero.heading",
           "label": "Hero: heading",
-          "title": "05 · Content · Hero: heading",
+          "title": "08 · Content · Hero: heading",
           "section": "content",
-          "position": 5,
+          "position": 8,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28079,9 +28575,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "06 · Content · Hero: text",
+          "title": "09 · Content · Hero: text",
           "section": "content",
-          "position": 6,
+          "position": 9,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28096,9 +28592,9 @@
         "data": {
           "key": "hero.subtext",
           "label": "Hero: text",
-          "title": "06 · Content · Hero: text",
+          "title": "09 · Content · Hero: text",
           "section": "content",
-          "position": 6,
+          "position": 9,
           "format": "plain",
           "max_length": 400,
           "stale": false,
@@ -28111,9 +28607,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "07 · Content · Hero: button 1",
+          "title": "10 · Content · Hero: button 1",
           "section": "content",
-          "position": 7,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28128,9 +28624,9 @@
         "data": {
           "key": "hero.label.1",
           "label": "Hero: button 1",
-          "title": "07 · Content · Hero: button 1",
+          "title": "10 · Content · Hero: button 1",
           "section": "content",
-          "position": 7,
+          "position": 10,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28143,9 +28639,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "08 · Content · Hero: button 2",
+          "title": "11 · Content · Hero: button 2",
           "section": "content",
-          "position": 8,
+          "position": 11,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28160,9 +28656,9 @@
         "data": {
           "key": "hero.label.2",
           "label": "Hero: button 2",
-          "title": "08 · Content · Hero: button 2",
+          "title": "11 · Content · Hero: button 2",
           "section": "content",
-          "position": 8,
+          "position": 11,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28175,9 +28671,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "09 · Content · Section title: tagline",
+          "title": "12 · Content · Section title: tagline",
           "section": "content",
-          "position": 9,
+          "position": 12,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28192,9 +28688,9 @@
         "data": {
           "key": "sectionTitle.tagline",
           "label": "Section title: tagline",
-          "title": "09 · Content · Section title: tagline",
+          "title": "12 · Content · Section title: tagline",
           "section": "content",
-          "position": 9,
+          "position": 12,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28206,9 +28702,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "10 · Content · Section title: heading",
+          "title": "13 · Content · Section title: heading",
           "section": "content",
-          "position": 10,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28223,9 +28719,9 @@
         "data": {
           "key": "sectionTitle.heading",
           "label": "Section title: heading",
-          "title": "10 · Content · Section title: heading",
+          "title": "13 · Content · Section title: heading",
           "section": "content",
-          "position": 10,
+          "position": 13,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28238,9 +28734,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "11 · Content · Section title: text",
+          "title": "14 · Content · Section title: text",
           "section": "content",
-          "position": 11,
+          "position": 14,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28255,9 +28751,9 @@
         "data": {
           "key": "sectionTitle.text",
           "label": "Section title: text",
-          "title": "11 · Content · Section title: text",
+          "title": "14 · Content · Section title: text",
           "section": "content",
-          "position": 11,
+          "position": 14,
           "format": "plain",
           "max_length": 180,
           "stale": false,
@@ -28270,9 +28766,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "12 · Content · Team member card 2: name 1",
+          "title": "15 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 12,
+          "position": 15,
           "format": "plain",
           "max_length": 30,
           "stale": false,
@@ -28287,9 +28783,9 @@
         "data": {
           "key": "teamMemberCard2.name.1",
           "label": "Team member card 2: name 1",
-          "title": "12 · Content · Team member card 2: name 1",
+          "title": "15 · Content · Team member card 2: name 1",
           "section": "content",
-          "position": 12,
+          "position": 15,
           "format": "plain",
           "max_length": 30,
           "stale": false
@@ -28301,9 +28797,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "13 · Content · Open board seat tile: button",
+          "title": "16 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 13,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28318,9 +28814,9 @@
         "data": {
           "key": "openSeat.cta",
           "label": "Open board seat tile: button",
-          "title": "13 · Content · Open board seat tile: button",
+          "title": "16 · Content · Open board seat tile: button",
           "section": "content",
-          "position": 13,
+          "position": 16,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28333,9 +28829,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "14 · Content · Team member card 2: heading 1",
+          "title": "17 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 14,
+          "position": 17,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28350,9 +28846,9 @@
         "data": {
           "key": "teamMemberCard2.heading.1",
           "label": "Team member card 2: heading 1",
-          "title": "14 · Content · Team member card 2: heading 1",
+          "title": "17 · Content · Team member card 2: heading 1",
           "section": "content",
-          "position": 14,
+          "position": 17,
           "format": "plain",
           "max_length": 40,
           "stale": false,
@@ -28365,9 +28861,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "15 · Content · Section title 3: tagline",
+          "title": "18 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 15,
+          "position": 18,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28382,9 +28878,9 @@
         "data": {
           "key": "sectionTitle3.tagline",
           "label": "Section title 3: tagline",
-          "title": "15 · Content · Section title 3: tagline",
+          "title": "18 · Content · Section title 3: tagline",
           "section": "content",
-          "position": 15,
+          "position": 18,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28396,9 +28892,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "16 · Content · Section title 3: heading",
+          "title": "19 · Content · Section title 3: heading",
           "section": "content",
-          "position": 16,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28413,9 +28909,9 @@
         "data": {
           "key": "sectionTitle3.heading",
           "label": "Section title 3: heading",
-          "title": "16 · Content · Section title 3: heading",
+          "title": "19 · Content · Section title 3: heading",
           "section": "content",
-          "position": 16,
+          "position": 19,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28428,9 +28924,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "17 · Content · Section title 3: text",
+          "title": "20 · Content · Section title 3: text",
           "section": "content",
-          "position": 17,
+          "position": 20,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28445,9 +28941,9 @@
         "data": {
           "key": "sectionTitle3.text",
           "label": "Section title 3: text",
-          "title": "17 · Content · Section title 3: text",
+          "title": "20 · Content · Section title 3: text",
           "section": "content",
-          "position": 17,
+          "position": 20,
           "format": "plain",
           "max_length": 130,
           "stale": false,
@@ -28460,9 +28956,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "18 · Content · Impact banner: eyebrow",
+          "title": "21 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 18,
+          "position": 21,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28477,9 +28973,9 @@
         "data": {
           "key": "impactBanner.eyebrow",
           "label": "Impact banner: eyebrow",
-          "title": "18 · Content · Impact banner: eyebrow",
+          "title": "21 · Content · Impact banner: eyebrow",
           "section": "content",
-          "position": 18,
+          "position": 21,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28492,9 +28988,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "19 · Content · Impact banner: heading",
+          "title": "22 · Content · Impact banner: heading",
           "section": "content",
-          "position": 19,
+          "position": 22,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28509,9 +29005,9 @@
         "data": {
           "key": "impactBanner.heading",
           "label": "Impact banner: heading",
-          "title": "19 · Content · Impact banner: heading",
+          "title": "22 · Content · Impact banner: heading",
           "section": "content",
-          "position": 19,
+          "position": 22,
           "format": "plain",
           "max_length": 50,
           "stale": false,
@@ -28524,9 +29020,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "20 · Content · Impact banner: body",
+          "title": "23 · Content · Impact banner: body",
           "section": "content",
-          "position": 20,
+          "position": 23,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28541,9 +29037,9 @@
         "data": {
           "key": "impactBanner.body",
           "label": "Impact banner: body",
-          "title": "20 · Content · Impact banner: body",
+          "title": "23 · Content · Impact banner: body",
           "section": "content",
-          "position": 20,
+          "position": 23,
           "format": "plain",
           "max_length": 200,
           "stale": false,
@@ -28556,9 +29052,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "21 · Content · Impact banner: highlights 1",
+          "title": "24 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 21,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28573,9 +29069,9 @@
         "data": {
           "key": "impactBanner.highlights.1",
           "label": "Impact banner: highlights 1",
-          "title": "21 · Content · Impact banner: highlights 1",
+          "title": "24 · Content · Impact banner: highlights 1",
           "section": "content",
-          "position": 21,
+          "position": 24,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28588,9 +29084,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "22 · Content · Impact banner: highlights 2",
+          "title": "25 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 22,
+          "position": 25,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28605,9 +29101,9 @@
         "data": {
           "key": "impactBanner.highlights.2",
           "label": "Impact banner: highlights 2",
-          "title": "22 · Content · Impact banner: highlights 2",
+          "title": "25 · Content · Impact banner: highlights 2",
           "section": "content",
-          "position": 22,
+          "position": 25,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28620,9 +29116,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "23 · Content · Impact banner: highlights 3",
+          "title": "26 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 23,
+          "position": 26,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28637,9 +29133,9 @@
         "data": {
           "key": "impactBanner.highlights.3",
           "label": "Impact banner: highlights 3",
-          "title": "23 · Content · Impact banner: highlights 3",
+          "title": "26 · Content · Impact banner: highlights 3",
           "section": "content",
-          "position": 23,
+          "position": 26,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28651,9 +29147,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "24 · Content · Impact banner: highlights 4",
+          "title": "27 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 24,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28668,9 +29164,9 @@
         "data": {
           "key": "impactBanner.highlights.4",
           "label": "Impact banner: highlights 4",
-          "title": "24 · Content · Impact banner: highlights 4",
+          "title": "27 · Content · Impact banner: highlights 4",
           "section": "content",
-          "position": 24,
+          "position": 27,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28683,9 +29179,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "25 · Content · Impact banner: highlights 5",
+          "title": "28 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 25,
+          "position": 28,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28700,9 +29196,9 @@
         "data": {
           "key": "impactBanner.highlights.5",
           "label": "Impact banner: highlights 5",
-          "title": "25 · Content · Impact banner: highlights 5",
+          "title": "28 · Content · Impact banner: highlights 5",
           "section": "content",
-          "position": 25,
+          "position": 28,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28715,9 +29211,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "26 · Content · Impact banner: highlights 6",
+          "title": "29 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 26,
+          "position": 29,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28732,9 +29228,9 @@
         "data": {
           "key": "impactBanner.highlights.6",
           "label": "Impact banner: highlights 6",
-          "title": "26 · Content · Impact banner: highlights 6",
+          "title": "29 · Content · Impact banner: highlights 6",
           "section": "content",
-          "position": 26,
+          "position": 29,
           "format": "plain",
           "max_length": 20,
           "stale": false
@@ -28746,9 +29242,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "27 · Content · Impact banner: title 1",
+          "title": "30 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 27,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28763,9 +29259,9 @@
         "data": {
           "key": "impactBanner.title.1",
           "label": "Impact banner: title 1",
-          "title": "27 · Content · Impact banner: title 1",
+          "title": "30 · Content · Impact banner: title 1",
           "section": "content",
-          "position": 27,
+          "position": 30,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28778,9 +29274,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "28 · Content · Impact banner: text 1",
+          "title": "31 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 28,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28795,9 +29291,9 @@
         "data": {
           "key": "impactBanner.text.1",
           "label": "Impact banner: text 1",
-          "title": "28 · Content · Impact banner: text 1",
+          "title": "31 · Content · Impact banner: text 1",
           "section": "content",
-          "position": 28,
+          "position": 31,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28810,9 +29306,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "29 · Content · Impact banner: title 2",
+          "title": "32 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 29,
+          "position": 32,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28827,9 +29323,9 @@
         "data": {
           "key": "impactBanner.title.2",
           "label": "Impact banner: title 2",
-          "title": "29 · Content · Impact banner: title 2",
+          "title": "32 · Content · Impact banner: title 2",
           "section": "content",
-          "position": 29,
+          "position": 32,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28842,9 +29338,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "30 · Content · Impact banner: text 2",
+          "title": "33 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 30,
+          "position": 33,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28859,9 +29355,9 @@
         "data": {
           "key": "impactBanner.text.2",
           "label": "Impact banner: text 2",
-          "title": "30 · Content · Impact banner: text 2",
+          "title": "33 · Content · Impact banner: text 2",
           "section": "content",
-          "position": 30,
+          "position": 33,
           "format": "plain",
           "max_length": 90,
           "stale": false,
@@ -28874,9 +29370,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "31 · Content · Impact banner: image description",
+          "title": "34 · Content · Impact banner: image description",
           "section": "content",
-          "position": 31,
+          "position": 34,
           "format": "plain",
           "max_length": 110,
           "stale": false,
@@ -28891,9 +29387,9 @@
         "data": {
           "key": "impactBanner.imageAlt",
           "label": "Impact banner: image description",
-          "title": "31 · Content · Impact banner: image description",
+          "title": "34 · Content · Impact banner: image description",
           "section": "content",
-          "position": 31,
+          "position": 34,
           "format": "plain",
           "max_length": 110,
           "stale": false
@@ -28905,9 +29401,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "32 · Content · Impact banner: button 1",
+          "title": "35 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 32,
+          "position": 35,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -28922,9 +29418,9 @@
         "data": {
           "key": "impactBanner.label.1",
           "label": "Impact banner: button 1",
-          "title": "32 · Content · Impact banner: button 1",
+          "title": "35 · Content · Impact banner: button 1",
           "section": "content",
-          "position": 32,
+          "position": 35,
           "format": "plain",
           "max_length": 20,
           "stale": false,
@@ -29147,7 +29643,7 @@
           },
           "website_url": "https://thetrustyhandyman.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 5,
+          "display_order": 6,
           "active": true
         }
       },
@@ -29166,7 +29662,7 @@
           },
           "website_url": "https://www.trumphotels.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 48,
+          "display_order": 49,
           "active": true
         }
       },
@@ -29189,7 +29685,7 @@
           },
           "website_url": "https://www.ronsantateresa.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 4,
+          "display_order": 5,
           "active": true
         }
       },
@@ -29212,7 +29708,7 @@
           },
           "website_url": "https://www.microsoft.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 2,
+          "display_order": 3,
           "active": true
         }
       },
@@ -29235,7 +29731,7 @@
           },
           "website_url": "https://kpaviation.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 1,
+          "display_order": 2,
           "active": true
         }
       },
@@ -29258,7 +29754,7 @@
           },
           "website_url": "https://citimarinestore.com/en/",
           "partner_type": "corporate_sponsor",
-          "display_order": 18,
+          "display_order": 19,
           "active": true
         }
       },
@@ -29281,7 +29777,7 @@
           },
           "website_url": "https://www.fenaghengineering.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 24,
+          "display_order": 25,
           "active": true
         }
       },
@@ -29303,7 +29799,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 19,
+          "display_order": 20,
           "active": true
         }
       },
@@ -29326,7 +29822,7 @@
           },
           "website_url": "https://www.cotmaq.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 20,
+          "display_order": 21,
           "active": true
         }
       },
@@ -29349,7 +29845,7 @@
           },
           "website_url": "https://www.augustcovers.com/index.html",
           "partner_type": "corporate_sponsor",
-          "display_order": 12,
+          "display_order": 13,
           "active": true
         }
       },
@@ -29372,7 +29868,7 @@
           },
           "website_url": "https://platinumbiz.us/",
           "partner_type": "corporate_sponsor",
-          "display_order": 39,
+          "display_order": 40,
           "active": true
         }
       },
@@ -29394,7 +29890,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 25,
+          "display_order": 26,
           "active": true
         }
       },
@@ -29417,7 +29913,7 @@
           },
           "website_url": "https://www.pnc.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 40,
+          "display_order": 41,
           "active": true
         }
       },
@@ -29440,7 +29936,7 @@
           },
           "website_url": "https://www.backswinggolfevents.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 13,
+          "display_order": 14,
           "active": true
         }
       },
@@ -29459,7 +29955,7 @@
           },
           "website_url": "https://www.boeing.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 0,
+          "display_order": 1,
           "active": true
         }
       },
@@ -29482,7 +29978,7 @@
           },
           "website_url": "https://www.charitygolfintl.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 16,
+          "display_order": 17,
           "active": true
         }
       },
@@ -29505,7 +30001,7 @@
           },
           "website_url": "https://lgt.aero/",
           "partner_type": "corporate_sponsor",
-          "display_order": 32,
+          "display_order": 33,
           "active": true
         }
       },
@@ -29528,7 +30024,7 @@
           },
           "website_url": "https://www.vagaacademy.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 49,
+          "display_order": 50,
           "active": true
         }
       },
@@ -29551,7 +30047,7 @@
           },
           "website_url": "https://ivydevelopmentcorp.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 29,
+          "display_order": 30,
           "active": true
         }
       },
@@ -29574,7 +30070,7 @@
           },
           "website_url": "https://squisitogourmet.vip/",
           "partner_type": "corporate_sponsor",
-          "display_order": 44,
+          "display_order": 45,
           "active": true
         }
       },
@@ -29597,7 +30093,7 @@
           },
           "website_url": "https://www.venezuelanchamber.org/",
           "partner_type": "corporate_sponsor",
-          "display_order": 6,
+          "display_order": 7,
           "active": true
         }
       },
@@ -29620,7 +30116,7 @@
           },
           "website_url": "https://www.virtrify.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 51,
+          "display_order": 52,
           "active": true
         }
       },
@@ -29643,7 +30139,7 @@
           },
           "website_url": "https://www.smokeweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 43,
+          "display_order": 44,
           "active": true
         }
       },
@@ -29666,7 +30162,7 @@
           },
           "website_url": "https://donemmanuelcigars.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 22,
+          "display_order": 23,
           "active": true
         }
       },
@@ -29685,7 +30181,7 @@
           },
           "website_url": "https://www.paulainc.ca/",
           "partner_type": "corporate_sponsor",
-          "display_order": 3,
+          "display_order": 4,
           "active": true
         }
       },
@@ -29708,7 +30204,7 @@
           },
           "website_url": "https://topgolf.com/us/",
           "partner_type": "corporate_sponsor",
-          "display_order": 46,
+          "display_order": 47,
           "active": true
         }
       },
@@ -29731,7 +30227,7 @@
           },
           "website_url": "https://cafelacarreta.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 15,
+          "display_order": 16,
           "active": true
         }
       },
@@ -29754,7 +30250,7 @@
           },
           "website_url": "https://www.iondynamics.energy/",
           "partner_type": "corporate_sponsor",
-          "display_order": 28,
+          "display_order": 29,
           "active": true
         }
       },
@@ -29777,7 +30273,7 @@
           },
           "website_url": "https://www.valley.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 50,
+          "display_order": 51,
           "active": true
         }
       },
@@ -29800,7 +30296,7 @@
           },
           "website_url": "https://linktr.ee/jetsetgourmetusa",
           "partner_type": "corporate_sponsor",
-          "display_order": 30,
+          "display_order": 31,
           "active": true
         }
       },
@@ -29823,7 +30319,26 @@
           },
           "website_url": "https://infinitobooth.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 27,
+          "display_order": 28,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-miami-marlins",
+        "status": "published",
+        "data": {
+          "name": "Miami Marlins",
+          "logo": {
+            "provider": "external",
+            "id": "static-9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg",
+            "src": "/images/media/9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg",
+            "alt": "Miami Marlins",
+            "mimeType": "image/svg+xml",
+            "filename": "9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg"
+          },
+          "website_url": "https://www.mlb.com/marlins",
+          "partner_type": "corporate_sponsor",
+          "display_order": 0,
           "active": true
         }
       },
@@ -29846,7 +30361,7 @@
           },
           "website_url": "https://www.onparpt.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 38,
+          "display_order": 39,
           "active": true
         }
       },
@@ -29869,7 +30384,118 @@
           },
           "website_url": "https://vnvevents.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 52,
+          "display_order": 53,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-mvp-cuts-barbershop",
+        "status": "published",
+        "data": {
+          "name": "MVP Cuts Barbershop",
+          "logo": {
+            "provider": "local",
+            "id": "0TVSPE3H1XQ8QRZAWYGKYQZECF",
+            "alt": "MVP Cuts Barbershop",
+            "width": 1024,
+            "height": 1024,
+            "mimeType": "image/png",
+            "filename": "a206fb3d-vvf-golf2026-sponsor-mvpcutsbarbershop-v1.png",
+            "meta": {
+              "storageKey": "0TVSPE3H1XQ8QRZAWYGKYQZECF.png"
+            }
+          },
+          "website_url": "https://www.mvp-cuts.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 55,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-beyond-the-catch",
+        "status": "published",
+        "data": {
+          "name": "Beyond the Catch",
+          "logo": {
+            "provider": "local",
+            "id": "7J8W72JPWXDSKC3HJCAKWZFG3C",
+            "alt": "Beyond the Catch",
+            "width": 785,
+            "height": 770,
+            "mimeType": "image/jpeg",
+            "filename": "d3c0322c-vvf-golf2026-sponsor-beyondthecatch-v1.jpeg",
+            "meta": {
+              "storageKey": "7J8W72JPWXDSKC3HJCAKWZFG3C.jpeg"
+            }
+          },
+          "website_url": "https://www.beyondthecatch.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 57,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-luminis-global-partners",
+        "status": "published",
+        "data": {
+          "name": "Luminis Global Partners",
+          "logo": {
+            "provider": "local",
+            "id": "3HJ0GXGT5418VK2RG7YZZ59KSR",
+            "alt": "Luminis Global Partners",
+            "width": 800,
+            "height": 286,
+            "mimeType": "image/png",
+            "filename": "fa8fdae2-vvf-golf2026-sponsor-luminisglobalpartners-v2.png",
+            "meta": {
+              "storageKey": "3HJ0GXGT5418VK2RG7YZZ59KSR.png"
+            }
+          },
+          "website_url": "https://luminisgp.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 58,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-intercaribbean-airways",
+        "status": "published",
+        "data": {
+          "name": "interCaribbean Airways",
+          "logo": {
+            "provider": "external",
+            "id": "static-7aaf590f-intercaribbean-airways-logo.svg",
+            "src": "/images/media/7aaf590f-intercaribbean-airways-logo.svg",
+            "alt": "interCaribbean Airways",
+            "mimeType": "image/svg+xml",
+            "filename": "7aaf590f-intercaribbean-airways-logo.svg"
+          },
+          "website_url": "https://www.intercaribbean.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 59,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-galaxis",
+        "status": "published",
+        "data": {
+          "name": "Galaxis",
+          "logo": {
+            "provider": "local",
+            "id": "13SBQ8NXR64WGC8M68C73YD09D",
+            "alt": "Galaxis",
+            "width": 525,
+            "height": 116,
+            "mimeType": "image/png",
+            "filename": "2672fc45-vvf-golf2026-sponsor-galaxis-v1.png",
+            "meta": {
+              "storageKey": "13SBQ8NXR64WGC8M68C73YD09D.png"
+            }
+          },
+          "website_url": "https://en.galaxis-tech.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 60,
           "active": true
         }
       },
@@ -29892,7 +30518,52 @@
           },
           "website_url": "https://www.crepemaker.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 21,
+          "display_order": 22,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-magle",
+        "status": "published",
+        "data": {
+          "name": "Maglé",
+          "logo": {
+            "provider": "local",
+            "id": "28BAJVEKEQXQ3F8KGFN3ZDQRF3",
+            "alt": "Maglé",
+            "width": 1279,
+            "height": 1280,
+            "mimeType": "image/jpeg",
+            "filename": "dbc00731-vvf-golf2026-sponsor-magle-v1.jpeg",
+            "meta": {
+              "storageKey": "28BAJVEKEQXQ3F8KGFN3ZDQRF3.jpeg"
+            }
+          },
+          "partner_type": "corporate_sponsor",
+          "display_order": 56,
+          "active": true
+        }
+      },
+      {
+        "id": "partner-yoloeight",
+        "status": "published",
+        "data": {
+          "name": "Yoloeight",
+          "logo": {
+            "provider": "local",
+            "id": "4Z84015SR3GCM137GR14DC756C",
+            "alt": "Yoloeight",
+            "width": 360,
+            "height": 360,
+            "mimeType": "image/jpeg",
+            "filename": "6f6f6851-vvf-golf2026-sponsor-yoloeight-v1.jpeg",
+            "meta": {
+              "storageKey": "4Z84015SR3GCM137GR14DC756C.jpeg"
+            }
+          },
+          "website_url": "https://yolo8meats.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 61,
           "active": true
         }
       },
@@ -29915,7 +30586,7 @@
           },
           "website_url": "https://www.abbvie.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 7,
+          "display_order": 8,
           "active": true
         }
       },
@@ -29938,7 +30609,7 @@
           },
           "website_url": "https://www.accenture.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 8,
+          "display_order": 9,
           "active": true
         }
       },
@@ -29960,7 +30631,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 9,
+          "display_order": 10,
           "active": true
         }
       },
@@ -29982,7 +30653,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 10,
+          "display_order": 11,
           "active": true
         }
       },
@@ -30005,7 +30676,7 @@
           },
           "website_url": "https://arepasmagnet.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 11,
+          "display_order": 12,
           "active": true
         }
       },
@@ -30027,7 +30698,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 14,
+          "display_order": 15,
           "active": true
         }
       },
@@ -30050,7 +30721,7 @@
           },
           "website_url": "https://www.chevron.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 17,
+          "display_order": 18,
           "active": true
         }
       },
@@ -30073,7 +30744,7 @@
           },
           "website_url": "https://mywestondental.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 23,
+          "display_order": 24,
           "active": true
         }
       },
@@ -30096,7 +30767,7 @@
           },
           "website_url": "https://ikesbs.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 26,
+          "display_order": 27,
           "active": true
         }
       },
@@ -30119,7 +30790,7 @@
           },
           "website_url": "https://www.lambweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 31,
+          "display_order": 32,
           "active": true
         }
       },
@@ -30142,7 +30813,7 @@
           },
           "website_url": "https://luxegolfweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 33,
+          "display_order": 34,
           "active": true
         }
       },
@@ -30165,7 +30836,7 @@
           },
           "website_url": "https://www.medtronic.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 34,
+          "display_order": 35,
           "active": true
         }
       },
@@ -30187,7 +30858,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 35,
+          "display_order": 36,
           "active": true
         }
       },
@@ -30210,7 +30881,7 @@
           },
           "website_url": "https://www.mustangfc.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 36,
+          "display_order": 37,
           "active": true
         }
       },
@@ -30233,7 +30904,7 @@
           },
           "website_url": "https://www.newyorklife.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 37,
+          "display_order": 38,
           "active": true
         }
       },
@@ -30256,7 +30927,7 @@
           },
           "website_url": "https://www.rtx.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 41,
+          "display_order": 42,
           "active": true
         }
       },
@@ -30278,7 +30949,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 42,
+          "display_order": 43,
           "active": true
         }
       },
@@ -30301,7 +30972,7 @@
           },
           "website_url": "https://www.instagram.com/tacolymolytacos/",
           "partner_type": "corporate_sponsor",
-          "display_order": 45,
+          "display_order": 46,
           "active": true
         }
       },
@@ -30324,7 +30995,7 @@
           },
           "website_url": "https://triumphanttransitionpartners.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 47,
+          "display_order": 48,
           "active": true
         }
       },
@@ -30347,7 +31018,7 @@
           },
           "website_url": "https://www.wellsfargo.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 53,
+          "display_order": 54,
           "active": true
         }
       },
@@ -30370,7 +31041,7 @@
           },
           "website_url": "https://thetrustyhandyman.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 5,
+          "display_order": 6,
           "active": true
         },
         "locale": "es",
@@ -30391,7 +31062,7 @@
           },
           "website_url": "https://www.trumphotels.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 48,
+          "display_order": 49,
           "active": true
         },
         "locale": "es",
@@ -30416,7 +31087,7 @@
           },
           "website_url": "https://www.ronsantateresa.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 4,
+          "display_order": 5,
           "active": true
         },
         "locale": "es",
@@ -30441,7 +31112,7 @@
           },
           "website_url": "https://www.microsoft.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 2,
+          "display_order": 3,
           "active": true
         },
         "locale": "es",
@@ -30466,7 +31137,7 @@
           },
           "website_url": "https://kpaviation.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 1,
+          "display_order": 2,
           "active": true
         },
         "locale": "es",
@@ -30491,7 +31162,7 @@
           },
           "website_url": "https://citimarinestore.com/en/",
           "partner_type": "corporate_sponsor",
-          "display_order": 18,
+          "display_order": 19,
           "active": true
         },
         "locale": "es",
@@ -30516,7 +31187,7 @@
           },
           "website_url": "https://www.fenaghengineering.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 24,
+          "display_order": 25,
           "active": true
         },
         "locale": "es",
@@ -30540,7 +31211,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 19,
+          "display_order": 20,
           "active": true
         },
         "locale": "es",
@@ -30565,7 +31236,7 @@
           },
           "website_url": "https://www.cotmaq.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 20,
+          "display_order": 21,
           "active": true
         },
         "locale": "es",
@@ -30590,7 +31261,7 @@
           },
           "website_url": "https://www.augustcovers.com/index.html",
           "partner_type": "corporate_sponsor",
-          "display_order": 12,
+          "display_order": 13,
           "active": true
         },
         "locale": "es",
@@ -30615,7 +31286,7 @@
           },
           "website_url": "https://platinumbiz.us/",
           "partner_type": "corporate_sponsor",
-          "display_order": 39,
+          "display_order": 40,
           "active": true
         },
         "locale": "es",
@@ -30639,7 +31310,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 25,
+          "display_order": 26,
           "active": true
         },
         "locale": "es",
@@ -30664,7 +31335,7 @@
           },
           "website_url": "https://www.pnc.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 40,
+          "display_order": 41,
           "active": true
         },
         "locale": "es",
@@ -30689,7 +31360,7 @@
           },
           "website_url": "https://www.backswinggolfevents.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 13,
+          "display_order": 14,
           "active": true
         },
         "locale": "es",
@@ -30710,7 +31381,7 @@
           },
           "website_url": "https://www.boeing.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 0,
+          "display_order": 1,
           "active": true
         },
         "locale": "es",
@@ -30735,7 +31406,7 @@
           },
           "website_url": "https://www.charitygolfintl.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 16,
+          "display_order": 17,
           "active": true
         },
         "locale": "es",
@@ -30760,7 +31431,7 @@
           },
           "website_url": "https://lgt.aero/",
           "partner_type": "corporate_sponsor",
-          "display_order": 32,
+          "display_order": 33,
           "active": true
         },
         "locale": "es",
@@ -30785,7 +31456,7 @@
           },
           "website_url": "https://www.vagaacademy.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 49,
+          "display_order": 50,
           "active": true
         },
         "locale": "es",
@@ -30810,7 +31481,7 @@
           },
           "website_url": "https://ivydevelopmentcorp.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 29,
+          "display_order": 30,
           "active": true
         },
         "locale": "es",
@@ -30835,7 +31506,7 @@
           },
           "website_url": "https://squisitogourmet.vip/",
           "partner_type": "corporate_sponsor",
-          "display_order": 44,
+          "display_order": 45,
           "active": true
         },
         "locale": "es",
@@ -30860,7 +31531,7 @@
           },
           "website_url": "https://www.venezuelanchamber.org/",
           "partner_type": "corporate_sponsor",
-          "display_order": 6,
+          "display_order": 7,
           "active": true
         },
         "locale": "es",
@@ -30885,7 +31556,7 @@
           },
           "website_url": "https://www.virtrify.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 51,
+          "display_order": 52,
           "active": true
         },
         "locale": "es",
@@ -30910,7 +31581,7 @@
           },
           "website_url": "https://www.smokeweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 43,
+          "display_order": 44,
           "active": true
         },
         "locale": "es",
@@ -30935,7 +31606,7 @@
           },
           "website_url": "https://donemmanuelcigars.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 22,
+          "display_order": 23,
           "active": true
         },
         "locale": "es",
@@ -30956,7 +31627,7 @@
           },
           "website_url": "https://www.paulainc.ca/",
           "partner_type": "corporate_sponsor",
-          "display_order": 3,
+          "display_order": 4,
           "active": true
         },
         "locale": "es",
@@ -30981,7 +31652,7 @@
           },
           "website_url": "https://topgolf.com/us/",
           "partner_type": "corporate_sponsor",
-          "display_order": 46,
+          "display_order": 47,
           "active": true
         },
         "locale": "es",
@@ -31006,7 +31677,7 @@
           },
           "website_url": "https://cafelacarreta.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 15,
+          "display_order": 16,
           "active": true
         },
         "locale": "es",
@@ -31031,7 +31702,7 @@
           },
           "website_url": "https://www.iondynamics.energy/",
           "partner_type": "corporate_sponsor",
-          "display_order": 28,
+          "display_order": 29,
           "active": true
         },
         "locale": "es",
@@ -31056,7 +31727,7 @@
           },
           "website_url": "https://www.valley.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 50,
+          "display_order": 51,
           "active": true
         },
         "locale": "es",
@@ -31081,7 +31752,7 @@
           },
           "website_url": "https://linktr.ee/jetsetgourmetusa",
           "partner_type": "corporate_sponsor",
-          "display_order": 30,
+          "display_order": 31,
           "active": true
         },
         "locale": "es",
@@ -31106,11 +31777,32 @@
           },
           "website_url": "https://infinitobooth.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 27,
+          "display_order": 28,
           "active": true
         },
         "locale": "es",
         "translationOf": "partner-infinito-booth"
+      },
+      {
+        "id": "partner-miami-marlins--es",
+        "status": "published",
+        "data": {
+          "name": "Miami Marlins",
+          "logo": {
+            "provider": "external",
+            "id": "static-9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg",
+            "src": "/images/media/9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg",
+            "alt": "Miami Marlins",
+            "mimeType": "image/svg+xml",
+            "filename": "9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg"
+          },
+          "website_url": "https://www.mlb.com/marlins",
+          "partner_type": "corporate_sponsor",
+          "display_order": 0,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-miami-marlins"
       },
       {
         "id": "partner-on-par-physical-therapy--es",
@@ -31131,7 +31823,7 @@
           },
           "website_url": "https://www.onparpt.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 38,
+          "display_order": 39,
           "active": true
         },
         "locale": "es",
@@ -31156,11 +31848,132 @@
           },
           "website_url": "https://vnvevents.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 52,
+          "display_order": 53,
           "active": true
         },
         "locale": "es",
         "translationOf": "partner-vnv-events"
+      },
+      {
+        "id": "partner-mvp-cuts-barbershop--es",
+        "status": "published",
+        "data": {
+          "name": "MVP Cuts Barbershop",
+          "logo": {
+            "provider": "local",
+            "id": "0TVSPE3H1XQ8QRZAWYGKYQZECF",
+            "alt": "MVP Cuts Barbershop",
+            "width": 1024,
+            "height": 1024,
+            "mimeType": "image/png",
+            "filename": "a206fb3d-vvf-golf2026-sponsor-mvpcutsbarbershop-v1.png",
+            "meta": {
+              "storageKey": "0TVSPE3H1XQ8QRZAWYGKYQZECF.png"
+            }
+          },
+          "website_url": "https://www.mvp-cuts.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 55,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-mvp-cuts-barbershop"
+      },
+      {
+        "id": "partner-beyond-the-catch--es",
+        "status": "published",
+        "data": {
+          "name": "Beyond the Catch",
+          "logo": {
+            "provider": "local",
+            "id": "7J8W72JPWXDSKC3HJCAKWZFG3C",
+            "alt": "Beyond the Catch",
+            "width": 785,
+            "height": 770,
+            "mimeType": "image/jpeg",
+            "filename": "d3c0322c-vvf-golf2026-sponsor-beyondthecatch-v1.jpeg",
+            "meta": {
+              "storageKey": "7J8W72JPWXDSKC3HJCAKWZFG3C.jpeg"
+            }
+          },
+          "website_url": "https://www.beyondthecatch.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 57,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-beyond-the-catch"
+      },
+      {
+        "id": "partner-luminis-global-partners--es",
+        "status": "published",
+        "data": {
+          "name": "Luminis Global Partners",
+          "logo": {
+            "provider": "local",
+            "id": "3HJ0GXGT5418VK2RG7YZZ59KSR",
+            "alt": "Luminis Global Partners",
+            "width": 800,
+            "height": 286,
+            "mimeType": "image/png",
+            "filename": "fa8fdae2-vvf-golf2026-sponsor-luminisglobalpartners-v2.png",
+            "meta": {
+              "storageKey": "3HJ0GXGT5418VK2RG7YZZ59KSR.png"
+            }
+          },
+          "website_url": "https://luminisgp.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 58,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-luminis-global-partners"
+      },
+      {
+        "id": "partner-intercaribbean-airways--es",
+        "status": "published",
+        "data": {
+          "name": "interCaribbean Airways",
+          "logo": {
+            "provider": "external",
+            "id": "static-7aaf590f-intercaribbean-airways-logo.svg",
+            "src": "/images/media/7aaf590f-intercaribbean-airways-logo.svg",
+            "alt": "interCaribbean Airways",
+            "mimeType": "image/svg+xml",
+            "filename": "7aaf590f-intercaribbean-airways-logo.svg"
+          },
+          "website_url": "https://www.intercaribbean.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 59,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-intercaribbean-airways"
+      },
+      {
+        "id": "partner-galaxis--es",
+        "status": "published",
+        "data": {
+          "name": "Galaxis",
+          "logo": {
+            "provider": "local",
+            "id": "13SBQ8NXR64WGC8M68C73YD09D",
+            "alt": "Galaxis",
+            "width": 525,
+            "height": 116,
+            "mimeType": "image/png",
+            "filename": "2672fc45-vvf-golf2026-sponsor-galaxis-v1.png",
+            "meta": {
+              "storageKey": "13SBQ8NXR64WGC8M68C73YD09D.png"
+            }
+          },
+          "website_url": "https://en.galaxis-tech.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 60,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-galaxis"
       },
       {
         "id": "partner-crepemaker--es",
@@ -31181,11 +31994,60 @@
           },
           "website_url": "https://www.crepemaker.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 21,
+          "display_order": 22,
           "active": true
         },
         "locale": "es",
         "translationOf": "partner-crepemaker"
+      },
+      {
+        "id": "partner-magle--es",
+        "status": "published",
+        "data": {
+          "name": "Maglé",
+          "logo": {
+            "provider": "local",
+            "id": "28BAJVEKEQXQ3F8KGFN3ZDQRF3",
+            "alt": "Maglé",
+            "width": 1279,
+            "height": 1280,
+            "mimeType": "image/jpeg",
+            "filename": "dbc00731-vvf-golf2026-sponsor-magle-v1.jpeg",
+            "meta": {
+              "storageKey": "28BAJVEKEQXQ3F8KGFN3ZDQRF3.jpeg"
+            }
+          },
+          "partner_type": "corporate_sponsor",
+          "display_order": 56,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-magle"
+      },
+      {
+        "id": "partner-yoloeight--es",
+        "status": "published",
+        "data": {
+          "name": "Yoloeight",
+          "logo": {
+            "provider": "local",
+            "id": "4Z84015SR3GCM137GR14DC756C",
+            "alt": "Yoloeight",
+            "width": 360,
+            "height": 360,
+            "mimeType": "image/jpeg",
+            "filename": "6f6f6851-vvf-golf2026-sponsor-yoloeight-v1.jpeg",
+            "meta": {
+              "storageKey": "4Z84015SR3GCM137GR14DC756C.jpeg"
+            }
+          },
+          "website_url": "https://yolo8meats.com/",
+          "partner_type": "corporate_sponsor",
+          "display_order": 61,
+          "active": true
+        },
+        "locale": "es",
+        "translationOf": "partner-yoloeight"
       },
       {
         "id": "partner-abbvie--es",
@@ -31206,7 +32068,7 @@
           },
           "website_url": "https://www.abbvie.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 7,
+          "display_order": 8,
           "active": true
         },
         "locale": "es",
@@ -31231,7 +32093,7 @@
           },
           "website_url": "https://www.accenture.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 8,
+          "display_order": 9,
           "active": true
         },
         "locale": "es",
@@ -31255,7 +32117,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 9,
+          "display_order": 10,
           "active": true
         },
         "locale": "es",
@@ -31279,7 +32141,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 10,
+          "display_order": 11,
           "active": true
         },
         "locale": "es",
@@ -31304,7 +32166,7 @@
           },
           "website_url": "https://arepasmagnet.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 11,
+          "display_order": 12,
           "active": true
         },
         "locale": "es",
@@ -31328,7 +32190,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 14,
+          "display_order": 15,
           "active": true
         },
         "locale": "es",
@@ -31353,7 +32215,7 @@
           },
           "website_url": "https://www.chevron.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 17,
+          "display_order": 18,
           "active": true
         },
         "locale": "es",
@@ -31378,7 +32240,7 @@
           },
           "website_url": "https://mywestondental.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 23,
+          "display_order": 24,
           "active": true
         },
         "locale": "es",
@@ -31403,7 +32265,7 @@
           },
           "website_url": "https://ikesbs.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 26,
+          "display_order": 27,
           "active": true
         },
         "locale": "es",
@@ -31428,7 +32290,7 @@
           },
           "website_url": "https://www.lambweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 31,
+          "display_order": 32,
           "active": true
         },
         "locale": "es",
@@ -31453,7 +32315,7 @@
           },
           "website_url": "https://luxegolfweston.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 33,
+          "display_order": 34,
           "active": true
         },
         "locale": "es",
@@ -31478,7 +32340,7 @@
           },
           "website_url": "https://www.medtronic.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 34,
+          "display_order": 35,
           "active": true
         },
         "locale": "es",
@@ -31502,7 +32364,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 35,
+          "display_order": 36,
           "active": true
         },
         "locale": "es",
@@ -31527,7 +32389,7 @@
           },
           "website_url": "https://www.mustangfc.net/",
           "partner_type": "corporate_sponsor",
-          "display_order": 36,
+          "display_order": 37,
           "active": true
         },
         "locale": "es",
@@ -31552,7 +32414,7 @@
           },
           "website_url": "https://www.newyorklife.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 37,
+          "display_order": 38,
           "active": true
         },
         "locale": "es",
@@ -31577,7 +32439,7 @@
           },
           "website_url": "https://www.rtx.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 41,
+          "display_order": 42,
           "active": true
         },
         "locale": "es",
@@ -31601,7 +32463,7 @@
             }
           },
           "partner_type": "corporate_sponsor",
-          "display_order": 42,
+          "display_order": 43,
           "active": true
         },
         "locale": "es",
@@ -31626,7 +32488,7 @@
           },
           "website_url": "https://www.instagram.com/tacolymolytacos/",
           "partner_type": "corporate_sponsor",
-          "display_order": 45,
+          "display_order": 46,
           "active": true
         },
         "locale": "es",
@@ -31651,7 +32513,7 @@
           },
           "website_url": "https://triumphanttransitionpartners.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 47,
+          "display_order": 48,
           "active": true
         },
         "locale": "es",
@@ -31676,7 +32538,7 @@
           },
           "website_url": "https://www.wellsfargo.com/",
           "partner_type": "corporate_sponsor",
-          "display_order": 53,
+          "display_order": 54,
           "active": true
         },
         "locale": "es",
@@ -32379,6 +33241,24 @@
           "short_name": "Physical Therapy Lounge",
           "kind": "special_opportunity",
           "price": "$1,000",
+          "includes": [
+            {
+              "_type": "block",
+              "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0s",
+                  "text": "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round.",
+                  "marks": []
+                }
+              ]
+            }
+          ],
           "button_label": "Buy Tickets",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
           "sold_out": true,
@@ -33165,6 +34045,24 @@
           "short_name": "Lounge de fisioterapia",
           "kind": "special_opportunity",
           "price": "$1,000",
+          "includes": [
+            {
+              "_type": "block",
+              "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "sp-2026-golf-tournament-golf-physical-therapy-lounge-i0s",
+                  "text": "Ayuda a los golfistas a calentar, mejorar su movilidad y preparar el cuerpo para una ronda más fuerte y cómoda.",
+                  "marks": []
+                }
+              ]
+            }
+          ],
           "button_label": "Comprar entradas",
           "button_link": "https://donorbox.org/events/937157/steps/choose_tickets",
           "sold_out": true,
@@ -34960,15 +35858,18 @@
           "stats": [
             {
               "value": "74",
-              "label": "Golfers"
+              "label": "Golfers",
+              "caption": "Took part for children in Venezuela"
             },
             {
               "value": "40+",
-              "label": "Sponsors"
+              "label": "Sponsors",
+              "caption": "Companies that backed the day"
             },
             {
               "value": "700+",
-              "label": "Children helped"
+              "label": "Children helped",
+              "caption": "With meals, medicine and school supplies"
             }
           ],
           "gallery": [
@@ -35267,15 +36168,94 @@
           "description": [
             {
               "_type": "block",
-              "_key": "event-2026-golf-tournament-d0",
+              "_key": "ld1",
               "style": "normal",
-              "markDefs": [],
               "children": [
                 {
                   "_type": "span",
-                  "_key": "event-2026-golf-tournament-d0s",
-                  "text": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.",
-                  "marks": []
+                  "_key": "ld0",
+                  "text": "Join us on November 9, 2026, for the Victoria Venezuela Foundation Charity Golf Tournament—an exceptional day of golf, community engagement, and professional networking. This year, 100% of the net proceeds go to our earthquake relief work in Venezuela, helping build our permanent support center in La Guaira."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld3",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld2",
+                  "text": "Hosted at the prestigious Club at Weston Hills, this annual charity golf event welcomes over 100 golfers and guests, including business leaders, corporate executives, industry professionals, decision-makers, and philanthropists. Participants will have the opportunity to connect with influential members of the community, develop valuable relationships, and explore new collaborations while enjoying a championship-level golf course."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld5",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld4",
+                  "text": "More than a golf tournament, this event combines friendly competition, meaningful connections, and a shared commitment to creating positive change. Join us on the course on November 9 and help Victoria Venezuela Foundation continue making a lasting difference for the children and families it serves."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld7",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld6",
+                  "text": "Schedule",
+                  "marks": [
+                    "strong"
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld9",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld8",
+                  "text": "8:00 am Registration and breakfast"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldb",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "lda",
+                  "text": "9:30 am Shotgun start"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldd",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ldc",
+                  "text": "After play: lunch, silent auction and awards"
                 }
               ]
             }
@@ -35386,26 +36366,38 @@
           ],
           "hero_photo": {
             "provider": "local",
-            "id": "0A6FRZWEVHBBCBV8PVQ3SZJVSV",
+            "id": "235PJ0A3R7CEZ0142MYXXXM29A",
             "alt": "Three golfers and a young boy standing by the flag on the green.",
             "width": 1440,
             "height": 768,
-            "mimeType": "image/png",
-            "filename": "56f00201-98.png",
+            "mimeType": "image/webp",
+            "filename": "0f76993c-vvf-golf2026-herodesktop-v2.webp",
             "meta": {
-              "storageKey": "0A6FRZWEVHBBCBV8PVQ3SZJVSV.png"
+              "storageKey": "235PJ0A3R7CEZ0142MYXXXM29A.webp"
             }
           },
           "hero_photo_phone": {
             "provider": "local",
-            "id": "4SEBPMP80QMEXAX8N04TSZVDSW",
+            "id": "0HC7W0TS1KVVXHXW1PJS6ZWC41",
             "alt": "A smiling golfer kneels on the green with a young boy holding a putter.",
-            "width": 1704,
-            "height": 2560,
+            "width": 1200,
+            "height": 1803,
             "mimeType": "image/webp",
-            "filename": "3d810594-0j1a2701-scaled.webp",
+            "filename": "bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
             "meta": {
-              "storageKey": "4SEBPMP80QMEXAX8N04TSZVDSW.webp"
+              "storageKey": "0HC7W0TS1KVVXHXW1PJS6ZWC41.webp"
+            }
+          },
+          "card_photo": {
+            "provider": "local",
+            "id": "6ARK2XYQAGZMVTA193AJ596GC4",
+            "alt": "Three golfers and a young boy standing by the flag on the green.",
+            "width": 756,
+            "height": 627,
+            "mimeType": "image/jpeg",
+            "filename": "6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+            "meta": {
+              "storageKey": "6ARK2XYQAGZMVTA193AJ596GC4.jpeg"
             }
           },
           "share_image": {
@@ -35465,22 +36457,31 @@
             "$ref:benefit-2026-golf-tournament-20"
           ],
           "sponsors": [
-            "$ref:partner-the-trusty-handyman",
+            "$ref:partner-miami-marlins",
             "$ref:partner-santa-teresa-1796",
             "$ref:partner-venezuelan-american-chamber-of-commerce",
             "$ref:partner-trump-hotels",
+            "$ref:partner-paula-inc",
             "$ref:partner-microsoft",
             "$ref:partner-topgolf",
-            "$ref:partner-paula-inc",
+            "$ref:partner-the-trusty-handyman",
             "$ref:partner-cotmaq",
             "$ref:partner-charity-golf-international",
             "$ref:partner-back-swing-golf-events",
             "$ref:partner-citimarine-store",
             "$ref:partner-on-par-physical-therapy",
             "$ref:partner-vnv-events",
+            "$ref:partner-kp-aviation",
+            "$ref:partner-mvp-cuts-barbershop",
+            "$ref:partner-beyond-the-catch",
+            "$ref:partner-luminis-global-partners",
+            "$ref:partner-intercaribbean-airways",
+            "$ref:partner-galaxis",
             "$ref:partner-jet-set-gourmet",
             "$ref:partner-crepemaker",
-            "$ref:partner-infinito-booth"
+            "$ref:partner-infinito-booth",
+            "$ref:partner-magle",
+            "$ref:partner-yoloeight"
           ],
           "faqs": [
             "$ref:faq-event-2026-golf-tournament-1",
@@ -35491,64 +36492,24 @@
           "meta_description": "Play for a purpose on November 9, 2026, at The Club at Weston Hills in Weston, FL. Our annual charity golf tournament supports children in Venezuela.",
           "gallery": [
             {
-              "provider": "local",
-              "id": "7EXR8YYWGYG3R2KMSJVQX3RPXW",
-              "alt": "Golfers standing by the lake on the course, holding Venezuelan flags.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "c6b3a8d9-dji-fly-20251110-120352-0127-1762797148849-photo-scaled.webp",
-              "meta": {
-                "storageKey": "7EXR8YYWGYG3R2KMSJVQX3RPXW.webp"
-              }
+              "src": "/images/pages/7ccdcf30-vvf-golf2025-memories-1-teeshot-v1.jpg",
+              "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "1M5N6K1XSM07KQWNVQKM3X7DEE",
-              "alt": "Foundation banner beside an inflatable boat displayed on the course.",
-              "width": 1600,
-              "height": 2400,
-              "mimeType": "image/webp",
-              "filename": "a23fdd46-0j1a2800-e1784672229294.webp",
-              "meta": {
-                "storageKey": "1M5N6K1XSM07KQWNVQKM3X7DEE.webp"
-              }
+              "src": "/images/pages/f8241668-vvf-golf2025-memories-2-playersonfairway-v1.jpg",
+              "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "4PX20Q8RBV522K03ZWTM6SRJ9E",
-              "alt": "Participants posing together in front of a board of sponsor logos.",
-              "width": 2400,
-              "height": 1600,
-              "mimeType": "image/webp",
-              "filename": "0eef0daa-helen-randy-participants.webp",
-              "meta": {
-                "storageKey": "4PX20Q8RBV522K03ZWTM6SRJ9E.webp"
-              }
+              "src": "/images/pages/5d4f4ab4-vvf-golf2025-memories-3-juniorgolfer-v1.jpg",
+              "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "79HDSGFKKRRR8PE0RYE2Q205Q7",
-              "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "98b36bc1-panoramica-campo-golf-scaled.webp",
-              "meta": {
-                "storageKey": "79HDSGFKKRRR8PE0RYE2Q205Q7.webp"
-              }
+              "src": "/images/pages/852e7609-vvf-golf2025-memories-4-foundationtent-v1.jpg",
+              "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "2R75EEWBW1NQSS4XPVDTMVK9SQ",
-              "alt": "Four golfers on the tee, one of them holding a Venezuelan flag.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "4fc03922-players-campo6-scaled.webp",
-              "meta": {
-                "storageKey": "2R75EEWBW1NQSS4XPVDTMVK9SQ.webp"
-              }
+              "src": "/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg",
+              "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
             }
           ],
           "previous_editions": [
@@ -35694,15 +36655,18 @@
           "stats": [
             {
               "value": "74",
-              "label": "Golfistas"
+              "label": "Golfistas",
+              "caption": "Participaron por los niños de Venezuela"
             },
             {
               "value": "40+",
-              "label": "Patrocinadores"
+              "label": "Patrocinadores",
+              "caption": "Empresas que apoyaron el día"
             },
             {
               "value": "700+",
-              "label": "Niños ayudados"
+              "label": "Niños ayudados",
+              "caption": "Con comidas, medicinas y útiles escolares"
             }
           ],
           "gallery": [
@@ -36003,15 +36967,94 @@
           "description": [
             {
               "_type": "block",
-              "_key": "event-2026-golf-tournament-d0",
+              "_key": "ld1",
               "style": "normal",
-              "markDefs": [],
               "children": [
                 {
                   "_type": "span",
-                  "_key": "event-2026-golf-tournament-d0s",
-                  "text": "Cada golpe cambia una vida. Ayúdanos a apoyar a los niños venezolanos con educación, nutrición y esperanza.",
-                  "marks": []
+                  "_key": "ld0",
+                  "text": "Acompáñanos el 9 de noviembre de 2026 en el Torneo Benéfico de Golf de Victoria Venezuela Foundation: un día excepcional de golf, participación comunitaria y networking profesional. Este año, el 100 % de las ganancias netas se destinará a nuestra labor de ayuda tras el terremoto en Venezuela, para construir nuestro centro de apoyo permanente en La Guaira."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld3",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld2",
+                  "text": "Celebrado en el prestigioso Club at Weston Hills, este evento benéfico anual recibe a más de 100 golfistas e invitados, entre ellos líderes empresariales, ejecutivos corporativos, profesionales de la industria, tomadores de decisiones y filántropos. Los participantes tendrán la oportunidad de conectar con miembros influyentes de la comunidad, crear relaciones valiosas y explorar nuevas colaboraciones mientras disfrutan de un campo de golf de nivel campeonato."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld5",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld4",
+                  "text": "Más que un torneo de golf, este evento combina la competencia amistosa, las conexiones significativas y un compromiso compartido de generar un cambio positivo. Acompáñanos en el campo el 9 de noviembre y ayuda a Victoria Venezuela Foundation a seguir marcando una diferencia duradera en la vida de los niños y las familias a las que sirve."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld7",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld6",
+                  "text": "Programa",
+                  "marks": [
+                    "strong"
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ld9",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ld8",
+                  "text": "8:00 a. m. Registro y desayuno"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldb",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "lda",
+                  "text": "9:30 a. m. Salida simultánea (shotgun)"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "ldd",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ldc",
+                  "text": "Después del juego: almuerzo, subasta silenciosa y premiación"
                 }
               ]
             }
@@ -36122,26 +37165,38 @@
           ],
           "hero_photo": {
             "provider": "local",
-            "id": "0A6FRZWEVHBBCBV8PVQ3SZJVSV",
+            "id": "235PJ0A3R7CEZ0142MYXXXM29A",
             "alt": "Three golfers and a young boy standing by the flag on the green.",
             "width": 1440,
             "height": 768,
-            "mimeType": "image/png",
-            "filename": "56f00201-98.png",
+            "mimeType": "image/webp",
+            "filename": "0f76993c-vvf-golf2026-herodesktop-v2.webp",
             "meta": {
-              "storageKey": "0A6FRZWEVHBBCBV8PVQ3SZJVSV.png"
+              "storageKey": "235PJ0A3R7CEZ0142MYXXXM29A.webp"
             }
           },
           "hero_photo_phone": {
             "provider": "local",
-            "id": "4SEBPMP80QMEXAX8N04TSZVDSW",
+            "id": "0HC7W0TS1KVVXHXW1PJS6ZWC41",
             "alt": "A smiling golfer kneels on the green with a young boy holding a putter.",
-            "width": 1704,
-            "height": 2560,
+            "width": 1200,
+            "height": 1803,
             "mimeType": "image/webp",
-            "filename": "3d810594-0j1a2701-scaled.webp",
+            "filename": "bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
             "meta": {
-              "storageKey": "4SEBPMP80QMEXAX8N04TSZVDSW.webp"
+              "storageKey": "0HC7W0TS1KVVXHXW1PJS6ZWC41.webp"
+            }
+          },
+          "card_photo": {
+            "provider": "local",
+            "id": "6ARK2XYQAGZMVTA193AJ596GC4",
+            "alt": "Three golfers and a young boy standing by the flag on the green.",
+            "width": 756,
+            "height": 627,
+            "mimeType": "image/jpeg",
+            "filename": "6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+            "meta": {
+              "storageKey": "6ARK2XYQAGZMVTA193AJ596GC4.jpeg"
             }
           },
           "share_image": {
@@ -36201,22 +37256,31 @@
             "$ref:benefit-2026-golf-tournament-20"
           ],
           "sponsors": [
-            "$ref:partner-the-trusty-handyman",
+            "$ref:partner-miami-marlins",
             "$ref:partner-santa-teresa-1796",
             "$ref:partner-venezuelan-american-chamber-of-commerce",
             "$ref:partner-trump-hotels",
+            "$ref:partner-paula-inc",
             "$ref:partner-microsoft",
             "$ref:partner-topgolf",
-            "$ref:partner-paula-inc",
+            "$ref:partner-the-trusty-handyman",
             "$ref:partner-cotmaq",
             "$ref:partner-charity-golf-international",
             "$ref:partner-back-swing-golf-events",
             "$ref:partner-citimarine-store",
             "$ref:partner-on-par-physical-therapy",
             "$ref:partner-vnv-events",
+            "$ref:partner-kp-aviation",
+            "$ref:partner-mvp-cuts-barbershop",
+            "$ref:partner-beyond-the-catch",
+            "$ref:partner-luminis-global-partners",
+            "$ref:partner-intercaribbean-airways",
+            "$ref:partner-galaxis",
             "$ref:partner-jet-set-gourmet",
             "$ref:partner-crepemaker",
-            "$ref:partner-infinito-booth"
+            "$ref:partner-infinito-booth",
+            "$ref:partner-magle",
+            "$ref:partner-yoloeight"
           ],
           "faqs": [
             "$ref:faq-event-2026-golf-tournament-1",
@@ -36227,64 +37291,24 @@
           "meta_description": "Juega con propósito el 9 de noviembre de 2026 en The Club at Weston Hills, en Weston, FL. Nuestro torneo benéfico anual de golf apoya a los niños de Venezuela.",
           "gallery": [
             {
-              "provider": "local",
-              "id": "7EXR8YYWGYG3R2KMSJVQX3RPXW",
-              "alt": "Golfers standing by the lake on the course, holding Venezuelan flags.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "c6b3a8d9-dji-fly-20251110-120352-0127-1762797148849-photo-scaled.webp",
-              "meta": {
-                "storageKey": "7EXR8YYWGYG3R2KMSJVQX3RPXW.webp"
-              }
+              "src": "/images/pages/7ccdcf30-vvf-golf2025-memories-1-teeshot-v1.jpg",
+              "alt": "A golfer follows through on a tee shot at the 2025 Victoria Venezuela Foundation charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "1M5N6K1XSM07KQWNVQKM3X7DEE",
-              "alt": "Foundation banner beside an inflatable boat displayed on the course.",
-              "width": 1600,
-              "height": 2400,
-              "mimeType": "image/webp",
-              "filename": "a23fdd46-0j1a2800-e1784672229294.webp",
-              "meta": {
-                "storageKey": "1M5N6K1XSM07KQWNVQKM3X7DEE.webp"
-              }
+              "src": "/images/pages/f8241668-vvf-golf2025-memories-2-playersonfairway-v1.jpg",
+              "alt": "A group of participants with their clubs on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "4PX20Q8RBV522K03ZWTM6SRJ9E",
-              "alt": "Participants posing together in front of a board of sponsor logos.",
-              "width": 2400,
-              "height": 1600,
-              "mimeType": "image/webp",
-              "filename": "0eef0daa-helen-randy-participants.webp",
-              "meta": {
-                "storageKey": "4PX20Q8RBV522K03ZWTM6SRJ9E.webp"
-              }
+              "src": "/images/pages/5d4f4ab4-vvf-golf2025-memories-3-juniorgolfer-v1.jpg",
+              "alt": "A young golfer taking a swing at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "79HDSGFKKRRR8PE0RYE2Q205Q7",
-              "alt": "Elevated view of the clubhouse with rows of golf carts lined up outside.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "98b36bc1-panoramica-campo-golf-scaled.webp",
-              "meta": {
-                "storageKey": "79HDSGFKKRRR8PE0RYE2Q205Q7.webp"
-              }
+              "src": "/images/pages/852e7609-vvf-golf2025-memories-4-foundationtent-v1.jpg",
+              "alt": "The Victoria Venezuela Foundation tent on the course at the 2025 charity golf tournament."
             },
             {
-              "provider": "local",
-              "id": "2R75EEWBW1NQSS4XPVDTMVK9SQ",
-              "alt": "Four golfers on the tee, one of them holding a Venezuelan flag.",
-              "width": 2560,
-              "height": 1440,
-              "mimeType": "image/webp",
-              "filename": "4fc03922-players-campo6-scaled.webp",
-              "meta": {
-                "storageKey": "2R75EEWBW1NQSS4XPVDTMVK9SQ.webp"
-              }
+              "src": "/images/pages/35e4610f-vvf-golf2025-memories-5-venezuelanflags-v1.jpg",
+              "alt": "Venezuelan flags on the course at the 2025 charity golf tournament."
             }
           ],
           "previous_editions": [

@@ -2,10 +2,15 @@
 // Team member profile — mirrors the live /team-members/<slug> pages.
 import PageLayout from '../../layouts/PageLayout.astro'
 import BioCard from '../../components/BioCard.astro'
-import { getTeamMemberBySlug } from '../../lib/content'
+import { getPageCopy, getTeamMemberBySlug } from '../../lib/content'
 import { alternatePaths, localeFromPath } from '../../lib/i18n'
+import { fill } from '../../lib/globalCopy'
+import { person } from '../../lib/structuredData'
+import pageCopy from './_copy'
 
 const locale = localeFromPath(Astro.originPathname)
+// The profile's title and description templates live with the Our Team copy.
+const { copy } = await getPageCopy(pageCopy, locale)
 
 // One profile per person; when they appear in several tiers,
 // getTeamMemberBySlug picks the entry carrying the full bio.
@@ -14,11 +19,12 @@ if (!member) return Astro.rewrite('/404')
 ---
 
 <PageLayout
-  title={`${member.name} | Our Team | Victoria Venezuela Foundation`}
-  description={`Meet ${member.name}, part of the team at Victoria Venezuela Foundation. Read about their background and their role in our work in Venezuela.`}
+  title={fill(copy['profile.seo.title'], { name: member.name })}
+  description={fill(copy['profile.seo.description'], { name: member.name })}
   image={member.imageUrl}
   alternates={alternatePaths('/our-team', member.alternates)}
   contentLocale={member.fallbackLocale}
+  jsonLd={[person(member, Astro.site ?? Astro.url, new URL(Astro.originPathname, Astro.site ?? Astro.url).href)]}
 >
   <BioCard member={member} />
 </PageLayout>

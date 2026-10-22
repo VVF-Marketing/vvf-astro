@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, reportKind, slugify } from './mappers.mjs'
+import { mapChildren, mapCorporateTiers, mapEvents, mapPageFaqs, mapResources, mapTeam, mergePartners, parseLiveDate, reportKind, slugify, withMemories } from './mappers.mjs'
 import { alignSponsorNames, buildSeeds, createContext, pageCopyEntries, translatedEntries, withCopyCollections } from './transform.mjs'
 import { relativizeSameSiteLinks } from '../../src/lib/site.mjs'
 import { sanitizeRichText, toPlainText, toPortableText } from './lib/richtext.mjs'
@@ -223,6 +223,95 @@ describe('rich text', () => {
 
   it('converts to plain paragraphs', () => {
     expect(toPlainText('<p>One &amp; two</p><p>Three<br>four</p>')).toBe('One & two\n\nThree four')
+  })
+})
+
+describe('withMemories', () => {
+  const gallery = [{ src: `${CDN}/lake.webp`, alt: 'Lake' }]
+  const page = {
+    sections: [
+      { classes: ['section_hero'], blocks: [{ type: 'image', src: `${CDN}/hero.png`, alt: 'Hero' }] },
+      {
+        classes: ['section-10'],
+        blocks: [
+          { type: 'h2', text: '2025 Memories' },
+          { type: 'image', src: `${CDN}/memories-1.jpg`, alt: 'Tee shot' },
+          { type: 'image', src: `${CDN}/memories-2.jpg`, alt: 'Fairway' },
+          // The section repeats the CMS gallery after its own photos.
+          { type: 'image', src: `${CDN}/lake.webp`, alt: 'Lake' },
+        ],
+      },
+    ],
+  }
+
+  it("takes the memories section's own photos, not the repeated gallery", () => {
+    const [event] = withMemories([{ slug: 'golf', gallery }], () => page)
+    expect(event.memories).toEqual([
+      { src: `${CDN}/memories-1.jpg`, alt: 'Tee shot' },
+      { src: `${CDN}/memories-2.jpg`, alt: 'Fairway' },
+    ])
+  })
+
+  it('finds the Spanish heading too, and leaves events without the section alone', () => {
+    const spanish = { sections: [{ classes: [], blocks: [{ type: 'h2', text: 'Recuerdos de 2025' }, { type: 'image', src: `${CDN}/m.jpg`, alt: 'M' }] }] }
+    expect(withMemories([{ slug: 'golf', gallery }], () => spanish)[0].memories).toHaveLength(1)
+    expect(withMemories([{ slug: 'golf', gallery }], () => undefined)[0]).toEqual({ slug: 'golf', gallery })
+  })
+
+  it('feeds the event gallery with the memories when there are some', () => {
+    const harvested = { [`${CDN}/memories-1.jpg`]: { provider: 'local', id: 'm1' }, [`${CDN}/lake.webp`]: { provider: 'local', id: 'lake' } }
+    const base = { slug: 'golf', title: 'Golf', dateText: 'November 1, 2031', sponsors: [], offers: [], benefitRows: [], faqs: [], recapStats: [], gallery }
+    const [withPhotos] = mapEvents([{ ...base, memories: [{ src: `${CDN}/memories-1.jpg`, alt: 'Tee shot' }] }], createContext(harvested)).events
+    expect(withPhotos.data.gallery).toEqual([{ provider: 'local', id: 'm1', alt: 'Tee shot' }])
+    const [plain] = mapEvents([base], createContext(harvested)).events
+    expect(plain.data.gallery).toEqual([{ provider: 'local', id: 'lake', alt: 'Lake' }])
+  })
+})
+
+describe('event long description and recap captions', () => {
+  const event = (extra) => ({
+    slug: 'golf-2025',
+    title: 'Golf 2025',
+    dateText: 'November 10, 2025',
+    heroBody: 'A look back.',
+    sponsors: [],
+    offers: [],
+    benefitRows: [],
+    faqs: [],
+    gallery: [],
+    recapStats: [
+      { number: '$50,384', heading: 'Raised', label: 'For nutrition' },
+      { number: '74', heading: 'Golfers', label: 'Took part for children' },
+    ],
+    ...extra,
+  })
+  const seedFor = (e) =>
+    buildSeeds({
+      snapshots: { team_members: { sections: [], members: {} }, children: { order: [], items: [] }, events: [e], corporate_tiers: [], faqs: {}, resources: [] },
+      mediaMap: {},
+      currentSeed: { version: '1', content: {} },
+    }).full.content.events[0].data
+
+  it('keeps each recap stat caption beside its value and label', () => {
+    expect(seedFor(event()).stats).toEqual([{ value: '74', label: 'Golfers', caption: 'Took part for children' }])
+  })
+
+  it('uses the CMS long description as the rich description when there is one', () => {
+    const data = seedFor(event({ descriptionHtml: '<p>Join us.</p><ul><li>8:00 am Breakfast</li></ul>' }))
+    expect(data.description.map((b) => b.children.map((c) => c.text).join(''))).toEqual(['Join us.', '8:00 am Breakfast'])
+    expect(data.description[1]).toMatchObject({ listItem: 'bullet' })
+    expect(seedFor(event()).description[0].children[0].text).toBe('A look back.')
+  })
+
+  it('keeps the CMS card photo, and leaves it out when the event has none', () => {
+    const src = 'https://cdn.prod.website-files.com/x/card.jpeg'
+    const withPhoto = buildSeeds({
+      snapshots: { team_members: { sections: [], members: {} }, children: { order: [], items: [] }, events: [event({ cardPhoto: { src, alt: 'Golfers on the green.' } })], corporate_tiers: [], faqs: {}, resources: [] },
+      mediaMap: { [src]: { provider: 'local', id: 'card', alt: 'Golfers on the green.' } },
+      currentSeed: { version: '1', content: {} },
+    }).full.content.events[0].data
+    expect(withPhoto.card_photo).toMatchObject({ id: 'card', alt: 'Golfers on the green.' })
+    expect(seedFor(event())).not.toHaveProperty('card_photo')
   })
 })
 

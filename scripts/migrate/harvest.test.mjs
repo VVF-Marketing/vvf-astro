@@ -1,8 +1,8 @@
-import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { collectAssets, harvestPlan, localFileName, planAssets } from './harvest.mjs'
+import { collectAssets, download, harvestPlan, localFileName, manifestPaths, planAssets, pruneUnreferenced, s3Mirror } from './harvest.mjs'
 
 const CDN = 'https://cdn.prod.website-files.com/site'
 
@@ -73,5 +73,73 @@ describe('harvestPlan', () => {
     const result = await harvestPlan(plan, manifests, { downloadImpl, root })
     expect(result.skipped).toBe(1)
     expect(calls).toBe(1) // only missing.jpg is attempted
+  })
+})
+
+describe('download from the S3 mirror', () => {
+  const cdn = 'https://cdn.prod.website-files.com/site/abc_Hero_v2.webp'
+  const ok = (body) => ({ ok: true, status: 200, headers: new Headers({ 'content-type': 'image/webp' }), arrayBuffer: async () => new TextEncoder().encode(body).buffer })
+
+  it('maps a Webflow CDN URL to its S3 copy, and nothing else', () => {
+    expect(s3Mirror(cdn)).toBe('https://s3.amazonaws.com/webflow-prod-assets/site/abc_Hero_v2.webp')
+    expect(s3Mirror('https://example.org/a.jpg')).toBeUndefined()
+  })
+
+  it('falls back to S3 when the CDN is unreachable, keeping the CDN file name', async () => {
+    const asked = []
+    const fetchImpl = async (url) => {
+      asked.push(url)
+      if (url.startsWith('https://cdn.')) throw new Error('CONNECT tunnel failed, response 403')
+      return ok('bytes')
+    }
+    const root = mkdtempSync(path.join(tmpdir(), 'harvest-'))
+    const entry = await download(cdn, 'seed/media/events', { fetchImpl, root })
+    expect(asked).toEqual([cdn, s3Mirror(cdn)])
+    expect(entry).toMatchObject({ path: path.join('seed/media/events', localFileName(cdn)), contentType: 'image/webp', bytes: 5 })
+  })
+
+  it('does not try the mirror when the CDN answers', async () => {
+    const asked = []
+    const entry = await download(cdn, 'x', { fetchImpl: async (url) => (asked.push(url), ok('a')), root: mkdtempSync(path.join(tmpdir(), 'harvest-')) })
+    expect(asked).toEqual([cdn])
+    expect(entry.bytes).toBe(1)
+  })
+})
+
+describe('pruneUnreferenced', () => {
+  it('removes the old copy of an asset that moved folder', async () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'harvest-'))
+    mkdirSync(path.join(root, 'public/images/pages'), { recursive: true })
+    writeFileSync(path.join(root, 'public/images/pages/hero.webp'), 'x')
+    const manifests = { main: { [`${CDN}/hero.webp`]: { path: 'public/images/pages/hero.webp' } }, children: {} }
+    const plan = new Map([[`${CDN}/hero.webp`, { dir: 'seed/media/events', manifest: 'main' }]])
+    const before = manifestPaths(manifests)
+    const downloadImpl = async (url, dir) => {
+      mkdirSync(path.join(root, dir), { recursive: true })
+      writeFileSync(path.join(root, dir, 'hero.webp'), 'x')
+      return { path: `${dir}/hero.webp` }
+    }
+    await harvestPlan(plan, manifests, { downloadImpl, root })
+    expect(pruneUnreferenced(plan, manifests, root, before)).toBe(1)
+    expect(existsSync(path.join(root, 'public/images/pages/hero.webp'))).toBe(false)
+    expect(existsSync(path.join(root, 'seed/media/events/hero.webp'))).toBe(true)
+  })
+
+  it('removes downloads the snapshot no longer uses, never hand-added project images', () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'harvest-'))
+    const dir = path.join(root, 'public/images/pages')
+    mkdirSync(dir, { recursive: true })
+    for (const f of ['kept.webp', 'stale.webp', 'programs-hero.webp']) writeFileSync(path.join(dir, f), 'x')
+    const manifests = {
+      main: {
+        [`${CDN}/kept.webp`]: { path: 'public/images/pages/kept.webp' },
+        [`${CDN}/stale.webp`]: { path: 'public/images/pages/stale.webp' },
+      },
+      children: {},
+    }
+    const plan = new Map([[`${CDN}/kept.webp`, { dir: 'public/images/pages' }]])
+    expect(pruneUnreferenced(plan, manifests, root)).toBe(1)
+    expect(readdirSync(dir).sort()).toEqual(['kept.webp', 'programs-hero.webp'])
+    expect(Object.keys(manifests.main)).toEqual([`${CDN}/kept.webp`])
   })
 })

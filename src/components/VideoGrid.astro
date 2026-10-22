@@ -1,12 +1,13 @@
 ---
 // Live counterpart: home `.section_sponsor-carousel` ("See our work in
 // Venezuela") — white section with a centered title and three YouTube
-// videos with bold captions.
+// videos, each with a bold caption and a short description.
 import SectionTitle from './SectionTitle.astro'
 
 export interface Video {
   youtubeId: string
   caption: string
+  description?: string
 }
 
 export interface Props {
@@ -34,7 +35,10 @@ const { heading, text, videos } = Astro.props as Props
               allowfullscreen
             />
           </div>
-          <h3 class="px-6 text-h4 text-brand-primary">{v.caption}</h3>
+          <div class="flex flex-col gap-3 px-6">
+            <h3 class="text-h4 text-brand-primary">{v.caption}</h3>
+            {v.description && <p class="font-body text-size-md leading-body text-brand-primary">{v.description}</p>}
+          </div>
         </li>
       ))
     }

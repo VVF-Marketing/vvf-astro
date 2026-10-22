@@ -32,4 +32,11 @@ describe('sitemapXml', () => {
   it('escapes XML', () => {
     expect(sitemapXml(site, [{ en: '/a?b=1&c=2' }])).toContain('/a?b=1&amp;c=2')
   })
+
+  it("dates a page's every locale with its last change, and leaves undated pages without one", () => {
+    const xml = sitemapXml(site, [{ alternates: { en: '/events/golf', es: '/es/events/golf' }, lastmod: '2026-10-15' }, { en: '/contact' }])
+    expect(xml).toContain('<url><loc>https://www.example.org/events/golf</loc><lastmod>2026-10-15</lastmod>')
+    expect(xml).toContain('<url><loc>https://www.example.org/es/events/golf</loc><lastmod>2026-10-15</lastmod>')
+    expect(xml).toMatch(/<url><loc>https:\/\/www\.example\.org\/contact<\/loc><\/url>/)
+  })
 })

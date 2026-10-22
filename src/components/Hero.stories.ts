@@ -15,6 +15,12 @@ export const Default = {
   },
 }
 
+// Home: on tablets the photo stays on top and the card sits below it (view
+// at 768–991px); from 992px it's the usual overlay.
+export const TabletStacked = {
+  args: { ...Default.args, tablet: 'stacked' },
+}
+
 export const CardRight = {
   args: {
     imageUrl: '/images/og-default.jpg',
@@ -31,5 +37,18 @@ export const NoImage = {
   args: {
     heading: 'Every gift changes a life',
     primaryCta: { label: 'Donate now', href: '/ways-to-give' },
+  },
+}
+
+// A phone photo with its own subject and description (Our Team).
+export const OwnPhonePhoto = {
+  args: {
+    imageUrl: '/images/pages/d44872ac-vvf-ourpeople-hero-desktop-v4-teamphoto.jpg',
+    imageAlt: 'Volunteers and staff together in front of a Venezuelan flag.',
+    mobileImageUrl: '/images/pages/33b4f627-vvf-ourpeople-hero-mobile-v1-1.jpg',
+    mobileImageAlt: "A doctor listens to a boy's chest with a stethoscope.",
+    align: 'right',
+    heading: 'Meet the team',
+    primaryCta: { label: 'Donate', href: '/ways-to-give' },
   },
 }

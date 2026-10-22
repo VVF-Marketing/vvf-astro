@@ -43,6 +43,9 @@
     "videoGrid.caption.1": "Entrega de cartas a niños apadrinados",
     "videoGrid.caption.2": "Dentro de nuestro centro de nutrición en Terraplén",
     "videoGrid.caption.3": "Nuestra celebración anual de Navidad",
+    "videoGrid.description.1": "Los padrinos escriben a los niños que apoyan. Entregamos las cartas personalmente. El apadrinamiento también cubre comidas saludables, útiles escolares y atención médica.",
+    "videoGrid.description.2": "Nuestros comedores comunitarios preparan comidas saludables para niños en Venezuela. Este es uno de ellos.",
+    "videoGrid.description.3": "Donantes, voluntarios, embajadores y padrinos hacen posible este día cada año.",
     "sectionTitle4.tagline": "Eventos y campañas",
     "sectionTitle4.heading": "Únase a nuestros encuentros para fortalecer la comunidad e impulsar nuestra misión",
     "eyebrow.text": "Próximos",
@@ -79,7 +82,11 @@
     "impactBanner.title.2": "Comienza ahora",
     "impactBanner.text.2": "Encuentra hoy mismo oportunidades que se ajusten a tus habilidades y horario.",
     "impactBanner.label.1": "Voluntariado",
-    "openSeat.cta": "Escríbenos"
+    "openSeat.cta": "Escríbenos",
+    "hero.imageAlt": "Voluntarios y personal de la Fundación Victoria Venezuela frente a una bandera de Venezuela durante una misión.",
+    "hero.mobileImageAlt": "Un médico ausculta con un estetoscopio el pecho de un niño en una jornada médica de la Fundación Victoria Venezuela.",
+    "profile.seo.title": "{name} | Nuestro equipo | Fundación Victoria Venezuela",
+    "profile.seo.description": "Te presentamos a {name}, parte del equipo de la Fundación Victoria Venezuela. Conoce su trayectoria y su labor en nuestro trabajo en Venezuela."
   },
   "/privacy-policy": {
     "seo.title": "Política de privacidad | Fundación Victoria Venezuela",
@@ -1176,7 +1183,8 @@
     "p2.text": "Apadrina a un niño en Venezuela. Desde $25 al mes.",
     "button2.text": "Apadrina a un niño",
     "h2.text": "Relacionado",
-    "byPrefix": "Por"
+    "byPrefix": "Por",
+    "seo.titleFallback": "{title} | Fundación Victoria Venezuela"
   },
   "/resources": {
     "seo.title": "Recursos | Fundación Victoria Venezuela",
@@ -1517,6 +1525,7 @@
     "child.carouselPrev": "Niños anteriores",
     "child.carouselLabel": "Más niños",
     "event.soldTab": "(AGOTADO)",
+    "event.benefitsCount": "{included} de {total} beneficios",
     "a11y.photoDot": "Mostrar foto {n}",
     "resources.breadcrumb": "Recursos",
     "card.readOnOutlet": "Leer en {outlet} ↗",
@@ -1595,6 +1604,10 @@
     "sectionTitle5.text": "Momentos en el campo, la subasta y la celebración.",
     "logoCarousel2.heading": "Gracias a nuestros patrocinadores",
     "programsCta.heading": "Anótalo en tu calendario",
+    "editions.tagline": "Historia",
+    "editions.heading": "Ediciones anteriores",
+    "editions.text": "Mira cómo fue el torneo cada año.",
+    "editions.button": "Todos los eventos",
     "programsCta.text": "El torneo del próximo año ya viene. Mira la fecha y el lugar, y reserva tu puesto.",
     "programsCta.label.1": "Contáctanos",
     "sectionTitle6.tagline": "Apoya",
@@ -1613,7 +1626,11 @@
     "recap.heading": "Lo que logramos juntos",
     "recap.text": "Esto es lo que un día en el campo hizo posible para los niños de Venezuela.",
     "programsCta.label.2": "Ver el torneo del próximo año",
-    "recap.raised": "Recaudado"
+    "recap.raised": "Recaudado",
+    "recap.raisedCaption": "Para nutrición, atención médica y educación",
+    "registration.closed": "Las inscripciones están cerradas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.",
+    "registration.soldOut": "Las entradas están agotadas. ¿Tienes preguntas? Escríbenos con los datos de contacto que aparecen más abajo.",
+    "seo.titleFallback": "{title} | Fundación Victoria Venezuela"
   },
   "/events-and-campaigns": {
     "seo.title": "Eventos y campañas | Fundación Victoria Venezuela",
@@ -1642,7 +1659,7 @@
     "campaign1.imageAlt": "Una mujer con camisa amarilla le da una bebida a un niño frente a una casa dañada."
   },
   "/financials-and-transparency": {
-    "seo.title": "Finanzas y transparencia | Victoria Venezuela Foundation",
+    "seo.title": "Finanzas y transparencia | Fundación Victoria Venezuela",
     "hero.heading": "Finanzas y transparencia",
     "hero.subtext": "Creemos en rendir cuentas por completo a nuestros donantes. Cada dólar importa, y mereces saber exactamente cómo tu donación cambia vidas en Venezuela.",
     "hero.imageAlt": "Una niña escribe concentrada en un cuaderno en un pupitre azul, en un salón con otros niños.",
@@ -1656,6 +1673,8 @@
     "confidence.point2.text": "Número de identificación fiscal (EIN) 88-3282100. Nuestro registro es público ante el IRS.",
     "confidence.candidLink": "Nuestro perfil en Candid",
     "confidence.irsLink": "Carta de determinación del IRS",
+    "confidence.w9Link": "Nuestro formulario W-9",
+    "confidence.imageAlt": "Un niño sonriente en una mesa con su comida. Superposición: 4 años de excelencia, Sello Platino de Transparencia Candid por cuarto año consecutivo.",
     "allocation.tagline": "Distribución",
     "allocation.heading": "A dónde va tu donación",
     "allocation.text": "Mantenemos los costos administrativos en cero, así que tu donación va al trabajo en Venezuela y a los eventos que lo financian.",
@@ -1675,7 +1694,8 @@
     "board.cta": "Conoce a la junta",
     "contact.heading": "¿Todavía tienes preguntas?",
     "contact.text": "Pregúntanos sobre nuestros informes, nuestras finanzas o cómo se usa tu donación.",
-    "contact.cta": "Contacto"
+    "contact.cta": "Contacto",
+    "seo.description": "Informes de impacto anuales y trimestrales, Sello Platino de Transparencia de Candid y registro ante el IRS. Somos una 501(c)(3), Tax ID 88-3282100."
   },
   "/our-programs": {
     "seo.title": "Nuestros programas | Fundación Victoria Venezuela",

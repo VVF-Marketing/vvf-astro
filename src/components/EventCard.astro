@@ -34,10 +34,11 @@ const dateLabel = new Date(event.startDate).toLocaleDateString(LANG_TAGS[locale]
   {
     event.imageUrl && (
       <picture class={`contents`}>
-        {/* The phone photo, when set (spec 7.7, phones). */}
-        {event.heroImageMobileUrl && <source media="(max-width: 767px)" srcset={event.heroImageMobileUrl} />}
+        {/* The phone photo, when set (spec 7.7, phones). A card photo is
+            cropped for the card at every width, so it replaces both. */}
+        {!event.cardImageUrl && event.heroImageMobileUrl && <source media="(max-width: 767px)" srcset={event.heroImageMobileUrl} />}
         <img
-          src={event.imageUrl}
+          src={event.cardImageUrl ?? event.imageUrl}
           alt=""
           class={`h-[183px] w-full object-cover md:h-auto ${compact ? 'md:min-h-[328px] md:w-[207px]' : 'md:min-h-[300px] md:w-[53.3%]'}`}
           loading="lazy"

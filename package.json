@@ -33,7 +33,8 @@
     "test:parity": "playwright test -c playwright.parity.config.ts",
     "test:spec-audit": "vitest run -c vitest.spec-audit.config.ts; unit=$?; playwright test -c playwright.spec-audit.config.ts; e2e=$?; exit $((unit || e2e))",
     "spec-audit:report": "node scripts/spec-audit/report.mjs",
-    "migrate:validate": "node --env-file-if-exists=.env scripts/migrate/cli.mjs validate"
+    "migrate:validate": "node --env-file-if-exists=.env scripts/migrate/cli.mjs validate",
+    "migrate:drift": "node scripts/migrate/drift.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.5",

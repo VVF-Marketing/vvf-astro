@@ -121,6 +121,19 @@ export function mapChildren(snapshot, ctx) {
 // [src, alt] of a parsed image: events keep each page's own descriptions.
 const imageOf = (img) => [img?.src, img?.alt]
 
+// The photos an upcoming event page shows in its "{year} Memories" mosaic.
+// That section also repeats the CMS gallery; only its own photos (the ones
+// not in the gallery) are the mosaic's. `pageFor(slug)` returns the event's
+// page snapshot.
+export function withMemories(events, pageFor) {
+  return events.map((e) => {
+    const section = pageFor(e.slug)?.sections?.find((s) => s.blocks.some((b) => /^h\d$/.test(b.type) && /memories|recuerdos/i.test(b.text ?? '')))
+    const inGallery = new Set(e.gallery.map((g) => g.src))
+    const memories = (section?.blocks ?? []).filter((b) => b.type === 'image' && b.src && !inGallery.has(b.src)).map((b) => ({ src: b.src, alt: b.alt }))
+    return memories.length ? { ...e, memories } : e
+  })
+}
+
 export function mapEvents(events, ctx) {
   const out = { events: [], sponsorship_packages: [], sponsors: new Map(), faqs: [] }
   for (const e of events) {
@@ -171,12 +184,16 @@ export function mapEvents(events, ctx) {
         hero_body: e.heroBody,
         hero_image: ctx.media(...imageOf(e.heroImage)),
         hero_image_mobile: ctx.media(...imageOf(e.heroImageMobile)),
+        // From the Webflow CMS: a crop for event lists, subject centered.
+        card_image: ctx.media(...imageOf(e.cardPhoto)),
         venue: e.venue,
         address: e.address,
         map_url: e.mapUrl,
         program: toPortableText(richText(e.programHtml, ctx, `Event ${e.slug} program`), 'p'),
         includes: toPortableText(richText(e.includesHtml, ctx, `Event ${e.slug} includes`), 'i'),
-        gallery: e.gallery.map((g) => ctx.media(...imageOf(g))).filter(Boolean),
+        // From the Webflow CMS: the event pages don't show it.
+        long_description: toPortableText(richText(e.descriptionHtml, ctx, `Event ${e.slug} description`), 'ld'),
+        gallery: (e.memories ?? e.gallery).map((g) => ctx.media(...imageOf(g))).filter(Boolean),
         recap_stats: e.recapStats,
         benefit_rows: e.benefitRows,
         seo_title: e.seo?.title,

@@ -135,7 +135,7 @@ export const eventHtml = chrome(`
     <div data-id="golf-gold" data-kind="Package" class="w-dyn-item"><div class="od-name">Gold Sponsor</div><div class="od-short w-dyn-bind-empty"></div>
       <div class="od-price">$2,500</div><div class="od-includes w-dyn-bind-empty w-richtext"></div><div class="od-label">Become a Sponsor</div></div>
     <div data-id="golf-lounge" data-kind="Special opportunity" class="w-dyn-item"><div class="od-name">Physical Therapy Lounge</div><div class="od-short">PT Lounge</div>
-      <div class="od-price">$1,000</div><div class="od-sold">Sold</div></div>
+      <div class="od-price">$1,000</div><div class="od-includes w-richtext"><p>Help golfers warm up.</p></div><div class="od-sold">Sold</div></div>
   </div></div>
   <div class="benefit-data w-dyn-list"><div class="w-dyn-items">
     <div data-section="Players" class="w-dyn-item"><div class="br-name">Foursomes</div><div class="br-col">3</div><div class="br-col w-dyn-bind-empty"></div></div>

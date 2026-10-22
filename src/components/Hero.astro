@@ -1,8 +1,15 @@
 ---
 // Live counterpart: `.section_hero` + `.hero_card`. Full-bleed photo with a
 // white rounded card on the left (desktop); on mobile the photo sits on top
-// and the card overlaps it, centered.
+// and the card overlaps it, centered. A phone photo with its own subject
+// (Our Team) passes `mobileImageAlt`: each width then shows, and downloads,
+// only its own photo, with its own description. `tablet="stacked"` (Home)
+// keeps the photo on top and the card below it on tablets too, so the card
+// doesn't cover the photo's subject; the overlay then starts at 992px.
 import Button from './Button.astro'
+
+// Served to the width a photo isn't for, so that photo is never downloaded.
+const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
 export interface CtaLink {
   label: string
@@ -13,6 +20,8 @@ export interface Props {
   imageUrl?: string
   mobileImageUrl?: string
   imageAlt?: string
+  // Description of the phone photo when it shows something else.
+  mobileImageAlt?: string
   heading: string
   subtext?: string
   primaryCta?: CtaLink
@@ -22,23 +31,49 @@ export interface Props {
   // Drop the 120px gap below the hero when the next section starts flush
   // against it (e.g. Our Team).
   flush?: boolean
+  // Tablets (768–991px): the card over the photo, as on desktop, or the
+  // photo on top with the card below it.
+  tablet?: 'overlay' | 'stacked'
 }
 
-const { imageUrl, mobileImageUrl, imageAlt = '', heading, subtext, primaryCta, secondaryCta, align = 'left', flush = false } = Astro.props as Props
-const cardPosition = align === 'right' ? 'md:ml-auto md:mr-20' : 'md:ml-20'
+const { imageUrl, mobileImageUrl, imageAlt = '', mobileImageAlt, heading, subtext, primaryCta, secondaryCta, align = 'left', flush = false, tablet = 'overlay' } = Astro.props as Props
+const stacked = tablet === 'stacked'
+// Where the overlay layout starts: tablets up, or desktop only when stacked.
+const overlay = stacked
+  ? { photo: 'md:h-[560px] lg:inset-0 lg:h-full', section: 'lg:min-h-[768px] lg:items-center', card: 'md:mt-[560px] md:flex md:justify-center md:px-20 lg:mt-0 lg:block lg:w-auto lg:px-0 lg:py-20' }
+  : { photo: 'md:inset-0 md:h-full', section: 'md:min-h-[768px] md:items-center', card: 'md:mt-0 md:w-auto md:px-0 md:py-20' }
+const photoClass = `absolute inset-x-0 top-0 h-[355px] w-full object-cover ${overlay.photo}`
+const ownPhones = Boolean(mobileImageUrl && mobileImageAlt)
+// Full class names (Tailwind only sees literal strings).
+const cardPosition = {
+  overlay: { left: 'md:ml-20', right: 'md:ml-auto md:mr-20' },
+  stacked: { left: 'lg:ml-20', right: 'lg:ml-auto lg:mr-20' },
+}[tablet][align]
 ---
 
-<section class={`relative flex items-start md:min-h-[768px] md:items-center ${flush ? '' : 'mb-8 md:mb-[120px]'}`}>
+<section class={`relative flex items-start ${overlay.section} ${flush ? '' : 'mb-8 md:mb-[120px]'}`} data-hero-layout={tablet}>
   {
-    imageUrl && (
-      <picture>
-        {mobileImageUrl && <source media="(max-width: 767px)" srcset={mobileImageUrl} />}
-        <img src={imageUrl} alt={imageAlt} class="absolute inset-x-0 top-0 h-[355px] w-full object-cover md:inset-0 md:h-full" />
-      </picture>
-    )
+    imageUrl &&
+      (ownPhones ? (
+        <>
+          <picture>
+            <source media="(max-width: 767px)" srcset={BLANK} />
+            <img src={imageUrl} alt={imageAlt} class={`hidden md:block ${photoClass}`} />
+          </picture>
+          <picture>
+            <source media="(min-width: 768px)" srcset={BLANK} />
+            <img src={mobileImageUrl} alt={mobileImageAlt} class={`md:hidden ${photoClass}`} />
+          </picture>
+        </>
+      ) : (
+        <picture>
+          {mobileImageUrl && <source media="(max-width: 767px)" srcset={mobileImageUrl} />}
+          <img src={imageUrl} alt={imageAlt} class={photoClass} />
+        </picture>
+      ))
   }
   <!-- On phones the photo sits above the card: a margin, not section padding (spec 5.3). -->
-  <div class={`relative z-10 mt-[230px] w-full px-6 md:mt-0 md:w-auto md:px-0 md:py-20 ${cardPosition}`}>
+  <div class={`relative z-10 mt-[230px] w-full px-6 ${overlay.card} ${cardPosition}`} data-hero-card>
     <div class="flex max-w-[608px] flex-col items-center gap-10 rounded-2xl bg-neutral-white px-6 py-10 text-center md:items-start md:px-16 md:py-20 md:text-left">
       <div class="flex flex-col gap-4">
         <h1 class="text-[2.25rem] leading-[1.16] md:text-[3rem]">{heading}</h1>

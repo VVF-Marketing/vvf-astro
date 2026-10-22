@@ -1,7 +1,11 @@
-// schema.org JSON-LD blocks (spec 7.1 NGO, 7.8 Event, 7.13 Article). Pages
-// pass them to PageLayout's `jsonLd` prop. The organization is named
-// "Victoria Venezuela Foundation" everywhere, never "Inc." (spec 8.10).
-import type { EventItem, ResourceItem } from './content/types'
+// schema.org JSON-LD blocks (spec 7.1 NGO, 7.8 Event, 7.13 Article, plus
+// WebSite, FAQPage, BreadcrumbList and Person for search and answer engines).
+// Pages pass them to PageLayout's `jsonLd` prop; Breadcrumbs and FaqAccordion
+// emit their own. Every node that names the foundation points at the NGO
+// node's `@id`. The organization is named "Victoria Venezuela Foundation"
+// everywhere, never "Inc." (spec 8.10).
+import type { EventItem, Faq, ResourceItem, TeamMemberItem } from './content/types'
+import { LANG_TAGS, localizePath, type Locale } from './i18n'
 
 export const ORG = {
   name: 'Victoria Venezuela Foundation',
@@ -9,11 +13,18 @@ export const ORG = {
   telephone: '+1-954-371-0557',
   taxID: '88-3282100',
   logo: '/images/logo.svg',
+  image: '/images/og-default.jpg',
   address: { postOfficeBoxNumber: '327222', addressLocality: 'Weston', addressRegion: 'FL', postalCode: '33332', addressCountry: 'US' },
   social: [
     { label: 'Facebook', href: 'https://www.facebook.com/victoriavenezuelafoundation', icon: '/images/footer/facebook.svg' },
     { label: 'Instagram', href: 'https://www.instagram.com/victoriavenezuelafoundation/', icon: '/images/footer/instagram.svg' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/victoriavenezuelafoundation/posts/?feedView=all', icon: '/images/footer/linkedin.svg' },
+    // The footer links to the posts feed, as on live; `profile` is the page itself.
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/victoriavenezuelafoundation/posts/?feedView=all',
+      profile: 'https://www.linkedin.com/company/victoriavenezuelafoundation/',
+      icon: '/images/footer/linkedin.svg',
+    },
     { label: 'YouTube', href: 'https://www.youtube.com/channel/UC5EnslQqm_S4KHb1_T3hnew', icon: '/images/footer/youtube.svg' },
   ],
   candid: 'https://app.candid.org/profile/14579501/victoria-venezuela-foundation-inc',
@@ -23,26 +34,87 @@ export type JsonLd = Record<string, unknown>
 
 const abs = (path: string | undefined, site: URL) => (path ? new URL(path, site).href : undefined)
 
-// The foundation as publisher or organizer, by reference to the NGO block.
+export const orgId = (site: URL) => new URL('/#organization', site).href
+
+// The foundation as publisher, organizer or employer: its `@id`, plus name and
+// URL for readers that don't join nodes across blocks (the NGO node is only
+// on the home page).
 function orgRef(site: URL): JsonLd {
-  return { '@type': 'NGO', name: ORG.name, url: new URL('/', site).href, logo: abs(ORG.logo, site) }
+  return { '@type': 'NGO', '@id': orgId(site), name: ORG.name, url: new URL('/', site).href }
 }
 
-export function ngo(site: URL, description: string): JsonLd {
+export function ngo(site: URL, description: string, locale: Locale = 'en'): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'NGO',
-    '@id': new URL('/#organization', site).href,
+    '@id': orgId(site),
     name: ORG.name,
     url: new URL('/', site).href,
     logo: abs(ORG.logo, site),
+    image: abs(ORG.image, site),
     description,
     nonprofitStatus: 'Nonprofit501c3',
     taxID: ORG.taxID,
     email: ORG.email,
     telephone: ORG.telephone,
     address: { '@type': 'PostalAddress', ...ORG.address },
-    sameAs: [...ORG.social.map((s) => s.href), ORG.candid],
+    contactPoint: { '@type': 'ContactPoint', contactType: 'general inquiries', email: ORG.email, telephone: ORG.telephone, availableLanguage: ['English', 'Spanish'] },
+    areaServed: { '@type': 'Country', name: 'Venezuela' },
+    potentialAction: { '@type': 'DonateAction', target: abs(localizePath('/ways-to-give', locale), site), recipient: { '@id': orgId(site) } },
+    sameAs: [...ORG.social.map((s) => ('profile' in s ? s.profile : s.href)), ORG.candid],
+  }
+}
+
+export function webSite(site: URL, locale: Locale): JsonLd {
+  const url = abs(localizePath('/', locale), site)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    // One node per language: the English and Spanish sites differ in URL and
+    // language, so they can't share an @id.
+    '@id': `${url}#website`,
+    name: ORG.name,
+    url,
+    inLanguage: LANG_TAGS[locale],
+    publisher: { '@id': orgId(site) },
+  }
+}
+
+export function faqPage(faqs: Pick<Faq, 'question' | 'answer'>[]): JsonLd | undefined {
+  if (!faqs.length) return undefined
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+  }
+}
+
+// The visible trail, in order: linked items at their page in `locale`, the
+// last (current) one at `currentUrl`.
+export function breadcrumbList(items: { label: string; href?: string }[], site: URL, locale: Locale, currentUrl: string): JsonLd | undefined {
+  if (!items.length) return undefined
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      item: i === items.length - 1 || !item.href ? currentUrl : abs(localizePath(item.href, locale), site),
+    })),
+  }
+}
+
+export function person(member: Pick<TeamMemberItem, 'name' | 'role' | 'imageUrl' | 'linkedin'>, site: URL, url: string): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: member.name,
+    jobTitle: member.role || undefined,
+    image: abs(member.imageUrl, site),
+    url,
+    sameAs: member.linkedin ? [member.linkedin] : undefined,
+    worksFor: orgRef(site),
   }
 }
 
@@ -85,11 +157,13 @@ export function eventLd(event: EventItem, site: URL, url: string): JsonLd {
   }
 }
 
-export function articleLd(article: ResourceItem, site: URL, url: string): JsonLd {
+export function articleLd(article: ResourceItem, site: URL, url: string, locale: Locale = 'en'): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
+    description: article.seo?.description || article.excerpt || undefined,
+    inLanguage: LANG_TAGS[locale],
     image: abs(article.seo?.imageUrl ?? article.imageUrl, site),
     datePublished: article.publishedAt || undefined,
     dateModified: article.updatedAt || article.publishedAt || undefined,

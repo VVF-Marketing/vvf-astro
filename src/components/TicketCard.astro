@@ -1,7 +1,8 @@
 ---
 // Live counterpart: event `.offer-list` card (`.div-block-71`) — pastel card
 // (radius 2xl) with "Name $price" heading, a benefit list and an outline
-// navy button. Live cycles sun → sky → salmon across a row of cards.
+// navy button. Live cycles sun → sky → salmon across a row of cards. No href
+// (registration closed, spec 7.8-2): no button.
 import Button from './Button.astro'
 import { getGlobalCopy } from '../lib/globalCopy'
 
@@ -11,7 +12,7 @@ export interface Props {
   tierName: string
   price?: string
   features?: string[]
-  href: string
+  href?: string
   ctaLabel?: string
   soldOut?: boolean
   tone?: 'sun' | 'sky' | 'salmon'
@@ -38,9 +39,11 @@ const tones = { sun: 'bg-sun', sky: 'bg-sky', salmon: 'bg-salmon' }
     soldOut ? (
       <p class="font-sans text-size-md font-bold text-brand-primary">{t['card.soldOut']}</p>
     ) : (
-      <Button href={href} variant="outline-navy" class="self-start">
-        {ctaLabel}
-      </Button>
+      href && (
+        <Button href={href} variant="outline-navy" class="self-start">
+          {ctaLabel}
+        </Button>
+      )
     )
   }
 </article>

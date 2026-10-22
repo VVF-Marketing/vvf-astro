@@ -45,6 +45,15 @@ source of the normalized snapshot; the API is the cross-check.
 
 ## Re-running the migration
 
+Assets download from Webflow's CDN, or from the same files in Webflow's
+S3 bucket when the CDN host is blocked. The harvest's cleanup removes only
+files it downloaded itself, never images added by hand to
+`public/images/pages`.
+
+Event long descriptions aren't on the event pages: with a token the
+extractor takes them from the Webflow API, and without one it keeps the
+values already in `snapshot/events.json`.
+
 Run this whenever the live site changes, and once more right before
 cutover:
 
@@ -71,6 +80,8 @@ npm run test:unit
 npm run build && npm run preview   # then, in another terminal:
 npx playwright test                # e2e, incl. redirects + sitemap coverage
 npm run test:parity                # live vs local screenshots → test-results/parity/
+npm run migrate:drift              # live strings (text, alt, SEO) the build lacks, per page
+npm run migrate:drift -- --es      # the same for the Spanish pages
 ```
 
 Review `scripts/migrate/report.md` after each run: it lists what was

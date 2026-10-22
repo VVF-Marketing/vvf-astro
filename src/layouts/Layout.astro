@@ -3,12 +3,17 @@ import '../index.css';
 import { LANG_TAGS, localeFromPath, stripLocale, type Locale } from '../lib/i18n';
 import { serialize, type JsonLd } from '../lib/structuredData';
 import { GTM_CONTAINER_ID } from 'astro:env/server';
+import tokens from '../styles/tokens.cjs';
 
 interface Props {
   title: string;
   description?: string;
   // Share image (path or absolute URL); defaults to the live site's.
   image?: string;
+  // What the share image shows (og:image:alt); defaults to the page title.
+  imageAlt?: string;
+  // `article` for resource articles; `website` (the default) elsewhere.
+  ogType?: 'website' | 'article';
   // This page's path in each locale it has its own content in. Defaults to
   // English only; a Spanish request for a page without Spanish content is
   // then canonicalized to the English URL and gets no hreflang alternates.
@@ -40,6 +45,7 @@ const hreflangs =
       ]
     : [];
 const imageUrl = new URL(image, site).href;
+const imageAlt = props.imageAlt || title;
 // Google Tag Manager is the only tag loader (spec 8.3): the standard
 // snippet, once, in the head of every page.
 const gtm = GTM_CONTAINER_ID && /^GTM-[A-Z0-9]+$/.test(GTM_CONTAINER_ID) ? GTM_CONTAINER_ID : undefined;
@@ -59,13 +65,19 @@ const gtmSnippet = gtm
     <link rel="canonical" href={canonical}/>
     {hreflangs.map((h) => <link rel="alternate" hreflang={h.lang} href={h.href}/>)}
     <meta property="og:locale" content={LANG_TAGS[locale].replace('-', '_')}/>
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content={props.ogType ?? 'website'}/>
     <meta property="og:site_name" content="Victoria Venezuela Foundation"/>
     <meta property="og:title" content={title}/>
     <meta property="og:description" content={description}/>
     <meta property="og:url" content={canonical}/>
     <meta property="og:image" content={imageUrl}/>
+    <meta property="og:image:alt" content={imageAlt}/>
     <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content={title}/>
+    <meta name="twitter:description" content={description}/>
+    <meta name="twitter:image" content={imageUrl}/>
+    <meta name="twitter:image:alt" content={imageAlt}/>
+    <meta name="theme-color" content={tokens.colors.navy}/>
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <title>{title}</title>

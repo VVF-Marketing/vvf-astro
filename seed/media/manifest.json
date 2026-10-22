@@ -1214,6 +1214,27 @@
     "sha256": "c5fe88042830f36fbd07b8843e1910962da078299b9a2633d39e99bd1b0734b9",
     "alt": "400 niños fueron sorprendidos por la fundación Misión Victoria Venezuela"
   },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e4d8_6ac7df454dc5b370e27444aa_VVF_Golf2026_Sponsor_MVPCutsBarberShop_v1.png": {
+    "path": "seed/media/sponsors/a206fb3d-vvf-golf2026-sponsor-mvpcutsbarbershop-v1.png",
+    "contentType": "image/png",
+    "bytes": 197685,
+    "sha256": "b4dda3d5689d2a6bf1dea076af46752d1eadc2bd4415984e5e06e0308b8b5647",
+    "alt": "MVP Cuts Barbershop"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e50b_6ac7df45c7fecae81937f3e9_VVF_Golf2026_Sponsor_Magle_v1.jpeg": {
+    "path": "seed/media/sponsors/dbc00731-vvf-golf2026-sponsor-magle-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 43551,
+    "sha256": "e8b8496de45c871138b25268b822b727b40df8cbb2ac3f50881730af390e3f4f",
+    "alt": "Maglé"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e526_6ac7df45d22efcefd4197e13_VVF_Golf2026_Sponsor_BeyondTheCatch_v1.jpeg": {
+    "path": "seed/media/sponsors/d3c0322c-vvf-golf2026-sponsor-beyondthecatch-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 58829,
+    "sha256": "c394341f2bd1a19bbcb5c84832b0229fab0b0dab6747c11ae098574f9fa7c670",
+    "alt": "Beyond the Catch"
+  },
   "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac80681609521e459273d72_6ac806236154b70b091bf2e6_VVF_Press_QuePasaEnVenezuela_BoyWithBook_v1.jpeg": {
     "path": "seed/media/resources/eb60c6dc-vvf-press-quepasaenvenezuela-boywithbook-v1.jpeg",
     "contentType": "image/jpeg",
@@ -1241,5 +1262,61 @@
     "bytes": 357278,
     "sha256": "6285c8d487415e089c5aa93783d28f7a7c82ef392cdf651fbffe0ae179013b66",
     "alt": "Fundación Victoria Venezuela impulsa jornadas de salud benéficas"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac829fe6642957f6a868a43_6ac829e75c059c2181e31ea2_VVF_Golf2026_Sponsor_LuminisGlobalPartners_v2.png": {
+    "path": "seed/media/sponsors/fa8fdae2-vvf-golf2026-sponsor-luminisglobalpartners-v2.png",
+    "contentType": "image/png",
+    "bytes": 47611,
+    "sha256": "357e78a32729720b12bf58aacf0626b06af1d8fe845144e4bf59ec43dab4d874",
+    "alt": "Luminis Global Partners"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ace309d309e0c64ac34d496_6ace307ff836e79316cff738_VVF_Golf2026_CardPhoto_v1.jpeg": {
+    "path": "seed/media/events/6ed2bb4b-vvf-golf2026-cardphoto-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 75394,
+    "sha256": "da350e880b282f9386ba4b516e55620e7e52f31ade30d2118696d0b1adf68919",
+    "alt": "Three golfers and a young boy standing by the flag on the green."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af3e21aff4651421d5e_6ad10a80733e510d569b95b0_VVF_Golf2025_0J1A2701_v2.webp": {
+    "path": "seed/media/events/bd83b6bf-vvf-golf2025-0j1a2701-v2.webp",
+    "contentType": "image/webp",
+    "bytes": 169648,
+    "sha256": "a8a29b8765e85891e23c7a50a106c44a33601ca075a1a3507e53bac67ed12757",
+    "alt": "A smiling golfer kneels on the green with a young boy holding a putter."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af4e21aff4651421d74_6ad10a80b7271b17b29ce012_VVF_Golf2026_HeroDesktop_v2.webp": {
+    "path": "seed/media/events/0f76993c-vvf-golf2026-herodesktop-v2.webp",
+    "contentType": "image/webp",
+    "bytes": 57094,
+    "sha256": "4e8da9b673d10bfb9395a8652817e038562e81ed41ec6ee755d41f30d910a22b",
+    "alt": "Three golfers and a young boy standing by the flag on the green."
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a911ff3_6ad8ef2f5d7b9aaeca8c3e26_VVF_Golf2026_Sponsor_Galaxis_v1.png": {
+    "path": "seed/media/sponsors/2672fc45-vvf-golf2026-sponsor-galaxis-v1.png",
+    "contentType": "image/png",
+    "bytes": 5868,
+    "sha256": "99564423d7b68d5644619a226e53a615e7251c17d4181a4ea608896c884e1bb3",
+    "alt": "Galaxis"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a912031_6ad8ef2f5d7b9aaeca8c3e6f_VVF_Golf2026_Sponsor_Yoloeight_v1.jpeg": {
+    "path": "seed/media/sponsors/6f6f6851-vvf-golf2026-sponsor-yoloeight-v1.jpeg",
+    "contentType": "image/jpeg",
+    "bytes": 24385,
+    "sha256": "8e1ffa016ed8f565b54dc30b9f2fdcf2f3dee8a495d48fe3756d2d6c0acdaf4d",
+    "alt": "Yoloeight"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8fde82678614229566e89_6ad8fdc8fba343d21a795e33_InterCaribbean_Airways_Logo.svg": {
+    "path": "seed/media/sponsors/7aaf590f-intercaribbean-airways-logo.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 9871,
+    "sha256": "239dc40eb5e0f5dc690c15cce12944dfa10a2e4144f63d0aebeb79ccfee4b121",
+    "alt": "interCaribbean Airways"
+  },
+  "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad91657873b3ec8107a67a6_6ad9163dd689f0320a0237c4_VVF_Golf2026_Sponsor_MiamiMarlins_v3.svg": {
+    "path": "seed/media/sponsors/9a6cbdc8-vvf-golf2026-sponsor-miamimarlins-v3.svg",
+    "contentType": "image/svg+xml",
+    "bytes": 32776,
+    "sha256": "27feebe172f6864f7b6fefabd910e6099431c056610c007e479e9f55c34d4965",
+    "alt": "Miami Marlins"
   }
 }

@@ -46,6 +46,13 @@ export default defineCopy('/events/*', {
   'recap.tagline': { label: 'Past event: results tagline', default: 'Results', maxLength: 30 },
   'recap.heading': { label: 'Past event: results heading', default: 'What we did together', maxLength: 50 },
   'recap.raised': { label: 'Past event: amount raised label', default: 'Raised', maxLength: 30 },
+  'recap.raisedCaption': { label: 'Past event: line under the amount raised', default: 'For nutrition, medical care and education', maxLength: 60 },
+  'registration.closed': { label: 'Upcoming event: note when registration is closed (replaces every ticket button)', default: 'Registration is closed. Questions? Write to us using the contact details below.', maxLength: 140 },
+  'registration.soldOut': { label: 'Upcoming event: note when tickets are sold out (replaces every ticket button)', default: 'Tickets are sold out. Questions? Write to us using the contact details below.', maxLength: 140 },
   'recap.text': { label: 'Past event: results text', default: 'Here is what one day on the course made possible for children in Venezuela.', maxLength: 160 },
   'programsCta.label.2': { label: "Programs cta: button 2", default: "See next year's tournament", maxLength: 40 },
+  'editions.tagline': { label: 'Past event: previous editions tagline', default: 'History', maxLength: 20 },
+  'editions.heading': { label: 'Past event: previous editions heading', default: 'Previous editions', maxLength: 40 },
+  'editions.text': { label: 'Past event: previous editions text', default: "See how each year's tournament went.", maxLength: 100 },
+  'editions.button': { label: 'Past event: previous editions button (to all events)', default: 'All events', maxLength: 30 },
 })

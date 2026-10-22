@@ -16,12 +16,13 @@ import {
   mapChildren,
   mapCorporateTiers,
   mapEvents,
+  withMemories,
   mapPageFaqs,
   mapResources,
   mapTeam,
   mergePartners,
 } from './mappers.mjs'
-import { mediaMapFor, readManifests } from '../lib/seed-media.mjs'
+import { mediaMapFor, pageImageMapFor, readManifests } from '../lib/seed-media.mjs'
 import { LOCAL_SEED_PATH, ROOT_DIR, SEED_PATH, SNAPSHOT_DIR } from './lib/paths.mjs'
 import { childRedirects, readWebflowRedirects } from './redirects.mjs'
 import { projectPathFor } from '../../src/lib/legacyRoutes.mjs'
@@ -43,15 +44,16 @@ function readJson(file, fallback) {
 
 const snap = (name) => readJson(path.join(SNAPSHOT_DIR, `${name}.json`))
 
-export function createContext(mediaMap) {
+export function createContext(mediaMap, pageImages = {}) {
   const notes = []
   const missing = new Set()
   // A media item is harvested once, with the first description found (the
   // English page's). Pass the page's own `alt` to describe the image in that
-  // page's language, e.g. a Spanish event's photos.
+  // page's language, e.g. a Spanish event's photos. Page imagery (public/)
+  // resolves to an external image value.
   const media = (src, alt) => {
     if (!src) return undefined
-    const value = mediaMap[src]
+    const value = mediaMap[src] ?? pageImages[src]
     if (!value) missing.add(src)
     return value && alt && alt !== value.alt ? { ...value, alt } : value
   }
@@ -67,8 +69,8 @@ export function createContext(mediaMap) {
   }
 }
 
-function buildContent(snapshots, mediaMap) {
-  const ctx = createContext(mediaMap)
+function buildContent(snapshots, mediaMap, pageImages) {
+  const ctx = createContext(mediaMap, pageImages)
   const events = mapEvents(snapshots.events, ctx)
   const live = {
     team_members: mapTeam(snapshots.team_members, ctx),
@@ -246,15 +248,16 @@ export function withModelCollections(collections) {
 // Pure core: snapshots (+ Spanish snapshots) + media maps + current seed →
 // { full, public, ctx }. `mediaMap` (public + child media) fills the local
 // seed; `publicMediaMap` (public manifest only) fills the public one.
-export function buildSeeds({ snapshots, snapshotsEs, mediaMap, publicMediaMap = {}, currentSeed, table }) {
-  const { live, ctx } = buildContent(snapshots, mediaMap)
-  const { live: livePublic } = buildContent(snapshots, publicMediaMap)
+// `pageImages` (public/ page imagery) is public, so it fills both.
+export function buildSeeds({ snapshots, snapshotsEs, mediaMap, publicMediaMap = {}, pageImages = {}, currentSeed, table }) {
+  const { live, ctx } = buildContent(snapshots, mediaMap, pageImages)
+  const { live: livePublic } = buildContent(snapshots, publicMediaMap, pageImages)
   let full = live
   let pub = livePublic
   let unpaired = []
   if (snapshotsEs) {
-    const es = translatedEntries(live, buildContent(snapshotsEs, mediaMap).live, table)
-    const esPublic = translatedEntries(livePublic, buildContent(snapshotsEs, publicMediaMap).live, table)
+    const es = translatedEntries(live, buildContent(snapshotsEs, mediaMap, pageImages).live, table)
+    const esPublic = translatedEntries(livePublic, buildContent(snapshotsEs, publicMediaMap, pageImages).live, table)
     full = withTranslations(live, es.entries)
     pub = withTranslations(livePublic, esPublic.entries)
     unpaired = es.unpaired
@@ -307,10 +310,11 @@ export async function transform() {
   const manifests = readManifests()
   const mediaMap = await mediaMapFor(manifests.all)
   const publicMediaMap = await mediaMapFor(manifests.public)
+  const eventPage = (dir) => (slug) => snap(`${dir}/events__${slug}`)
   const snapshots = {
     team_members: snap('team_members'),
     children: snap('children') ?? { order: [], items: [] },
-    events: snap('events'),
+    events: withMemories(snap('events'), eventPage('pages')),
     corporate_tiers: snap('corporate_tiers'),
     faqs: snap('faqs'),
     resources: snap('resources'),
@@ -321,7 +325,7 @@ export async function transform() {
     ? {
         team_members: snapEs('team_members'),
         children: snapEs('children') ?? { order: [], items: [] },
-        events: alignSponsorNames(snap('events'), snapEs('events')),
+        events: withMemories(alignSponsorNames(snap('events'), snapEs('events')), eventPage('es/pages')),
         corporate_tiers: snapEs('corporate_tiers'),
         faqs: snapEs('faqs'),
         resources: snapEs('resources'),
@@ -334,6 +338,7 @@ export async function transform() {
     snapshotsEs,
     mediaMap,
     publicMediaMap,
+    pageImages: pageImageMapFor(manifests.public),
     currentSeed,
     table: translationTable(),
   })

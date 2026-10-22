@@ -78,7 +78,7 @@ Accepted differences:
 - **Resource listing pagination.** Live pages through six items at a time; the project lists all ten resources on one page.
 - **Children listing filters.** The project adds name/age filters (no live counterpart).
 - **Contact reach-us cards** are links that preselect the form topic (live cards are not links). The live contact FAQ block is not present on live either.
-- **Hero subtext.** The live CSS hides the hero paragraph on desktop for several pages; the project shows it.
+- **Hero subtext.** Until 2026-10-21 the live site hid the hero paragraph (and other body text) on desktop: its desktop body text size was set to 0. Webflow fixed it that day, so live and the project both show it now.
 - **Silent auction.** Hidden on live; the auction collection is empty and the section is not rendered.
 - **Fonts and sub-pixel rendering.** Small text-wrapping differences where browsers lay out Nunito/Open Sans slightly differently.
 - **`/team-members/join-our-board`** (an empty placeholder profile on live) redirects to `/contact`, the destination of its "Board seat open" card.
@@ -236,3 +236,29 @@ Benefits
 ## Spanish page copy import
 
 Imported 1 Spanish slot values; 0 already had a value (kept); 0 skipped for an open draft.
+
+## Live API refresh
+
+Run: 2026-10-21, read-only, through the Webflow CMS API (the live domain and its CDN weren't reachable from the environment, so no page scrape). Collections changed since the 2026-10-04 extraction: Events and Event Offers only. Merged into the snapshot by hand (change `restore-live-site-gaps`, design D1); the parser and extractor now produce the same values on the next run:
+
+- `events.json`, `es/events.json`: the 2026 tournament's long description (`descriptionHtml`, en/es), added on Webflow 2026-10-15. It isn't on the event page, so `migrate:extract` reads it from the API and keeps the snapshot's value when run without a token.
+- Offer `golf-spirits-sponsor`: sold out (Webflow 2026-10-08), then available again (2026-10-21), en/es.
+- Offer `golf-physical-therapy-lounge`: its "Includes" text is a paragraph, not a list ("Help golfers warm up, …"), which the parser used to drop; en/es.
+
+- The 2026 event's new desktop hero (`VVF_Golf2026_HeroDesktop_v2`) and phone hero (`VVF_Golf2025_0J1A2701_v2`), from the CMS item, harvested from Webflow's S3 bucket (`migrate:harvest` falls back to it when `cdn.prod.website-files.com` is unreachable).
+
+- The 2026 event's card photo (`VVF_Golf2026_CardPhoto_v1`, CMS field `card-photo`, en/es alts) as `cardPhoto`, for the new event `card_photo` field (design D12; Enrique: it was cropped so the players are centered). `migrate:extract` reads it from the API like the long description. The 2025 event has no card photo on Webflow.
+
+Not merged: the gallery's four re-edited photos (the 2026 page shows the memories mosaic, not its gallery). The memories mosaic uses the page's own five "Memories" photos (they were already harvested).
+
+Live Spanish shows the closed / sold-out registration notes and the Our Team hero photo descriptions in English; the build has Spanish for them (`MANUAL_TRANSLATIONS`).
+
+### Second refresh, 2026-10-21 evening
+
+Webflow changes Enrique listed that day, checked against the CMS, the asset library and the page content API (the live domain is still unreachable from here):
+
+- `partners.json`, `es/partners.json`: 62 partners in the CMS `display-order` (was 54). New: Miami Marlins (first), interCaribbean Airways, Galaxis and Yoloeight (2026-10-21), and MVP Cuts Barbershop, Maglé, Beyond the Catch and Luminis Global Partners (2026-10-08). The Oct 8 four were missed by the first refresh, which went by the collection's last-updated date instead of its items. The 54 already here keep their order. Their logos are harvested from Webflow's S3 bucket.
+- `events.json`, `es/events.json`: the 2026 tournament's sponsors follow the CMS event's 25 sponsor references, Marlins first (was 16); Spirits Sponsor available again.
+- Not snapshot data, copied by hand: the signed Form W-9 (`public/files/vvf-form-w9.pdf`, asset `VVF_IRS_W9_2026_v1.pdf`) and the sharper Candid photo on Financials (`public/images/pages/financials-candid.webp`, from `VVF_Financials_Candid_b_v2.webp`, 1050×1400; was 240×320). The three video descriptions come from the Home page content (en/es) and live in `MANUAL_TRANSLATIONS` and the copy slot defaults.
+- A future scrape reproduces the partner and sponsor lists: the extractor reads them from the live Home and event pages in display order.
+

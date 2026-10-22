@@ -4,12 +4,18 @@
 // One <url> per canonical page, with the same hreflang alternates the page
 // itself declares (Layout.astro): static pages from their copy manifests
 // (Spanish listed only when the page has its own Spanish copy), CMS detail
-// pages from their per-locale slugs. Child profiles are left out: they're
-// public, but search engines don't need a list of them.
+// pages, child profiles included (spec 2.4, Q1), from their per-locale slugs,
+// with the entry's last update as <lastmod>.
 import type { CopyManifest } from './copy'
 import { LANG_TAGS, pageAlternates, type Locale } from './i18n'
 
 export type Alternates = Partial<Record<Locale, string>>
+
+// A page with the date its content last changed (YYYY-MM-DD), when known.
+export interface SitemapPage {
+  alternates: Alternates
+  lastmod?: string
+}
 
 // Pages kept out of search results (spec 2.4): the thank-you pages carry
 // `noindex` and aren't listed.
@@ -28,11 +34,12 @@ export async function staticPages(manifests: CopyManifest[], localesFor: (m: Cop
 const escapeXml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 // Every locale of a page is its own canonical URL; each lists all of them.
-export function sitemapXml(site: URL | string, pages: Alternates[]): string {
+export function sitemapXml(site: URL | string, pages: (Alternates | SitemapPage)[]): string {
   const abs = (p: string) => escapeXml(new URL(p, site).href)
   const seen = new Set<string>()
   const urls: string[] = []
-  for (const alternates of pages) {
+  for (const page of pages) {
+    const { alternates, lastmod } = 'alternates' in page ? (page as SitemapPage) : { alternates: page as Alternates, lastmod: undefined }
     const entries = Object.entries(alternates) as [Locale, string][]
     const links =
       entries.length > 1
@@ -45,7 +52,7 @@ export function sitemapXml(site: URL | string, pages: Alternates[]): string {
       const loc = abs(path)
       if (seen.has(loc)) continue
       seen.add(loc)
-      urls.push(`<url><loc>${loc}</loc>${links.join('')}</url>`)
+      urls.push(`<url><loc>${loc}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}${links.join('')}</url>`)
     }
   }
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`

@@ -22,7 +22,9 @@ import GalleryCarousel from '../../components/GalleryCarousel.astro'
 import ProgramsCta from '../../components/ProgramsCta.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
 import Button from '../../components/Button.astro'
-import { getEventBySlug, getEvents, isUpcoming, getPageCopy } from '../../lib/content'
+import Card from '../../components/Card.astro'
+import EventCard from '../../components/EventCard.astro'
+import { getEventBySlug, getEvents, isUpcoming, getPageCopy, registrationNotice } from '../../lib/content'
 import { alternatePaths, LANG_TAGS, localeFromPath } from '../../lib/i18n'
 import { fill } from '../../lib/globalCopy'
 import { eventTicketUrl } from '../../lib/donorbox'
@@ -38,18 +40,25 @@ if (!event) return Astro.rewrite('/404')
 
 const upcoming = isUpcoming(event)
 const ticketUrl = event.donorboxEventId ? `${eventTicketUrl(event.donorboxEventId)}/steps/choose_tickets` : '/contact'
+// Closed or sold-out registration (spec 7.8-2): no purchase link anywhere on
+// the page, and a note in their place.
+const notice = registrationNotice(event)
+const buyUrl = (href?: string) => (notice ? undefined : (href ?? ticketUrl))
 const offers = [...(event.sponsorPackages ?? [])].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 const tickets = offers.filter((o) => o.kind === 'ticket')
 const packages = offers.filter((o) => o.kind === 'package')
-const specials = offers.filter((o) => o.kind === 'special')
+const specials = offers.filter((o) => o.kind === 'special').map((o) => ({ ...o, ctaUrl: notice ? undefined : o.ctaUrl }))
 // The event's own FAQ, in the order picked (spec 7.8, section 11).
 const faqs = upcoming ? (event.faqs ?? []) : []
 const date = new Date(event.startDate)
 const monthDay = date.toLocaleDateString(LANG_TAGS[locale], { month: 'long', day: 'numeric', timeZone: 'UTC' })
 const longDate = date.toLocaleDateString(LANG_TAGS[locale], { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
-const nextEvent = upcoming
-  ? undefined
-  : (await getEvents(locale)).filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+const otherEvents = upcoming ? [] : await getEvents(locale)
+const nextEvent = otherEvents.filter(isUpcoming).sort((a, b) => a.startDate.localeCompare(b.startDate))[0]
+// Earlier years of a past event, newest first.
+const previousEditions = otherEvents
+  .filter((e) => event.previousEditions?.some((p) => p.slug === e.slug))
+  .sort((a, b) => b.startDate.localeCompare(a.startDate))
 const ticketTones = ['sun', 'sky', 'salmon'] as const
 ---
 
@@ -66,8 +75,8 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
     mobileImageUrl={event.heroImageMobileUrl}
     heading={event.heroHeading ?? event.title}
     subtext={event.heroBody}
-    primaryCta={upcoming ? { label: copy['hero.label.1'], href: ticketUrl } : { label: copy['hero.label.2'], href: '#photos' }}
-    secondaryCta={upcoming ? { label: copy['hero.label.3'], href: '#sponsor-packages' } : { label: copy['hero.label.4'], href: '#next-edition' }}
+    primaryCta={upcoming ? (notice ? undefined : { label: copy['hero.label.1'], href: ticketUrl }) : { label: copy['hero.label.2'], href: '#photos' }}
+    secondaryCta={upcoming ? (notice ? undefined : { label: copy['hero.label.3'], href: '#sponsor-packages' }) : { label: copy['hero.label.4'], href: '#next-edition' }}
     flush
   />
 
@@ -105,12 +114,20 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
           <div class="pt-16 md:pt-[120px]"><IncludesPanel heading={copy['includesPanel.heading']} items={listItemTexts(event.includes)} /></div>
         )}
 
+        {notice && (
+          <section id="registration" class="px-6 pt-16 md:pt-[120px] md:px-[134px]">
+            <Card tone="sun" radius="2xl" class="mx-auto max-w-[1172px] p-8 text-center md:p-12">
+              <p class="font-sans text-size-lg font-bold leading-body text-brand-primary">{copy[notice === 'closed' ? 'registration.closed' : 'registration.soldOut']}</p>
+            </Card>
+          </section>
+        )}
+
         {tickets.length > 0 && (
           <section id="tickets" class="px-6 pt-16 md:pt-[120px] md:px-[134px]">
             <SectionTitle heading={copy['sectionTitle.heading']} />
             <div class="mx-auto mt-16 grid max-w-[1172px] justify-items-center gap-x-[68px] gap-y-6 md:grid-cols-2">
               {tickets.map((t, i) => (
-                <TicketCard tierName={t.tierName} price={t.price} features={t.benefits} href={t.ctaUrl ?? ticketUrl} ctaLabel={t.ctaLabel} soldOut={t.soldOut} tone={ticketTones[i % 3]} />
+                <TicketCard tierName={t.tierName} price={t.price} features={t.benefits} href={buyUrl(t.ctaUrl)} ctaLabel={t.ctaLabel} soldOut={t.soldOut} tone={ticketTones[i % 3]} />
               ))}
             </div>
           </section>
@@ -119,7 +136,7 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
         {packages.length > 0 && event.benefitRows && event.benefitRows.length > 0 && (
           <section id="sponsor-packages" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-16">
             <SectionTitle heading={copy['sectionTitle2.heading']} />
-            <div class="mx-auto mt-16 max-w-[1312px]"><BenefitsTable packages={packages} rows={event.benefitRows} /></div>
+            <div class="mx-auto mt-16 max-w-[1312px]"><BenefitsTable packages={packages.map((p) => ({ ...p, ctaUrl: buyUrl(p.ctaUrl) }))} rows={event.benefitRows} /></div>
           </section>
         )}
 
@@ -148,7 +165,7 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
             email={event.contact?.email}
             address={event.contact?.address}
             heading={fill(copy['contact.heading'], { date: monthDay })}
-            cta={{ label: copy['contactCta.label.1'], href: ticketUrl }}
+            cta={notice ? undefined : { label: copy['contactCta.label.1'], href: ticketUrl }}
           />
         </div>
       </>
@@ -164,7 +181,7 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
               <div class="lg:w-[800px]">
                 <StatTileRow
                   stats={[
-                    ...(event.amountRaised ? [{ value: event.amountRaised, label: copy['recap.raised'], caption: '' }] : []),
+                    ...(event.amountRaised ? [{ value: event.amountRaised, label: copy['recap.raised'], caption: copy['recap.raisedCaption'] }] : []),
                     ...(event.recapStats ?? []).map((s) => ({ value: s.number, label: s.heading ?? '', caption: s.label ?? '' })),
                   ]}
                 />
@@ -183,6 +200,20 @@ const ticketTones = ['sun', 'sky', 'salmon'] as const
         {event.sponsors && event.sponsors.length > 0 && (
           <section class="mt-16 md:mt-[120px] bg-neutral-white"><LogoCarousel heading={copy['logoCarousel2.heading']} logos={event.sponsors} /></section>
         )}
+
+        {/* Shown on every past event, as on live: the editions it links to,
+            if any, and a way to the other years. */}
+        <section id="previous-editions" class="px-6 pt-16 md:pt-[120px] md:px-20">
+          <SectionTitle tagline={copy['editions.tagline']} heading={copy['editions.heading']} text={copy['editions.text']} />
+          {previousEditions.length > 0 && (
+            <div class="mx-auto mt-16 flex max-w-screen-xl flex-wrap justify-center gap-6">
+              {previousEditions.map((e) => <EventCard event={e} variant="compact" />)}
+            </div>
+          )}
+          <div class="mt-12 flex justify-center">
+            <Button href="/events-and-campaigns" variant="outline">{copy['editions.button']}</Button>
+          </div>
+        </section>
 
         {nextEvent && (
           <section id="next-edition" class="scroll-mt-8 px-6 pt-16 md:pt-[120px] md:px-[296px]">

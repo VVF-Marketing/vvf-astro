@@ -134,7 +134,8 @@ describe('parseEvent', () => {
     expect(e.offers.map((o) => [o.id, o.kind, o.tierName, o.shortName, o.price, o.benefits, o.ctaLabel, o.soldOut])).toEqual([
       ['golf-foursome', 'ticket', 'Foursome', undefined, '$1,000', ['Entry for 4'], 'Buy Tickets', false],
       ['golf-gold', 'package', 'Gold Sponsor', undefined, '$2,500', undefined, 'Become a Sponsor', false],
-      ['golf-lounge', 'special', 'Physical Therapy Lounge', 'PT Lounge', '$1,000', undefined, undefined, true],
+      // Paragraph-only "Includes" text is kept (the live lounge has no bullets).
+      ['golf-lounge', 'special', 'Physical Therapy Lounge', 'PT Lounge', '$1,000', ['Help golfers warm up.'], undefined, true],
     ])
     expect(e.benefitRows).toEqual([{ section: 'Players', name: 'Foursomes', values: ['3', ''] }])
     expect(e.faqs).toEqual([{ question: 'When is it?', answer: 'In November.', order: 0 }])

@@ -30,6 +30,7 @@ export default defineCopy('/financials-and-transparency', {
   'confidence.point2.text': { label: 'Give with Confidence: second point text', default: 'Tax ID 88-3282100. Our record is public with the IRS.', maxLength: 120 },
   'confidence.candidLink': { label: 'Give with Confidence: Candid profile link', default: 'Our Candid profile', maxLength: 40 },
   'confidence.irsLink': { label: 'Give with Confidence: IRS letter link', default: 'Our IRS determination letter', maxLength: 40 },
+  'confidence.w9Link': { label: 'Give with Confidence: Form W-9 link (opens the PDF in a new tab)', default: 'Our Form W-9', maxLength: 40 },
   'confidence.imageAlt': {
     label: 'Give with Confidence: image description',
     default: 'A smiling boy at a table with a meal. Overlay: 4 Years of Excellence, Candid Platinum Seal of Transparency for the fourth year in a row.',

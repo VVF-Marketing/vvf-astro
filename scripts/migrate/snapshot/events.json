@@ -418,12 +418,17 @@
     },
     "heroHeading": "Play for a Purpose",
     "heroBody": "Every swing changes a life. Help us support Venezuelan children with education, nutrition, and hope.",
+    "descriptionHtml": "<p>Join us on November 9, 2026, for the Victoria Venezuela Foundation Charity Golf Tournament—an exceptional day of golf, community engagement, and professional networking. This year, 100% of the net proceeds go to our earthquake relief work in Venezuela, helping build our permanent support center in La Guaira.</p><p>Hosted at the prestigious Club at Weston Hills, this annual charity golf event welcomes over 100 golfers and guests, including business leaders, corporate executives, industry professionals, decision-makers, and philanthropists. Participants will have the opportunity to connect with influential members of the community, develop valuable relationships, and explore new collaborations while enjoying a championship-level golf course.</p><p>More than a golf tournament, this event combines friendly competition, meaningful connections, and a shared commitment to creating positive change. Join us on the course on November 9 and help Victoria Venezuela Foundation continue making a lasting difference for the children and families it serves.</p><p><strong>Schedule</strong></p><ul><li>8:00 am Registration and breakfast</li><li>9:30 am Shotgun start</li><li>After play: lunch, silent auction and awards</li></ul>",
+    "cardPhoto": {
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ace309d309e0c64ac34d496_6ace307ff836e79316cff738_VVF_Golf2026_CardPhoto_v1.jpeg",
+      "alt": "Three golfers and a young boy standing by the flag on the green."
+    },
     "heroImage": {
-      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6abedf2b39b5bba928941cba_6a94aca72ec0b77e48175618_98.png",
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af4e21aff4651421d74_6ad10a80b7271b17b29ce012_VVF_Golf2026_HeroDesktop_v2.webp",
       "alt": "Three golfers and a young boy standing by the flag on the green."
     },
     "heroImageMobile": {
-      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6aa44219c7e12e4c16da912d_0J1A2701-scaled.webp",
+      "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad10af3e21aff4651421d5e_6ad10a80733e510d569b95b0_VVF_Golf2025_0J1A2701_v2.webp",
       "alt": "A smiling golfer kneels on the green with a young boy holding a putter."
     },
     "title": "2026 Annual Golf Charity Tournament",
@@ -434,11 +439,11 @@
     "donorboxEventId": "937157",
     "sponsors": [
       {
-        "name": "The Trusty Handyman",
-        "website": "https://thetrustyhandyman.com/",
+        "name": "Miami Marlins",
+        "website": "https://www.mlb.com/marlins",
         "logo": {
-          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
-          "alt": "The Trusty Handyman"
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad91657873b3ec8107a67a6_6ad9163dd689f0320a0237c4_VVF_Golf2026_Sponsor_MiamiMarlins_v3.svg",
+          "alt": "Miami Marlins"
         }
       },
       {
@@ -466,6 +471,14 @@
         }
       },
       {
+        "name": "Paula Inc.",
+        "website": "https://www.paulainc.ca/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
+          "alt": "Paula Inc."
+        }
+      },
+      {
         "name": "Microsoft",
         "website": "https://www.microsoft.com/",
         "logo": {
@@ -482,11 +495,11 @@
         }
       },
       {
-        "name": "Paula Inc.",
-        "website": "https://www.paulainc.ca/",
+        "name": "The Trusty Handyman",
+        "website": "https://thetrustyhandyman.com/",
         "logo": {
-          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701e8_6aac1719849e07224d3bd9bf_VVF_Golf2026_Sponsor_PaulaInc_v1.svg",
-          "alt": "Paula Inc."
+          "src": "https://cdn.prod.website-files.com/698be8581713b564865abf49/6a301f4c3f328656809cf71e_THE-TRUSTY-HANDYMAN_logo%201.png",
+          "alt": "The Trusty Handyman"
         }
       },
       {
@@ -538,6 +551,54 @@
         }
       },
       {
+        "name": "KP Aviation",
+        "website": "https://kpaviation.net/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab1ac5dbde0d2f8ed2caab1_6ab1abacd466174efbed122b_KP-Aviation-Logo.png",
+          "alt": "KP Aviation"
+        }
+      },
+      {
+        "name": "MVP Cuts Barbershop",
+        "website": "https://www.mvp-cuts.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e4d8_6ac7df454dc5b370e27444aa_VVF_Golf2026_Sponsor_MVPCutsBarberShop_v1.png",
+          "alt": "MVP Cuts Barbershop"
+        }
+      },
+      {
+        "name": "Beyond the Catch",
+        "website": "https://www.beyondthecatch.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e526_6ac7df45d22efcefd4197e13_VVF_Golf2026_Sponsor_BeyondTheCatch_v1.jpeg",
+          "alt": "Beyond the Catch"
+        }
+      },
+      {
+        "name": "Luminis Global Partners",
+        "website": "https://luminisgp.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac829fe6642957f6a868a43_6ac829e75c059c2181e31ea2_VVF_Golf2026_Sponsor_LuminisGlobalPartners_v2.png",
+          "alt": "Luminis Global Partners"
+        }
+      },
+      {
+        "name": "interCaribbean Airways",
+        "website": "https://www.intercaribbean.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8fde82678614229566e89_6ad8fdc8fba343d21a795e33_InterCaribbean_Airways_Logo.svg",
+          "alt": "interCaribbean Airways"
+        }
+      },
+      {
+        "name": "Galaxis",
+        "website": "https://en.galaxis-tech.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a911ff3_6ad8ef2f5d7b9aaeca8c3e26_VVF_Golf2026_Sponsor_Galaxis_v1.png",
+          "alt": "Galaxis"
+        }
+      },
+      {
         "name": "Jet Set Gourmet",
         "website": "https://linktr.ee/jetsetgourmetusa",
         "logo": {
@@ -559,6 +620,21 @@
         "logo": {
           "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ab330c304c4c23f8f0701ee_6aac1522f1dd17214c3338a6_VVF_Golf2026_Sponsor_InfinitoBooth_v1.png",
           "alt": "Infinito Booth"
+        }
+      },
+      {
+        "name": "Maglé",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ac7dfb5b05869c24ab7e50b_6ac7df45c7fecae81937f3e9_VVF_Golf2026_Sponsor_Magle_v1.jpeg",
+          "alt": "Maglé"
+        }
+      },
+      {
+        "name": "Yoloeight",
+        "website": "https://yolo8meats.com/",
+        "logo": {
+          "src": "https://cdn.prod.website-files.com/698bf485adc9f899a2b31351/6ad8f4ea4786569e1a912031_6ad8ef2f5d7b9aaeca8c3e6f_VVF_Golf2026_Sponsor_Yoloeight_v1.jpeg",
+          "alt": "Yoloeight"
         }
       }
     ],
@@ -728,6 +804,9 @@
         "tierName": "Sports Physical Therapy & Performance Lounge",
         "shortName": "Physical Therapy Lounge",
         "price": "$1,000",
+        "benefits": [
+          "Help golfers warm up, improve mobility, and prepare their bodies for a stronger, more comfortable round."
+        ],
         "ctaLabel": "Buy Tickets",
         "ctaUrl": "https://donorbox.org/events/937157/steps/choose_tickets",
         "soldOut": true,

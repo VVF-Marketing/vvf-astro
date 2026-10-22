@@ -2,14 +2,16 @@
 // Live counterpart: `.faq-row_component` — question rows (Nunito 32px bold,
 // 20px on mobile) with a navy chevron, separated by a hairline; the answer
 // opens below in Open Sans. Native <details> keeps it keyboard-accessible
-// without a script.
+// without a script. Emits the same questions as a schema.org FAQPage.
 import type { Faq } from '../lib/content/types'
+import { faqPage, serialize } from '../lib/structuredData'
 
 export interface Props {
   faqs: Pick<Faq, 'question' | 'answer'>[]
 }
 
 const { faqs } = Astro.props as Props
+const jsonLd = faqPage(faqs)
 ---
 
 <div class="mx-auto flex w-full max-w-3xl flex-col">
@@ -27,3 +29,4 @@ const { faqs } = Astro.props as Props
     ))
   }
 </div>
+{jsonLd && <script type="application/ld+json" set:html={serialize(jsonLd)} />}
