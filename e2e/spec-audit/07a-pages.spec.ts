@@ -157,9 +157,13 @@ bilingual('7.3-3', '/children', async ({ page, path }) => {
   const search = page.getByRole('searchbox').or(page.locator('input[type="search"], input[name="name"]')).first()
   await search.fill('a')
   await expect(page).toHaveURL(/\?.+/)
-  const filtered = (await childCards(page)).length
-  await page.goto(page.url())
-  expect((await childCards(page)).length).toBe(filtered)
+  // The URL changes before the filtered results arrive, so load the URL in
+  // a second tab and wait for the live list to match it.
+  const reloaded = await page.context().newPage()
+  await reloaded.goto(page.url())
+  const expected = (await childCards(reloaded)).length
+  await reloaded.close()
+  await expect.poll(async () => (await childCards(page)).length).toBe(expected)
 })
 
 bilingual('7.3-4', '/children', async ({ page, path, lang }) => {
