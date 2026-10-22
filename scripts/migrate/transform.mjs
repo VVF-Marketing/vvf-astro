@@ -307,7 +307,7 @@ function compact(o) {
 
 export async function transform() {
   const report = createSection('Transform')
-  const manifests = readManifests()
+  const manifests = readManifests({ children: true })
   const mediaMap = await mediaMapFor(manifests.all)
   const publicMediaMap = await mediaMapFor(manifests.public)
   const eventPage = (dir) => (slug) => snap(`${dir}/events__${slug}`)

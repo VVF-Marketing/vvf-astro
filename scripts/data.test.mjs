@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { ROOT, collectionsToImport, decodeValue, defaultExportPath, encodeValue, isInside, orderRows, orderTables, schemaSeed } from './data.mjs'
+import { ROOT, collectionsToImport, decodeValue, defaultExportPath, describeEndpoint, encodeValue, isInside, orderRows, orderTables, schemaSeed } from './data.mjs'
 
 describe('export location', () => {
   it('defaults outside the repository', () => {
@@ -11,6 +11,14 @@ describe('export location', () => {
   it('recognizes paths inside the repository', () => {
     expect(isInside(path.join(ROOT, 'exports/x.tar.gz'), ROOT)).toBe(true)
     expect(isInside(path.join(ROOT, '..', 'elsewhere.tar.gz'), ROOT)).toBe(false)
+  })
+})
+
+describe('endpoints', () => {
+  it('follows STORAGE like the site: S3, Blob, or ./uploads', () => {
+    expect(describeEndpoint({ STORAGE: 'blob', DB_ADAPTER: 'postgres' }).storage).toEqual({ kind: 'blob' })
+    expect(describeEndpoint({ STORAGE: 's3' }).storage).toEqual({ kind: 's3' })
+    expect(describeEndpoint({}).storage).toEqual({ kind: 'local', dir: path.join(ROOT, 'uploads') })
   })
 })
 

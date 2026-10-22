@@ -12,6 +12,7 @@ import globalCopy from './copy/_copy'
 import { guardEmDashApi } from './lib/emdashGuard'
 import { activityChannel, runWithActivityActor } from './lib/activityContext'
 import { normalizeApiPath } from './lib/marketingGuard'
+import { withMediaCdnCache } from './lib/mediaCdnCache'
 
 // Runs once per process, on the first request - covers `astro dev` and the
 // deployed `@astrojs/node` standalone server uniformly, since neither has a
@@ -69,7 +70,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (apiPath.startsWith('/_emdash/api/')) {
     const user = (context.locals as { user?: { id: string; email: string; name?: string | null } }).user
     const actor = { user: user && { id: user.id, email: user.email, name: user.name }, channel: activityChannel(apiPath, context.request.headers) }
-    return runWithActivityActor(actor, async () => (await guardEmDashApi(context, next)) ?? next())
+    const response = await runWithActivityActor(actor, async () => (await guardEmDashApi(context, next)) ?? next())
+    // Media files: a short CDN cache on Vercel (src/lib/mediaCdnCache.ts).
+    return import.meta.env.DEPLOY_TARGET === 'vercel' ? withMediaCdnCache(apiPath, context.request.method, response) : response
   }
 
   // Spanish pages are rendered from the shared (English-path) page modules,

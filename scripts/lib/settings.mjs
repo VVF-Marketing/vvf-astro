@@ -6,6 +6,7 @@ export function missingSettings(env = process.env) {
   const required = []
   if (env.DB_ADAPTER === 'postgres') required.push('DATABASE_URL')
   if (env.STORAGE === 's3') required.push('S3_ENDPOINT', 'S3_BUCKET', 'S3_ACCESS_KEY_ID', 'S3_SECRET_ACCESS_KEY')
+  if (env.STORAGE === 'blob') required.push('BLOB_READ_WRITE_TOKEN')
   // On Vercel nothing else runs scheduled publishing or the static-page sync:
   // without these, both would stop silently (run-on-vercel-functions, D2).
   if (env.DEPLOY_TARGET === 'vercel') required.push('CRON_SECRET', 'EMDASH_SYNC_PAT')

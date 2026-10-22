@@ -15,7 +15,7 @@ import { createSection } from './lib/report.mjs'
 const STATIC_MEDIA_DIR = 'public/images/media'
 
 export function copyStaticMedia({
-  manifest = readManifests().all,
+  manifest = readManifests({ children: true }).all,
   copy = (rel) => {
     const dest = path.join(ROOT_DIR, STATIC_MEDIA_DIR, path.basename(rel))
     mkdirSync(path.dirname(dest), { recursive: true })

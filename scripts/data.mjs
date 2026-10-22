@@ -10,7 +10,8 @@
 //
 // Source and target follow the same settings as the site: Postgres when
 // DB_ADAPTER=postgres (DATABASE_URL), else the SQLite file ./data.db
-// (--sqlite <path>); S3 when STORAGE=s3 (S3_*), else ./uploads (--uploads <dir>).
+// (--sqlite <path>); S3 when STORAGE=s3 (S3_*), Vercel Blob when STORAGE=blob
+// (BLOB_READ_WRITE_TOKEN), else ./uploads (--uploads <dir>).
 //
 // Exports contain child data and account data: they're written outside the
 // repository (default ~/vvf-exports/) and a path inside it is refused. Treat
@@ -25,9 +26,8 @@ import { pipeline } from 'node:stream/promises'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { Kysely, sql } from 'kysely'
 import { applySeed } from 'emdash/seed'
+import { openStorageKind, storageLabel } from './lib/storage.mjs'
 import { createDialect as createSqliteDialect } from 'emdash/db/sqlite'
-import { createStorage as createLocalStorage } from 'emdash/storage/local'
-import { createStorage as createS3Storage } from 'emdash/storage/s3'
 import { createDirectDialect as createPostgresDialect } from '../src/lib/db/postgresRuntime.mjs'
 import { contentTypeFor, listKeys } from './media-copy.mjs'
 import { LEGACY_COLLECTIONS } from './migrate/copy-collections.mjs'
@@ -160,18 +160,18 @@ export function collectionsToImport(collectionRows, targetKind) {
 export function describeEndpoint(env = process.env, args = {}) {
   return {
     db: env.DB_ADAPTER === 'postgres' ? { kind: 'postgres' } : { kind: 'sqlite', path: path.resolve(args.sqlite ?? path.join(ROOT, 'data.db')) },
-    storage: env.STORAGE === 's3' ? { kind: 's3' } : { kind: 'local', dir: path.resolve(args.uploads ?? path.join(ROOT, 'uploads')) },
+    storage: env.STORAGE === 's3' || env.STORAGE === 'blob' ? { kind: env.STORAGE } : { kind: 'local', dir: path.resolve(args.uploads ?? path.join(ROOT, 'uploads')) },
   }
 }
 
-const label = (e) => `${e.db.kind === 'postgres' ? 'Postgres' : `SQLite ${e.db.path}`} + ${e.storage.kind === 's3' ? `S3 ${process.env.S3_BUCKET}` : `disk ${e.storage.dir}`}`
+const label = (e) => `${e.db.kind === 'postgres' ? 'Postgres' : `SQLite ${e.db.path}`} + ${storageLabel(e.storage.kind, e.storage)}`
 
 function openDb(desc) {
   return new Kysely({ dialect: desc.kind === 'postgres' ? createPostgresDialect() : createSqliteDialect({ url: `file:${desc.path}` }) })
 }
 
 function openStorage(desc) {
-  return desc.kind === 's3' ? createS3Storage({}) : createLocalStorage({ directory: desc.dir, baseUrl: '/_emdash/api/media/file' })
+  return openStorageKind(desc.kind, desc)
 }
 
 async function listTables(db, kind) {

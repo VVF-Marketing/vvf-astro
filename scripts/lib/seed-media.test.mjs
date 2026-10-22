@@ -6,7 +6,7 @@ import { createDialect } from 'emdash/db/sqlite'
 import { createStorage } from 'emdash/storage/local'
 import sharp from 'sharp'
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest'
-import { mediaIdFor, mediaMapFor, mediaValueFor, seedMedia, storageKeyFor } from './seed-media.mjs'
+import { PUBLIC_MANIFEST_PATH, mediaIdFor, mediaMapFor, mediaValueFor, readManifests, seedMedia, storageKeyFor } from './seed-media.mjs'
 
 const ULID = /^[0-7][0-9A-HJKMNP-TV-Z]{25}$/
 
@@ -26,6 +26,17 @@ const manifest = {
   'https://cdn.example/logo.svg': { path: 'seed/media/sponsors/logo.svg', contentType: 'image/svg+xml', alt: 'Logo' },
   'https://cdn.example/hero.jpg': { path: 'public/images/pages/hero.jpg', contentType: 'image/jpeg' },
 }
+
+// A script that asks for "the seed media" must not get child photos
+// (store-media-in-vercel-blob): children only when asked for by name.
+describe('readManifests', () => {
+  it('leaves child media out unless asked for', () => {
+    const manifests = readManifests()
+    expect(manifests.all).toEqual(manifests.public)
+    expect(Object.keys(manifests.public).length).toBeGreaterThan(0)
+    expect(PUBLIC_MANIFEST_PATH).not.toMatch(/children/)
+  })
+})
 
 describe('mediaIdFor / storageKeyFor', () => {
   it('is deterministic, ULID-shaped and distinct per path', () => {

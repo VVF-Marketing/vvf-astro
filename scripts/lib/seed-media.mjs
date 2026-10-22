@@ -30,7 +30,9 @@ function readJson(file) {
   return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {}
 }
 
-export function readManifests({ children = true } = {}) {
+// Child media only when asked for: a script that just wants "the seed media"
+// gets the public manifest, never child photos (store-media-in-vercel-blob).
+export function readManifests({ children = false } = {}) {
   const pub = readJson(PUBLIC_MANIFEST_PATH)
   return { public: pub, all: children ? { ...pub, ...readJson(CHILD_MANIFEST_PATH) } : pub }
 }

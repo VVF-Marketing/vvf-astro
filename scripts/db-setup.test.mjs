@@ -26,6 +26,12 @@ describe('openStorage', () => {
     expect(() => openStorage({})).toThrow(/STORAGE=s3/)
     expect(openStorage({ STORAGE: 'local' })).toBeDefined()
   })
+
+  it('opens Blob with the token, and refuses without it', async () => {
+    const { openStorage } = await import('./db-setup.mjs')
+    expect(() => openStorage({ STORAGE: 'blob' })).toThrow(/BLOB_READ_WRITE_TOKEN/)
+    expect(openStorage({ STORAGE: 'blob', BLOB_READ_WRITE_TOKEN: 'vercel_blob_rw_test' }).token).toBe('vercel_blob_rw_test')
+  })
 })
 
 // Review finding (PR #25, Step 24): db:setup read the target's fingerprint and
