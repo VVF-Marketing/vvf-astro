@@ -81,10 +81,12 @@ jobs:
         # environment is explicit because Vercel makes a project's first
         # deployment production when it has none, and --json because the CLI
         # prints JSON, not the bare URL, when it isn't attached to a terminal.
+        # The JSON is the deployment itself in CI, but wrapped in
+        # { status, deployment } when the CLI thinks an agent runs it.
         run: |
           vercel deploy --prebuilt --yes --environment preview --json \
             --env DATABASE_URL="$DATABASE_URL" --env DATABASE_URL_UNPOOLED="$DATABASE_URL_UNPOOLED" > "$RUNNER_TEMP/deploy.json"
-          url=$(node -p 'JSON.parse(require("fs").readFileSync(process.argv[1])).deployment.url' "$RUNNER_TEMP/deploy.json")
+          url=$(node -p 'const j = JSON.parse(require("fs").readFileSync(process.argv[1])); (j.deployment ?? j).url' "$RUNNER_TEMP/deploy.json")
           case "$url" in https://*) ;; *) echo "No deployment URL in the CLI output"; exit 1 ;; esac
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed $url"
