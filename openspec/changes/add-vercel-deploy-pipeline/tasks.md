@@ -1,11 +1,13 @@
 ## 1. One-time setup
 
-- [ ] 1.0 Create the separate preview Vercel team (D0) and its project. Verify that a token created in it can't see the production team's projects (`vercel project ls --scope <production team>` fails), can't deploy there (`vercel deploy --prod --scope <production team>` fails), and can't pull production variables.
-- [ ] 1.1 Create the production Vercel project on the foundation's Pro team, with every production variable marked sensitive (D0) (Node.js runtime, region per `run-on-vercel-functions` D1, Deployment Protection on previews with Protection Bypass for Automation). Create the Neon projects `vvf-production` and `vvf-preview` and the Blob stores `vvf-media-production` and `vvf-media-preview` through the Vercel Marketplace and Storage, attached per environment (D1, D2). Verify `vercel env ls` shows the database and Blob variables scoped as in D7, with production values only in Production.
+- [ ] 1.0 Create the preview project `vvf-astro-preview` in the foundation's Pro team, next to the production project (D0, single team). Turn on Deployment Protection and Protection Bypass for Automation on it. Verify its project and org ids, and that Vercel's Git auto-deploys are off for both projects.
+- [ ] 1.1 Create the production Vercel project `vvf-astro` on the foundation's Pro team, with every production variable marked sensitive (D0) (Node.js runtime, region per `run-on-vercel-functions` D1, Deployment Protection on previews with Protection Bypass for Automation). Create the Neon projects `vvf-production` and `vvf-preview` and the Blob stores `vvf-media-production` and `vvf-media-preview` through the Vercel Marketplace and Storage, attached per environment (D1, D2). Verify `vercel env ls` shows the database and Blob variables scoped as in D7, with production values only in Production.
 - [ ] 1.2 Seed `vvf-preview/main` with `npm run db:setup -- --yes` (public seed and media into the preview store), and mint its static-page-sync token (D1). Verify:
   - a Neon branch made from it shows seeded content when the site points at it;
   - a query for child profiles returns only the public seed's fixture rows, if any (`scripts/lib/fixture-children.mjs`), and no real ones.
-- [ ] 1.3 Create the GitHub environments `preview` and `production` (`production` limited to `main`) with the secrets from proposal.md: preview-team token and a Neon key scoped to `vvf-preview` in `preview`, production-team credentials only in `production` (D0). Verify a PR-triggered test workflow can't read a `production` secret: a dry-run job that echoes whether the secret is set prints "unset".
+- [ ] 1.3 Create the GitHub environments `preview` and `production` (`production` limited to `main`) with the secrets from proposal.md: the team token, the preview project id and a Neon key scoped to `vvf-preview` in `preview`; the production database's direct URL, fingerprint and sync token only in `production` (D0). Verify:
+  - a PR-triggered workflow can't read either environment's secrets: a dry-run job in `preview-build` that echoes whether `VERCEL_TOKEN` and `PRODUCTION_DATABASE_URL_UNPOOLED` are set prints "unset" for both;
+  - a production variable can't be read back with the token (`vercel env pull --environment=production` gives empty values for sensitive variables).
 
 ## 2. Preview deployments
 
@@ -13,12 +15,13 @@
   - pushing a branch creates no Vercel deployment on its own;
   - the unit tests pass;
   - one manual `vercel deploy --prebuilt --env DATABASE_URL=…` shows the per-deployment variable at runtime (`/readyz` 200 against a branch database). Otherwise switch to the fallback in Risks.
-- [ ] 2.2 Add the `preview` job to `.github/workflows/deploy.yml` per D3 (Neon branch with expiry, migrate, build, check, deploy, ready, sync, PR comment), and `playwright.preview.config.ts` (base URL from an environment variable, bypass header). Verify on this change's PR:
+- [ ] 2.2 Add `.github/workflows/preview-build.yml` (no secrets, uploads the artifact) and the `preview-deploy` workflow (`workflow_run`, environment `preview`) per D3: Neon branch with expiry, settings check, deploy, then the PR's migrations with only the branch URL, ready, sync, PR comment. Add `playwright.preview.config.ts` (base URL from an environment variable, bypass header). Verify on this change's PR:
   - the preview URL is posted;
   - `/readyz` is 200;
   - the full e2e suite passes against the preview;
-  - a second push redeploys on the same branch.
-- [ ] 2.3 Add `preview-cleanup` (delete the branch on close) and the `reset-preview-parent` manual workflow (D1). Verify: closing a test PR deletes `pr-<n>`, and the reset re-seeds `vvf-preview/main`.
+  - a second push redeploys on the same branch;
+  - a throwaway PR that edits `preview-deploy` still gets deployed by `main`'s version (the edit has no effect), and one that edits `preview-build` to echo `VERCEL_TOKEN` prints nothing.
+- [ ] 2.3 Add `preview-cleanup` (`pull_request_target` closed, never checking out the PR; delete the branch) and the `reset-preview-parent` manual workflow (D1). Verify: closing a test PR deletes `pr-<n>`, and the reset re-seeds `vvf-preview/main`.
 - [ ] 2.4 Add the preview banner (D8), shown only when `VERCEL_ENV=preview`, with a unit test. Verify on a preview that the banner shows, responses carry `X-Robots-Tag: noindex`, and canonical URLs point at production.
 - [ ] 2.5 Verify isolation: two PRs that each add a different test collection get previews that only have their own collection. Revert both test PRs afterwards.
 
