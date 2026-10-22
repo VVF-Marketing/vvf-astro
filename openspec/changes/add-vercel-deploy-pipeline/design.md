@@ -124,6 +124,8 @@ A table in `deploying-to-vercel.md` lists every variable × {Vercel Production, 
 
 The GitHub `production` environment is restricted to the `main` branch, and holds the production database's direct URL, fingerprint and sync token. The team token is in both GitHub environments (D0); `preview`'s copy is only used by `main`'s `preview-deploy`.
 
+Both GitHub environments are restricted to `main`, `preview` included. Without that, a branch or same-repository PR could add `environment: preview` to its own workflow and read the team token. `workflow_run` and `pull_request_target` jobs run as `main`, so `main`'s deploy and cleanup jobs still get the secrets.
+
 ### D8. Marking previews
 A small banner on preview deployments ("Preview — test data only; don't upload real photos") is shown when `VERCEL_ENV=preview`. It's read at runtime, so it costs nothing in production, and it backs D2's upload rule. Canonical URLs already point at production (`site` in `astro.config.mjs`), and preview deployments send `X-Robots-Tag: noindex` (Vercel's default for preview URLs; verified in tasks).
 
