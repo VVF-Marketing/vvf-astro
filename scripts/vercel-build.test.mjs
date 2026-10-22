@@ -1,6 +1,8 @@
 // Checks a Vercel build's output (openspec/changes/run-on-vercel-functions,
-// design D0/D3/D4/D7). Runs only after `DEPLOY_TARGET=vercel npx astro build`
+// design D0/D3/D4/D7). Runs only after `DEPLOY_TARGET=vercel vercel build`
 // has written .vercel/output (the CI container job does); skipped otherwise.
+// Not `astro build`: it writes .vercel/output too, but without vercel.json's
+// crons, so a prebuilt deploy of it never runs scheduled work (spike, task 9.2).
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -55,6 +57,12 @@ describe.skipIf(!built)('Vercel build output', () => {
     expect(code.some((c) => c.includes('createScheduler: null'))).toBe(true)
     expect(code.some((c) => /new NodeCronScheduler\(/.test(c))).toBe(false)
     expect(code.some((c) => /export \{ waitUntil \} from "@vercel\/functions"/.test(c))).toBe(true)
+  })
+
+  it("carries vercel.json's crons, so Vercel Cron calls /api/cron/emdash", () => {
+    const { crons } = JSON.parse(readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'))
+    expect(crons.map((c) => c.path)).toContain('/api/cron/emdash')
+    expect(config.crons).toEqual(crons)
   })
 
   it('keeps every legacy redirect with its status and destination', () => {

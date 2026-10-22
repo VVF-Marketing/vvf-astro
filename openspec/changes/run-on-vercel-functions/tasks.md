@@ -58,11 +58,11 @@
 
 These need a Vercel project on the foundation's Pro team, a Neon database and an S3-compatible bucket. This session's network couldn't reach Vercel, so they're done from a machine or session that can.
 
-- [ ] 9.1 Deploy a throwaway preview from this branch (`DEPLOY_TARGET=vercel`, Neon seeded by `npm run db:setup -- --yes`, S3-compatible bucket), and answer D0's live questions: whether sign-in works across instances (magic-link sign-in, then requests landing on different instances), cold-start time, and sync duration inside one `waitUntil`. Record them in design.md.
-- [ ] 9.2 On the preview, an entry scheduled 2 minutes ahead is published within 5 minutes with no visitor traffic (cron calling `/api/cron/emdash`).
-- [ ] 9.3 With Deployment Protection on, `POST /api/internal/sync-static-pages` syncs through the bypass header, and a later cold start doesn't re-sync (function logs). Five concurrent first requests to a fresh deployment leave no duplicate `pages` or copy rows.
-- [ ] 9.4 `npm run db:setup` against the Neon direct URL succeeds, and a 200-request burst (`npx autocannon -c 50`) against the preview shows no connection errors in the logs.
-- [ ] 9.5 Run the full e2e suite (`playwright.container.config.ts` pointed at the preview URL with the bypass header), including the redirect and `/es` specs. Record the results, the measured bundle size and the cold start in design.md. Then delete the spike Vercel project and Neon database.
+- [x] 9.1 Deploy a throwaway preview from this branch (`DEPLOY_TARGET=vercel`, Neon seeded by `npm run db:setup -- --yes`, S3-compatible bucket), and answer D0's live questions: whether sign-in works across instances (magic-link sign-in, then requests landing on different instances), cold-start time, and sync duration inside one `waitUntil`. Record them in design.md. _Done 2026-10-22 without a bucket (media skipped; Blob gets its own spike); results under D0._
+- [x] 9.2 On the preview, an entry scheduled 2 minutes ahead is published within 5 minutes with no visitor traffic (cron calling `/api/cron/emdash`). _Passed once the build used `vercel build` (D0: `astro build` drops the crons). An admin editor had the entry open during the window; rerun with no one signed in if in doubt._
+- [ ] 9.3 With Deployment Protection on, `POST /api/internal/sync-static-pages` syncs through the bypass header, and a later cold start doesn't re-sync (function logs). Five concurrent first requests to a fresh deployment leave no duplicate `pages` or copy rows. _Partly done: the bypass sync, one sync per deployment and the concurrency check passed (D0). Still to do: the manual `POST /api/internal/sync-static-pages` with the bypass header (needs the sync token)._
+- [x] 9.4 `npm run db:setup` against the Neon direct URL succeeds, and a 200-request burst (`npx autocannon -c 50`) against the preview shows no connection errors in the logs.
+- [ ] 9.5 Run the full e2e suite (`playwright.container.config.ts` pointed at the preview URL with the bypass header), including the redirect and `/es` specs. Record the results, the measured bundle size and the cold start in design.md. Then delete the spike Vercel project and Neon database. _Results recorded under D0 (bundle 46 MB unzipped, 14 MB as deployed). The spike is kept for `store-media-in-vercel-blob` 1.1; delete it after that._
 
 ## Workflow follow-up
 

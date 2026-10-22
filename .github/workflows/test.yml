@@ -97,10 +97,14 @@ jobs:
           npx vitest run --no-file-parallelism scripts/data.integration.test.mjs src/lib/deploymentSync.integration.test.ts src/lib/db/sessionDriver.integration.test.ts
       # The Vercel target (openspec/changes/run-on-vercel-functions): one
       # Node.js function under the size limit, EmDash's timer off, waitUntil
-      # on, and every legacy redirect with its status.
+      # on, vercel.json's crons, and every legacy redirect with its status.
+      # `vercel build`, as the deploy does: `astro build` alone drops the crons.
+      # A settings-only project file lets it run without a Vercel account.
       - name: Build the Vercel target and check its output
         run: |
-          DEPLOY_TARGET=vercel npx astro build
+          mkdir -p .vercel
+          echo '{"projectId":"_","orgId":"_","settings":{"framework":"astro"}}' > .vercel/project.json
+          DEPLOY_TARGET=vercel npx --yes vercel@64.7.0 build --yes
           npx vitest run scripts/vercel-build.test.mjs
       - name: Run the image and wait until it's ready
         run: |
