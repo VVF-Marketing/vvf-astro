@@ -10,12 +10,15 @@ Media in Vercel Blob, the deploy pipeline (previews per pull request, staged pro
 ## Building for Vercel
 
 ```bash
-DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=s3 npx astro build   # writes .vercel/output
+DEPLOY_TARGET=vercel DB_ADAPTER=postgres STORAGE=s3 vercel build   # writes .vercel/output
+vercel deploy --prebuilt                                           # uploads it
 ```
 
+- **Use `vercel build`, not `astro build`.** Both write `.vercel/output`, but only `vercel build` copies `vercel.json`'s `crons` into it. A prebuilt deploy of `astro build`'s output has no cron, so scheduled posts never go live and nothing reports it (found on the spike deployment). `scripts/vercel-build.test.mjs` fails on output without the cron. `vercel build` needs a linked project (`vercel link`), or in CI a settings-only `.vercel/project.json`, as `test.yml` writes.
 - **`DEPLOY_TARGET=vercel`** picks `@astrojs/vercel` instead of `@astrojs/node`. Without it, nothing changes: `npm run dev`, `npm run build` and the container image stay on the Node server.
-- **One Node.js function** (`nodejs22.x`, response streaming on) serves every page, the CMS admin and its API; static files go to Vercel's CDN. The function is about 48 MB, against Vercel's 250 MB limit.
-- **Region:** `vercel.json` pins `iad1` (US East), next to the Neon database. Change both together.
+- **One Node.js function** (response streaming on) serves every page, the CMS admin and its API; static files go to Vercel's CDN. The function is about 48 MB, against Vercel's 250 MB limit.
+- **Node version:** the adapter takes the function's runtime from the Node version of the machine that builds. CI builds on Node 22 (`nodejs22.x`); a build on a newer Node gets the newest runtime Vercel has (`nodejs24.x` from Node 26). Build where the Node version is the one you want to run.
+- **Region:** `vercel.json` pins `iad1` (US East), next to the Neon database. Change both together. Prebuilt output doesn't carry the region, so also set the project's Function Region to `iad1` (new projects default to it; the spike's function ran there).
 - **Redirects:** the legacy Webflow redirects (`src/lib/legacyRoutes.mjs`) become Vercel routes, keeping their 301s. `scripts/vercel-build.test.mjs` checks each one, plus the function's size, against `.vercel/output`; the CI container job builds the Vercel target and runs it.
 
 ## Settings
