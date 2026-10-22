@@ -77,10 +77,15 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PREVIEW_PROJECT_ID }}
-        # Never --prod: this job only ever creates preview deployments.
+        # Never --prod: this job only ever creates preview deployments. The
+        # environment is explicit because Vercel makes a project's first
+        # deployment production when it has none, and --json because the CLI
+        # prints JSON, not the bare URL, when it isn't attached to a terminal.
         run: |
-          url=$(vercel deploy --prebuilt --yes \
-            --env DATABASE_URL="$DATABASE_URL" --env DATABASE_URL_UNPOOLED="$DATABASE_URL_UNPOOLED")
+          vercel deploy --prebuilt --yes --environment preview --json \
+            --env DATABASE_URL="$DATABASE_URL" --env DATABASE_URL_UNPOOLED="$DATABASE_URL_UNPOOLED" > "$RUNNER_TEMP/deploy.json"
+          url=$(node -p 'JSON.parse(require("fs").readFileSync(process.argv[1])).deployment.url' "$RUNNER_TEMP/deploy.json")
+          case "$url" in https://*) ;; *) echo "No deployment URL in the CLI output"; exit 1 ;; esac
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed $url"
       # The pull request's code, last: every step that used the Vercel token

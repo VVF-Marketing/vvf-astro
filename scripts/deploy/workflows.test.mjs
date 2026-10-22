@@ -34,6 +34,9 @@ describe('deploy workflows', () => {
   it('never deploys a preview to production', () => {
     const { text } = workflow('deploy.yml')
     expect(text).not.toMatch(/vercel[^\n]*\s--prod\b/)
+    expect(text).not.toMatch(/--environment[ =]production/)
+    // Vercel makes a project's first deployment production unless told otherwise.
+    for (const line of text.split('\n').filter((l) => /vercel deploy /.test(l))) expect(line).toMatch(/--environment preview\b/)
   })
 
   it("runs the pull request's code only after the last step holding a deploy credential", () => {
