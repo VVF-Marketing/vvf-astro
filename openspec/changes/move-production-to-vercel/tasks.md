@@ -5,6 +5,8 @@
   - against the current Vercel production `*.vercel.app` URL (public seed), the URL check reports only seed-dependent differences;
   - `--dns` against the current live domain prints the recorded records.
 
+- [ ] 1.3 Make the production database and Blob variables sensitive before any real data is imported. The team enforces sensitive variables (set 2026-10-22), but Neon and Blob add theirs as readable, and reconnecting doesn't change that. Disconnect `vvf-production` and `vvf-media-production` from `vvf-astro`, add `DATABASE_URL`, `DATABASE_URL_UNPOOLED` and `BLOB_READ_WRITE_TOKEN` by hand as sensitive Production variables, and note that credential rotation then means updating them by hand (runbook). Verify `vercel env ls production` shows them as sensitive and `vercel env pull --environment=production` gives empty values.
+
 ## 2. Backups and restore
 
 - [ ] 2.1 Create the `vvf-backups` private store (or the D4 fallback bucket), the `age` key pair (private key with the two holders), and the `production-backup` GitHub environment limited to `main`. Add `.github/workflows/backup.yml` and `scripts/backup/` (export, encrypt, upload, prune) per D4. Verify:
