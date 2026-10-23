@@ -168,11 +168,13 @@ for (const p of SPEC_PAGES) {
     expect(stretched).toEqual([])
   })
 
-  // 5.9-10: no id appears twice.
+  // 5.9-10: no id appears twice. Only the document's own ids: Playwright's
+  // selectors reach into open shadow roots, and Donorbox's <dbox-widget> on
+  // /ways-to-give repeats ids inside its own, which can't clash with ours.
   bilingual('5.9-10', p, async ({ page, path }) => {
     await open(page, path)
-    const dupes = await page.$$eval('[id]', (els) => {
-      const ids = els.map((e) => e.id)
+    const dupes = await page.evaluate(() => {
+      const ids = [...document.querySelectorAll('[id]')].map((e) => e.id)
       return [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))]
     })
     expect(dupes).toEqual([])
