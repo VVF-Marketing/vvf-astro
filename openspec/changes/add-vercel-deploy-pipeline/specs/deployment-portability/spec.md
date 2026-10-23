@@ -3,7 +3,7 @@
 ## MODIFIED Requirements
 
 ### Requirement: Portability tested in CI
-Every pull request SHALL build the container image and run the e2e suite against it on Postgres with S3-compatible storage, in addition to the existing checks. Every pull request from this repository SHALL also run the e2e suite against its Vercel preview deployment on Neon Postgres with Vercel Blob.
+Every pull request SHALL build the container image and run the e2e suite against it on Postgres with S3-compatible storage, in addition to the existing checks. Every pull request from this repository SHALL also run the smoke suite against its Vercel preview deployment on Neon Postgres with Vercel Blob.
 
 #### Scenario: A change breaks Postgres
 - **WHEN** a change works on SQLite but fails on Postgres
@@ -11,4 +11,4 @@ Every pull request SHALL build the container image and run the e2e suite against
 
 #### Scenario: A change breaks Vercel
 - **WHEN** a change works in the container but fails on Vercel functions
-- **THEN** the pull request's preview e2e job fails
+- **THEN** the pull request's preview smoke check fails
