@@ -42,6 +42,7 @@ jobs:
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     steps:
+      - run: echo "ISOLATION-PROBE pull request's deploy.yml ran"
       # main's code: the helpers below are trusted.
       - uses: actions/checkout@v4
         with:

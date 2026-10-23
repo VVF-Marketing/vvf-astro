@@ -28,6 +28,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: ISOLATION-PROBE secrets in the build
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          PRODUCTION_DATABASE_URL_UNPOOLED: ${{ secrets.PRODUCTION_DATABASE_URL_UNPOOLED }}
+        run: |
+          echo "VERCEL_TOKEN ${VERCEL_TOKEN:+set}${VERCEL_TOKEN:-unset}"
+          echo "PRODUCTION_DATABASE_URL_UNPOOLED ${PRODUCTION_DATABASE_URL_UNPOOLED:+set}${PRODUCTION_DATABASE_URL_UNPOOLED:-unset}"
       - run: npm ci
       - name: Build the Vercel target
         run: |
@@ -42,3 +49,11 @@ jobs:
           include-hidden-files: true
           retention-days: 3
           if-no-files-found: error
+
+  isolation-probe-environment:
+    runs-on: ubuntu-latest
+    environment: preview
+    steps:
+      - env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: echo "ISOLATION-PROBE preview environment granted, VERCEL_TOKEN ${VERCEL_TOKEN:+set}${VERCEL_TOKEN:-unset}"
