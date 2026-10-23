@@ -145,10 +145,11 @@ bilingual('7.14-2', '/contact', async ({ page, path }) => {
     await expect(form.locator(`[name="${name}"]`), `${name} is required`).toHaveAttribute('required', '')
   }
   await expect(form.locator('input[type="checkbox"]'), 'consent is required').toHaveAttribute('required', '')
-  // Sending empty stays on the page.
+  // Sending empty stays on the page. Only the form's own submission counts:
+  // a deployed preview also POSTs in the background (Vercel's toolbar, analytics).
   let posted = false
   page.on('request', (r) => {
-    if (r.method() === 'POST') posted = true
+    if (r.method() === 'POST' && r.isNavigationRequest() && r.frame() === page.mainFrame()) posted = true
   })
   await form.locator('[type="submit"]').click({ force: true })
   expect(posted, 'nothing sent').toBe(false)
