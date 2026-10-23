@@ -16,17 +16,30 @@ import { pathToFileURL } from 'node:url'
 const API = 'https://console.neon.tech/api/v2'
 export const EXPIRY_DAYS = 14
 
-export function neonClient({ apiKey, projectId, fetch = globalThis.fetch }) {
+// Neon runs one operation at a time per project and answers 423 Locked while
+// another is running; its docs say to retry with backoff. About 2 minutes in
+// all, then the error (with Neon's message) stands.
+export const LOCKED_RETRY_SECONDS = [2, 4, 8, 15, 30, 60]
+const wait = (seconds) => new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+
+export function neonClient({ apiKey, projectId, fetch = globalThis.fetch, sleep = wait }) {
   if (!apiKey || !projectId) throw new Error('NEON_API_KEY and NEON_PROJECT_ID are required.')
   async function call(method, path, body) {
-    const res = await fetch(`${API}/projects/${projectId}${path}`, {
-      method,
-      headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json', ...(body ? { 'Content-Type': 'application/json' } : {}) },
-      body: body ? JSON.stringify(body) : undefined,
-    })
-    if (method === 'DELETE' && res.status === 404) return null
-    if (!res.ok) throw new Error(`Neon API ${method} ${path.split('?')[0]}: ${res.status}`)
-    return res.status === 204 ? null : res.json()
+    for (let attempt = 0; ; attempt++) {
+      const res = await fetch(`${API}/projects/${projectId}${path}`, {
+        method,
+        headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json', ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        body: body ? JSON.stringify(body) : undefined,
+      })
+      if (method === 'DELETE' && res.status === 404) return null
+      if (res.status === 423 && attempt < LOCKED_RETRY_SECONDS.length) {
+        await sleep(LOCKED_RETRY_SECONDS[attempt])
+        continue
+      }
+      // Neon's own message says why (it never holds a credential).
+      if (!res.ok) throw new Error(`Neon API ${method} ${path.split('?')[0]}: ${res.status} ${await errorMessage(res)}`.trim())
+      return res.status === 204 ? null : res.json()
+    }
   }
   return {
     call,
@@ -36,6 +49,15 @@ export function neonClient({ apiKey, projectId, fetch = globalThis.fetch }) {
     deleteBranch: (id) => call('DELETE', `/branches/${id}`),
     connectionUri: async (branchId, { database, role, pooled }) =>
       (await call('GET', `/connection_uri?branch_id=${branchId}&database_name=${encodeURIComponent(database)}&role_name=${encodeURIComponent(role)}&pooled=${pooled}`)).uri,
+  }
+}
+
+async function errorMessage(res) {
+  const text = await res.text().catch(() => '')
+  try {
+    return JSON.parse(text).message ?? ''
+  } catch {
+    return text.slice(0, 200)
   }
 }
 

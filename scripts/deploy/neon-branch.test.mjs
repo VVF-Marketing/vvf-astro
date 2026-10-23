@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkBranchName, deleteBranch, ensureBranch, expiryFrom, main, neonClient } from './neon-branch.mjs'
+import { LOCKED_RETRY_SECONDS, checkBranchName, deleteBranch, ensureBranch, expiryFrom, main, neonClient } from './neon-branch.mjs'
 
 const POOLED = 'postgres://u:secret-pw@ep-x-pooler.neon.tech/neondb'
 const DIRECT = 'postgres://u:secret-pw@ep-x.neon.tech/neondb'
@@ -63,6 +63,27 @@ describe('neon-branch', () => {
     expect(logs.slice(0, 2)).toEqual([`::add-mask::${POOLED}`, `::add-mask::${DIRECT}`])
     expect(logs.slice(2).join('\n')).not.toContain('secret-pw')
     expect(envLines).toEqual([`DATABASE_URL=${POOLED}`, `DATABASE_URL_UNPOOLED=${DIRECT}`])
+  })
+
+  // Neon answers 423 while another operation runs on the project.
+  const lockedThen = (okAfter) => {
+    let n = 0
+    const slept = []
+    const fetch = async () => (n++ < okAfter ? { ok: false, status: 423, text: async () => JSON.stringify({ message: 'project already has running operations' }) } : { ok: true, status: 200, json: async () => ({ branches: [] }) })
+    return { client: neonClient({ apiKey: 'k', projectId: 'proj', fetch, sleep: async (s) => slept.push(s) }), slept, calls: () => n }
+  }
+
+  it('retries while the project is locked, then goes on', async () => {
+    const { client, slept } = lockedThen(2)
+    expect(await client.call('GET', '/branches')).toEqual({ branches: [] })
+    expect(slept).toEqual(LOCKED_RETRY_SECONDS.slice(0, 2))
+  })
+
+  it("gives up after about 2 minutes, with Neon's message", async () => {
+    const { client, calls } = lockedThen(Infinity)
+    await expect(client.call('POST', '/branches', {})).rejects.toThrow('Neon API POST /branches: 423 project already has running operations')
+    expect(calls()).toBe(LOCKED_RETRY_SECONDS.length + 1)
+    expect(LOCKED_RETRY_SECONDS.reduce((a, b) => a + b)).toBeLessThanOrEqual(150)
   })
 
   it('needs the key and project', () => {
