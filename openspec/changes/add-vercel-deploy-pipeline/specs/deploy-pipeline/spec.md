@@ -28,16 +28,20 @@ Each open pull request from this repository SHALL get a preview deployment for i
 - **WHEN** two open pull requests each add a migration
 - **THEN** each preview's database has only its own PR's migration, and neither preview breaks the other
 
-### Requirement: Preview data is never production data
-Preview databases SHALL be created only from a preview source seeded with the public seed, never from the production database or an export of it. Previews SHALL use a media store that holds only public seed media and preview uploads, never the production store.
+### Requirement: Child data never leaves production
+Preview databases SHALL be created only from the preview parent, never from the production database or an export of it. The preview parent SHALL hold only public content (from the public seed, or from an allowlisted refresh of production's public content) and stand-in children, and never child data or production users, sessions, tokens or revisions. Previews SHALL use a media store that holds only public media and preview uploads, never the production store. Stand-in children SHALL never be added to production.
 
 #### Scenario: Preview database contents
 - **WHEN** a preview's database is inspected
-- **THEN** it contains no child profile, child photo, real user or production revision
+- **THEN** its only child profiles are stand-in children, and it contains no real child photo, real user or production revision
 
 #### Scenario: Preview media store
-- **WHEN** a preview's media storage settings are inspected
+- **WHEN** the Preview environment's media storage settings are inspected
 - **THEN** they point at the preview store, not the production one
+
+#### Scenario: Production setup
+- **WHEN** production's database is set up or migrated
+- **THEN** no stand-in children are added
 
 ### Requirement: Preview cleanup
 When a pull request is closed or merged, its preview database branch SHALL be deleted. Preview database branches SHALL also expire automatically if cleanup fails.
@@ -45,6 +49,14 @@ When a pull request is closed or merged, its preview database branch SHALL be de
 #### Scenario: PR merged
 - **WHEN** a pull request is merged
 - **THEN** its database branch no longer exists after the cleanup run
+
+#### Scenario: PR merged while its check runs
+- **WHEN** a pull request is merged while its preview check is still running
+- **THEN** the check is cancelled before the database branch is deleted, and no run is left waiting on the deleted database
+
+#### Scenario: Check hangs
+- **WHEN** a preview check doesn't finish within 30 minutes
+- **THEN** it fails
 
 ### Requirement: Gated production deploy
 A merge to `main` SHALL deploy to production only after the full test workflow passes on that commit, the production environment's required settings are present, and production migrations apply cleanly. Production migrations SHALL run only against the database whose pinned fingerprint matches.

@@ -3,6 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { expect, test, type Page } from '@playwright/test'
+import { withFixtureChildren } from '../../scripts/lib/fixture-children.mjs'
 import { check } from './registry'
 
 export type Lang = 'en' | 'es'
@@ -71,12 +72,14 @@ export const SPEC_PAGES = [
 
 export const THANK_YOU_PAGES = ['/thank-you-sponsorship', '/thank-you-donation', '/thank-you-earthquake-relief'] as const
 
-// Seed fixtures. Children exist only in the gitignored seed.local.json, so
-// child checks report blocked (skipped with a reason) where it has none.
-// `npm run seed` writes that file in CI too, just without children.
+// Seed fixtures. Children exist only in the gitignored seed.local.json, or as
+// stand-in children where SEED_FIXTURE_CHILDREN=1 seeded them (the container
+// job, which reads the committed seed), so child checks report blocked
+// (skipped with a reason) where there are none.
 const localSeedPath = fileURLToPath(new URL('../../seed/seed.local.json', import.meta.url))
 const seedPath = existsSync(localSeedPath) ? localSeedPath : fileURLToPath(new URL('../../seed/seed.json', import.meta.url))
-export const seed = JSON.parse(readFileSync(seedPath, 'utf-8')) as {
+const seedFile = JSON.parse(readFileSync(seedPath, 'utf-8'))
+export const seed = (process.env.SEED_FIXTURE_CHILDREN === '1' ? withFixtureChildren(seedFile) : seedFile) as {
   content: Record<string, { slug?: string; id?: string; locale?: string; data: Record<string, unknown> }[]>
 }
 export const HAS_CHILD_DATA = (seed.content.children ?? []).length > 0

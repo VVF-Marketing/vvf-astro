@@ -70,6 +70,10 @@ jobs:
     env:
       DB_ADAPTER: postgres
       STORAGE: s3
+      # Stand-in children (scripts/lib/fixture-children.mjs): seeded by
+      # db:setup and known to the e2e helpers, so the child pages get tested
+      # on the deployed path too.
+      SEED_FIXTURE_CHILDREN: '1'
       DATABASE_URL: postgres://vvf:vvf@localhost:5432/vvf
       S3_ENDPOINT: http://localhost:8333
       S3_BUCKET: vvf-media

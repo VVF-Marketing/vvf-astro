@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { confirmTarget, shouldSeed } from './db-setup.mjs'
+import { readFileSync } from 'node:fs'
+import { confirmTarget, seedInputs, shouldSeed } from './db-setup.mjs'
 
 describe('shouldSeed', () => {
   it('seeds only an empty database unless forced', () => {
@@ -73,5 +74,25 @@ describe('confirmTarget', () => {
     const { asked, confirmOptions } = answering('y')
     expect(await confirmTarget({ target: 'db:5432/vvf', fingerprint: FP, pinned: FP, force: true, confirmOptions })).toBe(true)
     expect(asked[0]).toContain('--force')
+  })
+})
+
+// Stand-in children (openspec/changes/add-vercel-deploy-pipeline, D1): only
+// with the flag, never real child data.
+describe('seedInputs', () => {
+  const seed = JSON.parse(readFileSync(new URL('../seed/seed.json', import.meta.url), 'utf8'))
+
+  it('adds no children and no child media without the flag', () => {
+    const { seed: out, manifest } = seedInputs(seed)
+    expect(out).toBe(seed)
+    expect(out.content.children ?? []).toEqual([])
+    expect(Object.values(manifest).some((e) => /children|fixtures/.test(e.path))).toBe(false)
+  })
+
+  it('adds the stand-ins and their placeholder photo with it', () => {
+    const { seed: out, manifest } = seedInputs(seed, { standIns: true })
+    expect(out.content.children.length).toBeGreaterThan(0)
+    for (const c of out.content.children) expect(c.slug).toMatch(/^fixture-/)
+    expect(Object.values(manifest).map((e) => e.path)).toContain('seed/media/fixtures/stand-in-child.png')
   })
 })

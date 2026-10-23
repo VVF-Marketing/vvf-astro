@@ -1,7 +1,9 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { MODEL_COLLECTIONS } from '../../src/lib/contentModel.mjs'
-import { fixtureChildren, withFixtureChildren } from './fixture-children.mjs'
+import { createHash } from 'node:crypto'
+import { FIXTURE_MEDIA, FIXTURE_PHOTO, fixtureChildren, withFixtureChildren } from './fixture-children.mjs'
+import { mediaValueFor } from './seed-media.mjs'
 
 const seed = JSON.parse(readFileSync(new URL('../../seed/seed.json', import.meta.url), 'utf8'))
 
@@ -28,6 +30,18 @@ describe('fixture children', () => {
   it('leaves a seed with real children alone', () => {
     const real = { ...seed, content: { ...seed.content, children: [{ id: 'child-a', slug: 'a', data: {} }] } }
     expect(withFixtureChildren(real)).toBe(real)
+  })
+
+  it('uses the illustrated placeholder, never a seed photo', () => {
+    for (const c of withFixtureChildren(seed).content.children) expect(c.data.photo.id).toBe(FIXTURE_PHOTO.id)
+  })
+
+  it('describes the placeholder as mediaValueFor() would, and as the file is', async () => {
+    const entry = Object.values(FIXTURE_MEDIA)[0]
+    const { alt, ...value } = await mediaValueFor(entry)
+    expect(value).toEqual(FIXTURE_PHOTO)
+    const file = readFileSync(new URL(`../../${entry.path}`, import.meta.url))
+    expect([file.length, createHash('sha256').update(file).digest('hex')]).toEqual([entry.bytes, entry.sha256])
   })
 
   it('never touches the committed public seed', () => {

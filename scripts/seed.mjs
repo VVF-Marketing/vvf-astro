@@ -21,7 +21,7 @@ import { Kysely } from 'kysely'
 import { createDialect } from 'emdash/db/sqlite'
 import { createStorage } from 'emdash/storage/local'
 import { confirmDestructive } from './lib/confirm.mjs'
-import { withFixtureChildren } from './lib/fixture-children.mjs'
+import { FIXTURE_MEDIA, withFixtureChildren } from './lib/fixture-children.mjs'
 import { withFixtureEvents } from './lib/fixture-events.mjs'
 import { readManifests, seedMedia } from './lib/seed-media.mjs'
 import { transform } from './migrate/transform.mjs'
@@ -81,7 +81,9 @@ console.log('\n▶ media')
 const db = new Kysely({ dialect: createDialect({ url: `file:${DB_PATH}` }) })
 try {
   const storage = createStorage({ directory: UPLOADS_DIR, baseUrl: '/_emdash/api/media/file' })
-  const result = await seedMedia({ db, storage, manifest: readManifests({ children: true }).all })
+  // The stand-ins' placeholder photo, when they were added above.
+  const manifest = { ...readManifests({ children: true }).all, ...(process.env.SEED_FIXTURE_CHILDREN === '1' ? FIXTURE_MEDIA : {}) }
+  const result = await seedMedia({ db, storage, manifest })
   console.log(`uploaded ${result.uploaded}, already present ${result.skipped}`)
 } finally {
   await db.destroy()
