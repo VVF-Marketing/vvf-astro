@@ -66,6 +66,17 @@ describe('deploy workflows', () => {
     expect(JSON.stringify(cleanup.steps)).not.toMatch(/head\.sha|head_sha|head\.ref/)
   })
 
+  // D3: a check never waits on a deleted database, or for GitHub's 6 hours.
+  it('puts every preview job in the pull request\'s group, and cleanup cancels the others', () => {
+    const { doc } = workflow('deploy.yml')
+    const groups = Object.fromEntries(['preview-deploy', 'preview-verify', 'preview-cleanup'].map((n) => [n, doc.jobs[n].concurrency]))
+    for (const [name, c] of Object.entries(groups)) {
+      expect(c?.group, name).toMatch(/^preview-\$\{\{ github\.event\.(workflow_run\.pull_requests\[0\]|pull_request)\.number \}\}$/)
+      expect(c['cancel-in-progress'], name).toBe(true)
+    }
+    expect(doc.jobs['preview-verify']['timeout-minutes']).toBeLessThanOrEqual(30)
+  })
+
   it('keeps every checkout from leaving the job token on disk', () => {
     for (const name of ['deploy.yml', 'preview-build.yml']) {
       for (const job of Object.values(workflow(name).doc.jobs)) {

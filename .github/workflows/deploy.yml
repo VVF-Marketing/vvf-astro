@@ -1,8 +1,9 @@
 name: Deploy
 
 # Deploys to Vercel (openspec/changes/add-vercel-deploy-pipeline, D0/D3).
-# Previews and production are two projects in one Vercel team, and the team
-# token reaches both, so pull-request code never runs where the token is:
+# Previews and production are the Preview and Production environments of
+# one project, and the team token reaches both, so pull-request code never
+# runs where the token is:
 #
 # - preview-build.yml builds the pull request with no secrets;
 # - this file runs on workflow_run / pull_request_target, so GitHub always
@@ -11,6 +12,11 @@ name: Deploy
 #   the pull request's code (its migrations) only as its last step, with
 #   nothing but the preview branch's database URL;
 # - preview-verify runs on a fresh runner with preview-only secrets.
+#
+# All three preview jobs share one concurrency group per pull request
+# (preview-<n>): a new push cancels the previous deploy or check, and
+# preview-cleanup cancels whatever is still running before it deletes the
+# database branch, so no check is left waiting on a deleted database.
 on:
   workflow_run:
     workflows: [Preview build]
@@ -35,7 +41,7 @@ jobs:
       contents: read
       actions: read
     concurrency:
-      group: preview-deploy-${{ github.event.workflow_run.pull_requests[0].number }}
+      group: preview-${{ github.event.workflow_run.pull_requests[0].number }}
       cancel-in-progress: true
     env:
       PR: ${{ github.event.workflow_run.pull_requests[0].number }}
@@ -110,6 +116,11 @@ jobs:
     needs: preview-deploy
     runs-on: ubuntu-latest
     environment: preview
+    # A remote deployment can stop answering; never wait GitHub's 6 hours.
+    timeout-minutes: 30
+    concurrency:
+      group: preview-${{ github.event.workflow_run.pull_requests[0].number }}
+      cancel-in-progress: true
     permissions:
       contents: read
       pull-requests: write
@@ -146,7 +157,9 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha }}
           path: pr
           persist-credentials: false
-      - name: e2e against the preview (pull request's code)
+      # The smoke set only: the full suite already runs in CI (test.yml),
+      # on SQLite and on Postgres.
+      - name: Smoke tests against the preview (pull request's code)
         working-directory: pr
         env:
           E2E_BASE_URL: ${{ needs.preview-deploy.outputs.url }}
@@ -162,6 +175,11 @@ jobs:
     if: github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     environment: preview
+    # Joins the pull request's group: a deploy or check still running is
+    # cancelled before the branch it uses is deleted.
+    concurrency:
+      group: preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
         with:
