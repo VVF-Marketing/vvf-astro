@@ -1,0 +1,39 @@
+name: Reset preview parent
+
+# Puts vvf-preview/main, the branch every preview database is made from, back
+# to its seed-snapshot (openspec/changes/add-vercel-deploy-pipeline, D1).
+# "snapshot" takes that snapshot once; "reset" restores main from it, keeping
+# the admin user and the static-page-sync token. Manual, main only.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: reset restores main from seed-snapshot; snapshot takes the snapshot (once)
+        type: choice
+        options: [reset, snapshot]
+        default: reset
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reset-preview-parent
+
+jobs:
+  preview-parent:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: preview
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: ${{ inputs.action }}
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_PREVIEW_API_KEY }}
+          NEON_PROJECT_ID: ${{ secrets.NEON_PREVIEW_PROJECT_ID }}
+          ACTION: ${{ inputs.action }}
+        run: node scripts/deploy/preview-parent.mjs "$ACTION"
