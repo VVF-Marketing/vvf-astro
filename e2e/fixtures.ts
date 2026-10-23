@@ -1,13 +1,16 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { expect, test, type Page } from '@playwright/test'
+import { withFixtureChildren } from '../scripts/lib/fixture-children.mjs'
 
 // Reuses the seed `npm run seed` applied as the single source of truth for
 // E2E fixtures: seed/seed.local.json (gitignored; includes children) when it
 // exists, otherwise the committed seed/seed.json (no children — public repo).
 const localSeedPath = fileURLToPath(new URL('../seed/seed.local.json', import.meta.url))
 const seedPath = existsSync(localSeedPath) ? localSeedPath : fileURLToPath(new URL('../seed/seed.json', import.meta.url))
-const seed = JSON.parse(readFileSync(seedPath, 'utf-8'))
+// Stand-in children too where SEED_FIXTURE_CHILDREN=1 seeded them.
+const seedFile = JSON.parse(readFileSync(seedPath, 'utf-8'))
+const seed = process.env.SEED_FIXTURE_CHILDREN === '1' ? withFixtureChildren(seedFile) : seedFile
 
 interface SeedEntry {
   slug: string
@@ -18,7 +21,7 @@ function collection(name: string): SeedEntry[] {
   return seed.content[name] ?? []
 }
 
-// Undefined when the seed has no children (CI, where child data isn't available).
+// Undefined when the seed has no children (no real or stand-in children).
 export function firstChild() {
   const child = collection('children').find((c) => c.data.sponsorship_status === 'available')
   return child ? { slug: child.slug, displayName: child.data.name as string, age: child.data.age as number } : undefined

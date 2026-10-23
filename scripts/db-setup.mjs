@@ -5,7 +5,10 @@
 // 2. Upload the public seed media (seed/media/manifest.json, never child
 //    media) to the configured storage and create its media rows
 //    (scripts/lib/seed-media.mjs; openspec/changes/seed-postgres-with-media).
-// 3. Seed the public seed/seed.json (no child data).
+// 3. Seed the public seed/seed.json (no child data). With
+//    SEED_FIXTURE_CHILDREN=1, stand-in children and their placeholder photo
+//    are added (scripts/lib/fixture-children.mjs): CI's container job and
+//    the preview parent only, never production.
 // Steps 2-3 run only into an empty database; existing content is never
 // re-seeded unless --force. With --no-seed, stop after migrations (a target
 // for npm run data:import).
@@ -24,6 +27,7 @@ import { Kysely, sql } from 'kysely'
 import { applySeed } from 'emdash/seed'
 import { openStorageKind } from './lib/storage.mjs'
 import { readManifests, seedMedia } from './lib/seed-media.mjs'
+import { FIXTURE_MEDIA, withFixtureChildren } from './lib/fixture-children.mjs'
 import { createDirectDialect, directDatabaseUrl } from '../src/lib/db/postgresRuntime.mjs'
 import { confirmDestructive } from './lib/confirm.mjs'
 
@@ -81,6 +85,15 @@ export async function confirmTarget({ target, fingerprint, pinned, seed = true, 
   )
 }
 
+// The seed and media manifest to apply: the public ones, plus the stand-in
+// children when asked for (never real child data: a seed that already has
+// children is left as it is).
+export function seedInputs(seed, { standIns = false } = {}) {
+  const manifest = readManifests({ children: false }).public
+  if (!standIns) return { seed, manifest }
+  return { seed: withFixtureChildren(seed), manifest: { ...manifest, ...FIXTURE_MEDIA } }
+}
+
 export async function setupDatabase({
   seedFile = path.join(ROOT, 'seed/seed.json'),
   force = false,
@@ -88,6 +101,7 @@ export async function setupDatabase({
   confirm = false,
   expectedFingerprint = process.env.EMDASH_TARGET_FINGERPRINT || undefined,
   storage,
+  standIns = process.env.SEED_FIXTURE_CHILDREN === '1',
   log = console.log,
 } = {}) {
   const target = describeTarget(directDatabaseUrl())
@@ -108,10 +122,11 @@ export async function setupDatabase({
       log(`Seed skipped: the database already has ${rows[0].n} collections (use --force to re-apply).`)
       return { seeded: false }
     }
-    const media = await seedMedia({ db, storage: mediaStorage, manifest: readManifests({ children: false }).public, force })
+    const inputs = seedInputs(JSON.parse(readFileSync(seedFile, 'utf8')), { standIns })
+    const media = await seedMedia({ db, storage: mediaStorage, manifest: inputs.manifest, force })
     log(`Media: ${media.uploaded} uploaded, ${media.skipped} already present.`)
-    const result = await applySeed(db, JSON.parse(readFileSync(seedFile, 'utf8')), { includeContent: true })
-    log(`Seeded ${path.relative(ROOT, seedFile)}: ${result.collections.created} collections, ${result.content.created} entries, ${result.menus.created} menus.`)
+    const result = await applySeed(db, inputs.seed, { includeContent: true })
+    log(`Seeded ${path.relative(ROOT, seedFile)}${standIns ? ' with stand-in children' : ''}: ${result.collections.created} collections, ${result.content.created} entries, ${result.menus.created} menus.`)
     return { seeded: true, result, media }
   } finally {
     await db.destroy()

@@ -77,6 +77,11 @@ describe('deploy workflows', () => {
     expect(doc.jobs['preview-verify']['timeout-minutes']).toBeLessThanOrEqual(30)
   })
 
+  // D1: stand-in children never reach production.
+  it('never adds stand-in children in the deploy workflow', () => {
+    expect(workflow('deploy.yml').text).not.toMatch(/SEED_FIXTURE_CHILDREN/)
+  })
+
   it('keeps every checkout from leaving the job token on disk', () => {
     for (const name of ['deploy.yml', 'preview-build.yml']) {
       for (const job of Object.values(workflow(name).doc.jobs)) {
