@@ -29,6 +29,7 @@ export function neonClient({ apiKey, projectId, fetch = globalThis.fetch }) {
     return res.status === 204 ? null : res.json()
   }
   return {
+    call,
     findBranch: async (name) => (await call('GET', `/branches?search=${encodeURIComponent(name)}`)).branches.find((b) => b.name === name),
     createBranch: (name, expiresAt) => call('POST', '/branches', { branch: { name, expires_at: expiresAt }, endpoints: [{ type: 'read_write' }] }),
     renewBranch: (id, expiresAt) => call('PATCH', `/branches/${id}`, { branch: { expires_at: expiresAt } }),
