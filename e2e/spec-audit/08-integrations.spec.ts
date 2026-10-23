@@ -22,6 +22,9 @@ for (const p of SPEC_PAGES) {
 
 // 8.9-4: every Ways to Give link to Donorbox keeps the tracking tags.
 bilingual('8.9-4', '/ways-to-give', async ({ page, path }) => {
+  // Donorbox's script adds links of its own (e.g. donorbox.org/explore with
+  // its own UTM tags), sometimes outside <dbox-widget>; only the page's count.
+  await page.route(/^https:\/\/(www\.)?donorbox\.org\//, (r) => (r.request().resourceType() === 'script' ? r.abort() : r.continue()))
   await open(page, path)
   // The page's links to Donorbox (not the Donorbox widget's own markup, e.g. its share links).
   const links = (
