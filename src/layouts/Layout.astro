@@ -2,7 +2,8 @@
 import '../index.css';
 import { LANG_TAGS, localeFromPath, stripLocale, type Locale } from '../lib/i18n';
 import { serialize, type JsonLd } from '../lib/structuredData';
-import { GTM_CONTAINER_ID } from 'astro:env/server';
+import { GTM_CONTAINER_ID, VERCEL_ENV } from 'astro:env/server';
+import PreviewBanner from '../components/PreviewBanner.astro';
 import tokens from '../styles/tokens.cjs';
 
 interface Props {
@@ -88,6 +89,7 @@ const gtmSnippet = gtm
    </head>
   <body>
     {gtm && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtm}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>}
+    <PreviewBanner env={VERCEL_ENV}/>
     <slot/>
    </body>
 </html>

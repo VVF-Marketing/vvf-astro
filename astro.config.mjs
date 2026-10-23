@@ -73,6 +73,9 @@ const env = {
     // sync's calls to its own preview URL.
     CRON_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
     VERCEL_AUTOMATION_BYPASS_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
+    // Set by Vercel on every deployment ('production', 'preview'); read at
+    // runtime for the preview banner (add-vercel-deploy-pipeline, D8).
+    VERCEL_ENV: envField.string({ context: 'server', access: 'secret', optional: true }),
   },
 };
 
