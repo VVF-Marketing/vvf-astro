@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import { blockThirdParty } from './e2e/third-party-hosts'
 
 const baseURL = 'http://localhost:4321'
 
@@ -10,7 +11,8 @@ export default defineConfig({
   testIgnore: ['parity/**'],
   outputDir: 'test-results/e2e',
   fullyParallel: true,
-  use: { baseURL },
+  // Third-party hosts are cut for the whole suite (e2e/third-party-hosts.ts).
+  use: { baseURL, launchOptions: blockThirdParty },
   webServer: {
     // Standalone Node server from `astro build` (always runs in the foreground,
     // unlike `astro preview`, which detaches when it detects an agent).

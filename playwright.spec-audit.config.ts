@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import { blockAllButWidgets, blockThirdParty, WIDGET_CHECKS } from './e2e/third-party-hosts'
 
 // Spec conformance audit (e2e/spec-audit, registry in e2e/spec-audit/registry.ts):
 //   npm run test:spec-audit
@@ -20,12 +21,10 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: '.spec-audit/results.json' }]],
   use: {
     baseURL,
-    // Third-party font and video CDNs fail fast instead of holding the page's
-    // load event: the audit measures this site, not their availability. Tag
-    // hosts (GTM, GA, Ads, LinkedIn) are cut so test runs never reach VVF's
-    // analytics. Donorbox and Double the Donation stay reachable for the
-    // widget checks.
-    launchOptions: { args: ['--host-resolver-rules=MAP fonts.gstatic.com 127.0.0.1, MAP www.gstatic.com 127.0.0.1, MAP *.youtube.com 127.0.0.1, MAP *.ytimg.com 127.0.0.1, MAP *.googletagmanager.com 127.0.0.1, MAP *.google-analytics.com 127.0.0.1, MAP *.doubleclick.net 127.0.0.1, MAP *.licdn.com 127.0.0.1'] },
+    // The audit measures this site: third-party hosts are cut
+    // (e2e/third-party-hosts.ts), except Donorbox and Double the Donation
+    // for the widget checks' own project below.
+    launchOptions: blockThirdParty,
   },
   webServer: {
     command: 'node ./dist/server/entry.mjs',
@@ -36,8 +35,10 @@ export default defineConfig({
   },
   projects: [
     // Desktop checks.
-    { name: 'checks', grepInvert: /@layout/, use: devices['Desktop Chrome'] },
+    { name: 'checks', grepInvert: [/@layout/, WIDGET_CHECKS], use: devices['Desktop Chrome'] },
     // The viewport sweep (5.9-1, 5.9-9): slow, so a project of its own.
-    { name: 'layout', grep: /@layout/, use: devices['Desktop Chrome'] },
+    { name: 'layout', grep: /@layout/, grepInvert: WIDGET_CHECKS, use: devices['Desktop Chrome'] },
+    // The widgets render and respond (8.9-6): their hosts stay reachable.
+    { name: 'widgets', grep: WIDGET_CHECKS, use: { ...devices['Desktop Chrome'], launchOptions: blockAllButWidgets } },
   ],
 })
