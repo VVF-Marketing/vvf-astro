@@ -40,6 +40,24 @@ const config: StorybookConfig = {
         ? Object.entries(existing).map(([find, replacement]) => ({ find, replacement }))
         : []
     config.resolve.alias = [...existingEntries, entry]
+    // The renderer reloads a component's <script> by appending
+    // &sbAstroReload=<n> to its URL, after Astro's "&lang.ts". Vite then no
+    // longer sees a TypeScript module and serves the source untranspiled, so
+    // `querySelectorAll<HTMLElement>(...)` runs as two comparisons and throws
+    // ("[data-logo-carousel]".forEach is not a function). Moving the token
+    // before "&lang.ts" keeps the URL unique and the module transpiled.
+    config.plugins = [
+      ...(config.plugins ?? []),
+      {
+        name: 'vvf:astro-script-reload-token',
+        configureServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            if (req.url) req.url = req.url.replace(/(&lang\.[a-z]+)(&sbAstroReload=\d+)/, '$2$1')
+            next()
+          })
+        },
+      },
+    ]
     return config
   },
 }
